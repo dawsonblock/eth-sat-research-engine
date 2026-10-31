@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eth-sat-research-engine"
+version = "0.3.0"
+description = "Exact-arithmetic SAT counting research engine"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "ETH-SAT Research Engine contributors" }]
+dependencies = []
+
+[project.scripts]
+eth-sat = "eth_sat.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["eth_sat*"]

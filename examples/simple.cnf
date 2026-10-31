@@ -1,0 +1,4 @@
+c Two variables x1,x2? See README: this file has three declared variables.
+p cnf 3 2
+1 2 0
+-1 3 0
