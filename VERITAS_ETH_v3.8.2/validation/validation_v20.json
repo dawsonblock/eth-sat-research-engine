@@ -1,0 +1,6 @@
+{
+  "seed": 20261030,
+  "independent_exact_packet_dp_and_count_comparisons": 250,
+  "outcome": "PASS",
+  "scope": "small finite packet surrogate, not D.3 theorem"
+}

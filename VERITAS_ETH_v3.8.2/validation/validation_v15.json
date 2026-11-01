@@ -1,0 +1,9 @@
+{
+  "version": "1.5.0",
+  "seed": 15052026,
+  "instances": 500,
+  "exact_or_modular_differential_checks": 4500,
+  "all_passed": true,
+  "seconds": 2.656,
+  "scope": "small Boolean CNF, exact reference, both representations, three plans, boundary DP, modular adaptive"
+}
