@@ -26,6 +26,7 @@ from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
 from veritas.research.eth_arithmetic.gf2 import first_irreducible
 from veritas.research.eth_arithmetic.jets import JetRing
 from veritas.research.eth_interpolation.shifted_cauchy import shift_cauchy_entry
+from veritas.research.eth_packing_v26.implicit import real_packet_slots
 
 SCHEMA='VERITAS_ETH_EXACT_FINITE_PACKET_COEFFICIENT_TENSORS_V36'
 CLAIM='FINITE_BOOLEAN_MULTILINEAR_CAUCHY_PACKET_TENSORS_ONLY'
@@ -182,7 +183,7 @@ def construct_packet_tensor_certificate(net,mode_certificate,*,max_work=350000,t
     coordinate=_v2(t)
     packet_models=[];checked=0;max_nonzero=0
     for pid,packet in enumerate(d3['packets']):
-        real=[(slot,eid) for slot,eid in enumerate(packet['slots']) if eid is not None]
+        real=list(real_packet_slots(packet,d3['L']))
         if len(real)>8:raise ValueError('finite packet capacity exceeds 8')
         tables,grid,nz=_coefficients_by_expansion(real,d3['L'],t,jr,meter)
         checked+=_independent_moebius_check(tables,grid,jr,meter)

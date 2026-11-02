@@ -17,6 +17,7 @@ from veritas.research.eth_modes_v31.jet_tiles import (
 from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
 from veritas.research.eth_arithmetic.gf2 import first_irreducible
 from veritas.research.eth_arithmetic.jets import JetRing
+from veritas.research.eth_packing_v26.implicit import real_packet_slots
 from veritas.research.eth_recursion_v30.implicit_children import (
     make_bipartite_edges, _direct_oracle, Limits,
 )
@@ -24,7 +25,9 @@ from veritas.research.eth_modes_v27.enumeration import weighted_tuples
 
 
 class ChildEvaluationBudgetExceeded(RuntimeError):
-    pass
+    def __init__(self, message, *, work_units=None):
+        super().__init__(message)
+        self.work_units = work_units
 
 
 @dataclass
@@ -44,7 +47,8 @@ class _Budget:
     def tick(self, amount=1):
         self.used += amount
         if self.used > self.maximum or monotonic() - self.started > self.timeout_s:
-            raise ChildEvaluationBudgetExceeded('lazy child work/time budget exhausted')
+            raise ChildEvaluationBudgetExceeded('lazy child work/time budget exhausted',
+                                                work_units=min(self.used, self.maximum))
 
 
 @dataclass(frozen=True)
@@ -64,17 +68,202 @@ class PacketTensorEntry:
     target_modes: tuple
     source_modes: tuple
 
-    def evaluate(self, port_bits: tuple[int, ...], jets: JetRing, budget: _Budget):
-        if len(port_bits) != len(self.ports) or any(bit not in (0, 1) for bit in port_bits):
+    def __post_init__(self):
+        if type(self.packet_id) is not int or self.packet_id < 0:
+            raise ValueError('packet id must be a nonnegative integer')
+        if (type(self.ports) is not tuple or
+                any(type(port) is not int or port < 0 for port in self.ports) or
+                len(set(self.ports)) != len(self.ports)):
+            raise ValueError('packet ports must be distinct nonnegative integers')
+        if (type(self.variables) is not tuple or len(self.variables) != len(self.ports) or
+                any(type(item) is not tuple or len(item) != 2 or
+                    item[0] not in ('X', 'Y') or type(item[1]) is not int or item[1] < 0
+                    for item in self.variables) or
+                len(set(self.variables)) != len(self.variables)):
+            raise ValueError('packet variables must uniquely match the ports')
+        x_ids = {edge for kind, edge in self.variables if kind == 'X'}
+        y_ids = {edge for kind, edge in self.variables if kind == 'Y'}
+
+        def coefficient(value):
+            if (type(value) is not tuple or any(type(part) is not tuple or
+                    any(type(c) is not int for c in part) for part in value)):
+                raise ValueError('packet coefficients must be immutable integer jets')
+
+        if type(self.rows) is not tuple:
+            raise ValueError('packet rows must be immutable')
+        row_ids = set()
+        for item in self.rows:
+            if (type(item) is not tuple or len(item) != 2 or
+                    type(item[0]) is not int or item[0] not in y_ids or
+                    item[0] in row_ids or type(item[1]) is not tuple):
+                raise ValueError('invalid or duplicate packet row')
+            row_ids.add(item[0])
+            column_ids = set()
+            for term in item[1]:
+                if (type(term) is not tuple or len(term) != 2 or
+                        type(term[0]) is not int or term[0] not in x_ids or
+                        term[0] in column_ids):
+                    raise ValueError('invalid or duplicate local column reference')
+                column_ids.add(term[0])
+                coefficient(term[1])
+        if row_ids != y_ids:
+            raise ValueError('packet rows must cover each row variable once')
+
+        for modes, target in ((self.target_modes, True), (self.source_modes, False)):
+            if type(modes) is not tuple:
+                raise ValueError('packet modes must be immutable')
+            mode_ids = set()
+            for mode in modes:
+                if (type(mode) is not tuple or len(mode) != 3 or
+                        type(mode[0]) is not int or mode[0] < 0 or mode[0] in mode_ids or
+                        type(mode[1]) is not int or mode[1] < 0 or type(mode[2]) is not tuple):
+                    raise ValueError('invalid packet mode id or exponent')
+                mode_ids.add(mode[0])
+                seen = set()
+                for entry in mode[2]:
+                    if (type(entry) is not tuple or len(entry) != 2 or
+                            type(entry[0]) is not int or
+                            entry[0] not in (y_ids if target else x_ids) or
+                            entry[0] in seen):
+                        raise ValueError('invalid or duplicate packet mode reference')
+                    seen.add(entry[0])
+                    if target:
+                        coefficient(entry[1])
+                    elif type(entry[1]) is not int:
+                        raise ValueError('source mode coefficient must be an integer')
+
+    def _inputs(self, port_bits, budget):
+        if len(port_bits) != len(self.ports):
             raise ValueError('packet tensor entry has the wrong Boolean index')
+        for bit in port_bits:
+            budget.tick()
+            if type(bit) is not int or bit not in (0, 1):
+                raise ValueError('packet tensor entry has the wrong Boolean index')
         assignment = dict(zip(self.ports, port_bits))
         x_value = {edge: assignment[port] for port, (kind, edge) in zip(self.ports, self.variables)
                    if kind == 'X'}
         y_value = {edge: assignment[port] for port, (kind, edge) in zip(self.ports, self.variables)
                    if kind == 'Y'}
+        return x_value, y_value
 
-        # Only positive target exponents need polynomial variables.  The
-        # coefficient table is sparse and truncated componentwise at beta.
+    def _target_coefficient_streaming(self, x_value, y_value, jets, budget):
+        """Enumerate affine-row selections, retaining one selection at a time."""
+        active_list = []
+        for mid, exponent, entries in self.target_modes:
+            budget.tick()
+            if exponent:
+                active_list.append((mid, exponent, entries))
+        active = tuple(active_list)
+        target = tuple(exponent for _, exponent, _ in active)
+        # Every row factor is affine, so one row can contribute at most one
+        # target mode. This also handles positive exponents with no rows.
+        if sum(target) > len(self.rows):
+            return jets.zero
+        choices = []
+        for row_id, encoded_local in self.rows:
+            budget.tick()
+            local = jets.zero
+            for column_id, encoded in encoded_local:
+                budget.tick()
+                if x_value.get(column_id, 0):
+                    local = jets.add(local, jets.elem(encoded))
+            is_one = y_value.get(row_id, 0)
+            constant = local if is_one else jets.sub(jets.one, local)
+            row_coefficients = {}
+            for mid, _, entries in active:
+                budget.tick()
+                for rid, encoded in entries:
+                    budget.tick()
+                    if rid == row_id:
+                        row_coefficients[mid] = jets.elem(encoded)
+                        break
+            options = []
+            if constant != jets.zero:
+                options.append((-1, constant))
+            for index, (mid, _, _) in enumerate(active):
+                coefficient = row_coefficients.get(mid, jets.zero)
+                if coefficient != jets.zero:
+                    options.append((index, coefficient if is_one else jets.neg(coefficient)))
+            if not options:
+                return jets.zero
+            choices.append(tuple(options))
+
+        # With no positive target exponents, only the constants contribute.
+        # Tick even for an empty product so a deadline is still observed.
+        if not active:
+            budget.tick()
+            result = jets.one
+            for options in choices:
+                budget.tick()
+                result = jets.mul(result, options[0][1])
+            return result
+
+        # A first-order coefficient needs just the constant product and its
+        # linear coefficient.  This is a streaming product rule, so it
+        # avoids walking q different length-q selections without division.
+        if len(active) == 1 and target == (1,):
+            constant_product = jets.one
+            coefficient = jets.zero
+            for options in choices:
+                budget.tick()
+                constant = next((v for i, v in options if i == -1), jets.zero)
+                linear = next((v for i, v in options if i == 0), jets.zero)
+                coefficient = jets.add(jets.mul(coefficient, constant),
+                                       jets.mul(constant_product, linear))
+                constant_product = jets.mul(constant_product, constant)
+            return coefficient
+
+        result = jets.zero
+        q = len(choices)
+        counts = [0] * len(active)
+        remaining = sum(target)
+        next_choice = [0] * q
+        selected = [-1] * q
+        products = [jets.one] + [jets.zero] * q
+        depth = 0
+        # An explicit stack streams one partial row selection at a time.
+        # Reject branches as soon as an exponent is exceeded or the
+        # remaining rows cannot supply the remaining target degree.
+        while True:
+            budget.tick()
+            if depth == q:
+                if remaining == 0:
+                    result = jets.add(result, products[depth])
+                depth -= 1
+                if depth < 0:
+                    break
+                if selected[depth] >= 0:
+                    counts[selected[depth]] -= 1
+                    remaining += 1
+                continue
+            if next_choice[depth] == len(choices[depth]):
+                next_choice[depth] = 0
+                if depth == 0:
+                    break
+                depth -= 1
+                if selected[depth] >= 0:
+                    counts[selected[depth]] -= 1
+                    remaining += 1
+                continue
+            index, factor = choices[depth][next_choice[depth]]
+            next_choice[depth] += 1
+            if index >= 0:
+                if counts[index] >= target[index]:
+                    continue
+                counts[index] += 1
+                remaining -= 1
+            if remaining > q - depth - 1:
+                if index >= 0:
+                    counts[index] -= 1
+                    remaining += 1
+                continue
+            selected[depth] = index
+            products[depth + 1] = jets.mul(products[depth], factor)
+            depth += 1
+        return result
+
+    def _target_coefficient_dp_reference(self, x_value, y_value, jets, budget):
+        """Original bounded sparse-DP coefficient evaluator for comparisons."""
         active = tuple((mid, exponent, entries)
                        for mid, exponent, entries in self.target_modes if exponent)
         zero_exp = (0,) * len(active)
@@ -116,18 +305,33 @@ class PacketTensorEntry:
             polynomial = {key: value for key, value in out.items() if value != jets.zero}
 
         target = tuple(exponent for _, exponent, _ in active)
-        result = polynomial.get(target, jets.zero)
+        return polynomial.get(target, jets.zero)
+
+    def _multiply_source(self, result, x_value, jets, budget):
         for mid, exponent, column_terms in self.source_modes:
             budget.tick()
             if exponent == 0:
                 continue
-            linear = sum(power * x_value.get(column_id, 0)
-                         for column_id, power in column_terms)
+            linear = 0
+            for column_id, power in column_terms:
+                budget.tick()
+                linear += power * x_value.get(column_id, 0)
             factor = jets.elem([[linear]])
             result = jets.mul(result, _pow_jets(factor, exponent, jets, budget))
             if result == jets.zero:
                 break
         return result
+
+    def evaluate(self, port_bits: tuple[int, ...], jets: JetRing, budget: _Budget):
+        x_value, y_value = self._inputs(port_bits, budget)
+        result = self._target_coefficient_streaming(x_value, y_value, jets, budget)
+        return self._multiply_source(result, x_value, jets, budget)
+
+    def evaluate_dp_reference(self, port_bits: tuple[int, ...], jets: JetRing, budget: _Budget):
+        """Bounded coefficient-table reference; unsuitable for space claims."""
+        x_value, y_value = self._inputs(port_bits, budget)
+        result = self._target_coefficient_dp_reference(x_value, y_value, jets, budget)
+        return self._multiply_source(result, x_value, jets, budget)
 
 
 @dataclass(frozen=True)
@@ -144,6 +348,8 @@ class GroupChildDescription:
 
 
 def _pow_jets(value, exponent, jets, budget):
+    if type(exponent) is not int or exponent < 0:
+        raise ValueError('jet exponent must be a nonnegative integer')
     result = jets.one
     base = value
     n = exponent
@@ -221,7 +427,7 @@ def _build_group_children_checked(net, mode_certificate, beta, d3):
 
         packet_tensors = []
         for packet_id, packet in enumerate(d3['packets']):
-            real = [(slot, eid) for slot, eid in enumerate(packet['slots']) if eid is not None]
+            real = real_packet_slots(packet, d3['L'])
             row_ids = tuple(eid for _, eid in real if row_groups[eid] == group)
             col_ids = tuple(eid for _, eid in real if col_groups[eid] == group)
             port_vars = tuple([('Y', eid) for eid in row_ids] + [('X', eid) for eid in col_ids])

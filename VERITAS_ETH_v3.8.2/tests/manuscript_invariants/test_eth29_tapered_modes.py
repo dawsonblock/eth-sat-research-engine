@@ -51,6 +51,17 @@ def test_tapered_fail_closed_and_2adic_guard():
         make_tapered_plan(M=1,a=2,u=2,p=8)
 
 
+def test_explicit_extended_target_precision_preserves_exact_reconstruction():
+    with pytest.raises(ValueError, match='bounded range'):
+        make_tapered_plan(M=1, a=1, u=1, p=131)
+    plan = make_tapered_plan(M=1, a=1, u=1, p=131,
+                             max_target_precision=512, max_work_precision=1024)
+    polynomial = [-5, 17, -23, 9]
+    samples = sample_integer_polynomial(plan, polynomial)
+    assert reconstruct_tapered(plan, samples) == polynomial[0] % (1 << 131)
+    assert all(node.precision_bits <= 1024 for node in plan.nodes)
+
+
 @pytest.mark.parametrize('edges',[
     [[0,0],[1,1],[0,1],[1,0]],
     [[0,0],[0,1],[1,0],[1,1]],

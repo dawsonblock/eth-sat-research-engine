@@ -7,6 +7,23 @@
 > qualification. The [finite recursion experiments](docs/FINITE_TAPERED_RECURSION_V39.md)
 > do not establish the manuscript's subexponential bound.
 
+The source of the paper this reference implements is now vendored in
+[`paper/`](paper/README.md), and
+[`docs/OPENAI_PAPER_CONFORMANCE.md`](docs/OPENAI_PAPER_CONFORMANCE.md) maps
+every component to its labelled lemma or equation. The paper has no
+"Appendix D"; that label and "D.3"/"D.4.4"/"D.6" are legacy aliases for
+`app:tensor`, `lem:tensor-packets`, `subsec:tensor-children`, and
+`eq:tensor-packing-conditions`. `tests/test_openai_paper_conformance.py`
+asserts that the schedule, packing, tapered-Hermite, mode, and
+count-recovery parameters all equal the paper's closed forms.
+
+`src/veritas/research/eth_counting_v39/` implements the paper's other half,
+`sec:counting` and `sec:construction` -- the low-degree replacement forms and
+shared linear summaries -- and counts bounded-occurrence CNFs exactly by that
+route. See [LINEAR_SUMMARIES_V39.md](docs/LINEAR_SUMMARIES_V39.md). It is a
+finite reference: it reproduces exhaustive enumeration, not the paper's
+running-time bound.
+
 This release inherits the v3.8 review fixes and adds an exact finite
 nonzero-node Hermite reconstruction check for dense L=2 Cauchy networks.
 See [the v3.8.2 correction and evidence notes](docs/CORRECTIONS_V382.md) and

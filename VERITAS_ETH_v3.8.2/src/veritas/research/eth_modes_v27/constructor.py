@@ -12,6 +12,7 @@ from fractions import Fraction
 from collections import defaultdict, Counter
 from .enumeration import count_tuples, ModeBudgetExceeded
 from veritas.research.eth_packing_v26.checker import verify_d3_packing
+from veritas.research.eth_packing_v26.implicit import real_packet_slots
 
 
 def v2(n):
@@ -72,8 +73,7 @@ def construct_tile_modes(d3_certificate, *, node=1, zeta=1, precision=6,
     edges=d3_certificate['edges']
     modes=[];local=[];cross_pairs=[]
     for pid,packet in enumerate(d3_certificate['packets']):
-        slots=packet['slots']
-        real=[(slot,eid) for slot,eid in enumerate(slots) if eid is not None]
+        real=list(real_packet_slots(packet,L))
         if not real: continue
         by_tile=defaultdict(list)
         for y,eid in real:

@@ -9,6 +9,7 @@ from __future__ import annotations
 from collections import defaultdict
 from .constructor import cauchy_element, frac_mod
 from .checker import verify_tile_modes
+from veritas.research.eth_packing_v26.implicit import real_packet_slots
 
 
 def network_edges(network):
@@ -64,7 +65,7 @@ def check_full_scalar_identity(network, certificate, *, max_edges=5, max_assignm
             # Direct, independently evaluated W via deleted-factor product.
             row_sums=[0]*m
             for packet in certificate['d3_certificate']['packets']:
-                real=[(slot,e) for slot,e in enumerate(packet['slots']) if e is not None]
+                real=list(real_packet_slots(packet,L))
                 for x,e in real:
                     for y,ce in real:
                         if xm>>ce&1:

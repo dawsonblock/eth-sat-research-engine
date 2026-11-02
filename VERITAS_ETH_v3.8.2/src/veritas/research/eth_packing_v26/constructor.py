@@ -1,7 +1,7 @@
 """Uniform padded directed-pair classes and full packet-slot orientation.
 
-This is the Appendix D.3 packet embedding, not the smaller ad hoc bucket scheme
-from v2.5. Every directed label class is padded to the *same* H, divisible by L,
+This is the packet embedding of `lem:tensor-packets` in `app:tensor` (historical
+alias "D.3"), not the smaller ad hoc bucket scheme from v2.5. Every directed label class is padded to the *same* H, divisible by L,
 including empty classes. Each unordered class receives 2**a' orientations and
 L/2**a' copies, hence H*2**a'/L complete packets.
 """

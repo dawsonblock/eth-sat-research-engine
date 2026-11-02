@@ -10,6 +10,8 @@ Conditional on the child invariant M_{d+1}≤M_d/8 and root size M_0≤Cs, any a
 
 These inequalities do not themselves construct the labeling. The separate D.3 conditional-expectation packing lemma must establish a polynomial-time, polynomial-space labeling with its stated port and padding bounds for every eligible graph. The current bounded Python constructor and certificate checker do not establish this universal claim. The mathematical proof in the pinned source is a candidate proof; it has not been independently verified here.
 
+The implicit labeler has now been changed to maintain one exact conditional-score contribution per unordered edge pair and update only pairs affected by a newly fixed endpoint label. Its operation estimate is `O(a r M^2)` with `O(M^2)` pair/update storage, and it checks the final state against the direct score calculation. This removes a repeated full pair scan per vertex from the constructor. It is a deterministic finite implementation improvement; the bit-operation estimate, source-to-code correspondence, and downstream theorem obligations are not validated by this change.
+
 Correction to prior advice: if packing fails at an arbitrary large node, directly enumerating that node may take 2^M operations and does not preserve the stated subexponential bound. A fallback is complexity-safe only when M is bounded by the prescribed leaf threshold (or by another separately proved admissible bound).
 
 ## 2. Identity, pruning, and child size
@@ -29,6 +31,13 @@ Suppose all active nodes satisfy the invariants above; their complete branching 
 The geometric sum over active depths is O_C(s/sqrt λ). The number of depths is O_C(log λ), so the accumulated poly(s) factors contribute exp(O(log s log log s)), absorbed by exp(O(s/sqrt(log s))). Direct leaves cost at most 2^H times the required entry-evaluation overhead, with H=O(s/sqrt(log s)). A uniform exp(O(s^(9/10))) entry cost is also absorbed asymptotically. Under these assumptions the total is poly(s+description length) exp(O(s/sqrt(log s))) bit operations.
 
 The abstract weighted-tuple estimate and the multiplicity deduction from the packet-count and orientation hypotheses are derived in [APPENDIX_D_WEIGHTED_TUPLE_BOUND.md](APPENDIX_D_WEIGHTED_TUPLE_BOUND.md). A precision-path deduction under the stated root, shrinkage, schedule and increment invariants is given in [APPENDIX_D_PRECISION_PATH.md](APPENDIX_D_PRECISION_PATH.md); the conditional Hermite guard argument is in [APPENDIX_D_TAPERED_PRECISION_LEMMA.md](APPENDIX_D_TAPERED_PRECISION_LEMMA.md). Uniform validity of those hypotheses, proof that generating the tuples and all implicit entry evaluations obey the charged costs, and bounds on exact arithmetic and reconstruction remain necessary. The displayed geometric sum alone does not prove these inputs. Dependence on the input-description length must remain a fixed polynomial, rather than a polynomial factor multiplied once per recursion level with an exponent growing with depth.
+
+The exact root-precision requirement for unweighted CNF counts and the
+conditional recursion calculation with the sharper `3/32` child factor are
+spelled out in [APPENDIX_D_COUNT_AND_RECURRENCE.md](APPENDIX_D_COUNT_AND_RECURRENCE.md).
+An explicit bound on the sum of work over the entire tree, under separately
+stated branching and per-call bit-cost assumptions, is given in
+[APPENDIX_D_RECURSION_TREE_LEMMA.md](APPENDIX_D_RECURSION_TREE_LEMMA.md).
 
 ## 4. Conditional space calculation
 

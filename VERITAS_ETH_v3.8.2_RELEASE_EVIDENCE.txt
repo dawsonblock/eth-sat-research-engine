@@ -1,0 +1,50 @@
+VERITAS-ETH v3.8.2 local release evidence
+Date: 2026-11-02
+
+Pinned source
+  OpenAI, "The Exponential Time Hypothesis is False", 25 October 2026.
+  Vendored in VERITAS_ETH_v3.8.2/paper/ with upstream SHA-256 values
+  recorded in paper/README.md and enforced by
+  tests/test_openai_paper_conformance.py.
+  quantitative-contraction.tex SHA-256:
+  671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860
+  main_full_version.tex SHA-256:
+  b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa
+
+Candidate archive
+  VERITAS_ETH_v3.8.2_FULL_UPGRADED.zip
+  Bytes: 1025824
+  Members: 520 (518 files covered by SHA256_MANIFEST.json, plus SHA256SUMS.txt)
+  SHA-256: 10b26248b63e73592ca241bb2cf88888f8d4e0b71c25a45af9e337e9c8a0758c
+
+Integrity
+  Source manifest: PASS, normal Python; 518 files, no unlisted payloads.
+  Source manifest: PASS, python -O; 518 files, no unlisted payloads.
+  Exact archive extracted and re-verified: manifest PASS, conformance and
+  sparse-source suites PASS from the extracted tree.
+
+Validation
+  Full test suite: 1001 passed on source under Python 3.12.0.
+  scripts/validate_counting_v39.py: all cases match exhaustive enumeration;
+  every numerical hypothesis of lem:incidence-parameters holds at
+  lambda = 2**34.
+  scripts/validate_tapered_v4.py --write/--replay: EXACT_MODULAR_CONTRACTION_FINITE
+  with count 1, and FINITE_TRANSCRIPT_REPLAYED.
+  scripts/audit_theorem_schedule_numeric.py: FINITE_SCHEDULE_PATH_NUMERICS_CHECKED.
+  scripts/audit_v4_child_sizes.py: FINITE_CHILD_SIZE_AUDIT_REPLAYED.
+  scripts/smoke.py: PASS.
+
+Implemented paper objects
+  app:tensor (contraction): lem:tensor-packets, lem:tensor-integrality,
+  lem:tapered-hermite, the mode expansion, and the child construction.
+  sec:counting / sec:construction (polynomial construction):
+  lem:incidence-parameters, lem:incidence-labels, lem:swaps-matrix,
+  lem:swaps-support, def:layout, lem:measurement-separation,
+  lem:boolean-differences, and H(0) = Z.
+
+Evidence boundary
+  Finite-instance checks only. The subexponential running-time bound, the
+  universal one-eighth child shrink, uniform applicability of the packing
+  and incidence hypotheses, polynomial-space traversal, sec:hashes
+  sparsification, and the dense clause-density case are NOT IMPLEMENTED or
+  NOT EVALUATED. The checksum manifest is not a cryptographic signature.

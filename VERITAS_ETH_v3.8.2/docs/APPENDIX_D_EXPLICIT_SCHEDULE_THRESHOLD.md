@@ -61,3 +61,19 @@ It reports the required root, child-shrinkage, and degree assumptions. The
 threshold is not a practical recommendation or a proof that the current
 bounded Python code can execute at theorem scale. The finitely many smaller
 sizes require a separate direct-summation treatment for a uniform theorem.
+
+The finite `schedule_path_preflight` checks the pinned numeric schedule and
+the `3M/32` parent-child bound along a caller-supplied ancestry, including the
+leaf rule. It checks only the supplied wire and degree numbers; it does not
+verify their network descriptions, child identities, or complete branch
+coverage, and it does not establish the uniform hypothesis above.
+
+For an exact, reproducible numeric experiment, run
+`python scripts/audit_theorem_schedule_numeric.py`. Its default uses
+`s=2^524290` and a caller-supplied path with each child size
+`floor(3M/32)`. The first three calls satisfy the checked numeric packing
+conditions with `(u,a)` equal to `(4,8)`, `(2,12)`, and `(1,14)`; the
+fourth reaches the direct-leaf cutoff. The power-of-two degree bound is
+computed exactly without constructing `s^9`. This experiment constructs no
+network or child and does not verify any contraction identity, all branches,
+or a uniform runtime bound.

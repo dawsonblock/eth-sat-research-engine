@@ -23,6 +23,7 @@ from veritas.research.eth_recursion_v30.implicit_children import (
 from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
 from veritas.research.eth_arithmetic.gf2 import first_irreducible
 from veritas.research.eth_arithmetic.jets import JetRing
+from veritas.research.eth_packing_v26.implicit import real_packet_slots
 
 SCHEMA = 'VERITAS_D44_EXACT_GROUP_LOCAL_CHILD_REFERENCE_V1'
 CLAIM = 'FINITE_GROUP_LOCAL_PACKET_TENSORS_AND_EXACT_IDENTITY_ONLY'
@@ -84,7 +85,7 @@ def _data(net,mode_cert):
             targeted[rid].append((mid,coeffs))
     packets=[]
     for packet in d3['packets']:
-        entries=[eid for eid in packet['slots'] if eid is not None]
+        entries=[eid for _,eid in real_packet_slots(packet,d3['L'])]
         packets.append(entries)
     return d3,rowgroups,colgroups,original,local,targeted,packets
 

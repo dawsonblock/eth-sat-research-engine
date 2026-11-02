@@ -8,6 +8,7 @@ from collections import defaultdict
 from fractions import Fraction
 from veritas.research.eth_packing_v26.checker import verify_d3_packing
 from .enumeration import count_tuples
+from veritas.research.eth_packing_v26.implicit import real_packet_slots
 
 
 def _v2(n):
@@ -59,7 +60,7 @@ def verify_tile_modes(cert, *, max_work=2_000_000):
             if q:deriv *= -q
         direct={};local_expected=set();cross_expected=set()
         for pid,pack in enumerate(packs):
-            real=[(slot,eid) for slot,eid in enumerate(pack['slots']) if eid is not None]
+            real=list(real_packet_slots(pack,L))
             for x,rid in real:
                 rg=base['row_labels'][str(edges[rid][0])][i]
                 for y,cid in real:
@@ -94,7 +95,7 @@ def verify_tile_modes(cert, *, max_work=2_000_000):
             key=(pid,y0,w,mode['source_group'],mode['target_group'])
             if key in seen_modes:raise ValueError('duplicate mode')
             seen_modes.add(key)
-            real=[(slot,eid) for slot,eid in enumerate(packs[pid]['slots']) if eid is not None]
+            real=list(real_packet_slots(packs[pid],L))
             columns={eid:((y-y0)//width)**(w-1) for y,eid in real if y%width==y0}
             source_groups={base['column_labels'][str(edges[eid][1])][i] for eid in columns}
             if source_groups!={mode['source_group']} or mode['source_group']==mode['target_group']:

@@ -29,6 +29,23 @@ example exercises cross-group modes and recovers count `3` modulo `8`. An
 additional two-level test changes the packet exponent from `a=1` to `a=2`
 and reaches 309-bit working precision.
 
+The eight-wire experiment in `scripts/validate_tapered_v4.py` observes about
+2.13 million charged work units, so it pins `max_work=3_000_000` explicitly.
+The `RecursionPolicy` default of 2 million is just below what the current
+tree charges, and a run at the default fails closed with
+`INCONCLUSIVE_RESOURCE_LIMIT` and no count. `--write` and `--replay` both
+use the pinned cap; a transcript written under a smaller cap replays as
+inconclusive and reports its `recorded_max_work`.
+
+Zero-wire networks take a separate direct leaf path. This handles an empty
+CNF on zero variables, empty clauses, and isolated declared variables. A
+certificate binds the immutable zero-wire tensor descriptions, their lifted
+entries, and the result; the checker replays each entry and independently
+multiplies its extension-jet coordinates. For a network with no vertices,
+the default return ring has extension degree one and jet length one. The
+certificate verifies the supplied tensor network, not the correctness of an
+arbitrary CNF-to-network reduction.
+
 The tuple stream applies two exact affine-degree restrictions before forming
 children: each mode exponent is at most the number of target rows containing
 that mode, and the sum of exponents targeted at one packet/group is at most
@@ -38,6 +55,24 @@ therefore have zero coefficient. The certificate retains the nominal weighted
 tuple count as well as the smaller structural count; the tuple budget applies
 to the latter. The argument and its limits are given in
 [APPENDIX_D_STRUCTURAL_TUPLE_PRUNING.md](APPENDIX_D_STRUCTURAL_TUPLE_PRUNING.md).
+For a verified completed scalar residue of a count-preserving `n`-variable
+CNF contraction, `recover_boolean_count` enforces `precision >= n+1` and
+checks the residue's canonical and Boolean-count ranges. The helper does not
+verify which network produced the residue; these remain caller obligations.
+
+Each point-child expansion now records the mode valuations, retained tuples,
+each child contraction and its actual edge count and maximum degree, the
+tuple products, and the independently evaluated half-edge result. The
+point-certificate checker replays those fields against the input network and
+mode certificate. The opt-in `require_one_eighth_shrink=True` rejects a
+branch if a child is not strictly smaller than `M/8` or violates `6M/r`;
+`run_tapered_finite` then reports `INCONCLUSIVE_CHILD_SIZE_INVARIANT` with no
+count. Scaled examples can fail this check: checking an actual child is not a
+proof that all theorem-schedule children satisfy the bound.
+The tapered result also aggregates finite child counts, maximum actual edge
+count and degree, size-check outcomes, and minimum valuation slack across
+visited recursive calls. This summary is instance evidence, not a verified
+whole-run arithmetic or memory ledger.
 
 The experiments use caller-selected small parameters, normally `r=2`, `a=1`,
 and `u=1`; a caller may specify a separate `(a,u,r)` tuple per level. They do
@@ -45,9 +80,15 @@ not use the theorem's depth-dependent
 `r=64` schedule or establish shrinking children. Limits include at most six
 parent wires, extension degree at most eight, precision at most 1024 bits,
 bounded interpolation points and mode tuples, and at most two requested
-transformation levels. Direct leaf enumeration and independent oracles are
+transformation levels; the zero-wire leaf is also supported. Requests above
+the finite wire cap return `INCONCLUSIVE_RESOURCE_LIMIT` through
+`run_tapered_finite`. Direct leaf enumeration and independent oracles are
 explicitly bounded. `run_tapered_finite` reports `INCONCLUSIVE_RESOURCE_LIMIT`
 without a result when its supported work or precision budget is exhausted.
+Its explicitly capped 512-bit target-precision option supports a two-wire
+example through two recursive levels; that example does not satisfy the
+one-eighth child-size invariant. Insufficient extension-field interpolation
+points also return an inconclusive resource status rather than a partial count.
 
 Work counters distinguish child work from direct oracle work, but omit some
 packing, mode generation, interpolation, bit-operation and retained-memory

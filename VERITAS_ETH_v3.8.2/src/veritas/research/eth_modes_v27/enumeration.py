@@ -14,6 +14,9 @@ def count_tuples(weights, precision, *, cap=1_000_000):
         raise ValueError('precision must be in [1,1024]')
     if type(cap) is not int or cap < 1:
         raise ValueError('invalid cap')
+    # Validate and count the same data even when the caller supplies a
+    # one-shot iterator.
+    weights = tuple(weights)
     if any(type(w) is not int or w < 1 for w in weights):
         raise ValueError('mode weights must be positive integers')
     # dp[s] counts choices with exactly weight s; no enumeration of vectors.
@@ -33,16 +36,29 @@ def count_tuples(weights, precision, *, cap=1_000_000):
 def weighted_tuples(weights, precision, *, max_tuples=100_000):
     weights = tuple(weights)
     count_tuples(weights, precision, cap=max_tuples)
-    state = [0] * len(weights)
-
-    def visit(k, remaining):
-        if k == len(weights):
+    n = len(weights)
+    if n == 0:
+        yield ()
+        return
+    # Explicit DFS preserves the recursive enumerator's order without tying
+    # the supported number of modes to Python's recursion limit. Every
+    # visited prefix extends to an admissible tuple by filling with zeroes.
+    state = [0] * n
+    next_exponent = [0] * n
+    remaining = [precision] * (n + 1)
+    depth = 0
+    while depth >= 0:
+        if depth == n:
             yield tuple(state)
-            return
-        w = weights[k]
-        for exponent in range((remaining-1)//w+1):
-            state[k] = exponent
-            yield from visit(k+1,remaining-w*exponent)
-        state[k] = 0
-
-    yield from visit(0,precision)
+            depth -= 1
+            continue
+        limit = (remaining[depth] - 1) // weights[depth]
+        if next_exponent[depth] > limit:
+            next_exponent[depth] = 0
+            depth -= 1
+            continue
+        exponent = next_exponent[depth]
+        next_exponent[depth] += 1
+        state[depth] = exponent
+        remaining[depth + 1] = remaining[depth] - weights[depth] * exponent
+        depth += 1

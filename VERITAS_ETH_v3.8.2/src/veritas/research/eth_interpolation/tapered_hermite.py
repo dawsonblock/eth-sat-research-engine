@@ -1,8 +1,9 @@
 """Bounded valuation-tapered Hermite reconstruction over Z/2**p.
 
-M3 FINITE REFERENCE ONLY. The *formulas* for q_t and p_t follow the
-manuscript schedule, but the implementation uses a small rational confluent
-system instead of the manuscript's asymptotically efficient algorithm.
+M3 FINITE REFERENCE ONLY. The *formulas* for h, q_t and p_t follow
+`lem:tapered-hermite` in `app:tensor` of the pinned preprint, but the
+implementation uses a small rational confluent system instead of the paper's
+asymptotically efficient algorithm.
 Mixed-precision inputs are accepted ONLY after checking exact coefficient-wise
 precision requirements. No division by a nonunit occurs in the residue ring.
 """
@@ -58,10 +59,12 @@ class TaperedPlan:
 
 
 def make_tapered_plan(*, M:int, a:int, u:int, p:int, max_degree=31,
-                      max_nodes=32, max_work_precision=4096) -> TaperedPlan:
-    if any(type(x) is not int for x in (M,a,u,p,max_degree,max_nodes,max_work_precision)):
+                      max_nodes=32, max_work_precision=4096,
+                      max_target_precision=128) -> TaperedPlan:
+    if any(type(x) is not int for x in (M,a,u,p,max_degree,max_nodes,max_work_precision,max_target_precision)):
         raise ValueError('integer parameters required')
-    if not 1<=M<=32 or not 1<=a<=5 or not 1<=u<=16 or not 1<=p<=128:
+    if (not 1 <= max_target_precision <= 1024 or
+            not 1<=M<=32 or not 1<=a<=5 or not 1<=u<=16 or not 1<=p<=max_target_precision):
         raise ValueError('finite reference parameters outside bounded range')
     if u > a or u > M:
         raise ValueError('tapered lemma requires 1 <= u <= a and u <= M')
@@ -96,6 +99,66 @@ def make_tapered_plan(*, M:int, a:int, u:int, p:int, max_degree=31,
                        tuple((x.t,requirements[x.t]) for x in nodes))
 
 
+def validate_tapered_plan(plan: TaperedPlan) -> None:
+    """Independently check one finite schedule and recovery functional.
+
+    This checks the pinned formulas and evaluates the proposed exact linear
+    functional on every monomial in the permitted polynomial space. It is a
+    bounded finite verifier, not a proof of the global tapering lemma or of
+    the algorithm's asymptotic complexity. It raises ``ValueError`` on an
+    inconsistent plan instead of attempting reconstruction.
+    """
+    if not isinstance(plan, TaperedPlan):
+        raise ValueError('finite tapered plan required')
+    M,a,u,p = plan.wires,plan.packets_exponent,plan.u,plan.target_bits
+    if (any(type(x) is not int for x in (M,a,u,p,plan.alpha,plan.degree_bound)) or
+            not 1<=M<=32 or not 1<=a<=5 or not 1<=u<=min(a,M) or
+            not 1<=p<=1024 or plan.claim!='FINITE_TAPERED_HERMITE_REFERENCE_ONLY'):
+        raise ValueError('invalid finite tapered plan parameters')
+    L=1<<a
+    degree=M*(2*L-1)
+    if degree>31 or plan.degree_bound!=degree or plan.alpha!=2*L:
+        raise ValueError('tapered degree or interpolation scale is incorrect')
+    h=(3*M+u-1)//u
+    expected_nodes=[]
+    for t in range(-L,L):
+        if not t:
+            continue
+        i=v2_integer(t)
+        if i<u:
+            expected_nodes.append(TaperedNode(t,i,h*(u-i),
+                p+8*h*(L>>i)+8*M*(a+1)))
+    if (type(plan.nodes) is not tuple or plan.nodes!=tuple(expected_nodes) or
+            not expected_nodes or sum(n.multiplicity for n in expected_nodes)<=degree):
+        raise ValueError('tapered nodes or prescribed precision are incorrect')
+    rec=plan.recovery_plan
+    specs=tuple((node.t,min(node.multiplicity,degree+1)) for node in expected_nodes)
+    samples=tuple((t,j) for t,m in specs for j in range(m))[:degree+1]
+    if (getattr(rec,'nodes',None)!=specs or getattr(rec,'alpha',None)!=plan.alpha or
+            getattr(rec,'degree_bound',None)!=degree or
+            getattr(rec,'samples_used',None)!=samples or
+            type(getattr(rec,'weights',None)) is not tuple or len(rec.weights)!=degree+1):
+        raise ValueError('Hermite recovery description is inconsistent')
+    if any(not isinstance(w,Fraction) or w.numerator.bit_length()>16384 or
+           w.denominator.bit_length()>16384 for w in rec.weights):
+        raise ValueError('invalid or oversized exact recovery weight')
+    for k in range(degree+1):
+        value=sum((w*comb(k,j)*t**(k-j)*plan.alpha**j
+                   for (t,j),w in zip(samples,rec.weights) if j<=k),Fraction(0))
+        if value!=(1 if k==0 else 0):
+            raise ValueError('Hermite weights do not recover the original value')
+    guard=max((max(0,-v2_fraction(w)) for w in rec.weights if w),default=0)
+    if type(getattr(rec,'guard_bits',None)) is not int or rec.guard_bits!=guard:
+        raise ValueError('Hermite guard is inconsistent with exact weights')
+    required={node.t:0 for node in expected_nodes}
+    for (t,_),w in zip(samples,rec.weights):
+        if w:
+            required[t]=max(required[t],p-v2_fraction(w))
+    if (plan.necessary_precision!=tuple((n.t,required[n.t]) for n in expected_nodes) or
+            any(n.precision_bits<required[n.t] for n in expected_nodes)):
+        raise ValueError('tapered coefficient precision requirements are inconsistent')
+
+
 def _fraction_mod_odd(x:Fraction,bits:int):
     if x.denominator%2==0:
         raise ValueError('nonunit denominator after certified scaling')
@@ -103,18 +166,43 @@ def _fraction_mod_odd(x:Fraction,bits:int):
     return x.numerator*pow(x.denominator,-1,m)%m
 
 
-def reconstruct_tapered(plan:TaperedPlan, jets:dict[int,tuple[int,...]]) -> int:
-    """Jet samples stored at their INDIVIDUAL prescribed node precisions."""
+def reconstruct_tapered(plan:TaperedPlan, jets:dict[int,tuple[int,...]], *,
+                        coefficient_precisions=None) -> int:
+    """Recover a residue from explicitly bounded-precision jet coefficients.
+
+    With no metadata, every coefficient is declared to have its node's
+    prescribed precision, as in the original interface. When supplied,
+    ``coefficient_precisions[t][j]`` declares the actual precision of that
+    coefficient; zero bits means the unique residue modulo one. The caller
+    remains responsible for obtaining each residue at its declared precision.
+    """
     rec=plan.recovery_plan
-    if not isinstance(jets,dict) or set(jets)!={x.t for x in plan.nodes}:
+    if (not isinstance(jets,dict) or any(type(t) is not int for t in jets) or
+            set(jets)!={x.t for x in plan.nodes}):
         raise ValueError('missing, extra or duplicate tapered node')
+    if coefficient_precisions is not None and (
+            not isinstance(coefficient_precisions, dict) or
+            any(type(t) is not int for t in coefficient_precisions) or
+            set(coefficient_precisions) != {x.t for x in plan.nodes}):
+        raise ValueError('precision metadata must cover exactly the tapered nodes')
+    actual_precisions={}
     for node in plan.nodes:
         values=jets[node.t]
-        if len(values)<min(node.multiplicity,plan.degree_bound+1):
+        count=min(node.multiplicity,plan.degree_bound+1)
+        if not isinstance(values,(tuple,list)) or len(values)<count:
             raise ValueError(f'insufficient coefficients at node {node.t}')
-        if any(type(v) is not int or v<0 or v>=1<<node.precision_bits
-               for v in values[:min(node.multiplicity,plan.degree_bound+1)]):
+        if coefficient_precisions is None:
+            precisions=(node.precision_bits,)*count
+        else:
+            precisions=coefficient_precisions[node.t]
+            if (not isinstance(precisions,(tuple,list)) or len(precisions)<count or
+                    any(type(bits) is not int or not 0<=bits<=node.precision_bits
+                        for bits in precisions[:count])):
+                raise ValueError('invalid coefficient precision metadata')
+        if any(type(v) is not int or v<0 or v>=1<<bits
+               for v,bits in zip(values[:count],precisions[:count])):
             raise ValueError('jet residue outside its declared precision')
+        actual_precisions[node.t]=precisions
     shift=rec.guard_bits
     modulus_bits=plan.target_bits+shift
     accumulator=0
@@ -123,9 +211,8 @@ def reconstruct_tapered(plan:TaperedPlan, jets:dict[int,tuple[int,...]]) -> int:
         coefficient=Fraction(w)*scale
         if coefficient.denominator%2==0:
             raise ArithmeticError('Hermite guard scaling did not clear 2-denominator')
-        node=next(x for x in plan.nodes if x.t==t)
-        required=plan.target_bits-v2_fraction(w)
-        if node.precision_bits<required:
+        required=max(0,plan.target_bits-v2_fraction(w)) if w else 0
+        if actual_precisions[t][j]<required:
             raise ValueError('insufficient coefficient-dependent input precision')
         c=_fraction_mod_odd(coefficient,modulus_bits)
         accumulator=(accumulator+c*jets[t][j])%(1<<modulus_bits)

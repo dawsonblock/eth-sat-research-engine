@@ -19,6 +19,13 @@ class PackingBudgetExceeded(ValueError):
     pass
 
 
+# The incremental labeler keeps one record per unordered edge pair plus
+# endpoint-update lists, so its live table is O(M**2). This cap fails closed
+# on that table size, matching the module's other explicit resource limits.
+# Callers that need a larger table must raise it deliberately.
+DEFAULT_MAX_PAIR_RECORDS = 250_000
+
+
 def validate_edges(edges):
     if not isinstance(edges, (list,tuple)):
         raise ValueError('edges must be a sequence')
@@ -74,7 +81,28 @@ def expected_sq_load_scaled(edges, assignments, r, a, _budget=None):
     return total
 
 
-def assign_full_d3_labels(edges, *, r=2, a=1, max_work=3_000_000, _budget=None):
+def conditional_expectation_work_bound(edges, *, r: int, a: int) -> int:
+    """Conservative operation estimate for the incremental D.3 derandomizer.
+
+    Each unordered edge pair is stored once. Across both sides, it appears in
+    at most four endpoint-update lists. Summing those list lengths over all
+    vertices is therefore at most ``2*M*(M-1)``. The constructor scans those
+    lists for each coordinate/candidate, commits one selected candidate per
+    coordinate, and performs one final direct score replay. This gives an
+    ``O(a*r*M**2)`` operation bound, with a deliberately loose constant.
+    It is an operation estimate, not a bit-operation or wall-time theorem.
+    """
+    edges = validate_edges(edges)
+    if type(r) is not int or type(a) is not int or not (2 <= r <= 64 and a >= 1):
+        raise ValueError('unsupported radix or dimension')
+    m = len(edges)
+    if not m:
+        return 0
+    return (4 * r + 20) * a * m * m
+
+
+def assign_full_d3_labels(edges, *, r=2, a=1, max_work=3_000_000, _budget=None,
+                          max_pair_records=DEFAULT_MAX_PAIR_RECORDS):
     """Assign labels coordinatewise by exact conditional expectation.
 
     At every step the chosen candidate minimizes the *conditional expected* sum
@@ -83,15 +111,55 @@ def assign_full_d3_labels(edges, *, r=2, a=1, max_work=3_000_000, _budget=None):
     whole r-ary label vectors one at a time.
     """
     edges=validate_edges(edges)
-    if type(r) is not int or type(a) is not int or not (2<=r<=64 and 1<=a<=8):
+    if type(r) is not int or type(a) is not int or not (2<=r<=64 and a>=1):
         raise ValueError('unsupported radix or dimension')
+    if max_work is not None and (type(max_work) is not int or max_work < 1):
+        raise ValueError('max_work must be a positive integer or None')
+    if type(max_pair_records) is not int or max_pair_records < 0:
+        raise ValueError('max_pair_records must be a nonnegative integer')
     vs=variables(edges)
-    estimated_work=(len(vs)*a*r+1)*len(edges)*max(1,len(edges))*a
-    if type(max_work) is not int or max_work<1 or estimated_work>max_work:
+    estimated_work=conditional_expectation_work_bound(edges,r=r,a=a)
+    if max_work is not None and estimated_work>max_work:
         raise PackingBudgetExceeded(f'conditional expectation estimated work {estimated_work} exceeds {max_work}')
     assignments={}
     D=r**(2*a)
-    initial=expected_sq_load_scaled(edges,assignments,r,a,_budget)
+    M=len(edges)
+    pair_count=M*(M-1)//2
+    if pair_count>max_pair_records:
+        raise PackingBudgetExceeded(
+            f'labeler pair table {pair_count} exceeds {max_pair_records} records')
+
+    # Store each unordered edge pair's number of still-random equality tests,
+    # whether an already-fixed comparison has contradicted equality, and its
+    # exact contribution to D*E[sum_gamma X_gamma^2].  Assigning a label only
+    # changes pairs incident to that vertex whose other endpoint is already
+    # labelled. If the other endpoint is still random, the equality event has
+    # probability 1/r for every candidate symbol and its contribution stays
+    # unchanged. This avoids recomputing the whole M^2 score for every choice.
+    pair_unknown=[]
+    pair_conflicted=[]
+    pair_contribution=[]
+    updates={}
+    score=M*D
+    for i,(u,v) in enumerate(edges):
+        for j,(w,z) in enumerate(edges[:i]):
+            if _budget is not None:
+                _budget.tick()
+            pair_id=len(pair_unknown)
+            unknown=a*(int(u != w)+int(v != z))
+            contribution=2*(D//(r**unknown))
+            pair_unknown.append(unknown)
+            pair_conflicted.append(False)
+            pair_contribution.append(contribution)
+            score+=contribution
+            if u != w:
+                updates.setdefault(('R',u),[]).append((pair_id,('R',w)))
+                updates.setdefault(('R',w),[]).append((pair_id,('R',u)))
+            if v != z:
+                updates.setdefault(('C',v),[]).append((pair_id,('C',z)))
+                updates.setdefault(('C',z),[]).append((pair_id,('C',v)))
+
+    initial=score
     before=initial
     steps=[]
     # Choosing higher-degree vertices first tends to improve practical local scores.
@@ -100,20 +168,60 @@ def assign_full_d3_labels(edges, *, r=2, a=1, max_work=3_000_000, _budget=None):
         for d in range(a):
             best=None
             for value in range(r):
-                if _budget is not None: _budget.tick()
-                assignments[(side,v,d)]=value
-                score=expected_sq_load_scaled(edges,assignments,r,a,_budget)
-                cand=(score,value)
+                if _budget is not None:
+                    _budget.tick()
+                trial=score
+                for pair_id,other_vertex in updates.get((side,v),()):
+                    if _budget is not None:
+                        _budget.tick()
+                    other=(*other_vertex,d)
+                    if other not in assignments or pair_conflicted[pair_id]:
+                        continue
+                    old=pair_contribution[pair_id]
+                    new=(old*r if value==assignments[other] else 0)
+                    trial+=new-old
+                cand=(trial,value)
                 if best is None or cand<best:
                     best=cand
             assert best is not None
-            score,value=best
-            assignments[(side,v,d)]=value
-            if score>before:
+            next_score,value=best
+            if next_score>before:
                 raise AssertionError('conditional expectation increased')
+            for pair_id,other_vertex in updates.get((side,v),()):
+                if _budget is not None:
+                    _budget.tick()
+                other=(*other_vertex,d)
+                if other not in assignments or pair_conflicted[pair_id]:
+                    continue
+                old=pair_contribution[pair_id]
+                if value==assignments[other]:
+                    if pair_unknown[pair_id] < 1:
+                        raise AssertionError('resolved pair equality was not marked unknown')
+                    pair_unknown[pair_id]-=1
+                    new=old*r
+                else:
+                    pair_conflicted[pair_id]=True
+                    new=0
+                pair_contribution[pair_id]=new
+                score+=new-old
+            assignments[(side,v,d)]=value
+            if score != next_score:
+                raise AssertionError('incremental conditional expectation disagrees with candidate score')
             steps.append({'side':side,'vertex':v,'coordinate':d,'symbol':value,
                           'expected_square_scaled':score})
             before=score
+    for unknown,conflicted,contribution in zip(pair_unknown,pair_conflicted,
+                                                pair_contribution):
+        if (not conflicted and
+                (unknown != 0 or contribution != 2*D)):
+            raise AssertionError('fully assigned pair has an inconsistent final contribution')
+        if conflicted and contribution != 0:
+            raise AssertionError('conflicted pair has a nonzero contribution')
+    # Keep the direct all-pairs implementation as a final internal check. This
+    # is still deterministic exact arithmetic and catches update-list defects.
+    replay=expected_sq_load_scaled(edges,assignments,r,a,_budget)
+    if replay != score:
+        raise AssertionError('incremental conditional expectation differs from direct score')
     row={str(v):[assignments[('R',v,d)] for d in range(a)] for side,v in vs if side=='R'}
     col={str(v):[assignments[('C',v,d)] for d in range(a)] for side,v in vs if side=='C'}
     return {'rows':row,'columns':col,'steps':steps,

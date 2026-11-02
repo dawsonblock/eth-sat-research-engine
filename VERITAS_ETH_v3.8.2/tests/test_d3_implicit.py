@@ -6,7 +6,9 @@ import pytest
 from veritas.research.eth_packing_v26.constructor import construct_d3_packing
 from veritas.research.eth_packing_v26.implicit import (
     check_implicit_packing, construct_implicit_packing, materialize_finite_certificate,
-    implicit_mode_source, check_implicit_mode_source,
+    implicit_mode_source, implicit_sparse_mode_source, check_implicit_mode_source,
+    audit_d3_child_wire_loads, construct_preconditioned_d3_packing,
+    real_packet_slots,
 )
 
 
@@ -38,6 +40,60 @@ def test_fixed_radix_large_class_space_is_sparse_and_checked():
         next(packing.iter_packets(max_packets=10))
     with pytest.raises(ValueError, match='budget'):
         materialize_finite_certificate(packing)
+
+
+def test_sparse_slot_source_handles_large_packet_width_without_dense_padding():
+    edges = [(0, 0), (0, 1), (1, 0), (1, 1)]
+    packing = construct_implicit_packing(edges, r=64, a=9)
+    source = implicit_sparse_mode_source(packing)
+    checked = check_implicit_mode_source(source)
+    assert checked['valid']
+    assert checked['empty_packet_slots_materialized'] is False
+    assert packing.L == 512
+    assert packing.D == 64**18
+    assert len(source['packets']) <= len(edges)
+    assert all('slots' not in packet and
+               len(packet['occupied_slots']) <= len(edges)
+               for packet in source['packets'])
+    for packet in source['packets']:
+        assert real_packet_slots(packet, packing.L)
+
+
+def test_sparse_slot_source_is_consumed_by_geometric_mode_engine():
+    from veritas.core.cnf import CNF
+    from veritas.research.tensor import from_cnf
+    from veritas.research.eth_recursion_v30.implicit_children import make_bipartite_edges
+    from veritas.research.eth_recursive_contraction_v39.point_modes import (
+        make_point_modes, check_point_modes,
+    )
+
+    network = from_cnf(CNF.from_lists(2, [[1, 2]]))
+    packing = construct_implicit_packing(make_bipartite_edges(network), r=2, a=1)
+    source = implicit_sparse_mode_source(packing)
+    modes = make_point_modes(source, node=1, precision=5, extension_degree=3)
+    assert check_point_modes(modes)['valid']
+    assert modes['d3_certificate']['schema'].endswith('SPARSE_ACTIVE_V1')
+
+
+def test_implicit_checker_replays_conditional_expectation_trace():
+    packing = construct_implicit_packing([(0, 0), (0, 1), (1, 1)], r=2, a=2)
+    replay = check_implicit_packing(packing, check_trace=True)
+    assert replay['valid']
+    assert replay['conditional_expectation_trace_verified']
+    changed = replace(packing, trace=packing.trace[:-1])
+    assert not check_implicit_packing(changed, check_trace=True)['valid']
+
+
+def test_child_wire_audit_never_promotes_a_single_packing_to_theorem():
+    packing = construct_implicit_packing([(i, i) for i in range(16)], r=64, a=1)
+    report = audit_d3_child_wire_loads(packing, coordinate=0)
+    assert report['valid']
+    assert report['claim'] == 'ONE_PACKING_INSTANCE_ONLY'
+    assert not report['universal_theorem_proven']
+    assert report['sum_child_wires'] == 32
+    rejected = construct_preconditioned_d3_packing([(0, 0)], a=1)
+    assert rejected['status'] == 'INCONCLUSIVE_D3_PRECONDITIONS'
+    assert 'packing' not in rejected
 
 
 def test_corruption_and_budgets_fail_closed():

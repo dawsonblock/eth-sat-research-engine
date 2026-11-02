@@ -14,6 +14,7 @@ from veritas.research.eth_arithmetic.gf2 import first_irreducible
 from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
 from veritas.research.eth_interpolation.shifted_cauchy import shift_cauchy_entry
 from veritas.research.eth_arithmetic.jets import JetRing
+from veritas.research.eth_packing_v26.implicit import real_packet_slots
 
 
 def _check_base(base):
@@ -37,7 +38,7 @@ def _raw_coeffs(base,ring,node,length):
         raise ValueError('unsupported interpolation node')
     cache={}
     for pid,packet in enumerate(base['packets']):
-        real=[(slot,eid) for slot,eid in enumerate(packet['slots']) if eid is not None]
+        real=list(real_packet_slots(packet,base['L']))
         for x,rid in real:
             for y,cid in real:
                 cache[(rid,cid)]=shift_cauchy_entry(L,node,ring,x,y)[:length]
@@ -58,7 +59,7 @@ def make_extension_modes(d3_certificate,*,node=1,precision=8,extension_degree=4,
     i=_val2(node)
     local=[];modes=[];cross_keys=set();pruned=0
     for pid,packet in enumerate(base['packets']):
-        real=[(slot,eid) for slot,eid in enumerate(packet['slots']) if eid is not None]
+        real=list(real_packet_slots(packet,base['L']))
         # Local contributions are not factorized.
         for x,rid in real:
             row_group=base['row_labels'][str(base['edges'][rid][0])][i]
@@ -119,7 +120,7 @@ def check_extension_modes(cert):
         zero=(ring.zero,)*length
         local_expected={};cross=set()
         for packet in base['packets']:
-            real=[(slot,eid) for slot,eid in enumerate(packet['slots']) if eid is not None]
+            real=list(real_packet_slots(packet,base['L']))
             for x,rid in real:
                 row_group=base['row_labels'][str(base['edges'][rid][0])][i]
                 for y,cid in real:
@@ -145,7 +146,7 @@ def check_extension_modes(cert):
             columns=mode['columns']
             if not columns or len(set(columns))!=len(columns) or columns!=sorted(columns):
                 raise ValueError('noncanonical mode columns')
-            real={eid for eid in base['packets'][pid]['slots'] if eid is not None}
+            real={eid for _,eid in real_packet_slots(base['packets'][pid],base['L'])}
             rows={}
             for rid,jet in mode['rows']:
                 if rid in rows or rid not in real or len(jet)!=length:

@@ -29,6 +29,7 @@ from veritas.research.eth_arithmetic.gf2 import first_irreducible
 from veritas.research.eth_arithmetic.jets import JetRing
 from veritas.research.eth_interpolation.shifted_cauchy import shift_cauchy_entry
 from veritas.research.eth_modes_v29.extension_modes import check_extension_modes
+from veritas.research.eth_packing_v26.implicit import real_packet_slots
 
 
 class ImplicitBudgetExceeded(RuntimeError):
@@ -143,7 +144,7 @@ def _build_factors(net, base, node, jets, coordinate):
             return jr.elem([[tab[mask]]])
         factors.append(LazyFactor(f.label,group,offsets,eval_original))
     for packet_id, packet in enumerate(base['packets']):
-        real=[(slot,eid) for slot,eid in enumerate(packet['slots']) if eid is not None]
+        real=list(real_packet_slots(packet,base['L']))
         for x,rid in real:
             group=base['row_labels'][str(base['edges'][rid][0])][coordinate]
             columns=tuple((m+cid,shift_cauchy_entry(base['L'],node,ring,x,y)[:jets.length])
@@ -201,7 +202,7 @@ def _direct_oracle(net,base,node,jets,budget):
     m=net.edges;ring=jets.base
     packet_rows=[]
     for packet in base['packets']:
-        real=[(slot,eid) for slot,eid in enumerate(packet['slots']) if eid is not None]
+        real=list(real_packet_slots(packet,base['L']))
         for x,rid in real:
             packet_rows.append((rid,tuple((cid,shift_cauchy_entry(base['L'],node,ring,x,y)[:jets.length])
                                           for y,cid in real)))

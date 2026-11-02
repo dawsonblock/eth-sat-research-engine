@@ -11,6 +11,10 @@ for counting satisfying assignments of fixed-width CNF formulas.
 > tests, but no large-instance runtime or memory qualification. The paper's
 > asymptotic theorem is not established by this repository's tests.
 
+An opt-in [Anthropic crossing-reduction reference](research_anthropic/README.md)
+contains exact small-instance experiments. It is not the complete Network/Clique
+algorithm and does not implement OpenAI's Appendix D deformation.
+
 ## Contents
 
 - [Research basis](#research-basis)

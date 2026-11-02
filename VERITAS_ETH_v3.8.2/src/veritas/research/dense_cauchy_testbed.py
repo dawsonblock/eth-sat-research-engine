@@ -277,17 +277,20 @@ def _contract_jet_at_node(a, b, wires, node, *, order, modulus, packet, work):
                     accum = [0] * order
                     for y in range(4):
                         for degree, coefficient in supports[y][x]:
+                            # Charge the complete nonzero batch before doing
+                            # its arithmetic, preserving fail-closed limits.
+                            work.charge(additions=order - degree,
+                                        multiplications=order - degree)
                             for source_degree in range(order - degree):
                                 accum[source_degree + degree] += (
                                     sources[y][source_degree] * coefficient)
-                                work.charge(additions=1, multiplications=1)
                     other[start + x * step] = tuple(value % modulus for value in accum)
         current = other
     result = [0] * order
     for index, weight in enumerate(b):
+        work.charge(additions=order, multiplications=order)
         for degree, coefficient in enumerate(current[index]):
             result[degree] += coefficient * weight
-            work.charge(additions=1, multiplications=1)
     return tuple(value % modulus for value in result)
 
 
@@ -310,8 +313,8 @@ def reconstruct_zero(
     """
     if type(wires) is not int or not 8 <= wires <= 16 or wires % 2:
         raise ValueError('wires must be even and in 8..16')
-    if type(precision) is not int or not 1 <= precision <= 3:
-        raise ValueError('precision must be 1..3')
+    if type(precision) is not int or not 1 <= precision <= 17:
+        raise ValueError('reconstruction precision must be 1..17')
     if (type(max_scalar_ops) is not int or max_scalar_ops < 1 or
             type(max_live_jet_entries) is not int or max_live_jet_entries < 1):
         raise ValueError('invalid Hermite work or storage cap')
@@ -328,28 +331,37 @@ def reconstruct_zero(
     data_bits = precision + plan.guard_bits
     if data_bits > 256:
         raise DenseWorkLimit('Hermite guard precision exceeds the ring cap')
-    live_entries = 2 * size * total_samples
+    # A node with multiplicity q only contributes coefficients 0..q-1 to
+    # the Hermite functional. Polynomial multiplication modulo z**q
+    # preserves those coefficients, so computing all 3*M+1 at every node
+    # is unnecessary.
+    live_entries = 2 * size * max(multiplicities)
     if live_entries > max_live_jet_entries:
         raise DenseWorkLimit(
             f'live jet-entry estimate {live_entries} exceeds cap {max_live_jet_entries}')
 
     modulus = 1 << data_bits
-    packets = tuple(_packet_jet_matrix(node, total_samples, modulus) for node, _ in nodes)
-    estimated_ops = sum(_jet_operation_estimate(packet, wires, total_samples, size)
-                        for packet in packets)
+    packets = tuple(_packet_jet_matrix(node, multiplicity, modulus)
+                    for node, multiplicity in nodes)
+    estimated_ops = sum(_jet_operation_estimate(packet, wires, multiplicity, size)
+                        for (_, multiplicity), packet in zip(nodes, packets))
     if estimated_ops > max_scalar_ops:
         raise DenseWorkLimit(
             f'nonzero-node Hermite transform estimate {estimated_ops} exceeds cap {max_scalar_ops}')
 
     work = ScalarWork(max_scalar_ops)
     node_jets = tuple(_contract_jet_at_node(
-        a, b, wires, node, order=total_samples, modulus=modulus,
+        a, b, wires, node, order=multiplicity, modulus=modulus,
         packet=packet, work=work)
-        for (node, _), packet in zip(nodes, packets))
+        for (node, multiplicity), packet in zip(nodes, packets))
     independent_jet_checks = []
     if size * size <= (1 << 16):
-        for (node, _), jet in zip(nodes, node_jets):
-            for z in (0, 1):
+        for (node, multiplicity), jet in zip(nodes, node_jets):
+            # The omitted tail has integral coefficients. Evaluating at a
+            # multiple of 2**ceil(data_bits/q) makes every omitted term
+            # divisible by 2**data_bits, so direct evaluation remains valid.
+            z_guard = 1 << ((data_bits + multiplicity - 1) // multiplicity)
+            for z in (0, z_guard):
                 deformed_node = node + 4 * z
                 jet_value = sum(coefficient * pow(z, degree)
                                 for degree, coefficient in enumerate(jet)) % modulus
@@ -377,6 +389,7 @@ def reconstruct_zero(
         'degree_bound': degree_bound,
         'nodes_and_multiplicities': [{'node': node, 'multiplicity': multiplicity}
                                      for node, multiplicity in nodes],
+        'computed_jet_orders': list(multiplicities),
         'scale_alpha': 4,
         'target_precision_bits': precision,
         'guard_bits': plan.guard_bits,

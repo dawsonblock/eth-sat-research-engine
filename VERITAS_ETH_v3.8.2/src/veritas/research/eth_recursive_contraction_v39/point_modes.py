@@ -7,6 +7,7 @@ inverted. This is a finite reference, not the uniform mode-count theorem.
 from __future__ import annotations
 
 from collections import defaultdict
+import json
 
 from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
 from veritas.research.eth_arithmetic.gf2 import first_irreducible
@@ -16,7 +17,9 @@ from veritas.research.eth_interpolation.cauchy_product import cauchy_point_value
 from veritas.research.eth_modes_v27.enumeration import count_tuples, ModeBudgetExceeded
 from veritas.research.eth_modes_v31.jet_tiles import _v2
 from veritas.research.eth_packing_v26.checker import verify_d3_packing
-from veritas.research.eth_packing_v26.implicit import check_implicit_mode_source
+from veritas.research.eth_packing_v26.implicit import (
+    SPARSE_MODE_SCHEMA, check_implicit_mode_source, real_packet_slots,
+)
 from .structural_tuples import structural_tuples
 
 
@@ -26,23 +29,38 @@ SCOPE = {'point_evaluation': True, 'full_recursive_contraction': False,
          'subexponential_runtime_proven': False}
 
 
-def _source_check(source):
+def _source_check(source, *, _source_validation='canonical', _source_work=1_000_000):
     if not isinstance(source, dict):
         raise ValueError('D.3 packet source required')
-    if source.get('schema') == 'VERITAS_ETH_D3_IMPLICIT_ACTIVE_V1':
+    if _source_validation == 'geometry':
+        from veritas.research.eth_packing_v26.geometry_audit import audit_sparse_packet_geometry
+        result = audit_sparse_packet_geometry(source, max_work=_source_work)
+    elif _source_validation != 'canonical':
+        raise ValueError('unsupported packet source validation')
+    elif source.get('schema') in ('VERITAS_ETH_D3_IMPLICIT_ACTIVE_V1',
+                                SPARSE_MODE_SCHEMA):
         result = check_implicit_mode_source(source)
     else:
         result = verify_d3_packing(source, check_trace=True)
+    if result.get('status') == 'INCONCLUSIVE_RESOURCE_LIMIT':
+        raise ModeBudgetExceeded(result.get('reason', 'D.3 source verification budget exhausted'))
     if result.get('valid') is not True:
         raise ValueError('D.3 packet source did not verify')
 
 
-def _inputs(source, node, precision, extension_degree, zeta):
-    _source_check(source)
+def _inputs(source, node, precision, extension_degree, zeta, max_parent_wires=6,
+            *, _source_validation='canonical', _source_work=1_000_000):
+    _source_check(source, _source_validation=_source_validation, _source_work=_source_work)
     if any(type(x) is not int for x in (node, precision, extension_degree)):
         raise ValueError('integer point-mode parameters required')
     L = source['L']
-    if not (1 <= source['M'] <= 6 and L in (2, 4) and source['r'] <= 4 and
+    if type(max_parent_wires) is not int or not 1 <= max_parent_wires <= 8:
+        raise ValueError('finite parent-wire limit must be in 1..8')
+    # The independent shifted-polynomial checker supports L<=8.  The sparse
+    # source represents only occupied packets, so larger symbol alphabets
+    # need not materialize r**(2a) padded classes.  Parent-wire and tuple
+    # limits continue to bound this finite experiment.
+    if not (1 <= source['M'] <= max_parent_wires and L in (2, 4, 8) and source['r'] <= 64 and
             2 <= precision <= 1024 and 1 <= extension_degree <= 8):
         raise ValueError('finite point-mode parameter limit exceeded')
     if not (-L <= node < L and node != 0 and _v2(node) < source['a']):
@@ -63,11 +81,13 @@ def _reference_cauchy_value(L, node, ring, x, y, zeta):
 
 
 def make_point_modes(source, *, node=1, precision=5, extension_degree=3,
-                     zeta=None, max_modes=240, max_tuples=6000):
+                     zeta=None, max_modes=240, max_tuples=6000, max_parent_wires=6,
+                     _tuple_work=None, _source_validation='canonical', _source_work=1_000_000):
     """Generate a checked finite geometric decomposition at one point."""
     if zeta is None:
         zeta = (0,) * extension_degree
-    ring, zeta = _inputs(source, node, precision, extension_degree, zeta)
+    ring, zeta = _inputs(source, node, precision, extension_degree, zeta, max_parent_wires,
+                         _source_validation=_source_validation, _source_work=_source_work)
     if type(max_modes) is not int or not 0 <= max_modes <= 240:
         raise ValueError('invalid mode budget')
     if type(max_tuples) is not int or not 1 <= max_tuples <= 100_000:
@@ -78,8 +98,15 @@ def make_point_modes(source, *, node=1, precision=5, extension_degree=3,
     alpha = 2 * L
     modes, local, crosses = [], [], []
     for packet_id, packet in enumerate(source['packets']):
-        real = [(slot, eid) for slot, eid in enumerate(packet['slots']) if eid is not None]
+        real = real_packet_slots(packet, L)
         tiles = defaultdict(list)
+        # Empty target groups cannot contribute a mode.  Visit only symbols
+        # actually present at packet rows, in the same ascending order as
+        # range(r), rather than paying for a large padded group alphabet.
+        packet_target_groups = sorted({
+            source['row_labels'][str(source['edges'][rid][0])][coordinate]
+            for _, rid in real
+        })
         for y, cid in real:
             y0 = y % B
             tiles[y0].append((cid, (y - y0) // B))
@@ -99,7 +126,7 @@ def make_point_modes(source, *, node=1, precision=5, extension_degree=3,
             if len(source_groups) != 1:
                 raise ArithmeticError('tile columns do not share a source group')
             source_group = next(iter(source_groups))
-            for target_group in range(source['r']):
+            for target_group in packet_target_groups:
                 if target_group == source_group:
                     continue
                 targets = [(x, rid) for x, rid in real
@@ -109,6 +136,11 @@ def make_point_modes(source, *, node=1, precision=5, extension_degree=3,
                 for b in range(precision - 1):
                     terms = [[cid, j ** b] for cid, j in columns if j ** b]
                     if not terms:
+                        # j is a nonnegative tile quotient. Once b > 0 and
+                        # every j**b vanishes, every later positive power
+                        # vanishes as well; do not scan empty higher modes.
+                        if b > 0:
+                            break
                         continue
                     rows = []
                     for x, rid in targets:
@@ -139,7 +171,8 @@ def make_point_modes(source, *, node=1, precision=5, extension_degree=3,
     # structurally nonzero set. The integer bound has at most 2641 bits here.
     nominal_cap = 1 << (len(modes) * precision.bit_length())
     tuple_count = count_tuples([mode['weight'] for mode in modes], precision, cap=nominal_cap)
-    structural_count = sum(1 for _ in structural_tuples(modes, precision, max_tuples=max_tuples))
+    structural_count = sum(1 for _ in structural_tuples(
+        modes, precision, max_tuples=max_tuples, _on_step=_tuple_work))
     return {'schema': SCHEMA, 'claim': CLAIM, 'scope': dict(SCOPE),
             'd3_certificate': source, 'node': node, 'precision': precision,
             'extension_degree': extension_degree, 'jet_length': 1,
@@ -148,7 +181,8 @@ def make_point_modes(source, *, node=1, precision=5, extension_degree=3,
             'mode_tuple_count': tuple_count, 'structural_tuple_count': structural_count}
 
 
-def check_point_modes(cert):
+def check_point_modes(cert, *, max_parent_wires=6, _tuple_work=None,
+                      _source_validation='canonical', _source_work=1_000_000):
     """Check every reconstructed Cauchy entry and replay the mode list."""
     try:
         if (not isinstance(cert, dict) or cert.get('schema') != SCHEMA or
@@ -157,12 +191,13 @@ def check_point_modes(cert):
             raise ValueError('unsupported point-mode certificate')
         source, node, p, degree = (cert['d3_certificate'], cert['node'],
                                     cert['precision'], cert['extension_degree'])
-        ring, zeta = _inputs(source, node, p, degree, cert['zeta'])
+        ring, zeta = _inputs(source, node, p, degree, cert['zeta'], max_parent_wires,
+                             _source_validation=_source_validation, _source_work=_source_work)
         if cert['irreducible_polynomial'] != ring.f:
             raise ValueError('extension polynomial mismatch')
         reference = {}
         for packet in source['packets']:
-            real = [(slot, eid) for slot, eid in enumerate(packet['slots']) if eid is not None]
+            real = real_packet_slots(packet, source['L'])
             for x, rid in real:
                 for y, cid in real:
                     reference[(rid, cid)] = _reference_cauchy_value(source['L'], node, ring, x, y, zeta)
@@ -190,11 +225,62 @@ def check_point_modes(cert):
             raise ValueError('invalid structural tuple count')
         expected = make_point_modes(source, node=node, precision=p,
                                     extension_degree=degree, zeta=zeta,
-                                    max_tuples=max(6000, structural_count))
-        if expected != cert:
+                                    max_tuples=max(6000, structural_count),
+                                    max_parent_wires=max_parent_wires,
+                                    _tuple_work=_tuple_work,
+                                    _source_validation=_source_validation,
+                                    _source_work=_source_work)
+        expected_json = json.dumps(expected, sort_keys=True, separators=(',', ':'), allow_nan=False)
+        supplied_json = json.dumps(cert, sort_keys=True, separators=(',', ':'), allow_nan=False)
+        if expected_json != supplied_json:
             raise ValueError('point-mode certificate differs from canonical replay')
         return {'valid': True, 'status': 'FINITE_POINT_MODES_REPLAYED',
                 'mode_count': len(cert['modes']), 'subexponential_runtime_proven': False}
+    except ModeBudgetExceeded as exc:
+        return {'valid': False, 'status': 'INCONCLUSIVE_RESOURCE_LIMIT', 'reason': str(exc)}
     except (ValueError, TypeError, KeyError, IndexError, OverflowError,
             ArithmeticError, ZeroDivisionError) as exc:
         return {'valid': False, 'status': 'INVALID_POINT_MODES', 'reason': str(exc)}
+
+
+def certify_point_mode_tuple(cert, beta, *, max_parent_wires=6):
+    """Certify a finite tuple's 2-adic weight from checked coefficients.
+
+    Each target-mode coefficient is divisible by the minimum valuation of its
+    row entries; the source-side integer polynomial has nonnegative valuation.
+    Thus every summand in a tuple coefficient is divisible by the product of
+    those powers of two, and so is their sum. This applies equally to tuples
+    retained by the declared weight cutoff and tuples beyond it.
+
+    The complete mode certificate is replayed before any bound is returned.
+    This finite-instance certificate does not prove the uniform mode count,
+    child-size theorem, or an asymptotic complexity bound.
+    """
+    verdict = check_point_modes(cert, max_parent_wires=max_parent_wires)
+    if verdict.get('valid') is not True:
+        return {'valid': False, 'status': verdict.get('status', 'INVALID_POINT_MODES'),
+                'reason': verdict.get('reason')}
+    modes = cert['modes']
+    if (not isinstance(beta, (tuple, list)) or len(beta) != len(modes) or
+            any(type(exponent) is not int or exponent < 0 for exponent in beta)):
+        return {'valid': False, 'status': 'INVALID_WEIGHTED_TUPLE'}
+    ring = ExtensionRing(cert['precision'], cert['irreducible_polynomial'])
+    evidence = []
+    declared_weight = 0
+    certified_valuation = 0
+    for index, (mode, exponent) in enumerate(zip(modes, beta)):
+        minimum = min(ring.valuation(ring.elem(encoded[0]))
+                      for _, encoded in mode['rows'])
+        declared_weight += exponent * mode['weight']
+        certified_valuation += exponent * minimum
+        evidence.append({'mode': index, 'exponent': exponent,
+                         'declared_weight': mode['weight'],
+                         'minimum_coefficient_valuation': minimum})
+    p = cert['precision']
+    return {'valid': True, 'status': 'FINITE_TUPLE_VALUATION_CERTIFIED',
+            'precision': p, 'declared_total_weight': declared_weight,
+            'certified_valuation_lower_bound': certified_valuation,
+            'discarded_by_declared_cutoff': declared_weight >= p,
+            'zero_modulo_precision_certified': certified_valuation >= p,
+            'mode_evidence': evidence,
+            'uniform_complexity_proven': False}

@@ -13,16 +13,19 @@ def _v2_nonzero(value):
     return (value & -value).bit_length() - 1
 
 
-def cauchy_point_value(L, node, ring, x, y, zeta):
+def cauchy_point_value(L, node, ring, x, y, zeta, *, max_packet_size=16):
     """Evaluate W_xy(node+2L*zeta), in a bounded unramified ring.
 
     The known 2-powers in numerator factors are cancelled as integers before
     the odd part of C'(0) is inverted. No nonunit is inverted in the ring.
+    Packet sizes above 16 require an explicit finite limit, at most 256.
     """
     if not isinstance(ring, ExtensionRing):
         raise TypeError('ExtensionRing required')
-    if type(L) is not int or not 1 <= L <= 16 or L & (L - 1):
-        raise ValueError('finite packet size must be a power of two up to 16')
+    if (type(max_packet_size) is not int or not 1 <= max_packet_size <= 256):
+        raise ValueError('finite packet-size limit must be in 1..256')
+    if type(L) is not int or not 1 <= L <= max_packet_size or L & (L - 1):
+        raise ValueError('finite packet size must be a power of two within the explicit limit')
     if type(node) is not int or node not in range(-L, L):
         raise ValueError('node outside the Cauchy grid')
     if any(type(v) is not int or v not in range(L) for v in (x, y)):

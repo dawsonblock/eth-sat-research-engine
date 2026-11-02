@@ -16,4 +16,4 @@ dependencies = []
 eth-sat = "eth_sat.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["eth_sat*"]
+include = ["eth_sat*", "research_anthropic*"]

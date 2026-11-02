@@ -1,3 +1,18 @@
+# Pinned-source policy (applies to every version below)
+- The paper this project implements is vendored in `paper/` (OpenAI, *The Exponential Time Hypothesis is False*, 25 Oct 2026). Cite its labels (`app:tensor`, `lem:tensor-packets`, `lem:tapered-hermite`, `eq:tensor-parameters`, `eq:tensor-packing-conditions`, `subsec:tensor-children`), not "Appendix D". The "D.x" numbering is a legacy alias; the mapping is in `docs/OPENAI_PAPER_CONFORMANCE.md`.
+- Any change to a schedule, packing, Hermite, mode, or count-recovery parameter must keep `tests/test_openai_paper_conformance.py` passing. If a paper formula changes, update the vendored source hash, the conformance doc, and the test together.
+- Do not edit `paper/` in place. A new upstream revision is a new pinned directory plus an explicit diff note.
+- `scripts/build_release.py` regenerates `SHA256SUMS.txt` and `SHA256_MANIFEST.json`; run it as the **last** step after all edits, and run `scripts/verify_manifest.py` afterwards. A stale manifest is a release-gate failure.
+- `scripts/validate_tapered_v4.py` pins `max_work=3_000_000`; the eight-wire run charges about 2.13M units. Do not drop back to the 2M dataclass default.
+- Packet sources come in two schemas (`VERITAS_ETH_D3_IMPLICIT_ACTIVE_V1`, dense slots, and `VERITAS_ETH_D3_IMPLICIT_SPARSE_ACTIVE_V1`, occupied slots only). Every consumer must go through `real_packet_slots(packet, L)`, never `packet['slots']`.
+
+# Shared-linear-summary policy (`eth_counting_v39`)
+- This package implements `sec:counting` and `sec:construction` of the pinned preprint, not `app:tensor`. Do not merge its claims with the contraction reference; they are different halves and share no state.
+- The counting identity is exact over `Q` and is verified against exhaustive enumeration. Keep `tests/test_counting_v39.py` and `scripts/validate_counting_v39.py` green on every change to the schedules, the swap matrix, the embedding, or the Taylor recovery.
+- Never claim the paper's running-time bound from this package. `FormParameters.check()` and `CountingResult.layout['cost_hypotheses_hold']` report which numerical hypotheses fail, and at executable sizes most of them do.
+- `M_0` must stay a sparse combination of permutations with support `|S| <= R-1` (`lem:swaps-support`). Do not replace the Walsh transform with a dense `D x D` matrix.
+- Every new resource (copies, measurement rows, restriction pairs, work units) needs an explicit cap that fails closed.
+
 # v3.8 engineering constraints
 - Fixed-beta D.4.4 child contraction is exact over the extension jet ring but is **not** recursive application of the manuscript's child construction.
 - Never claim universal M/8 size reduction, polynomial space, or subexponential time based on this finite implementation.

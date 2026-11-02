@@ -20,7 +20,8 @@ from math import comb
 from time import monotonic
 
 from veritas.research.eth_packing_v26.checker import verify_d3_packing
-from veritas.research.eth_packing_v26.implicit import check_implicit_mode_source
+from veritas.research.eth_packing_v26.implicit import (check_implicit_mode_source,
+                                                       real_packet_slots)
 from veritas.research.eth_arithmetic.gf2 import first_irreducible
 from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
 from veritas.research.eth_arithmetic.jets import JetRing
@@ -77,7 +78,8 @@ def _validate(d3,node,p,e,length,_budget=None):
     if not isinstance(d3,dict):
         raise ValueError('invalid D.3 packet source')
     schema=d3.get('schema')
-    if schema=='VERITAS_ETH_D3_IMPLICIT_ACTIVE_V1':
+    if schema in ('VERITAS_ETH_D3_IMPLICIT_ACTIVE_V1',
+                  'VERITAS_ETH_D3_IMPLICIT_SPARSE_ACTIVE_V1'):
         source_check=check_implicit_mode_source(d3)
     else:
         source_check=verify_d3_packing(d3,check_trace=True,_budget=_budget)
@@ -88,7 +90,8 @@ def _validate(d3,node,p,e,length,_budget=None):
     L=d3['L']
     if not (1<=d3['M']<=6 and L in (2,4) and d3['r']<=4):
         raise ValueError('bounded reference supports 1..6 wires, packets L=2/4, r<=4')
-    if schema=='VERITAS_ETH_D3_IMPLICIT_ACTIVE_V1' and len(d3['packets'])>d3['M']:
+    if schema in ('VERITAS_ETH_D3_IMPLICIT_ACTIVE_V1',
+                  'VERITAS_ETH_D3_IMPLICIT_SPARSE_ACTIVE_V1') and len(d3['packets'])>d3['M']:
         raise ValueError('active packet view exceeds the edge-count bound')
     if not (2<=p<=10 and 1<=e<=8 and 1<=length<=min(4,2*L)):
         raise ValueError('finite precision/extension/jet length budget exceeded')
@@ -104,7 +107,7 @@ def make_jet_tile_modes(d3,*,node=1,precision=5,extension_degree=3,
     mode=[];local=[];cross=[];ignored=0
     for pid,packet in enumerate(d3['packets']):
         if _budget is not None: _budget.tick()
-        real=[(s,eid) for s,eid in enumerate(packet['slots']) if eid is not None]
+        real=list(real_packet_slots(packet,L))
         if not real: continue
         tiles=defaultdict(list)
         for y,cid in real:
@@ -177,7 +180,7 @@ def check_jet_tile_modes(cert, *, _budget=None):
         groups={}
         for packet in d3['packets']:
             if _budget is not None: _budget.tick()
-            real=[(s,eid) for s,eid in enumerate(packet['slots']) if eid is not None]
+            real=list(real_packet_slots(packet,L))
             for x,rid in real:
                 rg=d3['row_labels'][str(d3['edges'][rid][0])][i]
                 for y,cid in real:
@@ -202,7 +205,7 @@ def check_jet_tile_modes(cert, *, _budget=None):
                 raise ValueError('invalid mode label or valuation')
             B=1<<(i+1);y0=m['tile_residue']
             if type(y0) is not int or not 0<=y0<B:raise ValueError('invalid tile residue')
-            real={eid:s for s,eid in enumerate(d3['packets'][pid]['slots']) if eid is not None}
+            real={eid:slot for slot,eid in real_packet_slots(d3['packets'][pid],L)}
             cols=[[cid, ((slot-y0)//B)**b] for cid,slot in sorted(real.items(),key=lambda kv:kv[1]) if slot%B==y0 and ((slot-y0)//B)**b and d3['column_labels'][str(d3['edges'][cid][1])][i]==src]
             if cols!=m['column_terms'] or not cols:raise ValueError('column-tile identity mismatch')
             if not isinstance(m['rows'],list) or not m['rows']:raise ValueError('empty mode rows')
