@@ -1,0 +1,166 @@
+{
+  "elapsed_seconds": 4.415173,
+  "fixed_radix_active_call_gate": {
+    "edge_count": 8,
+    "preconditions": {
+      "2L_le_delta": false,
+      "D": 4096,
+      "L": 2,
+      "M_ge_2_D_squared_delta": false,
+      "M_ge_LD": false,
+      "delta": 1
+    },
+    "radix": 64,
+    "returned_packing": false,
+    "status": "INCONCLUSIVE_D3_PRECONDITIONS"
+  },
+  "formal_artifact_hashes": {
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "proofs/ConcreteD3ConditionalExpectation.lean": "ef705b77ba6e8b9e1f90d32cadf54a4f24995f8d06960c79a8f6f838f5794783",
+    "proofs/ConditionalChildShrink.lean": "61a649c876a4261c62a25410ac00ac24e05ee8f3edbae93b20c159e4e9f62360",
+    "proofs/ConditionalExpectationAverage.lean": "eabd9dc90cdcaa3ab1e24790e971bdae10184a389f77e69482d5e8c3a6b8aed7",
+    "proofs/ConditionalExpectationSelection.lean": "d09a5ca2083fc576757449b85cc23d5fa9437a3da677ae8f88a9aba3f5ad86f8",
+    "proofs/D3CanonicalSequence.lean": "4f2f23c18d7d74344cf363170d89fe55a2d857fc375208a5c6ad2810c637e07e",
+    "proofs/D3ChildTransition.lean": "84a8ab6190a9efabf206dfd479a75b1c9d9996229d14b88cb4272204c4653b20",
+    "proofs/D3ClassAccounting.lean": "300d491b50e5432109e531c4c789a3f850ff85118c1346b4ec84d80ab3896ecd",
+    "proofs/D3CollisionBridge.lean": "eb59c479c1a66c018adf7d4daf431868c12074a9dae95b1be57fe027dd0ba80e",
+    "proofs/D3InitialScore.lean": "ffbfaa76a80e1b32a3a1895b4582fdf883f22e7150d11827635353fa30289899",
+    "proofs/D3ParentScoreIndependence.lean": "c962a16fec5911970a782b07f5199cf7245f0f2c866660053ad45e9304f0d2de",
+    "proofs/D3PotentialIdentity.lean": "70e9f9b195ef4537cc66188f3563d0c37bb66ce54544d5134c368681d8560427",
+    "proofs/D3RealizedLoads.lean": "c28f26cbd9ba954d37f46f3ab9891dde2c6f551cf9e9db7547fee5d7a3fdc608",
+    "proofs/D3SelectionBridge.lean": "6d731f99ab7bf196b022981a959cd524eba76edb53a1037d2e31353953abefc7",
+    "proofs/D3StateInvariants.lean": "f7f9bdc9dba9ea5538be8da79769976b4eefda1ce9b43333dad9fa097a2a1512",
+    "proofs/D3VarianceAlgebra.lean": "a5e5b73ddeeb84949cca635c9f15ef6cea0b9c44e0bfa8d4d6d4c8c69adce995",
+    "proofs/D3VarianceBound.lean": "2e15e338e68e9b6e2bbb96c5a554bd475caf654b3798c7819693bc8682dd8c25"
+  },
+  "generic_radix_numeric_eligible_fixture": {
+    "construction_work_units": 2754840,
+    "dimension": 1,
+    "edge_count": 128,
+    "estimated_work_units": 3145665,
+    "independent_replay": {
+      "conditional_expectation_steps": 64,
+      "edge_count": 128,
+      "independent_candidate_evaluations": 128,
+      "independent_work_units": 2754840,
+      "initial_variance_bound": true,
+      "max_side_symbol_load": 64,
+      "numeric_active_call_inequalities": true,
+      "packet_count_bound": true,
+      "paper_active_call_eligible": false,
+      "port_load_bound": true,
+      "status": "FINITE_GENERIC_RADIX_D3_REPLAYED",
+      "theorem_recursion_qualified": false,
+      "universal_packing_lemma_proven": false,
+      "valid": true,
+      "vertices_labeled": 64
+    },
+    "numeric_preconditions": {
+      "2L_le_delta": true,
+      "D": 4,
+      "L": 2,
+      "M_ge_2_D_squared_delta": true,
+      "M_ge_LD": true,
+      "delta": 4
+    },
+    "paper_fixed_radix_eligible": false,
+    "radix": 2
+  },
+  "limits_and_claims": {
+    "hard_memory_limit_enforced": false,
+    "theorem_recursion_qualified": false,
+    "universal_packing_lemma_proven": false,
+    "work_units_are_bit_complexity": false
+  },
+  "manuscript_binding": {
+    "contraction_source_sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+    "pin_matches": true,
+    "tree_digest": "f4a10137d8630cb8ff26d031aca38c23a39db4606a4494ff7e43f59b8c671594"
+  },
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "python": "3.12.0",
+  "schema": "VERITAS_ETH_R9_STREAMING_PACKING_EVIDENCE_V1",
+  "small_fixtures": [
+    {
+      "a": 1,
+      "certificate_replay": {
+        "conditional_expectation_steps": 0,
+        "edge_count": 0,
+        "independent_candidate_evaluations": 0,
+        "independent_work_units": 0,
+        "initial_variance_bound": true,
+        "max_side_symbol_load": 0,
+        "numeric_active_call_inequalities": false,
+        "packet_count_bound": true,
+        "paper_active_call_eligible": false,
+        "port_load_bound": true,
+        "status": "FINITE_GENERIC_RADIX_D3_REPLAYED",
+        "theorem_recursion_qualified": false,
+        "universal_packing_lemma_proven": false,
+        "valid": true,
+        "vertices_labeled": 0
+      },
+      "construction_work_units": 0,
+      "edges": 0,
+      "estimated_work_units": 1,
+      "name": "empty",
+      "r": 2
+    },
+    {
+      "a": 1,
+      "certificate_replay": {
+        "conditional_expectation_steps": 4,
+        "edge_count": 3,
+        "independent_candidate_evaluations": 8,
+        "independent_work_units": 61,
+        "initial_variance_bound": true,
+        "max_side_symbol_load": 3,
+        "numeric_active_call_inequalities": false,
+        "packet_count_bound": true,
+        "paper_active_call_eligible": false,
+        "port_load_bound": true,
+        "status": "FINITE_GENERIC_RADIX_D3_REPLAYED",
+        "theorem_recursion_qualified": false,
+        "universal_packing_lemma_proven": false,
+        "valid": true,
+        "vertices_labeled": 4
+      },
+      "construction_work_units": 61,
+      "edges": 3,
+      "estimated_work_units": 90,
+      "name": "parallel_edges",
+      "r": 2
+    },
+    {
+      "a": 2,
+      "certificate_replay": {
+        "conditional_expectation_steps": 5,
+        "edge_count": 4,
+        "independent_candidate_evaluations": 45,
+        "independent_work_units": 990,
+        "initial_variance_bound": true,
+        "max_side_symbol_load": 4,
+        "numeric_active_call_inequalities": false,
+        "packet_count_bound": false,
+        "paper_active_call_eligible": false,
+        "port_load_bound": true,
+        "status": "FINITE_GENERIC_RADIX_D3_REPLAYED",
+        "theorem_recursion_qualified": false,
+        "universal_packing_lemma_proven": false,
+        "valid": true,
+        "vertices_labeled": 5
+      },
+      "construction_work_units": 990,
+      "edges": 4,
+      "estimated_work_units": 1426,
+      "name": "mixed_sides",
+      "r": 3
+    }
+  ],
+  "source_binding": {
+    "digest": "7353c065629e40fba4a1b4ad2430ff85d202889ce6c73d031b8b3023b931ca1f",
+    "file_count": 179,
+    "signature_status": "UNSIGNED_HASH_MATCH_ONLY"
+  },
+  "status": "PASS_FINITE_PACKING_STAGE"
+}

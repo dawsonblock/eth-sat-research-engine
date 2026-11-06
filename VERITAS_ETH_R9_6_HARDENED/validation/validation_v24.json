@@ -1,0 +1,12 @@
+{
+  "release": "2.4.0",
+  "seed": 240026,
+  "cases": 1000,
+  "posterior_cells": 5570,
+  "zero_evidence_cases": 344,
+  "all_checks_passed": true,
+  "exhaustive_truth_table_oracle": true,
+  "dag_replay_checked": true,
+  "elapsed_seconds": 1.193,
+  "claim_scope": "Small-instance exact correctness only; no asymptotic speedup proved"
+}

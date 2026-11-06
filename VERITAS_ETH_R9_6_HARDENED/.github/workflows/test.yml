@@ -1,0 +1,234 @@
+name: quality
+
+# Release-integrity contract (R9.6):
+#   1. Verify the immutable release-input manifest immediately after checkout,
+#      before any step can write into the tree.
+#   2. Every validator writes freshly generated evidence to an out-of-tree
+#      directory ($VERITAS_EVIDENCE_DIR). No manifest-covered report is
+#      rewritten, so historical timing values keep their published hashes.
+#   3. Re-verify the same immutable bytes after the whole job and fail if any
+#      tracked release input changed while validation ran.
+
+on: [push, pull_request]
+
+env:
+  VERITAS_EVIDENCE_DIR: ${{ github.workspace }}/../veritas-evidence
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Prepare out-of-tree evidence directory
+        run: mkdir -p "$VERITAS_EVIDENCE_DIR"
+      - name: Verify immutable release inputs before any build or test
+        run: |
+          python scripts/release_integrity.py verify \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs_pre.json"
+          python -O scripts/release_integrity.py verify \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs_pre_optimized.json"
+          python scripts/release_integrity.py snapshot \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs.snapshot.json"
+      - run: python -m pip install -e '.[test,matching]'
+      - run: python -m pytest
+      - run: python scripts/smoke.py
+      - run: python scripts/validate_v06.py
+      - run: python scripts/validate_v07.py
+      - run: python scripts/validate_v08.py
+      - run: python scripts/validate_v09.py
+      - run: python scripts/validate_v10.py
+      - run: python scripts/validate_v11.py
+      - run: python scripts/validate_v12.py
+      - run: python scripts/validate_v13.py
+      - run: python scripts/validate_v14.py
+      - run: python scripts/validate_10000.py
+      - run: python scripts/validate_v20.py
+      - run: python scripts/validate_v23.py
+      - run: python scripts/validate_v26.py
+      - run: python scripts/validate_v29.py
+      - run: python scripts/validate_v30.py
+      - run: python scripts/validate_v33.py
+      - run: python scripts/validate_v34.py
+      - run: python scripts/validate_r95_recipes.py
+      - run: python scripts/validate_r96_hardening.py
+      - run: python -m pytest -q -o addopts='' tests/test_r91_cpp_backend.py
+      - name: Verify immutable release inputs are unchanged after validation
+        if: always()
+        run: |
+          python scripts/release_integrity.py compare \
+            --snapshot "$VERITAS_EVIDENCE_DIR/release_inputs.snapshot.json" \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs_post.json"
+      - name: Record runtime-evidence manifest (separate from release inputs)
+        if: always()
+        run: |
+          python scripts/release_integrity.py evidence \
+            --output "$VERITAS_EVIDENCE_DIR/runtime_evidence_manifest.json" \
+            --directory "$VERITAS_EVIDENCE_DIR"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r96-evidence-py${{ matrix.python-version }}
+          path: ${{ env.VERITAS_EVIDENCE_DIR }}
+          if-no-files-found: warn
+
+  cpp-backend:
+    name: cpp-backend
+    runs-on: ubuntu-latest
+    env:
+      VERITAS_EVIDENCE_DIR: ${{ github.workspace }}/../veritas-evidence-cpp
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify immutable release inputs before the native build
+        run: |
+          mkdir -p "$VERITAS_EVIDENCE_DIR"
+          python scripts/release_integrity.py verify \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs_pre.json"
+          python scripts/release_integrity.py snapshot \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs.snapshot.json"
+      - run: sudo apt-get update && sudo apt-get install -y libboost-dev cmake
+      - run: python -m pip install pybind11
+      - name: Configure and build the C++ scorer
+        run: |
+          cmake -S cpp -B build/cpp -DCMAKE_BUILD_TYPE=Release \
+            -Dpybind11_DIR=$(python -c 'import pybind11; print(pybind11.get_cmake_dir())') \
+            -DPYTHON_EXECUTABLE=$(which python) \
+            -DPython_EXECUTABLE=$(which python) \
+            -DPython3_EXECUTABLE=$(which python)
+          cmake --build build/cpp -j2
+      - name: Run the native self-test
+        run: ./build/cpp/veritas_d3_selftest
+      - name: Differential tests against the Python reference
+        run: |
+          python -m pip install -e '.[test]'
+          python -m pytest -q -o addopts='' tests/test_r91_cpp_backend.py
+      - name: Measured benchmark (exact equality gate)
+        run: |
+          python scripts/benchmark_r91_scorer.py \
+            --output "$VERITAS_EVIDENCE_DIR/r91_benchmarks.json"
+      - name: Verify immutable release inputs are unchanged after the native build
+        if: always()
+        run: |
+          python scripts/release_integrity.py compare \
+            --snapshot "$VERITAS_EVIDENCE_DIR/release_inputs.snapshot.json" \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs_post.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r96-cpp-evidence
+          path: ${{ env.VERITAS_EVIDENCE_DIR }}
+          if-no-files-found: warn
+
+  lean-proof:
+    name: lean-proof
+    runs-on: ubuntu-latest
+    env:
+      VERITAS_EVIDENCE_DIR: ${{ github.workspace }}/../veritas-evidence-lean
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify immutable release inputs before the proof build
+        run: |
+          mkdir -p "$VERITAS_EVIDENCE_DIR"
+          python scripts/release_integrity.py verify \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs_pre.json"
+          python scripts/release_integrity.py snapshot \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs.snapshot.json"
+      - run: python -m pip install pytest
+      # Immutable action commit; lean-action reads lean-toolchain, and the
+      # repository validator checks the reported compiler version exactly.
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6 # v1.6.2
+        with:
+          auto-config: false
+      - name: Compile and audit the R9 Lean proof manifest
+        id: proof-gate
+        shell: bash
+        run: |
+          printf '{"status":"NOT_RUN","reason":"proof validator has not completed"}\n' \
+            > "$VERITAS_EVIDENCE_DIR/r9_ci_proof.json"
+          set +e
+          python scripts/validate_conditional_expectation_lean.py \
+            --output "$VERITAS_EVIDENCE_DIR/r9_ci_proof.json"
+          status=$?
+          printf '%s\n' "$status" > "$VERITAS_EVIDENCE_DIR/r9_ci_proof.exitcode"
+          exit "$status"
+      - name: Run proof-gate fault injections
+        run: python -m pytest -q -o addopts='' tests/test_lean_proof_gate_audit.py tests/test_lean_proof_gate_fault_injection.py
+      - name: Compare concrete Lean packet addresses with Python
+        run: python scripts/validate_r93_packet_model.py --output "$VERITAS_EVIDENCE_DIR/r9_3_packet_differential.json"
+      - name: Compare keyed runs and complete bounded packet domains
+        run: python scripts/validate_r94_foundation.py --output "$VERITAS_EVIDENCE_DIR/r9_4_differential.json"
+      - name: Independently check source entry and leaf semantics
+        run: python scripts/validate_r95_recipes.py --output "$VERITAS_EVIDENCE_DIR/r9_5_recipes.json"
+      - name: Verify immutable release inputs are unchanged after the proof build
+        if: always()
+        run: |
+          python scripts/release_integrity.py compare \
+            --snapshot "$VERITAS_EVIDENCE_DIR/release_inputs.snapshot.json" \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs_post.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r96-lean-evidence
+          path: ${{ env.VERITAS_EVIDENCE_DIR }}
+          if-no-files-found: warn
+
+  cpp-differential:
+    name: cpp-differential
+    runs-on: ubuntu-latest
+    env:
+      VERITAS_EVIDENCE_DIR: ${{ github.workspace }}/../veritas-evidence-cpp-diff
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify immutable release inputs before the differential build
+        run: |
+          mkdir -p "$VERITAS_EVIDENCE_DIR"
+          python scripts/release_integrity.py verify \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs_pre.json"
+          python scripts/release_integrity.py snapshot \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs.snapshot.json"
+      - name: Install C++20 build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake libboost-dev
+      - run: python -m pip install -e '.[test]'
+      - name: Build exact C++ scorer
+        run: |
+          cmake -S cpp -B build/cpp -DCMAKE_BUILD_TYPE=Release
+          cmake --build build/cpp --parallel 2
+      - name: Run finite differential and certificate replay
+        env:
+          VERITAS_D3_CPP_BUILD_DIR: ${{ github.workspace }}/build/cpp
+          PYTHONPATH: src
+        run: python scripts/validate_r91_cpp.py --output "$VERITAS_EVIDENCE_DIR/r9_1_differential.json"
+      - name: Run C++ scorer regressions
+        env:
+          VERITAS_D3_CPP_BUILD_DIR: ${{ github.workspace }}/build/cpp
+          PYTHONPATH: src
+        run: python -m pytest -q -o addopts='' tests/test_r91_cpp_backend.py
+      - name: Verify immutable release inputs are unchanged after the differential build
+        if: always()
+        run: |
+          python scripts/release_integrity.py compare \
+            --snapshot "$VERITAS_EVIDENCE_DIR/release_inputs.snapshot.json" \
+            --output "$VERITAS_EVIDENCE_DIR/release_inputs_post.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r96-cpp-differential-evidence
+          path: ${{ env.VERITAS_EVIDENCE_DIR }}
+          if-no-files-found: warn

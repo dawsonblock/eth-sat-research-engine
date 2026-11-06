@@ -1,0 +1,66 @@
+[
+  {
+    "python": "312",
+    "status": "PASS",
+    "exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "elapsed_seconds": 6.339108958025463,
+    "commands": [
+      [
+        "cmake",
+        "-S",
+        "cpp",
+        "-B",
+        "build/cpp-py312",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-Dpybind11_DIR=<user>/.pyenv/versions/3.12.0/lib/python3.12/site-packages/pybind11/share/cmake/pybind11",
+        "-DPython_EXECUTABLE=<user>/.pyenv/versions/3.12.0/bin/python"
+      ],
+      [
+        "cmake",
+        "--build",
+        "build/cpp-py312",
+        "--parallel",
+        "2"
+      ],
+      [
+        "./build/cpp-py312/veritas_d3_selftest"
+      ]
+    ]
+  },
+  {
+    "python": "313",
+    "status": "PASS",
+    "exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "elapsed_seconds": 5.774762458982877,
+    "commands": [
+      [
+        "cmake",
+        "-S",
+        "cpp",
+        "-B",
+        "build/cpp-py313",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-Dpybind11_DIR='<user>/MATH SPEED/VERITAS_ETH_R9_PACKING_STAGE/build/r93-py313-managed/lib/python3.13/site-packages/pybind11/share/cmake/pybind11'",
+        "-DPython_EXECUTABLE=<user>/MATH SPEED/VERITAS_ETH_R9_PACKING_STAGE/build/r93-py313-managed/bin/python"
+      ],
+      [
+        "cmake",
+        "--build",
+        "build/cpp-py313",
+        "--parallel",
+        "2"
+      ],
+      [
+        "./build/cpp-py313/veritas_d3_selftest"
+      ]
+    ]
+  }
+]

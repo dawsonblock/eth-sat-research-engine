@@ -1,0 +1,87 @@
+{
+  "schema_version": "r9-math-review-v1",
+  "reviewed_at": "2026-11-03",
+  "qualification": "FINITE_FORMULA_AUDIT_AND_REGRESSION_ONLY",
+  "source": {
+    "paper/main_full_version.tex": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa",
+    "paper/quantitative-reduction.tex": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a",
+    "paper/quantitative-contraction.tex": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860"
+  },
+  "formula_audit": {
+    "parameter_schedule": {
+      "status": "MATCHES_PINNED_SOURCE",
+      "details": "lambda=ceil(log2(s)); epsilon=1/131072; u_d=floor(epsilon*lambda/2^d); a_d=2*sum_{j<=d}u_j; L=2^a; D_arr=64^(2a)."
+    },
+    "active_preconditions": {
+      "status": "MATCHES_PINNED_SOURCE",
+      "details": "M>=2*D_arr^2*Delta; M>=L*D_arr; 2L<=Delta. For any active u>=1, a>=2, D_arr>=2^24, Delta>=8, hence M>=2^52 is a necessary condition, not a sufficient eligibility result."
+    },
+    "packing_and_child_bound": {
+      "status": "ALGEBRA_CHECKED_CONDITIONALLY",
+      "details": "The stated preconditions imply H_pad<=3M/D_arr. The source port bound is 3M/r per side-symbol and child edge bound 6M/r=3M/32<M/8 for r=64. This does not prove the implementation realizes the universal packing construction."
+    },
+    "global_packet_address": {
+      "status": "LOCAL_INDEXING_FORMULA_CHECKED_GLOBAL_BIJECTION_OPEN",
+      "details": "For pattern P with a' unequal coordinates and c=2^(a-a'), each directed class contributes H_pad/c packets; total packet count is (H_pad/L)*sum_P 2^a' = D_arr*H_pad/L. Existing Lean offset split is local and does not establish global edge/class/pattern bijection."
+    },
+    "cauchy_deformation": {
+      "status": "FORMULA_MATCHES_PINNED_SOURCE",
+      "details": "S={-L,...,L-1}, alpha=2L, C'(0)=(-1)^(L-1)*L!*(L-1)!, and W_xy(0)=1 iff x=y. Even denominators must be canceled by known 2-adic factors before odd-unit inversion."
+    },
+    "weighted_modes": {
+      "status": "FINITE_FORMULA_MATCHES_PINNED_SOURCE",
+      "details": "For y=y0+2^(i+1)j, expansion of 1/(T-y+x) has positive geometric powers. The base factor has valuation at least one and mode b has weight b+1; terms of total weight >=p_t vanish modulo 2^p_t. Universal completeness of the production mode family remains unproved."
+    },
+    "structural_pruning": {
+      "status": "FINITE_CONSTRAINT_RULE_CHECKED",
+      "details": "Per-mode support caps and group row-degree caps imply exact zero coefficients only when the full source mode family and support premises are established. Current finite tuple checking cannot establish universal source-mode completeness."
+    },
+    "tapered_hermite": {
+      "status": "PRECISION_FORMULA_MATCHES_PINNED_SOURCE",
+      "details": "h=ceil(3M/u); q_t=h*max(0,u-v2(t)); p_t=p+8hD_t+8M(a+1). There are L odd nodes, so sum q_t>=Lhu>=3ML>M(2L-1). Finite exact recovery tests do not prove the uniform coefficientwise 2-adic loss bound at arbitrary recursive depth."
+    },
+    "theorem_scope": {
+      "status": "SCOPE_CORRECTED",
+      "details": "Tensor contraction has exponent O(s/sqrt(log s)); fixed-density CNF has O_{k,D}(n/sqrt(log n)); the main arbitrary-density theorem has O_k(n*loglog(n)/sqrt(log n)) after its separate reduction. The Lean scope note records a weaker squared-loglog exponent."
+    }
+  },
+  "tests": {
+    "command": "PYTHONPATH=src python -m pytest -q -o addopts='' tests/test_openai_paper_conformance.py tests/test_source_hermite_formula.py tests/test_tapered_reconstruction_fail_closed.py tests/test_cauchy_deformation.py tests/test_cauchy_modes.py tests/test_extended_point_modes.py tests/test_structural_tuple_streaming.py tests/test_d3_streaming_independent.py tests/test_geometry_point_children.py tests/test_tapered_child_partition.py tests/test_tapered_v4.py tests/test_sparse_packet_geometry_audit.py tests/test_sparse_packet_source_equivalence.py tests/test_packet_recipe_validation.py tests/test_v39_cauchy_product.py tests/test_v39_structural_tuples.py tests/test_v39_tapered_described.py",
+    "python": "3.12.0",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "exit_code": 0,
+    "executed": 270,
+    "passed": 270,
+    "failed": 0,
+    "elapsed_seconds": 48.74,
+    "evidence_kind": "FINITE_REGRESSION_TESTS"
+  },
+  "independent_sanity_checks": {
+    "command": "python scripts/check_r9_2_r9_4_math_identities.py",
+    "pattern_multiplicity_identity": {
+      "status": "PASS",
+      "cases": 16,
+      "r_values": [2, 3, 4, 5],
+      "a_values": [1, 2, 3, 4],
+      "identity": "sum_P 2^(number of unequal coordinates in P) = r^(2a)",
+      "packet_count_identity": "sum_P H_pad/2^(a-a'(P)) = H_pad*r^(2a)/2^a"
+    },
+    "cauchy_origin_identity": {
+      "status": "PASS",
+      "L_values": [1, 2, 4, 8, 16, 32, 64],
+      "distinct_differences_checked": 247,
+      "checks": ["C'(0)=(-1)^(L-1)*L!*(L-1)!", "W(0)=I via exact polynomial division"]
+    },
+    "evidence_kind": "FINITE_EXACT_ARITHMETIC_SANITY_CHECKS"
+  },
+  "remaining_obligations": {
+    "global_packet_bijection": "NOT_PROVED",
+    "universal_mode_completeness_and_pruning": "NOT_PROVED",
+    "all_node_parent_child_identity": "NOT_PROVED",
+    "recursive_hermite_precision_and_recovery": "NOT_PROVED",
+    "recursive_termination_and_functional_correctness": "NOT_IMPLEMENTED",
+    "complete_bit_time_and_peak_space_recurrence": "COMPLEXITY_NOT_ESTABLISHED",
+    "arbitrary_density_reduction": "NOT_IMPLEMENTED",
+    "theorem_mode": "DISABLED"
+  }
+}

@@ -1,0 +1,6 @@
+tiny-r2-a1: equal=True python=0.0001s direct=0.0002s batch=0.0001s
+small-r2-a1: equal=True python=0.0049s direct=0.0008s batch=0.0006s
+small-r3-a1: equal=True python=0.0060s direct=0.0010s batch=0.0005s
+medium-r2-a2: equal=True python=0.0483s direct=0.0035s batch=0.0016s
+medium-r3-a2: equal=True python=0.0542s direct=0.0049s batch=0.0013s
+wrote <repository>/validation/r91_benchmarks.json

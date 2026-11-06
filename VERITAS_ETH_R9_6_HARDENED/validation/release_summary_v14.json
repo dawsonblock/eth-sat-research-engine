@@ -1,0 +1,31 @@
+{
+  "release": "1.4.0",
+  "baseline": "1.3.0",
+  "status": "PASS",
+  "automated_tests_passed": 226,
+  "bounded_degree_independent_count_comparisons": 800,
+  "inherited_regression_count": 10000,
+  "inherited_validation_scripts_passed": [
+    "validate_upgrade",
+    "validate_v06",
+    "validate_v07",
+    "validate_v08",
+    "validate_v09",
+    "validate_v10",
+    "validate_v11",
+    "validate_v12",
+    "validate_v13",
+    "validate_10000"
+  ],
+  "cli_smoke": "PASS",
+  "new_components": [
+    "bounded_degree_from_cnf",
+    "minfill_contract",
+    "research/bounded-degree-tensor API",
+    "CLI and browser integrations"
+  ],
+  "runtime_theorem": "NOT_REPRODUCED",
+  "proof_status": "FINITE_DIFFERENTIAL_CHECKS_AND_STRUCTURAL_ARGUMENT",
+  "upstream_lean_rebuilt": false,
+  "note": "Testing is not a proof of subexponential running time."
+}
