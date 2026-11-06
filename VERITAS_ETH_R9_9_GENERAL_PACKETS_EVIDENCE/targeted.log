@@ -1,0 +1,29 @@
+................F.                                                       [100%]
+=================================== FAILURES ===================================
+___________ test_active_strict_recursion_without_contraction_oracles ___________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b581010>
+
+    def test_active_strict_recursion_without_contraction_oracles(monkeypatch):
+        from pathlib import Path
+        from veritas.research.parent_child_r98.shrinking_cli import load_input
+        from veritas.research.parent_child_r98.shrinking_layout import construct_vertex_shrinking_layout
+        from veritas.research.parent_child_r98.shrinking_engine import DEFAULT_SHRINKING_POLICY
+        import veritas.research.parent_child_r99.engine as engine
+        def forbidden(*a,**k):raise AssertionError('production contraction oracle called')
+        monkeypatch.setattr(engine,'tuple_coefficient',forbidden)
+        monkeypatch.setattr(engine,'verify_children',forbidden)
+        p=load_input(Path(__file__).resolve().parents[1]/'examples/r98_general_matching22.json')
+        def layout(call,a,u,budget):
+            assert (a,u)==(1,1)
+            return construct_vertex_shrinking_layout(call,budget=budget)
+        result=contract_packet_recursion(p,schedule=((1,1),),layout_factory=layout,
+                                        policy=replace(DEFAULT_SHRINKING_POLICY,max_work=1_000_000_000))
+        assert result['status']=='PASS_FINITE_GENERAL_PACKET_RECURSION',result
+>       assert result['result'][0][0]==17**22
+E       assert 645590698195138073036733040138561 == (17 ** 22)
+
+tests/test_r99_general_packets.py:152: AssertionError
+- generated xml file: /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/targeted.xml -
+=========================== short test summary info ============================
+FAILED tests/test_r99_general_packets.py::test_active_strict_recursion_without_contraction_oracles

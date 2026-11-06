@@ -1,0 +1,17 @@
+[
+  {
+    "name": "r97_bridge",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r97_bridge.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/r97_bridge.json"
+    ],
+    "environment": {
+      "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean"
+    },
+    "exit_code": 0,
+    "wall_seconds": 1.2552633329760283,
+    "prior_failure_file": "r97_bridge_initial_failure.json"
+  }
+]

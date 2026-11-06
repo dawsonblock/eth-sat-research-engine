@@ -1,0 +1,22 @@
+{
+  "status": "NOT_FINAL_EVIDENCE",
+  "attempts": [
+    {
+      "kind": "full_grid_targeted_before_freeze",
+      "completed_points": 61,
+      "status": "INCONCLUSIVE_CYCLE_TRANSFER_POINT",
+      "reason": "implementation source changed during transfer execution",
+      "result_returned": false,
+      "captured_from": "original targeted tool output; no log was written for that first attempt"
+    },
+    {
+      "kind": "full_grid_targeted_interrupted_for_source_fix",
+      "status": "INTERRUPTED",
+      "detail": "17 earlier point and CLI tests had passed; execution was stopped during full-grid test before a result",
+      "log": "pytest_transfer_integration_interrupted.log",
+      "xml": "pytest_transfer_integration_interrupted.xml"
+    }
+  ],
+  "final_targeted_log": "pytest_transfer_integration.log",
+  "final_targeted_xml": "pytest_transfer_integration.xml"
+}

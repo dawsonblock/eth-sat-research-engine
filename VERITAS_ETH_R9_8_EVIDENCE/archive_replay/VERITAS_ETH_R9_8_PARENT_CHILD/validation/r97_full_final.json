@@ -1,0 +1,20 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "-o",
+    "addopts="
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 381.28875212499406,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 1393393664,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_full_final.stdout.log",
+  "stderr_log": "r97_full_final.stderr.log",
+  "test_summary": "1456 passed in 380.01s (0:06:20)"
+}

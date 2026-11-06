@@ -1,0 +1,37 @@
+{
+  "archive": "VERITAS_ETH_R9_2_PACKET_ADDRESS_PARTIAL_FULL_UPGRADED.zip",
+  "changed_baseline_files": [
+    ".github/workflows/test.yml",
+    "README.md",
+    "docs/R9_2_R9_4_PROOF_OBLIGATIONS.md",
+    "scripts/validate_conditional_expectation_lean.py",
+    "scripts/validate_r91.py",
+    "src/veritas/research/eth_packing_v26/__init__.py",
+    "src/veritas/research/eth_packing_v26/expectation.py",
+    "tests/test_lean_proof_gate_fault_injection.py",
+    "validation/r91_benchmarks.json",
+    "validation/r91_python_model.json",
+    "validation/r9_1_differential.json",
+    "validation/r9_conditional_expectation_proof.json"
+  ],
+  "crc_failure": null,
+  "duplicate_members": 0,
+  "fresh_baseline_manifest_checks": [
+    {
+      "command": "python scripts/verify_manifest.py",
+      "exit_code": 0,
+      "output": "PASS: 652 complete file hashes match release manifest; no unlisted files",
+      "stderr": ""
+    },
+    {
+      "command": "python -O scripts/verify_manifest.py",
+      "exit_code": 0,
+      "output": "PASS: 652 complete file hashes match release manifest; no unlisted files",
+      "stderr": ""
+    }
+  ],
+  "removed_members": [],
+  "sha256": "2886f4721f82f3229b0c32082d4cf3183c3c79c1054c8ee1191529859a03e9f0",
+  "symlinks": [],
+  "unsafe_paths": []
+}

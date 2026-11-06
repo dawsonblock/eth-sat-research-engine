@@ -1,0 +1,89 @@
+{
+  "scope": "STRUCTURAL_EVENT_INVENTORY_NUMERICAL_TRUTH_CHECKED_BY_REPLAY",
+  "counts": {
+    "nonzero_terms": 164,
+    "nonzero_children": 10496
+  },
+  "root_terms": [
+    {
+      "beta": [],
+      "nonzero": true
+    },
+    {
+      "beta": [
+        0
+      ],
+      "nonzero": true
+    },
+    {
+      "beta": [
+        1
+      ],
+      "nonzero": true
+    },
+    {
+      "beta": [
+        0
+      ],
+      "nonzero": true
+    },
+    {
+      "beta": [
+        1
+      ],
+      "nonzero": true
+    },
+    {
+      "beta": [
+        0
+      ],
+      "nonzero": true
+    },
+    {
+      "beta": [
+        1
+      ],
+      "nonzero": true
+    },
+    {
+      "beta": [],
+      "nonzero": true
+    },
+    {
+      "beta": [
+        0
+      ],
+      "nonzero": true
+    },
+    {
+      "beta": [
+        1
+      ],
+      "nonzero": true
+    },
+    {
+      "beta": [
+        0
+      ],
+      "nonzero": true
+    },
+    {
+      "beta": [
+        1
+      ],
+      "nonzero": true
+    },
+    {
+      "beta": [
+        0
+      ],
+      "nonzero": true
+    },
+    {
+      "beta": [
+        1
+      ],
+      "nonzero": true
+    }
+  ]
+}

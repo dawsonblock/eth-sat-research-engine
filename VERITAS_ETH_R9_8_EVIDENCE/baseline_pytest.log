@@ -1,0 +1,132 @@
+........................................................................ [  4%]
+........................................................................ [  9%]
+........................................................................ [ 14%]
+........................................................................ [ 19%]
+........................................................................ [ 24%]
+........................................................................ [ 29%]
+........................................................................ [ 34%]
+........................................................................ [ 39%]
+........................................................................ [ 44%]
+............................................s......................s.... [ 49%]
+........................................................................ [ 54%]
+........................................................................ [ 59%]
+........................................................................ [ 64%]
+......F................................................................. [ 69%]
+........................................................................ [ 74%]
+........................................................................ [ 79%]
+........................................................................ [ 84%]
+........................................................................ [ 89%]
+........................................................................ [ 93%]
+........................................................................ [ 98%]
+................                                                         [100%]
+=================================== FAILURES ===================================
+________________ test_boundary_contract_rejects_true_substitute ________________
+
+tmp_path = PosixPath('/private/var/folders/xt/jh84t2kj6hl26tk5qx3m_28h0000gn/T/pytest-of-dawsonblock/pytest-435/test_boundary_contract_rejects0')
+
+    def test_boundary_contract_rejects_true_substitute(tmp_path):
+        lean = os.environ.get("LEAN_BIN") or shutil.which("lean")
+        if not lean:
+            pytest.skip("Lean unavailable for compile fault")
+        source = (ROOT / "proofs/FiniteBoundaryReduction.lean").read_text()
+        start = source.index("theorem boundary_mod ")
+        end = source.index("#print axioms factor_left", start)
+        (tmp_path / "FiniteBoundaryReduction.lean").write_text(
+            source[:start] + "theorem boundary_mod : True := True.intro\n\n" + source[end:]
+        )
+        shutil.copy(ROOT / "proofs/FiniteBoundaryContract.lean", tmp_path)
+        env = {**os.environ, "LEAN_PATH": str(tmp_path)}
+>       subprocess.run(
+            [lean, "-o", "FiniteBoundaryReduction.olean", "FiniteBoundaryReduction.lean"],
+            cwd=tmp_path,
+            env=env,
+            check=True,
+            capture_output=True,
+            timeout=60,
+        )
+
+tests/test_r96_tooling.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input = None, capture_output = True, timeout = 60, check = True
+popenargs = (['/tmp/veritas-r9-elan-home/bin/lean', '-o', 'FiniteBoundaryReduction.olean', 'FiniteBoundaryReduction.lean'],)
+kwargs = {'cwd': PosixPath('/private/var/folders/xt/jh84t2kj6hl26tk5qx3m_28h0000gn/T/pytest-of-dawsonblock/pytest-435/test_boun...rQAI4l+8pr7sswOvYrqL5GNzivFvpxLWsQ=', 'CODEX_APPLY_PATCH_PRESERVE_LINE_ENDINGS': '1', ...}, 'stderr': -1, 'stdout': -1}
+process = <Popen: returncode: 1 args: ['/tmp/veritas-r9-elan-home/bin/lean', '-o', 'Fi...>
+stdout = b''
+stderr = b'error: no default toolchain configured. run `elan default stable` to install & configure the latest Lean 4 stable release.\n'
+retcode = 1
+
+    def run(*popenargs,
+            input=None, capture_output=False, timeout=None, check=False, **kwargs):
+        """Run command with arguments and return a CompletedProcess instance.
+    
+        The returned instance will have attributes args, returncode, stdout and
+        stderr. By default, stdout and stderr are not captured, and those attributes
+        will be None. Pass stdout=PIPE and/or stderr=PIPE in order to capture them,
+        or pass capture_output=True to capture both.
+    
+        If check is True and the exit code was non-zero, it raises a
+        CalledProcessError. The CalledProcessError object will have the return code
+        in the returncode attribute, and output & stderr attributes if those streams
+        were captured.
+    
+        If timeout is given, and the process takes too long, a TimeoutExpired
+        exception will be raised.
+    
+        There is an optional argument "input", allowing you to
+        pass bytes or a string to the subprocess's stdin.  If you use this argument
+        you may not also use the Popen constructor's "stdin" argument, as
+        it will be used internally.
+    
+        By default, all communication is in bytes, and therefore any "input" should
+        be bytes, and the stdout and stderr will be bytes. If in text mode, any
+        "input" should be a string, and stdout and stderr will be strings decoded
+        according to locale encoding, or by "encoding" if set. Text mode is
+        triggered by setting any of text, encoding, errors or universal_newlines.
+    
+        The other arguments are the same as for the Popen constructor.
+        """
+        if input is not None:
+            if kwargs.get('stdin') is not None:
+                raise ValueError('stdin and input arguments may not both be used.')
+            kwargs['stdin'] = PIPE
+    
+        if capture_output:
+            if kwargs.get('stdout') is not None or kwargs.get('stderr') is not None:
+                raise ValueError('stdout and stderr arguments may not be used '
+                                 'with capture_output.')
+            kwargs['stdout'] = PIPE
+            kwargs['stderr'] = PIPE
+    
+        with Popen(*popenargs, **kwargs) as process:
+            try:
+                stdout, stderr = process.communicate(input, timeout=timeout)
+            except TimeoutExpired as exc:
+                process.kill()
+                if _mswindows:
+                    # Windows accumulates the output in a single blocking
+                    # read() call run on child threads, with the timeout
+                    # being done in a join() on those threads.  communicate()
+                    # _after_ kill() is required to collect that and add it
+                    # to the exception.
+                    exc.stdout, exc.stderr = process.communicate()
+                else:
+                    # POSIX _communicate already populated the output so
+                    # far into the TimeoutExpired exception.
+                    process.wait()
+                raise
+            except:  # Including KeyboardInterrupt, communicate handled that.
+                process.kill()
+                # We don't call process.wait() as .__exit__ does that for us.
+                raise
+            retcode = process.poll()
+            if check and retcode:
+>               raise CalledProcessError(retcode, process.args,
+                                         output=stdout, stderr=stderr)
+E               subprocess.CalledProcessError: Command '['/tmp/veritas-r9-elan-home/bin/lean', '-o', 'FiniteBoundaryReduction.olean', 'FiniteBoundaryReduction.lean']' returned non-zero exit status 1.
+
+../../.pyenv/versions/3.12.0/lib/python3.12/subprocess.py:571: CalledProcessError
+- generated xml file: /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/baseline_pytest.xml -
+=========================== short test summary info ============================
+FAILED tests/test_r96_tooling.py::test_boundary_contract_rejects_true_substitute
+1 failed, 1453 passed, 2 skipped in 373.52s (0:06:13)

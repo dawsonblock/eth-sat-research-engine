@@ -1,0 +1,12 @@
+Processing ./.
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: veritas-eth
+  Building wheel for veritas-eth (pyproject.toml): started
+  Building wheel for veritas-eth (pyproject.toml): finished with status 'done'
+  Created wheel for veritas-eth: filename=veritas_eth-3.8.2.post98-py3-none-any.whl size=772923 sha256=064959930fb1c033968ecbc881855e32b91749ec031789b101852e3f51b576d0
+  Stored in directory: /private/var/folders/xt/jh84t2kj6hl26tk5qx3m_28h0000gn/T/pip-ephem-wheel-cache-c71o97w6/wheels/10/4d/5c/aebadb5c25336ff7a09487fd3cf6d9d05ba3de01ed5eb7e8d5
+Successfully built veritas-eth
+
+[notice] A new release of pip is available: 26.1.2 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip

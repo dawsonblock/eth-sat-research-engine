@@ -1,0 +1,1 @@
+{"status": "PASS_INSTALLED_FINITE_EXECUTION", "package_version": "3.8.2.post98", "python": "3.12.14", "platform": "Linux-7.0.14-linuxkit-aarch64-with-glibc2.41", "one_wire_residue": 7, "dense_16_wire_residue": 65536, "source_pin_status": "PIN_AND_LABELS_CHECKED", "wall_seconds": 1.2087737920228392, "peak_process_rss_bytes": 27148288, "theorem_mode_enabled": false}

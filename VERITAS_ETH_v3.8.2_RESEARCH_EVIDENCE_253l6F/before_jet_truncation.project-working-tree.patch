@@ -1,0 +1,1882 @@
+diff --git a/VERITAS_ETH_v3.8.2/SHA256SUMS.txt b/VERITAS_ETH_v3.8.2/SHA256SUMS.txt
+index 3a3a4cd..112cc91 100644
+--- a/VERITAS_ETH_v3.8.2/SHA256SUMS.txt
++++ b/VERITAS_ETH_v3.8.2/SHA256SUMS.txt
+@@ -49,7 +49,7 @@ b69b4cf0828eede6ad3b092f56ca8adeb5a525dad034cf8b3f5c66c86af95de6  RELEASE_REPORT
+ 6749d2aad4a8d5308324cbea16491f5951f3ebce6f9b98764a8036f680ef7c24  RELEASE_REPORT_V37.md
+ d94df3fa8af5a3daf54f303b2cdf53ec57f127c1256aeb1d46421b4fbabd9448  RELEASE_REPORT_V38.md
+ a1ba54054430bd70e9aadaa7783d09014ef7f2fd95bb27f821a57bdc317e238e  RELEASE_REPORT_V382.md
+-233711f1133f9c71e9ea321662d95752f951dc8dbc7d5cc692da4f4c82e999c6  SHA256_MANIFEST.json
++c77e9e3ba6355cc126908d6762b953b1445dbcebe637b2cd116e6642f18c4dfa  SHA256_MANIFEST.json
+ 07002495e4611267b73ec6d2505839c3da1f2f698e7b9e2c23cfa59148f1b9f7  benchmarks/run.py
+ b46e8979c10b884a9ce3d3de0f225e8465da1b06d55e2bbb608695108c50719c  benchmarks/v10_separator.py
+ 52e19012764afbc5dd76939802a72fffaff6728fb8a75556a76ba699c7952553  benchmarks/v11_cauchy.py
+@@ -71,14 +71,15 @@ de812ab7a8c36154a31bba2c2b2dff3568cfd9dc95521783466fdd35804dd3dc  benchmarks/v27
+ fdad465990718b013b7370869a6364de4c6b5fa6e987a419c8889a01e85830ea  compose.yaml
+ 31acff05f1b23b127f7b01d1dce0c2b707267e6b0602463a505e3831752866c1  docs/ADAPTIVE_CONTRACTION_V15.md
+ 996d828006d807c6378715a0fdc72671b37e40bdc90859aed0c0b5f5bc2cd130  docs/APPENDIX_D_CONTRACTION_ROADMAP_V382.md
++078702d9031405c6d3c62a192de14f30391f89534053c5c4fa284be22c130420  docs/APPENDIX_D_COUNT_AND_RECURRENCE.md
+ 55eb55b54444ddb875d6131cb9c87e573321498d0e9996b2908fc9d559881efe  docs/APPENDIX_D_EXPLICIT_SCHEDULE_THRESHOLD.md
+ 6c16626a843c3f03ae5d5cf1c7ee8220ae10c5734ecf67b4d3daf1ce6556e5ed  docs/APPENDIX_D_PACKING_ARGUMENT.md
+ 9a113f6b04d2adea1fdc3f7abd901994b6b53444619167b236a483b5137bb5b8  docs/APPENDIX_D_POINT_MODE_VALUATION.md
+ f385bc248a3a580f3c6393a021ee38d4aabc3619815793181c3d5dc7fe33a8dc  docs/APPENDIX_D_PRECISION_PATH.md
+-88d8552a93031ded8039fdf6161daa167d9dcc07d1dee185aeffaec938eab182  docs/APPENDIX_D_PROOF_AUDIT_20261031.md
++fd5c0e6f9f1d752ba51de1e61a507ac7b45456e1b2db4d304493f7fcaa65edef  docs/APPENDIX_D_PROOF_AUDIT_20261031.md
+ e9c2a7969cae3d0a32dad54a3f90d8ebce7a90e8efe3f49ac9dcf4c2cf8b0236  docs/APPENDIX_D_STRUCTURAL_TUPLE_PRUNING.md
+ ed433ba9da948f8bea3982cda8db6b714c902bc294ac80d624bd8a4e1c0c1887  docs/APPENDIX_D_TAPERED_PRECISION_LEMMA.md
+-2659e0c7b7e928e6c935e50ac38b5a8af9a716e0692fd77c4560b81f80a20301  docs/APPENDIX_D_WEIGHTED_TUPLE_BOUND.md
++740823e2332a82417d42ff9f62a5594c1e2c782e2451f4389f01c1b3e324d9d5  docs/APPENDIX_D_WEIGHTED_TUPLE_BOUND.md
+ a7adb167be1022683ee672d85a8ebf9d20e8dc4ec07cc3b2342384261da4cfaf  docs/ARCHITECTURE.md
+ 2aae5cfad7a65753833d515e51e92f540f3e79a224e36dea3c2561ae58c0ea5e  docs/BENCHMARK_PROTOCOL.md
+ 2329484f05841204727c549852b7cda83545978d03fb1c24b781626e74a7e39c  docs/BOUNDED_DEGREE_V14.md
+@@ -91,6 +92,7 @@ d13e159598fefa33872e09bcd75df2b8b7d25fa989817be240f3736dc94a36ee  docs/COMPONENT
+ 63978df03eb83b6e4f309b9171234f9bf341cf5ebb3e8277e133f66b9736305c  docs/D34_STRUCTURAL_CHILD_TOPOLOGY_V34.md
+ 0390cd875f22f27e37ba856c40bac35721dfc37c8f620ade06c3d2cacc92a428  docs/D44_FINITE_MODES_V27.md
+ 40d015827e99148da01df68b0db8dd8a0992c24f64a23514ff330f111ac03e47  docs/D44_GROUP_LOCAL_CHILD_SOLUTION_V37.md
++ae15a1bcbd07558f1dc1e78f8c10c08852c440e545f277b38cf8a6c77de17f60  docs/DENSE_REFERENCE_AUDIT_V39.md
+ 70aa2793f52fa419f4d1dabcd99fa4dbc9c2ea7de78d271e7d3989ebb5e01e84  docs/ETH_V25_MATHEMATICAL_SCOPE.md
+ 96bcbe0f562fb7e3b4e43f4624a72eb9ee1cd9c05804485a340e9616caea812d  docs/ETH_V25_QUICKSTART.md
+ 72d6b31d9f41f557055c62e42c92af15517a1a856519ffb428ac98dc1ff5668b  docs/ETH_V26_D3_MATHEMATICAL_SCOPE.md
+@@ -105,7 +107,8 @@ a55b5c3785d94bf0809d77f4886a4901ad7a7b63a2bff39a28cf2922e00e20f6  docs/EXTENSION
+ 8de2182ef93618003a9dd1b422b0685eedd889629ac2a213db89bed70a29f8cd  docs/FINITE_D44_CHILD_ELIMINATION_V38.md
+ 777c3158c4d272301092bb04afdf2c1dd3fc0b627fe5706271b2d2cbfa2a6df0  docs/FINITE_LAZY_GROUP_CHILDREN_V39.md
+ 9f454ef20595a6ef1a4b552c12766b9afd4a08a3cf55d32b4cc1591b01e0fa82  docs/FINITE_RECURSIVE_MODE_BONDS_V33.md
+-f71c315ecfe99acecb3395b1a06f7d2f5551710bdb4281ac93c2bc731919ee1d  docs/FINITE_TAPERED_RECURSION_V39.md
++4822f5937b0ccd95beed18c5e4a00146d7b25789e1b991059e2de6332c59f822  docs/FINITE_TAPERED_RECURSION_V39.md
++1504b754cdb8c721b32b27d474655e57436111943583cc8202b824e6ce60b143  docs/FINITE_V39_AUDIT_REPRODUCIBILITY.md
+ b6fe5016893ca717b23fd7cc7f195deee8698778b727e83ba5ed3295070f6eb6  docs/FORMALIZATION_POLICY.md
+ 4317bdb333e319b6ffcd58640521e9750e5add91b4b8d3cc218d736b2e308540  docs/FULL_IMPLEMENTATION_PLAN.md
+ 5aaed80eac828c2cf3a72695b341a8846060e8f497d33f17f4fb58e57ae76ab9  docs/GEOMETRIC_JET_MODE_CHILDREN_V31.md
+@@ -171,6 +174,8 @@ a0eea91ce32507d153392a4cfb406aa8734ad71df76ab52c60957811665a48ea  scripts/valida
+ bba5f3368264f1b999bf48d2fd0af11cef1d25492aeca2a116735acc7792ecf9  scripts/validate_v34.py
+ d670e6fd7cd4b63358e04bf60e4618c96ba9a0ae1e4776e9ac8284e5a4f88aa5  scripts/validate_v35.py
+ 1522d89a3e43f2555fff4abf1e3f501a0ecaab1ac09df56daac7aef4fab5907c  scripts/validate_v36.py
++aa1a2e0d9987c8ecbf0f2f3ef7ddbc025efc4c94085dc97e37ea5c8c8d1f67a5  scripts/validate_v39_child_audit.py
++4b795ea47cd0bbe005bfc300f77d8c0bbbfd17410864785197803748c9034983  scripts/validate_v39_dense_audit.py
+ 493e2aef6a675161d05ebecc834012edac5ce7f46c1e19bceecdd6dbace6072e  scripts/verify_manifest.py
+ 5927e82ae3cba10e78200f4bf98cea6935ff1abb27457bdb4b934ed53c3f2a26  scripts/verify_v34.py
+ 8f9c13e4e0555f309c36459f6392d568260b6115e61755b7e46429c2a5b2d20b  src/veritas/__init__.py
+@@ -195,8 +200,9 @@ e59f97614eca8cad0b16e7e9b0b83a7e204d50bdc4f1ec1d6cc9b10ac7e229f2  src/veritas/re
+ bc3a65e63f57c12a6814cbc66ea78a723a4ac1a13c489b78748be163f04c30ca  src/veritas/research/cauchy_elimination.py
+ 8523aea52edb0ea22c67fee85376f2d776027efa51f23ea01459d88ccddcd0a3  src/veritas/research/cauchy_modes.py
+ 43052a8b9b20eb40425f2fb8b265b817bb5260075f71c352c071e54e269acd9c  src/veritas/research/contraction_planner.py
+-4c9857a7eabb08862b0ff0eea082d90db2266b5accf39e2159b512b2e77eccc5  src/veritas/research/dense_cauchy_testbed.py
++fa6ba1f6e6d4f73833770503ce563353d300c6babc8edea00ac436efb28cf064  src/veritas/research/dense_cauchy_testbed.py
+ 27ffdaf495837782059ed9281a3f06096bf880fe9085632ebbc4a59a57ff62f2  src/veritas/research/eth_arithmetic/__init__.py
++e0460056ecb7b0370b6f466d0da951dffdddce4cc8c52e74ef8e9a5a8d38817f  src/veritas/research/eth_arithmetic/boolean_count.py
+ 09ded3ff0150315bf53e168d0e677502534b98dbd2c899fc1cd628e0f328f228  src/veritas/research/eth_arithmetic/creation_lifts.py
+ 09e56b7f8a453e6223fb64a404aaa0b6fed1e73c834424d4a840e51692e06aee  src/veritas/research/eth_arithmetic/extension_ring.py
+ 3c952e32b613d8e8090666fc9d22c1efc8b2e572553af7d3a8d49e718fd1b5ff  src/veritas/research/eth_arithmetic/gf2.py
+@@ -258,17 +264,19 @@ c58ec53b08a7da5b7e17afa8417551eb342ac00f71ce87d23f7b63c1dec0c105  src/veritas/re
+ faddb44104e10dfcd67f9f567a8ff37c0490da34e3707cd20c485c2956f5fc49  src/veritas/research/eth_recursive_bonds_v33/__init__.py
+ 90771e7d9b2d2a19371d5ff99825d9e96c24434e4bfb7cb024b5ad63b4027685  src/veritas/research/eth_recursive_bonds_v33/cli.py
+ e153eb1288f6670d0b962a5df36325e23b8fdb4a42c9f3daf4725fa13b0fa58e  src/veritas/research/eth_recursive_bonds_v33/recursive.py
+-81a9dda2209423607885daf0d9eb576b8245b80d58194a6974608c4f76749699  src/veritas/research/eth_recursive_contraction_v39/__init__.py
++d6ff9065b97c72a2b310674da053155b760c0641c07fcfaa893647b8d6fa8181  src/veritas/research/eth_recursive_contraction_v39/__init__.py
+ 1fab56ff96c8558f288562522a81ed8eb8e3c169bef2e0497bb3e5f05ef828c9  src/veritas/research/eth_recursive_contraction_v39/described_network.py
+ 5128ac6a5ed67a23084c9d5694357971a90ed2edc301fcb655063a4f16abf81d  src/veritas/research/eth_recursive_contraction_v39/lazy_children.py
+-0472897f44d71fae115b11bd28b6f865ec25a85323eb0e250031ec5a119f0b7b  src/veritas/research/eth_recursive_contraction_v39/mode_bound.py
+-178076a194a8379a1e5b6179d031aec8d666458f49ad658670019936da7d251d  src/veritas/research/eth_recursive_contraction_v39/point_children.py
++e3c6f7ddc48ddc687ca6b35f1f9e700238488de4ae5b7202e901bf25f846de9b  src/veritas/research/eth_recursive_contraction_v39/mode_bound.py
++d9752f055eda2633a1ca00a9ffe306834b0fb7fbcd74cd2ac4117168b483d2b0  src/veritas/research/eth_recursive_contraction_v39/point_children.py
+ a075935f7d7ec12a782d319736d3825d56b9e5aa52750da27f1d8fae4c1e9f9a  src/veritas/research/eth_recursive_contraction_v39/point_modes.py
+ 1d8d840122f465055d0423a7c5e1baf881bd6527ac6f4657e6d127b684d7fca4  src/veritas/research/eth_recursive_contraction_v39/structural_tuples.py
+-647971064b58e4602c19250164af23df0387ae0227fa3be7f8ed177bc0f0a301  src/veritas/research/eth_recursive_contraction_v39/tapered_described.py
++5b2683faa2a7e3c5d46217c1a93f38d16cbbcd89303d5b5f848d53919cab67e5  src/veritas/research/eth_recursive_contraction_v39/tapered_described.py
++48d0d6c44e861b08a7b8052170e16b8432cd147e35f92fdb5deb65a29912b7a5  src/veritas/research/eth_recursive_contraction_v39/zero_wire.py
+ cd1489edb810dbd596ce0d21ad61206474d5973c17f690616c83e307446788c2  src/veritas/research/graph_decomposition.py
+ eac96ffe9f0195a381161a2c0e07bea2c988b3eae09b7102979308a9810942ff  src/veritas/research/grouped_cauchy.py
+ 5bcb1a27d74809be7e443c2eaafa78e7c8a076f5051bfeb25e8b61bef009d11f  src/veritas/research/hermite_ring.py
++3d1bf88ef25783aaaf2f035966c0bb984b7989a3491fccc52aa35ee209c67066  src/veritas/research/independent_dense_oracle.py
+ e4ca73e1338da4d091eaf8abe661b87f8817a5445fd451662614b0c29334e7a1  src/veritas/research/indexed_contract.py
+ 53b9f65f6b4c5a64f9ad870c3b0e7868472f9f0caf620656bb77443c01c5ceb2  src/veritas/research/matching_checker.py
+ 74d8460dfe8932dbadbee77499f5f93ec2182b17c4c8c735e548dbcbaa05bac8  src/veritas/research/matching_packets.py
+@@ -280,6 +288,7 @@ edc5c42d7b8242565936e7fb611bebb538610af6c3ec8154ba5a68b7673096f4  src/veritas/re
+ f2ee99d236e368b37b1285a476137efb30351b58d52fd7d024daabaafbfd6762  src/veritas/research/recursive_separator.py
+ d45efa0cfc2a79fa8fdc3e599cfec25fe2ce65675a4b9d79ef80dc8687623fd9  src/veritas/research/scalable_packets.py
+ 6f9961eb9ea184f99886f38d17835f2ee397939fa1f58ddebf4f9e8c7af1e701  src/veritas/research/sparse_contract.py
++a4034bef84e080d10615e6b82c3a13c11f13df2c23e8f8f90381891421399ac2  src/veritas/research/symbolic_cauchy_reference.py
+ 4d8e26bd7ed07a6e52b88a85b68ff8f448c470f512cc0cfcfb24c3b5cb4354f2  src/veritas/research/tensor.py
+ b96cce9f02ffff8d395689efe7406785b981b109ee6bf42b8bdf7f69d99b91e4  src/veritas/research/violation_polynomial.py
+ ee58c36953b181d323369cee07237e8eab69bd58cecfccc98764ec4563084dda  src/veritas/research/weighted_children.py
+@@ -310,6 +319,7 @@ fe58c09e17706f7eaf911d84b7f725314a43aa8970f24abed0982b452142df2f  tests/manuscri
+ 647af286cac5e54527fb578543ccd9dcef92fff66d1bf03a2f628070332fb158  tests/test_appendix_d_contract.py
+ 069dfae69160249bf7d57f6cd0549e63427af3bc893103e373d769deb9570a3c  tests/test_appendix_d_schedule.py
+ 3226bf450a84ddab62c16c0812ed93d84488dafb1cb35bdf799aaf0f1c546f43  tests/test_audit_api.py
++be61c12e8459cb83ff3f2e5406d12bd1ff0b8c7992cc89fbec0073ca6899e08c  tests/test_boolean_count_recovery.py
+ e4c84caa1c82c061eab68a22fcc3767ba0887348c042a1c7b398524a32746036  tests/test_cauchy_deformation.py
+ 1e24ed2111d7867f2bd7f0f664d09c8cf4a131b2191eb3640c8c572076c09631  tests/test_cauchy_modes.py
+ 49a7fb232ba42976da694715e0bc214506342948cbba91059c266bc8ae20f24e  tests/test_certificates.py
+@@ -325,6 +335,7 @@ a6d84aad788c5e5c2b79269b682680b8c3009a8a359f3f27b482daf7848fe209  tests/test_d3_
+ 562d97b87b75ad14ac815856e478d738e1d787927687617d4ed64a4b5cc55f0f  tests/test_projected.py
+ fa55556638a3ab47a37f628db7f8f4dc9193266755820b2afde2767e06a37852  tests/test_solver_iterative_hardening.py
+ e86437d404916694bc995492531220c2862ded22c6cf36bf86b2f22471731480  tests/test_solving.py
++36952fd4df8631114614005b9e3ce2c6985c6fa932c10e2afdfadff3a79c4c57  tests/test_symbolic_cauchy_reference.py
+ 80fab01f4e27f2618ca364c57c3fec07519f292f2944251123e57adeebe606ab  tests/test_tensor.py
+ 354128cf70c6b49eb3e72fe4d8c17fbd70502d802c51e63e2d23ce343b49ad39  tests/test_upgrade_api.py
+ f48b7f381d3a54b6a1754fe6bcfd2ea225e50fa4c9968b788886e9fce6dc0a84  tests/test_v06_api.py
+@@ -369,14 +380,16 @@ d1ee1824675b35d0504d9e5d24781a065a13923da6d1cc27743343817199fd8b  tests/test_v35
+ 31adea7d854c31bca0f82539e3a637da2b5485a8257b8c5a8d01f355800638f7  tests/test_v36_packet_tensors.py
+ 35063f9d5f128329a4e2fbbb0573896940d25c9d831fbe7c86d8f4c182f6df89  tests/test_v37_d44_group_local_children.py
+ 8ecb12cdd5a04ca0d9cac04d946b8e8cd04668daf4d7e8481a6373a67cc422a6  tests/test_v381_hardening.py
+-c07180810173796fd68c25b57217734ed9c5af10c2ea62ba2268ce9360ac27e1  tests/test_v382_dense_testbed.py
++0015f5e6dac986efa0009f1903c8f8aadb0517a93c3553d9cd1bca6579f89c56  tests/test_v382_dense_testbed.py
+ 65f8b414af2665f7fe224e1deb2b5bd8047a52cc3b25343dfbbff61b561a4ebe  tests/test_v38_exact_child_elimination.py
+ 68e21ea94a1c1f878c85a24edd5229dba234a703b9246f68e6e560cc0220724c  tests/test_v39_cauchy_product.py
+ 1dd1a3171fdc3e5a24b917b0eee452961b7060b53d4679aa7659786c2b572791  tests/test_v39_creation_descriptions.py
+ d593e75ca99f406eba497b7d07b532f9c1c0ef15b04f1dbdbbe51534c258bc47  tests/test_v39_lazy_children.py
+-8d1e08e6d37fb186f694039277648c14a18f68b8e50c87b57c015fd364a6a496  tests/test_v39_mode_bound.py
++49a795004076fe17d18960d4b0b262f6a20c28a92dbb8bf93838cb318090ebfa  tests/test_v39_mode_bound.py
++a3135ce923176273eca55c94d2c56d8eebd05f168d725850b2fdeb4382eec384  tests/test_v39_point_child_certificate.py
+ a1ea42c4812874c07a39a96f77297b949e8c95d58e4b7f82b4865069ce563b00  tests/test_v39_structural_tuples.py
+-9ff296e17f13c55df9cd0d837b3d6097abc3fe6ecf076f5fd7ffcf894f4936fb  tests/test_v39_tapered_described.py
++bd3cf704baaee76d07c41d375ec08b01c501bb1565e7fb34712b99969c9c7108  tests/test_v39_tapered_described.py
++dbe9dbe6a8b7de6061c4468cafc4e2e57e43d1f3085303ac2640defdbb7a8156  tests/test_v39_zero_wire.py
+ a7e028bb4ed8ac08ed480d790ebe641b7ee1162b4b3caabe41a3ee83a2fd1062  tests/test_violation_polynomial.py
+ c3fbb5ca20c0231feabce65341f8a02cbe50973281d8a26a725201b138f6f443  tests/test_wire_deformation.py
+ b591e9e1db6ed2ec9fa3632f9342321678244507ef219b156b91e29b68c83552  validation/benchmark_reference.jsonl
+diff --git a/VERITAS_ETH_v3.8.2/SHA256_MANIFEST.json b/VERITAS_ETH_v3.8.2/SHA256_MANIFEST.json
+index c9f24f2..96e5d8a 100644
+--- a/VERITAS_ETH_v3.8.2/SHA256_MANIFEST.json
++++ b/VERITAS_ETH_v3.8.2/SHA256_MANIFEST.json
+@@ -72,14 +72,15 @@
+     "compose.yaml": "fdad465990718b013b7370869a6364de4c6b5fa6e987a419c8889a01e85830ea",
+     "docs/ADAPTIVE_CONTRACTION_V15.md": "31acff05f1b23b127f7b01d1dce0c2b707267e6b0602463a505e3831752866c1",
+     "docs/APPENDIX_D_CONTRACTION_ROADMAP_V382.md": "996d828006d807c6378715a0fdc72671b37e40bdc90859aed0c0b5f5bc2cd130",
++    "docs/APPENDIX_D_COUNT_AND_RECURRENCE.md": "078702d9031405c6d3c62a192de14f30391f89534053c5c4fa284be22c130420",
+     "docs/APPENDIX_D_EXPLICIT_SCHEDULE_THRESHOLD.md": "55eb55b54444ddb875d6131cb9c87e573321498d0e9996b2908fc9d559881efe",
+     "docs/APPENDIX_D_PACKING_ARGUMENT.md": "6c16626a843c3f03ae5d5cf1c7ee8220ae10c5734ecf67b4d3daf1ce6556e5ed",
+     "docs/APPENDIX_D_POINT_MODE_VALUATION.md": "9a113f6b04d2adea1fdc3f7abd901994b6b53444619167b236a483b5137bb5b8",
+     "docs/APPENDIX_D_PRECISION_PATH.md": "f385bc248a3a580f3c6393a021ee38d4aabc3619815793181c3d5dc7fe33a8dc",
+-    "docs/APPENDIX_D_PROOF_AUDIT_20261031.md": "88d8552a93031ded8039fdf6161daa167d9dcc07d1dee185aeffaec938eab182",
++    "docs/APPENDIX_D_PROOF_AUDIT_20261031.md": "fd5c0e6f9f1d752ba51de1e61a507ac7b45456e1b2db4d304493f7fcaa65edef",
+     "docs/APPENDIX_D_STRUCTURAL_TUPLE_PRUNING.md": "e9c2a7969cae3d0a32dad54a3f90d8ebce7a90e8efe3f49ac9dcf4c2cf8b0236",
+     "docs/APPENDIX_D_TAPERED_PRECISION_LEMMA.md": "ed433ba9da948f8bea3982cda8db6b714c902bc294ac80d624bd8a4e1c0c1887",
+-    "docs/APPENDIX_D_WEIGHTED_TUPLE_BOUND.md": "2659e0c7b7e928e6c935e50ac38b5a8af9a716e0692fd77c4560b81f80a20301",
++    "docs/APPENDIX_D_WEIGHTED_TUPLE_BOUND.md": "740823e2332a82417d42ff9f62a5594c1e2c782e2451f4389f01c1b3e324d9d5",
+     "docs/ARCHITECTURE.md": "a7adb167be1022683ee672d85a8ebf9d20e8dc4ec07cc3b2342384261da4cfaf",
+     "docs/BENCHMARK_PROTOCOL.md": "2aae5cfad7a65753833d515e51e92f540f3e79a224e36dea3c2561ae58c0ea5e",
+     "docs/BOUNDED_DEGREE_V14.md": "2329484f05841204727c549852b7cda83545978d03fb1c24b781626e74a7e39c",
+@@ -92,6 +93,7 @@
+     "docs/D34_STRUCTURAL_CHILD_TOPOLOGY_V34.md": "63978df03eb83b6e4f309b9171234f9bf341cf5ebb3e8277e133f66b9736305c",
+     "docs/D44_FINITE_MODES_V27.md": "0390cd875f22f27e37ba856c40bac35721dfc37c8f620ade06c3d2cacc92a428",
+     "docs/D44_GROUP_LOCAL_CHILD_SOLUTION_V37.md": "40d015827e99148da01df68b0db8dd8a0992c24f64a23514ff330f111ac03e47",
++    "docs/DENSE_REFERENCE_AUDIT_V39.md": "ae15a1bcbd07558f1dc1e78f8c10c08852c440e545f277b38cf8a6c77de17f60",
+     "docs/ETH_V25_MATHEMATICAL_SCOPE.md": "70aa2793f52fa419f4d1dabcd99fa4dbc9c2ea7de78d271e7d3989ebb5e01e84",
+     "docs/ETH_V25_QUICKSTART.md": "96bcbe0f562fb7e3b4e43f4624a72eb9ee1cd9c05804485a340e9616caea812d",
+     "docs/ETH_V26_D3_MATHEMATICAL_SCOPE.md": "72d6b31d9f41f557055c62e42c92af15517a1a856519ffb428ac98dc1ff5668b",
+@@ -106,7 +108,8 @@
+     "docs/FINITE_D44_CHILD_ELIMINATION_V38.md": "8de2182ef93618003a9dd1b422b0685eedd889629ac2a213db89bed70a29f8cd",
+     "docs/FINITE_LAZY_GROUP_CHILDREN_V39.md": "777c3158c4d272301092bb04afdf2c1dd3fc0b627fe5706271b2d2cbfa2a6df0",
+     "docs/FINITE_RECURSIVE_MODE_BONDS_V33.md": "9f454ef20595a6ef1a4b552c12766b9afd4a08a3cf55d32b4cc1591b01e0fa82",
+-    "docs/FINITE_TAPERED_RECURSION_V39.md": "f71c315ecfe99acecb3395b1a06f7d2f5551710bdb4281ac93c2bc731919ee1d",
++    "docs/FINITE_TAPERED_RECURSION_V39.md": "4822f5937b0ccd95beed18c5e4a00146d7b25789e1b991059e2de6332c59f822",
++    "docs/FINITE_V39_AUDIT_REPRODUCIBILITY.md": "1504b754cdb8c721b32b27d474655e57436111943583cc8202b824e6ce60b143",
+     "docs/FORMALIZATION_POLICY.md": "b6fe5016893ca717b23fd7cc7f195deee8698778b727e83ba5ed3295070f6eb6",
+     "docs/FULL_IMPLEMENTATION_PLAN.md": "4317bdb333e319b6ffcd58640521e9750e5add91b4b8d3cc218d736b2e308540",
+     "docs/GEOMETRIC_JET_MODE_CHILDREN_V31.md": "5aaed80eac828c2cf3a72695b341a8846060e8f497d33f17f4fb58e57ae76ab9",
+@@ -172,6 +175,8 @@
+     "scripts/validate_v34.py": "bba5f3368264f1b999bf48d2fd0af11cef1d25492aeca2a116735acc7792ecf9",
+     "scripts/validate_v35.py": "d670e6fd7cd4b63358e04bf60e4618c96ba9a0ae1e4776e9ac8284e5a4f88aa5",
+     "scripts/validate_v36.py": "1522d89a3e43f2555fff4abf1e3f501a0ecaab1ac09df56daac7aef4fab5907c",
++    "scripts/validate_v39_child_audit.py": "aa1a2e0d9987c8ecbf0f2f3ef7ddbc025efc4c94085dc97e37ea5c8c8d1f67a5",
++    "scripts/validate_v39_dense_audit.py": "4b795ea47cd0bbe005bfc300f77d8c0bbbfd17410864785197803748c9034983",
+     "scripts/verify_manifest.py": "493e2aef6a675161d05ebecc834012edac5ce7f46c1e19bceecdd6dbace6072e",
+     "scripts/verify_v34.py": "5927e82ae3cba10e78200f4bf98cea6935ff1abb27457bdb4b934ed53c3f2a26",
+     "src/veritas/__init__.py": "8f9c13e4e0555f309c36459f6392d568260b6115e61755b7e46429c2a5b2d20b",
+@@ -196,8 +201,9 @@
+     "src/veritas/research/cauchy_elimination.py": "bc3a65e63f57c12a6814cbc66ea78a723a4ac1a13c489b78748be163f04c30ca",
+     "src/veritas/research/cauchy_modes.py": "8523aea52edb0ea22c67fee85376f2d776027efa51f23ea01459d88ccddcd0a3",
+     "src/veritas/research/contraction_planner.py": "43052a8b9b20eb40425f2fb8b265b817bb5260075f71c352c071e54e269acd9c",
+-    "src/veritas/research/dense_cauchy_testbed.py": "4c9857a7eabb08862b0ff0eea082d90db2266b5accf39e2159b512b2e77eccc5",
++    "src/veritas/research/dense_cauchy_testbed.py": "fa6ba1f6e6d4f73833770503ce563353d300c6babc8edea00ac436efb28cf064",
+     "src/veritas/research/eth_arithmetic/__init__.py": "27ffdaf495837782059ed9281a3f06096bf880fe9085632ebbc4a59a57ff62f2",
++    "src/veritas/research/eth_arithmetic/boolean_count.py": "e0460056ecb7b0370b6f466d0da951dffdddce4cc8c52e74ef8e9a5a8d38817f",
+     "src/veritas/research/eth_arithmetic/creation_lifts.py": "09ded3ff0150315bf53e168d0e677502534b98dbd2c899fc1cd628e0f328f228",
+     "src/veritas/research/eth_arithmetic/extension_ring.py": "09e56b7f8a453e6223fb64a404aaa0b6fed1e73c834424d4a840e51692e06aee",
+     "src/veritas/research/eth_arithmetic/gf2.py": "3c952e32b613d8e8090666fc9d22c1efc8b2e572553af7d3a8d49e718fd1b5ff",
+@@ -259,17 +265,19 @@
+     "src/veritas/research/eth_recursive_bonds_v33/__init__.py": "faddb44104e10dfcd67f9f567a8ff37c0490da34e3707cd20c485c2956f5fc49",
+     "src/veritas/research/eth_recursive_bonds_v33/cli.py": "90771e7d9b2d2a19371d5ff99825d9e96c24434e4bfb7cb024b5ad63b4027685",
+     "src/veritas/research/eth_recursive_bonds_v33/recursive.py": "e153eb1288f6670d0b962a5df36325e23b8fdb4a42c9f3daf4725fa13b0fa58e",
+-    "src/veritas/research/eth_recursive_contraction_v39/__init__.py": "81a9dda2209423607885daf0d9eb576b8245b80d58194a6974608c4f76749699",
++    "src/veritas/research/eth_recursive_contraction_v39/__init__.py": "d6ff9065b97c72a2b310674da053155b760c0641c07fcfaa893647b8d6fa8181",
+     "src/veritas/research/eth_recursive_contraction_v39/described_network.py": "1fab56ff96c8558f288562522a81ed8eb8e3c169bef2e0497bb3e5f05ef828c9",
+     "src/veritas/research/eth_recursive_contraction_v39/lazy_children.py": "5128ac6a5ed67a23084c9d5694357971a90ed2edc301fcb655063a4f16abf81d",
+-    "src/veritas/research/eth_recursive_contraction_v39/mode_bound.py": "0472897f44d71fae115b11bd28b6f865ec25a85323eb0e250031ec5a119f0b7b",
+-    "src/veritas/research/eth_recursive_contraction_v39/point_children.py": "178076a194a8379a1e5b6179d031aec8d666458f49ad658670019936da7d251d",
++    "src/veritas/research/eth_recursive_contraction_v39/mode_bound.py": "e3c6f7ddc48ddc687ca6b35f1f9e700238488de4ae5b7202e901bf25f846de9b",
++    "src/veritas/research/eth_recursive_contraction_v39/point_children.py": "d9752f055eda2633a1ca00a9ffe306834b0fb7fbcd74cd2ac4117168b483d2b0",
+     "src/veritas/research/eth_recursive_contraction_v39/point_modes.py": "a075935f7d7ec12a782d319736d3825d56b9e5aa52750da27f1d8fae4c1e9f9a",
+     "src/veritas/research/eth_recursive_contraction_v39/structural_tuples.py": "1d8d840122f465055d0423a7c5e1baf881bd6527ac6f4657e6d127b684d7fca4",
+-    "src/veritas/research/eth_recursive_contraction_v39/tapered_described.py": "647971064b58e4602c19250164af23df0387ae0227fa3be7f8ed177bc0f0a301",
++    "src/veritas/research/eth_recursive_contraction_v39/tapered_described.py": "5b2683faa2a7e3c5d46217c1a93f38d16cbbcd89303d5b5f848d53919cab67e5",
++    "src/veritas/research/eth_recursive_contraction_v39/zero_wire.py": "48d0d6c44e861b08a7b8052170e16b8432cd147e35f92fdb5deb65a29912b7a5",
+     "src/veritas/research/graph_decomposition.py": "cd1489edb810dbd596ce0d21ad61206474d5973c17f690616c83e307446788c2",
+     "src/veritas/research/grouped_cauchy.py": "eac96ffe9f0195a381161a2c0e07bea2c988b3eae09b7102979308a9810942ff",
+     "src/veritas/research/hermite_ring.py": "5bcb1a27d74809be7e443c2eaafa78e7c8a076f5051bfeb25e8b61bef009d11f",
++    "src/veritas/research/independent_dense_oracle.py": "3d1bf88ef25783aaaf2f035966c0bb984b7989a3491fccc52aa35ee209c67066",
+     "src/veritas/research/indexed_contract.py": "e4ca73e1338da4d091eaf8abe661b87f8817a5445fd451662614b0c29334e7a1",
+     "src/veritas/research/matching_checker.py": "53b9f65f6b4c5a64f9ad870c3b0e7868472f9f0caf620656bb77443c01c5ceb2",
+     "src/veritas/research/matching_packets.py": "74d8460dfe8932dbadbee77499f5f93ec2182b17c4c8c735e548dbcbaa05bac8",
+@@ -281,6 +289,7 @@
+     "src/veritas/research/recursive_separator.py": "f2ee99d236e368b37b1285a476137efb30351b58d52fd7d024daabaafbfd6762",
+     "src/veritas/research/scalable_packets.py": "d45efa0cfc2a79fa8fdc3e599cfec25fe2ce65675a4b9d79ef80dc8687623fd9",
+     "src/veritas/research/sparse_contract.py": "6f9961eb9ea184f99886f38d17835f2ee397939fa1f58ddebf4f9e8c7af1e701",
++    "src/veritas/research/symbolic_cauchy_reference.py": "a4034bef84e080d10615e6b82c3a13c11f13df2c23e8f8f90381891421399ac2",
+     "src/veritas/research/tensor.py": "4d8e26bd7ed07a6e52b88a85b68ff8f448c470f512cc0cfcfb24c3b5cb4354f2",
+     "src/veritas/research/violation_polynomial.py": "b96cce9f02ffff8d395689efe7406785b981b109ee6bf42b8bdf7f69d99b91e4",
+     "src/veritas/research/weighted_children.py": "ee58c36953b181d323369cee07237e8eab69bd58cecfccc98764ec4563084dda",
+@@ -311,6 +320,7 @@
+     "tests/test_appendix_d_contract.py": "647af286cac5e54527fb578543ccd9dcef92fff66d1bf03a2f628070332fb158",
+     "tests/test_appendix_d_schedule.py": "069dfae69160249bf7d57f6cd0549e63427af3bc893103e373d769deb9570a3c",
+     "tests/test_audit_api.py": "3226bf450a84ddab62c16c0812ed93d84488dafb1cb35bdf799aaf0f1c546f43",
++    "tests/test_boolean_count_recovery.py": "be61c12e8459cb83ff3f2e5406d12bd1ff0b8c7992cc89fbec0073ca6899e08c",
+     "tests/test_cauchy_deformation.py": "e4c84caa1c82c061eab68a22fcc3767ba0887348c042a1c7b398524a32746036",
+     "tests/test_cauchy_modes.py": "1e24ed2111d7867f2bd7f0f664d09c8cf4a131b2191eb3640c8c572076c09631",
+     "tests/test_certificates.py": "49a7fb232ba42976da694715e0bc214506342948cbba91059c266bc8ae20f24e",
+@@ -326,6 +336,7 @@
+     "tests/test_projected.py": "562d97b87b75ad14ac815856e478d738e1d787927687617d4ed64a4b5cc55f0f",
+     "tests/test_solver_iterative_hardening.py": "fa55556638a3ab47a37f628db7f8f4dc9193266755820b2afde2767e06a37852",
+     "tests/test_solving.py": "e86437d404916694bc995492531220c2862ded22c6cf36bf86b2f22471731480",
++    "tests/test_symbolic_cauchy_reference.py": "36952fd4df8631114614005b9e3ce2c6985c6fa932c10e2afdfadff3a79c4c57",
+     "tests/test_tensor.py": "80fab01f4e27f2618ca364c57c3fec07519f292f2944251123e57adeebe606ab",
+     "tests/test_upgrade_api.py": "354128cf70c6b49eb3e72fe4d8c17fbd70502d802c51e63e2d23ce343b49ad39",
+     "tests/test_v06_api.py": "f48b7f381d3a54b6a1754fe6bcfd2ea225e50fa4c9968b788886e9fce6dc0a84",
+@@ -370,14 +381,16 @@
+     "tests/test_v36_packet_tensors.py": "31adea7d854c31bca0f82539e3a637da2b5485a8257b8c5a8d01f355800638f7",
+     "tests/test_v37_d44_group_local_children.py": "35063f9d5f128329a4e2fbbb0573896940d25c9d831fbe7c86d8f4c182f6df89",
+     "tests/test_v381_hardening.py": "8ecb12cdd5a04ca0d9cac04d946b8e8cd04668daf4d7e8481a6373a67cc422a6",
+-    "tests/test_v382_dense_testbed.py": "c07180810173796fd68c25b57217734ed9c5af10c2ea62ba2268ce9360ac27e1",
++    "tests/test_v382_dense_testbed.py": "0015f5e6dac986efa0009f1903c8f8aadb0517a93c3553d9cd1bca6579f89c56",
+     "tests/test_v38_exact_child_elimination.py": "65f8b414af2665f7fe224e1deb2b5bd8047a52cc3b25343dfbbff61b561a4ebe",
+     "tests/test_v39_cauchy_product.py": "68e21ea94a1c1f878c85a24edd5229dba234a703b9246f68e6e560cc0220724c",
+     "tests/test_v39_creation_descriptions.py": "1dd1a3171fdc3e5a24b917b0eee452961b7060b53d4679aa7659786c2b572791",
+     "tests/test_v39_lazy_children.py": "d593e75ca99f406eba497b7d07b532f9c1c0ef15b04f1dbdbbe51534c258bc47",
+-    "tests/test_v39_mode_bound.py": "8d1e08e6d37fb186f694039277648c14a18f68b8e50c87b57c015fd364a6a496",
++    "tests/test_v39_mode_bound.py": "49a795004076fe17d18960d4b0b262f6a20c28a92dbb8bf93838cb318090ebfa",
++    "tests/test_v39_point_child_certificate.py": "a3135ce923176273eca55c94d2c56d8eebd05f168d725850b2fdeb4382eec384",
+     "tests/test_v39_structural_tuples.py": "a1ea42c4812874c07a39a96f77297b949e8c95d58e4b7f82b4865069ce563b00",
+-    "tests/test_v39_tapered_described.py": "9ff296e17f13c55df9cd0d837b3d6097abc3fe6ecf076f5fd7ffcf894f4936fb",
++    "tests/test_v39_tapered_described.py": "bd3cf704baaee76d07c41d375ec08b01c501bb1565e7fb34712b99969c9c7108",
++    "tests/test_v39_zero_wire.py": "dbe9dbe6a8b7de6061c4468cafc4e2e57e43d1f3085303ac2640defdbb7a8156",
+     "tests/test_violation_polynomial.py": "a7e028bb4ed8ac08ed480d790ebe641b7ee1162b4b3caabe41a3ee83a2fd1062",
+     "tests/test_wire_deformation.py": "c3fbb5ca20c0231feabce65341f8a02cbe50973281d8a26a725201b138f6f443",
+     "validation/benchmark_reference.jsonl": "b591e9e1db6ed2ec9fa3632f9342321678244507ef219b156b91e29b68c83552",
+diff --git a/VERITAS_ETH_v3.8.2/docs/APPENDIX_D_COUNT_AND_RECURRENCE.md b/VERITAS_ETH_v3.8.2/docs/APPENDIX_D_COUNT_AND_RECURRENCE.md
+new file mode 100644
+index 0000000..60aeaac
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/docs/APPENDIX_D_COUNT_AND_RECURRENCE.md
+@@ -0,0 +1,65 @@
++# Count recovery and the conditional recursion bound
++
++This note separates deductions from their required hypotheses. Its source is
++the [pinned Appendix D](https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/build/quantitative-contraction.tex),
++whose complete argument has not been independently verified here. The
++finite implementation is not a theorem-scale realization of that argument.
++
++## Root precision for an unweighted Boolean count
++
++For a count-preserving reduction of a CNF with exactly `n` declared
++variables, including unused variables, the integer count `C` satisfies
++`0 <= C <= 2^n`. If an exact completed contraction gives `C mod 2^p` and
++`p >= n+1`, then `C < 2^p`, so the canonical residue equals `C`.
++In contrast, at `p=n`, both zero and the largest possible count have residue
++zero. For `n=0`, one bit suffices. This conclusion does not apply unchanged
++to arbitrary signed or weighted tensor contractions.
++
++`recover_boolean_count` enforces the strict precision and integer range
++conditions without constructing a potentially enormous modulus. It assumes
++the caller has already established both the correctness of the residue and
++the count-preserving relationship to the declared CNF. A failed or incomplete
++contraction must not be passed off as a verified residue.
++
++## Conditional recursion calculation
++
++Let `lambda=ceil(log2(s))`, and suppose every active node on every path
++has at most `M_d <= C s rho^d` edges, with `rho=3/32`, and
++`u_d >= c lambda/2^d` for fixed positive constants `C,c`. The latter is
++required only at active depths; the actual schedule uses integer floors and
++must switch to a justified leaf before its lower bound fails. Suppose also
++that all packet, valuation, precision, and mode-count hypotheses apply and
++that the number of recursive calls generated by an active node, including
++interpolation and the 64 children per retained tuple, is at most
++`poly(s) exp(K M_d/sqrt(u_d))` for a fixed constant `K`. Then the cumulative
++exponent along an active path is bounded by
++
++\[
++K\sum_d \frac{M_d}{\sqrt{u_d}}
++\le \frac{KC}{\sqrt c}\frac{s}{\sqrt\lambda}
++      \sum_d (\rho\sqrt2)^d
++= O\!\left(\frac{s}{\sqrt{\log s}}\right),
++\]
++
++because `rho sqrt(2) < 1`. The prescribed leaf cutoff
++`H=ceil(s/floor(sqrt(lambda)))` and shrinkage imply `O(log lambda)` active
++levels for fixed `C`. Multiplying a fixed `poly(s)` factor per level costs
++`exp(O(log(s) log(lambda)))`, which is absorbed by the displayed exponent
++for sufficiently large `s`. A direct leaf costs at most `2^H` assignments,
++before its tensor-entry and bit costs are charged.
++
++Consequently, a full bit-operation bound also needs uniform bounds on
++packet construction, the number and cost of interpolation points, tensor
++entry evaluation, arithmetic precision, and the cost of each leaf. The
++dependence on input-description length must remain a fixed polynomial;
++repeating an unrestricted `poly(description length)` factor at each
++recursive depth does not by itself establish that. The number of tuples is
++not the number of arithmetic operations, and a leaf fallback at an arbitrary
++large active node does not preserve the claimed asymptotic bound.
++
++Polynomial space is a separate obligation: immutable entry recipes,
++precision lifts, tuple enumeration, interpolation accumulators, and the
++depth-first call stack must all have polynomial bit size. The finite
++implementation's work ledger omits some of these costs. Its instance checks
++and the conditional estimates above do not prove that all of the required
++hypotheses hold uniformly in the code.
+diff --git a/VERITAS_ETH_v3.8.2/docs/APPENDIX_D_PROOF_AUDIT_20261031.md b/VERITAS_ETH_v3.8.2/docs/APPENDIX_D_PROOF_AUDIT_20261031.md
+index 93db2e8..fb0562d 100644
+--- a/VERITAS_ETH_v3.8.2/docs/APPENDIX_D_PROOF_AUDIT_20261031.md
++++ b/VERITAS_ETH_v3.8.2/docs/APPENDIX_D_PROOF_AUDIT_20261031.md
+@@ -30,6 +30,10 @@ The geometric sum over active depths is O_C(s/sqrt λ). The number of depths is
+ 
+ The abstract weighted-tuple estimate and the multiplicity deduction from the packet-count and orientation hypotheses are derived in [APPENDIX_D_WEIGHTED_TUPLE_BOUND.md](APPENDIX_D_WEIGHTED_TUPLE_BOUND.md). A precision-path deduction under the stated root, shrinkage, schedule and increment invariants is given in [APPENDIX_D_PRECISION_PATH.md](APPENDIX_D_PRECISION_PATH.md); the conditional Hermite guard argument is in [APPENDIX_D_TAPERED_PRECISION_LEMMA.md](APPENDIX_D_TAPERED_PRECISION_LEMMA.md). Uniform validity of those hypotheses, proof that generating the tuples and all implicit entry evaluations obey the charged costs, and bounds on exact arithmetic and reconstruction remain necessary. The displayed geometric sum alone does not prove these inputs. Dependence on the input-description length must remain a fixed polynomial, rather than a polynomial factor multiplied once per recursion level with an exponent growing with depth.
+ 
++The exact root-precision requirement for unweighted CNF counts and the
++conditional recursion calculation with the sharper `3/32` child factor are
++spelled out in [APPENDIX_D_COUNT_AND_RECURRENCE.md](APPENDIX_D_COUNT_AND_RECURRENCE.md).
++
+ ## 4. Conditional space calculation
+ 
+ Assume each active node's graph, immutable tensor descriptions, ring precision and all interpolation data occupy poly(s+description length) bits; children and exponent tuples are generated one at a time in polynomial space; tensor entries can be recomputed in polynomial space; and the recursion stack has O(log log s) levels. Depth-first evaluation holds one child, one product, one sum, the current interpolation data, and the descriptions along one path. The resulting space is polynomial in s+description length. This conclusion fails if all children, exponentially many modes, or exponentially large tables are materialized at once. It also requires a proof that descriptions and coefficient bit lengths remain polynomial and that entry procedures do not create unbounded nested computation state.
+diff --git a/VERITAS_ETH_v3.8.2/docs/APPENDIX_D_WEIGHTED_TUPLE_BOUND.md b/VERITAS_ETH_v3.8.2/docs/APPENDIX_D_WEIGHTED_TUPLE_BOUND.md
+index df1a055..21c616b 100644
+--- a/VERITAS_ETH_v3.8.2/docs/APPENDIX_D_WEIGHTED_TUPLE_BOUND.md
++++ b/VERITAS_ETH_v3.8.2/docs/APPENDIX_D_WEIGHTED_TUPLE_BOUND.md
+@@ -21,13 +21,29 @@ using `exp(x)-1 >= x` yields
+ \log\!\prod_{w\ge1}(1-e^{-\theta w})^{-K}
+ =K\sum_{j\ge1}\frac{1}{j(e^{j\theta}-1)}
+ \le\frac{K}{\theta}\sum_{j\ge1}\frac{1}{j^2}
+-<\frac{2K}{\theta}.
++=\frac{K\pi^2}{6\theta}.
+ \]
+ 
+-For `K > 0`, set `theta = sqrt(2K/p)`. Then
+-`log N < 2 sqrt(2 K p) < 3 sqrt(K p)`. For `K=0`, `N=1`.
+-Since `exp(3) < 2^5`, an integer-only loose bound is
+-`N <= 2^(5 ceil(sqrt(K p)))`.
++For `K > 0`, the minimizing choice `theta = pi sqrt(K/(6p))` gives
++
++\[
++N\le\exp\!\left(\pi\sqrt{2Kp/3}\right).
++\]
++
++For `K=0`, `N=1`. For a safe integer-only binary bound, use `pi < 22/7`
++and `ln 2 > 2/3`; the latter follows from the positive-term expansion
++`ln 2 = 2(1/3 + (1/3)^3/3 + ...)`. These inequalities imply
++`pi sqrt(2/3)/ln 2 < 4`. Thus, for `K>0`,
++
++\[
++\log_2 N < 4\sqrt{Kp},\qquad
++N\le 2^{\lceil\sqrt{16Kp}\rceil}.
++\]
++
++The function `weighted_tuple_upper_exponent` calculates the displayed
++exponent using integer square roots and exact rational input `K`, with no
++floating-point rounding. It proves only the abstract counting implication:
++the caller must establish the per-weight multiplicity hypothesis separately.
+ 
+ For the pinned manuscript's modes at a node, suppose the packet construction
+ has at most `3M/L` packets and each packet has one fixed unordered symbol
+@@ -37,8 +53,8 @@ there is no cross-group target; otherwise the target symbol is the other
+ member of that pair. Thus each packet has at most `2^(i+1)` modes of any
+ one nominal weight `b+1`. Writing `D_t=L/2^i`, the multiplicity is at most
+ `(3M/L) 2^(i+1) = 6M/D_t`. Taking the real bound `K=6M/D_t` gives
+-`N=exp(O(sqrt(M p_t/D_t)))`. The finite integer-only auditor uses the
+-slightly looser ceiling. The further simplification to
++`N=exp(O(sqrt(M p_t/D_t)))`. The finite auditor keeps `6M/D_t` as a
++rational when calculating its power-of-two bound. The further simplification to
+ `exp(O(M/sqrt(u)))` requires the separate precision estimate
+ `p_t=O(M D_t/u)` and its hypotheses.
+ 
+diff --git a/VERITAS_ETH_v3.8.2/docs/DENSE_REFERENCE_AUDIT_V39.md b/VERITAS_ETH_v3.8.2/docs/DENSE_REFERENCE_AUDIT_V39.md
+new file mode 100644
+index 0000000..d5908cf
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/docs/DENSE_REFERENCE_AUDIT_V39.md
+@@ -0,0 +1,31 @@
++# Bounded dense-network reference audit
++
++`scripts/validate_v39_dense_audit.py --wires M` runs one deterministic
++two-table dense Boolean experiment for `M` in `8,10,12,14,16`. Set
++`PYTHONPATH=src` or install the package first. The script records a hash for
++each input table, finite mode counts, partial scalar-operation counts, the
++largest retained tensor scope, a process peak-RSS observation, and resource
++caps. Run each width in a fresh process when comparing peak RSS. These
++statistics are not a complete work or storage ledger.
++
++At `T=4` and modulo four, the two-slot Cauchy matrix is `3 I`. The separately
++implemented `diagonal_node_four_oracle` uses the one-bit half-edge matrix
++`[[1,2],[0,3]]` and an in-place Kronecker butterfly. It computes an
++independent deformed residue and an integer reference dot product using a
++`2^M`-entry table. Small cases also compare against direct half-edge
++enumeration. It is an exponential-space reference, not a recursive solver.
++
++The experiment's scalar mode sum must equal that independent deformed
++residue. For zero reconstruction, it also attempts a separate finite
++Hermite calculation at `M+1` target bits, enough to recover the complete
++integer dot product of the Boolean tables, subject to operation and
++live-jet-entry caps. A
++`BLOCKED_RESOURCE_LIMIT` reconstruction is not a recovered count: the
++reported original integer is the independent reference dot product.
++
++The mode experiment retains the original full-scope tensors, so its largest
++child has `M` wires. It does not implement the v39 recursive children or
++establish a reduction in total work. The table cap and scalar-operation cap
++are preflight limits, not a hard operating-system memory or time limit;
++peak RSS includes interpreter and process overhead. The v39 tapered
++recursion itself remains capped at six nonzero parent wires.
+diff --git a/VERITAS_ETH_v3.8.2/docs/FINITE_TAPERED_RECURSION_V39.md b/VERITAS_ETH_v3.8.2/docs/FINITE_TAPERED_RECURSION_V39.md
+index 58a1933..a8feeec 100644
+--- a/VERITAS_ETH_v3.8.2/docs/FINITE_TAPERED_RECURSION_V39.md
++++ b/VERITAS_ETH_v3.8.2/docs/FINITE_TAPERED_RECURSION_V39.md
+@@ -29,6 +29,15 @@ example exercises cross-group modes and recovers count `3` modulo `8`. An
+ additional two-level test changes the packet exponent from `a=1` to `a=2`
+ and reaches 309-bit working precision.
+ 
++Zero-wire networks take a separate direct leaf path. This handles an empty
++CNF on zero variables, empty clauses, and isolated declared variables. A
++certificate binds the immutable zero-wire tensor descriptions, their lifted
++entries, and the result; the checker replays each entry and independently
++multiplies its extension-jet coordinates. For a network with no vertices,
++the default return ring has extension degree one and jet length one. The
++certificate verifies the supplied tensor network, not the correctness of an
++arbitrary CNF-to-network reduction.
++
+ The tuple stream applies two exact affine-degree restrictions before forming
+ children: each mode exponent is at most the number of target rows containing
+ that mode, and the sum of exponents targeted at one packet/group is at most
+@@ -38,6 +47,24 @@ therefore have zero coefficient. The certificate retains the nominal weighted
+ tuple count as well as the smaller structural count; the tuple budget applies
+ to the latter. The argument and its limits are given in
+ [APPENDIX_D_STRUCTURAL_TUPLE_PRUNING.md](APPENDIX_D_STRUCTURAL_TUPLE_PRUNING.md).
++For a verified completed scalar residue of a count-preserving `n`-variable
++CNF contraction, `recover_boolean_count` enforces `precision >= n+1` and
++checks the residue's canonical and Boolean-count ranges. The helper does not
++verify which network produced the residue; these remain caller obligations.
++
++Each point-child expansion now records the mode valuations, retained tuples,
++each child contraction and its actual edge count and maximum degree, the
++tuple products, and the independently evaluated half-edge result. The
++point-certificate checker replays those fields against the input network and
++mode certificate. The opt-in `require_one_eighth_shrink=True` rejects a
++branch if a child is not strictly smaller than `M/8` or violates `6M/r`;
++`run_tapered_finite` then reports `INCONCLUSIVE_CHILD_SIZE_INVARIANT` with no
++count. Scaled examples can fail this check: checking an actual child is not a
++proof that all theorem-schedule children satisfy the bound.
++The tapered result also aggregates finite child counts, maximum actual edge
++count and degree, size-check outcomes, and minimum valuation slack across
++visited recursive calls. This summary is instance evidence, not a verified
++whole-run arithmetic or memory ledger.
+ 
+ The experiments use caller-selected small parameters, normally `r=2`, `a=1`,
+ and `u=1`; a caller may specify a separate `(a,u,r)` tuple per level. They do
+@@ -45,7 +72,9 @@ not use the theorem's depth-dependent
+ `r=64` schedule or establish shrinking children. Limits include at most six
+ parent wires, extension degree at most eight, precision at most 1024 bits,
+ bounded interpolation points and mode tuples, and at most two requested
+-transformation levels. Direct leaf enumeration and independent oracles are
++transformation levels; the zero-wire leaf is also supported. Requests above
++the finite wire cap return `INCONCLUSIVE_RESOURCE_LIMIT` through
++`run_tapered_finite`. Direct leaf enumeration and independent oracles are
+ explicitly bounded. `run_tapered_finite` reports `INCONCLUSIVE_RESOURCE_LIMIT`
+ without a result when its supported work or precision budget is exhausted.
+ 
+diff --git a/VERITAS_ETH_v3.8.2/docs/FINITE_V39_AUDIT_REPRODUCIBILITY.md b/VERITAS_ETH_v3.8.2/docs/FINITE_V39_AUDIT_REPRODUCIBILITY.md
+new file mode 100644
+index 0000000..88e356d
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/docs/FINITE_V39_AUDIT_REPRODUCIBILITY.md
+@@ -0,0 +1,65 @@
++# Finite audit and reproducibility
++
++Run from this directory with the project dependencies installed:
++
++```sh
++PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=src python -m pytest -q -o addopts=''
++PYTHONPATH=src python scripts/validate_v39_child_audit.py
++PYTHONPATH=src python scripts/validate_v39_dense_audit.py --wires 8
++PYTHONPATH=src python scripts/validate_v39_dense_audit.py --wires 10
++PYTHONPATH=src python scripts/validate_v39_dense_audit.py --wires 12 --max-reconstruction-ops 110000000
++PYTHONPATH=src python scripts/validate_v39_dense_audit.py --wires 14
++PYTHONPATH=src python scripts/validate_v39_dense_audit.py --wires 16
++python scripts/verify_manifest.py
++```
++
++Each dense audit should run in a fresh process for the process peak-RSS value
++to be separately meaningful. The generated input tables are deterministic;
++their SHA-256 digests, resource caps, partial work counts, and outcomes are
++included in each JSON output. RSS, elapsed time, and timeout outcomes depend
++on the host. The table and work caps are not hard operating-system memory or
++CPU limits.
++
++On the development snapshot tested here, the scalar dense experiment gave
++the following results. Its `M+1`-bit Hermite reconstruction recovers the
++full Boolean-table dot product when it completes; `reference` is the
++independently computed exact dot product. The point evaluation is modulo four.
++
++| Wires | Reference | Independent point identity | Full count reconstruction |
++|---:|---:|---|---|
++| 8 | 59 | matched | 59 |
++| 10 | 274 | matched | 274 |
++| 12 | 994 | matched | 994 with the listed 110-million-operation cap |
++| 14 | 4035 | matched | blocked by the default operation cap |
++| 16 | 16390 | matched | blocked by the default live-jet-entry cap |
++
++A separate 14-wire attempt with a 600-million-operation reconstruction cap
++was stopped after a 60-second process timeout and yielded no count. A 16-wire
++preflight with the live-entry limit raised to 6.5 million, but the operation
++cap kept at 40 million, estimated 2,677,014,528 scalar operations and stopped
++before the dense reconstruction. These unsuccessful attempts must not be
++reported as completed reconstructions.
++
++The counted weighted-mode work was 69,138; 416,790; 2,342,938; 12,533,790;
++and 64,618,530 scalar operations at 8 through 16 wires, respectively. The
++corresponding direct dot-product baselines were 512; 2,048; 8,192; 32,768;
++and 131,072. Those counters omit setup and bit complexity. Every retained
++scalar term kept full `M`-wire tensor scope. This experiment therefore shows
++no work or child-size reduction.
++
++The separate four-wire XOR point-child audit has two modes and four retained
++tuples. The checked children each have four wires. Its local mode identity
++matches the independent half-edge contraction, but the strict one-eighth
++check rejects the branch without returning a count. This is a finite scaled
++example, not a counterexample to the theorem's 64-group hypotheses.
++
++An independent rational-polynomial reference exhaustively checks `W(0)=I`,
++the geometric-mode expansion, and coefficient divisibility for packet sizes
++two and four, subject to its explicit precision and order limits. These are
++finite symbolic checks rather than a Lean proof or a general theorem.
++
++The source commit, local patch including new files, interpreter and dependency
++versions, test logs, exact commands, and complete JSON outputs are captured in
++the companion evidence directory created with this audit. They identify the
++local snapshot; they do not establish independent mathematical review,
++theorem-scale execution, complete work accounting, or polynomial space.
+diff --git a/VERITAS_ETH_v3.8.2/scripts/validate_v39_child_audit.py b/VERITAS_ETH_v3.8.2/scripts/validate_v39_child_audit.py
+new file mode 100644
+index 0000000..7683167
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/scripts/validate_v39_child_audit.py
+@@ -0,0 +1,41 @@
++"""Produce a replayable, bounded point-child certificate for a small XOR CNF."""
++import json
++
++from veritas.core.cnf import CNF
++from veritas.research.tensor import from_cnf
++from veritas.research.eth_arithmetic.gf2 import first_irreducible
++from veritas.research.eth_packing_v26.implicit import construct_implicit_packing, implicit_mode_source
++from veritas.research.eth_recursive_contraction_v39 import (
++    check_point_child_expansion_certificate, contract_point_child_expansion,
++    describe_integer_network, make_point_modes, run_tapered_finite,
++)
++
++
++def main():
++    cnf = CNF.from_lists(2, [[1, 2], [-1, -2]])
++    network = describe_integer_network(from_cnf(cnf), creation_precision=3,
++                                       defining_polynomial=first_irreducible(4))
++    packing = construct_implicit_packing(network.bipartite_edges(), r=2, a=1)
++    modes = make_point_modes(implicit_mode_source(packing), node=1, precision=5,
++                             extension_degree=4, zeta=(1, 0, 0, 0))
++    proof = contract_point_child_expansion(network, modes, max_work=2_000_000)
++    # JSON is the intended transport: replay after tuple-to-list conversion.
++    transported = json.loads(json.dumps(proof))
++    checked = check_point_child_expansion_certificate(network, modes, transported,
++                                                      max_work=2_000_000)
++    if not checked.get('valid'):
++        raise ArithmeticError('transported point-child certificate failed replay')
++    strict = run_tapered_finite(network, target_precision=3,
++                                require_one_eighth_shrink=True, max_work=2_000_000)
++    if strict.get('status') != 'INCONCLUSIVE_CHILD_SIZE_INVARIANT' or 'result' in strict:
++        raise ArithmeticError('scaled example did not fail closed on the claimed child bound')
++    print(json.dumps({'schema': 'VERITAS_FINITE_CHILD_AUDIT_V1', 'cnf': cnf.as_dict(),
++                      'creation_precision': 3, 'mode_certificate': modes,
++                      'point_child_certificate': transported,
++                      'replay_status': checked, 'strict_run': strict,
++                      'scope': 'finite point identity only; no uniform runtime proof'},
++                     sort_keys=True))
++
++
++if __name__ == '__main__':
++    main()
+diff --git a/VERITAS_ETH_v3.8.2/scripts/validate_v39_dense_audit.py b/VERITAS_ETH_v3.8.2/scripts/validate_v39_dense_audit.py
+new file mode 100644
+index 0000000..101a2e5
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/scripts/validate_v39_dense_audit.py
+@@ -0,0 +1,95 @@
++"""Audit one seeded 8--16-wire dense reference experiment in a fresh process.
++
++Example: PYTHONPATH=src python scripts/validate_v39_dense_audit.py --wires 8
++This does not run the v39 recursive engine or prove an asymptotic bound.
++"""
++import argparse
++import hashlib
++import json
++from random import Random
++import resource
++import sys
++from time import monotonic
++
++from veritas.research.dense_cauchy_testbed import DenseWorkLimit, experiment, reconstruct_zero
++from veritas.research.independent_dense_oracle import diagonal_node_four_oracle
++
++
++def main():
++    parser = argparse.ArgumentParser()
++    parser.add_argument('--wires', type=int, choices=(8, 10, 12, 14, 16), required=True)
++    parser.add_argument('--max-table-entries', type=int, default=1 << 16)
++    parser.add_argument('--max-scalar-ops', type=int, default=120_000_000)
++    parser.add_argument('--max-reconstruction-ops', type=int, default=40_000_000)
++    parser.add_argument('--max-live-jet-entries', type=int, default=2_000_000)
++    args = parser.parse_args()
++    if min(args.max_table_entries, args.max_scalar_ops, args.max_reconstruction_ops,
++           args.max_live_jet_entries) < 1:
++        parser.error('all resource caps must be positive')
++    size = 1 << args.wires
++    if size > args.max_table_entries:
++        print(json.dumps({'status': 'INCONCLUSIVE_RESOURCE_LIMIT',
++                          'reason': 'input table-entry cap exceeded'}))
++        return
++    start = monotonic()
++    rng = Random(381 + args.wires)
++    a = [rng.randrange(2) for _ in range(size)]
++    b = [rng.randrange(2) for _ in range(size)]
++    try:
++        transformed = experiment(a, b, args.wires, precision=2, max_ops=args.max_scalar_ops)
++        independent = diagonal_node_four_oracle(a, b, args.wires,
++                                                max_table_entries=args.max_table_entries,
++                                                max_scalar_ops=args.max_scalar_ops)
++    except DenseWorkLimit as exc:
++        print(json.dumps({'status': 'INCONCLUSIVE_RESOURCE_LIMIT', 'reason': str(exc)}))
++        return
++    if (transformed['original_count_modulus'] != independent['original_exact'] % 4 or
++            transformed['deformed_value_modulus'] != independent['deformed_mod_4']):
++        raise ArithmeticError('independent dense oracle disagrees with the experiment')
++    try:
++        reconstruction = reconstruct_zero(a, b, args.wires, precision=args.wires + 1,
++                                          max_scalar_ops=args.max_reconstruction_ops,
++                                          max_live_jet_entries=args.max_live_jet_entries)
++        if reconstruction['reconstructed_at_zero'] != independent['original_exact']:
++            raise ArithmeticError('zero reconstruction differs from independent count')
++        reconstruction['original_count_uniquely_recovered'] = True
++    except DenseWorkLimit as exc:
++        reconstruction = {'status': 'BLOCKED_RESOURCE_LIMIT', 'reason': str(exc),
++                          'partial_result_returned': False}
++    peak_rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
++    if sys.platform != 'darwin':
++        peak_rss *= 1024
++    result = {
++        'schema': 'VERITAS_FINITE_DENSE_AUDIT_V1',
++        'status': 'FINITE_DEFORMED_IDENTITY_CHECKED',
++        'wires': args.wires, 'seed': 381 + args.wires,
++        'table_a_sha256': hashlib.sha256(bytes(a)).hexdigest(),
++        'table_b_sha256': hashlib.sha256(bytes(b)).hexdigest(),
++        'independent_original_exact': independent['original_exact'],
++        'independent_deformed_mod_4': independent['deformed_mod_4'],
++        'deformed_value_mod_4': transformed['deformed_value_modulus'],
++        'retained_modes': transformed['retained_structural_modes'],
++        'discarded_modes': transformed['discarded_structural_modes'],
++        'largest_child_wires': transformed['largest_child_wires'],
++        'direct_halfedge_status': transformed['direct_halfedge_status'],
++        'mode_work': transformed['counted_work_by_phase']['all_modes'],
++        'baseline_work': transformed['counted_work_by_phase']['original'],
++        'independent_oracle_scalar_ops': independent['scalar_ops_upper_count'],
++        'independent_oracle_table_entries': independent['allocated_table_entries'],
++        'reconstruction': reconstruction,
++        'resource_limits': {'max_table_entries': args.max_table_entries,
++                            'max_scalar_ops': args.max_scalar_ops,
++                            'max_reconstruction_ops': args.max_reconstruction_ops,
++                            'max_live_jet_entries': args.max_live_jet_entries},
++        'process_peak_rss_bytes': peak_rss,
++        'elapsed_seconds': round(monotonic() - start, 6),
++        'accounting_complete': False,
++        'resource_scope': ('selected scalar operations and process peak RSS; '
++                           'not total bit operations or a hard memory limit'),
++        'recursive_engine_used': False, 'subexponential_bound_proven': False,
++    }
++    print(json.dumps(result, sort_keys=True))
++
++
++if __name__ == '__main__':
++    main()
+diff --git a/VERITAS_ETH_v3.8.2/src/veritas/research/dense_cauchy_testbed.py b/VERITAS_ETH_v3.8.2/src/veritas/research/dense_cauchy_testbed.py
+index fabe57f..f2c9f3c 100644
+--- a/VERITAS_ETH_v3.8.2/src/veritas/research/dense_cauchy_testbed.py
++++ b/VERITAS_ETH_v3.8.2/src/veritas/research/dense_cauchy_testbed.py
+@@ -310,8 +310,8 @@ def reconstruct_zero(
+     """
+     if type(wires) is not int or not 8 <= wires <= 16 or wires % 2:
+         raise ValueError('wires must be even and in 8..16')
+-    if type(precision) is not int or not 1 <= precision <= 3:
+-        raise ValueError('precision must be 1..3')
++    if type(precision) is not int or not 1 <= precision <= 17:
++        raise ValueError('reconstruction precision must be 1..17')
+     if (type(max_scalar_ops) is not int or max_scalar_ops < 1 or
+             type(max_live_jet_entries) is not int or max_live_jet_entries < 1):
+         raise ValueError('invalid Hermite work or storage cap')
+diff --git a/VERITAS_ETH_v3.8.2/src/veritas/research/eth_arithmetic/boolean_count.py b/VERITAS_ETH_v3.8.2/src/veritas/research/eth_arithmetic/boolean_count.py
+new file mode 100644
+index 0000000..2051e08
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/src/veritas/research/eth_arithmetic/boolean_count.py
+@@ -0,0 +1,25 @@
++"""Recover an integer #SAT count from an already verified scalar residue."""
++from __future__ import annotations
++
++
++def recover_boolean_count(residue, *, precision, num_variables):
++    """Recover a count from its canonical residue modulo 2**precision.
++
++    The caller must establish that the residue is the completed contraction
++    of a count-preserving Boolean formula on exactly num_variables declared
++    variables. This function only checks the uniqueness and range conditions;
++    it neither contracts a network nor verifies that premise.
++    """
++    if (type(residue) is not int or residue < 0 or
++            type(precision) is not int or precision < 1 or
++            type(num_variables) is not int or num_variables < 0):
++        raise ValueError('nonnegative residue and variable count, and positive precision required')
++    if precision <= num_variables:
++        raise ValueError('precision must exceed the number of declared variables')
++    if residue.bit_length() > precision:
++        raise ValueError('residue is not canonical at the supplied precision')
++    bits = residue.bit_length()
++    if (bits > num_variables + 1 or
++            (bits == num_variables + 1 and residue & (residue - 1))):
++        raise ValueError('residue exceeds the maximum Boolean model count')
++    return residue
+diff --git a/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/__init__.py b/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/__init__.py
+index 3ebafd4..fdfcac9 100644
+--- a/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/__init__.py
++++ b/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/__init__.py
+@@ -4,18 +4,22 @@ from .lazy_children import (
+     check_child_expansion_certificate,
+ )
+ from .described_network import describe_group_child, describe_integer_network, contract_described_network
+-from .point_children import build_point_children, contract_point_child_expansion
++from .point_children import (build_point_children, contract_point_child_expansion,
++                             check_point_child_expansion_certificate)
+ from .point_modes import make_point_modes, check_point_modes
+ from .tapered_described import contract_tapered_finite, run_tapered_finite
+-from .mode_bound import audit_point_mode_multiplicity
++from .mode_bound import audit_point_mode_multiplicity, weighted_tuple_upper_exponent
++from .zero_wire import make_zero_wire_certificate, check_zero_wire_certificate
+ 
+ __all__ = [
+     'build_group_children', 'contract_group_child',
+     'contract_child_expansion', 'check_child_expansion_certificate',
+     'describe_group_child', 'describe_integer_network', 'contract_described_network',
+     'build_point_children', 'contract_point_child_expansion',
++    'check_point_child_expansion_certificate',
+     'make_point_modes', 'check_point_modes',
+     'contract_tapered_finite',
+     'run_tapered_finite',
+-    'audit_point_mode_multiplicity',
++    'audit_point_mode_multiplicity', 'weighted_tuple_upper_exponent',
++    'make_zero_wire_certificate', 'check_zero_wire_certificate',
+ ]
+diff --git a/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/mode_bound.py b/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/mode_bound.py
+index 3a4b90b..1209122 100644
+--- a/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/mode_bound.py
++++ b/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/mode_bound.py
+@@ -7,6 +7,27 @@ from math import isqrt
+ from .point_modes import check_point_modes
+ 
+ 
++def weighted_tuple_upper_exponent(multiplicity_numerator, multiplicity_denominator,
++                                  precision):
++    """Return E with N <= 2**E under a per-weight multiplicity hypothesis.
++
++    The hypothesis is that there are at most numerator/denominator distinct
++    modes of each positive integer weight. N counts exponent tuples whose
++    weighted sum is strictly less than precision. This is a counting bound,
++    not a guarantee that any particular construction meets the hypothesis.
++    All rounding is performed with integer arithmetic.
++    """
++    if (type(multiplicity_numerator) is not int or multiplicity_numerator < 0 or
++            type(multiplicity_denominator) is not int or multiplicity_denominator < 1 or
++            type(precision) is not int or precision < 1):
++        raise ValueError('nonnegative rational multiplicity and positive precision required')
++    numerator = 16 * multiplicity_numerator * precision
++    root = isqrt(numerator // multiplicity_denominator)
++    if root * root * multiplicity_denominator < numerator:
++        root += 1
++    return root
++
++
+ def audit_point_mode_multiplicity(certificate):
+     """Check the source's per-weight multiplicity inequality for one call.
+ 
+@@ -27,12 +48,13 @@ def audit_point_mode_multiplicity(certificate):
+         return {'valid': False, 'status': 'MULTIPLICITY_HYPOTHESIS_NOT_MET',
+                 'counts': tuple(sorted(counts.items())), 'D': D, 'M': M}
+     K = (6 * M + D - 1) // D
+-    n = K * certificate['precision']
+-    root = isqrt(n)
+-    if root * root < n:
+-        root += 1
+-    # The accompanying proof shows N < exp(3 sqrt(Kp)) < 2^(5 ceil sqrt(Kp)).
++    # The accompanying proof gives log_2 N < 4 sqrt((6M/D) p).
++    # Keep 6M/D as a rational rather than rounding it up before the root.
++    exponent = weighted_tuple_upper_exponent(6 * M, D, certificate['precision'])
+     return {'valid': True, 'status': 'FINITE_MULTIPLICITY_BOUND_CHECKED',
+             'counts': tuple(sorted(counts.items())), 'D': D, 'M': M,
+-            'integer_multiplicity_cap': K, 'tuple_count_upper_power_of_two': 5 * root,
++            'integer_multiplicity_cap': K,
++            'multiplicity_cap_numerator': 6 * M,
++            'multiplicity_cap_denominator': D,
++            'tuple_count_upper_power_of_two': exponent,
+             'total_runtime_proven': False, 'uniform_packing_proven': False}
+diff --git a/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/point_children.py b/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/point_children.py
+index 9a66745..b072682 100644
+--- a/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/point_children.py
++++ b/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/point_children.py
+@@ -8,6 +8,7 @@ from __future__ import annotations
+ 
+ from dataclasses import dataclass
+ from itertools import product
++import json
+ from time import monotonic
+ 
+ from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
+@@ -16,6 +17,7 @@ from veritas.research.eth_arithmetic.jets import JetRing
+ from veritas.research.eth_interpolation.shifted_cauchy import shift_cauchy_entry
+ from veritas.research.eth_interpolation.extension_lagrange import evaluate_polynomial
+ from veritas.research.eth_modes_v31.jet_tiles import check_jet_tile_modes, _v2
++from veritas.research.eth_modes_v27.enumeration import ModeBudgetExceeded
+ from .lazy_children import PacketTensorEntry, _Budget, ChildEvaluationBudgetExceeded
+ from .described_network import (
+     CreatedDenseTensor, CreatedPacketTensor, DescribedNetwork, DescribedVertex,
+@@ -31,6 +33,10 @@ class DescribedGroupChild:
+     network: DescribedNetwork
+ 
+ 
++class ChildSizeInvariantViolation(RuntimeError):
++    """A finite child violates a specifically requested size invariant."""
++
++
+ def _ring_for(parent, mode_certificate):
+     if not isinstance(parent, DescribedNetwork) or not parent.vertices:
+         raise ValueError('a nonempty described network is required')
+@@ -179,8 +185,11 @@ def _direct_point_oracle(parent, source, node, zeta, ring, budget):
+ 
+ def contract_point_child_expansion(parent, mode_certificate, *, max_tuples=3000,
+                                    max_work=250_000, timeout_s=10.0,
++                                   require_one_eighth_shrink=False,
+                                    _child_contractor=None):
+     """Check a complete finite mode sum for a previously described child."""
++    if type(require_one_eighth_shrink) is not bool:
++        raise ValueError('require_one_eighth_shrink must be Boolean')
+     ring, source = _ring_for(parent, mode_certificate)
+     deadline = monotonic() + timeout_s
+     total, work, nested_oracle_work, rows = ring.zero, 0, 0, []
+@@ -190,6 +199,13 @@ def contract_point_child_expansion(parent, mode_certificate, *, max_tuples=3000,
+         children = _build_point_children_checked(parent, mode_certificate, beta, ring, source)
+         term, summaries = ring.one, []
+         for child in children:
++            child_edges = child.network.edges
++            meets_eighth = 8 * child_edges < parent.edges
++            meets_port_bound = source['r'] * child_edges <= 6 * parent.edges
++            if require_one_eighth_shrink and not (meets_eighth and meets_port_bound):
++                raise ChildSizeInvariantViolation(
++                    f'group {child.group} has {child_edges} child edges for '
++                    f'{parent.edges} parent edges and radix {source["r"]}')
+             left_work, left_time = max_work - work - nested_oracle_work, deadline - monotonic()
+             if left_work < 1 or left_time <= 0:
+                 raise ChildEvaluationBudgetExceeded('point-child resource budget exhausted')
+@@ -207,10 +223,13 @@ def contract_point_child_expansion(parent, mode_certificate, *, max_tuples=3000,
+             work += out['work_units']
+             nested_oracle_work += out.get('oracle_work_units', 0)
+             term = ring.mul(term, out['result'])
+-            summaries.append({'group': child.group, 'edge_count': child.network.edges,
+-                              'maximum_degree': max((len(v.ports) for v in child.network.vertices), default=0)})
++            summaries.append({'group': child.group, 'edge_count': child_edges,
++                              'maximum_degree': max((len(v.ports) for v in child.network.vertices), default=0),
++                              'result': out['result'], 'meets_strict_one_eighth': meets_eighth,
++                              'meets_six_M_over_r': meets_port_bound})
+         total = ring.add(total, term)
+-        rows.append({'beta': tuple(beta), 'children': tuple(summaries), 'structurally_zero': False})
++        rows.append({'beta': tuple(beta), 'children': tuple(summaries),
++                     'term': term, 'structurally_zero': False})
+     left_time = deadline - monotonic()
+     if left_time <= 0:
+         raise ChildEvaluationBudgetExceeded('point-child wall-time budget exhausted')
+@@ -228,8 +247,51 @@ def contract_point_child_expansion(parent, mode_certificate, *, max_tuples=3000,
+     omitted = mode_certificate['mode_tuple_count'] - len(rows)
+     if omitted < 0:
+         raise ArithmeticError('structural tuple count exceeds nominal mode tuple count')
++    valuations = tuple({'mode': index, 'weight': mode['weight'],
++                        'minimum_observed_valuation': min(
++                            ring.base.valuation(ring.base.elem(encoded[0]))
++                            for _, encoded in mode['rows'])}
++                       for index, mode in enumerate(mode_certificate['modes']))
+     return {'result': total, 'tuples': tuple(rows), 'algorithm_work_units': work,
+             'structurally_zero_tuples': omitted,
+             'independent_oracle_work_units': nested_oracle_work + oracle_budget.used,
++            'parent_edge_count': parent.edges, 'radix': source['r'],
++            'precision': ring.base.p, 'mode_valuations': valuations,
++            'all_children_meet_strict_one_eighth': all(
++                child['meets_strict_one_eighth'] for row in rows for child in row['children']),
++            'all_children_meet_six_M_over_r': all(
++                child['meets_six_M_over_r'] for row in rows for child in row['children']),
++            'direct_oracle_result': oracle,
+             'direct_oracle_matches': True, 'tapered_reconstruction_implemented': False,
+             'subexponential_runtime_proven': False}
++
++
++def check_point_child_expansion_certificate(parent, mode_certificate, certificate,
++                                            *, max_tuples=3000, max_work=250_000,
++                                            timeout_s=10.0):
++    """Replay finite child values, valuations, sizes, and the half-edge identity."""
++    try:
++        if type(certificate) is not dict:
++            raise ValueError('finite point-child certificate must be a dictionary')
++        checked = contract_point_child_expansion(parent, mode_certificate,
++                                                  max_tuples=max_tuples,
++                                                  max_work=max_work, timeout_s=timeout_s)
++        fields = ('result', 'tuples', 'structurally_zero_tuples', 'parent_edge_count',
++                  'radix', 'precision', 'mode_valuations',
++                  'all_children_meet_strict_one_eighth', 'all_children_meet_six_M_over_r',
++                  'direct_oracle_result', 'direct_oracle_matches',
++                  'tapered_reconstruction_implemented', 'subexponential_runtime_proven')
++        observed = json.dumps({field: certificate.get(field) for field in fields},
++                              sort_keys=True, separators=(',', ':'), allow_nan=False)
++        expected = json.dumps({field: checked[field] for field in fields},
++                              sort_keys=True, separators=(',', ':'), allow_nan=False)
++        if observed != expected:
++            raise ValueError('child expansion certificate differs from source replay')
++        return {'valid': True, 'status': 'FINITE_POINT_CHILD_IDENTITY_REPLAYED',
++                'all_children_meet_strict_one_eighth': checked['all_children_meet_strict_one_eighth'],
++                'work_counters_verified': False,
++                'subexponential_runtime_proven': False}
++    except (ChildEvaluationBudgetExceeded, ModeBudgetExceeded) as exc:
++        return {'valid': False, 'status': 'INCONCLUSIVE_RESOURCE_LIMIT', 'reason': str(exc)}
++    except (TypeError, ValueError, KeyError, IndexError, ArithmeticError) as exc:
++        return {'valid': False, 'status': 'INVALID_POINT_CHILD_CERTIFICATE', 'reason': str(exc)}
+diff --git a/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/tapered_described.py b/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/tapered_described.py
+index 7f22c05..c6dfa0b 100644
+--- a/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/tapered_described.py
++++ b/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/tapered_described.py
+@@ -18,7 +18,8 @@ from veritas.research.eth_modes_v27.enumeration import ModeBudgetExceeded
+ from .described_network import CreatedDenseTensor, CreatedPacketTensor, DescribedNetwork, contract_described_network
+ from .lazy_children import ChildEvaluationBudgetExceeded
+ from .point_modes import make_point_modes
+-from .point_children import contract_point_child_expansion
++from .point_children import contract_point_child_expansion, ChildSizeInvariantViolation
++from .zero_wire import make_zero_wire_certificate, check_zero_wire_certificate
+ 
+ 
+ def _shape(network):
+@@ -44,6 +45,7 @@ def contract_tapered_finite(network, *, target_precision, packet_exponent=1, u=1
+                             radix=2, max_work=1_000_000, timeout_s=30.0,
+                             max_points=32, max_tuples=3000,
+                             max_recursive_levels=1,
++                            require_one_eighth_shrink=False,
+                             experimental_level_parameters=None):
+     """Recover a small described contraction through finite point children.
+ 
+@@ -56,6 +58,8 @@ def contract_tapered_finite(network, *, target_precision, packet_exponent=1, u=1
+         raise ValueError('timeout must be in (0,30]')
+     if type(max_recursive_levels) is not int or not 1 <= max_recursive_levels <= 2:
+         raise ValueError('finite reference supports one or two recursive levels')
++    if type(require_one_eighth_shrink) is not bool:
++        raise ValueError('require_one_eighth_shrink must be Boolean')
+     if experimental_level_parameters is None:
+         levels = ((packet_exponent, u, radix),) * max_recursive_levels
+     else:
+@@ -67,8 +71,39 @@ def contract_tapered_finite(network, *, target_precision, packet_exponent=1, u=1
+         packet_exponent, u, radix = levels[0]
+     if not isinstance(network, DescribedNetwork):
+         raise TypeError('DescribedNetwork required')
+-    if not 1 <= network.edges <= 6:
+-        raise ValueError('finite tapered reference supports 1..6 wires')
++    if network.edges == 0:
++        deadline = monotonic() + timeout_s
++        built = make_zero_wire_certificate(network, target_precision=target_precision,
++                                           max_work=max_work, timeout_s=timeout_s)
++        remaining_work, remaining_time = max_work - built['work_units'], deadline - monotonic()
++        if remaining_work < 1 or remaining_time <= 0:
++            raise ChildEvaluationBudgetExceeded('zero-wire verification budget exhausted')
++        checked = check_zero_wire_certificate(network, built['certificate'],
++                                              max_work=remaining_work,
++                                              timeout_s=min(30.0, remaining_time))
++        if checked.get('status') == 'INCONCLUSIVE_RESOURCE_LIMIT':
++            raise ChildEvaluationBudgetExceeded(checked['reason'])
++        if checked.get('valid') is not True:
++            raise ArithmeticError('independent zero-wire certificate verification failed')
++        return {'status': 'FINITE_ZERO_WIRE_LEAF_VERIFIED', 'result': checked['result'],
++                'certificate': built['certificate'], 'nodes': (),
++                'algorithm_work_units': built['work_units'],
++                'independent_oracle_work_units': checked['work_units'],
++                'nested_calls': 0, 'recursive_levels_exercised': 0,
++                'maximum_precision_bits': target_precision,
++                'experimental_level_parameters': levels,
++                'point_modes_generated': 0, 'tuples_visited': 0,
++                'structurally_zero_tuples': 0, 'ledger_complete': False,
++                'finite_child_audit': {'child_contractions': 0, 'maximum_child_edges': 0,
++                                       'maximum_child_degree': 0,
++                                       'all_children_meet_strict_one_eighth': None,
++                                       'all_children_meet_six_M_over_r': None,
++                                       'minimum_mode_valuation_slack': None},
++                'experimental_scaled_parameters': True,
++                'full_recursive_contraction': False,
++                'subexponential_runtime_proven': False}
++    if network.edges > 6:
++        raise ChildEvaluationBudgetExceeded('finite tapered reference supports at most 6 wires')
+     f, jet_length, latest_creation = _shape(network)
+     if type(target_precision) is not int or target_precision < latest_creation:
+         raise ValueError('target precision precedes a tensor creation')
+@@ -93,6 +128,23 @@ def contract_tapered_finite(network, *, target_precision, packet_exponent=1, u=1
+     modes_generated = 0
+     tuples_visited = 0
+     structurally_zero_tuples = 0
++    child_audit = {'child_contractions': 0, 'maximum_child_edges': 0,
++                   'maximum_child_degree': 0,
++                   'all_children_meet_strict_one_eighth': True,
++                   'all_children_meet_six_M_over_r': True,
++                   'minimum_mode_valuation_slack': None}
++
++    def merge_child_audit(other):
++        child_audit['child_contractions'] += other['child_contractions']
++        for key in ('maximum_child_edges', 'maximum_child_degree'):
++            child_audit[key] = max(child_audit[key], other[key])
++        for key in ('all_children_meet_strict_one_eighth', 'all_children_meet_six_M_over_r'):
++            if other[key] is not None:
++                child_audit[key] = child_audit[key] and other[key]
++        slack = other['minimum_mode_valuation_slack']
++        if slack is not None:
++            old = child_audit['minimum_mode_valuation_slack']
++            child_audit['minimum_mode_valuation_slack'] = slack if old is None else min(old, slack)
+ 
+     def contract_child(child, ring, remaining_work, remaining_time):
+         nonlocal nested_calls, levels_exercised, maximum_precision_bits
+@@ -103,6 +155,7 @@ def contract_tapered_finite(network, *, target_precision, packet_exponent=1, u=1
+                 u=u, radix=radix, max_work=remaining_work, timeout_s=remaining_time,
+                 max_points=max_points, max_tuples=max_tuples,
+                 max_recursive_levels=max_recursive_levels - 1,
++                require_one_eighth_shrink=require_one_eighth_shrink,
+                 experimental_level_parameters=levels[1:])
+             charged = nested['algorithm_work_units'] + nested['independent_oracle_work_units']
+             if charged > remaining_work:
+@@ -110,6 +163,7 @@ def contract_tapered_finite(network, *, target_precision, packet_exponent=1, u=1
+             nested_calls += 1 + nested['nested_calls']
+             levels_exercised = max(levels_exercised, 1 + nested['recursive_levels_exercised'])
+             maximum_precision_bits = max(maximum_precision_bits, nested['maximum_precision_bits'])
++            merge_child_audit(nested['finite_child_audit'])
+             return {'result': nested['result'],
+                     'work_units': nested['algorithm_work_units'],
+                     'oracle_work_units': nested['independent_oracle_work_units']}
+@@ -131,6 +185,7 @@ def contract_tapered_finite(network, *, target_precision, packet_exponent=1, u=1
+             out = contract_point_child_expansion(network, modes, max_tuples=max_tuples,
+                                                  max_work=remaining_work,
+                                                  timeout_s=remaining_time,
++                                                 require_one_eighth_shrink=require_one_eighth_shrink,
+                                                  _child_contractor=(contract_child
+                                                                     if max_recursive_levels > 1 else None))
+             work += out['algorithm_work_units']
+@@ -138,6 +193,16 @@ def contract_tapered_finite(network, *, target_precision, packet_exponent=1, u=1
+             modes_generated += len(modes['modes'])
+             tuples_visited += len(out['tuples'])
+             structurally_zero_tuples += out['structurally_zero_tuples']
++            merge_child_audit({'child_contractions': sum(len(row['children']) for row in out['tuples']),
++                               'maximum_child_edges': max((c['edge_count'] for row in out['tuples']
++                                                           for c in row['children']), default=0),
++                               'maximum_child_degree': max((c['maximum_degree'] for row in out['tuples']
++                                                            for c in row['children']), default=0),
++                               'all_children_meet_strict_one_eighth': out['all_children_meet_strict_one_eighth'],
++                               'all_children_meet_six_M_over_r': out['all_children_meet_six_M_over_r'],
++                               'minimum_mode_valuation_slack': min(
++                                   (v['minimum_observed_valuation'] - v['weight']
++                                    for v in out['mode_valuations']), default=None)})
+             values.append(out['result'])
+         # Interpolation is R-linear; recover each V coordinate independently.
+         coefficient_columns = [interpolate_newton(base, points,
+@@ -168,6 +233,9 @@ def contract_tapered_finite(network, *, target_precision, packet_exponent=1, u=1
+     oracle_work += direct['work_units']
+     if result != direct['result']:
+         raise ArithmeticError('tapered recovery differs from direct contraction')
++    if not child_audit['child_contractions']:
++        child_audit['all_children_meet_strict_one_eighth'] = None
++        child_audit['all_children_meet_six_M_over_r'] = None
+     return {'status': 'FINITE_TAPERED_CHILD_RECOVERY_VERIFIED', 'result': result,
+             'nodes': tuple(node_summaries), 'algorithm_work_units': work,
+             'independent_oracle_work_units': oracle_work,
+@@ -176,6 +244,7 @@ def contract_tapered_finite(network, *, target_precision, packet_exponent=1, u=1
+             'experimental_level_parameters': levels,
+             'point_modes_generated': modes_generated, 'tuples_visited': tuples_visited,
+             'structurally_zero_tuples': structurally_zero_tuples,
++            'finite_child_audit': child_audit,
+             'ledger_complete': False, 'experimental_scaled_parameters': True,
+             'full_recursive_contraction': False,
+             'subexponential_runtime_proven': False}
+@@ -189,3 +258,7 @@ def run_tapered_finite(network, **kwargs):
+         return {'status': 'INCONCLUSIVE_RESOURCE_LIMIT', 'reason': str(exc),
+                 'full_recursive_contraction': False,
+                 'subexponential_runtime_proven': False}
++    except ChildSizeInvariantViolation as exc:
++        return {'status': 'INCONCLUSIVE_CHILD_SIZE_INVARIANT', 'reason': str(exc),
++                'full_recursive_contraction': False,
++                'subexponential_runtime_proven': False}
+diff --git a/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/zero_wire.py b/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/zero_wire.py
+new file mode 100644
+index 0000000..9ae3b04
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/zero_wire.py
+@@ -0,0 +1,152 @@
++"""Exact zero-wire leaf certificates for immutable described networks.
++
++The verifier replays the input entries and uses a separately implemented
++coordinate-wise polynomial multiplication. This proves only the supplied
++finite leaf contraction, not its connection to an arbitrary CNF or any
++asymptotic complexity claim.
++"""
++from __future__ import annotations
++
++from dataclasses import asdict
++from hashlib import sha256
++import json
++
++from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
++from veritas.research.eth_arithmetic.gf2 import first_irreducible
++from veritas.research.eth_arithmetic.jets import JetRing
++from .described_network import CreatedDenseTensor, CreatedPacketTensor, DescribedNetwork
++from .lazy_children import ChildEvaluationBudgetExceeded, _Budget
++
++SCHEMA = 'VERITAS_ETH_ZERO_WIRE_LEAF_V1'
++
++
++def _ring(network, precision, empty_polynomial=None, empty_jet_length=1):
++    if not isinstance(network, DescribedNetwork) or network.edges != 0:
++        raise ValueError('a zero-wire described network is required')
++    if type(precision) is not int or precision < 1:
++        raise ValueError('positive integer target precision required')
++    if precision > 1024:
++        raise ChildEvaluationBudgetExceeded('zero-wire precision exceeds finite ring limit')
++    shape = None
++    for vertex in network.vertices:
++        tensor = vertex.tensor
++        if isinstance(tensor, CreatedDenseTensor):
++            entry = tensor.entries[0]
++            item = (entry.defining_polynomial, len(entry.coefficients), entry.creation_precision)
++        elif isinstance(tensor, CreatedPacketTensor):
++            item = (tensor.defining_polynomial, tensor.jet_length, tensor.creation_precision)
++        else:
++            raise ValueError('unsupported zero-wire tensor description')
++        if shape is not None and item[:2] != shape[:2]:
++            raise ValueError('incompatible tensor entry rings')
++        shape = item if shape is None else (shape[0], shape[1], max(shape[2], item[2]))
++    if shape is None:
++        polynomial = first_irreducible(1) if empty_polynomial is None else empty_polynomial
++        if type(polynomial) is not int or polynomial.bit_length() > 9:
++            raise ValueError('empty-network extension degree must be at most eight')
++        return JetRing(ExtensionRing(precision, polynomial), empty_jet_length)
++    if precision < shape[2]:
++        raise ValueError('target precision precedes a tensor creation')
++    return JetRing(ExtensionRing(precision, shape[0]), shape[1])
++
++
++def _digest(network):
++    data = json.dumps(asdict(network), sort_keys=True, separators=(',', ':'),
++                      ensure_ascii=True).encode('ascii')
++    return sha256(data).hexdigest()
++
++
++def _encoded(value):
++    return [list(coordinate) for coordinate in value]
++
++
++def _same_json(left, right):
++    return (json.dumps(left, sort_keys=True, separators=(',', ':'), allow_nan=False) ==
++            json.dumps(right, sort_keys=True, separators=(',', ':'), allow_nan=False))
++
++
++def make_zero_wire_certificate(network, *, target_precision, max_work=250_000,
++                               timeout_s=10.0, empty_polynomial=None,
++                               empty_jet_length=1):
++    """Make a bounded certificate; raise on resource exhaustion."""
++    budget = _Budget(max_work, timeout_s)
++    budget.tick()
++    ring = _ring(network, target_precision, empty_polynomial, empty_jet_length)
++    factors = []
++    value = ring.one
++    for vertex in network.vertices:
++        budget.tick()
++        factor = vertex.tensor.evaluate((), ring, budget)
++        value = ring.mul(value, factor)
++        factors.append({'side': vertex.side, 'label': vertex.label,
++                        'value': _encoded(factor)})
++    cert = {'schema': SCHEMA, 'precision': target_precision,
++            'defining_polynomial': ring.base.f, 'jet_length': ring.length,
++            'input_description_sha256': _digest(network),
++            'factors': factors, 'result': _encoded(value),
++            'scope': 'FINITE_ZERO_WIRE_LEAF_ONLY'}
++    budget.tick()
++    return {'certificate': cert, 'work_units': budget.used}
++
++
++def _independent_product(left, right, *, precision, polynomial, length):
++    """Multiply jets using direct bivariate convolution and polynomial reduction."""
++    degree = polynomial.bit_length() - 1
++    modulus = 1 << precision
++    output = [[0] * degree for _ in range(length)]
++    for i, a in enumerate(left):
++        for j, b in enumerate(right):
++            if i + j >= length:
++                continue
++            terms = [0] * (2 * degree - 1)
++            for x, avalue in enumerate(a):
++                for y, bvalue in enumerate(b):
++                    terms[x + y] += avalue * bvalue
++            for power in range(2 * degree - 2, degree - 1, -1):
++                coefficient = terms[power]
++                for low in range(degree):
++                    if polynomial >> low & 1:
++                        terms[power - degree + low] -= coefficient
++            for x in range(degree):
++                output[i + j][x] = (output[i + j][x] + terms[x]) % modulus
++    return tuple(tuple(row) for row in output)
++
++
++def check_zero_wire_certificate(network, certificate, *, max_work=250_000,
++                                timeout_s=10.0):
++    """Recheck every input entry and independently multiply the lifted jets."""
++    try:
++        budget = _Budget(max_work, timeout_s)
++        budget.tick()
++        if (type(certificate) is not dict or certificate.get('schema') != SCHEMA or
++                certificate.get('scope') != 'FINITE_ZERO_WIRE_LEAF_ONLY'):
++            raise ValueError('unsupported zero-wire certificate')
++        p = certificate['precision']
++        polynomial = certificate['defining_polynomial']
++        length = certificate['jet_length']
++        ring = _ring(network, p, polynomial, length)
++        if (ring.base.f != polynomial or ring.length != length or
++                certificate.get('input_description_sha256') != _digest(network)):
++            raise ValueError('certificate does not bind to the input ring and description')
++        factors = certificate['factors']
++        if type(factors) is not list or len(factors) != len(network.vertices):
++            raise ValueError('incorrect zero-wire factor count')
++        result = ring.one
++        for vertex, recorded in zip(network.vertices, factors):
++            budget.tick()
++            factor = vertex.tensor.evaluate((), ring, budget)
++            expected = {'side': vertex.side, 'label': vertex.label, 'value': _encoded(factor)}
++            if not _same_json(recorded, expected):
++                raise ValueError('zero-wire factor does not match its source entry')
++            result = _independent_product(result, factor, precision=p,
++                                          polynomial=polynomial, length=length)
++        if not _same_json(certificate.get('result'), _encoded(result)):
++            raise ValueError('zero-wire product differs from the certificate')
++        budget.tick()
++        return {'valid': True, 'status': 'FINITE_ZERO_WIRE_LEAF_VERIFIED',
++                'work_units': budget.used, 'result': result,
++                'asymptotic_runtime_proven': False}
++    except ChildEvaluationBudgetExceeded as exc:
++        return {'valid': False, 'status': 'INCONCLUSIVE_RESOURCE_LIMIT', 'reason': str(exc)}
++    except (TypeError, ValueError, KeyError, IndexError, OverflowError) as exc:
++        return {'valid': False, 'status': 'INVALID_ZERO_WIRE_CERTIFICATE', 'reason': str(exc)}
+diff --git a/VERITAS_ETH_v3.8.2/src/veritas/research/independent_dense_oracle.py b/VERITAS_ETH_v3.8.2/src/veritas/research/independent_dense_oracle.py
+new file mode 100644
+index 0000000..12079c9
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/src/veritas/research/independent_dense_oracle.py
+@@ -0,0 +1,52 @@
++"""Independent bounded oracle for one scalar L=2 Cauchy evaluation.
++
++This is a 2**M table algorithm, not the recursive contraction theorem.
++It is independent of the packet-matrix and weighted-mode implementations.
++"""
++from __future__ import annotations
++
++from .dense_cauchy_testbed import DenseWorkLimit
++
++
++def diagonal_node_four_oracle(a, b, wires, *, max_table_entries=1 << 16,
++                              max_scalar_ops=10_000_000):
++    """Return the original count and F(4) modulo 4 for two Boolean tables.
++
++    At T=4 the L=2 Cauchy matrix is [[-45,-60],[-36,-45]], hence is
++    diagonal with entries 3 modulo 4. For one coordinate the corresponding
++    half-edge matrix has columns (1,0) and (2,3). A direct in-place
++    Kronecker butterfly contracts these matrices against the first table.
++    Input tables are supplied by the caller; the oracle allocates one table
++    of 2**wires entries after its table and operation preflight.
++    """
++    if type(wires) is not int or not 1 <= wires <= 16:
++        raise ValueError('wires must be in 1..16')
++    if (type(max_table_entries) is not int or max_table_entries < 1 or
++            type(max_scalar_ops) is not int or max_scalar_ops < 1):
++        raise ValueError('positive table and scalar-operation caps required')
++    size = 1 << wires
++    if size > max_table_entries:
++        raise DenseWorkLimit('independent oracle table-entry cap exceeded')
++    # Per butterfly: two multiplications and one addition. The two dot
++    # products each charge one multiplication and one addition per entry.
++    ops = 3 * wires * (size // 2) + 4 * size
++    if ops > max_scalar_ops:
++        raise DenseWorkLimit('independent oracle scalar-operation cap exceeded')
++    if len(a) != size or len(b) != size:
++        raise ValueError('both Boolean tables must contain 2**wires entries')
++    if any(type(v) is not int or v not in (0, 1) for table in (a, b) for v in table):
++        raise ValueError('Boolean table entries must be integer zero or one')
++    original = sum(x * y for x, y in zip(a, b))
++    values = list(a)
++    for bit in range(wires):
++        stride = 1 << bit
++        for block in range(0, size, 2 * stride):
++            for offset in range(stride):
++                lo = block + offset
++                zero, one = values[lo], values[lo + stride]
++                values[lo + stride] = (2 * zero + 3 * one) % 4
++    deformed = sum(x * y for x, y in zip(values, b)) % 4
++    return {'original_exact': original, 'deformed_mod_4': deformed,
++            'scalar_ops_upper_count': ops, 'allocated_table_entries': size,
++            'modulus_bits': 2, 'independent_of_mode_generator': True,
++            'subexponential_bound_proven': False}
+diff --git a/VERITAS_ETH_v3.8.2/src/veritas/research/symbolic_cauchy_reference.py b/VERITAS_ETH_v3.8.2/src/veritas/research/symbolic_cauchy_reference.py
+new file mode 100644
+index 0000000..290b1f8
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/src/veritas/research/symbolic_cauchy_reference.py
+@@ -0,0 +1,109 @@
++"""Independent exact rational-polynomial checks for small Cauchy packets.
++
++This module deliberately does not use the packet, extension-ring or mode
++generator implementations. Its exhaustive finite checks are not a proof for
++arbitrary packet sizes or a verification of the recursive complexity bound.
++"""
++from __future__ import annotations
++
++from fractions import Fraction
++from math import comb
++
++
++def _mul(left, right, order):
++    out = [Fraction(0) for _ in range(order)]
++    for i, a in enumerate(left[:order]):
++        for j, b in enumerate(right[:order - i]):
++            out[i + j] += a * b
++    return out
++
++
++def _v2(value):
++    value = Fraction(value)
++    if not value:
++        return None
++    n, d = abs(value.numerator), value.denominator
++    return ((n & -n).bit_length() - 1) - ((d & -d).bit_length() - 1)
++
++
++def _has_weight(value, weight):
++    valuation = _v2(value)
++    return valuation is None or valuation >= weight
++
++
++def _wire_polynomial(packet_size, x, y):
++    roots = tuple(range(-packet_size, packet_size))
++    derivative = 1
++    for root in roots:
++        if root:
++            derivative *= -root
++    coefficients = [Fraction(1)]
++    for root in roots:
++        if root != y - x:
++            coefficients = _mul(coefficients, [Fraction(-root), Fraction(1)],
++                                len(coefficients) + 1)
++    return tuple(value / derivative for value in coefficients)
++
++
++def _shift(coefficients, t, alpha, order):
++    return [sum((coefficients[j] * comb(j, k) * t ** (j - k) * alpha ** k
++                 for j in range(k, len(coefficients))), Fraction(0))
++            for k in range(order)]
++
++
++def audit_small_cauchy_symbolically(packet_size, *, precision=5, order=5):
++    """Check W(0), local geometric modes, and their valuations exactly."""
++    if type(packet_size) is not int or packet_size not in (2, 4):
++        raise ValueError('symbolic reference supports packet sizes 2 or 4')
++    if (type(precision) is not int or not 2 <= precision <= 8 or
++            type(order) is not int or not 1 <= order <= 8):
++        raise ValueError('symbolic precision and jet order must be in 2..8 and 1..8')
++    L = packet_size
++    alpha = 2 * L
++    a = L.bit_length() - 1
++    entries = {(x, y): _wire_polynomial(L, x, y) for x in range(L) for y in range(L)}
++    for (x, y), polynomial in entries.items():
++        if polynomial[0] != int(x == y):
++            raise ArithmeticError('Cauchy polynomial does not reduce to equality at zero')
++    crossings = 0
++    checked_modes = 0
++    checked_coefficients = 0
++    for t in range(-L, L):
++        if t == 0:
++            continue
++        i = (abs(t) & -abs(t)).bit_length() - 1
++        if i >= a:
++            continue
++        block = 1 << (i + 1)
++        for x in range(L):
++            for y in range(L):
++                if (x >> i) & 1 != (y >> i) & 1:
++                    continue
++                y0, j = y % block, y // block
++                denominator = t - y0 + x
++                if not denominator:
++                    raise ArithmeticError('crossing denominator unexpectedly vanishes')
++                base = _shift(entries[x, y0], t, alpha, order)
++                expected = _shift(entries[x, y], t, alpha, order)
++                ratio = [Fraction(block, denominator)]
++                for _ in range(1, order):
++                    ratio.append(-ratio[-1] * Fraction(alpha, denominator))
++                power = [Fraction(1)] + [Fraction(0)] * (order - 1)
++                actual = [Fraction(0)] * order
++                for b in range(precision - 1):
++                    mode = _mul(base, power, order)
++                    if not all(_has_weight(value, b + 1) for value in mode):
++                        raise ArithmeticError('symbolic mode violates its divisibility bound')
++                    actual = [left + right * j ** b for left, right in zip(actual, mode)]
++                    power = _mul(power, ratio, order)
++                    checked_modes += 1
++                    checked_coefficients += order
++                if not all(_has_weight(left - right, precision)
++                           for left, right in zip(expected, actual)):
++                    raise ArithmeticError('symbolic truncated geometric expansion differs')
++                crossings += 1
++    return {'status': 'FINITE_SYMBOLIC_CAUCHY_IDENTITIES_CHECKED',
++            'packet_size': L, 'precision': precision, 'jet_order': order,
++            'equality_entries_checked': len(entries), 'crossings_checked': crossings,
++            'modes_checked': checked_modes, 'mode_coefficients_checked': checked_coefficients,
++            'full_recursive_theorem_proven': False}
+diff --git a/VERITAS_ETH_v3.8.2/tests/test_boolean_count_recovery.py b/VERITAS_ETH_v3.8.2/tests/test_boolean_count_recovery.py
+new file mode 100644
+index 0000000..e169e0c
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/tests/test_boolean_count_recovery.py
+@@ -0,0 +1,27 @@
++import pytest
++
++from veritas.research.eth_arithmetic.boolean_count import recover_boolean_count
++
++
++@pytest.mark.parametrize('n', range(9))
++def test_full_boolean_count_range_is_unique_at_n_plus_one_bits(n):
++    for count in range((1 << n) + 1):
++        assert recover_boolean_count(count, precision=n + 1, num_variables=n) == count
++    # At only n bits, an all-satisfying formula and an unsatisfiable formula
++    # have the same zero residue, so even an observed zero is inconclusive.
++    if n:
++        with pytest.raises(ValueError, match='precision'):
++            recover_boolean_count(0, precision=n, num_variables=n)
++
++
++@pytest.mark.parametrize('residue,precision,n', [
++    (-1, 3, 2), (True, 3, 2), (0, True, 0), (0, 1, False),
++    (0, 0, 0), (0, 3, -1), (8, 3, 2), (5, 4, 2),
++])
++def test_boolean_count_recovery_rejects_invalid_or_impossible_inputs(residue, precision, n):
++    with pytest.raises(ValueError):
++        recover_boolean_count(residue, precision=precision, num_variables=n)
++
++
++def test_large_declared_precision_does_not_require_constructing_the_modulus():
++    assert recover_boolean_count(5, precision=10**9, num_variables=10**8) == 5
+diff --git a/VERITAS_ETH_v3.8.2/tests/test_symbolic_cauchy_reference.py b/VERITAS_ETH_v3.8.2/tests/test_symbolic_cauchy_reference.py
+new file mode 100644
+index 0000000..ffaab4a
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/tests/test_symbolic_cauchy_reference.py
+@@ -0,0 +1,37 @@
++from fractions import Fraction
++
++import pytest
++
++from veritas.research.symbolic_cauchy_reference import (
++    _has_weight, _shift, _wire_polynomial, audit_small_cauchy_symbolically,
++)
++from veritas.research.eth_interpolation.shifted_cauchy import shifted_fraction_coefficients
++from veritas.research.eth_packing.cauchy import cauchy_matrix_polynomials
++
++
++@pytest.mark.parametrize('size', [2, 4])
++@pytest.mark.parametrize('precision,order', [(2, 1), (5, 5), (7, 4)])
++def test_independent_symbolic_geometric_modes(size, precision, order):
++    result = audit_small_cauchy_symbolically(size, precision=precision, order=order)
++    assert result['status'] == 'FINITE_SYMBOLIC_CAUCHY_IDENTITIES_CHECKED'
++    assert result['crossings_checked'] > 0
++    assert result['modes_checked'] == result['crossings_checked'] * (precision - 1)
++    assert not result['full_recursive_theorem_proven']
++
++
++def test_independent_polynomials_match_existing_exact_cauchy_coefficients():
++    for size in (2, 4):
++        existing = cauchy_matrix_polynomials(size)
++        for x in range(size):
++            for y in range(size):
++                independent = _wire_polynomial(size, x, y)
++                assert tuple(existing[x][y]) == independent
++                for t in (-1, 1):
++                    shifted = shifted_fraction_coefficients(existing[x][y], t, 2 * size)
++                    assert _shift(independent, t, 2 * size, len(shifted)) == list(shifted)
++
++
++def test_symbolic_valuation_rejects_a_corrupted_mode_coefficient():
++    assert _has_weight(Fraction(16, 3), 4)
++    assert not _has_weight(Fraction(16, 3) + 1, 4)
++    assert not _has_weight(Fraction(1, 2), 1)
+diff --git a/VERITAS_ETH_v3.8.2/tests/test_v382_dense_testbed.py b/VERITAS_ETH_v3.8.2/tests/test_v382_dense_testbed.py
+index ced01be..4efe0fe 100644
+--- a/VERITAS_ETH_v3.8.2/tests/test_v382_dense_testbed.py
++++ b/VERITAS_ETH_v3.8.2/tests/test_v382_dense_testbed.py
+@@ -5,6 +5,7 @@ import pytest
+ from veritas.research.dense_cauchy_testbed import (
+     DenseWorkLimit, _kernel, experiment, reconstruct_zero)
+ from veritas.research.eth_packing.cauchy import cauchy_matrix_polynomials, evaluate
++from veritas.research.independent_dense_oracle import diagonal_node_four_oracle
+ 
+ 
+ def dense_tables(wires):
+@@ -24,7 +25,10 @@ def test_kernel_matches_independently_constructed_polynomials():
+ def test_dense_weighted_modes_reconstruct_packet_deformation(wires):
+     a, b = dense_tables(wires)
+     result = experiment(a, b, wires, precision=2)
++    independent = diagonal_node_four_oracle(a, b, wires)
+     assert result['original_count_modulus'] == sum(x*y for x,y in zip(a,b)) % 4
++    assert independent['original_exact'] == sum(x*y for x,y in zip(a,b))
++    assert independent['deformed_mod_4'] == result['deformed_value_modulus']
+     assert result['deformed_value_modulus'] == sum(m['contribution'] for m in result['modes']) % 4
+     assert result['retained_structural_modes'] == 1+wires
+     assert result['discarded_structural_modes'] == 2**wires-1-wires
+@@ -86,8 +90,25 @@ def test_zero_reconstruction_fails_closed_at_dense_resource_cap():
+ 
+ def test_ten_wire_hermite_reconstruction_uses_exact_guard_precision():
+     a,b=dense_tables(10)
+-    result=reconstruct_zero(a,b,10,precision=2)
++    result=reconstruct_zero(a,b,10,precision=11)
+     assert result['guard_bits']==17
+-    assert result['input_jet_precision_bits']==19
+-    assert result['reconstructed_at_zero']==result['independent_original_contraction']
++    assert result['input_jet_precision_bits']==28
++    assert result['reconstructed_at_zero']==sum(x*y for x,y in zip(a,b))
+     assert result['independent_jet_evaluation_status']=='BLOCKED_PAIR_CAP'
++
++
++def test_independent_butterfly_matches_direct_half_edge_enumeration():
++    from veritas.research.dense_cauchy_testbed import direct_halfedges
++
++    for wires in (2, 4, 6):
++        a, b = dense_tables(wires)
++        result = diagonal_node_four_oracle(a, b, wires)
++        assert result['deformed_mod_4'] == direct_halfedges(a, b, wires, 4)
++
++
++def test_independent_butterfly_rejects_insufficient_resources():
++    a, b = dense_tables(8)
++    with pytest.raises(DenseWorkLimit, match='table-entry'):
++        diagonal_node_four_oracle(a, b, 8, max_table_entries=255)
++    with pytest.raises(DenseWorkLimit, match='scalar-operation'):
++        diagonal_node_four_oracle(a, b, 8, max_scalar_ops=1)
+diff --git a/VERITAS_ETH_v3.8.2/tests/test_v39_mode_bound.py b/VERITAS_ETH_v3.8.2/tests/test_v39_mode_bound.py
+index bf28257..da9a264 100644
+--- a/VERITAS_ETH_v3.8.2/tests/test_v39_mode_bound.py
++++ b/VERITAS_ETH_v3.8.2/tests/test_v39_mode_bound.py
+@@ -1,10 +1,17 @@
+ from copy import deepcopy
++from collections import Counter
++from itertools import product
++from random import Random
++
++import pytest
+ 
+ from veritas.core.cnf import CNF
+ from veritas.research.tensor import from_cnf
+ from veritas.research.eth_recursion_v30.implicit_children import make_bipartite_edges
+ from veritas.research.eth_packing_v26.implicit import construct_implicit_packing, implicit_mode_source
+-from veritas.research.eth_recursive_contraction_v39 import make_point_modes, audit_point_mode_multiplicity
++from veritas.research.eth_recursive_contraction_v39 import (
++    make_point_modes, audit_point_mode_multiplicity, weighted_tuple_upper_exponent,
++)
+ 
+ 
+ def test_checked_point_modes_satisfy_the_abstract_weighted_tuple_bound():
+@@ -15,9 +22,44 @@ def test_checked_point_modes_satisfy_the_abstract_weighted_tuple_bound():
+     audit = audit_point_mode_multiplicity(cert)
+     assert audit['valid']
+     assert cert['mode_tuple_count'] <= 1 << audit['tuple_count_upper_power_of_two']
++    assert audit['multiplicity_cap_numerator'] == 6 * audit['M']
++    assert audit['multiplicity_cap_denominator'] == audit['D']
+     assert not audit['uniform_packing_proven']
+     assert not audit['total_runtime_proven']
+ 
+     corrupt = deepcopy(cert)
+     corrupt['modes'][0]['weight'] += 1
+     assert not audit_point_mode_multiplicity(corrupt)['valid']
++
++
++def test_rational_tuple_bound_uses_exact_ceiling_even_for_large_integers():
++    for numerator, denominator, precision in (
++            (0, 7, 100), (1, 16, 1), (2, 3, 17),
++            (10**200 + 9, 10**100 + 7, 10**50 + 3)):
++        exponent = weighted_tuple_upper_exponent(numerator, denominator, precision)
++        square_target = 16 * numerator * precision
++        assert exponent * exponent * denominator >= square_target
++        assert exponent == 0 or (exponent - 1) ** 2 * denominator < square_target
++
++
++def test_rational_tuple_bound_against_independent_small_enumerations():
++    random = Random(42069)
++    for _ in range(80):
++        weights = [random.randrange(1, 6) for _ in range(random.randrange(0, 6))]
++        precision = random.randrange(1, 8)
++        denominator = random.randrange(1, 8)
++        cap = max(Counter(weights).values(), default=0)
++        numerator = cap * denominator + random.randrange(denominator)
++        actual = sum(
++            sum(weight * exponent for weight, exponent in zip(weights, beta)) < precision
++            for beta in product(*(range((precision - 1) // weight + 1) for weight in weights))
++        )
++        exponent = weighted_tuple_upper_exponent(numerator, denominator, precision)
++        assert actual <= 1 << exponent
++
++
++@pytest.mark.parametrize('values', [(-1, 1, 1), (1, 0, 1), (1, -1, 1),
++                                    (1, 1, 0), (True, 1, 1), (1, 1.0, 1)])
++def test_rational_tuple_bound_rejects_invalid_hypotheses(values):
++    with pytest.raises(ValueError):
++        weighted_tuple_upper_exponent(*values)
+diff --git a/VERITAS_ETH_v3.8.2/tests/test_v39_point_child_certificate.py b/VERITAS_ETH_v3.8.2/tests/test_v39_point_child_certificate.py
+new file mode 100644
+index 0000000..2e4ee03
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/tests/test_v39_point_child_certificate.py
+@@ -0,0 +1,66 @@
++from copy import deepcopy
++import json
++
++from veritas.core.cnf import CNF
++from veritas.research.tensor import from_cnf
++from veritas.research.eth_arithmetic.gf2 import first_irreducible
++from veritas.research.eth_packing_v26.implicit import construct_implicit_packing, implicit_mode_source
++from veritas.research.eth_recursive_contraction_v39 import (
++    check_point_child_expansion_certificate, contract_point_child_expansion,
++    describe_integer_network, make_point_modes, run_tapered_finite,
++)
++
++
++def fixture():
++    net = from_cnf(CNF.from_lists(2, [[1, 2]]))
++    described = describe_integer_network(net, creation_precision=3,
++                                         defining_polynomial=first_irreducible(3))
++    packing = construct_implicit_packing(described.bipartite_edges(), r=2, a=1)
++    modes = make_point_modes(implicit_mode_source(packing), node=1, precision=5,
++                             extension_degree=3, zeta=(1, 0, 0))
++    return described, modes
++
++
++def test_child_certificate_replays_sizes_valuations_and_parent_identity():
++    described, modes = fixture()
++    proof = contract_point_child_expansion(described, modes)
++    checked = check_point_child_expansion_certificate(described, modes, proof)
++    assert checked['valid']
++    assert check_point_child_expansion_certificate(
++        described, modes, json.loads(json.dumps(proof)))['valid']
++    assert proof['result'] == proof['direct_oracle_result']
++    assert all(item['minimum_observed_valuation'] >= item['weight']
++               for item in proof['mode_valuations'])
++    assert all(sum(child['edge_count'] for child in row['children']) == 2 * described.edges
++               for row in proof['tuples'])
++    assert not proof['all_children_meet_strict_one_eighth']
++    assert not proof['subexponential_runtime_proven']
++
++
++def test_child_certificate_rejects_altered_edge_count_or_identity():
++    described, modes = fixture()
++    proof = contract_point_child_expansion(described, modes)
++    for part in ('edge_count', 'boolean_edge_count', 'result', 'valuation'):
++        bad = deepcopy(proof)
++        if part == 'edge_count':
++            bad['tuples'][0]['children'][0]['edge_count'] += 1
++        elif part == 'boolean_edge_count':
++            original = bad['tuples'][0]['children'][0]['edge_count']
++            if original not in (0, 1):
++                continue
++            bad['tuples'][0]['children'][0]['edge_count'] = bool(original)
++        elif part == 'result':
++            bad['result'] = ((0, 0, 0),) if bad['result'] != ((0, 0, 0),) else ((1, 0, 0),)
++        elif bad['mode_valuations']:
++            bad['mode_valuations'][0]['minimum_observed_valuation'] += 1
++        else:
++            continue
++        assert not check_point_child_expansion_certificate(described, modes, bad)['valid']
++
++
++def test_requested_one_eighth_invariant_fails_closed_for_scaled_example():
++    described, _ = fixture()
++    result = run_tapered_finite(described, target_precision=3,
++                                require_one_eighth_shrink=True, max_work=2_000_000)
++    assert result['status'] == 'INCONCLUSIVE_CHILD_SIZE_INVARIANT'
++    assert 'result' not in result
+diff --git a/VERITAS_ETH_v3.8.2/tests/test_v39_tapered_described.py b/VERITAS_ETH_v3.8.2/tests/test_v39_tapered_described.py
+index 7593108..f183271 100644
+--- a/VERITAS_ETH_v3.8.2/tests/test_v39_tapered_described.py
++++ b/VERITAS_ETH_v3.8.2/tests/test_v39_tapered_described.py
+@@ -4,6 +4,7 @@ from veritas.core.cnf import CNF
+ from veritas.research.tensor import Factor, TensorNetwork
+ from veritas.research.tensor import from_cnf
+ from veritas.research.eth_arithmetic.gf2 import first_irreducible
++from veritas.research.eth_arithmetic.boolean_count import recover_boolean_count
+ from veritas.research.eth_arithmetic.creation_lifts import CreationJetEntry
+ from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
+ from veritas.research.eth_arithmetic.jets import JetRing
+@@ -30,6 +31,8 @@ def test_tapered_recovery_uses_creation_residues_and_checks_exact_count():
+     assert result['recursive_levels_exercised'] == 2
+     assert result['nested_calls'] > 0
+     assert result['maximum_precision_bits'] == 197
++    assert result['finite_child_audit']['child_contractions'] > result['nested_calls']
++    assert result['finite_child_audit']['all_children_meet_strict_one_eighth'] is False
+     assert not result['ledger_complete']
+     assert not result['subexponential_runtime_proven']
+ 
+@@ -52,9 +55,12 @@ def test_tapered_recovery_handles_cross_group_modes_at_nonzero_points():
+                                          defining_polynomial=first_irreducible(3))
+     result = contract_tapered_finite(described, target_precision=3, max_work=2_000_000)
+     assert result['result'] == ((3, 0, 0),)
++    assert recover_boolean_count(result['result'][0][0], precision=3, num_variables=2) == 3
+     assert result['maximum_precision_bits'] == 131
+     assert result['point_modes_generated'] > 0
+     assert result['structurally_zero_tuples'] > 0
++    assert result['finite_child_audit']['minimum_mode_valuation_slack'] >= 0
++    assert result['finite_child_audit']['all_children_meet_strict_one_eighth'] is False
+     charged = result['algorithm_work_units'] + result['independent_oracle_work_units']
+     assert run_tapered_finite(described, target_precision=3, max_work=charged)['status'] == result['status']
+     exhausted = run_tapered_finite(described, target_precision=3, max_work=charged - 1)
+@@ -62,6 +68,17 @@ def test_tapered_recovery_handles_cross_group_modes_at_nonzero_points():
+     assert 'result' not in exhausted
+ 
+ 
++def test_tapered_count_recovers_all_satisfying_assignments_including_unused_variable():
++    cnf = CNF.from_lists(2, [[1, -1]])
++    described = describe_integer_network(from_cnf(cnf), creation_precision=3,
++                                         defining_polynomial=first_irreducible(3))
++    outcome = run_tapered_finite(described, target_precision=3, max_work=2_000_000)
++    assert outcome['status'] == 'FINITE_TAPERED_CHILD_RECOVERY_VERIFIED'
++    assert outcome['result'] == ((4, 0, 0),)
++    assert recover_boolean_count(outcome['result'][0][0], precision=3,
++                                 num_variables=cnf.n) == 4
++
++
+ def test_interpolation_point_limit_returns_inconclusive_without_a_count():
+     net = from_cnf(CNF.from_lists(2, [[1, 2], [-1, -2]]))
+     described = describe_integer_network(net, creation_precision=3,
+diff --git a/VERITAS_ETH_v3.8.2/tests/test_v39_zero_wire.py b/VERITAS_ETH_v3.8.2/tests/test_v39_zero_wire.py
+new file mode 100644
+index 0000000..79a04b6
+--- /dev/null
++++ b/VERITAS_ETH_v3.8.2/tests/test_v39_zero_wire.py
+@@ -0,0 +1,94 @@
++from copy import deepcopy
++
++import pytest
++
++from veritas.core.cnf import CNF
++from veritas.research.tensor import from_cnf
++from veritas.research.eth_arithmetic.boolean_count import recover_boolean_count
++from veritas.research.eth_arithmetic.creation_lifts import CreationJetEntry
++from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
++from veritas.research.eth_arithmetic.gf2 import first_irreducible
++from veritas.research.eth_arithmetic.jets import JetRing
++from veritas.research.eth_recursive_contraction_v39 import (
++    check_zero_wire_certificate, describe_integer_network,
++    make_zero_wire_certificate, run_tapered_finite,
++)
++from veritas.research.eth_recursive_contraction_v39.described_network import (
++    CreatedDenseTensor, DescribedNetwork, DescribedVertex,
++)
++
++
++@pytest.mark.parametrize('n,clauses,expected', [
++    (0, [], 1),
++    (0, [[]], 0),
++    (3, [], 8),
++    (3, [[]], 0),
++    (3, [[], []], 0),
++])
++def test_zero_wire_cnf_counts_and_replayable_certificates(n, clauses, expected):
++    net = from_cnf(CNF.from_lists(n, clauses))
++    assert net.edges == 0
++    described = describe_integer_network(net, creation_precision=n + 1,
++                                         defining_polynomial=first_irreducible(3))
++    result = run_tapered_finite(described, target_precision=n + 1)
++    assert result['status'] == 'FINITE_ZERO_WIRE_LEAF_VERIFIED'
++    assert result['recursive_levels_exercised'] == 0
++    assert result['result'][0][0] == expected
++    assert all(x == 0 for x in result['result'][0][1:])
++    assert recover_boolean_count(result['result'][0][0], precision=n + 1,
++                                 num_variables=n) == expected
++    assert check_zero_wire_certificate(described, result['certificate'])['valid']
++
++
++def test_zero_wire_certificate_rejects_tampering_and_different_source():
++    described = describe_integer_network(from_cnf(CNF.from_lists(2, [])),
++                                         creation_precision=3,
++                                         defining_polynomial=first_irreducible(3))
++    cert = make_zero_wire_certificate(described, target_precision=3)['certificate']
++    other = describe_integer_network(from_cnf(CNF.from_lists(1, [])),
++                                     creation_precision=3,
++                                     defining_polynomial=first_irreducible(3))
++    assert not check_zero_wire_certificate(other, cert)['valid']
++    for mutation in ('factor', 'result', 'boolean_factor', 'digest', 'precision'):
++        bad = deepcopy(cert)
++        if mutation == 'factor':
++            bad['factors'][0]['value'][0][0] ^= 1
++        elif mutation == 'boolean_factor':
++            bad['factors'][0]['value'][0][1] = False
++        elif mutation == 'result':
++            bad['result'][0][0] ^= 1
++        elif mutation == 'digest':
++            bad['input_description_sha256'] = '0' * 64
++        else:
++            bad['precision'] = 2
++        assert not check_zero_wire_certificate(described, bad)['valid']
++
++
++def test_zero_wire_extension_jet_product_and_creation_lift():
++    # U^2 = -U-1.  The first factor captures 7 modulo 8, then is lifted;
++    # it must not be recomputed as -1 modulo 32.
++    source = JetRing(ExtensionRing(3, 0b111), 2)
++    entries = (source.elem([[7, 1], [0, 1]]),
++               source.elem([[1, 1], [2, 0]]))
++    network = DescribedNetwork(0, tuple(
++        DescribedVertex('row', f'row:{i}', (),
++                        CreatedDenseTensor(0, (CreationJetEntry.capture(source, entry),)))
++        for i, entry in enumerate(entries)
++    ))
++    result = run_tapered_finite(network, target_precision=5)
++    # (7+U+UV)(1+U+2V) = 6+7U + (13+2U)V modulo (32,U^2+U+1,V^2).
++    assert result['result'] == ((6, 7), (13, 2))
++    assert check_zero_wire_certificate(network, result['certificate'])['valid']
++
++
++def test_zero_wire_and_oversize_budgets_fail_without_a_result():
++    zero = describe_integer_network(from_cnf(CNF.from_lists(0, [])),
++                                    creation_precision=1,
++                                    defining_polynomial=first_irreducible(1))
++    assert run_tapered_finite(zero, target_precision=1, max_work=1)['status'] == 'INCONCLUSIVE_RESOURCE_LIMIT'
++    too_large = describe_integer_network(from_cnf(CNF.from_lists(8, [list(range(1, 9))])),
++                                         creation_precision=9,
++                                         defining_polynomial=first_irreducible(3))
++    result = run_tapered_finite(too_large, target_precision=9)
++    assert result['status'] == 'INCONCLUSIVE_RESOURCE_LIMIT'
++    assert 'result' not in result

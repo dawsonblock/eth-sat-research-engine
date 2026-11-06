@@ -1,0 +1,2158 @@
+{
+  "allowed_lean_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "canonical_lean_first_step_bound_proven": true,
+  "canonical_run_monotone_under_explicit_transition_hypotheses": true,
+  "claim": "COMPILED_D3_PAIR_VARIANCE_AND_ONE_STEP_SELECTION",
+  "elapsed_seconds": 55.771487,
+  "empty_lean_score_matches_pair_marginals_proven": true,
+  "finite_pair_marginal_variance_bound_proven": true,
+  "fresh_lean_parent_score_equals_raw_potential_proven": true,
+  "full_run_bound_under_score_potential_equalities": true,
+  "global_product_space_variance_bridge_proven": false,
+  "lean_any_distinct_covering_order_port_bound_proven": true,
+  "lean_binary": "lean",
+  "lean_binary_authenticated": false,
+  "lean_binary_path_recorded": false,
+  "lean_binary_slot_model_proven": true,
+  "lean_canonical_raw_score_bound_proven": true,
+  "lean_central_contract_types_checked": true,
+  "lean_child_score_transition_proven": true,
+  "lean_class_offset_address_bijection_proven": true,
+  "lean_computed_padding_model_proven": true,
+  "lean_first_minimum_model_proven": true,
+  "lean_full_padded_offset_to_global_address_proven": true,
+  "lean_generated_class_accounting_proven": true,
+  "lean_generated_group_half_wire_bound_proven": true,
+  "lean_generated_padded_class_bound_proven": true,
+  "lean_generated_run_realized_class_square_bound_proven": true,
+  "lean_generated_symbol_port_bound_proven": true,
+  "lean_global_edge_occurrence_model_bijection_proven": true,
+  "lean_global_pattern_slot_bijection_proven": true,
+  "lean_labeling_freshness_validity_and_completion_proven": true,
+  "lean_numeric_slot_model_bijection_proven": true,
+  "lean_occurrence_rank_model_bijection_proven": true,
+  "lean_packet_slot_bijection_proven": true,
+  "lean_padded_packet_model_bounds_proven": true,
+  "lean_python_builder_refinement_proven": false,
+  "lean_python_pair_aggregation_proven": true,
+  "lean_python_score_equality_proven": true,
+  "lean_python_score_transcription_compiles": true,
+  "lean_python_sorted_order_port_bound_proven": true,
+  "lean_python_sorted_trace_fixture_proven": true,
+  "lean_python_sorted_vertex_order_model_proven": true,
+  "lean_python_word_matches_bridge_proven": true,
+  "lean_r93_contracts_checked": true,
+  "lean_raw_class_to_pattern_bijection_proven": true,
+  "lean_single_coordinate_orientation_proven": true,
+  "lean_slot_bit_split_inverse_proven": true,
+  "lean_toolchain": "leanprover/lean4:v4.35.0",
+  "lean_version_output": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "manuscript_pin_matches": true,
+  "manuscript_sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+  "manuscript_source": "paper/quantitative-contraction.tex",
+  "one_step_concrete_selection_proven": true,
+  "pinned_lean_version_matches": true,
+  "pointwise_collision_potential_identity_proven": true,
+  "proof_manifest_sha256": "3e535a76f7feb930ed1506f21555c4f254426010cc5a8b42cec871050e12366a",
+  "qualification": "FORMAL_FINITE_LEMMA_ONLY",
+  "raw_run_bound_under_child_transition_hypothesis": true,
+  "results": [
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "conditional_pair_sum_average": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "conditional_pair_term_average": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "conditional_score_average": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "constrained_pair_average": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "coordinate_pair_sum_average": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "coordinate_pair_term_average": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "coordinate_score_average": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "countSatisfyingWords": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'countSatisfyingWords' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'constrained_pair_average' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'conditional_pair_term_average' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'conditional_pair_sum_average' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'conditional_score_average' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'coordinate_pair_term_average' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'coordinate_pair_sum_average' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'coordinate_score_average' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "conditional_pair_sum_average": true,
+        "conditional_pair_term_average": true,
+        "conditional_score_average": true,
+        "constrained_pair_average": true,
+        "coordinate_pair_sum_average": true,
+        "coordinate_pair_term_average": true,
+        "coordinate_score_average": true,
+        "countSatisfyingWords": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/ConditionalExpectationAverage.lean",
+      "output": "'countSatisfyingWords' depends on axioms: [propext, Classical.choice, Quot.sound]\n'constrained_pair_average' depends on axioms: [propext, Classical.choice, Quot.sound]\n'conditional_pair_term_average' depends on axioms: [propext, Classical.choice, Quot.sound]\n'conditional_pair_sum_average' depends on axioms: [propext, Classical.choice, Quot.sound]\n'conditional_score_average' depends on axioms: [propext, Classical.choice, Quot.sound]\n'coordinate_pair_term_average' depends on axioms: [propext, Classical.choice, Quot.sound]\n'coordinate_pair_sum_average' depends on axioms: [propext, Classical.choice, Quot.sound]\n'coordinate_score_average' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "eabd9dc90cdcaa3ab1e24790e971bdae10184a389f77e69482d5e8c3a6b8aed7",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "concretePairCoordinate_valid": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "concrete_d3_pair_term_average": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "concrete_d3_pair_terms_average": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "concrete_d3_score_average": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "ordered_overlap_count_le_two_m_delta": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'concretePairCoordinate_valid' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'concrete_d3_pair_term_average' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'concrete_d3_pair_terms_average' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'concrete_d3_score_average' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'ordered_overlap_count_le_two_m_delta' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "concretePairCoordinate_valid": true,
+        "concrete_d3_pair_term_average": true,
+        "concrete_d3_pair_terms_average": true,
+        "concrete_d3_score_average": true,
+        "ordered_overlap_count_le_two_m_delta": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/ConcreteD3ConditionalExpectation.lean",
+      "output": "'concretePairCoordinate_valid' depends on axioms: [propext, Classical.choice, Quot.sound]\n'concrete_d3_pair_term_average' depends on axioms: [propext, Classical.choice, Quot.sound]\n'concrete_d3_pair_terms_average' depends on axioms: [propext, Classical.choice, Quot.sound]\n'concrete_d3_score_average' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ordered_overlap_count_le_two_m_delta' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "ef705b77ba6e8b9e1f90d32cadf54a4f24995f8d06960c79a8f6f838f5794783",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "allOrderedEdgePairs_length": [
+            "propext",
+            "Quot.sound"
+          ],
+          "edgePairAgreementCount_eq": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "edgePairLabelSamples_length": [
+            "propext",
+            "Quot.sound"
+          ],
+          "edgePairScaledAgreement_count_identity": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "edgePairScaledAgreement_eq_one_of_disjoint": [
+            "propext",
+            "Quot.sound"
+          ],
+          "edgePairScaledAgreement_ge_one": [
+            "propext",
+            "Quot.sound"
+          ],
+          "scaledPairSecondMoment_eq_centered_add_mul": [
+            "propext",
+            "Quot.sound"
+          ],
+          "scaled_centered_pair_sum_le": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "scaled_pair_second_moment_sub_square_le": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'edgePairScaledAgreement_ge_one' depends on axioms: [propext, Quot.sound]",
+        "'edgePairScaledAgreement_count_identity' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'edgePairLabelSamples_length' depends on axioms: [propext, Quot.sound]",
+        "'edgePairAgreementCount_eq' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'edgePairScaledAgreement_eq_one_of_disjoint' depends on axioms: [propext, Quot.sound]",
+        "'allOrderedEdgePairs_length' depends on axioms: [propext, Quot.sound]",
+        "'scaledPairSecondMoment_eq_centered_add_mul' depends on axioms: [propext, Quot.sound]",
+        "'scaled_centered_pair_sum_le' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'scaled_pair_second_moment_sub_square_le' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "edgePairAgreementCount_eq": true,
+        "edgePairLabelSamples_length": true,
+        "edgePairScaledAgreement_count_identity": true,
+        "edgePairScaledAgreement_eq_one_of_disjoint": true,
+        "scaledPairSecondMoment_eq_centered_add_mul": true,
+        "scaled_centered_pair_sum_le": true,
+        "scaled_pair_second_moment_sub_square_le": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3VarianceBound.lean",
+      "output": "'edgePairScaledAgreement_ge_one' depends on axioms: [propext, Quot.sound]\n'edgePairScaledAgreement_count_identity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'edgePairLabelSamples_length' depends on axioms: [propext, Quot.sound]\n'edgePairAgreementCount_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'edgePairScaledAgreement_eq_one_of_disjoint' depends on axioms: [propext, Quot.sound]\n'allOrderedEdgePairs_length' depends on axioms: [propext, Quot.sound]\n'scaledPairSecondMoment_eq_centered_add_mul' depends on axioms: [propext, Quot.sound]\n'scaled_centered_pair_sum_le' depends on axioms: [propext, Classical.choice, Quot.sound]\n'scaled_pair_second_moment_sub_square_le' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "2e15e338e68e9b6e2bbb96c5a554bd475caf654b3798c7819693bc8682dd8c25",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "d3_edge_class_square_sum_eq_ordered_collision_count": [
+            "propext"
+          ],
+          "d3_scaled_ordered_collision_count_eq": [
+            "propext"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'d3_edge_class_square_sum_eq_ordered_collision_count' depends on axioms: [propext]",
+        "'d3_scaled_ordered_collision_count_eq' depends on axioms: [propext]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "d3_edge_class_square_sum_eq_ordered_collision_count": true,
+        "d3_scaled_ordered_collision_count_eq": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3PotentialIdentity.lean",
+      "output": "'d3_edge_class_square_sum_eq_ordered_collision_count' depends on axioms: [propext]\n'd3_scaled_ordered_collision_count_eq' depends on axioms: [propext]",
+      "return_code": 0,
+      "sha256": "70e9f9b195ef4537cc66188f3563d0c37bb66ce54544d5134c368681d8560427",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "d3_scaled_class_square_eq_diagonal_plus_unordered": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "initial_unordered_pair_score_le": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "ordered_pair_sum_decomposition": [
+            "propext",
+            "Quot.sound"
+          ],
+          "scaled_pair_second_moment_eq_diagonal_plus_unordered": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'ordered_pair_sum_decomposition' depends on axioms: [propext, Quot.sound]",
+        "'d3_scaled_class_square_eq_diagonal_plus_unordered' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'scaled_pair_second_moment_eq_diagonal_plus_unordered' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'initial_unordered_pair_score_le' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "d3_scaled_class_square_eq_diagonal_plus_unordered": true,
+        "initial_unordered_pair_score_le": true,
+        "ordered_pair_sum_decomposition": true,
+        "scaled_pair_second_moment_eq_diagonal_plus_unordered": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3CollisionBridge.lean",
+      "output": "'ordered_pair_sum_decomposition' depends on axioms: [propext, Quot.sound]\n'd3_scaled_class_square_eq_diagonal_plus_unordered' depends on axioms: [propext, Classical.choice, Quot.sound]\n'scaled_pair_second_moment_eq_diagonal_plus_unordered' depends on axioms: [propext, Classical.choice, Quot.sound]\n'initial_unordered_pair_score_le' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "eb59c479c1a66c018adf7d4daf431868c12074a9dae95b1be57fe027dd0ba80e",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "empty_concrete_score_eq_second_moment": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "empty_concrete_score_le": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "empty_coordinates": [
+            "propext",
+            "Quot.sound"
+          ],
+          "empty_pair_parent_eq": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'empty_coordinates' depends on axioms: [propext, Quot.sound]",
+        "'empty_pair_parent_eq' depends on axioms: [propext, Quot.sound]",
+        "'empty_concrete_score_eq_second_moment' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'empty_concrete_score_le' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "empty_concrete_score_eq_second_moment": true,
+        "empty_concrete_score_le": true,
+        "empty_coordinates": true,
+        "empty_pair_parent_eq": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3InitialScore.lean",
+      "output": "'empty_coordinates' depends on axioms: [propext, Quot.sound]\n'empty_pair_parent_eq' depends on axioms: [propext, Quot.sound]\n'empty_concrete_score_eq_second_moment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'empty_concrete_score_le' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "ffbfaa76a80e1b32a3a1895b4582fdf883f22e7150d11827635353fa30289899",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "exists_candidate_le_of_sum_le": [
+            "propext",
+            "Quot.sound"
+          ],
+          "exists_minimizing_candidate_no_worse_than_parent": [
+            "propext",
+            "Quot.sound"
+          ],
+          "sum_lower_bound_of_all_gt": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'sum_lower_bound_of_all_gt' depends on axioms: [propext, Quot.sound]",
+        "'exists_candidate_le_of_sum_le' depends on axioms: [propext, Quot.sound]",
+        "'exists_minimizing_candidate_no_worse_than_parent' depends on axioms: [propext, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "exists_candidate_le_of_sum_le": true,
+        "exists_minimizing_candidate_no_worse_than_parent": true,
+        "sum_lower_bound_of_all_gt": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/ConditionalExpectationSelection.lean",
+      "output": "'sum_lower_bound_of_all_gt' depends on axioms: [propext, Quot.sound]\n'exists_candidate_le_of_sum_le' depends on axioms: [propext, Quot.sound]\n'exists_minimizing_candidate_no_worse_than_parent' depends on axioms: [propext, Quot.sound]",
+      "return_code": 0,
+      "sha256": "d09a5ca2083fc576757449b85cc23d5fa9437a3da677ae8f88a9aba3f5ad86f8",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "concreteD3CandidateScores_sum": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "concrete_d3_exists_nonincreasing_candidate": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'concreteD3CandidateScores_sum' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'concrete_d3_exists_nonincreasing_candidate' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "concreteD3CandidateScores_sum": true,
+        "concrete_d3_exists_nonincreasing_candidate": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3SelectionBridge.lean",
+      "output": "'concreteD3CandidateScores_sum' depends on axioms: [propext, Classical.choice, Quot.sound]\n'concrete_d3_exists_nonincreasing_candidate' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "6d731f99ab7bf196b022981a959cd524eba76edb53a1037d2e31353953abefc7",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "d3_assign_word_valid": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_canonical_word_mem": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_canonical_word_nonincreasing": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_conditional_canonical_run": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_conditional_trace_exists": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_first_candidate_with_initial_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_first_canonical_candidate_with_initial_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'d3_conditional_trace_exists' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_first_candidate_with_initial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_first_canonical_candidate_with_initial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_assign_word_valid' depends on axioms: [propext, Quot.sound]",
+        "'d3_canonical_word_mem' depends on axioms: [propext, Quot.sound]",
+        "'d3_canonical_word_nonincreasing' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_conditional_canonical_run' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "d3_assign_word_valid": true,
+        "d3_canonical_word_mem": true,
+        "d3_canonical_word_nonincreasing": true,
+        "d3_conditional_canonical_run": true,
+        "d3_first_canonical_candidate_with_initial_bound": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3CanonicalSequence.lean",
+      "output": "'d3_conditional_trace_exists' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_first_candidate_with_initial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_first_canonical_candidate_with_initial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_assign_word_valid' depends on axioms: [propext, Quot.sound]\n'd3_canonical_word_mem' depends on axioms: [propext, Quot.sound]\n'd3_canonical_word_nonincreasing' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_conditional_canonical_run' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "4f2f23c18d7d74344cf363170d89fe55a2d857fc375208a5c6ad2810c637e07e",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "d3_fresh_assign": [
+            "propext"
+          ],
+          "d3_fresh_canonical_run_monotone": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_fresh_empty": [],
+          "d3_fresh_run_initial_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_run_labels_all": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_run_preserves_unlisted": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_run_preserves_valid": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'d3_fresh_assign' depends on axioms: [propext]",
+        "'d3_run_preserves_unlisted' depends on axioms: [propext, Quot.sound]",
+        "'d3_run_preserves_valid' depends on axioms: [propext, Quot.sound]",
+        "'d3_run_labels_all' depends on axioms: [propext, Quot.sound]",
+        "'d3_fresh_canonical_run_monotone' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_fresh_run_initial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "d3_fresh_assign": true,
+        "d3_fresh_canonical_run_monotone": true,
+        "d3_fresh_empty": true,
+        "d3_fresh_run_initial_bound": true,
+        "d3_run_labels_all": true,
+        "d3_run_preserves_unlisted": true,
+        "d3_run_preserves_valid": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3StateInvariants.lean",
+      "output": "'d3_fresh_empty' does not depend on any axioms\n'd3_fresh_assign' depends on axioms: [propext]\n'd3_run_preserves_unlisted' depends on axioms: [propext, Quot.sound]\n'd3_run_preserves_valid' depends on axioms: [propext, Quot.sound]\n'd3_run_labels_all' depends on axioms: [propext, Quot.sound]\n'd3_fresh_canonical_run_monotone' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_fresh_run_initial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "f7f9bdc9dba9ea5538be8da79769976b4eefda1ce9b43333dad9fa097a2a1512",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "classify_mismatch_independent": [
+            "propext"
+          ],
+          "classify_unknown_independent": [
+            "propext"
+          ],
+          "d3_raw_run_initial_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "fresh_pair_parent_eq_raw": [
+            "propext",
+            "Quot.sound"
+          ],
+          "fresh_pair_parent_independent": [
+            "propext",
+            "Quot.sound"
+          ],
+          "fresh_parent_eq_raw_potential": [
+            "propext",
+            "Quot.sound"
+          ],
+          "fresh_parent_score_independent": [
+            "propext",
+            "Quot.sound"
+          ],
+          "fresh_raw_potential_eq_parent": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'classify_unknown_independent' depends on axioms: [propext]",
+        "'classify_mismatch_independent' depends on axioms: [propext]",
+        "'fresh_pair_parent_independent' depends on axioms: [propext, Quot.sound]",
+        "'fresh_parent_score_independent' depends on axioms: [propext, Quot.sound]",
+        "'fresh_pair_parent_eq_raw' depends on axioms: [propext, Quot.sound]",
+        "'fresh_parent_eq_raw_potential' depends on axioms: [propext, Quot.sound]",
+        "'fresh_raw_potential_eq_parent' depends on axioms: [propext, Quot.sound]",
+        "'d3_raw_run_initial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "classify_mismatch_independent": true,
+        "classify_unknown_independent": true,
+        "d3_raw_run_initial_bound": true,
+        "fresh_pair_parent_eq_raw": true,
+        "fresh_pair_parent_independent": true,
+        "fresh_parent_eq_raw_potential": true,
+        "fresh_parent_score_independent": true,
+        "fresh_raw_potential_eq_parent": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3ParentScoreIndependence.lean",
+      "output": "'classify_unknown_independent' depends on axioms: [propext]\n'classify_mismatch_independent' depends on axioms: [propext]\n'fresh_pair_parent_independent' depends on axioms: [propext, Quot.sound]\n'fresh_parent_score_independent' depends on axioms: [propext, Quot.sound]\n'fresh_pair_parent_eq_raw' depends on axioms: [propext, Quot.sound]\n'fresh_parent_eq_raw_potential' depends on axioms: [propext, Quot.sound]\n'fresh_raw_potential_eq_parent' depends on axioms: [propext, Quot.sound]\n'd3_raw_run_initial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "c962a16fec5911970a782b07f5199cf7245f0f2c866660053ad45e9304f0d2de",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "classify_assign_transition": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "concrete_coordinate_assign_transition": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "concrete_pair_coordinate_transitions": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "coordinate_fixed_is_sum": [
+            "propext"
+          ],
+          "coordinate_mismatch_preserved": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "coordinate_rejects_is_constraint": [
+            "propext"
+          ],
+          "coordinate_transition_list": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_raw_canonical_run_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "fresh_candidate_eq_raw_child": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "fresh_pair_candidate_eq_raw_child": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "pair_mismatch_preserved": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "raw_pair_parent_independent": [
+            "propext"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'classify_assign_transition' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'coordinate_fixed_is_sum' depends on axioms: [propext]",
+        "'coordinate_rejects_is_constraint' depends on axioms: [propext]",
+        "'concrete_coordinate_assign_transition' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'coordinate_transition_list' depends on axioms: [propext, Quot.sound]",
+        "'concrete_pair_coordinate_transitions' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'coordinate_mismatch_preserved' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'raw_pair_parent_independent' depends on axioms: [propext]",
+        "'pair_mismatch_preserved' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'fresh_pair_candidate_eq_raw_child' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'fresh_candidate_eq_raw_child' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_raw_canonical_run_bound' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "classify_assign_transition": true,
+        "concrete_coordinate_assign_transition": true,
+        "concrete_pair_coordinate_transitions": true,
+        "coordinate_fixed_is_sum": true,
+        "coordinate_mismatch_preserved": true,
+        "coordinate_rejects_is_constraint": true,
+        "coordinate_transition_list": true,
+        "d3_raw_canonical_run_bound": true,
+        "fresh_candidate_eq_raw_child": true,
+        "fresh_pair_candidate_eq_raw_child": true,
+        "pair_mismatch_preserved": true,
+        "raw_pair_parent_independent": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3ChildTransition.lean",
+      "output": "'classify_assign_transition' depends on axioms: [propext, Classical.choice, Quot.sound]\n'coordinate_fixed_is_sum' depends on axioms: [propext]\n'coordinate_rejects_is_constraint' depends on axioms: [propext]\n'concrete_coordinate_assign_transition' depends on axioms: [propext, Classical.choice, Quot.sound]\n'coordinate_transition_list' depends on axioms: [propext, Quot.sound]\n'concrete_pair_coordinate_transitions' depends on axioms: [propext, Classical.choice, Quot.sound]\n'coordinate_mismatch_preserved' depends on axioms: [propext, Classical.choice, Quot.sound]\n'raw_pair_parent_independent' depends on axioms: [propext]\n'pair_mismatch_preserved' depends on axioms: [propext, Classical.choice, Quot.sound]\n'fresh_pair_candidate_eq_raw_child' depends on axioms: [propext, Classical.choice, Quot.sound]\n'fresh_candidate_eq_raw_child' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_raw_canonical_run_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "84a8ab6190a9efabf206dfd479a75b1c9d9996229d14b88cb4272204c4653b20",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "canonical_run_edges_complete": [
+            "propext",
+            "Quot.sound"
+          ],
+          "complete_classification": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "complete_coordinate": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "complete_pair_mismatch_iff_color": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "complete_pair_term_is_collision": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "complete_pair_unknown_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "complete_raw_potential_eq_class_square": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_generated_run_class_square_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_graph_vertices_cover": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_graph_vertices_nodup": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_realized_run_class_square_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_unique_vertices_mem": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_unique_vertices_nodup": [
+            "propext",
+            "Quot.sound"
+          ],
+          "mismatch_map_false_iff": [
+            "propext",
+            "Quot.sound"
+          ],
+          "unordered_pair_endpoints_mem": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'complete_classification' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'complete_coordinate' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'mismatch_map_false_iff' depends on axioms: [propext, Quot.sound]",
+        "'complete_pair_unknown_zero' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'complete_pair_mismatch_iff_color' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'complete_pair_term_is_collision' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'unordered_pair_endpoints_mem' depends on axioms: [propext, Quot.sound]",
+        "'complete_raw_potential_eq_class_square' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'canonical_run_edges_complete' depends on axioms: [propext, Quot.sound]",
+        "'d3_realized_run_class_square_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_unique_vertices_mem' depends on axioms: [propext, Quot.sound]",
+        "'d3_unique_vertices_nodup' depends on axioms: [propext, Quot.sound]",
+        "'d3_graph_vertices_nodup' depends on axioms: [propext, Quot.sound]",
+        "'d3_graph_vertices_cover' depends on axioms: [propext, Quot.sound]",
+        "'d3_generated_run_class_square_bound' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "canonical_run_edges_complete": true,
+        "complete_classification": true,
+        "complete_coordinate": true,
+        "complete_pair_mismatch_iff_color": true,
+        "complete_pair_term_is_collision": true,
+        "complete_pair_unknown_zero": true,
+        "complete_raw_potential_eq_class_square": true,
+        "d3_generated_run_class_square_bound": true,
+        "d3_graph_vertices_cover": true,
+        "d3_graph_vertices_nodup": true,
+        "d3_realized_run_class_square_bound": true,
+        "d3_unique_vertices_mem": true,
+        "d3_unique_vertices_nodup": true,
+        "mismatch_map_false_iff": true,
+        "unordered_pair_endpoints_mem": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3RealizedLoads.lean",
+      "output": "'complete_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'complete_coordinate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mismatch_map_false_iff' depends on axioms: [propext, Quot.sound]\n'complete_pair_unknown_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'complete_pair_mismatch_iff_color' depends on axioms: [propext, Classical.choice, Quot.sound]\n'complete_pair_term_is_collision' depends on axioms: [propext, Classical.choice, Quot.sound]\n'unordered_pair_endpoints_mem' depends on axioms: [propext, Quot.sound]\n'complete_raw_potential_eq_class_square' depends on axioms: [propext, Classical.choice, Quot.sound]\n'canonical_run_edges_complete' depends on axioms: [propext, Quot.sound]\n'd3_realized_run_class_square_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_unique_vertices_mem' depends on axioms: [propext, Quot.sound]\n'd3_unique_vertices_nodup' depends on axioms: [propext, Quot.sound]\n'd3_graph_vertices_nodup' depends on axioms: [propext, Quot.sound]\n'd3_graph_vertices_cover' depends on axioms: [propext, Quot.sound]\n'd3_generated_run_class_square_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "c28f26cbd9ba954d37f46f3ab9891dde2c6f551cf9e9db7547fee5d7a3fdc608",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "canonical_run_color_indicator_count": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "class_loads_sum": [
+            "propext",
+            "Quot.sound"
+          ],
+          "class_squares_sum": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "generated_class_accounting": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "valid_color_indicator_count": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "valid_word_indicator_count": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'class_loads_sum' depends on axioms: [propext, Quot.sound]",
+        "'class_squares_sum' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'valid_word_indicator_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'valid_color_indicator_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'canonical_run_color_indicator_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'generated_class_accounting' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "canonical_run_color_indicator_count": true,
+        "class_loads_sum": true,
+        "class_squares_sum": true,
+        "generated_class_accounting": true,
+        "valid_color_indicator_count": true,
+        "valid_word_indicator_count": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3ClassAccounting.lean",
+      "output": "'class_loads_sum' depends on axioms: [propext, Quot.sound]\n'class_squares_sum' depends on axioms: [propext, Classical.choice, Quot.sound]\n'valid_word_indicator_count' depends on axioms: [propext, Classical.choice, Quot.sound]\n'valid_color_indicator_count' depends on axioms: [propext, Classical.choice, Quot.sound]\n'canonical_run_color_indicator_count' depends on axioms: [propext, Classical.choice, Quot.sound]\n'generated_class_accounting' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "300d491b50e5432109e531c4c789a3f850ff85118c1346b4ec84d80ab3896ecd",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "d3ZSum_member_le": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_centered_bound_implies_load_bound": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_centered_class_square_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_centered_scalar_identity": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_centered_sum_identity": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_class_load_le_max": [
+            "propext"
+          ],
+          "d3_generated_centered_class_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_generated_class_load_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_generated_packet_count_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_generated_padded_load_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_max_class_load_scaled_bound": [
+            "propext"
+          ],
+          "d3_padded_class_load_bounds": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'d3_centered_scalar_identity' depends on axioms: [propext, Quot.sound]",
+        "'d3_centered_sum_identity' depends on axioms: [propext, Quot.sound]",
+        "'d3ZSum_member_le' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_centered_class_square_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_generated_centered_class_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_centered_bound_implies_load_bound' depends on axioms: [propext, Quot.sound]",
+        "'d3_generated_class_load_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_class_load_le_max' depends on axioms: [propext]",
+        "'d3_max_class_load_scaled_bound' depends on axioms: [propext]",
+        "'d3_padded_class_load_bounds' depends on axioms: [propext, Quot.sound]",
+        "'d3_generated_packet_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_generated_padded_load_bound' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "d3ZSum_member_le": true,
+        "d3_centered_bound_implies_load_bound": true,
+        "d3_centered_class_square_bound": true,
+        "d3_centered_scalar_identity": true,
+        "d3_centered_sum_identity": true,
+        "d3_class_load_le_max": true,
+        "d3_generated_centered_class_bound": true,
+        "d3_generated_class_load_bound": true,
+        "d3_generated_packet_count_bound": true,
+        "d3_generated_padded_load_bound": true,
+        "d3_max_class_load_scaled_bound": true,
+        "d3_padded_class_load_bounds": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3VarianceAlgebra.lean",
+      "output": "'d3_centered_scalar_identity' depends on axioms: [propext, Quot.sound]\n'd3_centered_sum_identity' depends on axioms: [propext, Quot.sound]\n'd3ZSum_member_le' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_centered_class_square_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_generated_centered_class_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_centered_bound_implies_load_bound' depends on axioms: [propext, Quot.sound]\n'd3_generated_class_load_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_class_load_le_max' depends on axioms: [propext]\n'd3_max_class_load_scaled_bound' depends on axioms: [propext]\n'd3_padded_class_load_bounds' depends on axioms: [propext, Quot.sound]\n'd3_generated_packet_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_generated_padded_load_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "98e9e9c31ad8d91a43549cd594600316f739d5e9e9d752d291ec7d9b787c4b95",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "color_symbol_count": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "color_symbol_scaled_count": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_any_order_padded_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_any_order_symbol_port_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_generated_group_half_wire_shrink": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_generated_symbol_port_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_order_audit_fixture": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_symbol_loads_equal_ports": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_symbol_port_bound_from_padded_classes": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "word_symbol_count": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'word_symbol_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'color_symbol_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'color_symbol_scaled_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_symbol_loads_equal_ports' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_symbol_port_bound_from_padded_classes' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_generated_symbol_port_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_generated_group_half_wire_shrink' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_any_order_padded_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_any_order_symbol_port_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_order_audit_fixture' depends on axioms: [propext, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "color_symbol_count": true,
+        "color_symbol_scaled_count": true,
+        "d3_any_order_padded_bound": true,
+        "d3_any_order_symbol_port_bound": true,
+        "d3_generated_group_half_wire_shrink": true,
+        "d3_generated_symbol_port_bound": true,
+        "d3_order_audit_fixture": true,
+        "d3_symbol_loads_equal_ports": true,
+        "d3_symbol_port_bound_from_padded_classes": true,
+        "word_symbol_count": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3SymbolPorts.lean",
+      "output": "'word_symbol_count' depends on axioms: [propext, Classical.choice, Quot.sound]\n'color_symbol_count' depends on axioms: [propext, Classical.choice, Quot.sound]\n'color_symbol_scaled_count' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_symbol_loads_equal_ports' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_symbol_port_bound_from_padded_classes' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_generated_symbol_port_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_generated_group_half_wire_shrink' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_any_order_padded_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_any_order_symbol_port_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_order_audit_fixture' depends on axioms: [propext, Quot.sound]",
+      "return_code": 0,
+      "sha256": "d4bf0354289f5855c8c29ab2d15d60d8e5fd90d9952425b2d8e1fb49848a9963",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "d3_python_order_audit_fixture": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_python_order_packet_count": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_python_order_padded_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_python_ordered_vertices_cover": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_python_ordered_vertices_edge_permutation": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_python_ordered_vertices_membership": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_python_ordered_vertices_nodup": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_python_sorted_ids_perm": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_python_sorted_ids_sorted": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_python_sorted_order_port_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_unique_nat_ids_mem": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_unique_nat_ids_nodup": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'d3_python_order_packet_count' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_python_order_padded_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_unique_nat_ids_mem' depends on axioms: [propext, Quot.sound]",
+        "'d3_unique_nat_ids_nodup' depends on axioms: [propext, Quot.sound]",
+        "'d3_python_sorted_ids_sorted' depends on axioms: [propext, Quot.sound]",
+        "'d3_python_sorted_ids_perm' depends on axioms: [propext, Quot.sound]",
+        "'d3_python_ordered_vertices_nodup' depends on axioms: [propext, Quot.sound]",
+        "'d3_python_ordered_vertices_membership' depends on axioms: [propext, Quot.sound]",
+        "'d3_python_ordered_vertices_cover' depends on axioms: [propext, Quot.sound]",
+        "'d3_python_ordered_vertices_edge_permutation' depends on axioms: [propext, Quot.sound]",
+        "'d3_python_order_audit_fixture' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_python_sorted_order_port_bound' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "d3_python_order_audit_fixture": true,
+        "d3_python_order_packet_count": true,
+        "d3_python_order_padded_bound": true,
+        "d3_python_ordered_vertices_cover": true,
+        "d3_python_ordered_vertices_edge_permutation": true,
+        "d3_python_ordered_vertices_membership": true,
+        "d3_python_ordered_vertices_nodup": true,
+        "d3_python_sorted_ids_perm": true,
+        "d3_python_sorted_ids_sorted": true,
+        "d3_python_sorted_order_port_bound": true,
+        "d3_unique_nat_ids_mem": true,
+        "d3_unique_nat_ids_nodup": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3PythonOrder.lean",
+      "output": "proofs/D3PythonOrder.lean:233:17: warning: This simp argument is unused:\n  d3PythonOrderedVertices\n\nHint: Omit it from the simp argument list.\n  [apply] simp [d3PythonRows, d3PythonColumns, d3PythonSortedIds, d3UniqueNatIds, d3SymbolPortCount, sumBy]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonOrder.lean:233:42: warning: This simp argument is unused:\n  d3PythonRows\n\nHint: Omit it from the simp argument list.\n  [apply] simp [d3PythonOrderedVertices, d3PythonColumns, d3PythonSortedIds, d3UniqueNatIds, d3SymbolPortCount, sumBy]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonOrder.lean:233:56: warning: This simp argument is unused:\n  d3PythonColumns\n\nHint: Omit it from the simp argument list.\n  [apply] simp [d3PythonOrderedVertices, d3PythonRows, d3PythonSortedIds, d3UniqueNatIds, d3SymbolPortCount, sumBy]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonOrder.lean:234:6: warning: This simp argument is unused:\n  d3PythonSortedIds\n\nHint: Omit it from the simp argument list.\n  [apply] simp [d3PythonOrderedVertices, d3PythonRows, d3PythonColumns, d3UniqueNatIds, d3SymbolPortCount, sumBy]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonOrder.lean:234:25: warning: This simp argument is unused:\n  d3UniqueNatIds\n\nHint: Omit it from the simp argument list.\n  [apply] simp [d3PythonOrderedVertices, d3PythonRows, d3PythonColumns, d3PythonSortedIds, d3SymbolPortCount, sumBy]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n'd3_python_order_packet_count' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_python_order_padded_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_unique_nat_ids_mem' depends on axioms: [propext, Quot.sound]\n'd3_unique_nat_ids_nodup' depends on axioms: [propext, Quot.sound]\n'd3_python_sorted_ids_sorted' depends on axioms: [propext, Quot.sound]\n'd3_python_sorted_ids_perm' depends on axioms: [propext, Quot.sound]\n'd3_python_ordered_vertices_nodup' depends on axioms: [propext, Quot.sound]\n'd3_python_ordered_vertices_membership' depends on axioms: [propext, Quot.sound]\n'd3_python_ordered_vertices_cover' depends on axioms: [propext, Quot.sound]\n'd3_python_ordered_vertices_edge_permutation' depends on axioms: [propext, Quot.sound]\n'd3_python_order_audit_fixture' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_python_sorted_order_port_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "41113b7594d5e96813d2e9d2cfc9732e7147cf697fb00302fb5418f2d98d35e0",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "D3PythonScore.coordinate_constraint_wordMatches": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3PythonScore.fixedCount_constraints": [
+            "propext"
+          ],
+          "D3PythonScore.pyCandidateScore_eq": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3PythonScore.pyCoordUnknown_add_fixed": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3PythonScore.pyPairMismatch_eq": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3PythonScore.pyPairMismatch_iff": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3PythonScore.pyPairTerm_eq": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3PythonScore.pyPairUnknown_eq": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3PythonScore.pyPairUnknown_eq_parent": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3PythonScore.py_side_mismatch": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3PythonScore.py_side_unknown": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3PythonScore.sumBy_pythonEdgePairs": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3PythonScore.wordMatches_range_any": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'D3PythonScore.py_side_unknown' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3PythonScore.py_side_mismatch' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3PythonScore.pyPairUnknown_eq' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3PythonScore.pyPairMismatch_eq' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3PythonScore.sumBy_pythonEdgePairs' depends on axioms: [propext, Quot.sound]",
+        "'D3PythonScore.pyCoordUnknown_add_fixed' depends on axioms: [propext, Quot.sound]",
+        "'D3PythonScore.fixedCount_constraints' depends on axioms: [propext]",
+        "'D3PythonScore.coordinate_constraint_wordMatches' depends on axioms: [propext, Quot.sound]",
+        "'D3PythonScore.wordMatches_range_any' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3PythonScore.pyPairMismatch_iff' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3PythonScore.pyPairUnknown_eq_parent' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3PythonScore.pyPairTerm_eq' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3PythonScore.pyCandidateScore_eq' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "D3PythonScore.coordinate_constraint_wordMatches": true,
+        "D3PythonScore.fixedCount_constraints": true,
+        "D3PythonScore.pyCandidateScore_eq": true,
+        "D3PythonScore.pyCoordUnknown_add_fixed": true,
+        "D3PythonScore.pyPairMismatch_eq": true,
+        "D3PythonScore.pyPairMismatch_iff": true,
+        "D3PythonScore.pyPairTerm_eq": true,
+        "D3PythonScore.pyPairUnknown_eq": true,
+        "D3PythonScore.pyPairUnknown_eq_parent": true,
+        "D3PythonScore.py_side_mismatch": true,
+        "D3PythonScore.py_side_unknown": true,
+        "D3PythonScore.sumBy_pythonEdgePairs": true,
+        "D3PythonScore.wordMatches_range_any": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3PythonScoreModel.lean",
+      "output": "proofs/D3PythonScoreModel.lean:180:35: warning: This simp argument is unused:\n  Option.isNone_some\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [pyCompUnknown, classifyEquality, hbne, hbeq, Bool.true_and, Bool.false_eq_true, ite_false]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:197:14: warning: This simp argument is unused:\n  hcondL\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondR, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:197:22: warning: This simp argument is unused:\n  hcondR\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:202:27: warning: This simp argument is unused:\n  hcondR\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hcondL, hw, Bool.false_or, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:202:39: warning: This simp argument is unused:\n  Bool.false_or\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hcondL, hcondR, hw, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:220:16: warning: This simp argument is unused:\n  hcondL\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondR, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:220:24: warning: This simp argument is unused:\n  hcondR\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:225:21: warning: This simp argument is unused:\n  hcondL\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hcondR, hw, Bool.false_or, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:225:41: warning: This simp argument is unused:\n  Bool.false_or\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hcondL, hcondR, hw, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:240:20: warning: This simp argument is unused:\n  hcondL\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondR, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:240:28: warning: This simp argument is unused:\n  hcondR\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:240:36: warning: This simp argument is unused:\n  hw\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hcondR]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:245:28: warning: This simp argument is unused:\n  hcondR\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:245:36: warning: This simp argument is unused:\n  hw\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hcondR]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:254:20: warning: This simp argument is unused:\n  hcondL\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondR, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:254:36: warning: This simp argument is unused:\n  hw\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hcondR]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:261:22: warning: This simp argument is unused:\n  hcondL\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondR, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:261:30: warning: This simp argument is unused:\n  hcondR\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:261:38: warning: This simp argument is unused:\n  hw\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hcondR]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:264:18: warning: This simp argument is unused:\n  beq_self_eq_true\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hxy, Option.isNone_some, Bool.or_self, Bool.false_eq_true, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:303:14: warning: This simp argument is unused:\n  hcondL\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondR, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:303:22: warning: This simp argument is unused:\n  hcondR\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:308:27: warning: This simp argument is unused:\n  hcondR\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hcondL, hw, Bool.false_or, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:308:39: warning: This simp argument is unused:\n  Bool.false_or\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hcondL, hcondR, hw, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:326:16: warning: This simp argument is unused:\n  hcondL\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondR, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:326:24: warning: This simp argument is unused:\n  hcondR\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:326:32: warning: This simp argument is unused:\n  hw\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hcondR]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:331:21: warning: This simp argument is unused:\n  hcondL\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hcondR, hw, Bool.false_or, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:331:41: warning: This simp argument is unused:\n  Bool.false_or\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hcondL, hcondR, hw, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:347:20: warning: This simp argument is unused:\n  hcondL\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondR, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:347:28: warning: This simp argument is unused:\n  hcondR\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:347:36: warning: This simp argument is unused:\n  hw\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hcondR]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:352:28: warning: This simp argument is unused:\n  hcondR\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:352:36: warning: This simp argument is unused:\n  hw\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hcondR]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:361:20: warning: This simp argument is unused:\n  hcondL\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondR, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:361:36: warning: This simp argument is unused:\n  hw\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hcondR]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:368:22: warning: This simp argument is unused:\n  hcondL\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondR, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:368:30: warning: This simp argument is unused:\n  hcondR\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hw]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:368:38: warning: This simp argument is unused:\n  hw\n\nHint: Omit it from the simp argument list.\n  [apply] simp [hcondL, hcondR]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:371:38: warning: This simp argument is unused:\n  Bool.true_or\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hxy, hxy', Bool.false_or, Bool.false_eq_true, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:371:52: warning: This simp argument is unused:\n  Bool.false_or\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hxy, hxy', Bool.true_or, Bool.false_eq_true, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:388:6: warning: This simp argument is unused:\n  Bool.false_eq_true\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [pyCompUnknown, hbne, Bool.false_and, classifyEquality, beq_self_eq_true, ite_true]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:405:6: warning: This simp argument is unused:\n  Bool.false_eq_true\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [pyCompMismatch, hbne, Bool.false_and, classifyEquality, beq_self_eq_true, ite_true,\n    pyCandidateMismatch]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:507:52: warning: This simp argument is unused:\n  ih\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [constraintsFromCoordinates, sumBy]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:579:25: warning: This simp argument is unused:\n  hc\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [wordMatches, hrec, hc0, Bool.false_or]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:585:25: warning: This simp argument is unused:\n  hc\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [wordMatches, hrec, hhead, \u2190 Bool.not_or]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:695:42: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nproofs/D3PythonScoreModel.lean:696:20: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nproofs/D3PythonScoreModel.lean:704:63: warning: `if_false` has been deprecated: Use `ite_false` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335f\u0335a\u0335l\u0335s\u0335e\u0335i\u0332t\u0332e\u0332_\u0332f\u0332a\u0332l\u0332s\u0332e\u0332\nproofs/D3PythonScoreModel.lean:709:22: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nproofs/D3PythonScoreModel.lean:710:64: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nproofs/D3PythonScoreModel.lean:713:22: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nproofs/D3PythonScoreModel.lean:695:42: warning: This simp argument is unused:\n  if_pos rfl\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [concreteD3PairTerm, hbm, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:704:73: warning: This simp argument is unused:\n  reduceIte\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [concreteD3PairTerm, hbmf, Bool.false_eq_true, if_false]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nproofs/D3PythonScoreModel.lean:710:64: warning: This simp argument is unused:\n  if_pos rfl\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [pairTermCandidate, pairTermOfCoordinates, hwm, reduceIte]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n'D3PythonScore.py_side_unknown' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3PythonScore.py_side_mismatch' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3PythonScore.pyPairUnknown_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3PythonScore.pyPairMismatch_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3PythonScore.sumBy_pythonEdgePairs' depends on axioms: [propext, Quot.sound]\n'D3PythonScore.pyCoordUnknown_add_fixed' depends on axioms: [propext, Quot.sound]\n'D3PythonScore.fixedCount_constraints' depends on axioms: [propext]\n'D3PythonScore.coordinate_constraint_wordMatches' depends on axioms: [propext, Quot.sound]\n'D3PythonScore.wordMatches_range_any' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3PythonScore.pyPairMismatch_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3PythonScore.pyPairUnknown_eq_parent' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3PythonScore.pyPairTerm_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3PythonScore.pyCandidateScore_eq' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "21667cf11bb266c5b15156c349bee779b5b2be1ed12639252d7e293167e00d92",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "d3_merge_split_slot": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_merge_unique_components": [
+            "propext"
+          ],
+          "d3_offset_address_bounded": [
+            "propext"
+          ],
+          "d3_offset_address_injective": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_offset_address_inverse": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_split_merge_slot": [
+            "propext"
+          ],
+          "d3_split_slot_lengths": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "d3_symbol_pair_roundtrip": [
+            "propext",
+            "Quot.sound"
+          ],
+          "d3_unequal_pair_orientation": [
+            "propext"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'d3_merge_split_slot' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_split_merge_slot' depends on axioms: [propext]",
+        "'d3_split_slot_lengths' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'d3_offset_address_bounded' depends on axioms: [propext]",
+        "'d3_offset_address_injective' depends on axioms: [propext, Quot.sound]",
+        "'d3_offset_address_inverse' depends on axioms: [propext, Quot.sound]",
+        "'d3_symbol_pair_roundtrip' depends on axioms: [propext, Quot.sound]",
+        "'d3_unequal_pair_orientation' depends on axioms: [propext]",
+        "'d3_merge_unique_components' depends on axioms: [propext]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "d3_merge_split_slot": true,
+        "d3_merge_unique_components": true,
+        "d3_offset_address_bounded": true,
+        "d3_offset_address_injective": true,
+        "d3_offset_address_inverse": true,
+        "d3_split_merge_slot": true,
+        "d3_split_slot_lengths": true,
+        "d3_symbol_pair_roundtrip": true,
+        "d3_unequal_pair_orientation": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3SlotSplit.lean",
+      "output": "'d3_merge_split_slot' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_split_merge_slot' depends on axioms: [propext]\n'd3_split_slot_lengths' depends on axioms: [propext, Classical.choice, Quot.sound]\n'd3_offset_address_bounded' depends on axioms: [propext]\n'd3_offset_address_injective' depends on axioms: [propext, Quot.sound]\n'd3_offset_address_inverse' depends on axioms: [propext, Quot.sound]\n'd3_symbol_pair_roundtrip' depends on axioms: [propext, Quot.sound]\n'd3_unequal_pair_orientation' depends on axioms: [propext]\n'd3_merge_unique_components' depends on axioms: [propext]",
+      "return_code": 0,
+      "sha256": "1185f1a30f8b50e1ac39ac9dfc76c57fd37287b3656f2ae3f1b05f28ca9af398",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "D3PacketBijection.d3_edge_slot_accounting": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3PacketBijection.decode_encode": [
+            "propext"
+          ],
+          "D3PacketBijection.decode_surjective": [
+            "propext"
+          ],
+          "D3PacketBijection.empty_class_still_padded": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3PacketBijection.encode_copy_bounded": [],
+          "D3PacketBijection.encode_decode": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3PacketBijection.encode_injective": [
+            "propext"
+          ],
+          "D3PacketBijection.packet_capacity": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3PacketBijection.packet_count_exact": [
+            "propext"
+          ],
+          "D3PacketBijection.packet_positions_distinct": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3PacketBijection.slot_packet_count": [
+            "propext"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'D3PacketBijection.d3_edge_slot_accounting' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3PacketBijection.decode_encode' depends on axioms: [propext]",
+        "'D3PacketBijection.encode_decode' depends on axioms: [propext, Quot.sound]",
+        "'D3PacketBijection.encode_injective' depends on axioms: [propext]",
+        "'D3PacketBijection.decode_surjective' depends on axioms: [propext]",
+        "'D3PacketBijection.packet_capacity' depends on axioms: [propext, Quot.sound]",
+        "'D3PacketBijection.slot_packet_count' depends on axioms: [propext]",
+        "'D3PacketBijection.packet_count_exact' depends on axioms: [propext]",
+        "'D3PacketBijection.empty_class_still_padded' depends on axioms: [propext, Quot.sound]",
+        "'D3PacketBijection.packet_positions_distinct' depends on axioms: [propext, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "D3PacketBijection.d3_edge_slot_accounting": true,
+        "D3PacketBijection.decode_encode": true,
+        "D3PacketBijection.decode_surjective": true,
+        "D3PacketBijection.empty_class_still_padded": true,
+        "D3PacketBijection.encode_decode": true,
+        "D3PacketBijection.encode_injective": true,
+        "D3PacketBijection.packet_count_exact": true,
+        "D3PacketBijection.packet_positions_distinct": true,
+        "D3PacketBijection.slot_packet_count": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3PacketBijection.lean",
+      "output": "'D3PacketBijection.d3_edge_slot_accounting' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3PacketBijection.encode_copy_bounded' does not depend on any axioms\n'D3PacketBijection.decode_encode' depends on axioms: [propext]\n'D3PacketBijection.encode_decode' depends on axioms: [propext, Quot.sound]\n'D3PacketBijection.encode_injective' depends on axioms: [propext]\n'D3PacketBijection.decode_surjective' depends on axioms: [propext]\n'D3PacketBijection.packet_capacity' depends on axioms: [propext, Quot.sound]\n'D3PacketBijection.slot_packet_count' depends on axioms: [propext]\n'D3PacketBijection.packet_count_exact' depends on axioms: [propext]\n'D3PacketBijection.empty_class_still_padded' depends on axioms: [propext, Quot.sound]\n'D3PacketBijection.packet_positions_distinct' depends on axioms: [propext, Quot.sound]",
+      "return_code": 0,
+      "sha256": "d16f1fffea1b033638b96253705d20f0354e5049bcd46cf0b4566a81856f508e",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "D3GlobalPacketAddress.class_orientation_reconstructs": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3GlobalPacketAddress.class_pattern_orientation_roundtrip": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3GlobalPacketAddress.decode_encode": [
+            "propext"
+          ],
+          "D3GlobalPacketAddress.encode_decode": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3GlobalPacketAddress.equal_symbol_orientation_is_false": [
+            "propext"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'D3GlobalPacketAddress.class_pattern_orientation_roundtrip' depends on axioms: [propext, Quot.sound]",
+        "'D3GlobalPacketAddress.encode_decode' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3GlobalPacketAddress.decode_encode' depends on axioms: [propext]",
+        "'D3GlobalPacketAddress.equal_symbol_orientation_is_false' depends on axioms: [propext]",
+        "'D3GlobalPacketAddress.class_orientation_reconstructs' depends on axioms: [propext, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "D3GlobalPacketAddress.class_orientation_reconstructs": true,
+        "D3GlobalPacketAddress.class_pattern_orientation_roundtrip": true,
+        "D3GlobalPacketAddress.decode_encode": true,
+        "D3GlobalPacketAddress.encode_decode": true,
+        "D3GlobalPacketAddress.equal_symbol_orientation_is_false": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3GlobalPacketAddress.lean",
+      "output": "proofs/D3GlobalPacketAddress.lean:108:14: warning: This simp argument is unused:\n  classOrientation\n\nHint: Omit it from the simp argument list.\n  [apply] simp [patternOfClass, orientationsOfClass, classOfPatternOrientations, ih]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n'D3GlobalPacketAddress.class_pattern_orientation_roundtrip' depends on axioms: [propext, Quot.sound]\n'D3GlobalPacketAddress.encode_decode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3GlobalPacketAddress.decode_encode' depends on axioms: [propext]\n'D3GlobalPacketAddress.equal_symbol_orientation_is_false' depends on axioms: [propext]\n'D3GlobalPacketAddress.class_orientation_reconstructs' depends on axioms: [propext, Quot.sound]",
+      "return_code": 0,
+      "sha256": "73a81076d57663e1d280ee22fa8852e1e1ec929ff6aa295b2702204657120fd8",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "D3OccurrenceRank.decode_encode": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3OccurrenceRank.decode_in_bounds": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3OccurrenceRank.decode_prefix_rank": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3OccurrenceRank.encode_decode": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3OccurrenceRank.encode_exists": [
+            "propext"
+          ],
+          "D3OccurrenceRank.encode_injective": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3OccurrenceRank.encode_spec": [
+            "propext"
+          ],
+          "D3OccurrenceRank.encode_succ": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3OccurrenceRank.prefix_rank_lt_load": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'D3OccurrenceRank.decode_prefix_rank' depends on axioms: [propext, Quot.sound]",
+        "'D3OccurrenceRank.decode_encode' depends on axioms: [propext, Quot.sound]",
+        "'D3OccurrenceRank.encode_spec' depends on axioms: [propext]",
+        "'D3OccurrenceRank.encode_succ' depends on axioms: [propext, Quot.sound]",
+        "'D3OccurrenceRank.encode_decode' depends on axioms: [propext, Quot.sound]",
+        "'D3OccurrenceRank.encode_injective' depends on axioms: [propext, Quot.sound]",
+        "'D3OccurrenceRank.encode_exists' depends on axioms: [propext]",
+        "'D3OccurrenceRank.decode_in_bounds' depends on axioms: [propext, Quot.sound]",
+        "'D3OccurrenceRank.prefix_rank_lt_load' depends on axioms: [propext, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "D3OccurrenceRank.decode_encode": true,
+        "D3OccurrenceRank.decode_in_bounds": true,
+        "D3OccurrenceRank.decode_prefix_rank": true,
+        "D3OccurrenceRank.encode_decode": true,
+        "D3OccurrenceRank.encode_exists": true,
+        "D3OccurrenceRank.encode_injective": true,
+        "D3OccurrenceRank.encode_spec": true,
+        "D3OccurrenceRank.encode_succ": true,
+        "D3OccurrenceRank.prefix_rank_lt_load": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3OccurrenceRank.lean",
+      "output": "'D3OccurrenceRank.decode_prefix_rank' depends on axioms: [propext, Quot.sound]\n'D3OccurrenceRank.decode_encode' depends on axioms: [propext, Quot.sound]\n'D3OccurrenceRank.encode_spec' depends on axioms: [propext]\n'D3OccurrenceRank.encode_succ' depends on axioms: [propext, Quot.sound]\n'D3OccurrenceRank.encode_decode' depends on axioms: [propext, Quot.sound]\n'D3OccurrenceRank.encode_injective' depends on axioms: [propext, Quot.sound]\n'D3OccurrenceRank.encode_exists' depends on axioms: [propext]\n'D3OccurrenceRank.decode_in_bounds' depends on axioms: [propext, Quot.sound]\n'D3OccurrenceRank.prefix_rank_lt_load' depends on axioms: [propext, Quot.sound]",
+      "return_code": 0,
+      "sha256": "4f762ba22b402264ab28eaf389bfbaab92f78a7dd5deea149b45764920a2ae6f",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "D3BinaryBits.bits_length": [
+            "propext"
+          ],
+          "D3BinaryBits.bits_value": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3BinaryBits.value_bits": [
+            "propext"
+          ],
+          "D3BinaryBits.value_bound": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'D3BinaryBits.bits_length' depends on axioms: [propext]",
+        "'D3BinaryBits.value_bits' depends on axioms: [propext]",
+        "'D3BinaryBits.bits_value' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3BinaryBits.value_bound' depends on axioms: [propext, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "D3BinaryBits.bits_length": true,
+        "D3BinaryBits.bits_value": true,
+        "D3BinaryBits.value_bits": true,
+        "D3BinaryBits.value_bound": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3BinaryBits.lean",
+      "output": "'D3BinaryBits.bits_length' depends on axioms: [propext]\n'D3BinaryBits.value_bits' depends on axioms: [propext]\n'D3BinaryBits.bits_value' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3BinaryBits.value_bound' depends on axioms: [propext, Quot.sound]",
+      "return_code": 0,
+      "sha256": "6da3925c77d547c4efe795481ad74de2f2543a20d64f806006d6b159c38b5023",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "D3NumericSlot.decode_bounds": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3NumericSlot.decode_encode": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3NumericSlot.encode_bounds": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3NumericSlot.encode_decode": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3NumericSlot.encode_exists": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3NumericSlot.merge_exists": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3NumericSlot.merge_length": [
+            "propext"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'D3NumericSlot.merge_length' depends on axioms: [propext]",
+        "'D3NumericSlot.merge_exists' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3NumericSlot.encode_exists' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3NumericSlot.decode_encode' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3NumericSlot.encode_decode' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3NumericSlot.encode_bounds' depends on axioms: [propext, Quot.sound]",
+        "'D3NumericSlot.decode_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "D3NumericSlot.decode_bounds": true,
+        "D3NumericSlot.decode_encode": true,
+        "D3NumericSlot.encode_bounds": true,
+        "D3NumericSlot.encode_decode": true,
+        "D3NumericSlot.encode_exists": true,
+        "D3NumericSlot.merge_exists": true,
+        "D3NumericSlot.merge_length": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3NumericSlot.lean",
+      "output": "'D3NumericSlot.merge_length' depends on axioms: [propext]\n'D3NumericSlot.merge_exists' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3NumericSlot.encode_exists' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3NumericSlot.decode_encode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3NumericSlot.encode_decode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3NumericSlot.encode_bounds' depends on axioms: [propext, Quot.sound]\n'D3NumericSlot.decode_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "3fa7c0b860a977cd5e5b8cd6146c852ae4554cd9eb78450f3114623c196e900f",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "D3FullPacketModel.class_orientation_length": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.class_pattern_length": [
+            "propext"
+          ],
+          "D3FullPacketModel.decodeClass_bounds": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.decodeClass_encodeClass": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.decodeEdge_encodeEdge": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.decodedEdge_in_bounds": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.encodeClass_bounds": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.encodeClass_decodeClass": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.encodeClass_exists": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.encodeClass_pattern": [
+            "propext"
+          ],
+          "D3FullPacketModel.encodeEdge_bounds": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.encodeEdge_decodeEdge": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.encodeEdge_exists": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.encodeEdge_injective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.encodeEdge_valid": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.paddedClass_forward": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.paddedClass_reverse": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.padding_has_no_edge": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.pattern_bounded": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.pattern_canonical": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3FullPacketModel.pattern_orientations_inverse": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'D3FullPacketModel.class_orientation_length' depends on axioms: [propext, Quot.sound]",
+        "'D3FullPacketModel.class_pattern_length' depends on axioms: [propext]",
+        "'D3FullPacketModel.encodeClass_exists' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3FullPacketModel.decodeClass_encodeClass' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3FullPacketModel.encodeClass_bounds' depends on axioms: [propext, Quot.sound]",
+        "'D3FullPacketModel.pattern_orientations_inverse' depends on axioms: [propext, Quot.sound]",
+        "'D3FullPacketModel.pattern_canonical' depends on axioms: [propext, Quot.sound]",
+        "'D3FullPacketModel.pattern_bounded' depends on axioms: [propext, Quot.sound]",
+        "'D3FullPacketModel.encodeClass_pattern' depends on axioms: [propext]",
+        "'D3FullPacketModel.encodeClass_decodeClass' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3FullPacketModel.decodeClass_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3FullPacketModel.paddedClass_forward' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3FullPacketModel.paddedClass_reverse' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3FullPacketModel.encodeEdge_exists' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3FullPacketModel.decodeEdge_encodeEdge' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3FullPacketModel.encodeEdge_injective' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3FullPacketModel.encodeEdge_decodeEdge' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'D3FullPacketModel.decodedEdge_in_bounds' depends on axioms: [propext, Quot.sound]",
+        "'D3FullPacketModel.encodeEdge_bounds' depends on axioms: [propext, Quot.sound]",
+        "'D3FullPacketModel.encodeEdge_valid' depends on axioms: [propext, Quot.sound]",
+        "'D3FullPacketModel.padding_has_no_edge' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "D3FullPacketModel.class_orientation_length": true,
+        "D3FullPacketModel.class_pattern_length": true,
+        "D3FullPacketModel.decodeClass_bounds": true,
+        "D3FullPacketModel.decodeClass_encodeClass": true,
+        "D3FullPacketModel.decodeEdge_encodeEdge": true,
+        "D3FullPacketModel.decodedEdge_in_bounds": true,
+        "D3FullPacketModel.encodeClass_bounds": true,
+        "D3FullPacketModel.encodeClass_decodeClass": true,
+        "D3FullPacketModel.encodeClass_exists": true,
+        "D3FullPacketModel.encodeClass_pattern": true,
+        "D3FullPacketModel.encodeEdge_bounds": true,
+        "D3FullPacketModel.encodeEdge_decodeEdge": true,
+        "D3FullPacketModel.encodeEdge_exists": true,
+        "D3FullPacketModel.encodeEdge_injective": true,
+        "D3FullPacketModel.encodeEdge_valid": true,
+        "D3FullPacketModel.paddedClass_forward": true,
+        "D3FullPacketModel.paddedClass_reverse": true,
+        "D3FullPacketModel.padding_has_no_edge": true,
+        "D3FullPacketModel.pattern_bounded": true,
+        "D3FullPacketModel.pattern_canonical": true,
+        "D3FullPacketModel.pattern_orientations_inverse": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3FullPacketModel.lean",
+      "output": "'D3FullPacketModel.class_orientation_length' depends on axioms: [propext, Quot.sound]\n'D3FullPacketModel.class_pattern_length' depends on axioms: [propext]\n'D3FullPacketModel.encodeClass_exists' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3FullPacketModel.decodeClass_encodeClass' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3FullPacketModel.encodeClass_bounds' depends on axioms: [propext, Quot.sound]\n'D3FullPacketModel.pattern_orientations_inverse' depends on axioms: [propext, Quot.sound]\n'D3FullPacketModel.pattern_canonical' depends on axioms: [propext, Quot.sound]\n'D3FullPacketModel.pattern_bounded' depends on axioms: [propext, Quot.sound]\n'D3FullPacketModel.encodeClass_pattern' depends on axioms: [propext]\n'D3FullPacketModel.encodeClass_decodeClass' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3FullPacketModel.decodeClass_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3FullPacketModel.paddedClass_forward' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3FullPacketModel.paddedClass_reverse' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3FullPacketModel.encodeEdge_exists' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3FullPacketModel.decodeEdge_encodeEdge' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3FullPacketModel.encodeEdge_injective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3FullPacketModel.encodeEdge_decodeEdge' depends on axioms: [propext, Classical.choice, Quot.sound]\n'D3FullPacketModel.decodedEdge_in_bounds' depends on axioms: [propext, Quot.sound]\n'D3FullPacketModel.encodeEdge_bounds' depends on axioms: [propext, Quot.sound]\n'D3FullPacketModel.encodeEdge_valid' depends on axioms: [propext, Quot.sound]\n'D3FullPacketModel.padding_has_no_edge' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "8b7b562d88a5b69e07c489e2a3baa762136a000cf11c8606e967979a25993ac0",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "D3PaddedConstruction.absent_count_zero": [
+            "propext"
+          ],
+          "D3PaddedConstruction.constructed_real_edge_contract": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "D3PaddedConstruction.empty_height": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3PaddedConstruction.height_divisible": [],
+          "D3PaddedConstruction.height_lt_max_add_width": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3PaddedConstruction.load_le_max": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3PaddedConstruction.max_le_height": [
+            "propext",
+            "Quot.sound"
+          ],
+          "D3PaddedConstruction.member_le_max": [
+            "propext"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'D3PaddedConstruction.member_le_max' depends on axioms: [propext]",
+        "'D3PaddedConstruction.absent_count_zero' depends on axioms: [propext]",
+        "'D3PaddedConstruction.load_le_max' depends on axioms: [propext, Quot.sound]",
+        "'D3PaddedConstruction.max_le_height' depends on axioms: [propext, Quot.sound]",
+        "'D3PaddedConstruction.height_lt_max_add_width' depends on axioms: [propext, Quot.sound]",
+        "'D3PaddedConstruction.empty_height' depends on axioms: [propext, Quot.sound]",
+        "'D3PaddedConstruction.constructed_real_edge_contract' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "D3PaddedConstruction.absent_count_zero": true,
+        "D3PaddedConstruction.constructed_real_edge_contract": true,
+        "D3PaddedConstruction.empty_height": true,
+        "D3PaddedConstruction.height_divisible": true,
+        "D3PaddedConstruction.height_lt_max_add_width": true,
+        "D3PaddedConstruction.load_le_max": true,
+        "D3PaddedConstruction.max_le_height": true,
+        "D3PaddedConstruction.member_le_max": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3PaddedConstruction.lean",
+      "output": "'D3PaddedConstruction.member_le_max' depends on axioms: [propext]\n'D3PaddedConstruction.absent_count_zero' depends on axioms: [propext]\n'D3PaddedConstruction.load_le_max' depends on axioms: [propext, Quot.sound]\n'D3PaddedConstruction.height_divisible' does not depend on any axioms\n'D3PaddedConstruction.max_le_height' depends on axioms: [propext, Quot.sound]\n'D3PaddedConstruction.height_lt_max_add_width' depends on axioms: [propext, Quot.sound]\n'D3PaddedConstruction.empty_height' depends on axioms: [propext, Quot.sound]\n'D3PaddedConstruction.constructed_real_edge_contract' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "d52ca925e84b53d46ccfeb779b2b3f66d24e008fce65c5443b539f01a962d497",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "d3_canonical_word_first_minimum": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'d3_canonical_word_first_minimum' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "d3_canonical_word_first_minimum": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3FirstMinimum.lean",
+      "output": "proofs/D3FirstMinimum.lean:22:2: warning: `simp` already closes the goal\n\nHint: Use `simp` instead of `simpa`:\n  [apply] simp [d3CanonicalWord, words, score, i]\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`\n'd3_canonical_word_first_minimum' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "60fce126a333380b7fb0b5bf0591b6c4a8d045ed126ab0271c0b6182ddea9bc5",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "r93_constructed_edge_contract": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "r93_first_minimum_contract": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "r93_occupied_packet_contract": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "r93_padded_slot_contract": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "r93_real_edge_packet_contract": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'r93_real_edge_packet_contract' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'r93_occupied_packet_contract' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'r93_padded_slot_contract' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'r93_first_minimum_contract' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'r93_constructed_edge_contract' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "r93_constructed_edge_contract": true,
+        "r93_first_minimum_contract": true,
+        "r93_occupied_packet_contract": true,
+        "r93_padded_slot_contract": true,
+        "r93_real_edge_packet_contract": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3R93Contracts.lean",
+      "output": "'r93_real_edge_packet_contract' depends on axioms: [propext, Classical.choice, Quot.sound]\n'r93_occupied_packet_contract' depends on axioms: [propext, Classical.choice, Quot.sound]\n'r93_padded_slot_contract' depends on axioms: [propext, Classical.choice, Quot.sound]\n'r93_first_minimum_contract' depends on axioms: [propext, Classical.choice, Quot.sound]\n'r93_constructed_edge_contract' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "6b6c010f7d6d0c51f8c65f82b30f14cb5f515a37de29afa94dc5681fe51208d6",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "r9_checked_any_order_port_contract": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "r9_checked_class_offset_contract": [
+            "propext",
+            "Quot.sound"
+          ],
+          "r9_checked_generated_group_contract": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "r9_checked_python_sorted_port_contract": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "r9_checked_slot_roundtrip_contract": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'r9_checked_any_order_port_contract' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'r9_checked_generated_group_contract' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'r9_checked_slot_roundtrip_contract' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'r9_checked_class_offset_contract' depends on axioms: [propext, Quot.sound]",
+        "'r9_checked_python_sorted_port_contract' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "r9_checked_any_order_port_contract": true,
+        "r9_checked_class_offset_contract": true,
+        "r9_checked_generated_group_contract": true,
+        "r9_checked_python_sorted_port_contract": true,
+        "r9_checked_slot_roundtrip_contract": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/D3ExpectedContracts.lean",
+      "output": "'r9_checked_any_order_port_contract' depends on axioms: [propext, Classical.choice, Quot.sound]\n'r9_checked_generated_group_contract' depends on axioms: [propext, Classical.choice, Quot.sound]\n'r9_checked_slot_roundtrip_contract' depends on axioms: [propext, Classical.choice, Quot.sound]\n'r9_checked_class_offset_contract' depends on axioms: [propext, Quot.sound]\n'r9_checked_python_sorted_port_contract' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "return_code": 0,
+      "sha256": "02d72cfe862ad1c79553ed0f4d5e7a53c2a860a8c4f415aa6dc1a973a437a9db",
+      "sorryAx_absent": true
+    },
+    {
+      "axiom_audit": {
+        "duplicates": [],
+        "malformed": [],
+        "missing": [],
+        "passed": true,
+        "reports": {
+          "conditional_group_wire_bound": [
+            "propext",
+            "Quot.sound"
+          ],
+          "conditional_sixty_four_group_load": [
+            "propext",
+            "Quot.sound"
+          ],
+          "conditional_sixty_four_group_shrink": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        "unexpected_axioms": []
+      },
+      "axiom_lines": [
+        "'conditional_group_wire_bound' depends on axioms: [propext, Quot.sound]",
+        "'conditional_sixty_four_group_load' depends on axioms: [propext, Quot.sound]",
+        "'conditional_sixty_four_group_shrink' depends on axioms: [propext, Quot.sound]"
+      ],
+      "central_theorems_present": true,
+      "central_theorems_printed": {
+        "conditional_group_wire_bound": true,
+        "conditional_sixty_four_group_load": true,
+        "conditional_sixty_four_group_shrink": true
+      },
+      "central_theorems_qualified": true,
+      "file": "proofs/ConditionalChildShrink.lean",
+      "output": "'conditional_group_wire_bound' depends on axioms: [propext, Quot.sound]\n'conditional_sixty_four_group_load' depends on axioms: [propext, Quot.sound]\n'conditional_sixty_four_group_shrink' depends on axioms: [propext, Quot.sound]",
+      "return_code": 0,
+      "sha256": "61a649c876a4261c62a25410ac00ac24e05ee8f3edbae93b20c159e4e9f62360",
+      "sorryAx_absent": true
+    }
+  ],
+  "schema": "VERITAS_ETH_R9_CONDITIONAL_EXPECTATION_LEAN_EVIDENCE_V3",
+  "status": "PASS",
+  "theorem_mode_enabled": false,
+  "universal_packing_lemma_proven": false,
+  "universal_python_refinement_proven": false,
+  "unordered_pair_potential_decomposition_proven": true,
+  "validator_sha256": "5f4c5fd078fd4a453ad1237abd3a861c3330591dfe0f6d686b9cb3c7d05e720c"
+}

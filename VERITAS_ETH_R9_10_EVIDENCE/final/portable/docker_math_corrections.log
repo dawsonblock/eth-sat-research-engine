@@ -1,0 +1,1 @@
+{"status": "PASS_INSTALLED_MATHEMATICAL_CORRECTIONS", "python": "3.12.14", "defining_polynomial": 25, "result": [[7, 0, 0, 0]], "source_binding": "b27dc09a233e843d933e329d84df92f3bb94284f7767efff68782a93666e22da", "parent_binding_rejection": true, "boolean_metadata_rejection": true, "leaf_only_status_checked": true, "source_qualified": false}

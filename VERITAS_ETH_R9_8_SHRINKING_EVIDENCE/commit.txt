@@ -1,0 +1,33 @@
+commit fba7ee961fc7d5980a396915b0dae93dda6640e0
+Author:     dawsonblock <dawsonblock@users.noreply.github.com>
+AuthorDate: Thu Nov 5 00:48:13 2026 -0600
+Commit:     dawsonblock <dawsonblock@users.noreply.github.com>
+CommitDate: Thu Nov 5 00:48:13 2026 -0600
+
+    Implement checked shrinking packet recursion for constant-row networks
+
+ docs/R98_ACTUAL_SHRINKING_RECURSION.md             |   98 +
+ examples/r98_shrinking_484.json                    | 9688 ++++++++++++++++++++
+ examples/r98_shrinking_cycle484.json               | 6300 +++++++++++++
+ scripts/validate_r98_shrinking.py                  |  189 +
+ src/veritas/binding/source.json                    |    2 +-
+ .../research/eth_arithmetic/extension_ring.py      |    9 +-
+ .../research/independent_r82/point_mode_oracle.py  |    8 +-
+ .../research/independent_r95/recipe_oracle.py      |   10 +-
+ src/veritas/research/parent_child_r98/__init__.py  |    2 +
+ .../research/parent_child_r98/constructor.py       |   21 +-
+ src/veritas/research/parent_child_r98/engine.py    |   17 +-
+ .../research/parent_child_r98/independent.py       |   11 +-
+ src/veritas/research/parent_child_r98/model.py     |   21 +-
+ .../research/parent_child_r98/shrinking_cli.py     |  179 +
+ .../research/parent_child_r98/shrinking_engine.py  |  413 +
+ .../research/parent_child_r98/shrinking_layout.py  |  316 +
+ .../research/parent_child_r98/shrinking_oracle.py  |  369 +
+ src/veritas/research/source_recursive_engine.py    |    3 +-
+ src/veritas/research/tapered_v4/source_recipes.py  |    8 +-
+ tests/test_shrinking_cli.py                        |  139 +
+ tests/test_shrinking_engine.py                     |  283 +
+ tests/test_shrinking_layout.py                     |  175 +
+ tests/test_shrinking_oracle.py                     |  156 +
+ tests/test_shrinking_precision.py                  |   84 +
+ 24 files changed, 18475 insertions(+), 26 deletions(-)

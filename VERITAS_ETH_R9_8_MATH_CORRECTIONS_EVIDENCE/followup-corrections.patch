@@ -1,0 +1,976 @@
+diff --git a/RELEASE_REPORT_R98.md b/RELEASE_REPORT_R98.md
+index b2c5832..aa72a6e 100644
+--- a/RELEASE_REPORT_R98.md
++++ b/RELEASE_REPORT_R98.md
+@@ -2,6 +2,11 @@
+ 
+ Package: `veritas-eth 3.8.2.post98`. Branch: `dev/r9.8-parent-child`.
+ 
++This is the historical sealed-release report. Follow-up implementation and
++scope corrections are described in
++[R98_MATHEMATICAL_CORRECTIONS.md](docs/R98_MATHEMATICAL_CORRECTIONS.md);
++their fresh evidence is separate from the measurements below.
++
+ R9.8 adds independent construction semantics for actual 64-group children,
+ complete weighted tuple enumeration, lazy packet tensors, and two-level scaled
+ recursion with coefficientwise exact Hermite recovery. The source-active theorem
+@@ -15,7 +20,9 @@ source-regime termination, bit-time bounds or peak-space bounds.
+ * Source packing preflight before construction, followed by actual occurrence,
+   same-slot endpoint, orientation, coverage, packet capacity and group-load checks.
+ * Independent rational geometric-mode enumeration and Cauchy matrix action checks.
+-  The new stream includes **all weighted tuples**, including structural zeros.
++  The new stream includes **all weighted tuples over its zero-reduced basis**,
++  including structural zeros within that basis. It does not enumerate every
++  zero-contributing formal variable in the paper.
+   Oversized complete streams return inconclusive instead of being truncated.
+ * A new production child constructor and a separate checker/materializer that
+   does not call it. The checker verifies inherited ports and creation metadata,
+diff --git a/docs/R98_MATHEMATICAL_CORRECTIONS.md b/docs/R98_MATHEMATICAL_CORRECTIONS.md
+new file mode 100644
+index 0000000..393fc92
+--- /dev/null
++++ b/docs/R98_MATHEMATICAL_CORRECTIONS.md
+@@ -0,0 +1,162 @@
++# R9.8 follow-up mathematical corrections
++
++The first review corrected the packet-index bound in commit `278ec33`. This
++follow-up reviews that change and the R9.8 implementation beneath it. The
++manuscript stays pinned at `4eaee87548250b2682affda7d05d947c05554bae`; none of
++its formulas or source bytes are changed. New evidence is written to
++`../VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/`.
++
++## Ring identity must survive recursion
++
++The point-mode adapter previously passed only the extension degree. Its
++underlying generator chose the first irreducible polynomial of that degree,
++even when the parent's tensor references specified another valid polynomial.
++The independent checker then rejected the valid call as a ring mismatch.
++
++For example, the binary encodings 19 and 25 represent `U^4+U+1` and
++`U^4+U^3+1`. Both are irreducible modulo two, but the coordinate reductions
++of `U^4` are respectively `-U-1` and `-U^3-1`. Equal coordinate vectors do
++not specify the same arithmetic merely because the degrees agree. One cannot
++relabel tensor coordinates between these presentations without an explicit
++map that also respects their creation-time representatives.
++
++`make_point_modes` now accepts an explicit defining polynomial, validates its
++degree and irreducibility, and uses it in both construction and replay.
++R9.8 passes the parent's polynomial. The legacy default remains available
++for callers that have not already specified a ring. Regression tests use
++nonscalar interpolation points in multiple alternative irreducible rings,
++nonzero cross modes, full weighted tuple sums and complete Hermite recovery.
++The replay checker preserves resource-limit refusals from source validation;
++missing or null polynomial metadata still fails validation.
++
++## Child ancestry and canonical integer metadata
++
++`ChildGraph.as_parent` previously accepted a different parent object and
++borrowed its root context without checking the recorded parent digest. It
++now requires that digest to match, depth to increase by one, the defining
++polynomial to remain unchanged, and target precision to increase strictly.
++These checks bind the recursive call; the separate child verifier still
++establishes the actual port and coefficient correspondence.
++
++Python treats `False == 0` and `True == 1`. The old metadata comparisons
++therefore admitted Boolean half-edge indices, vertex identities and point
++metadata in place of the specified integers. Child records now reject those
++values, duplicate half-edge identities and noncanonical order at construction.
++The packet audit and mode verifier likewise check arithmetic metadata types.
++These are fixes to the executable representation, not new algebraic axioms.
++
++## Correct packet bound and conditional child shrink
++
++Let a packet pattern have a coordinates, of which k have equal symbols.
++It contains `2^(a-k)` orientations, with `2^k` copies per directed class.
++If each class has padded height H, the exact range is
++
++\[
++ 0\le j<H/2^k.
++\]
++
++The total number of packets is
++
++\[
++ H\left(r/2+\binom r2\right)^a=Hr^{2a}/2^a.
++\]
++
++The earlier fix agrees with `D3FullPacketModel.encodeClass_bounds` and
++`D3FinitePacketDomain.addresses`. The six-edge counterexample remains a
++regression. That check compares independently evaluated generated children
++with the half-edge point oracle at zeta=0; it does not claim an end-to-end
++six-edge recursive run or source eligibility.
++
++For group g, actual child wires satisfy `M_g=R_g+C_g`. The paper's separate
++per-side hypotheses `R_g,C_g <= 3M/64` are **sufficient** to derive
++`M_g <= 3M/32 < M/8`. They are not necessary for an arbitrary individual
++child to satisfy that numerical shrink bound. Source packing still requires
++the stated per-side conditions. Finite fixtures do not inherit them by default.
++
++## Complete tuples over the specified basis
++
++The mode generator removes zero modes before enumerating exponents. If all
++target coefficients of a mode vanish at the working precision, the row
++polynomial is independent of it and every positive-exponent coefficient is
++zero. If its source form is identically zero, every positive power of that
++form is zero. Empty packets and empty target groups are covered by the same
++argument. The zero exponent always contributes a factor one.
++
++Projecting away those coordinates therefore preserves the complete sum.
++R9.8 enumerates every tuple of weight below `p_t` on the retained basis,
++including structural zeros; no tuple is removed to satisfy a work budget.
++It does not enumerate every formal tuple of the paper's larger basis.
++Certificates and reports now bind this distinction explicitly:
++
++- `mode_basis_scope = ZERO_REDUCED_GEOMETRIC_POINT_MODES`
++- `tuple_domain = ALL_WEIGHTED_TUPLES_OVER_RETAINED_MODES`
++- `paper_formal_mode_domain_enumerated = false`
++
++A retained mode of weight w has target coefficients divisible by `2^w`.
++Consequently a beta coefficient is divisible by `2^(sum w beta)`, which
++justifies only the stated high-weight cutoff. Exact zero-mode reduction and
++high-weight divisibility are distinct reasons for omission.
++
++Leaf-only calls now return `PASS_FINITE_SCALED_LEAF`, with
++`parent_child_recursion_performed = false`. Calls stopped at depth zero or
++with no edges do not count as executed parent-to-child identities. In
++particular, zero wires do not imply the unit value when isolated tensor
++scalars remain.
++
++## Local source checks do not certify descendants
++
++The preflight report now explicitly says `CURRENT_NODE_NUMERICS_ONLY`, with
++actual packing and descendant schedules unverified. It separately records
++whether the node is above the leaf cutoff and whether u is positive.
++
++The review's exact example survives: at `s=M=2^131080`, the root has `u_0=1`
++and meets all three packing inequalities. A balanced abstract matching can
++produce children of size `M/32`. Such a child exceeds `ceil(s/362)`, but
++`u_1=0`. The existing path preflight correctly refuses the child; a regression
++now checks that result. This is a numeric/abstract example, not a constructed
++network at that scale, and not a contradiction of the paper's sufficiently
++large-size theorem. Source qualification must cover every active call.
++
++## Precision and the parent-to-child identity
++
++For each packet P and group g, let `R_(P,g)` be the product of its row
++affine factors, and define `R_P = product_g R_(P,g)`. Let `I_g` be the
++product of the inherited tensors in group g, including isolated scalars.
++The packet tensor is the coefficient of the beta exponents restricted to
++the modes targeting `(P,g)`, multiplied by the beta powers of the modes
++sourced there. Each mode has one target and one source; every X/Y half-edge
++has one group owner. Distributivity then separates the sums over group bits
++and gives the product of 64 child contractions for each beta. The geometric
++decomposition and weighted divisibility give the full point identity modulo
++`2^p_t`. Actual packing loads are a separate premise for shrinkage.
++
++The creation-lift rule is a map of coordinate representatives, not a ring
++homomorphism: reduce the entry recipe at its original creation precision,
++then reuse those representatives at higher precision in the **same** ring
++presentation. For example, `1-3 mod 4` is represented by 2, and inheriting
++it modulo 512 still gives 2, rather than the recomputed value 510.
++
++For tapered Hermite recovery, set
++
++\[
++ Q_t(z)=[F(t+\alpha z)/E_t(t+\alpha z)]_{<q_t}.
++\]
++
++The reciprocal series has integral coefficients. Its j-th quotient
++coefficient is multiplied by `E_t(0)(-t/alpha)^j`, so the sufficient local
++loss is
++
++\[
++ \max\{0,-v_2(E_t(0))+(a+1-i)(q_t-1)\}
++ \le 6hD_t+4M(a+1).
++\]
++
++Thus the prescribed `p_t = p+8hD_t+8M(a+1)` is sufficient coefficientwise.
++This is a sufficient bound, not a claim of minimal necessary precision.
++No precision formula was changed. The independent rational audit from the
++first review is rerun as corroboration; it is not promoted to a universal
++executable proof.
++
++The source executor remains unqualified, and bit-time and peak-space bounds
++remain `COMPLEXITY_NOT_ESTABLISHED`. The separate finite boundary/elimination
++engine remains the applicable exact route for practical 12–16-edge cases.
+diff --git a/docs/R98_PARENT_CHILD_IMPLEMENTATION.md b/docs/R98_PARENT_CHILD_IMPLEMENTATION.md
+index 7374409..93af38b 100644
+--- a/docs/R98_PARENT_CHILD_IMPLEMENTATION.md
++++ b/docs/R98_PARENT_CHILD_IMPLEMENTATION.md
+@@ -1,6 +1,7 @@
+ # R9.8 bounded parent-to-child implementation
+ 
+-R9.8 implements the parent/child interface, a complete weighted tuple stream,
++R9.8 implements the parent/child interface, a complete weighted tuple stream
++over the independently checked basis after zero modes are removed,
+ 64 explicit group children, independent child semantics, and bounded scaled
+ recursion with exact Hermite recovery. It does not qualify source-active
+ recursion. The 12/14/16-edge boundary algorithm remains a separate finite method.
+@@ -29,6 +30,9 @@ and `HermiteRecoveryCertificate`. The implementation resides in
+ `parent_child_r98/`. `from_described` explicitly converts the finite table port
+ convention; `from_source` preserves `SourceContext` and `SourceNode` constraints.
+ The source and finite network classes remain distinct.
++The supplied defining polynomial is retained in mode generation as well as
++tensor evaluation. An equal extension degree does not permit replacing it
++with the first irreducible polynomial of that degree.
+ 
+ Every child binds its parent, layout, modes, exact source and used schedules,
+ depth, node, extension point, beta, group, inherited tensor references, packet
+@@ -36,18 +40,31 @@ recipes, original creation precisions, and target precision. Its edge map record
+ Y/X separately, parent edge, packet, slot, original vertex, and original port
+ position. Canonical serialization verifies its content digest. Hash equality
+ does not replace semantic verification.
++Child-to-parent adaptation checks the parent content digest, depth increment,
++unchanged defining polynomial and strictly increased precision. Half-edge,
++inherited-vertex and packet metadata use canonical natural-number indices;
++Booleans cannot substitute for integer indices.
+ 
+ The canonical packer integrates `eth_packing_v26`, the existing paper packing
+ checker, and a separate occurrence-based audit of actual slots, labels,
+ orientation, coverage, capacity, padded packet count and both group loads.
+ Source requests check all three source inequalities before invoking the packer.
++For a pattern with k equal-symbol coordinates, the packet-index bound is
++`H_pad / 2^k`. Current-node preflight explicitly leaves actual packing and
++descendant schedules unverified; passing root numerics does not qualify a path.
+ The `scaled_singletons` layout is a deliberately experimental fixture with all
+ vertices in group zero and one real slot per packet. It fails source packing and
+ shrink conditions; it is never admitted as a source layout.
+ 
+ Modes are built by the existing geometric evaluator. A separate enumerator uses
+ rational Cauchy polynomials and independent quotient-ring arithmetic, checks the
+-entire named basis, and checks its full matrix action. Weighted exponents are
++entire retained basis, and checks its full matrix action. Modes with a zero
++source form or all-zero target coefficients are removed: every positive
++exponent for such a mode contributes zero. Empty padded packets also contribute
++only their zero-exponent term. Reports identify this as
++`ZERO_REDUCED_GEOMETRIC_POINT_MODES`, with tuple domain
++`ALL_WEIGHTED_TUPLES_OVER_RETAINED_MODES`; they do not claim to enumerate the
++paper's full formal mode domain. Weighted exponents on the retained basis are
+ enumerated without structural/Hall pruning. An independent generating-function
+ count plus strict order and membership checks establishes finite coverage.
+ Valuation checks justify omitting terms of total weight at least the point
+@@ -92,7 +109,8 @@ python scripts/validate_r98_parent_child.py --output ../VERITAS_ETH_R9_8_EVIDENC
+ 
+ The installed CLI is `veritas-r98`. Input files specify integer tensor tables,
+ ordered ports, sides, edge count, root size, precision and extension degree.
+-The two-edge point contains 245 weighted tuples at precision 245, including
++The two-edge point contains 245 weighted tuples over its retained basis at
++precision 245, including
+ structurally zero contributions, and 15,680 group contractions. Larger complete
+ tuple sets are refused rather than silently replaced with a pruned stream.
+ 
+@@ -128,3 +146,7 @@ constructed networks. `SOURCE_RECURSION_CONDITIONALLY_VERIFIED` is not emitted.
+ tuples, calls, work and cooperative deadlines; they are not hard OS memory limits
+ or complete bit-cost accounting. Saved recovery verification checks values and
+ the rational functional; it does not certify a claimed recursive execution trace.
++
++The follow-up corrections and their mathematical premises are recorded in
++[R98_MATHEMATICAL_CORRECTIONS.md](R98_MATHEMATICAL_CORRECTIONS.md). Historical
++release results do not substitute for fresh evidence for that correction branch.
+diff --git a/scripts/validate_r98_parent_child.py b/scripts/validate_r98_parent_child.py
+index 80a6216..ae60fa2 100644
+--- a/scripts/validate_r98_parent_child.py
++++ b/scripts/validate_r98_parent_child.py
+@@ -74,6 +74,11 @@ def run(output):
+             actual_packing=audit_layout(p, layout),
+             point_certificate_sha256=sha256(certificate_path.read_bytes()).hexdigest(),
+             mode_completeness="INDEPENDENT_BASIS_AND_CAUCHY_ACTION",
++            mode_basis_scope=point["mode_basis_scope"],
++            tuple_domain=point["tuple_domain"],
++            paper_formal_mode_domain_enumerated=point[
++                "paper_formal_mode_domain_enumerated"
++            ],
+             tuple_completeness="COMPLETE_WEIGHTED_STREAM",
+             child_count_per_tuple=64,
+             creation_precision_inheritance=True,
+diff --git a/src/veritas/binding/source.json b/src/veritas/binding/source.json
+index 4eccd8f..463618e 100644
+--- a/src/veritas/binding/source.json
++++ b/src/veritas/binding/source.json
+@@ -1,4 +1,4 @@
+ {
+   "schema": "VERITAS_INSTALLED_SOURCE_V1",
+-  "sha256": "8325c93fccb8d37b99f85f79ee6e6b804c04e4c7cf9ae5b79e1bd821f5e1e67e"
++  "sha256": "02b315ad0c6698f82442a5db09cf2213460efc036c94189d3b9d228815d53e84"
+ }
+diff --git a/src/veritas/research/eth_recursive_contraction_v39/point_modes.py b/src/veritas/research/eth_recursive_contraction_v39/point_modes.py
+index af5a011..77b7c71 100644
+--- a/src/veritas/research/eth_recursive_contraction_v39/point_modes.py
++++ b/src/veritas/research/eth_recursive_contraction_v39/point_modes.py
+@@ -49,7 +49,7 @@ def _source_check(source, *, _source_validation='canonical', _source_work=1_000_
+ 
+ 
+ def _inputs(source, node, precision, extension_degree, zeta, max_parent_wires=6,
+-            *, _source_validation='canonical', _source_work=1_000_000):
++            *, defining_polynomial=None, _source_validation='canonical', _source_work=1_000_000):
+     _source_check(source, _source_validation=_source_validation, _source_work=_source_work)
+     if any(type(x) is not int for x in (node, precision, extension_degree)):
+         raise ValueError('integer point-mode parameters required')
+@@ -65,7 +65,12 @@ def _inputs(source, node, precision, extension_degree, zeta, max_parent_wires=6,
+         raise ValueError('finite point-mode parameter limit exceeded')
+     if not (-L <= node < L and node != 0 and _v2(node) < source['a']):
+         raise ValueError('invalid active node')
+-    ring = ExtensionRing(precision, first_irreducible(extension_degree))
++    if defining_polynomial is None:
++        defining_polynomial = first_irreducible(extension_degree)
++    if (type(defining_polynomial) is not int or
++            defining_polynomial.bit_length() != extension_degree + 1):
++        raise ValueError('extension polynomial degree mismatch')
++    ring = ExtensionRing(precision, defining_polynomial)
+     if (not isinstance(zeta, (tuple, list)) or len(zeta) != ring.e or
+             any(type(v) is not int or not 0 <= v < ring.modulus for v in zeta)):
+         raise ValueError('interpolation point is not a canonical extension-ring value')
+@@ -82,11 +87,17 @@ def _reference_cauchy_value(L, node, ring, x, y, zeta):
+ 
+ def make_point_modes(source, *, node=1, precision=5, extension_degree=3,
+                      zeta=None, max_modes=240, max_tuples=6000, max_parent_wires=6,
+-                     _tuple_work=None, _source_validation='canonical', _source_work=1_000_000):
+-    """Generate a checked finite geometric decomposition at one point."""
++                     defining_polynomial=None, _tuple_work=None,
++                     _source_validation='canonical', _source_work=1_000_000):
++    """Generate modes in the supplied creation ring, or the legacy default ring.
++
++    Equal extension degrees do not identify coordinate representations. When
++    tensors already exist, their defining polynomial must be retained exactly.
++    """
+     if zeta is None:
+         zeta = (0,) * extension_degree
+     ring, zeta = _inputs(source, node, precision, extension_degree, zeta, max_parent_wires,
++                         defining_polynomial=defining_polynomial,
+                          _source_validation=_source_validation, _source_work=_source_work)
+     if type(max_modes) is not int or not 0 <= max_modes <= 240:
+         raise ValueError('invalid mode budget')
+@@ -192,7 +203,9 @@ def check_point_modes(cert, *, max_parent_wires=6, _tuple_work=None,
+         source, node, p, degree = (cert['d3_certificate'], cert['node'],
+                                     cert['precision'], cert['extension_degree'])
+         ring, zeta = _inputs(source, node, p, degree, cert['zeta'], max_parent_wires,
++                             defining_polynomial=cert.get('irreducible_polynomial'),
+                              _source_validation=_source_validation, _source_work=_source_work)
++        # Preserve source-budget refusal precedence; omission still fails here.
+         if cert['irreducible_polynomial'] != ring.f:
+             raise ValueError('extension polynomial mismatch')
+         reference = {}
+@@ -225,6 +238,7 @@ def check_point_modes(cert, *, max_parent_wires=6, _tuple_work=None,
+             raise ValueError('invalid structural tuple count')
+         expected = make_point_modes(source, node=node, precision=p,
+                                     extension_degree=degree, zeta=zeta,
++                                    defining_polynomial=ring.f,
+                                     max_tuples=max(6000, structural_count),
+                                     max_parent_wires=max_parent_wires,
+                                     _tuple_work=_tuple_work,
+diff --git a/src/veritas/research/parent_child_r98/engine.py b/src/veritas/research/parent_child_r98/engine.py
+index 72562e5..0d45849 100644
+--- a/src/veritas/research/parent_child_r98/engine.py
++++ b/src/veritas/research/parent_child_r98/engine.py
+@@ -52,7 +52,14 @@ from .model import (
+     canonical,
+     decode,
+ )
+-from .modes import TupleChecker, build_modes, verify_modes, weighted_tuples
++from .modes import (
++    MODE_BASIS_SCOPE,
++    TUPLE_DOMAIN,
++    TupleChecker,
++    build_modes,
++    verify_modes,
++    weighted_tuples,
++)
+ from .packing import audit_layout, construct_layout, preconditions
+ 
+ 
+@@ -87,6 +94,9 @@ def _point_header(parent, layout, modes):
+         "modes_digest": modes.content_digest,
+         "precision": modes.certificate["precision"],
+         "semantics": parent.semantics.value,
++        "mode_basis_scope": MODE_BASIS_SCOPE,
++        "tuple_domain": TUPLE_DOMAIN,
++        "paper_formal_mode_domain_enumerated": False,
+         "paper": source_registry(),
+         "source_qualified": False,
+         "implementation_source_sha256": source_binding()["digest"],
+@@ -94,7 +104,7 @@ def _point_header(parent, layout, modes):
+ 
+ 
+ def evaluate_point(parent, layout, modes, *, budget, contractor=None, capture=False):
+-    verify_modes(parent, layout, modes, budget=budget)
++    mode_report = verify_modes(parent, layout, modes, budget=budget)
+     if parent.semantics is not Semantics.FINITE_SCALED_EXPERIMENT:
+         raise Refusal(
+             "INCONCLUSIVE_SOURCE_REFINEMENT",
+@@ -172,6 +182,7 @@ def evaluate_point(parent, layout, modes, *, budget, contractor=None, capture=Fa
+         total,
+         cert,
+         {
++            **mode_report,
+             "status": "PASS_FINITE_SCALED_PARENT_CHILD_IDENTITY",
+             "tuples": count,
+             "child_count_per_tuple": 64,
+@@ -190,7 +201,7 @@ def verify_point_certificate(
+     """Consume submitted values using independent child generation and arithmetic."""
+     budget = Budget(policy)
+     try:
+-        verify_modes(parent, layout, modes, budget=budget)
++        mode_report = verify_modes(parent, layout, modes, budget=budget)
+         data = decode(certificate.payload, cap=policy.max_certificate_bytes)
+         header = _point_header(parent, layout, modes)
+         if set(data) != set(header) | {"terms", "result"} or any(
+@@ -237,6 +248,7 @@ def verify_point_certificate(
+             raise ValueError("submitted full point identity mismatch")
+         budget.tick(ar.used)
+         return {
++            **mode_report,
+             "status": "PASS_FINITE_SCALED_PARENT_CHILD_IDENTITY",
+             "result": total,
+             "tuples": checker.seen,
+@@ -439,7 +451,10 @@ def contract_scaled(
+ 
+         value = visit(parent)
+         return {
+-            "status": "PASS_FINITE_SCALED_PARENT_CHILD_IDENTITY",
++            "status": "PASS_FINITE_SCALED_PARENT_CHILD_IDENTITY"
++            if budget.points
++            else "PASS_FINITE_SCALED_LEAF",
++            "parent_child_recursion_performed": bool(budget.points),
+             "result": value,
+             "semantics": parent.semantics.value,
+             "source_eligible": False,
+@@ -461,6 +476,9 @@ def contract_scaled(
+             "mode_completeness": "INDEPENDENT_BASIS_EQUALITY"
+             if budget.points
+             else "NOT_RUN_LEAF",
++            "mode_basis_scope": MODE_BASIS_SCOPE if budget.points else "NOT_RUN_LEAF",
++            "tuple_domain": TUPLE_DOMAIN if budget.points else "NOT_RUN_LEAF",
++            "paper_formal_mode_domain_enumerated": False,
+             "tuple_completeness": "COMPLETE_WEIGHTED_STREAM"
+             if budget.points
+             else "NOT_RUN_LEAF",
+diff --git a/src/veritas/research/parent_child_r98/model.py b/src/veritas/research/parent_child_r98/model.py
+index 0f8b712..05d2678 100644
+--- a/src/veritas/research/parent_child_r98/model.py
++++ b/src/veritas/research/parent_child_r98/model.py
+@@ -418,6 +418,39 @@ class ChildGraph:
+                 raise ValueError("deeply immutable child metadata required")
+         if any(type(x) is not tuple for x in self.edge_map + self.inherited):
+             raise ValueError("immutable map records required")
++        if any(
++            len(row) != 6
++            or type(row[0]) is not str
++            or row[0] not in ("Y", "X")
++            or any(type(n) is not int or n < 0 for n in row[1:])
++            for row in self.edge_map
++        ):
++            raise ValueError("half-edge metadata requires typed natural indices")
++        keys = tuple((row[0], row[1]) for row in self.edge_map)
++        if len(set(keys)) != len(keys) or keys != tuple(
++            sorted(keys, key=lambda key: (key[0] != "Y", key[1]))
++        ):
++            raise ValueError("duplicate or noncanonical half-edge metadata")
++        if any(
++            len(origin) != 2
++            or type(origin[0]) is not str
++            or origin[0] not in ("row", "column")
++            or type(origin[1]) is not int
++            or origin[1] < 0
++            for origin in self.inherited
++        ):
++            raise ValueError("inherited metadata requires typed vertex identities")
++        if len(set(self.inherited)) != len(self.inherited) or self.inherited != tuple(
++            sorted(self.inherited, key=lambda origin: (origin[0] != "row", origin[1]))
++        ):
++            raise ValueError("duplicate or noncanonical inherited metadata")
++        if (
++            any(type(n) is not int or n < 0 for n in self.packet_ids)
++            or tuple(sorted(set(self.packet_ids))) != self.packet_ids
++        ):
++            raise ValueError(
++                "packet identities must be ordered distinct natural indices"
++            )
+         decode(self.schedule_bytes)
+         if len(self.zeta) != self.defining_polynomial.bit_length() - 1:
+             raise ValueError("zeta width")
+@@ -485,6 +518,19 @@ class ChildGraph:
+         return child
+ 
+     def as_parent(self, parent):
++        if (
++            type(parent) is not ParentCall
++            or self.parent_digest != parent.content_digest
++        ):
++            raise ValueError("child belongs to another parent")
++        if (
++            self.depth != parent.depth + 1
++            or self.defining_polynomial != parent.defining_polynomial
++            or self.precision <= parent.precision
++        ):
++            raise ValueError(
++                "child depth, ring or precision does not extend its parent"
++            )
+         return ParentCall(
+             parent.root_s,
+             self.depth,
+diff --git a/src/veritas/research/parent_child_r98/modes.py b/src/veritas/research/parent_child_r98/modes.py
+index 77f3d93..4a46bb9 100644
+--- a/src/veritas/research/parent_child_r98/modes.py
++++ b/src/veritas/research/parent_child_r98/modes.py
+@@ -16,6 +16,10 @@ from .model import ExponentTuple, ModeSet, Refusal, canonical
+ from .packing import audit_layout
+ 
+ 
++MODE_BASIS_SCOPE = "ZERO_REDUCED_GEOMETRIC_POINT_MODES"
++TUPLE_DOMAIN = "ALL_WEIGHTED_TUPLES_OVER_RETAINED_MODES"
++
++
+ def weighted_count(weights, precision, cap):
+     """Independent generating-function coefficient count, not a stream replay."""
+     if any(type(w) is not int or w < 1 for w in weights):
+@@ -173,8 +177,18 @@ def verify_modes(parent, layout, modes, *, budget):
+     if modes.layout_digest != layout.content_digest:
+         raise ValueError("mode layout binding")
+     m = modes.certificate
+-    if type(m["node"]) is not int or type(m["precision"]) is not int:
+-        raise ValueError("integer node and precision required")
++    if any(
++        type(m[name]) is not int
++        for name in (
++            "node",
++            "precision",
++            "extension_degree",
++            "irreducible_polynomial",
++            "jet_length",
++            "mode_tuple_count",
++        )
++    ):
++        raise ValueError("point arithmetic metadata requires integers")
+     if (
+         canonical(m["d3_certificate"]) != layout.source_bytes
+         or m["irreducible_polynomial"] != parent.defining_polynomial
+@@ -223,6 +237,10 @@ def verify_modes(parent, layout, modes, *, budget):
+         raise ValueError("weighted tuple count metadata")
+     return {
+         "mode_completeness": "INDEPENDENT_BASIS_EQUALITY",
++        "mode_basis_scope": MODE_BASIS_SCOPE,
++        "tuple_domain": TUPLE_DOMAIN,
++        "paper_formal_mode_domain_enumerated": False,
++        "zero_mode_elision": "ZERO_SOURCE_FORM_OR_ALL_ZERO_TARGET_COEFFICIENTS",
+         "weighted_tuple_count": count,
+         "omitted_high_weight_terms": "DIVISIBLE_BY_2_TO_POINT_PRECISION",
+         "universal_mode_theorem_proved": False,
+@@ -243,6 +261,7 @@ def build_modes(parent, layout, node, zeta, *, budget):
+             node=node,
+             precision=n[-1],
+             extension_degree=parent.defining_polynomial.bit_length() - 1,
++            defining_polynomial=parent.defining_polynomial,
+             zeta=zeta,
+             max_tuples=budget.policy.max_tuples,
+             max_parent_wires=8,
+diff --git a/src/veritas/research/parent_child_r98/packing.py b/src/veritas/research/parent_child_r98/packing.py
+index e126794..c03b337 100644
+--- a/src/veritas/research/parent_child_r98/packing.py
++++ b/src/veritas/research/parent_child_r98/packing.py
+@@ -32,7 +32,18 @@ def preconditions(parent):
+         if all(checks.values())
+         else "INCONCLUSIVE_SOURCE_PACKING"
+     )
+-    return {"status": status, "source_active": active, "checks": checks, "schedule": q}
++    return {
++        "status": status,
++        "source_active": active,
++        "checks": checks,
++        "schedule": q,
++        "scope": "CURRENT_NODE_NUMERICS_ONLY",
++        "above_leaf_cutoff": M > q["leaf_threshold"],
++        "positive_u": q["u"] > 0,
++        "actual_packing_verified": False,
++        "descendant_schedules_verified": False,
++        "source_qualified": False,
++    }
+ 
+ 
+ def construct_layout(parent, *, a=2, u=1, strategy="canonical", budget):
+@@ -114,7 +125,16 @@ def audit_layout(parent, layout):
+         raise ValueError("integer packing dimensions required")
+     if (src["M"], src["L"], src["a"], src["r"]) != (M, L, a, 64):
+         raise ValueError("packet dimensions differ")
+-    if src["edges"] != [list(e) for e in parent.bipartite_edges()]:
++    if (
++        type(src["edges"]) is not list
++        or any(
++            type(pair) is not list
++            or len(pair) != 2
++            or any(type(endpoint) is not int for endpoint in pair)
++            for pair in src["edges"]
++        )
++        or src["edges"] != [list(e) for e in parent.bipartite_edges()]
++    ):
+         raise ValueError("packet edge endpoints differ")
+     rows, columns = src["row_labels"], src["column_labels"]
+     for side, labels in (("row", rows), ("column", columns)):
+@@ -150,8 +170,8 @@ def audit_layout(parent, layout):
+         ):
+             raise ValueError("invalid packet symbols")
+         index = packet["index"]
+-        # Each directed label class supplies one slot per orientation and
+-        # 2**k slots per packet when k coordinates have equal symbols.
++        # A packet uses 2**k slots from each compatible directed label class
++        # when k coordinates have equal symbols.
+         # The pattern therefore has H / 2**k packets, not always H / L.
+         copies = 1 << sum(x == y for x, y in pairs)
+         if type(index) is not int or not 0 <= index < H // copies:
+diff --git a/tests/test_r98_math_corrections.py b/tests/test_r98_math_corrections.py
+new file mode 100644
+index 0000000..ba9d599
+--- /dev/null
++++ b/tests/test_r98_math_corrections.py
+@@ -0,0 +1,283 @@
++"""Regressions for ring identity, parent ancestry and mathematical scope."""
++
++from dataclasses import replace
++
++import pytest
++
++from veritas.research.appendix_d_schedule import schedule_path_preflight
++from veritas.research.eth_recursive_contraction_v39.described_network import (
++    describe_integer_network,
++)
++from veritas.research.eth_recursive_contraction_v39.point_modes import (
++    check_point_modes,
++    make_point_modes,
++)
++from veritas.research.parent_child_r98 import (
++    Budget,
++    ExponentTuple,
++    ModeSet,
++    PointEvaluationCertificate,
++    Policy,
++    construct_children,
++    contract_scaled,
++    from_described,
++    verify_children,
++)
++from veritas.research.parent_child_r98.engine import (
++    evaluate_point,
++    leaf,
++    verify_point_certificate,
++)
++from veritas.research.parent_child_r98.independent import tuple_coefficient
++from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
++from veritas.research.eth_arithmetic.jets import JetRing
++from veritas.research.parent_child_r98.model import canonical, decode
++from veritas.research.parent_child_r98.modes import build_modes, verify_modes
++from veritas.research.parent_child_r98.packing import (
++    audit_layout,
++    construct_layout,
++    preconditions,
++)
++from veritas.research.tensor import Factor, TensorNetwork
++
++
++def parent(f=19, n=1):
++    factors = tuple(
++        factor
++        for i in range(n)
++        for factor in (
++            Factor((i,), (-2 + i, 3 + i), f"row:{i}"),
++            Factor((i,), (4 - i, 5 - i), f"col:{i}"),
++        )
++    )
++    return from_described(
++        describe_integer_network(
++            TensorNetwork(n, factors), creation_precision=5, defining_polynomial=f
++        ),
++        root_s=16,
++        precision=5,
++    )
++
++
++@pytest.mark.parametrize("f", (13, 25, 41))
++def test_nonscalar_point_retains_supplied_irreducible_polynomial(f):
++    p, budget = parent(f), Budget()
++    layout = construct_layout(p, budget=budget)
++    degree = f.bit_length() - 1
++    zeta = (0, 1) + (0,) * (degree - 2)
++    modes = build_modes(p, layout, -1, zeta, budget=budget)
++    assert modes.certificate["irreducible_polynomial"] == f
++    assert check_point_modes(modes.certificate)["valid"]
++    value, certificate, report = evaluate_point(
++        p, layout, modes, budget=budget, capture=True
++    )
++    assert any(value[0][1:]), "fixture must exercise extension coordinates"
++    assert (
++        report["per_point_independent_oracle_status"]
++        == "PASS_HALF_EDGE_FACTOR_ELIMINATION"
++    )
++    replay = verify_point_certificate(p, layout, modes, certificate)
++    assert replay["result"] == value and not replay["source_qualified"]
++
++
++def test_nondefault_ring_cross_modes_and_complete_weighted_stream():
++    p, budget = parent(13, 2), Budget()
++    layout = construct_layout(p, a=1, u=1, budget=budget)
++    modes = build_modes(p, layout, -1, (0, 1, 0), budget=budget)
++    assert modes.certificate["modes"]
++    _, _, report = evaluate_point(p, layout, modes, budget=budget)
++    assert report["tuples"] == modes.certificate["mode_tuple_count"]
++    assert report["tuple_domain"] == "ALL_WEIGHTED_TUPLES_OVER_RETAINED_MODES"
++    assert report["mode_basis_scope"] == "ZERO_REDUCED_GEOMETRIC_POINT_MODES"
++    assert report["paper_formal_mode_domain_enumerated"] is False
++
++
++def test_nondefault_ring_complete_hermite_recovery():
++    result = contract_scaled(parent(25), levels=1)
++    assert result["result"] == ((7, 0, 0, 0),)
++    assert result["hermite_coefficient_precision"] == "COEFFICIENTWISE_CHECKED"
++    assert result["mode_basis_scope"] == "ZERO_REDUCED_GEOMETRIC_POINT_MODES"
++    assert result["source_qualified"] is False
++
++
++def test_selected_multimode_coefficients_without_claiming_full_point_coverage():
++    p, budget = parent(25, 3), Budget(Policy(max_tuples=100_000))
++    layout = construct_layout(p, budget=budget)
++    modes = build_modes(p, layout, -1, (0, 1, 0, 0), budget=budget)
++    assert len(modes.certificate["modes"]) == 2
++    assert modes.certificate["mode_tuple_count"] == 66_795
++    ring = JetRing(ExtensionRing(modes.certificate["precision"], 25), 1)
++    # This deliberately checks selected coefficients, not an incomplete sum
++    # advertised as a complete point result. Full point tests are separate.
++    for exponents in ((0, 0), (1, 0), (0, 1), (1, 1), (2, 0), (0, 2), (4, 0)):
++        beta = ExponentTuple(modes.content_digest, exponents)
++        cs = construct_children(p, layout, modes, beta, budget=budget)
++        expected = verify_children(p, layout, modes, beta, cs, budget=budget)
++        value = ring.one
++        for child, oracle in zip(cs, expected["values"]):
++            actual = leaf(child.as_parent(p), budget)
++            assert actual == oracle
++            value = ring.mul(value, actual)
++        assert value == tuple_coefficient(p, layout, modes, beta, budget=budget)
++
++
++def test_edge_free_network_with_inherited_scalars_is_not_assumed_unit():
++    net = TensorNetwork(0, (Factor((), (2,), "row:0"), Factor((), (3,), "col:0")))
++    p = from_described(
++        describe_integer_network(net, creation_precision=5, defining_polynomial=25),
++        root_s=16,
++        precision=5,
++    )
++    result = contract_scaled(p, levels=2)
++    assert result["result"] == ((6, 0, 0, 0),)
++    assert result["status"] == "PASS_FINITE_SCALED_LEAF"
++    assert result["parent_child_recursion_performed"] is False
++    assert result["mode_basis_scope"] == "NOT_RUN_LEAF"
++
++
++def test_zero_depth_reports_leaf_without_recursive_identity():
++    result = contract_scaled(parent(), levels=0)
++    assert result["status"] == "PASS_FINITE_SCALED_LEAF"
++    assert result["result"] == ((7, 0, 0, 0),)
++    assert result["parent_child_recursion_performed"] is False
++    assert result["child_count_per_tuple"] is None
++    assert result["hermite_recovery"] is None
++    assert result["ledger"]["actual_calls"] == 1
++    assert result["ledger"]["transitions"] == 0
++
++
++@pytest.mark.parametrize("missing", (True, False))
++def test_mode_replay_requires_explicit_polynomial_metadata(missing):
++    p, budget = parent(), Budget()
++    layout = construct_layout(p, budget=budget)
++    cert = build_modes(p, layout, -1, (0, 0, 0, 0), budget=budget).certificate
++    if missing:
++        del cert["irreducible_polynomial"]
++    else:
++        cert["irreducible_polynomial"] = None
++    report = check_point_modes(cert)
++    assert report["valid"] is False
++    assert report["status"] == "INVALID_POINT_MODES"
++
++
++@pytest.mark.parametrize("bad_f", (True, 11, 21, (1 << 10000) | 25))
++def test_explicit_mode_polynomial_must_have_correct_degree_and_be_irreducible(bad_f):
++    p = parent()
++    layout = construct_layout(p, budget=Budget())
++    with pytest.raises(ValueError):
++        make_point_modes(layout.source, extension_degree=4, defining_polynomial=bad_f)
++
++
++def test_legacy_default_mode_polynomial_remains_compatible():
++    layout = construct_layout(parent(), budget=Budget())
++    implicit = make_point_modes(layout.source, extension_degree=4)
++    explicit = make_point_modes(
++        layout.source, extension_degree=4, defining_polynomial=19
++    )
++    assert explicit == implicit
++
++
++@pytest.fixture(scope="module")
++def children():
++    p, budget = parent(), Budget()
++    layout = construct_layout(p, budget=budget)
++    modes = build_modes(p, layout, -1, (1, 0, 0, 0), budget=budget)
++    beta = ExponentTuple(modes.content_digest, ())
++    return p, layout, modes, construct_children(p, layout, modes, beta, budget=budget)
++
++
++def test_child_adapter_binds_the_actual_parent(children):
++    p, _, _, cs = children
++    assert cs[0].as_parent(p).ancestry_digest == cs[0].content_digest
++    with pytest.raises(ValueError, match="another parent"):
++        cs[0].as_parent(replace(p, root_s=17))
++
++
++@pytest.mark.parametrize(
++    "change", ({"depth": 2}, {"precision": 5}, {"defining_polynomial": 25})
++)
++def test_child_adapter_checks_depth_precision_and_ring(children, change):
++    p, _, _, cs = children
++    unit = cs[1]
++    assert unit.edge_count == 0 and not unit.vertices
++    with pytest.raises(ValueError, match="does not extend"):
++        replace(unit, **change).as_parent(p)
++
++
++@pytest.mark.parametrize("position", range(1, 6))
++def test_boolean_half_edge_metadata_is_rejected(children, position):
++    child = children[-1][0]
++    rows = list(child.edge_map)
++    row = list(rows[0])
++    assert row[position] == 0
++    row[position] = False
++    rows[0] = tuple(row)
++    with pytest.raises(ValueError, match="typed natural"):
++        replace(child, edge_map=tuple(rows))
++
++
++@pytest.mark.parametrize(
++    "field,value",
++    (("packet_ids", (False,)), ("inherited", (("row", False), ("column", 0)))),
++)
++def test_boolean_origin_metadata_is_rejected(children, field, value):
++    with pytest.raises(ValueError):
++        replace(children[-1][0], **{field: value})
++
++
++def test_duplicate_and_unordered_half_edge_metadata_is_rejected(children):
++    child = children[-1][0]
++    for rows in ((child.edge_map[0],) * 2, tuple(reversed(child.edge_map))):
++        with pytest.raises(ValueError, match="noncanonical half-edge"):
++            replace(child, edge_map=rows)
++
++
++@pytest.mark.parametrize("field", ("jet_length", "mode_tuple_count"))
++def test_boolean_point_arithmetic_metadata_is_rejected(children, field):
++    p, layout, modes, _ = children
++    data = modes.certificate
++    assert data[field] == 1
++    data[field] = True
++    forged = ModeSet(layout.content_digest, canonical(data))
++    with pytest.raises(ValueError, match="arithmetic metadata requires integers"):
++        verify_modes(p, layout, forged, budget=Budget())
++
++
++def test_boolean_packet_endpoint_metadata_is_rejected(children):
++    p, layout, _, _ = children
++    data = layout.source
++    assert data["edges"][0][0] == 0
++    data["edges"][0][0] = False
++    with pytest.raises(ValueError, match="endpoints differ"):
++        audit_layout(p, replace(layout, source_bytes=canonical(data)))
++
++
++def test_point_certificate_cannot_promote_reduced_basis_to_full_paper_domain(children):
++    p, layout, modes, _ = children
++    _, certificate, _ = evaluate_point(p, layout, modes, budget=Budget(), capture=True)
++    data = decode(certificate.payload)
++    assert data["paper_formal_mode_domain_enumerated"] is False
++    data["paper_formal_mode_domain_enumerated"] = True
++    forged = PointEvaluationCertificate(canonical(data))
++    assert (
++        verify_point_certificate(p, layout, modes, forged)["status"]
++        == "INVALID_POINT_CERTIFICATE"
++    )
++
++
++def test_preflight_does_not_claim_descendant_or_packing_evidence():
++    report = preconditions(parent())
++    assert report["scope"] == "CURRENT_NODE_NUMERICS_ONLY"
++    assert not report["actual_packing_verified"]
++    assert not report["descendant_schedules_verified"]
++    assert not report["source_qualified"]
++
++
++def test_positive_root_schedule_can_fail_at_a_still_active_child():
++    s = 1 << 131080
++    report = schedule_path_preflight(s, ((s, 1), (s // 32, 8)), max_size_bits=131081)
++    assert report["calls"][0]["status"] == "ACTIVE_NUMERIC_PRECONDITIONS_MET"
++    assert report["calls"][0]["u"] == 1
++    assert report["calls"][1]["edges"] > report["calls"][1]["leaf_threshold"]
++    assert report["status"] == "INCONCLUSIVE_SCHEDULE" and report["depth"] == 1
++    assert report["calls"][1]["u"] == 0
+diff --git a/tests/test_r98_math_review.py b/tests/test_r98_math_review.py
+index 96d5516..93e9742 100644
+--- a/tests/test_r98_math_review.py
++++ b/tests/test_r98_math_review.py
+@@ -40,7 +40,9 @@ def matching_blocks(sizes):
+         vertices.extend(
+             (
+                 Factor(ports, tuple(j - 2 for j in range(1 << count)), f"row:{index}"),
+-                Factor(ports, tuple(3 * j + 1 for j in range(1 << count)), f"col:{index}"),
++                Factor(
++                    ports, tuple(3 * j + 1 for j in range(1 << count)), f"col:{index}"
++                ),
+             )
+         )
+     return from_described(
+@@ -74,7 +76,9 @@ def test_real_six_edge_canonical_packing_accepts_second_pattern_packet():
+     beta = ExponentTuple(modes.content_digest, ())
+     children = construct_children(parent, layout, modes, beta, budget=budget)
+     report = verify_children(parent, layout, modes, beta, children, budget=budget)
+-    ring = JetRing(ExtensionRing(modes.certificate["precision"], parent.defining_polynomial), 1)
++    ring = JetRing(
++        ExtensionRing(modes.certificate["precision"], parent.defining_polynomial), 1
++    )
+     value = ring.one
+     for child_value in report["values"]:
+         value = ring.mul(value, child_value)
+@@ -83,24 +87,34 @@ def test_real_six_edge_canonical_packing_accepts_second_pattern_packet():
+     assert not report["all_source_shrink"]
+ 
+ 
+-@pytest.mark.parametrize("column", list(product((0, 1), repeat=2)))
+-def test_pattern_capacity_depends_on_equal_coordinates(column):
++@pytest.mark.parametrize(
++    "a,column", [(a, column) for a in (1, 2, 3) for column in product((0, 1), repeat=a)]
++)
++def test_pattern_capacity_depends_on_equal_coordinates(a, column):
+     parent = matching_blocks((1,))
+     original = implicit_sparse_mode_source(
+-        construct_implicit_packing(parent.bipartite_edges(), r=64, a=2)
++        construct_implicit_packing(parent.bipartite_edges(), r=64, a=a)
+     )
+-    row, height = (0, 0), 4
++    row, height = (0,) * a, 2 * (1 << a)
+     src = dict(original)
++    src["H_pad"] = height
+     src["row_labels"] = {"0": list(row)}
+     src["column_labels"] = {"0": list(column)}
+     copies = 1 << sum(x == y for x, y in zip(row, column))
+     # Every padded offset is a legal packet/slot pair, including offsets whose
+     # packet index exceeds the old, incorrect H/L threshold.
+     for offset in range(height):
+-        address = encode_class_offset(row, column, offset, radix=64, width=2, padded_height=height)
+-        src["packets"] = [{"symbol_pairs": [list(x) for x in address.pattern],
+-                           "index": address.packet, "occupied_slots": [[address.slot, 0]]}]
+-        layout = PacketLayout(parent.content_digest, 2, 1, canonical(src))
++        address = encode_class_offset(
++            row, column, offset, radix=64, width=a, padded_height=height
++        )
++        src["packets"] = [
++            {
++                "symbol_pairs": [list(x) for x in address.pattern],
++                "index": address.packet,
++                "occupied_slots": [[address.slot, 0]],
++            }
++        ]
++        layout = PacketLayout(parent.content_digest, a, 1, canonical(src))
+         assert audit_layout(parent, layout)["exact_edge_coverage"]
+         assert address.packet < height // copies
+     src["packets"][0]["index"] = height // copies

@@ -1,0 +1,8 @@
+{
+  "status": "PASS_FRESH_ARCHIVE_REPLAY",
+  "archive_sha256": "f2248202699872af1dc6430e1074850d7ecbdcdb0d32a007ad2f26ab644c9ee3",
+  "manifest": "PASS: 1068 complete file hashes match release manifest; no unlisted files\n",
+  "point_exit": 0,
+  "point_output": "{\"child_count_per_tuple\": 64, \"result\": [[17654276160, 0, 0, 0]], \"source_qualified\": false, \"status\": \"PASS_FINITE_SCALED_PARENT_CHILD_IDENTITY\", \"tuples\": 245}\n",
+  "stderr": ""
+}

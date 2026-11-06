@@ -1,0 +1,2 @@
+inventory 2 11175
+PASS_FINITE_GENERAL_MULTISLOT_COMPLETE_POINT {'actual_calls': 715200, 'maximum_depth': 1, 'point_evaluations': 1, 'tuples': 11175, 'transitions': 715200, 'nonshrinking_children': 0, 'work_units': 55273889, 'elapsed_seconds': 756.7691426249221, 'hard_memory_limit_enforced': False, 'bit_time_bound_status': 'COMPLEXITY_NOT_ESTABLISHED', 'peak_space_bound_status': 'COMPLEXITY_NOT_ESTABLISHED'}

@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/../VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/probe_two_levels242.py", line 29, in <module>
+    r=contract_supported_recursion(p,layout_factory=factory,policy=pol,evidence_sink=lambda raw:out.write(raw+b'\n'))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r99/degree_engine.py", line 98, in contract_supported_recursion
+    result = visit(parent)
+             ^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r99/degree_engine.py", line 85, in visit
+    value, point = evaluate_supported_point(call, layout, modes, budget=budget,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r99/supported_engine.py", line 24, in evaluate_supported_point
+    verification = verify_support(parent, layout, original, folded, support, budget=budget)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r99/support_check.py", line 69, in verify_support
+    _check_fold(parent, layout, original, folded, budget)
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r99/support_check.py", line 15, in _check_fold
+    verify_packet_modes(parent, layout, original, budget=budget)
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r99/basis.py", line 140, in verify_packet_modes
+    local, cross, expected = independent_modes(layout.source, m["node"], precision,
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r98/modes.py", line 154, in independent_modes
+    ar.pow(ar.mul(ar.scalar(B // 2**v), ar.inverse(unit)), b),
+                                        ^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/independent_r82/point_mode_oracle.py", line 210, in inverse
+    y = self.mul(y, self.sub(two, self.mul(a, y)))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/independent_r82/point_mode_oracle.py", line 168, in mul
+    terms[i + j] = (terms[i + j] + x * y) % self.modulus
+                   ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+KeyboardInterrupt

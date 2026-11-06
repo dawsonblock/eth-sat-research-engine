@@ -1,0 +1,15 @@
+{
+  "release": "3.5.0",
+  "python": "3.13.5",
+  "os": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "inherited_regression_exit_code": 0,
+  "new_v35_test_cases_passed": 12,
+  "combined_v34_v35_targeted_passed": 18,
+  "seeded_v35_certificate_replays_passed": 35,
+  "counting_regression_passed": 10000,
+  "tensor_reference_comparisons_passed": 106,
+  "startup_smoke_passed": true,
+  "full_470_suite_exit_code": 0,
+  "scope": "finite mode-bond child scopes and exact reference counting, not manuscript D.4.4 recursion",
+  "full_470_suite_cases_passed": 470
+}

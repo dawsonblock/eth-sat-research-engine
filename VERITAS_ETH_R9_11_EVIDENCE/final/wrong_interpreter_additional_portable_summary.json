@@ -1,0 +1,18 @@
+{
+  "status": "FAILED",
+  "source": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702",
+  "commands": [
+    {
+      "name": "wheel_coupled_replay",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.10/3.10.19_1/Frameworks/Python.framework/Versions/3.10/bin/python3.10",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/r911_coupled_replay.py"
+      ],
+      "exit_code": 1,
+      "seconds": 0.07759808306582272,
+      "source_before": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702",
+      "source_after": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702"
+    }
+  ]
+}

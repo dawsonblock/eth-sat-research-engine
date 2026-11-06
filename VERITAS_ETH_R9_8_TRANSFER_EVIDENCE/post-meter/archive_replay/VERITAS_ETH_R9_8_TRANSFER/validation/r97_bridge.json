@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python",
+    "scripts/validate_r97_bridge.py"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 3.456750874989666,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 439943168,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_bridge.stdout.log",
+  "stderr_log": "r97_bridge.stderr.log",
+  "test_summary": ""
+}

@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "stdout": "PASS: 1102 complete file hashes match release manifest; no unlisted files\n",
+  "stderr": "",
+  "archive": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_CONFIGURABLE_GROUPS_DEVELOPMENT.zip",
+  "archive_sha256": "0aef95d6a397f4ac6e7f318c38b80fce56f5bbb5f55f2c35594870e518d1f120",
+  "extracted_tree": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/archive_replay/VERITAS_ETH_R9_8_GROUPS"
+}

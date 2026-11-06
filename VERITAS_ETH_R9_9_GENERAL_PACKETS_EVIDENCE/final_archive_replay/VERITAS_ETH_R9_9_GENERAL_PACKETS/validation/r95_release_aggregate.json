@@ -1,0 +1,444 @@
+{
+  "schema": "VERITAS_ETH_R91_RELEASE_EVIDENCE_V2",
+  "release": "R9.1",
+  "theorem_mode_enabled": false,
+  "environment": {
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "python": "3.12.0"
+  },
+  "manuscript_sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+  "lean_toolchain": "leanprover/lean4:v4.35.0",
+  "source_hashes": {
+    "proofs/D3PythonOrder.lean": "41113b7594d5e96813d2e9d2cfc9732e7147cf697fb00302fb5418f2d98d35e0",
+    "proofs/D3PythonScoreModel.lean": "21667cf11bb266c5b15156c349bee779b5b2be1ed12639252d7e293167e00d92",
+    "proofs/D3PacketBijection.lean": "d16f1fffea1b033638b96253705d20f0354e5049bcd46cf0b4566a81856f508e",
+    "src/veritas/research/eth_packing_v26/streaming.py": "002409180ce0a5bd334821f8a0725a50ee840d2064390ec01e24732b54255f33",
+    "src/veritas/research/eth_packing_v26/cpp_backend.py": "91306fcf7e5cd53c20741c2e52ab886ebbc026c30d9b2d047247b3c70ca574b8",
+    "cpp/src/score.cpp": "69d28930e01f32d65a2d90310df34517df421cdb6c59bf580e4c6b8d8bc4d330",
+    "cpp/src/bindings.cpp": "7187e9c27ac9303ce87d1fb1a05bbe42fb5aab7139494fa8a015ca3e0ee41161",
+    "cpp/include/veritas_d3_score.h": "248271a59734114525a7b375c9eb817cb9d657527de8a85b411bc13cda64da77"
+  },
+  "gates": {
+    "lean_proof_gate": {
+      "status": "PASS_HASH_MATCH_UNAUTHENTICATED",
+      "modules": 36,
+      "source": "validation/r9_conditional_expectation_proof.json",
+      "freshness": {
+        "fresh": true,
+        "reasons": [],
+        "expected_modules": 36,
+        "observed_modules": 36,
+        "freshness_is_authentication": false
+      }
+    },
+    "lean_python_model_differential": {
+      "status": "PASS",
+      "cases": 12,
+      "mismatches": 0,
+      "source": "validation/r91_python_model.json"
+    },
+    "cpp_selftest": {
+      "return_code": 0,
+      "output": "veritas_d3_selftest: PASS",
+      "status": "PASS"
+    },
+    "cpp_benchmarks": {
+      "status": "PASS",
+      "instances": 5,
+      "all_direct_work_metrics_match": true,
+      "source": "validation/r91_benchmarks.json"
+    },
+    "cpp_differential_and_independent_replay": {
+      "status": "PASS",
+      "candidate_score_cases": 1296,
+      "certificate_replays": 12,
+      "large_integer_exact": true,
+      "source": "validation/r9_1_differential.json"
+    },
+    "ordering_fixture": {
+      "status": "PASS",
+      "records": [
+        {
+          "backend": "python",
+          "status": "PASS",
+          "observed": {
+            "vertices": [
+              [
+                "R",
+                0
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                "C",
+                0
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "labels": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "scores": [
+              22,
+              16,
+              16,
+              12
+            ],
+            "final": 12
+          },
+          "expected": {
+            "vertices": [
+              [
+                "R",
+                0
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                "C",
+                0
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "labels": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "scores": [
+              22,
+              16,
+              16,
+              12
+            ],
+            "final": 12
+          },
+          "initial": 22,
+          "work_units": 66,
+          "work_metric_version": "d3-direct-pair-score-work-v1",
+          "independent_replay": {
+            "valid": true,
+            "execution_backend": "python",
+            "backend_independently_replayed": true,
+            "status": "FINITE_GENERIC_RADIX_D3_REPLAYED",
+            "edge_count": 3,
+            "vertices_labeled": 4,
+            "conditional_expectation_steps": 4,
+            "independent_candidate_evaluations": 8,
+            "independent_work_units": 66,
+            "independently_recomputed_construction_work_units": 66,
+            "work_metric_version": "d3-direct-pair-score-work-v1",
+            "initial_variance_bound": true,
+            "packet_count_bound": true,
+            "port_load_bound": true,
+            "max_side_symbol_load": 2,
+            "numeric_active_call_inequalities": false,
+            "paper_active_call_eligible": false,
+            "source_schedule_checked": false,
+            "legacy_active_call_claim_discarded": false,
+            "universal_packing_lemma_proven": false,
+            "theorem_recursion_qualified": false
+          }
+        },
+        {
+          "backend": "cpp",
+          "status": "PASS",
+          "observed": {
+            "vertices": [
+              [
+                "R",
+                0
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                "C",
+                0
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "labels": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "scores": [
+              22,
+              16,
+              16,
+              12
+            ],
+            "final": 12
+          },
+          "expected": {
+            "vertices": [
+              [
+                "R",
+                0
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                "C",
+                0
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "labels": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "scores": [
+              22,
+              16,
+              16,
+              12
+            ],
+            "final": 12
+          },
+          "initial": 22,
+          "work_units": 96,
+          "work_metric_version": "d3-batch-pair-score-work-v1",
+          "independent_replay": {
+            "valid": true,
+            "execution_backend": "cpp-pybind",
+            "backend_independently_replayed": true,
+            "status": "FINITE_GENERIC_RADIX_D3_REPLAYED",
+            "edge_count": 3,
+            "vertices_labeled": 4,
+            "conditional_expectation_steps": 4,
+            "independent_candidate_evaluations": 8,
+            "independent_work_units": 162,
+            "independently_recomputed_construction_work_units": 96,
+            "work_metric_version": "d3-batch-pair-score-work-v1",
+            "initial_variance_bound": true,
+            "packet_count_bound": true,
+            "port_load_bound": true,
+            "max_side_symbol_load": 2,
+            "numeric_active_call_inequalities": false,
+            "paper_active_call_eligible": false,
+            "source_schedule_checked": false,
+            "legacy_active_call_claim_discarded": false,
+            "universal_packing_lemma_proven": false,
+            "theorem_recursion_qualified": false
+          }
+        },
+        {
+          "backend": "auto",
+          "status": "PASS",
+          "observed": {
+            "vertices": [
+              [
+                "R",
+                0
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                "C",
+                0
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "labels": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "scores": [
+              22,
+              16,
+              16,
+              12
+            ],
+            "final": 12
+          },
+          "expected": {
+            "vertices": [
+              [
+                "R",
+                0
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                "C",
+                0
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "labels": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "scores": [
+              22,
+              16,
+              16,
+              12
+            ],
+            "final": 12
+          },
+          "initial": 22,
+          "work_units": 96,
+          "work_metric_version": "d3-batch-pair-score-work-v1",
+          "independent_replay": {
+            "valid": true,
+            "execution_backend": "cpp-pybind",
+            "backend_independently_replayed": true,
+            "status": "FINITE_GENERIC_RADIX_D3_REPLAYED",
+            "edge_count": 3,
+            "vertices_labeled": 4,
+            "conditional_expectation_steps": 4,
+            "independent_candidate_evaluations": 8,
+            "independent_work_units": 162,
+            "independently_recomputed_construction_work_units": 96,
+            "work_metric_version": "d3-batch-pair-score-work-v1",
+            "initial_variance_bound": true,
+            "packet_count_bound": true,
+            "port_load_bound": true,
+            "max_side_symbol_load": 2,
+            "numeric_active_call_inequalities": false,
+            "paper_active_call_eligible": false,
+            "source_schedule_checked": false,
+            "legacy_active_call_claim_discarded": false,
+            "universal_packing_lemma_proven": false,
+            "theorem_recursion_qualified": false
+          }
+        }
+      ]
+    },
+    "finite_packing_replay": {
+      "status": "PRESENT",
+      "source": "validation/r9_streaming_packing.json"
+    }
+  },
+  "formal": {
+    "lean_model_sorted_vertex_order_proven": true,
+    "lean_model_sorted_order_port_bound_proven": true,
+    "lean_model_ordering_fixture_kernel_checked": true,
+    "lean_candidate_score_transcription_compiles": true,
+    "lean_model_per_comparison_equivalence_proven": true,
+    "lean_model_pair_aggregation_proven": true,
+    "lean_model_word_matches_bridge_proven": true,
+    "lean_model_candidate_score_identity_proven": true,
+    "lean_model_full_run_correspondence_proven": true,
+    "lean_finite_packet_domain_cardinality_model_proven": true,
+    "python_to_lean_source_refinement_proven": false,
+    "cpp_to_lean_source_refinement_proven": false,
+    "lean_packet_slot_bijection_proven": true,
+    "lean_occurrence_rank_model_bijection_proven": true,
+    "lean_binary_slot_model_proven": true,
+    "lean_numeric_slot_model_bijection_proven": true,
+    "lean_global_edge_occurrence_model_bijection_proven": true,
+    "lean_padded_packet_model_bounds_proven": true,
+    "lean_first_minimum_model_proven": true,
+    "lean_computed_padding_model_proven": true,
+    "lean_r93_contracts_checked": true,
+    "lean_full_padded_offset_to_global_address_proven": true,
+    "recursive_child_correctness_proven": false,
+    "complexity_bound_proven": false
+  },
+  "executable": {
+    "cpp_backend_available": true,
+    "cpp_matches_python_on_benchmark_corpus": true,
+    "lean_transcription_matches_cpython_on_corpus": true,
+    "cpp_is_formally_verified": false
+  },
+  "open_obligations": [
+    "Python source correspondence, candidate enumeration equality, and full-run simulation (Lean first-minimum model proved)",
+    "C++ source/ABI to Lean model correspondence or verified extraction",
+    "Source-to-model correspondence for executable edge-to-class assignment and packet mapping",
+    "Stage 2B recursive child correctness",
+    "Stage 2C complexity bound"
+  ],
+  "status": "PASS_R91_FINITE_AND_FORMAL_MODEL_GATES"
+}

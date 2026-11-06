@@ -1,0 +1,9 @@
+{
+  "release": "0.7.0",
+  "status": "PASS",
+  "seed": 20261030,
+  "exact_split_wire_vs_independent_half_edge_histograms": 250,
+  "modular_cross_checks": 750,
+  "max_edges_tested": 6,
+  "limitations": "Small exact reference cases; no Cauchy deformation or ETH asymptotic guarantee"
+}

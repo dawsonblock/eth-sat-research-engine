@@ -1,0 +1,19 @@
+{
+  "command": [
+    "docker",
+    "build",
+    "-t",
+    "veritas-eth:r97-local-audit",
+    "."
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 12.530506999930367,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 61276160,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_docker_build.stdout.log",
+  "stderr_log": "r97_docker_build.stderr.log",
+  "test_summary": ""
+}

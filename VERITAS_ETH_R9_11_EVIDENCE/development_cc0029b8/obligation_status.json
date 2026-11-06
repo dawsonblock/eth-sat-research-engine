@@ -1,0 +1,44 @@
+{
+  "release": "R9.11 partial portability and bounded generalization",
+  "certificate_portability": {
+    "status": "PASS_LOCAL_CLEAN_WHEEL_AND_DOCKER",
+    "completed_sealed_replays": [
+      235,
+      242
+    ],
+    "work_limit_probe": "INCONCLUSIVE_RESOURCE_LIMIT",
+    "time_limit_probe": "INCONCLUSIVE_RESOURCE_LIMIT",
+    "skipped_required_checks": false
+  },
+  "connected_two_active_levels": {
+    "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+    "completed_reference_and_replay": false,
+    "one_active_level_connected_case": "PASS",
+    "constant_padding_disclosed": true
+  },
+  "manuscript_active_schedule": {
+    "status": "NOT_IMPLEMENTED",
+    "implemented_schedule": "finite a=u=1 ell=1"
+  },
+  "coefficient_ring_generalization": {
+    "status": "NOT_IMPLEMENTED_FOR_RECURSIVE_EXECUTOR"
+  },
+  "bit_operation_accounting": {
+    "status": "NOT_INSTRUMENTED",
+    "policy_work_units_are_bit_operations": false
+  },
+  "asymptotic_time_and_space": {
+    "status": "NOT_ESTABLISHED"
+  },
+  "python_lean_refinement": {
+    "status": "NOT_ESTABLISHED"
+  },
+  "general_cnf_integration_and_competitive_benchmarks": {
+    "status": "NOT_EXTENDED_IN_THIS_REVISION"
+  },
+  "resumable_checkpoints": {
+    "status": "NOT_IMPLEMENTED"
+  },
+  "source_qualified": false,
+  "theorem_mode_enabled": false
+}

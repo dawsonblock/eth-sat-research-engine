@@ -1,0 +1,35 @@
+{
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "python": "3.12.0",
+  "machine": "arm64",
+  "available_cpu_count": 12,
+  "toolchains": {
+    "python": {
+      "exit_code": 0,
+      "output": "Python 3.12.0"
+    },
+    "lean": {
+      "exit_code": 0,
+      "output": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)"
+    },
+    "cmake": {
+      "exit_code": 0,
+      "output": "cmake version 4.2.1\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake)."
+    },
+    "compiler": {
+      "exit_code": 0,
+      "output": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.2.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
+    },
+    "docker": {
+      "exit_code": 0,
+      "output": "29.9.2 / 29.9.2"
+    }
+  },
+  "docker_execution_policy": {
+    "network": "none",
+    "memory_limit_bytes": 536870912,
+    "cpu_limit": 1,
+    "working_directory": "/tmp",
+    "installed_package_only": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "archive_sha256": "bf180b61b3fb5018ea77ad07ce1d7c7d5df541a42e7bcc16e6059543b8808292",
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_10_EVIDENCE/final/extracted/VERITAS_ETH_R9_10_NUMERICAL_RECURSION/scripts/verify_manifest.py"
+      ],
+      "exit_code": 0,
+      "output": "PASS: 1186 complete file hashes match release manifest; no unlisted files\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-I",
+        "-c",
+        "import sys;sys.path.insert(0,'/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_10_EVIDENCE/final/extracted/VERITAS_ETH_R9_10_NUMERICAL_RECURSION/src');from veritas.research.tapered_v4.provenance import source_binding;assert source_binding()['digest']=='b27dc09a233e843d933e329d84df92f3bb94284f7767efff68782a93666e22da';print('PASS_EXTRACTED_SOURCE_IDENTITY')"
+      ],
+      "exit_code": 0,
+      "output": "PASS_EXTRACTED_SOURCE_IDENTITY\n"
+    }
+  ]
+}

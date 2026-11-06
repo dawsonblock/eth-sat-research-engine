@@ -1,0 +1,202 @@
+{
+  "version": "1.6.0",
+  "runs_per_method": 4,
+  "limitations": "Microbenchmark includes planning, dispatch, Python overhead; not a general speedup or ETH result",
+  "results": [
+    {
+      "case": "path_25",
+      "n": 25,
+      "clauses": 24,
+      "methods": {
+        "v16_thorough_legacy": {
+          "count": "196418",
+          "median_seconds": 0.00883829,
+          "min_seconds": 0.00849586,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_fast_indexed": {
+          "count": "196418",
+          "median_seconds": 0.00468627,
+          "min_seconds": 0.00400903,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_full_indexed": {
+          "count": "196418",
+          "median_seconds": 0.00882873,
+          "min_seconds": 0.00823289,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_fast_sparse": {
+          "count": "196418",
+          "median_seconds": 0.00477228,
+          "min_seconds": 0.00431812,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        }
+      }
+    },
+    {
+      "case": "star_22",
+      "n": 22,
+      "clauses": 21,
+      "methods": {
+        "v16_thorough_legacy": {
+          "count": "2097153",
+          "median_seconds": 0.00875309,
+          "min_seconds": 0.00817929,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_fast_indexed": {
+          "count": "2097153",
+          "median_seconds": 0.00196432,
+          "min_seconds": 0.00158653,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_full_indexed": {
+          "count": "2097153",
+          "median_seconds": 0.00866529,
+          "min_seconds": 0.00808998,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_fast_sparse": {
+          "count": "2097153",
+          "median_seconds": 0.00187613,
+          "min_seconds": 0.00181986,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        }
+      }
+    },
+    {
+      "case": "two_chains_24",
+      "n": 24,
+      "clauses": 22,
+      "methods": {
+        "v16_thorough_legacy": {
+          "count": "142129",
+          "median_seconds": 0.00671693,
+          "min_seconds": 0.00593109,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_fast_indexed": {
+          "count": "142129",
+          "median_seconds": 0.00274104,
+          "min_seconds": 0.00236293,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_full_indexed": {
+          "count": "142129",
+          "median_seconds": 0.00664762,
+          "min_seconds": 0.00637944,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_fast_sparse": {
+          "count": "142129",
+          "median_seconds": 0.0035118,
+          "min_seconds": 0.00316778,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        }
+      }
+    },
+    {
+      "case": "cycle_10",
+      "n": 10,
+      "clauses": 10,
+      "methods": {
+        "v16_thorough_legacy": {
+          "count": "123",
+          "median_seconds": 0.0034171,
+          "min_seconds": 0.00326679,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_fast_indexed": {
+          "count": "123",
+          "median_seconds": 0.00215099,
+          "min_seconds": 0.0017598,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_full_indexed": {
+          "count": "123",
+          "median_seconds": 0.00354273,
+          "min_seconds": 0.00310491,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_fast_sparse": {
+          "count": "123",
+          "median_seconds": 0.00180725,
+          "min_seconds": 0.0016605,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        }
+      }
+    },
+    {
+      "case": "grid_4x4",
+      "n": 16,
+      "clauses": 24,
+      "methods": {
+        "v16_thorough_legacy": {
+          "count": "1234",
+          "median_seconds": 0.01822895,
+          "min_seconds": 0.01664327,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_fast_indexed": {
+          "count": "1234",
+          "median_seconds": 0.01162691,
+          "min_seconds": 0.01071659,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_full_indexed": {
+          "count": "1234",
+          "median_seconds": 0.01883017,
+          "min_seconds": 0.01700774,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        },
+        "v16_fast_sparse": {
+          "count": "1234",
+          "median_seconds": 0.01164822,
+          "min_seconds": 0.01110382,
+          "representation": "ORIGINAL_CNF_VARIABLES",
+          "engine": "EXACT_BOUNDARY_DP",
+          "peak_entries": 4
+        }
+      }
+    }
+  ]
+}

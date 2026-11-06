@@ -1,0 +1,1 @@
+{"all_source_shrink": false, "child_count_per_tuple": 64, "creation_precision_inheritance": true, "one_tuple_independent_oracle_status": "PASS_GLOBAL_FORMAL_COEFFICIENT", "per_point_independent_oracle_status": "PASS_HALF_EDGE_FACTOR_ELIMINATION", "source_qualified": false, "status": "PASS_FINITE_SCALED_PARENT_CHILD_IDENTITY", "tuples": 245}

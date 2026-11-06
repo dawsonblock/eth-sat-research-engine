@@ -1,0 +1,52 @@
+{
+  "all_member_hashes_match": true,
+  "archive": "VERITAS_ETH_R9_5_RECIPE_EXECUTION_PARTIAL_FULL_UPGRADED.zip",
+  "cpp_rebuilt_and_selftest": "PASS",
+  "crc_ok": true,
+  "deterministic_rebuild": true,
+  "duplicate_members": false,
+  "fresh_extraction_tests": {
+    "passed": 99,
+    "summary": "99 passed in 0.66s"
+  },
+  "fresh_lean": {
+    "elapsed_seconds": 142.520756,
+    "modules": 36,
+    "source_manifest_sha256": "410935f3ff36e4ca9290a17625b875f06109129801710fe17e0a7dcd4d7ba2ae",
+    "status": "PASS"
+  },
+  "fresh_lean_evidence_file": "VERITAS_ETH_R9_5_RECIPE_EXECUTION_PARTIAL_FULL_UPGRADED.zip.proof-gate.json",
+  "fresh_lean_evidence_sha256": "ae603a2483e3fdb760c26b2cada1219e6e93b317ffa6deb4f0f241755c325eac",
+  "fresh_recipe_checks": {
+    "entry_equalities": 160,
+    "hermite_points": 258,
+    "leaf_equalities": 9
+  },
+  "fresh_v3_replay": {
+    "elapsed_seconds": 17.592491,
+    "evidence_schema": "VERITAS_TAPERED_V4_EIGHT_WIRE_EXPERIMENT_V3",
+    "independent_proof": false,
+    "legacy_evidence_wrapper": false,
+    "legacy_replay": false,
+    "legacy_v1_replay": false,
+    "legacy_v2_replay": false,
+    "process_peak_rss_bytes": 203767808,
+    "status": "FINITE_TRANSCRIPT_REPLAYED",
+    "subexponential_runtime_proven": false,
+    "trust_class": "HASH_MATCH_UNSIGNED",
+    "valid": true
+  },
+  "full_theorem_implemented": false,
+  "local_extraction_path_recorded": false,
+  "manifest_hashes_checked": 820,
+  "manifest_normal_and_optimized_python": true,
+  "members": 821,
+  "paths_safe": true,
+  "schema": "VERITAS_R95_ARCHIVE_VERIFICATION_V1",
+  "sealed_r94_baseline_unchanged": true,
+  "sha256": "5d5b88c748414bb468dc063de59fe94974beede4934c2500346fc0da4ece3756",
+  "status": "PASS_ARCHIVE_AND_FRESH_EXTRACTION",
+  "symlinks": false,
+  "theorem_mode_enabled": false,
+  "trust_class": "HASH_MATCH_UNSIGNED"
+}

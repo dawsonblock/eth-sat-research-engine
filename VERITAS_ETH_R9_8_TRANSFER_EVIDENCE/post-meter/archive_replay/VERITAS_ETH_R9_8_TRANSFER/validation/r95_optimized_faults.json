@@ -1,0 +1,25 @@
+{
+  "command": [
+    "<user>/.pyenv/versions/3.12.0/bin/python",
+    "-O",
+    "-m",
+    "pytest",
+    "-q",
+    "-o",
+    "addopts=",
+    "tests/test_r95_source_recipes.py",
+    "tests/test_r95_source_leaf.py",
+    "tests/test_r95_hermite_grid.py",
+    "tests/test_lean_proof_gate_audit.py"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 3.372685374924913,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 101613568,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r95_optimized_faults.stdout.log",
+  "stderr_log": "r95_optimized_faults.stderr.log",
+  "test_summary": "118 passed, 1 warning in 1.18s"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "EXACT_FINITE_POLICY_OBSTRUCTION",
+  "premises": [
+    "64 fixed groups",
+    "separate side capacity floor(3M/64)",
+    "leaf threshold 4",
+    "complete degree M(2L-1) grid",
+    "L >= 2",
+    "driver maximum points per node 256"
+  ],
+  "minimum_packable_nonempty_active_edges": 22,
+  "minimum_parent_for_such_child": 235,
+  "minimum_points_per_parent_node": 706,
+  "driver_point_cap": 256,
+  "two_active_levels_possible_under_current_driver_cap": false,
+  "source_theorem_claim": false
+}

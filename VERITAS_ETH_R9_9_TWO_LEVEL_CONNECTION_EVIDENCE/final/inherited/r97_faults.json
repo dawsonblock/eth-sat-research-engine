@@ -1,0 +1,87 @@
+{
+  "status": "PASS_NEGATIVE_GRID_CHECKS",
+  "executed": 8,
+  "python_optimized": true,
+  "cases": [
+    {
+      "attack": "missing_point",
+      "exit_code": 1,
+      "wall_seconds": 0.27978099999018013,
+      "response": {
+        "status": "INCONCLUSIVE_OR_INVALID_GRID",
+        "reason": "submitted grid header or point coverage differs"
+      },
+      "rejected_without_result": true
+    },
+    {
+      "attack": "missing_term",
+      "exit_code": 1,
+      "wall_seconds": 0.2850500420900062,
+      "response": {
+        "status": "INCONCLUSIVE_OR_INVALID_GRID",
+        "reason": "incomplete term set"
+      },
+      "rejected_without_result": true
+    },
+    {
+      "attack": "same_length_point_substitution",
+      "exit_code": 1,
+      "wall_seconds": 0.2924697910202667,
+      "response": {
+        "status": "INCONCLUSIVE_OR_INVALID_GRID",
+        "reason": "external request or source differs"
+      },
+      "rejected_without_result": true
+    },
+    {
+      "attack": "wrong_recovery",
+      "exit_code": 1,
+      "wall_seconds": 8.818499375018291,
+      "response": {
+        "status": "INCONCLUSIVE_OR_INVALID_GRID",
+        "reason": "submitted recovery differs"
+      },
+      "rejected_without_result": true
+    },
+    {
+      "attack": "missing_group",
+      "exit_code": 1,
+      "wall_seconds": 0.37643775006290525,
+      "response": {
+        "status": "INCONCLUSIVE_OR_INVALID_GRID",
+        "reason": "missing group"
+      },
+      "rejected_without_result": true
+    },
+    {
+      "attack": "changed_precision",
+      "exit_code": 1,
+      "wall_seconds": 0.30656299996189773,
+      "response": {
+        "status": "INCONCLUSIVE_OR_INVALID_GRID",
+        "reason": "external request or source differs"
+      },
+      "rejected_without_result": true
+    },
+    {
+      "attack": "source_pin",
+      "exit_code": 1,
+      "wall_seconds": 0.29934095905628055,
+      "response": {
+        "status": "INCONCLUSIVE_OR_INVALID_GRID",
+        "reason": "external request or source differs"
+      },
+      "rejected_without_result": true
+    },
+    {
+      "attack": "truncated_json",
+      "exit_code": 1,
+      "wall_seconds": 0.20566325006075203,
+      "response": {
+        "status": "INCONCLUSIVE_OR_INVALID_GRID",
+        "reason": "Unterminated string starting at: line 1 column 91 (char 90)"
+      },
+      "rejected_without_result": true
+    }
+  ]
+}

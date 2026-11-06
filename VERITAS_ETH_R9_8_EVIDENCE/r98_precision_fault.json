@@ -1,0 +1,7 @@
+{
+  "status": "PASS_REJECTED_TRUE_SUBSTITUTION",
+  "mutated_module_exit": 0,
+  "contract_exit": 1,
+  "mutated_output": "'SourceCreationPrecision.capture_lt' does not depend on any axioms\n'SourceCreationPrecision.lift_unchanged' depends on axioms: [propext]\n'SourceCreationPrecision.reduce_capture' depends on axioms: [propext]\n'SourceCreationPrecision.lift_roundtrip' depends on axioms: [propext]\n'SourceCreationPrecision.coordinates_lift_unchanged' depends on axioms: [propext, Quot.sound]\n'SourceCreationPrecision.coordinates_lift_chain' does not depend on any axioms\n'SourceCreationPrecision.coordinates_two_levels' depends on axioms: [propext, Quot.sound]\n'SourceCreationPrecision.lift_not_additive' does not depend on any axioms\n'SourceCreationPrecision.lift_not_multiplicative' does not depend on any axioms\n",
+  "contract_output": "SourceCreationContracts.lean:7:2: error: Function expected at\n  SourceCreationPrecision.coordinates_lift_chain\nbut this term has type\n  True\n\nNote: Expected a function because this term is being applied to the argument\n  pc\n'source_creation_chain_contract' depends on axioms: [sorryAx]\n'source_creation_coordinate_contract' depends on axioms: [propext]\n'source_creation_vector_contract' depends on axioms: [propext, Quot.sound]\n"
+}

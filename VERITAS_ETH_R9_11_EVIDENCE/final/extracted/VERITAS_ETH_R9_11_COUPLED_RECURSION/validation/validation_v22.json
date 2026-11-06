@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "seed": 20261030,
+  "instances": 2000,
+  "checks": "independent DAG checker vs exhaustive counting and forged count rejection",
+  "limitation": "Finite randomized tests are not a formal proof or subexponential algorithm"
+}

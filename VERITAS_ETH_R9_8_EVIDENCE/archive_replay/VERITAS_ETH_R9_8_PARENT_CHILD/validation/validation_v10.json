@@ -1,0 +1,12 @@
+{
+  "elapsed_seconds": 1.249,
+  "exact_rational_rank_decomposition_cases": 495,
+  "grouped_cauchy_vs_independent_shifted_jets": 495,
+  "paper_specific_recursive_mode_bound": "NOT_IMPLEMENTED",
+  "recursive_modular_vs_independent_edge_enumeration": 550,
+  "recursive_vs_independent_edge_enumeration": 550,
+  "runtime_improvement_claim": "NONE",
+  "seed": 100020261029,
+  "status": "PASS",
+  "version": "1.0.0"
+}

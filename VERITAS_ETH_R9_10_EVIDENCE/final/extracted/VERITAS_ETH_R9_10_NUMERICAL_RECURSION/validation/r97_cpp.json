@@ -1,0 +1,18 @@
+{
+  "command": [
+    "python",
+    "scripts/validate_r91_cpp.py",
+    "--output",
+    "validation/r97_cpp_differential.json"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 0.15460587502457201,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 31555584,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_cpp.stdout.log",
+  "stderr_log": "r97_cpp.stderr.log",
+  "test_summary": ""
+}

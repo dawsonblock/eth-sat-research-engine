@@ -1,0 +1,22 @@
+{
+  "coupled_core": {
+    "largest_point_record_bytes": 3038075,
+    "original_local_bytes": 1514285,
+    "folded_local_bytes": 1514285,
+    "original_and_folded_locals_equal": true,
+    "local_entries_with_distinct_port_identifiers": 44,
+    "distinct_coefficient_values_ignoring_port_identifiers": 1,
+    "maximum_identical_coefficient_reuse": 44,
+    "interpretation": "SERIALIZATION_DUPLICATION_ONLY_NO_ARITHMETIC_OR_ASYMPTOTIC_SPEEDUP_ESTABLISHED"
+  },
+  "coupled_core_100mb": {
+    "largest_point_record_bytes": 3038075,
+    "original_local_bytes": 1514285,
+    "folded_local_bytes": 1514285,
+    "original_and_folded_locals_equal": true,
+    "local_entries_with_distinct_port_identifiers": 44,
+    "distinct_coefficient_values_ignoring_port_identifiers": 1,
+    "maximum_identical_coefficient_reuse": 44,
+    "interpretation": "SERIALIZATION_DUPLICATION_ONLY_NO_ARITHMETIC_OR_ASYMPTOTIC_SPEEDUP_ESTABLISHED"
+  }
+}

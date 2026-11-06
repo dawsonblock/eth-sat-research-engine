@@ -1,0 +1,8 @@
+{
+  "candidate_source_sha256": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+  "failed_test": "test_support_budgets_refuse_before_result[max_work]",
+  "reason": "global remainder refusal changed exception type",
+  "fix": "delegate pending global-work/time exhaustion to enclosing budget, preserve Refusal type",
+  "candidate_evidence_directory": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/development_cc0029b8",
+  "final_source_sha256": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702"
+}

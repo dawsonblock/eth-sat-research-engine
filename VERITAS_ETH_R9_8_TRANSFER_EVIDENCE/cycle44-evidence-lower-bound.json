@@ -1,0 +1,346 @@
+{
+  "W_copies_per_nonzero_point": 176,
+  "all_degree8_results": [
+    {
+      "max_abs_integer_coordinate": 1052,
+      "negative_by_node": {
+        "-1": 414,
+        "1": 437
+      },
+      "negative_coordinates": 851,
+      "polynomial_hex": "0x187",
+      "raw_hex_character_lower_bound": 110235136
+    },
+    {
+      "max_abs_integer_coordinate": 3704,
+      "negative_by_node": {
+        "-1": 432,
+        "1": 458
+      },
+      "negative_coordinates": 890,
+      "polynomial_hex": "0x18b",
+      "raw_hex_character_lower_bound": 115287040
+    },
+    {
+      "max_abs_integer_coordinate": 1124,
+      "negative_by_node": {
+        "-1": 452,
+        "1": 463
+      },
+      "negative_coordinates": 915,
+      "polynomial_hex": "0x1cf",
+      "raw_hex_character_lower_bound": 118525440
+    },
+    {
+      "max_abs_integer_coordinate": 8184,
+      "negative_by_node": {
+        "-1": 438,
+        "1": 478
+      },
+      "negative_coordinates": 916,
+      "polynomial_hex": "0x1a3",
+      "raw_hex_character_lower_bound": 118654976
+    },
+    {
+      "max_abs_integer_coordinate": 2860,
+      "negative_by_node": {
+        "-1": 447,
+        "1": 482
+      },
+      "negative_coordinates": 929,
+      "polynomial_hex": "0x18d",
+      "raw_hex_character_lower_bound": 120338944
+    },
+    {
+      "max_abs_integer_coordinate": 796,
+      "negative_by_node": {
+        "-1": 468,
+        "1": 493
+      },
+      "negative_coordinates": 961,
+      "polynomial_hex": "0x1e7",
+      "raw_hex_character_lower_bound": 124484096
+    },
+    {
+      "max_abs_integer_coordinate": 2444,
+      "negative_by_node": {
+        "-1": 473,
+        "1": 508
+      },
+      "negative_coordinates": 981,
+      "polynomial_hex": "0x163",
+      "raw_hex_character_lower_bound": 127074816
+    },
+    {
+      "max_abs_integer_coordinate": 1308,
+      "negative_by_node": {
+        "-1": 464,
+        "1": 522
+      },
+      "negative_coordinates": 986,
+      "polynomial_hex": "0x1c3",
+      "raw_hex_character_lower_bound": 127722496
+    },
+    {
+      "max_abs_integer_coordinate": 10400,
+      "negative_by_node": {
+        "-1": 468,
+        "1": 522
+      },
+      "negative_coordinates": 990,
+      "polynomial_hex": "0x1a9",
+      "raw_hex_character_lower_bound": 128240640
+    },
+    {
+      "max_abs_integer_coordinate": 1744,
+      "negative_by_node": {
+        "-1": 499,
+        "1": 492
+      },
+      "negative_coordinates": 991,
+      "polynomial_hex": "0x12b",
+      "raw_hex_character_lower_bound": 128370176
+    },
+    {
+      "max_abs_integer_coordinate": 1252,
+      "negative_by_node": {
+        "-1": 487,
+        "1": 505
+      },
+      "negative_coordinates": 992,
+      "polynomial_hex": "0x139",
+      "raw_hex_character_lower_bound": 128499712
+    },
+    {
+      "max_abs_integer_coordinate": 1832,
+      "negative_by_node": {
+        "-1": 487,
+        "1": 530
+      },
+      "negative_coordinates": 1017,
+      "polynomial_hex": "0x165",
+      "raw_hex_character_lower_bound": 131738112
+    },
+    {
+      "max_abs_integer_coordinate": 1440,
+      "negative_by_node": {
+        "-1": 491,
+        "1": 532
+      },
+      "negative_coordinates": 1023,
+      "polynomial_hex": "0x1d7",
+      "raw_hex_character_lower_bound": 132515328
+    },
+    {
+      "max_abs_integer_coordinate": 948,
+      "negative_by_node": {
+        "-1": 483,
+        "1": 540
+      },
+      "negative_coordinates": 1023,
+      "polynomial_hex": "0x1f3",
+      "raw_hex_character_lower_bound": 132515328
+    },
+    {
+      "max_abs_integer_coordinate": 1004,
+      "negative_by_node": {
+        "-1": 512,
+        "1": 525
+      },
+      "negative_coordinates": 1037,
+      "polynomial_hex": "0x14d",
+      "raw_hex_character_lower_bound": 134328832
+    },
+    {
+      "max_abs_integer_coordinate": 4660,
+      "negative_by_node": {
+        "-1": 517,
+        "1": 531
+      },
+      "negative_coordinates": 1048,
+      "polynomial_hex": "0x1bd",
+      "raw_hex_character_lower_bound": 135753728
+    },
+    {
+      "max_abs_integer_coordinate": 2052,
+      "negative_by_node": {
+        "-1": 529,
+        "1": 520
+      },
+      "negative_coordinates": 1049,
+      "polynomial_hex": "0x11b",
+      "raw_hex_character_lower_bound": 135883264
+    },
+    {
+      "max_abs_integer_coordinate": 1540,
+      "negative_by_node": {
+        "-1": 496,
+        "1": 554
+      },
+      "negative_coordinates": 1050,
+      "polynomial_hex": "0x1dd",
+      "raw_hex_character_lower_bound": 136012800
+    },
+    {
+      "max_abs_integer_coordinate": 1132,
+      "negative_by_node": {
+        "-1": 530,
+        "1": 526
+      },
+      "negative_coordinates": 1056,
+      "polynomial_hex": "0x19f",
+      "raw_hex_character_lower_bound": 136790016
+    },
+    {
+      "max_abs_integer_coordinate": 1964,
+      "negative_by_node": {
+        "-1": 529,
+        "1": 536
+      },
+      "negative_coordinates": 1065,
+      "polynomial_hex": "0x17b",
+      "raw_hex_character_lower_bound": 137955840
+    },
+    {
+      "max_abs_integer_coordinate": 1244,
+      "negative_by_node": {
+        "-1": 512,
+        "1": 560
+      },
+      "negative_coordinates": 1072,
+      "polynomial_hex": "0x169",
+      "raw_hex_character_lower_bound": 138862592
+    },
+    {
+      "max_abs_integer_coordinate": 972,
+      "negative_by_node": {
+        "-1": 505,
+        "1": 567
+      },
+      "negative_coordinates": 1072,
+      "polynomial_hex": "0x1f5",
+      "raw_hex_character_lower_bound": 138862592
+    },
+    {
+      "max_abs_integer_coordinate": 884,
+      "negative_by_node": {
+        "-1": 501,
+        "1": 571
+      },
+      "negative_coordinates": 1072,
+      "polynomial_hex": "0x1f9",
+      "raw_hex_character_lower_bound": 138862592
+    },
+    {
+      "max_abs_integer_coordinate": 1944,
+      "negative_by_node": {
+        "-1": 531,
+        "1": 546
+      },
+      "negative_coordinates": 1077,
+      "polynomial_hex": "0x177",
+      "raw_hex_character_lower_bound": 139510272
+    },
+    {
+      "max_abs_integer_coordinate": 3004,
+      "negative_by_node": {
+        "-1": 505,
+        "1": 572
+      },
+      "negative_coordinates": 1077,
+      "polynomial_hex": "0x1b1",
+      "raw_hex_character_lower_bound": 139510272
+    },
+    {
+      "max_abs_integer_coordinate": 1468,
+      "negative_by_node": {
+        "-1": 540,
+        "1": 540
+      },
+      "negative_coordinates": 1080,
+      "polynomial_hex": "0x15f",
+      "raw_hex_character_lower_bound": 139898880
+    },
+    {
+      "max_abs_integer_coordinate": 1436,
+      "negative_by_node": {
+        "-1": 547,
+        "1": 539
+      },
+      "negative_coordinates": 1086,
+      "polynomial_hex": "0x12d",
+      "raw_hex_character_lower_bound": 140676096
+    },
+    {
+      "max_abs_integer_coordinate": 2668,
+      "negative_by_node": {
+        "-1": 551,
+        "1": 559
+      },
+      "negative_coordinates": 1110,
+      "polynomial_hex": "0x11d",
+      "raw_hex_character_lower_bound": 143784960
+    },
+    {
+      "max_abs_integer_coordinate": 3100,
+      "negative_by_node": {
+        "-1": 529,
+        "1": 581
+      },
+      "negative_coordinates": 1110,
+      "polynomial_hex": "0x171",
+      "raw_hex_character_lower_bound": 143784960
+    },
+    {
+      "max_abs_integer_coordinate": 2572,
+      "negative_by_node": {
+        "-1": 594,
+        "1": 595
+      },
+      "negative_coordinates": 1189,
+      "polynomial_hex": "0x13f",
+      "raw_hex_character_lower_bound": 154018304
+    }
+  ],
+  "conclusion": "EXCEEDS_CAP_FOR_EVERY_DEGREE_8_BINARY_COEFFICIENT_IRREDUCIBLE",
+  "cross_packets": 22,
+  "exclusions": [
+    "does not rule out other extension degrees",
+    "does not rule out a deduplicated certificate schema",
+    "does not rule out a changed resource policy",
+    "not a source-regime complexity proof"
+  ],
+  "first_irreducible": {
+    "max_abs_integer_coordinate": 2052,
+    "negative_by_node": {
+      "-1": 529,
+      "1": 520
+    },
+    "negative_coordinates": 1049,
+    "polynomial_hex": "0x11b",
+    "raw_hex_character_lower_bound": 135883264
+  },
+  "fixture_edges": 44,
+  "groups": 64,
+  "hard_uncompressed_byte_cap": 100000000,
+  "hex_digits_per_negative": 736,
+  "irreducible_polynomials_checked": 30,
+  "local_packets": 22,
+  "method": "INDEPENDENT_INTEGER_POLYNOMIAL_REDUCTION_AND_GF2_TRIAL_DIVISION",
+  "minimum_over_degree8_polynomials": {
+    "max_abs_integer_coordinate": 1052,
+    "negative_by_node": {
+      "-1": 414,
+      "1": 437
+    },
+    "negative_coordinates": 851,
+    "polynomial_hex": "0x187",
+    "raw_hex_character_lower_bound": 110235136
+  },
+  "point_precision": 2944,
+  "points_per_node": 133,
+  "schema": "VERITAS_R98_TRANSFER_CYCLE44_RAW_HEX_LOWER_BOUND_V1",
+  "scope": "CURRENT_FULL_GRID_CHILD_SERIALIZATION_ONLY",
+  "script_sha256": "f5263d9a381c93dbf9d0021cffd3509f6cb971791d16326ed37efebf160feaa2",
+  "states_per_active_group": 4
+}

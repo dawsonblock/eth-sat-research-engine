@@ -1,0 +1,10 @@
+{
+  "root_s": 16,
+  "precision": 5,
+  "extension_degree": 4,
+  "edges": 1,
+  "vertices": [
+    {"side": "row", "ports": [0], "table": [-2, 3]},
+    {"side": "column", "ports": [0], "table": [4, 5]}
+  ]
+}

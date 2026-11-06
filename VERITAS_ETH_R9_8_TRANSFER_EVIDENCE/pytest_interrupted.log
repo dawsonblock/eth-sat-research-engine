@@ -1,0 +1,7 @@
+........................................................................ [  3%]
+........................................................................ [  7%]
+.........
+- generated xml file: /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER_EVIDENCE/pytest.xml -
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KeyboardInterrupt !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER/src/veritas/research/finite_reductions/elimination.py:43: KeyboardInterrupt
+(to show a full traceback on KeyboardInterrupt use --full-trace)

@@ -1,0 +1,76 @@
+{
+  "artifacts": {
+    "cpp_build.log": "4a511a30f97930549149fbf4232b7dbdb8912fd3b035202853e89af12800cc9f",
+    "cpp_configure.log": "37666f54630e9e4c0f18487d94104f6528b25283b1d70e9a04dabf8d821ac41c",
+    "cpp_selftest.log": "c557cd8196381ea5880ed12288734b394a554bd932636c20e5f3052dae19d55c",
+    "pytest.log": "8ef294620edb05189bb5a02cd792028f06af576db1811feae0a95c80fa718125",
+    "pytest.xml": "13e4a75a7c71b717e041e51b9b15e6eb4650826f0e5c6bf10a37ac8362e1bd22"
+  },
+  "cpp_commands": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        "cpp",
+        "-B",
+        "build/cpp",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "exit_code": 0,
+      "log": "cpp_configure.log",
+      "name": "cpp_configure",
+      "seconds": 1.2675457500154153
+    },
+    {
+      "command": [
+        "cmake",
+        "--build",
+        "build/cpp",
+        "-j2"
+      ],
+      "exit_code": 0,
+      "log": "cpp_build.log",
+      "name": "cpp_build",
+      "seconds": 2.287761874962598
+    },
+    {
+      "command": [
+        "./build/cpp/veritas_d3_selftest"
+      ],
+      "exit_code": 0,
+      "log": "cpp_selftest.log",
+      "name": "cpp_selftest",
+      "seconds": 0.7499634999549016
+    }
+  ],
+  "cwd": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER",
+  "environment": {
+    "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "src"
+  },
+  "errors": [],
+  "failures": [],
+  "full_run": {
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "--junitxml=/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER_EVIDENCE/pytest.xml"
+    ],
+    "exit_code": 2,
+    "log": "pytest.log",
+    "name": "pytest",
+    "seconds": 7.371359416982159
+  },
+  "passed": 154,
+  "python": "3.12.0",
+  "reason": "source binding changed during full validation",
+  "schema": "VERITAS_R98_TRANSFER_PYTEST_V1",
+  "skipped": [],
+  "source_after": "df01df1a3090ed4834c38de3f5f8b2261824b62663bceea8b97444ddd66a6dd1",
+  "source_before": "3aa5a91ac86168dcc9c289c9a6b78f387bd7293cac9daa4c0842e658460a0b89",
+  "status": "FAILED_OR_INCONCLUSIVE",
+  "tests": 154
+}

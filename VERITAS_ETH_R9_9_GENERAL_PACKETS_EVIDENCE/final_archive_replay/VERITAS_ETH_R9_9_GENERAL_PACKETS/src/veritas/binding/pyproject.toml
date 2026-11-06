@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veritas-eth"
+version = "3.8.2.post98"
+description = "Auditable Boolean reasoning with bounded experimental exact-counting research"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "VERITAS-ETH research prototype"}]
+dependencies = ["fastapi>=0.100,<1", "uvicorn>=0.23,<1", "pydantic>=2,<3"]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "httpx>=0.25", "networkx>=3.2,<4"]
+smt = ["z3-solver>=4.12"]
+matching = ["networkx>=3.2,<4"]
+
+[project.scripts]
+veritas-api = "veritas.api.main:serve"
+veritas-cli = "veritas.cli:main"
+veritas-eth25 = "veritas.research.eth_packing.cli:main"
+veritas-eth26 = "veritas.research.eth_packing_v26.cli:main"
+veritas-eth27 = "veritas.research.eth_modes_v27.cli:main"
+veritas-eth28 = "veritas.research.eth_interpolation.cli:main"
+veritas-eth29 = "veritas.research.eth_interpolation.cli_v29:main"
+veritas-eth30 = "veritas.research.eth_recursion_v30.cli:main"
+veritas-eth31 = "veritas.research.eth_modes_v31.cli:main"
+veritas-eth32 = "veritas.research.eth_mode_bonds_v32.cli:main"
+veritas-eth33 = "veritas.research.eth_recursive_bonds_v33.cli:main"
+veritas-eth34 = "veritas.research.eth_child_topology_v34.cli:main"
+veritas-eth35 = "veritas.research.eth_child_network_v35.cli:main"
+veritas-eth36 = "veritas.research.eth_packet_tensors_v36.cli:main"
+veritas-eth37 = "veritas.research.eth_d44_child_reference.cli:main"
+veritas-eth38 = "veritas.research.eth_child_elimination_v38.cli:main"
+veritas-r98 = "veritas.research.parent_child_r98.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"veritas" = ["web/*.html", "paper/*.tex", "paper/*.md", "binding/*.md", "binding/*.toml", "binding/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

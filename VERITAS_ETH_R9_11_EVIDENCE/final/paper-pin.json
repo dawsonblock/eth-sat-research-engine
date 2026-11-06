@@ -1,0 +1,34 @@
+{
+  "algorithm": "sha256",
+  "tree_digest": "f4a10137d8630cb8ff26d031aca38c23a39db4606a4494ff7e43f59b8c671594",
+  "contraction_source_sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+  "pinned_tree_digest": "f4a10137d8630cb8ff26d031aca38c23a39db4606a4494ff7e43f59b8c671594",
+  "pinned_contraction_source_sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+  "pin_matches": true,
+  "files": [
+    {
+      "path": "paper/README.md",
+      "sha256": "0818dac1a3a3a9b6c9beb221417c1437aef19f172f5e73e6f7f20a0001515ed7"
+    },
+    {
+      "path": "paper/README.upstream.md",
+      "sha256": "a40b8829123b44bd9cfb589e5afa856b0018dc8cb36de36fa79e4315a03fe506"
+    },
+    {
+      "path": "paper/main_full_version.tex",
+      "sha256": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa"
+    },
+    {
+      "path": "paper/quantitative-circuits.tex",
+      "sha256": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11"
+    },
+    {
+      "path": "paper/quantitative-contraction.tex",
+      "sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860"
+    },
+    {
+      "path": "paper/quantitative-reduction.tex",
+      "sha256": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a"
+    }
+  ]
+}

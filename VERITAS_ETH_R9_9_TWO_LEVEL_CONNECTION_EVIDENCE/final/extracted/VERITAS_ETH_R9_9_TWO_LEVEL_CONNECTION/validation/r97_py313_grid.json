@@ -1,0 +1,18 @@
+{
+  "command": [
+    "../VERITAS_ETH_R9_PACKING_STAGE/build/r93-py313-managed/bin/python",
+    "scripts/validate_r97_paper.py",
+    "--verify",
+    "validation/r97_grid.json"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 7.019272000063211,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 61128704,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_py313_grid.stdout.log",
+  "stderr_log": "r97_py313_grid.stderr.log",
+  "test_summary": ""
+}

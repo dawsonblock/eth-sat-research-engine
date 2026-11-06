@@ -1,0 +1,262 @@
+{
+  "schema": "VERITAS_R98_GROUPS_INHERITED_CHECKS_V1",
+  "generated_utc": "2026-11-05T07:57:37.535076+00:00",
+  "status": "PASS",
+  "checks": 12,
+  "effective_commands": [
+    {
+      "name": "lean",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_conditional_expectation_lean.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/lean.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+        "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "wall_seconds": 53.71598529210314,
+      "source_binding_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+      "source_binding_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9"
+    },
+    {
+      "name": "r95",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r95_recipes.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/r95.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+        "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "wall_seconds": 0.39973783295135945,
+      "source_binding_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+      "source_binding_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9"
+    },
+    {
+      "name": "r94",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r94_foundation.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/r94.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+        "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "wall_seconds": 74.83654916693922,
+      "source_binding_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+      "source_binding_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9"
+    },
+    {
+      "name": "r98",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r98_parent_child.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/r98.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+        "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "wall_seconds": 130.4543521249434,
+      "source_binding_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+      "source_binding_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9"
+    },
+    {
+      "name": "r97_bridge",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_bridge.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/r97_bridge.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+        "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "wall_seconds": 1.7799514160724357,
+      "source_binding_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+      "source_binding_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9"
+    },
+    {
+      "name": "r97_matrix",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_matrix.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/r97_matrix.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+        "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "wall_seconds": 7.20753875002265,
+      "source_binding_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+      "source_binding_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9"
+    },
+    {
+      "name": "r96",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r96.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/r96.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+        "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "wall_seconds": 61.19607270904817,
+      "source_binding_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+      "source_binding_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9"
+    },
+    {
+      "name": "r96_grid",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r96_recipe_grid.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/r96_grid.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+        "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "wall_seconds": 53.19873991701752,
+      "source_binding_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+      "source_binding_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9"
+    },
+    {
+      "name": "r97_write",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_paper.py",
+        "--write",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/r97_grid.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+        "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "wall_seconds": 12.862032166915014,
+      "source_binding_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+      "source_binding_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9"
+    },
+    {
+      "name": "shrinking",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r98_shrinking.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/shrinking.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+        "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "wall_seconds": 68.30776474997401,
+      "source_binding_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+      "source_binding_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9"
+    },
+    {
+      "name": "r97_verify",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_paper.py",
+        "--verify",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/r97_grid.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+        "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "wall_seconds": 7.472983416984789,
+      "source_binding_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+      "source_binding_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9"
+    },
+    {
+      "name": "r97_faults",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_grid_faults.py",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/r97_grid.json",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/r97_faults.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+        "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "wall_seconds": 10.696756583056413,
+      "source_binding_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+      "source_binding_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9"
+    }
+  ],
+  "all_source_bindings_stable": true,
+  "implementation_source_sha256": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+  "lean_status": "PASS",
+  "lean_modules": 41,
+  "allowed_lean_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_scope": "INHERITED_MODEL_REGRESSION_ONLY_NO_CONFIGURABLE_GROUP_DRIVER_REFINEMENT",
+  "artifacts": {
+    "r98.json": "6ef1dab3dce77a9359be2b126970ca5d25743bd7bb79ef09958a2acd8f97c6bc",
+    "r97_matrix.log": "3e49f3e58da48d87d0c90aae1ca2358704a970d1423383f9e337e65cdfd5f936",
+    "r94.json": "b28dc597da451cd9cf51fcaeffb7b4cf5043dd723cd8bf2a4c38a9f8303e0f8d",
+    "r95.json": "8683288f0401bad2877543ca6b86b8c252b6ff74261859c69bad73bac6818983",
+    "r97_bridge.json": "573d9817352db6ae4126f4cb23679252051caa5e9b4499176a51eb0e6996a0f4",
+    "r97_bridge.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "shrinking.log": "221bbed1783a1cafcfe9e970b946756528e1d967a6d4e7eb57c3a28dded3cad8",
+    "r96.log": "cc9c7ebd7ee9d994cb17a6381e8fed78cf745f6a04815be6190f50823240d062",
+    "r96_grid.json": "944d3d2ccb441378dd1d5943fa618748dbb500fa1dec636ffe8c8baee32a7421",
+    "r94.log": "aab8056775e039db8bd0d8e0375daf8aa73a0f947cb0912e0886c42370afa03f",
+    "r95.log": "a2f247a5c89315045cc0d4fa10df2e19c6029651313e921395790f2fb5472b8f",
+    "inherited_checks_commands.json": "f21e11e44cad7e472ee84b73fb3a925e36b2eef1d25b3e7623b8d3bfbc6405e4",
+    "r98.log": "323d05d023ee53900d1672cda0cb3bf712a7830871f099f59b3360224ee2a660",
+    "r97_faults.json": "6740ed94411f6573b3a9a56187f429141914277bef4ce3ac588090d3e58decf9",
+    "r97_verify.log": "0d77455bd9fe9ca0856138a0af914f3deb78e21a08f273621bb14e6a1f0da5ab",
+    "r97_matrix.json": "0f6a70b8cf2bcbf33d0a89223bcc6bd80606713c2d16d639ab55fa342b283033",
+    "shrinking.json": "40caf969ad824afd405ce3051309ae91211b1f4a8c275e7a1f6bd0a7bbf92987",
+    "r97_faults.log": "4b1ecf22106c9a11072667d446bd5b8b3f8b58dab413bedf57a5802c1386e275",
+    "r97_write.log": "0d77455bd9fe9ca0856138a0af914f3deb78e21a08f273621bb14e6a1f0da5ab",
+    "r96_grid.log": "4ab793fb8b8534b6c162908f0606a0e7ab1aa99783970b7b4b4f14792318836b",
+    "lean.json": "6d28b198095865b65918c4d220b1ee3bb69df9d319dde4098360c3582360fb17",
+    "r96.json": "f01f58f09fe3f6f23d44547a5fe412ec5ac0a6323dcd0a12df866afdea11f9c0",
+    "lean.log": "b64a5c1463a2e1647e75cf0cb729a9c0c9bcbc7e0016e09a6e9088f11de8c660"
+  },
+  "lean_all_axiom_audits_pass": true,
+  "initial_failure_preserved": false
+}

@@ -1,0 +1,2115 @@
+{
+  "cases": [
+    {
+      "a": 1,
+      "edges": [],
+      "final_score": 0,
+      "independent_rational_replay": true,
+      "initial_score": 0,
+      "r": 2,
+      "steps": []
+    },
+    {
+      "a": 1,
+      "edges": [
+        [
+          0,
+          0
+        ]
+      ],
+      "final_score": 4,
+      "independent_rational_replay": true,
+      "initial_score": 4,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 4,
+          "label": [
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 4,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        }
+      ]
+    },
+    {
+      "a": 1,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "final_score": 12,
+      "independent_rational_replay": true,
+      "initial_score": 22,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 22,
+          "label": [
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 16,
+          "label": [
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 16,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 12,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 1
+        }
+      ]
+    },
+    {
+      "a": 2,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "final_score": 112,
+      "independent_rational_replay": true,
+      "initial_score": 154,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 154,
+          "label": [
+            0,
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 136,
+          "label": [
+            0,
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 136,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 136,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 112,
+          "label": [
+            0,
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 1,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "final_score": 392,
+      "independent_rational_replay": true,
+      "initial_score": 432,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 432,
+          "label": [
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 432,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 420,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 412,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 408,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 3
+        },
+        {
+          "expected_square_scaled": 408,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 4
+        },
+        {
+          "expected_square_scaled": 404,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 5
+        },
+        {
+          "expected_square_scaled": 404,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 6
+        },
+        {
+          "expected_square_scaled": 400,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 7
+        },
+        {
+          "expected_square_scaled": 400,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 8
+        },
+        {
+          "expected_square_scaled": 396,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 9
+        },
+        {
+          "expected_square_scaled": 396,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 10
+        },
+        {
+          "expected_square_scaled": 392,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 11
+        }
+      ]
+    },
+    {
+      "a": 2,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "final_score": 486,
+      "independent_rational_replay": true,
+      "initial_score": 512,
+      "r": 3,
+      "steps": [
+        {
+          "expected_square_scaled": 512,
+          "label": [
+            0,
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 508,
+          "label": [
+            0,
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 486,
+          "label": [
+            0,
+            2
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 486,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 486,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 1
+        }
+      ]
+    },
+    {
+      "a": 2,
+      "edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "final_score": 208,
+      "independent_rational_replay": true,
+      "initial_score": 268,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 268,
+          "label": [
+            0,
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 244,
+          "label": [
+            0,
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 224,
+          "label": [
+            1,
+            0
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 224,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 224,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 208,
+          "label": [
+            0,
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 1,
+      "edges": [
+        [
+          1,
+          2
+        ]
+      ],
+      "final_score": 9,
+      "independent_rational_replay": true,
+      "initial_score": 9,
+      "r": 3,
+      "steps": [
+        {
+          "expected_square_scaled": 9,
+          "label": [
+            0
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 9,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 1,
+      "edges": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "final_score": 63,
+      "independent_rational_replay": true,
+      "initial_score": 145,
+      "r": 3,
+      "steps": [
+        {
+          "expected_square_scaled": 145,
+          "label": [
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 125,
+          "label": [
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 93,
+          "label": [
+            2
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 93,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 87,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 63,
+          "label": [
+            2
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 1,
+      "edges": [],
+      "final_score": 0,
+      "independent_rational_replay": true,
+      "initial_score": 0,
+      "r": 2,
+      "steps": []
+    },
+    {
+      "a": 2,
+      "edges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "final_score": 144,
+      "independent_rational_replay": true,
+      "initial_score": 196,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 196,
+          "label": [
+            0,
+            0
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 160,
+          "label": [
+            0,
+            1
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 160,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 144,
+          "label": [
+            0,
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 1,
+      "edges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "final_score": 28,
+      "independent_rational_replay": true,
+      "initial_score": 50,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 50,
+          "label": [
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 44,
+          "label": [
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 40,
+          "label": [
+            1
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 40,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 40,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 28,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 2,
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "final_score": 567,
+      "independent_rational_replay": true,
+      "initial_score": 633,
+      "r": 3,
+      "steps": [
+        {
+          "expected_square_scaled": 633,
+          "label": [
+            0,
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 627,
+          "label": [
+            0,
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 603,
+          "label": [
+            0,
+            2
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 603,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 603,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 567,
+          "label": [
+            0,
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 1,
+      "edges": [
+        [
+          2,
+          0
+        ]
+      ],
+      "final_score": 9,
+      "independent_rational_replay": true,
+      "initial_score": 9,
+      "r": 3,
+      "steps": [
+        {
+          "expected_square_scaled": 9,
+          "label": [
+            0
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 9,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        }
+      ]
+    },
+    {
+      "a": 1,
+      "edges": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "final_score": 76,
+      "independent_rational_replay": true,
+      "initial_score": 120,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 120,
+          "label": [
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 104,
+          "label": [
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 104,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 80,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 76,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 2,
+      "edges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "final_score": 48,
+      "independent_rational_replay": true,
+      "initial_score": 66,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 66,
+          "label": [
+            0,
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 56,
+          "label": [
+            0,
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 56,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 48,
+          "label": [
+            0,
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 1,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "final_score": 72,
+      "independent_rational_replay": true,
+      "initial_score": 132,
+      "r": 3,
+      "steps": [
+        {
+          "expected_square_scaled": 132,
+          "label": [
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 120,
+          "label": [
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 102,
+          "label": [
+            2
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 102,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 90,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 72,
+          "label": [
+            2
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 2,
+      "edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "final_score": 324,
+      "independent_rational_replay": true,
+      "initial_score": 384,
+      "r": 3,
+      "steps": [
+        {
+          "expected_square_scaled": 384,
+          "label": [
+            0,
+            0
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 360,
+          "label": [
+            0,
+            1
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 360,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 342,
+          "label": [
+            0,
+            1
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 324,
+          "label": [
+            0,
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 2,
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "final_score": 128,
+      "independent_rational_replay": true,
+      "initial_score": 136,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 136,
+          "label": [
+            0,
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 128,
+          "label": [
+            0,
+            1
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 128,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 128,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 2,
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "final_score": 208,
+      "independent_rational_replay": true,
+      "initial_score": 280,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 280,
+          "label": [
+            0,
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 264,
+          "label": [
+            0,
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 240,
+          "label": [
+            1,
+            0
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 240,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 240,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 208,
+          "label": [
+            0,
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 1,
+      "edges": [
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "final_score": 28,
+      "independent_rational_replay": true,
+      "initial_score": 48,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 48,
+          "label": [
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 42,
+          "label": [
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 36,
+          "label": [
+            1
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 36,
+          "label": [
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 32,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 28,
+          "label": [
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 2,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "final_score": 48,
+      "independent_rational_replay": true,
+      "initial_score": 60,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 60,
+          "label": [
+            0,
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 56,
+          "label": [
+            0,
+            1
+          ],
+          "side": "R",
+          "vertex": 2
+        },
+        {
+          "expected_square_scaled": 56,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 56,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 48,
+          "label": [
+            0,
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    },
+    {
+      "a": 2,
+      "edges": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "final_score": 112,
+      "independent_rational_replay": true,
+      "initial_score": 154,
+      "r": 2,
+      "steps": [
+        {
+          "expected_square_scaled": 154,
+          "label": [
+            0,
+            0
+          ],
+          "side": "R",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 136,
+          "label": [
+            0,
+            1
+          ],
+          "side": "R",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 136,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 0
+        },
+        {
+          "expected_square_scaled": 136,
+          "label": [
+            0,
+            0
+          ],
+          "side": "C",
+          "vertex": 1
+        },
+        {
+          "expected_square_scaled": 112,
+          "label": [
+            0,
+            1
+          ],
+          "side": "C",
+          "vertex": 2
+        }
+      ]
+    }
+  ],
+  "checks_executed": 887,
+  "checks_expected": 887,
+  "commands": [
+    {
+      "exit_code": 0,
+      "file": "proofs/ConditionalExpectationAverage.lean",
+      "seconds": 2.341190541977994
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/ConcreteD3ConditionalExpectation.lean",
+      "seconds": 1.2492998340167105
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3VarianceBound.lean",
+      "seconds": 1.1985644169617444
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3PotentialIdentity.lean",
+      "seconds": 1.1203534579835832
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3CollisionBridge.lean",
+      "seconds": 1.5799654580187052
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3InitialScore.lean",
+      "seconds": 1.2925779160577804
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/ConditionalExpectationSelection.lean",
+      "seconds": 1.2341825830517337
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3SelectionBridge.lean",
+      "seconds": 1.2985668330220506
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3CanonicalSequence.lean",
+      "seconds": 1.2079016249626875
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3StateInvariants.lean",
+      "seconds": 1.2437641669530421
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3ParentScoreIndependence.lean",
+      "seconds": 1.3146964580519125
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3ChildTransition.lean",
+      "seconds": 1.5460245420690626
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3RealizedLoads.lean",
+      "seconds": 1.3571290000109002
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3ClassAccounting.lean",
+      "seconds": 1.2043445840245113
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3VarianceAlgebra.lean",
+      "seconds": 1.3786251250421628
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3SymbolPorts.lean",
+      "seconds": 1.534297209000215
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3PythonOrder.lean",
+      "seconds": 1.3058166669216007
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3PythonScoreModel.lean",
+      "seconds": 1.3245749580673873
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3SlotSplit.lean",
+      "seconds": 1.3602954579982907
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3PacketBijection.lean",
+      "seconds": 1.1804245420498773
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3GlobalPacketAddress.lean",
+      "seconds": 1.267816541949287
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3OccurrenceRank.lean",
+      "seconds": 1.1283117920393124
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3BinaryBits.lean",
+      "seconds": 1.0691617080010474
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3NumericSlot.lean",
+      "seconds": 1.1151465409202501
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3FullPacketModel.lean",
+      "seconds": 1.2615497499937192
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3PaddedConstruction.lean",
+      "seconds": 1.234933374915272
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3FirstMinimum.lean",
+      "seconds": 1.2968331669690087
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3R93Contracts.lean",
+      "seconds": 1.248878207989037
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3CandidateOrder.lean",
+      "seconds": 1.210057583055459
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3KeyedRun.lean",
+      "seconds": 1.4897714579710737
+    },
+    {
+      "exit_code": 0,
+      "file": "proofs/D3FinitePacketDomain.lean",
+      "seconds": 1.3522520830156282
+    }
+  ],
+  "domains": [
+    {
+      "H": 0,
+      "a": 0,
+      "addresses": 0,
+      "complete_domain_checked": true,
+      "r": 0
+    },
+    {
+      "H": 2,
+      "a": 1,
+      "addresses": 0,
+      "complete_domain_checked": true,
+      "r": 0
+    },
+    {
+      "H": 1,
+      "a": 0,
+      "addresses": 1,
+      "complete_domain_checked": true,
+      "r": 1
+    },
+    {
+      "H": 4,
+      "a": 2,
+      "addresses": 4,
+      "complete_domain_checked": true,
+      "r": 1
+    },
+    {
+      "H": 2,
+      "a": 1,
+      "addresses": 8,
+      "complete_domain_checked": true,
+      "r": 2
+    },
+    {
+      "H": 4,
+      "a": 2,
+      "addresses": 64,
+      "complete_domain_checked": true,
+      "r": 2
+    },
+    {
+      "H": 4,
+      "a": 2,
+      "addresses": 324,
+      "complete_domain_checked": true,
+      "r": 3
+    }
+  ],
+  "elapsed_seconds": 75.56984358292539,
+  "evaluation_exit_code": 0,
+  "executable_refinement_proven": false,
+  "generated_source_sha256": "fc576288d88118905d230181e0c2059a67d50959f7eacb86708e1c760634e476",
+  "lean_version": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "limitations": [
+    "#eval and CPython are executable tests, not a kernel proof of their runtimes.",
+    "Finite rational replay shares representation conventions but not the production scorer.",
+    "No source-active graph, recursive contraction, complete bit work or space proof."
+  ],
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "policy": {
+    "command_timeout_seconds": 120,
+    "hard_memory_limit_enforced": false,
+    "max_edges": 14,
+    "max_work": 3000000,
+    "random_cases": 16,
+    "seed": 9404,
+    "theorem_mode_enabled": false
+  },
+  "python": "3.12.0",
+  "schema": "VERITAS_R94_FOUNDATION_V1",
+  "source_manifest": {
+    ".github/workflows/test.yml": "1db79b9329d40dc5e0d5f0ae671abc42f9d9c1216a3259cc44ad868c102ab482",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "paper/quantitative-contraction.tex": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+    "proofs/BoundaryGather.lean": "be8e1db1174ad381c6d4c891f92e3f0a1761e8e5cede4f1f7428f901d8372bc9",
+    "proofs/BoundaryGatherContract.lean": "06f617f2758fda43852135088b0bd5cd930e180b0f5d9cf09366197b438d1b15",
+    "proofs/BoundaryPartition.lean": "d8c0b4dd68cfc31102866cec417ab9188128a5b3c0e5533245d6b93d41af9bad",
+    "proofs/ConcreteD3ConditionalExpectation.lean": "ef705b77ba6e8b9e1f90d32cadf54a4f24995f8d06960c79a8f6f838f5794783",
+    "proofs/ConditionalChildShrink.lean": "61a649c876a4261c62a25410ac00ac24e05ee8f3edbae93b20c159e4e9f62360",
+    "proofs/ConditionalExpectationAverage.lean": "eabd9dc90cdcaa3ab1e24790e971bdae10184a389f77e69482d5e8c3a6b8aed7",
+    "proofs/ConditionalExpectationSelection.lean": "d09a5ca2083fc576757449b85cc23d5fa9437a3da677ae8f88a9aba3f5ad86f8",
+    "proofs/D3BinaryBits.lean": "6da3925c77d547c4efe795481ad74de2f2543a20d64f806006d6b159c38b5023",
+    "proofs/D3CandidateOrder.lean": "d0681a8f3b1186d7172d6908fc964c5fdb29e3741da31fe4bec681edfc6ea716",
+    "proofs/D3CanonicalSequence.lean": "4f2f23c18d7d74344cf363170d89fe55a2d857fc375208a5c6ad2810c637e07e",
+    "proofs/D3ChildTransition.lean": "84a8ab6190a9efabf206dfd479a75b1c9d9996229d14b88cb4272204c4653b20",
+    "proofs/D3ClassAccounting.lean": "300d491b50e5432109e531c4c789a3f850ff85118c1346b4ec84d80ab3896ecd",
+    "proofs/D3CollisionBridge.lean": "eb59c479c1a66c018adf7d4daf431868c12074a9dae95b1be57fe027dd0ba80e",
+    "proofs/D3ExpectedContracts.lean": "02d72cfe862ad1c79553ed0f4d5e7a53c2a860a8c4f415aa6dc1a973a437a9db",
+    "proofs/D3FinitePacketDomain.lean": "2c18f5438d9b50d690e0855851e9e4e0904f06a5039acdcb36a391059130f252",
+    "proofs/D3FirstMinimum.lean": "60fce126a333380b7fb0b5bf0591b6c4a8d045ed126ab0271c0b6182ddea9bc5",
+    "proofs/D3FullPacketModel.lean": "8b7b562d88a5b69e07c489e2a3baa762136a000cf11c8606e967979a25993ac0",
+    "proofs/D3GlobalPacketAddress.lean": "73a81076d57663e1d280ee22fa8852e1e1ec929ff6aa295b2702204657120fd8",
+    "proofs/D3InitialScore.lean": "ffbfaa76a80e1b32a3a1895b4582fdf883f22e7150d11827635353fa30289899",
+    "proofs/D3KeyedRun.lean": "8e022bee81db542a52459bd6a4b3f956d302f2cce58484d93c6667a9e2c84f5f",
+    "proofs/D3NumericSlot.lean": "3fa7c0b860a977cd5e5b8cd6146c852ae4554cd9eb78450f3114623c196e900f",
+    "proofs/D3OccurrenceRank.lean": "4f762ba22b402264ab28eaf389bfbaab92f78a7dd5deea149b45764920a2ae6f",
+    "proofs/D3PacketBijection.lean": "d16f1fffea1b033638b96253705d20f0354e5049bcd46cf0b4566a81856f508e",
+    "proofs/D3PaddedConstruction.lean": "d52ca925e84b53d46ccfeb779b2b3f66d24e008fce65c5443b539f01a962d497",
+    "proofs/D3ParentScoreIndependence.lean": "c962a16fec5911970a782b07f5199cf7245f0f2c866660053ad45e9304f0d2de",
+    "proofs/D3PotentialIdentity.lean": "70e9f9b195ef4537cc66188f3563d0c37bb66ce54544d5134c368681d8560427",
+    "proofs/D3PythonOrder.lean": "41113b7594d5e96813d2e9d2cfc9732e7147cf697fb00302fb5418f2d98d35e0",
+    "proofs/D3PythonScoreModel.lean": "21667cf11bb266c5b15156c349bee779b5b2be1ed12639252d7e293167e00d92",
+    "proofs/D3R93Contracts.lean": "6b6c010f7d6d0c51f8c65f82b30f14cb5f515a37de29afa94dc5681fe51208d6",
+    "proofs/D3R94Contracts.lean": "38bd376ae165add6a8c9c2bf251a1b121d28429be18ad8fe8f6985e1b6492c92",
+    "proofs/D3RealizedLoads.lean": "c28f26cbd9ba954d37f46f3ab9891dde2c6f551cf9e9db7547fee5d7a3fdc608",
+    "proofs/D3SelectionBridge.lean": "6d731f99ab7bf196b022981a959cd524eba76edb53a1037d2e31353953abefc7",
+    "proofs/D3SlotSplit.lean": "1185f1a30f8b50e1ac39ac9dfc76c57fd37287b3656f2ae3f1b05f28ca9af398",
+    "proofs/D3StateInvariants.lean": "f7f9bdc9dba9ea5538be8da79769976b4eefda1ce9b43333dad9fa097a2a1512",
+    "proofs/D3SymbolPorts.lean": "d4bf0354289f5855c8c29ab2d15d60d8e5fd90d9952425b2d8e1fb49848a9963",
+    "proofs/D3VarianceAlgebra.lean": "98e9e9c31ad8d91a43549cd594600316f739d5e9e9d752d291ec7d9b787c4b95",
+    "proofs/D3VarianceBound.lean": "2e15e338e68e9b6e2bbb96c5a554bd475caf654b3798c7819693bc8682dd8c25",
+    "proofs/FiniteBoundaryContract.lean": "34099255bd83a23e0f22b538a31e9a8b163977d9ecee4afb73241f6c4f0c912e",
+    "proofs/FiniteBoundaryReduction.lean": "c9b86a044d9c41067da087f6022e5e491473d84ffa524162e9c083db2745010b",
+    "proofs/SourceCreationContracts.lean": "8744629c98e133fe80f88b68bf401f72750b19c9e17ac05e4b04a0b84c8fbdee",
+    "proofs/SourceCreationPrecision.lean": "cd9bc12e2426ad10644d2c8b9760d338517aa117e3ebc5f1669ce8c2a847afb9",
+    "pyproject.toml": "8458cebb42a42149dbbd78d101270ae11f76d696865bd950059d934fb7da04b4",
+    "scripts/validate_conditional_expectation_lean.py": "15de26abbce3f4e9f3e724ec418cf3a059254cc93107bac0178252991388a749",
+    "scripts/validate_r93_packet_model.py": "2b75ba3e6e4fbb50260226227eda39cdc2ee033ecf247fcdc1cc0b9d6fbde86b",
+    "scripts/validate_r94_foundation.py": "c1e999d586547dfee9349e2073d9448f7ce8b7cc87095b229235400877228348",
+    "src/veritas/__init__.py": "0c73340103cca02e1fd30edab22ef1fa7f682f63ff6815bc40d9c7f8efcef3c0",
+    "src/veritas/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/veritas/api/main.py": "1c4c96b725625d605fadf7b8836aa03c803af87b0eb4699289cc5d8f9a51f596",
+    "src/veritas/audit/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/veritas/audit/store.py": "dabe81f4c30977392c9c7cf6e708c76f0171aaafd7b0ae74db1d436867f424c4",
+    "src/veritas/cli.py": "398495345b515b20f267bd8f964625f5d70a286c875e8169f71bd475a4f55398",
+    "src/veritas/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/veritas/core/cnf.py": "07892d0c984563cf59bb0cf5e18d62daeaf9832e3949e80c83e484f94c68d044",
+    "src/veritas/core/logic.py": "dbbcc536f9e7646531bac81360633f81cb77892c7d6038b9a0e4e66e70f14047",
+    "src/veritas/research/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/veritas/research/adaptive_contract.py": "a194d6d8d456487d94d97d053896b01eecb9363376e155dd13065f7f1be95b27",
+    "src/veritas/research/algebra.py": "af3d76948852aabd8aa06154676047abcc8f83f8399a37a06bd5f67084fe7dfd",
+    "src/veritas/research/appendix_d_contract.py": "481af603c7b225a579091e508c60887ec564e0472f96e47617bafa1abd86a0c5",
+    "src/veritas/research/appendix_d_schedule.py": "30e4b71dd91eaaaee3549c77bdbd231fa493af69ab4eedf98500915bc682021d",
+    "src/veritas/research/boundary_dp.py": "8229f6aa89efedfcd3ef1691d70e3bc508ccaeb8c3683435e77d84962a7af328",
+    "src/veritas/research/bounded_degree.py": "a6d3c0eec33e1fe33a1d1f13e258179af1e9c5a8cf23520e06d666fe72fd5180",
+    "src/veritas/research/bounded_integer_encoding.py": "941c36fb6c3ad8be4fd41920729f5c2ca51048434b6f321f7bd752275839dbb0",
+    "src/veritas/research/bounded_partition.py": "2a6b6b952e76e96e2cad34f54aee81d8767ce1e0068b32416f83d592a2996d1f",
+    "src/veritas/research/bounded_partition_checker.py": "689a651956542f1f445274d6362bf53934f01ad8cbb84e539036690524b953f7",
+    "src/veritas/research/cauchy_deformation.py": "e59f97614eca8cad0b16e7e9b0b83a7e204d50bdc4f1ec1d6cc9b10ac7e229f2",
+    "src/veritas/research/cauchy_elimination.py": "bc3a65e63f57c12a6814cbc66ea78a723a4ac1a13c489b78748be163f04c30ca",
+    "src/veritas/research/cauchy_modes.py": "8523aea52edb0ea22c67fee85376f2d776027efa51f23ea01459d88ccddcd0a3",
+    "src/veritas/research/clause_interface_rank.py": "10ef4621fcec99d56ecaae72512a36ccb2163f2a1f134bbfc8884f5510b83d3a",
+    "src/veritas/research/contraction_planner.py": "43052a8b9b20eb40425f2fb8b265b817bb5260075f71c352c071e54e269acd9c",
+    "src/veritas/research/dense_cauchy_testbed.py": "62144e94f373a68bc1d0f7505553e671aa5e4a2cb7b69b05f7295771caa14309",
+    "src/veritas/research/eth_arithmetic/__init__.py": "27ffdaf495837782059ed9281a3f06096bf880fe9085632ebbc4a59a57ff62f2",
+    "src/veritas/research/eth_arithmetic/boolean_count.py": "e0460056ecb7b0370b6f466d0da951dffdddce4cc8c52e74ef8e9a5a8d38817f",
+    "src/veritas/research/eth_arithmetic/creation_lifts.py": "09ded3ff0150315bf53e168d0e677502534b98dbd2c899fc1cd628e0f328f228",
+    "src/veritas/research/eth_arithmetic/extension_ring.py": "b8c0ec740b8d9f9beacee70e0fea4484531faee9a60a3dd17199d6adab5a8b83",
+    "src/veritas/research/eth_arithmetic/gf2.py": "b89f7c60c865b34d4a5c7d0819ec78e1493cc6f604c0fe84fcbed9de8b147c73",
+    "src/veritas/research/eth_arithmetic/jets.py": "69f2917e2b3b3f9798f77f319e599ab39deb6da5cbaed8e73d33ebea0c473893",
+    "src/veritas/research/eth_arithmetic/residue_points.py": "75839459a0440f9b852636e1e1f89da37fb5ed5a4f0689a525b3e91f50412226",
+    "src/veritas/research/eth_child_elimination_v38/__init__.py": "e7e9ec1bf82b12de54c9fb94a339e517086cf5ac6eb9b507cd41729555d53d4f",
+    "src/veritas/research/eth_child_elimination_v38/cli.py": "1007829974835a8f0905a84a04aa0b619a2007298e9576301f910b6feaf83f30",
+    "src/veritas/research/eth_child_elimination_v38/engine.py": "52f3dd13859d3ed0a1e760acfafe4c08a73f68b2897aabff22694258c6041880",
+    "src/veritas/research/eth_child_network_v35/__init__.py": "e91b2b621c452d3e387cfa4fecbd36cb043cb2b35c9171a504e6de2948d66420",
+    "src/veritas/research/eth_child_network_v35/cli.py": "a2b188f9752d6256b2f60505c0eba8f659f4778089ff3cbd984a0ba4cecbcaac",
+    "src/veritas/research/eth_child_network_v35/network.py": "41d11b5d614746341d66116a644e7a3256cb1997db1dc7fa401f7a4a4defacc9",
+    "src/veritas/research/eth_child_topology_v34/__init__.py": "efa30a1f95b927586396ae0e1d6c4c80ddb1c061acd0b11368ac04a6193cc111",
+    "src/veritas/research/eth_child_topology_v34/cli.py": "0822d90070971f5af56d334d9907935329a9e24e95956fb34bdc92fdb08b7238",
+    "src/veritas/research/eth_child_topology_v34/pipeline.py": "2afe97d29be319efb0e6d8d4bd7272da61a06ef49be67603a5de3a39aa8864d5",
+    "src/veritas/research/eth_child_topology_v34/topology.py": "76fb9108e5c7e765a651ecb94a6ed524bc187b4b565a90da2ca2e1683e7952f2",
+    "src/veritas/research/eth_counting_v39/__init__.py": "e9c5ef6076d7df59367ae9480eecf1a7eaed421dd30c67440b3246d315ade663",
+    "src/veritas/research/eth_counting_v39/auxiliary.py": "51376078b3397c0e40335921359097e8c5b2044e8925a31d079fe7f086234b1d",
+    "src/veritas/research/eth_counting_v39/count.py": "af91fb266f785a93c7273d9e27792360df85dc1c0f7140815f922fb5d6382106",
+    "src/veritas/research/eth_counting_v39/embedding.py": "b958b59b436b718d3fe511400af30653d4a34d2e59a308ec345d2481c6e34ee0",
+    "src/veritas/research/eth_counting_v39/instance.py": "0290609248f8e24f8994b4f4e932cc79782da624e93a2fc9c6f9b4aa84a6e238",
+    "src/veritas/research/eth_counting_v39/labels.py": "0f3950163813ed275619afe17e0c58953c047766c72f6c9947667d50409c535c",
+    "src/veritas/research/eth_counting_v39/layout.py": "2ffddb34c47ee6d07d24a8cfa10a7ba712d9529157fc2e91b2bc2f31c8eaaa19",
+    "src/veritas/research/eth_counting_v39/parameters.py": "68e1e60a8de0a153ba82ad9b07a6d2ea3cd52a8aece4aa1baa646f2125841693",
+    "src/veritas/research/eth_counting_v39/separation.py": "6d2ff4eee49ff538efcf4f03fbce480268fae2ee31f1eaee21a9f03adf82b8ba",
+    "src/veritas/research/eth_counting_v39/taylor.py": "b791bc3570afadda43ae977ef78fa8b8b56bcb0528c2b81056a0005b2ed5b219",
+    "src/veritas/research/eth_d44_child_reference/__init__.py": "6a5a2b6515eb925768c47c112bdaf5e422edbfeb79bd9088835dacbd0f3615f8",
+    "src/veritas/research/eth_d44_child_reference/children.py": "eaed5a508717847afc34a6eabdfae5b01cc2b6d6f212f1b15fa455dce215e66c",
+    "src/veritas/research/eth_d44_child_reference/cli.py": "1d66963b6b01114c96daf83eae6745a1c264d52ba93676f8808c47c7935c075b",
+    "src/veritas/research/eth_interpolation/__init__.py": "a636992b6ad372bf4b945492a8726672c8a355546facaf4570ba4e5bb3dff081",
+    "src/veritas/research/eth_interpolation/cauchy_product.py": "f733db73e7848bf33bc0afcffee24e740b707ef132278b695a9113069109472a",
+    "src/veritas/research/eth_interpolation/cli.py": "8663c285e76fc7ff1360945ddfbc4fb52624790a06b6babd948421d87b19e09b",
+    "src/veritas/research/eth_interpolation/cli_v29.py": "41b8150858c9fad3025f2184242fc95754010bb661106a90e2051197545323db",
+    "src/veritas/research/eth_interpolation/extension_lagrange.py": "82ea766aa2e48a11cb367886c9d5dea4cf90fd7827fb702a88bced250276555a",
+    "src/veritas/research/eth_interpolation/hermite_crt.py": "e723fc38694fa74fac75d3cd87154b40ef6f7249998bde008093eb735d173379",
+    "src/veritas/research/eth_interpolation/shifted_cauchy.py": "b518233c72e76ee87e9d77eb2abb080a335a46f4355f66ae1f0be684ad1a1e8d",
+    "src/veritas/research/eth_interpolation/source_hermite.py": "1215f433526d25034a786181d73f33fa8052b9ddb75f83a6761f8c6d6611f32f",
+    "src/veritas/research/eth_interpolation/tapered_hermite.py": "7c80d15d0f0f1898e6f0369ec051ecbe5c8157b0557edbe403f29d84fbdd3a7c",
+    "src/veritas/research/eth_mode_bonds_v32/__init__.py": "c9e08544aec82c0f1eee72fa99b14a622dcdd1b19060b81bdc8342a6ed61c2f2",
+    "src/veritas/research/eth_mode_bonds_v32/bonds.py": "d5488f0bd9bfcaa9e3827a73a19e9e84db6dd1f05347a034f8e48ca60dee4381",
+    "src/veritas/research/eth_mode_bonds_v32/cli.py": "d015a86acd314878896488b9f44e5af9a0d6ecf0615145e636d70b590f3c72ea",
+    "src/veritas/research/eth_modes_v27/__init__.py": "0c9d6154629dbd5cf0fe43a191bb523fbd69898e1f53d880f3b01ca0e36798f8",
+    "src/veritas/research/eth_modes_v27/checker.py": "cb4c43fc12fb1df3d8d8e9b35bf9121eb64be61d701154e03657953e76ce6b52",
+    "src/veritas/research/eth_modes_v27/cli.py": "fe0cdd318a7df0ab1462d9d2a55ea32e056bf5e3b0ca9c2271ea81fffd97cefd",
+    "src/veritas/research/eth_modes_v27/constructor.py": "3a1670149f4fb808fe66814fe9a26fc8edbcf90965dabeb10ea079591c6bc40e",
+    "src/veritas/research/eth_modes_v27/enumeration.py": "dc4028211b04646c6faa6048b3c0624cf7e8669e5bc7b26c9d1b9c0556496591",
+    "src/veritas/research/eth_modes_v27/reference.py": "649c7e9eba59fb4d8e92bff3dc5aa4eb3afa97428feb4ecc1e541f357d25251a",
+    "src/veritas/research/eth_modes_v29/__init__.py": "643ad67913c6ed0018d69d2668f2a834b5a67cd83e86585f207d213488504417",
+    "src/veritas/research/eth_modes_v29/extension_modes.py": "613e25a4c0a0754a80971dbc11048b206f7a807854dce983969f7d509b2bc257",
+    "src/veritas/research/eth_modes_v31/__init__.py": "40931daf5d9e3338ade0ad3a860ac8689053ae9e890fd79ace2ea0652b53f355",
+    "src/veritas/research/eth_modes_v31/cli.py": "44ee6baba06a8929321e81db4b056e7e0afddb99b955f1b8866a457f99cfeda3",
+    "src/veritas/research/eth_modes_v31/jet_tiles.py": "6dfde3a1026211bd0b1ce76655ce0fcadf6fcf6f076e55f63ba28877b23fad48",
+    "src/veritas/research/eth_packet_tensors_v36/__init__.py": "24b297eeb1b82219e79bccec8cd45308dc5b48c5115f154e3d0a584dcd9c8789",
+    "src/veritas/research/eth_packet_tensors_v36/cli.py": "ce5b50b09a14a6a17bc9966d2b5e5e497f44c12ec929bc7d7f0cade6358c9d1d",
+    "src/veritas/research/eth_packet_tensors_v36/packet.py": "07d58ae224641dec53df876ddd7dd568d355a001489dff0db199dfa19ba456c7",
+    "src/veritas/research/eth_packing/__init__.py": "4516408d9c137bc80d5e7ebc96489ae995350ec418a393ba40c4844f46bd881f",
+    "src/veritas/research/eth_packing/cauchy.py": "b2c113dc5a8e946354565664d83dcaa28470221d4930477bd7f302ef3ef893d7",
+    "src/veritas/research/eth_packing/checker.py": "fb5b42a25d7b3dacbbb1458edda976bdb221d403797a93d2965de185274897ee",
+    "src/veritas/research/eth_packing/cli.py": "49324e4757fc23b271b03a17461fb647c2501c746727ed96ae94aea8e6a4b883",
+    "src/veritas/research/eth_packing/labels.py": "90807d4e40bb48ecf60aebcc02959f77242ea1fa1bb6904d3f1ad0d6b0659f93",
+    "src/veritas/research/eth_packing/packing.py": "42a820695fdd6e45fa09587e70b2b8813a1123f41e4a0717058898d6aa353353",
+    "src/veritas/research/eth_packing/parameters.py": "7aac035f78509a9198253a44fd35f9c2c1d9ad82eb1aa5b7eed475b23d8965e0",
+    "src/veritas/research/eth_packing_v26/__init__.py": "1e319c435bc106ca351a8b97879d0c5eb32618b173751e512a4910ec7f1b3d72",
+    "src/veritas/research/eth_packing_v26/checker.py": "abe851688a4eed990a60c02ac13d3edca75661130531d6a7ad2a887dc9d920a0",
+    "src/veritas/research/eth_packing_v26/cli.py": "629fb70390ce0f120bf0477c362ec0cb530b1a33e6ac69c802c6c80444ab9826",
+    "src/veritas/research/eth_packing_v26/complete_bipartite.py": "6866ca97574c7c90dad938fa2797efb38855d1cd8ceb5aa2c4d72bfcc27040e4",
+    "src/veritas/research/eth_packing_v26/complete_bipartite_check.py": "22a416bca4e75de9f5be84edf9cd0fbc82b2a5b39b9f0e4a8f21017668f9d261",
+    "src/veritas/research/eth_packing_v26/constructor.py": "d53c78018a11d95742317434a0b3773025531949c54d18faa0a86c5f0d04d970",
+    "src/veritas/research/eth_packing_v26/cpp_backend.py": "91306fcf7e5cd53c20741c2e52ab886ebbc026c30d9b2d047247b3c70ca574b8",
+    "src/veritas/research/eth_packing_v26/expectation.py": "35b414e66ac9dcbc505bd1309e6879b5b8b70973ec1a92c463023273a82bf699",
+    "src/veritas/research/eth_packing_v26/geometry_audit.py": "cfe5bab18888a886fbabcf80a9090344fadab91597325833e6a61498a65ba8a4",
+    "src/veritas/research/eth_packing_v26/global_packet_address.py": "eb1f3dfa36945ce3148fc8f939f04a3bdb38d2ddebc5a2b790f33c810f9ed3ad",
+    "src/veritas/research/eth_packing_v26/global_packet_address_check.py": "f493580bcabc8f83f6354daf64ee82f4d6b19167859b774abc14ba249dbfbadf",
+    "src/veritas/research/eth_packing_v26/implicit.py": "592211335d427144d75f5b4b0c103f1eaebb5e1123b45b2256c54ba65f8d75fe",
+    "src/veritas/research/eth_packing_v26/packet_bijection.py": "13d5f24ca3824b6cd7fdbb1be7c1e1bc9c934801bd7ea5454e94168a816abea0",
+    "src/veritas/research/eth_packing_v26/packet_bijection_check.py": "3ecea942d8e85b9f3fe9d277d13572b83d212194111bb47e5b485d8826c6c664",
+    "src/veritas/research/eth_packing_v26/streaming.py": "002409180ce0a5bd334821f8a0725a50ee840d2064390ec01e24732b54255f33",
+    "src/veritas/research/eth_packing_v26/streaming_check.py": "d916bc5adc22c8f10e7f16ab885e1441431b09fbc4c6627af6e60f804be12f41",
+    "src/veritas/research/eth_packing_v26/symbolic_regular.py": "cfeb4f702538ef1951c11b8a25ca40e7838143d2ec663f2504b216e95ee35aad",
+    "src/veritas/research/eth_recursion_v30/__init__.py": "c9c1bb755cdeb0b7da0ba606a20f181e95f1a141322b10d2d532fd5c95d8458b",
+    "src/veritas/research/eth_recursion_v30/cli.py": "c58ec53b08a7da5b7e17afa8417551eb342ac00f71ce87d23f7b63c1dec0c105",
+    "src/veritas/research/eth_recursion_v30/implicit_children.py": "04b476b9cbf9fa5eea1750fa4cf0ec121cbb9154ca83a56e2d84d5489c10a087",
+    "src/veritas/research/eth_recursive_bonds_v33/__init__.py": "faddb44104e10dfcd67f9f567a8ff37c0490da34e3707cd20c485c2956f5fc49",
+    "src/veritas/research/eth_recursive_bonds_v33/cli.py": "90771e7d9b2d2a19371d5ff99825d9e96c24434e4bfb7cb024b5ad63b4027685",
+    "src/veritas/research/eth_recursive_bonds_v33/recursive.py": "e153eb1288f6670d0b962a5df36325e23b8fdb4a42c9f3daf4725fa13b0fa58e",
+    "src/veritas/research/eth_recursive_contraction_v39/__init__.py": "d173112c7bb223d60475615ab05daefbeee768dd8bbaf5addc19524929edf1e2",
+    "src/veritas/research/eth_recursive_contraction_v39/described_network.py": "1fab56ff96c8558f288562522a81ed8eb8e3c169bef2e0497bb3e5f05ef828c9",
+    "src/veritas/research/eth_recursive_contraction_v39/geometry_point.py": "9417e6e75dceeec21fa89f4824b0989df0e2d1c77f3bc0f5fdd0f5daff4c981c",
+    "src/veritas/research/eth_recursive_contraction_v39/independent_tuple_oracle.py": "34a3c9468b74ac3864611a05d65ea59206aae035c4e920f5dfa1b705add0a70d",
+    "src/veritas/research/eth_recursive_contraction_v39/lazy_children.py": "aa675f1f0829662cc36c55f9e8d0afa9a0622882dd8f755de54a24bdab690bca",
+    "src/veritas/research/eth_recursive_contraction_v39/mode_bound.py": "6139d5684070b7c6efea6e04e4e91b853f4c40c1049dd472cb86ff74a2c5ba5e",
+    "src/veritas/research/eth_recursive_contraction_v39/mode_matching.py": "69dd2f88593cc33e8c04904db145f871d5f2bf107e5d5efa2e6cd02f52529933",
+    "src/veritas/research/eth_recursive_contraction_v39/point_children.py": "51926df054539b0b1af4ad632dd454d23ae93775e67625a7ee45ac3cb82d6cc9",
+    "src/veritas/research/eth_recursive_contraction_v39/point_mode_matching.py": "e4dbf13b308eb30d4e6ba87ac64ece6312b9a8311760d25b00900aaecbb70e6d",
+    "src/veritas/research/eth_recursive_contraction_v39/point_modes.py": "7e6dd9a385a3db228a152714052cc12e92a428abb594297c93ec23648e03c461",
+    "src/veritas/research/eth_recursive_contraction_v39/structural_tuples.py": "40976306306962e09ea7e8a91662160eeea8a7d06a9daa8a549779cc10bfcf3a",
+    "src/veritas/research/eth_recursive_contraction_v39/tapered_described.py": "68d9df7fcd0636fc568d17f7fdfe1c61eabd31e3c15f115bf5988ef8bc83e04e",
+    "src/veritas/research/eth_recursive_contraction_v39/tuple_stream_check.py": "0d76c834828dcf2af63e11edaf5ef83b2d39be2de54569a310160b7b641493f7",
+    "src/veritas/research/eth_recursive_contraction_v39/zero_wire.py": "775b4c6d8fcacd679b4f15c94a1af25740ba8efb9b852898322c7d8ae1445116",
+    "src/veritas/research/finite_reductions/__init__.py": "d61583b151a6dd65c6657ef15e1de11a323b0a365b76e69399f141749e8e88d9",
+    "src/veritas/research/finite_reductions/__main__.py": "df7f74b6e3d155cbf85a15c2e9ea01ed780c1aa8b886d7a23165c58aa7574b64",
+    "src/veritas/research/finite_reductions/boundary.py": "1abd01093e7d1e709e3014ca4d6690473c8ebda7af74177b09fc8c0294f0a0a7",
+    "src/veritas/research/finite_reductions/elimination.py": "ed7fcfe55134763db7801e3247be58ee4990760a92d190917b70e70518b425d1",
+    "src/veritas/research/finite_reductions/recipe_point.py": "9c3d0c7674081448994e0733d1f7f6ac869ce170466e690f9d555062fa14a00e",
+    "src/veritas/research/graph_decomposition.py": "cd1489edb810dbd596ce0d21ad61206474d5973c17f690616c83e307446788c2",
+    "src/veritas/research/grouped_cauchy.py": "eac96ffe9f0195a381161a2c0e07bea2c988b3eae09b7102979308a9810942ff",
+    "src/veritas/research/hermite_ring.py": "5bcb1a27d74809be7e443c2eaafa78e7c8a076f5051bfeb25e8b61bef009d11f",
+    "src/veritas/research/independent_dense_oracle.py": "3d1bf88ef25783aaaf2f035966c0bb984b7989a3491fccc52aa35ee209c67066",
+    "src/veritas/research/independent_r82/__init__.py": "4fa711f7b1020ee0cf105249ec099bda4bbe64873a737255105300e86ba9584c",
+    "src/veritas/research/independent_r82/point_mode_oracle.py": "95d18d8db0723ab27381b586c2a337e32bfdbecf6f1847862bad3c60548b4d86",
+    "src/veritas/research/independent_r82/pruning.py": "8fba5a55d4ff0798938c4506ef9d91736c65c40cd461c1ece191e08c873438ac",
+    "src/veritas/research/independent_r95/__init__.py": "088da8e34f3f521e5cec161f137e9f5827c2cc4f344ccc2aca25bde98243fd51",
+    "src/veritas/research/independent_r95/hermite_grid.py": "b929a036c20e06605f8cd59e1cc356e16a37fb0091f1e398a3fb4b2c9a33155d",
+    "src/veritas/research/independent_r95/recipe_oracle.py": "dbde58f57a13336afaf7b91933be864cfbea85993d297e3da853e6aad75f2dd3",
+    "src/veritas/research/indexed_contract.py": "e4ca73e1338da4d091eaf8abe661b87f8817a5445fd451662614b0c29334e7a1",
+    "src/veritas/research/matching_checker.py": "53b9f65f6b4c5a64f9ad870c3b0e7868472f9f0caf620656bb77443c01c5ceb2",
+    "src/veritas/research/matching_packets.py": "74d8460dfe8932dbadbee77499f5f93ec2182b17c4c8c735e548dbcbaa05bac8",
+    "src/veritas/research/math_exact/__init__.py": "3a552fbd72e1ec3ef2d28e7f2b7a210b61e3bbfee19174ecd70085d5d362ef84",
+    "src/veritas/research/math_exact/oracle.py": "aad5ab063f901688d770df4b7757f31e4a00a8326649fced4607b355b16d8aec",
+    "src/veritas/research/math_exact/ring.py": "4edfeec5f820971f87a3eb4a097023c28434823306031701e70e5965e7287a7a",
+    "src/veritas/research/math_exact/status.py": "6cdc79f17897de46bcd450a979b1866415d6f2f360881df6ca84ddfa845c591e",
+    "src/veritas/research/minfill_contract.py": "e9f6d43309bbbeda779764ff77b2f4eedc011f56b2408482e2523708523a6683",
+    "src/veritas/research/optimal_order.py": "edc5c42d7b8242565936e7fb611bebb538610af6c3ec8154ba5a68b7673096f4",
+    "src/veritas/research/optimal_packets.py": "8b450509713f9fa032114bde758c45d4c9caa7d5cbbca24cfceeb5bf17bdecd3",
+    "src/veritas/research/packet_bound_checker.py": "543bc0b7d664b52ab977572c722bdc9fd2c1d9754480c7a4236a191512d1baf1",
+    "src/veritas/research/packet_schedule.py": "3be32da6bbf23f7c6ce663fbb1afceac8039feed6b37340b43af713e2f507f11",
+    "src/veritas/research/paper_verification/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/veritas/research/paper_verification/boundary_identity.py": "4ce7d0fd15eabfec2f437bfa01cad7299bac5d68f05bd8c22f0fab44f3a1ea75",
+    "src/veritas/research/paper_verification/child_identity.py": "ff0de5cbcbb3ea3fddae0d306c5497ef579d07c7c8de08c3ef3a378af4935828",
+    "src/veritas/research/paper_verification/evidence_report.py": "a7bbd1bd1cd41ab86061250d35cde3d149682ff4c7efbfba845900fd85c10f12",
+    "src/veritas/research/paper_verification/exact_parameters.py": "f1ca6910221fbb431760e175c5f6ca5a4adfe5390b6561aea6a6f7bb143a20b3",
+    "src/veritas/research/paper_verification/hermite_checker.py": "e62fbde25397b729e912bc683a901d6944eed3177443975c038a377223515bc5",
+    "src/veritas/research/paper_verification/packing_checker.py": "6bab635460e57bac0e947486b1c198583112d9173aad731fe8d1353d2411a8c1",
+    "src/veritas/research/paper_verification/source_registry.py": "4e868433953b1caf79b1d91213b3356eb2221b4399969a1353a11e6320bf18b2",
+    "src/veritas/research/parent_child_r910/__init__.py": "8b6ee7aabf567b2583ccc05beb9faef6d734d1af5f5ee238d62afc3006a02cb0",
+    "src/veritas/research/parent_child_r910/accounting.py": "500fd2157174c85b2af5b61d7b3ca1cdb08e9f82e16358c78b83e98919de277b",
+    "src/veritas/research/parent_child_r910/checker.py": "0c640f845e2daaad8a458870399ef2f4a83a168be3313a4b8d6797b998f43bbe",
+    "src/veritas/research/parent_child_r910/cli.py": "f71ba73a3835e6c48bc7f7ccf56fc61f4ad32ffded5bdb1902fd349911c8a227",
+    "src/veritas/research/parent_child_r910/engine.py": "1b79c776f3d6d973875f71e82422c92812d59921f11c752435fe2a2b30cbb1b6",
+    "src/veritas/research/parent_child_r910/preflight.py": "957660a50c2115c22f61e9c5bed383b1ed2ade9604602a5b7d231be1ab85ce3f",
+    "src/veritas/research/parent_child_r910/recovery.py": "9439f2460e5ec3ae62936c2e85597e7478c49767f6bcc374dbaa5e37699e7108",
+    "src/veritas/research/parent_child_r910/reference.py": "37d33043cb867bd40f10b61b46113f59f949db1bcc5ecac4131bcba569cc0ae0",
+    "src/veritas/research/parent_child_r98/__init__.py": "c26048149da382bb6f3c62b546b95e1a6926d33c508b2dcb85e183b20832e66e",
+    "src/veritas/research/parent_child_r98/__main__.py": "9aceab704e420b351fdc308d99f6374dd113c112b8fffe4704c40664f4fb33f8",
+    "src/veritas/research/parent_child_r98/constructor.py": "a308e5de43a666facaf8099c272c8de2d0fc56cc8a379b0d71b7c1a3f41dcb29",
+    "src/veritas/research/parent_child_r98/cycle_recovery_cli.py": "6c668eb5f8210ab2e5eb586aa51d87a53cc417b22a966de79a7573540ab4bdf8",
+    "src/veritas/research/parent_child_r98/cycle_transfer.py": "6b078448d884f908827319346d937834fedf78a8d24c90568e0f390f526712eb",
+    "src/veritas/research/parent_child_r98/cycle_transfer_cli.py": "5375155d398bd6a0648ce2999102ad0afe726307f6aa2d9efa025f025edeaabd",
+    "src/veritas/research/parent_child_r98/cycle_transfer_recovery.py": "0cfbb076f577e86400c21d42fbb4f87c63d5b6ca5d062320f905166bf1422bdd",
+    "src/veritas/research/parent_child_r98/engine.py": "d9e9e46f1321d83f2c4a67c9fe1a28581cd04e021fa16962282e1b07dada1e47",
+    "src/veritas/research/parent_child_r98/general_cli.py": "8819708df591eba533c4019008c8368a4bd08bd6062c06d37161723566f7ee7f",
+    "src/veritas/research/parent_child_r98/general_engine.py": "004220f7ae7968e616c4535e32132d163aa48ead9aaec4c435557def9b487ab0",
+    "src/veritas/research/parent_child_r98/general_modes.py": "74aacd74cba6adcdeff083412ad6d891579e51ca86e04f853d7a33f2b768b3db",
+    "src/veritas/research/parent_child_r98/general_recovery.py": "c72f9561a77f434cf9df01f95e71f6d3d77b50d7dcc1b095b7dbff1823222574",
+    "src/veritas/research/parent_child_r98/group_preflight.py": "782d96bf92d2252dec09664af8836d972f271328d3567082b43839c1b3133648",
+    "src/veritas/research/parent_child_r98/independent.py": "ec4b47502c598f3c83f275d4a38ba0f41fc68663f8a89f2688edf7b7471ca7e7",
+    "src/veritas/research/parent_child_r98/model.py": "41ee53511c7494fe2bf59ac6807db68d828d34b6a422269ca47bc25ddccc0996",
+    "src/veritas/research/parent_child_r98/modes.py": "d4c40892a733eb27af3dc8814ddc1358a1b5cb4e805732bf22640c37183bfe7c",
+    "src/veritas/research/parent_child_r98/packing.py": "a4780227c9aeba05e6632ea0e77be1618dd0881c0bdcb6cbc02919d0ab381d1b",
+    "src/veritas/research/parent_child_r98/shrinking_cli.py": "0497a48c4af5b3805a43562dbfbbc4de4f8958e3a883fde617ab7cdb310276e0",
+    "src/veritas/research/parent_child_r98/shrinking_engine.py": "d3aa0773e85d957e29c680fe2bc52becf40ce015a8de6ccca9cac223365c3ae4",
+    "src/veritas/research/parent_child_r98/shrinking_layout.py": "ba50149e639065de3341b96d86c79602353b9387a1e9743683e7d62c7452ded9",
+    "src/veritas/research/parent_child_r98/shrinking_oracle.py": "340c5f2b7a165c8451e61dd8f07f59750806ae74dc9201f5e1d00391567068ff",
+    "src/veritas/research/parent_child_r98/transfer_basis.py": "31149d045213d00f0d40245773b76208618b73a5296c7e3e44133b197973b93d",
+    "src/veritas/research/parent_child_r98/transfer_children.py": "d49108884e9f7542cb2ab172c80f60504f724a5bcce3bf66bc6a142534f2181f",
+    "src/veritas/research/parent_child_r98/transfer_io.py": "23dd97d8f120f1ede18d702e7f3e3abeeb5116c016ad1b52b9bd155cc42c5ee6",
+    "src/veritas/research/parent_child_r98/transfer_recovery_verify.py": "fb94ee4af8ad7f136b7477950ba3eee0f05061b18a61291f333cef1ac9917660",
+    "src/veritas/research/parent_child_r98/transfer_verify.py": "e7cabf589f2291d0129919f6262c62cb6165cb43dc6eb79de0e187ae93f6e28a",
+    "src/veritas/research/parent_child_r99/__init__.py": "329c6585985ca61c05f7b6e1e57e0bbfb7085606f89d6147496964be52fda647",
+    "src/veritas/research/parent_child_r99/basis.py": "b8885c7ebf78a799fac2874e4e81610accc51a16d354ba4a3612cbfc6aab776c",
+    "src/veritas/research/parent_child_r99/cli.py": "ddb381265b38e5e770e217ce7b610e123f013f77a791af333d433ad20fd97a4b",
+    "src/veritas/research/parent_child_r99/conformance.py": "1a9af2a89554c76f7b983f3b7b3905c610fbe60bc3969c4c4720cdca88c1a90d",
+    "src/veritas/research/parent_child_r99/degree_check.py": "893f364144f38e578c291aeae0d8e000614d32a4b15f064cc889933d7cbffe5c",
+    "src/veritas/research/parent_child_r99/degree_engine.py": "cbad9428d4849fc16ab80dae22885000997b234eabd4757c644afae0c7a8f903",
+    "src/veritas/research/parent_child_r99/degree_recovery.py": "14cdc92707cb64ea1a36870fabd89e68be57cbe34f549cfbb0b3f0129380a8f4",
+    "src/veritas/research/parent_child_r99/degree_verify.py": "8473e970c0f95954008e16881510abeab484ace973e4c818093decf9941a6207",
+    "src/veritas/research/parent_child_r99/engine.py": "3c33febd3a0b83ff0a1177f5ea8b2187450382b831035288c3584fad760a95e1",
+    "src/veritas/research/parent_child_r99/execution.py": "bccf0a195bef1368158de7a0eda3da4ce78b703af7c398cd35e64b7edace2e81",
+    "src/veritas/research/parent_child_r99/preflight.py": "5c4fd9b6812d3ac9a418811fa0d26186250133d460a418c3f1050aac29f866c0",
+    "src/veritas/research/parent_child_r99/preflight_cli.py": "990af218bfcc03241b5a80872e49ac4bd04793f0de84cf23b2dfd702abc9e11f",
+    "src/veritas/research/parent_child_r99/recovery.py": "b288c839791f720f56754e50814bed6fe3928da15e9741ff0fca1029055aff68",
+    "src/veritas/research/parent_child_r99/resources.py": "62e744a4c62d0835ecaecb496c37a9f43578221cf62fd65a26282bbf4d20b039",
+    "src/veritas/research/parent_child_r99/row_degree.py": "9db6c592e5b1844572cd7448f6a11ee7dc1ff6b4457c00a2b3f4a751ccfe83ca",
+    "src/veritas/research/parent_child_r99/stream_cli.py": "81b95647ba2b13740c541a61d2cdde2916b51c6ff3eceea855c4f0c88af09686",
+    "src/veritas/research/parent_child_r99/stream_engine.py": "a0041daec2fe2f3a04bac7084173f59a95dfbf2db70b994ee036799a7102e7a4",
+    "src/veritas/research/parent_child_r99/stream_recovery.py": "9afaf14ef426ceb5e4606a886ada3ca4e639c1c5115a819e81553e8c3373f1a0",
+    "src/veritas/research/parent_child_r99/stream_verify.py": "43e8e480309f530cf85b4abbae77feb374cffb2fffdc21208fb4cbd6c51913f3",
+    "src/veritas/research/parent_child_r99/support.py": "d3e11c60ed8472bdb073d152481c3a25dc6de44b8e117c32440984f8d8645bdd",
+    "src/veritas/research/parent_child_r99/support_check.py": "4c0ba883e4fa6ade423d22f9df669cd66078abe02e24f181bc4f2549c3e278a8",
+    "src/veritas/research/parent_child_r99/supported_engine.py": "5a2de04f27266057e67dc926483625749ac1c5b2b657aa6eb762f1abbccd28b2",
+    "src/veritas/research/parent_child_r99/supported_verify.py": "5a7262183de0a0a7e09287e4b9d53b353e8a0c2d9c05ec621d1685d0829980f4",
+    "src/veritas/research/recursive_separator.py": "f2ee99d236e368b37b1285a476137efb30351b58d52fd7d024daabaafbfd6762",
+    "src/veritas/research/scalable_packets.py": "d45efa0cfc2a79fa8fdc3e599cfec25fe2ce65675a4b9d79ef80dc8687623fd9",
+    "src/veritas/research/source_cnf.py": "30412fe4cdbc0edd8b1cb22055221dabd86e3de462af861a4d8af613b7444f91",
+    "src/veritas/research/source_cnf_check.py": "c48e9c9ccad92ff122f2aacc3a4371bdb5c44d270a779a6615bfdea41e41c708",
+    "src/veritas/research/source_parent_child.py": "60be3e7d68bf1bd17d5a73399fb6bda0edb100ceec8e507ea455a84b00cae13f",
+    "src/veritas/research/source_recursive_engine.py": "02e44784c96b42804f0191da6141369753b45314660eb408d8bf91cad27d946a",
+    "src/veritas/research/sparse_contract.py": "6f9961eb9ea184f99886f38d17835f2ee397939fa1f58ddebf4f9e8c7af1e701",
+    "src/veritas/research/symbolic_cauchy_reference.py": "a4034bef84e080d10615e6b82c3a13c11f13df2c23e8f8f90381891421399ac2",
+    "src/veritas/research/tapered_v4/__init__.py": "3267061efff9a44fbd8ed1d92a9036253e2ac399bc251a6640bfd4f32c582a58",
+    "src/veritas/research/tapered_v4/actual_child_certificate.py": "ca0e88a0aacbb2675acd0462e29cf3a532e80a3980aaf9a3de400c51c3551526",
+    "src/veritas/research/tapered_v4/budget.py": "ad7cd48b45961f6e955a41e9e42e74d69ac13b823a6aa268f43d04ca0b8eb731",
+    "src/veritas/research/tapered_v4/certificates.py": "454bd0ac4ad4f25a63ce32b2d1d0776c6385d6e66a5d92afa385cb91b6e9bf94",
+    "src/veritas/research/tapered_v4/child_audit.py": "9323974d94023776c1ba19e9b3598aaacaf2a8f5fb18612672c345f0e143a2ed",
+    "src/veritas/research/tapered_v4/child_partition.py": "1c87674110204510039b1bd1d65466a4ab6c514ad9595aa791f6a498a2e46f39",
+    "src/veritas/research/tapered_v4/child_recipe_check.py": "23b96a5d653dbf75a372ace82f5c391b7b5a7f21cf6c9cbd2432bc67d0042f8d",
+    "src/veritas/research/tapered_v4/cnf_count.py": "81ed1350dd64158cc2bb011e6def37851b553f07bd5f4fbf81e33b158b0b74c9",
+    "src/veritas/research/tapered_v4/model.py": "247afa79f4fa9dbb9f16022fe008ca95ba437453a18e4d4bca870a5ba15aeecd",
+    "src/veritas/research/tapered_v4/parameters.py": "980446280e8d58db895c7b8ff083b4d75559981db8ba6655e8b9240d8f703fc5",
+    "src/veritas/research/tapered_v4/provenance.py": "16d20193ea1af2954f6ea8a2f0ceb1900bdf16fdc1e6c757be9d8498a419d0e9",
+    "src/veritas/research/tapered_v4/recursor.py": "6f04c7e2274b94f6a351612330c260319c79f42054ec077d1b5e7877875b2e35",
+    "src/veritas/research/tapered_v4/source_leaf.py": "3f474549fd4e860c9d4523aa4815fe181f47656e59f683a9e775711668c02cc2",
+    "src/veritas/research/tapered_v4/source_recipe_bridge.py": "407f4ace00a034de55215671ab8bbe7191da0bd03e6bcc58352fc2467e3e9469",
+    "src/veritas/research/tapered_v4/source_recipes.py": "97e99605c897a96c4df0d4e45b4ff0be28d4a07d6e4a844cbbad8767eab04a90",
+    "src/veritas/research/tapered_v4/source_state.py": "50becd412aa083116d2ffff744b5883504de1d7e9af0525abddd79535d23c0d3",
+    "src/veritas/research/tensor.py": "4a6858718a79a20b3b018cfb5e7b1f49781927c4c6d759749c9c8cedf8e5c359",
+    "src/veritas/research/violation_polynomial.py": "b96cce9f02ffff8d395689efe7406785b981b109ee6bf42b8bdf7f69d99b91e4",
+    "src/veritas/research/weighted_children.py": "ee58c36953b181d323369cee07237e8eab69bd58cecfccc98764ec4563084dda",
+    "src/veritas/research/weighted_recovery.py": "1658e26469f4fbd0c477412a6bb2df8414f731286a2c3e2ee6a191b6ac61cd45",
+    "src/veritas/research/wire_deformation.py": "76e6d7c5086246e8cc78159de1e4c351666f1ee518fbd42aa1be7e5b754c915a",
+    "src/veritas/solvers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/veritas/solvers/certificates.py": "baa4a9f1cce7399faf307fbb9dfb60c1517a4841d25906b5ae9be16673878e3d",
+    "src/veritas/solvers/conditional.py": "8153e9af871bad3b2d39d85835aee09684ec978b3b68c8a46dc1a181e9ac04c4",
+    "src/veritas/solvers/count_certificates.py": "cd41c37778abbd1e2970b6019e730c8e4d485a711ff8d60f688d6323c2cb9db2",
+    "src/veritas/solvers/count_dag.py": "0d012829d5109c65436996e95e777f50f6226bdbdd33f90fa13429c01c9c1421",
+    "src/veritas/solvers/ganak.py": "b918f91a817b511b17b9d5f2e4ffd480954c8ec4cabac47cb17cca5142a5dd46",
+    "src/veritas/solvers/marginals.py": "5ca7ccfc2fc8c4678577d4eaefcb292b49f11aef902376672f8d17b2ed18c1c8",
+    "src/veritas/solvers/projected.py": "40be0dcfcc12855c780f8c869f554dc7c86f606055f57d2a20a79de18a788a49",
+    "src/veritas/solvers/reference.py": "1441df284f81c9731777526e89023f5ba03ceb6d3ca5dc2b1dfc54f176d2add2",
+    "src/veritas/solvers/weighted_dag.py": "84b34d6f10dcc1286a9ee5d7e1b5c81e43087d7c5e2bdc4e6c2b5171cf72bcbf",
+    "tests/test_r94_foundation_validation.py": "164923808e889e44cefb848200ace7fc6184ae7475c5b4867ffc4a0379611a57",
+    "tests/test_r94_source_state.py": "2ea0983a26a67ed3dd096b431e8a08f85a9cb07a0fa3348e92a64bacb4c89b80"
+  },
+  "source_manifest_sha256": "dbaa964fd93819c3ff46910be27016bc79baa8750337ac10262f26d8776f179c",
+  "status": "PASS_FINITE_DIFFERENTIAL",
+  "theorem_mode_enabled": false
+}

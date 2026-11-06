@@ -1,0 +1,18 @@
+{
+  "command": [
+    "python",
+    "scripts/validate_r91.py",
+    "--output",
+    "validation/r96_aggregate.json"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 0.1756214580964297,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 27607040,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r96_aggregate_run.stdout.log",
+  "stderr_log": "r96_aggregate_run.stderr.log",
+  "test_summary": ""
+}

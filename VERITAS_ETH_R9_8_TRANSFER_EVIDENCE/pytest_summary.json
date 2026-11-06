@@ -1,0 +1,78 @@
+{
+  "artifacts": {
+    "cpp_build.log": "0c32a76f7bc62a5842bdac109011e8f46e5b81254fe3a62660a3cc9658111855",
+    "cpp_configure.log": "a2c7e168a6dc12f87f432f17269927fcea9d1b3e635594b99406ebb9c02ed2df",
+    "cpp_selftest.log": "c557cd8196381ea5880ed12288734b394a554bd932636c20e5f3052dae19d55c",
+    "pytest.log": "4f1502aa6b3af7b59bbb3c6399c903d68b4886af30b92e7df2d26f24e475bb16",
+    "pytest.xml": "6f74b5efaff2a18e394f8db46ecc704248b102a0b0582b13d5e84f707d17237e"
+  },
+  "cpp_commands": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        "cpp",
+        "-B",
+        "build/cpp",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "exit_code": 0,
+      "log": "cpp_configure.log",
+      "name": "cpp_configure",
+      "seconds": 0.28660483297426254
+    },
+    {
+      "command": [
+        "cmake",
+        "--build",
+        "build/cpp",
+        "-j2"
+      ],
+      "exit_code": 0,
+      "log": "cpp_build.log",
+      "name": "cpp_build",
+      "seconds": 0.19378512492403388
+    },
+    {
+      "command": [
+        "./build/cpp/veritas_d3_selftest"
+      ],
+      "exit_code": 0,
+      "log": "cpp_selftest.log",
+      "name": "cpp_selftest",
+      "seconds": 0.0771830000448972
+    }
+  ],
+  "cwd": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER",
+  "environment": {
+    "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "src"
+  },
+  "errors": [],
+  "failures": [],
+  "full_run": {
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "--junitxml=/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER_EVIDENCE/pytest.xml"
+    ],
+    "exit_code": 0,
+    "log": "pytest.log",
+    "name": "pytest",
+    "seconds": 925.7303504589945
+  },
+  "passed": 1838,
+  "python": "3.12.0",
+  "schema": "VERITAS_R98_TRANSFER_PYTEST_V1",
+  "skipped": [
+    "tests.test_r91_cpp_backend::test_pybind_sequence_and_boolean_caps_when_available",
+    "tests.test_r91_cpp_backend::test_binding_rejects_misshapen_assignment_tables"
+  ],
+  "source_after": "754269972a90627c6d4e9f2e18ed17df03fbabb7ac5c70a5508a9865af56ee41",
+  "source_before": "754269972a90627c6d4e9f2e18ed17df03fbabb7ac5c70a5508a9865af56ee41",
+  "status": "PASS",
+  "tests": 1840
+}

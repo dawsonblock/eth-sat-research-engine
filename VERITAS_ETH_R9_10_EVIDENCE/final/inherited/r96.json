@@ -1,0 +1,514 @@
+{
+  "cases": [
+    {
+      "measurements": {
+        "boundary": {
+          "certificate": "r96_sat12_boundary_certificate.json",
+          "cpu_seconds": 0.03715199999999999,
+          "ledger": {
+            "complete_bit_work": false,
+            "counters": {
+              "boundary_tuples": 96,
+              "checked_entries": 1888,
+              "completion_checks": 1,
+              "leaf_factor_visits": 3072,
+              "recursive_calls": 193,
+              "restricted_entries": 1888
+            },
+            "hard_memory_limit_enforced": false,
+            "maximum_depth": 2,
+            "wall_seconds": 0.03716000006534159,
+            "work_units": 7138
+          },
+          "peak_process_rss_bytes": 30392320,
+          "policy": {
+            "leaf_edges": 3,
+            "max_boundary_calls": 12000,
+            "max_certificate_bytes": 8000000,
+            "max_seconds": 240,
+            "max_work": 15000000,
+            "on_call_overflow": "refuse",
+            "piece_method": "direct",
+            "verify_root": false
+          },
+          "replay": "FINITE_BOUNDARY_REPLAYED",
+          "replay_seconds": 0.03610837506130338,
+          "result": 2,
+          "wall_seconds": 0.03717033297289163
+        },
+        "dag": {
+          "cpu_seconds": 0.00013399999999999523,
+          "peak_process_rss_bytes": 29900800,
+          "result": 2,
+          "wall_seconds": 0.00013495900202542543
+        },
+        "direct": {
+          "cpu_seconds": 0.009180000000000008,
+          "peak_process_rss_bytes": 30113792,
+          "result": 2,
+          "wall_seconds": 0.00918074999935925
+        },
+        "dpll_count": {
+          "cpu_seconds": 2.9000000000001247e-05,
+          "peak_process_rss_bytes": 29900800,
+          "result": 2,
+          "wall_seconds": 2.8833048418164253e-05
+        },
+        "eliminate": {
+          "cpu_seconds": 0.0005460000000000048,
+          "peak_process_rss_bytes": 30343168,
+          "result": 2,
+          "wall_seconds": 0.0005470420001074672
+        }
+      },
+      "name": "sat12",
+      "p": 6,
+      "wires": 12
+    },
+    {
+      "measurements": {
+        "boundary": {
+          "certificate": "r96_unsat12_boundary_certificate.json",
+          "cpu_seconds": 0.029214000000000004,
+          "ledger": {
+            "complete_bit_work": false,
+            "counters": {
+              "boundary_tuples": 28,
+              "checked_entries": 532,
+              "completion_checks": 1,
+              "leaf_factor_visits": 1056,
+              "recursive_calls": 57,
+              "restricted_entries": 532
+            },
+            "hard_memory_limit_enforced": false,
+            "maximum_depth": 2,
+            "wall_seconds": 0.029696165933273733,
+            "work_units": 2206
+          },
+          "peak_process_rss_bytes": 30097408,
+          "policy": {
+            "leaf_edges": 3,
+            "max_boundary_calls": 12000,
+            "max_certificate_bytes": 8000000,
+            "max_seconds": 240,
+            "max_work": 15000000,
+            "on_call_overflow": "refuse",
+            "piece_method": "direct",
+            "verify_root": false
+          },
+          "replay": "FINITE_BOUNDARY_REPLAYED",
+          "replay_seconds": 0.028021291946060956,
+          "result": 0,
+          "wall_seconds": 0.0297060419106856
+        },
+        "dag": {
+          "cpu_seconds": 8.200000000001262e-05,
+          "peak_process_rss_bytes": 30310400,
+          "result": 0,
+          "wall_seconds": 8.229201193898916e-05
+        },
+        "direct": {
+          "cpu_seconds": 0.007163000000000003,
+          "peak_process_rss_bytes": 30326784,
+          "result": 0,
+          "wall_seconds": 0.007164375041611493
+        },
+        "dpll_count": {
+          "cpu_seconds": 1.8999999999991246e-05,
+          "peak_process_rss_bytes": 30392320,
+          "result": 0,
+          "wall_seconds": 1.9166036508977413e-05
+        },
+        "eliminate": {
+          "cpu_seconds": 0.0003039999999999987,
+          "peak_process_rss_bytes": 29999104,
+          "result": 0,
+          "wall_seconds": 0.00030487508047372103
+        }
+      },
+      "name": "unsat12",
+      "p": 6,
+      "wires": 12
+    },
+    {
+      "measurements": {
+        "boundary": {
+          "certificate": "r96_cycle12_boundary_certificate.json",
+          "cpu_seconds": 0.029593999999999995,
+          "ledger": {
+            "complete_bit_work": false,
+            "counters": {
+              "boundary_tuples": 28,
+              "checked_entries": 480,
+              "completion_checks": 1,
+              "leaf_factor_visits": 672,
+              "recursive_calls": 57,
+              "restricted_entries": 480
+            },
+            "hard_memory_limit_enforced": false,
+            "maximum_depth": 2,
+            "wall_seconds": 0.029582042014226317,
+            "work_units": 1718
+          },
+          "peak_process_rss_bytes": 29999104,
+          "policy": {
+            "leaf_edges": 3,
+            "max_boundary_calls": 12000,
+            "max_certificate_bytes": 8000000,
+            "max_seconds": 240,
+            "max_work": 15000000,
+            "on_call_overflow": "refuse",
+            "piece_method": "direct",
+            "verify_root": false
+          },
+          "replay": "FINITE_BOUNDARY_REPLAYED",
+          "replay_seconds": 0.02950454200617969,
+          "result": 1944000,
+          "wall_seconds": 0.029594499967060983
+        },
+        "direct": {
+          "cpu_seconds": 0.017062999999999995,
+          "peak_process_rss_bytes": 30294016,
+          "result": 1944000,
+          "wall_seconds": 0.017063707928173244
+        },
+        "eliminate": {
+          "cpu_seconds": 0.00018899999999999473,
+          "peak_process_rss_bytes": 29851648,
+          "result": 1944000,
+          "wall_seconds": 0.00018883298616856337
+        }
+      },
+      "name": "cycle12",
+      "p": 41,
+      "wires": 12
+    },
+    {
+      "measurements": {
+        "boundary": {
+          "certificate": "r96_cycle14_boundary_certificate.json",
+          "cpu_seconds": 0.029840000000000005,
+          "ledger": {
+            "complete_bit_work": false,
+            "counters": {
+              "boundary_tuples": 28,
+              "checked_entries": 608,
+              "completion_checks": 1,
+              "leaf_factor_visits": 1024,
+              "recursive_calls": 57,
+              "restricted_entries": 608
+            },
+            "hard_memory_limit_enforced": false,
+            "maximum_depth": 2,
+            "wall_seconds": 0.029837458045221865,
+            "work_units": 2326
+          },
+          "peak_process_rss_bytes": 29868032,
+          "policy": {
+            "leaf_edges": 3,
+            "max_boundary_calls": 12000,
+            "max_certificate_bytes": 8000000,
+            "max_seconds": 240,
+            "max_work": 15000000,
+            "on_call_overflow": "refuse",
+            "piece_method": "direct",
+            "verify_root": false
+          },
+          "replay": "FINITE_BOUNDARY_REPLAYED",
+          "replay_seconds": 0.02819495799485594,
+          "result": 2443392,
+          "wall_seconds": 0.029848209000192583
+        },
+        "direct": {
+          "cpu_seconds": 0.074666,
+          "peak_process_rss_bytes": 30130176,
+          "result": 2443392,
+          "wall_seconds": 0.07470374996773899
+        },
+        "eliminate": {
+          "cpu_seconds": 0.00021699999999999497,
+          "peak_process_rss_bytes": 30261248,
+          "result": 2443392,
+          "wall_seconds": 0.0002175000263378024
+        }
+      },
+      "name": "cycle14",
+      "p": 41,
+      "wires": 14
+    },
+    {
+      "measurements": {
+        "boundary": {
+          "certificate": "r96_cycle16_boundary_certificate.json",
+          "cpu_seconds": 0.029490000000000002,
+          "ledger": {
+            "complete_bit_work": false,
+            "counters": {
+              "boundary_tuples": 28,
+              "checked_entries": 736,
+              "completion_checks": 1,
+              "leaf_factor_visits": 1664,
+              "recursive_calls": 57,
+              "restricted_entries": 736
+            },
+            "hard_memory_limit_enforced": false,
+            "maximum_depth": 2,
+            "wall_seconds": 0.029482041019946337,
+            "work_units": 3222
+          },
+          "peak_process_rss_bytes": 30162944,
+          "policy": {
+            "leaf_edges": 3,
+            "max_boundary_calls": 12000,
+            "max_certificate_bytes": 8000000,
+            "max_seconds": 240,
+            "max_work": 15000000,
+            "on_call_overflow": "refuse",
+            "piece_method": "direct",
+            "verify_root": false
+          },
+          "replay": "FINITE_BOUNDARY_REPLAYED",
+          "replay_seconds": 0.029021125053986907,
+          "result": 162933120,
+          "wall_seconds": 0.029490999993868172
+        },
+        "direct": {
+          "cpu_seconds": 0.316614,
+          "peak_process_rss_bytes": 30064640,
+          "result": 162933120,
+          "wall_seconds": 0.31665154197253287
+        },
+        "eliminate": {
+          "cpu_seconds": 0.0002360000000000001,
+          "peak_process_rss_bytes": 29999104,
+          "result": 162933120,
+          "wall_seconds": 0.000236041028983891
+        }
+      },
+      "name": "cycle16",
+      "p": 41,
+      "wires": 16
+    },
+    {
+      "measurements": {
+        "boundary": {
+          "certificate": "r96_units16_boundary_certificate.json",
+          "cpu_seconds": 0.029034000000000004,
+          "ledger": {
+            "complete_bit_work": false,
+            "counters": {
+              "boundary_tuples": 1,
+              "checked_entries": 64,
+              "completion_checks": 1,
+              "leaf_factor_visits": 8704,
+              "recursive_calls": 3,
+              "restricted_entries": 64
+            },
+            "hard_memory_limit_enforced": false,
+            "maximum_depth": 1,
+            "wall_seconds": 0.029024541028775275,
+            "work_units": 8837
+          },
+          "peak_process_rss_bytes": 30310400,
+          "policy": {
+            "leaf_edges": 8,
+            "max_boundary_calls": 12000,
+            "max_certificate_bytes": 8000000,
+            "max_seconds": 240,
+            "max_work": 15000000,
+            "on_call_overflow": "refuse",
+            "piece_method": "direct",
+            "verify_root": false
+          },
+          "replay": "FINITE_BOUNDARY_REPLAYED",
+          "replay_seconds": 0.028110999963246286,
+          "result": 1,
+          "wall_seconds": 0.029034166014753282
+        },
+        "dag": {
+          "cpu_seconds": 0.00032899999999999596,
+          "peak_process_rss_bytes": 30212096,
+          "result": 1,
+          "wall_seconds": 0.00032908294815570116
+        },
+        "direct": {
+          "cpu_seconds": 0.11816800000000001,
+          "peak_process_rss_bytes": 29966336,
+          "result": 1,
+          "wall_seconds": 0.11827633297070861
+        },
+        "dpll_count": {
+          "cpu_seconds": 2.9000000000001247e-05,
+          "peak_process_rss_bytes": 30113792,
+          "result": 1,
+          "wall_seconds": 2.97910301014781e-05
+        },
+        "eliminate": {
+          "cpu_seconds": 0.0001229999999999981,
+          "peak_process_rss_bytes": 29802496,
+          "result": 1,
+          "wall_seconds": 0.00012366706505417824
+        },
+        "hybrid": {
+          "certificate": "r96_units16_hybrid_certificate.json",
+          "cpu_seconds": 27.277620000000002,
+          "ledger": {
+            "complete_bit_work": false,
+            "counters": {
+              "boundary_tuples": 1,
+              "checked_entries": 64,
+              "completion_checks": 1,
+              "recursive_calls": 3,
+              "restricted_entries": 64,
+              "tapered_algorithm_leaf_work": 3487836,
+              "tapered_generated_children": 24592,
+              "tapered_hermite_recoveries": 10,
+              "tapered_piece_work": 4597590,
+              "tapered_point_evaluations": 100,
+              "tapered_recursive_calls": 24594,
+              "tapered_retained_tuples": 6148
+            },
+            "hard_memory_limit_enforced": false,
+            "maximum_depth": 2,
+            "wall_seconds": 27.292906458955258,
+            "work_units": 4597723
+          },
+          "peak_process_rss_bytes": 165199872,
+          "policy": {
+            "leaf_edges": 8,
+            "max_boundary_calls": 12000,
+            "max_certificate_bytes": 8000000,
+            "max_seconds": 240,
+            "max_work": 15000000,
+            "on_call_overflow": "refuse",
+            "piece_method": "tapered",
+            "verify_root": false
+          },
+          "replay": "FINITE_BOUNDARY_REPLAYED",
+          "replay_seconds": 27.444716917001642,
+          "result": 1,
+          "wall_seconds": 27.292916708043776
+        }
+      },
+      "name": "units16",
+      "p": 17,
+      "wires": 16
+    }
+  ],
+  "complete_bit_bound": false,
+  "hard_memory_limit": false,
+  "peak_scope": "individual measurement process lifetime",
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "point_policy": "one fixed point per parent size",
+  "points": [
+    {
+      "certificate": "r96_recipe_point_4.json",
+      "direct": [
+        160000,
+        0,
+        0,
+        0,
+        0
+      ],
+      "group_children": 32,
+      "modes": 3,
+      "p": 261,
+      "point": [
+        -1,
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "replayed": true,
+      "result": [
+        [
+          160000,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "tuples": 8,
+      "wires": 4
+    },
+    {
+      "certificate": "r96_recipe_point_6.json",
+      "direct": [
+        424000000,
+        0,
+        0,
+        0,
+        0
+      ],
+      "group_children": 64,
+      "modes": 4,
+      "p": 391,
+      "point": [
+        -1,
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "replayed": true,
+      "result": [
+        [
+          424000000,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "tuples": 16,
+      "wires": 6
+    },
+    {
+      "certificate": "r96_recipe_point_8.json",
+      "direct": [
+        169600000000,
+        0,
+        0,
+        0,
+        0
+      ],
+      "group_children": 256,
+      "modes": 6,
+      "p": 521,
+      "point": [
+        -1,
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "replayed": true,
+      "result": [
+        [
+          169600000000,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "tuples": 64,
+      "wires": 8
+    }
+  ],
+  "python": "3.12.0",
+  "schema": "VERITAS_FINITE_R96_VALIDATION_V1",
+  "status": "PASS_FINITE_CASES",
+  "universal_theorem_proven": false
+}

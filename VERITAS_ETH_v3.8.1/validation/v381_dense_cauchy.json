@@ -1,0 +1,286 @@
+{
+  "schema": "VERITAS_FINITE_DENSE_CAUCHY_381",
+  "results": [
+    {
+      "wires": 8,
+      "precision": 2,
+      "modulus": 4,
+      "original_count_modulus": 3,
+      "deformed_value_modulus": 3,
+      "retained_structural_modes": 9,
+      "nonzero_mode_contributions": 5,
+      "discarded_structural_modes": 247,
+      "modes": [
+        {
+          "wires": [],
+          "weight": 0,
+          "coefficient_modulus": 3,
+          "contribution": 3
+        },
+        {
+          "wires": [
+            0
+          ],
+          "weight": 1,
+          "coefficient_modulus": 2,
+          "contribution": 0
+        },
+        {
+          "wires": [
+            1
+          ],
+          "weight": 1,
+          "coefficient_modulus": 3,
+          "contribution": 2
+        },
+        {
+          "wires": [
+            2
+          ],
+          "weight": 1,
+          "coefficient_modulus": 0,
+          "contribution": 0
+        },
+        {
+          "wires": [
+            3
+          ],
+          "weight": 1,
+          "coefficient_modulus": 0,
+          "contribution": 0
+        },
+        {
+          "wires": [
+            4
+          ],
+          "weight": 1,
+          "coefficient_modulus": 2,
+          "contribution": 0
+        },
+        {
+          "wires": [
+            5
+          ],
+          "weight": 1,
+          "coefficient_modulus": 3,
+          "contribution": 2
+        },
+        {
+          "wires": [
+            6
+          ],
+          "weight": 1,
+          "coefficient_modulus": 1,
+          "contribution": 2
+        },
+        {
+          "wires": [
+            7
+          ],
+          "weight": 1,
+          "coefficient_modulus": 1,
+          "contribution": 2
+        }
+      ],
+      "largest_child_wires": 8,
+      "child_interpretation": "each retained term retains both original full-scope dense tensors",
+      "direct_halfedge_value": 3,
+      "direct_halfedge_status": "checked",
+      "counted_scalar_additions": 33545,
+      "counted_scalar_multiplications": 43785,
+      "counted_work_by_phase": {
+        "original": {
+          "additions": 256,
+          "multiplications": 256
+        },
+        "full_deformed": {
+          "additions": 3328,
+          "multiplications": 4352
+        },
+        "all_modes": {
+          "additions": 29961,
+          "multiplications": 39177
+        }
+      },
+      "count_scope": "dot products and packet transforms only; excludes mode/kernel construction and bit costs",
+      "peak_dense_working_tables": 4,
+      "complexity_or_theorem_proven": false,
+      "seed": 389,
+      "table_a_sha256": "56cc5a8b8b5e474f593cd439900758b468184af0b20a02094beddf007692e415",
+      "table_b_sha256": "9f72aa7e27945c4f854cfd8895181d22d3bbb892e0b4c8fffe4f5e039cb2aa39"
+    },
+    {
+      "wires": 16,
+      "precision": 2,
+      "modulus": 4,
+      "original_count_modulus": 2,
+      "deformed_value_modulus": 0,
+      "retained_structural_modes": 17,
+      "nonzero_mode_contributions": 8,
+      "discarded_structural_modes": 65519,
+      "modes": [
+        {
+          "wires": [],
+          "weight": 0,
+          "coefficient_modulus": 2,
+          "contribution": 2
+        },
+        {
+          "wires": [
+            0
+          ],
+          "weight": 1,
+          "coefficient_modulus": 0,
+          "contribution": 0
+        },
+        {
+          "wires": [
+            1
+          ],
+          "weight": 1,
+          "coefficient_modulus": 0,
+          "contribution": 0
+        },
+        {
+          "wires": [
+            2
+          ],
+          "weight": 1,
+          "coefficient_modulus": 2,
+          "contribution": 0
+        },
+        {
+          "wires": [
+            3
+          ],
+          "weight": 1,
+          "coefficient_modulus": 0,
+          "contribution": 0
+        },
+        {
+          "wires": [
+            4
+          ],
+          "weight": 1,
+          "coefficient_modulus": 3,
+          "contribution": 2
+        },
+        {
+          "wires": [
+            5
+          ],
+          "weight": 1,
+          "coefficient_modulus": 3,
+          "contribution": 2
+        },
+        {
+          "wires": [
+            6
+          ],
+          "weight": 1,
+          "coefficient_modulus": 1,
+          "contribution": 2
+        },
+        {
+          "wires": [
+            7
+          ],
+          "weight": 1,
+          "coefficient_modulus": 3,
+          "contribution": 2
+        },
+        {
+          "wires": [
+            8
+          ],
+          "weight": 1,
+          "coefficient_modulus": 2,
+          "contribution": 0
+        },
+        {
+          "wires": [
+            9
+          ],
+          "weight": 1,
+          "coefficient_modulus": 3,
+          "contribution": 2
+        },
+        {
+          "wires": [
+            10
+          ],
+          "weight": 1,
+          "coefficient_modulus": 3,
+          "contribution": 2
+        },
+        {
+          "wires": [
+            11
+          ],
+          "weight": 1,
+          "coefficient_modulus": 2,
+          "contribution": 0
+        },
+        {
+          "wires": [
+            12
+          ],
+          "weight": 1,
+          "coefficient_modulus": 2,
+          "contribution": 0
+        },
+        {
+          "wires": [
+            13
+          ],
+          "weight": 1,
+          "coefficient_modulus": 1,
+          "contribution": 2
+        },
+        {
+          "wires": [
+            14
+          ],
+          "weight": 1,
+          "coefficient_modulus": 0,
+          "contribution": 0
+        },
+        {
+          "wires": [
+            15
+          ],
+          "weight": 1,
+          "coefficient_modulus": 0,
+          "contribution": 0
+        }
+      ],
+      "largest_child_wires": 16,
+      "child_interpretation": "each retained term retains both original full-scope dense tensors",
+      "direct_halfedge_value": null,
+      "direct_halfedge_status": "BLOCKED_PAIR_CAP",
+      "counted_scalar_additions": 29556753,
+      "counted_scalar_multiplications": 38993937,
+      "counted_work_by_phase": {
+        "original": {
+          "additions": 65536,
+          "multiplications": 65536
+        },
+        "full_deformed": {
+          "additions": 1638400,
+          "multiplications": 2162688
+        },
+        "all_modes": {
+          "additions": 27852817,
+          "multiplications": 36765713
+        }
+      },
+      "count_scope": "dot products and packet transforms only; excludes mode/kernel construction and bit costs",
+      "peak_dense_working_tables": 4,
+      "complexity_or_theorem_proven": false,
+      "seed": 397,
+      "table_a_sha256": "a519c92f37f0949953c642774673d492b0cddf462160ff7cbe950e9bebc42cad",
+      "table_b_sha256": "1427692a9178f31e991c8167fa48bc92e0833023b45dab3500c0cd6592f05a46"
+    }
+  ],
+  "asymptotic_claim": false
+}

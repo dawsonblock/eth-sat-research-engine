@@ -1,0 +1,80 @@
+........................................................................ [  3%]
+........................................................................ [  7%]
+........................................................................ [ 10%]
+........................................................................ [ 14%]
+........................................................................ [ 18%]
+........................................................................ [ 21%]
+........................................................................ [ 25%]
+........................................................................ [ 28%]
+........................................................................ [ 32%]
+........................................................................ [ 36%]
+........................................................................ [ 39%]
+........................................................................ [ 43%]
+............................................s......................s.... [ 47%]
+........................................................................ [ 50%]
+........................................................................ [ 54%]
+........................................................................ [ 57%]
+........................................................................ [ 61%]
+........................................................................ [ 65%]
+..........................................................F............. [ 68%]
+........................................................................ [ 72%]
+........................................................................ [ 75%]
+........................................................................ [ 79%]
+........................................................................ [ 83%]
+........................................................................ [ 86%]
+........................................................................ [ 90%]
+........................................................................ [ 94%]
+........................................................................ [ 97%]
+..............................................                           [100%]
+=================================== FAILURES ===================================
+_____________ test_support_budgets_refuse_before_result[max_work] ______________
+
+point = (ParentCall(root_s=16, depth=0, precision=5, defining_polynomial=19, edge_count=2, vertices=(SourceVertex(side='row', ...cible_polynomial': 19, ...}, 'layout_digest': '927ab13f033c12cbed4ea9ea1226e343df0b51ac8e59295f024b12c7b76bcc6b', ...})
+limit = 'max_work'
+
+    @pytest.mark.parametrize('limit', ['max_tuples', 'max_calls', 'max_work', 'max_certificate_bytes'])
+    def test_support_budgets_refuse_before_result(point, limit):
+        p, l, modes, *_ = point
+        with pytest.raises(Refusal):
+>           evaluate_supported_point(p, l, modes, budget=Budget(replace(Policy(), **{limit: 1})))
+
+tests/test_r99_supported_packets.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/veritas/research/parent_child_r99/supported_engine.py:22: in evaluate_supported_point
+    folded = fold_source_forms(parent, layout, original, budget=budget)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/veritas/research/parent_child_r99/support.py:31: in fold_source_forms
+    verify_packet_modes(parent, layout, original, budget=budget)
+src/veritas/research/parent_child_r99/basis.py:169: in verify_packet_modes
+    local, cross, expected = independent_modes(layout.source, m["node"], precision,
+src/veritas/research/parent_child_r98/modes.py:154: in independent_modes
+    ar.scalar(d // 2**v), ar.mul(ar.scalar(alpha // 2**v), zeta)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+src/veritas/research/independent_r82/point_mode_oracle.py:246: in scalar
+    self.meter.tick(max(1, den.bit_length() // 64 + value.numerator.bit_length() // 64))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = _Meter(maximum=1, timeout_s=60, used=2, started=863838.225163333, limits=OracleLimits(max_work=5000000, max_seconds=60), scope='independent_modes', work_limit_scope='GLOBAL_REMAINDER', time_limit_scope='ORACLE')
+amount = 1
+
+    def tick(self, amount=1):
+        if type(amount) is not int or amount < 0:
+            raise ValueError('nonnegative oracle work charge required')
+        self.used += amount
+        elapsed = monotonic()-self.started
+        if self.used > self.maximum or elapsed > self.timeout_s:
+            work = self.used > self.maximum
+            failure = {'scope':self.scope, 'resource':'WORK_UNITS' if work else 'WALL_TIME_US',
+                'limit':self.maximum if work else int(self.timeout_s*1_000_000),
+                'observed':self.used if work else int(elapsed*1_000_000),
+                'used_work_units':self.used, 'elapsed_us':int(elapsed*1_000_000),
+                'limit_scope':self.work_limit_scope if work else self.time_limit_scope,
+                'clock_scope':'METER_LIFETIME_INCLUDING_NESTED_COMPUTATION'}
+>           raise OracleBudgetExceeded('independent oracle '+('work' if work else 'time')+' limit exceeded',
+                                       resource_failure=failure)
+E           veritas.research.independent_r82.point_mode_oracle.OracleBudgetExceeded: independent oracle work limit exceeded
+
+src/veritas/research/independent_r82/point_mode_oracle.py:114: OracleBudgetExceeded
+- generated xml file: /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/full/pytest.xml -
+=========================== short test summary info ============================
+FAILED tests/test_r99_supported_packets.py::test_support_budgets_refuse_before_result[max_work]

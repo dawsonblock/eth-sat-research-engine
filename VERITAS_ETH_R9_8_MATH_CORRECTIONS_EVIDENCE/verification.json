@@ -1,0 +1,947 @@
+{
+  "actual_calls": 124929,
+  "actual_child_degree": "BOUNDED_ENTRY_AUDIT",
+  "actual_child_shrink": "FAIL_SCALED_NONSHRINKING",
+  "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "bounded_math_checks": {
+    "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+    "cauchy": {
+      "a_range": [
+        1,
+        4
+      ],
+      "all_coefficients_integral": true,
+      "off_diagonal_content_bound_checked": true,
+      "shifted_polynomials": 1300,
+      "status": "PASS_FINITE_EXACT_COEFFICIENT_CHECK"
+    },
+    "geometric_modes": {
+      "a_range": [
+        1,
+        3
+      ],
+      "cases": 6000,
+      "precision_cases": [
+        1,
+        2,
+        5,
+        11
+      ],
+      "status": "PASS_FINITE_EXACT_RATIONAL_REMAINDER"
+    },
+    "hermite": {
+      "cases": [
+        {
+          "M": 1,
+          "a": 1,
+          "independent_weights_agree": true,
+          "matrix_order": 6,
+          "minimum_coefficient_error_margin_bits": 57,
+          "rational_polynomial_recovered": 124,
+          "u": 1
+        },
+        {
+          "M": 2,
+          "a": 1,
+          "independent_weights_agree": true,
+          "matrix_order": 12,
+          "minimum_coefficient_error_margin_bits": 112,
+          "rational_polynomial_recovered": 124,
+          "u": 1
+        },
+        {
+          "M": 1,
+          "a": 2,
+          "independent_weights_agree": true,
+          "matrix_order": 12,
+          "minimum_coefficient_error_margin_bits": 102,
+          "rational_polynomial_recovered": 124,
+          "u": 1
+        },
+        {
+          "M": 2,
+          "a": 2,
+          "independent_weights_agree": true,
+          "matrix_order": 30,
+          "minimum_coefficient_error_margin_bits": 89,
+          "rational_polynomial_recovered": 124,
+          "u": 2
+        },
+        {
+          "M": 1,
+          "a": 3,
+          "independent_weights_agree": true,
+          "matrix_order": 24,
+          "minimum_coefficient_error_margin_bits": 183,
+          "rational_polynomial_recovered": 124,
+          "u": 1
+        },
+        {
+          "M": 2,
+          "a": 3,
+          "independent_weights_agree": true,
+          "matrix_order": 60,
+          "minimum_coefficient_error_margin_bits": 142,
+          "rational_polynomial_recovered": 124,
+          "u": 2
+        }
+      ],
+      "status": "PASS_INDEPENDENT_CONFLUENT_VANDERMONDE",
+      "universal_proof": false
+    },
+    "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+    "script_sha256": "0d739d025143a09b672ed4654c742f4121ede171e6506487ec87af94c52c3e8a",
+    "seconds": 1.6400002499576658,
+    "source_path": {
+      "leaf_divisor": 362,
+      "network_constructed": false,
+      "not_a_counterexample_to_sufficiently_large_manuscript_theorem": true,
+      "path": [
+        {
+          "M_log2": 131080,
+          "a": 2,
+          "above_leaf_cutoff": true,
+          "depth": 0,
+          "three_packing_inequalities": [
+            true,
+            true,
+            true
+          ],
+          "u": 1
+        },
+        {
+          "M_log2": 131075,
+          "a": 2,
+          "above_leaf_cutoff": true,
+          "depth": 1,
+          "three_packing_inequalities": [
+            true,
+            true,
+            true
+          ],
+          "u": 0
+        }
+      ],
+      "root_s": "2^131080",
+      "status": "EXACT_NUMERIC_COUNTEREXAMPLE_TO_ROOT_ONLY_ADMISSION"
+    },
+    "source_qualified": false,
+    "status": "PASS_BOUNDED_MATH_REVIEW"
+  },
+  "branch": "fix/r9.8-math-corrections",
+  "child_count_per_tuple": 64,
+  "clean_wheel": {
+    "python": "3.10.19",
+    "status": "PASS_TARGETED_INSTALLED_CHECKS"
+  },
+  "commit": "3a923e434f7e9d706181237fd11cfc51febddb37",
+  "counterexamples": {
+    "corrected": {
+      "boolean_half_edge": {
+        "exception": "ValueError",
+        "reason": "half-edge metadata requires typed natural indices",
+        "status": "REJECT"
+      },
+      "boolean_jet_length": {
+        "exception": "ValueError",
+        "reason": "point arithmetic metadata requires integers",
+        "status": "REJECT"
+      },
+      "boolean_packet_endpoint": {
+        "exception": "ValueError",
+        "reason": "packet edge endpoints differ",
+        "status": "REJECT"
+      },
+      "preflight": {
+        "above_leaf_cutoff": false,
+        "actual_packing_verified": false,
+        "checks": {
+          "2L_le_delta": true,
+          "M_ge_2_D_squared_delta": false,
+          "M_ge_LD": true
+        },
+        "descendant_schedules_verified": false,
+        "positive_u": false,
+        "schedule": {
+          "L": 1,
+          "a": 0,
+          "a_previous": 0,
+          "degree_limit": 13,
+          "extension_degree": 16,
+          "lambda": 4,
+          "leaf_threshold": 8,
+          "packing_class_count": 1,
+          "r": 64,
+          "u": 0
+        },
+        "scope": "CURRENT_NODE_NUMERICS_ONLY",
+        "source_active": false,
+        "source_qualified": false,
+        "status": "INCONCLUSIVE_SOURCE_SCHEDULE"
+      },
+      "source_binding": "02b315ad0c6698f82442a5db09cf2213460efc036c94189d3b9d228815d53e84",
+      "valid_alternative_polynomial": {
+        "status": "ACCEPT"
+      },
+      "wrong_parent_context": {
+        "exception": "ValueError",
+        "reason": "child belongs to another parent",
+        "status": "REJECT"
+      }
+    },
+    "scope": "Four behavior corrections plus explicit packet-type rejection; no source-regime qualification",
+    "sealed_R98": {
+      "boolean_half_edge": {
+        "status": "ACCEPT"
+      },
+      "boolean_jet_length": {
+        "status": "ACCEPT"
+      },
+      "boolean_packet_endpoint": {
+        "exception": "KeyError",
+        "reason": "'False'",
+        "status": "REJECT"
+      },
+      "preflight": {
+        "checks": {
+          "2L_le_delta": true,
+          "M_ge_2_D_squared_delta": false,
+          "M_ge_LD": true
+        },
+        "schedule": {
+          "L": 1,
+          "a": 0,
+          "a_previous": 0,
+          "degree_limit": 13,
+          "extension_degree": 16,
+          "lambda": 4,
+          "leaf_threshold": 8,
+          "packing_class_count": 1,
+          "r": 64,
+          "u": 0
+        },
+        "source_active": false,
+        "status": "INCONCLUSIVE_SOURCE_SCHEDULE"
+      },
+      "source_binding": "e5205d68b52431d2fc809d7a234f01d015bf857513e7c4178c5f977af95d4517",
+      "valid_alternative_polynomial": {
+        "exception": "ValueError",
+        "reason": "mode source/ring mismatch",
+        "status": "REJECT"
+      },
+      "wrong_parent_context": {
+        "status": "ACCEPT"
+      }
+    }
+  },
+  "creation_precision_inheritance": true,
+  "development_snapshot_not_new_release": true,
+  "docker": {
+    "memory_limit": "1GiB",
+    "network": "none",
+    "python": "3.12.14",
+    "status": "PASS_TARGETED_INSTALLED_CHECKS"
+  },
+  "exact_result": [
+    [
+      7,
+      0,
+      0,
+      0
+    ]
+  ],
+  "first_attempt": {
+    "failed_test": "tests/test_tapered_v4.py::test_verifier_resource_limits_propagate",
+    "fresh_evidence_required_after_fix": true,
+    "reason": "New required polynomial lookup preceded the existing source resource-limit exception",
+    "source_binding": "99918c467f95cdf844af33ee12edd70142edaf8ffe628ed7ad17e7bed78a1b5c",
+    "status": "FAILED_FULL_SUITE"
+  },
+  "focused_tests": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 49,
+    "seconds": 8.368,
+    "skipped": 0,
+    "skips": [],
+    "tests": 49
+  },
+  "full_container_pytest": "NOT_RUN",
+  "generated_utc": "2026-11-05T06:06:47.308167+00:00",
+  "hermite_coefficient_precision": "COEFFICIENTWISE_EXACT_RATIONAL",
+  "hosted_ci": "NOT_RUN",
+  "implementation_source_sha256": "02b315ad0c6698f82442a5db09cf2213460efc036c94189d3b9d228815d53e84",
+  "installed_results": {
+    "docker_math_corrections": {
+      "boolean_metadata_rejection": true,
+      "defining_polynomial": 25,
+      "leaf_only_status_checked": true,
+      "parent_binding_rejection": true,
+      "python": "3.12.14",
+      "result": [
+        [
+          7,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_binding": "02b315ad0c6698f82442a5db09cf2213460efc036c94189d3b9d228815d53e84",
+      "source_qualified": false,
+      "status": "PASS_INSTALLED_MATHEMATICAL_CORRECTIONS"
+    },
+    "docker_packet_fix": {
+      "python": "3.12.14",
+      "source_binding": "02b315ad0c6698f82442a5db09cf2213460efc036c94189d3b9d228815d53e84",
+      "source_qualified": false,
+      "status": "PASS_INSTALLED_PACKET_INDEX_CORRECTION"
+    },
+    "docker_validate_r97_installed": {
+      "dense_16_wire_residue": 65536,
+      "one_wire_residue": 7,
+      "package_version": "3.8.2.post98",
+      "peak_process_rss_bytes": 27357184,
+      "platform": "Linux-7.0.14-linuxkit-aarch64-with-glibc2.41",
+      "python": "3.12.14",
+      "source_pin_status": "PIN_AND_LABELS_CHECKED",
+      "status": "PASS_INSTALLED_FINITE_EXECUTION",
+      "theorem_mode_enabled": false,
+      "wall_seconds": 1.1899161259643734
+    },
+    "docker_validate_r98_installed": {
+      "ledger": {
+        "actual_calls": 124929,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 58.21090902702417,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 1952,
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 1952,
+        "transitions": 124928,
+        "tuples": 1952,
+        "work_units": 40567069
+      },
+      "platform": "Linux-7.0.14-linuxkit-aarch64-with-glibc2.41",
+      "python": "3.12.14",
+      "result": [
+        [
+          7,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_binding": "02b315ad0c6698f82442a5db09cf2213460efc036c94189d3b9d228815d53e84",
+      "status": "PASS_INSTALLED_R98_TWO_LEVEL",
+      "theorem_mode_enabled": false
+    },
+    "wheel_math_corrections": {
+      "boolean_metadata_rejection": true,
+      "defining_polynomial": 25,
+      "leaf_only_status_checked": true,
+      "parent_binding_rejection": true,
+      "python": "3.10.19",
+      "result": [
+        [
+          7,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_binding": "02b315ad0c6698f82442a5db09cf2213460efc036c94189d3b9d228815d53e84",
+      "source_qualified": false,
+      "status": "PASS_INSTALLED_MATHEMATICAL_CORRECTIONS"
+    },
+    "wheel_packet_fix": {
+      "python": "3.10.19",
+      "source_binding": "02b315ad0c6698f82442a5db09cf2213460efc036c94189d3b9d228815d53e84",
+      "source_qualified": false,
+      "status": "PASS_INSTALLED_PACKET_INDEX_CORRECTION"
+    },
+    "wheel_validate_r97_installed": {
+      "dense_16_wire_residue": 65536,
+      "one_wire_residue": 7,
+      "package_version": "3.8.2.post98",
+      "peak_process_rss_bytes": 33800192,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "python": "3.10.19",
+      "source_pin_status": "PIN_AND_LABELS_CHECKED",
+      "status": "PASS_INSTALLED_FINITE_EXECUTION",
+      "theorem_mode_enabled": false,
+      "wall_seconds": 1.5246508329873905
+    },
+    "wheel_validate_r98_installed": {
+      "ledger": {
+        "actual_calls": 124929,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 70.33674191706814,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 1952,
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 1952,
+        "transitions": 124928,
+        "tuples": 1952,
+        "work_units": 40567069
+      },
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "python": "3.10.19",
+      "result": [
+        [
+          7,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_binding": "02b315ad0c6698f82442a5db09cf2213460efc036c94189d3b9d228815d53e84",
+      "status": "PASS_INSTALLED_R98_TWO_LEVEL",
+      "theorem_mode_enabled": false
+    }
+  },
+  "leaf_only_status": "PASS_FINITE_SCALED_LEAF",
+  "leaf_only_transition_claim": false,
+  "lean_theorem_axiom_report": {
+    "all_required_axiom_reports_passed": true,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "complete_report": "lean.json",
+    "modules": 41,
+    "scope": "Existing conditional finite models; no universal Python recursion refinement",
+    "status": "PASS",
+    "version": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)"
+  },
+  "mode_basis_scope": "ZERO_REDUCED_GEOMETRIC_POINT_MODES",
+  "mode_completeness": "INDEPENDENT_BASIS_AND_CAUCHY_ACTION",
+  "packet_load_evidence": {
+    "actual_group_loads": [
+      [
+        {
+          "0": 2
+        },
+        {
+          "0": 1,
+          "1": 1
+        }
+      ],
+      [
+        {
+          "0": 2
+        },
+        {
+          "0": 2
+        }
+      ]
+    ],
+    "exact_edge_coverage": true,
+    "group_load_bound_met": false,
+    "occupied_packets": 2,
+    "packet_bound_met": false,
+    "packet_load_proof": "FINITE_OCCURRENCE_AUDIT",
+    "packing_precondition_verdict": {
+      "above_leaf_cutoff": false,
+      "actual_packing_verified": false,
+      "checks": {
+        "2L_le_delta": true,
+        "M_ge_2_D_squared_delta": false,
+        "M_ge_LD": true
+      },
+      "descendant_schedules_verified": false,
+      "positive_u": false,
+      "schedule": {
+        "L": 1,
+        "a": 0,
+        "a_previous": 0,
+        "degree_limit": 13,
+        "extension_degree": 16,
+        "lambda": 4,
+        "leaf_threshold": 8,
+        "packing_class_count": 1,
+        "r": 64,
+        "u": 0
+      },
+      "scope": "CURRENT_NODE_NUMERICS_ONLY",
+      "source_active": false,
+      "source_qualified": false,
+      "status": "INCONCLUSIVE_SOURCE_SCHEDULE"
+    },
+    "padded_packets": 16777216,
+    "same_slot_endpoints": true,
+    "scaled_experiment": true,
+    "source_eligible": false,
+    "source_qualified": false
+  },
+  "packing_precondition_verdict": {
+    "above_leaf_cutoff": false,
+    "actual_packing_verified": false,
+    "checks": {
+      "2L_le_delta": true,
+      "M_ge_2_D_squared_delta": false,
+      "M_ge_LD": true
+    },
+    "descendant_schedules_verified": false,
+    "positive_u": false,
+    "schedule": {
+      "L": 1,
+      "a": 0,
+      "a_previous": 0,
+      "degree_limit": 13,
+      "extension_degree": 16,
+      "lambda": 4,
+      "leaf_threshold": 8,
+      "packing_class_count": 1,
+      "r": 64,
+      "u": 0
+    },
+    "scope": "CURRENT_NODE_NUMERICS_ONLY",
+    "source_active": false,
+    "source_qualified": false,
+    "status": "INCONCLUSIVE_SOURCE_SCHEDULE"
+  },
+  "paper": {
+    "commit": "4eaee87548250b2682affda7d05d947c05554bae",
+    "files": {
+      "main_full_version.tex": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa",
+      "quantitative-circuits.tex": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11",
+      "quantitative-contraction.tex": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+      "quantitative-reduction.tex": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a"
+    },
+    "labels": {
+      "eq:tensor-hermite-origin": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 280,
+        "last_line": 285,
+        "statement_sha256": "835d75e9250321435ea54e3fd66434e6b752d1bbac78b0f52541d4cf7509f148"
+      },
+      "eq:tensor-mode-budget": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 453,
+        "last_line": 455,
+        "statement_sha256": "55f1af17554aacabd25d0f3e2e06c63131c8457b6ae9431db2b305e9cca2e08c"
+      },
+      "eq:tensor-mode-expansion": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 418,
+        "last_line": 425,
+        "statement_sha256": "81df762a158145416a0c7edbe8793309a68d0aecce0924d6b8806e7a3c2e92c9"
+      },
+      "eq:tensor-packing-conditions": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 106,
+        "last_line": 109,
+        "statement_sha256": "e7989632209387ee3e7b14b0b0c762487bb8a9f9cf4a580888681325a43c7c2e"
+      },
+      "eq:tensor-parameters": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 87,
+        "last_line": 91,
+        "statement_sha256": "2347e08f794a10a7a1dc2275e2070d723142f04b71cd6cb81de98819e332816d"
+      },
+      "eq:tensor-recursion-identity": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 516,
+        "last_line": 521,
+        "statement_sha256": "9b254c1256f4c10de8cb180391048605b8f1741f95e6e8872c4018427c9a5c2e"
+      },
+      "lem:tapered-hermite": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 250,
+        "last_line": 269,
+        "statement_sha256": "1b737767366c0759f5ccafed0ce7c8efda85fc4ec8c6010316ddee990eb7794c"
+      },
+      "lem:tensor-packets": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 114,
+        "last_line": 130,
+        "statement_sha256": "cfd9c6331836c17a911c52a57fc7e8e2e1c12d22895960ee42f82ba364753c87"
+      },
+      "subsec:tensor-children": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 485,
+        "last_line": 556,
+        "statement_sha256": "bc4ca6c77cdb628b3b2ec0906cde6936364871859bc4fd90b46f7fd53b6aef10"
+      },
+      "subsec:tensor-cost": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 558,
+        "last_line": 619,
+        "statement_sha256": "5c1cabb59aed93b0dbfa239be44bdcd4239e7fd0bb3dd08ead09e02b6a492d73"
+      }
+    },
+    "status": "PIN_AND_LABELS_CHECKED"
+  },
+  "paper_formal_mode_domain_enumerated": false,
+  "parent_digest": "a6add9dd672e7f581afa0c0657cfba390b0501d0111d78a89613b13d13814590",
+  "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "per_point_independent_oracle_status": "PASS_HALF_EDGE_FACTOR_ELIMINATION",
+  "portable_commands": [
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "pip",
+        "wheel",
+        "--no-deps",
+        "--no-build-isolation",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW",
+        "-w",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/wheels"
+      ],
+      "exit_code": 0,
+      "name": "wheel_build",
+      "seconds": 2.764768583001569
+    },
+    {
+      "command": [
+        "/opt/homebrew/bin/python3.10",
+        "-m",
+        "venv",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/clean_py310"
+      ],
+      "exit_code": 0,
+      "name": "venv",
+      "seconds": 1.8753864170284942
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/clean_py310/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/wheels/veritas_eth-3.8.2.post98-py3-none-any.whl"
+      ],
+      "exit_code": 0,
+      "name": "wheel_install",
+      "seconds": 2.915383042069152
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed/packet_fix.py"
+      ],
+      "exit_code": 0,
+      "name": "wheel_packet_fix",
+      "seconds": 0.1342221669619903
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed/math_corrections.py"
+      ],
+      "exit_code": 0,
+      "name": "wheel_math_corrections",
+      "seconds": 1.1836228339234367
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed/validate_r98_installed.py"
+      ],
+      "exit_code": 0,
+      "name": "wheel_validate_r98_installed",
+      "seconds": 70.50982000003569
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed/validate_r97_installed.py"
+      ],
+      "exit_code": 0,
+      "name": "wheel_validate_r97_installed",
+      "seconds": 1.7180020830128342
+    },
+    {
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "veritas-eth:r98-math-corrections",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW"
+      ],
+      "exit_code": 0,
+      "name": "docker_build",
+      "seconds": 10.364546374999918
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed:/checks:ro",
+        "veritas-eth:r98-math-corrections",
+        "-I",
+        "/checks/packet_fix.py"
+      ],
+      "exit_code": 0,
+      "name": "docker_packet_fix",
+      "seconds": 0.6489252080209553
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed:/checks:ro",
+        "veritas-eth:r98-math-corrections",
+        "-I",
+        "/checks/math_corrections.py"
+      ],
+      "exit_code": 0,
+      "name": "docker_math_corrections",
+      "seconds": 1.071943457936868
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed:/checks:ro",
+        "veritas-eth:r98-math-corrections",
+        "-I",
+        "/checks/validate_r98_installed.py"
+      ],
+      "exit_code": 0,
+      "name": "docker_validate_r98_installed",
+      "seconds": 58.63753220799845
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed:/checks:ro",
+        "veritas-eth:r98-math-corrections",
+        "-I",
+        "/checks/validate_r97_installed.py"
+      ],
+      "exit_code": 0,
+      "name": "docker_validate_r97_installed",
+      "seconds": 1.5810100410599262
+    }
+  ],
+  "previous_packet_fix_commit": "278ec33947630b7a082ef1055b99de3108b904db",
+  "pytest": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 1554,
+    "seconds": 461.728,
+    "skipped": 2,
+    "skips": [
+      {
+        "reason": "optional pybind11 module is not built",
+        "test": "test_pybind_sequence_and_boolean_caps_when_available"
+      },
+      {
+        "reason": "shape validation lives in the pybind11 layer",
+        "test": "test_binding_rejects_misshapen_assignment_tables"
+      }
+    ],
+    "tests": 1556
+  },
+  "recursive_depth": 2,
+  "scaled_experiment": true,
+  "schema": "VERITAS_R98_MATH_CORRECTIONS_REVIEW_V1",
+  "sealed_baseline_manifests": {
+    "r97": {
+      "files": 1051,
+      "status": "PASS"
+    },
+    "r98": {
+      "files": 1068,
+      "status": "PASS"
+    }
+  },
+  "sealed_r98_baseline_commit": "b40e45c5b8ddec31e049a729736e796e57162c3d",
+  "selected_multimode_test": {
+    "defining_polynomial": 25,
+    "full_point_coverage_claimed": false,
+    "legal_tuple_count": 66795,
+    "modes": 2,
+    "selected_tuples_checked": 7
+  },
+  "source_archive": "NOT_CREATED_DEVELOPMENT_CORRECTIONS_ONLY",
+  "source_eligible": false,
+  "source_qualified": false,
+  "source_refinement_proven": false,
+  "status": "PASS_FINITE_MATHEMATICAL_CORRECTIONS",
+  "theorem_mode_enabled": false,
+  "tuple_completeness": "COMPLETE_WEIGHTED_STREAM",
+  "tuple_domain": "ALL_WEIGHTED_TUPLES_OVER_RETAINED_MODES",
+  "validators": [
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_conditional_expectation_lean.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/lean.json"
+      ],
+      "exit_code": 0,
+      "name": "lean",
+      "wall_seconds": 53.72774554102216
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r98_parent_child.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/r98.json"
+      ],
+      "exit_code": 0,
+      "name": "r98",
+      "wall_seconds": 86.68719979200978
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r94_foundation.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/r94.json"
+      ],
+      "exit_code": 0,
+      "name": "r94",
+      "wall_seconds": 73.30230674997438
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r95_recipes.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/r95.json"
+      ],
+      "exit_code": 0,
+      "name": "r95",
+      "wall_seconds": 0.46165900002233684
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r96.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/r96.json"
+      ],
+      "exit_code": 0,
+      "name": "r96",
+      "wall_seconds": 63.15274454199243
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r96_recipe_grid.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/r96_grid.json"
+      ],
+      "exit_code": 0,
+      "name": "r96_grid",
+      "wall_seconds": 51.92208995798137
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_bridge.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/r97_bridge.json"
+      ],
+      "exit_code": 0,
+      "name": "r97_bridge",
+      "wall_seconds": 3.621912583010271
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_matrix.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/r97_matrix.json"
+      ],
+      "exit_code": 0,
+      "name": "r97_matrix",
+      "wall_seconds": 8.065477666910738
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_paper.py",
+        "--write",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/r97_grid.json"
+      ],
+      "exit_code": 0,
+      "name": "r97_write",
+      "wall_seconds": 11.665354083059356
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_paper.py",
+        "--verify",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/r97_grid.json"
+      ],
+      "exit_code": 0,
+      "name": "r97_verify",
+      "wall_seconds": 6.52630320796743
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_grid_faults.py",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/r97_grid.json",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/r97_faults.json"
+      ],
+      "exit_code": 0,
+      "name": "r97_faults",
+      "wall_seconds": 9.531970167066902
+    }
+  ]
+}

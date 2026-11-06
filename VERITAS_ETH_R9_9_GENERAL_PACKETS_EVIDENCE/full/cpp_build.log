@@ -1,0 +1,6 @@
+[ 25%] Building CXX object CMakeFiles/veritas_d3_score.dir/src/score.cpp.o
+[ 50%] Linking CXX shared library libveritas_d3_score.dylib
+[ 50%] Built target veritas_d3_score
+[ 75%] Building CXX object CMakeFiles/veritas_d3_selftest.dir/tests/selftest.cpp.o
+[100%] Linking CXX executable veritas_d3_selftest
+[100%] Built target veritas_d3_selftest

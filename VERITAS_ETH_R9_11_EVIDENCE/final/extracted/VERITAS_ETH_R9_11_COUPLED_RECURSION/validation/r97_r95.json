@@ -1,0 +1,18 @@
+{
+  "command": [
+    "python",
+    "scripts/validate_r95_recipes.py",
+    "--output",
+    "validation/r97_inherited_recipes.json"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 0.35191349999513477,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 30801920,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_r95.stdout.log",
+  "stderr_log": "r97_r95.stderr.log",
+  "test_summary": ""
+}

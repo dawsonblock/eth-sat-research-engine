@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "archive": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_VALIDATED_FINITE.zip",
+  "sha256": "fa405449714bc7020010dc867bf0013b439887050c0f1b544baec72d096c16fb",
+  "bytes": 17790485,
+  "source": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+  "source_manifest": "PASS",
+  "extracted_manifest": "PASS",
+  "previous_archive_unchanged": true,
+  "commit": "739eb96bd01d1ced559013d0324eadc9b862c4d7",
+  "branch": "dev/r9.9-supported-recursion",
+  "worktree_clean": true
+}

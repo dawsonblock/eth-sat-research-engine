@@ -1,0 +1,53 @@
+{
+  "schema": "VERITAS_R98_CYCLE44_FIRST_FIELDS_EVIDENCE_LOWER_BOUND_V1",
+  "scope": "first irreducible field at each supported degree 8..12, current child-serialization schema only",
+  "results": [
+    {
+      "degree": 8,
+      "first_irreducible_hex": "0x11b",
+      "negative_by_node": {
+        "-1": 529,
+        "1": 520
+      },
+      "raw_hex_character_lower_bound": 135883264
+    },
+    {
+      "degree": 9,
+      "first_irreducible_hex": "0x203",
+      "negative_by_node": {
+        "-1": 364,
+        "1": 454
+      },
+      "raw_hex_character_lower_bound": 105960448
+    },
+    {
+      "degree": 10,
+      "first_irreducible_hex": "0x409",
+      "negative_by_node": {
+        "-1": 469,
+        "1": 584
+      },
+      "raw_hex_character_lower_bound": 136401408
+    },
+    {
+      "degree": 11,
+      "first_irreducible_hex": "0x805",
+      "negative_by_node": {
+        "-1": 579,
+        "1": 740
+      },
+      "raw_hex_character_lower_bound": 170857984
+    },
+    {
+      "degree": 12,
+      "first_irreducible_hex": "0x1009",
+      "negative_by_node": {
+        "-1": 663,
+        "1": 851
+      },
+      "raw_hex_character_lower_bound": 196117504
+    }
+  ],
+  "script_sha256": "c4db68bdb7e115e3a5e0449485c219f26143cb48ab9fea8b9f40758cc8749a83",
+  "excludes": "other irreducibles at degrees 9..12, deduplication, and changed policy"
+}

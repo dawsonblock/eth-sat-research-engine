@@ -1,0 +1,9 @@
+{
+  "status": "INTERRUPTED_FOR_RESOURCE_ACCOUNTING_FIX",
+  "runner_pids": [
+    65419,
+    65420,
+    65421
+  ],
+  "reason": "Charge preflight work to the aggregate production budget before final validation. Preliminary outputs retained and not final evidence."
+}

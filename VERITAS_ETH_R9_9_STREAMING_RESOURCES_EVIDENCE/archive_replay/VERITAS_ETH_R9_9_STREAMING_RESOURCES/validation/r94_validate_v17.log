@@ -1,0 +1,9 @@
+{
+  "version": "1.7.0",
+  "seed": 170017,
+  "instances": 240,
+  "independent_permutation_optimality_checks": 189,
+  "exact_or_modular_count_comparisons": 720,
+  "strict_cost_proxy_improvements_over_min_degree": 0,
+  "paper_subexponential_recursion_reproduced": false
+}

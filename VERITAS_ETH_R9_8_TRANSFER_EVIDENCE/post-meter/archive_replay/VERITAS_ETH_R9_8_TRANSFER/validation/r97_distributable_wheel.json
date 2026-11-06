@@ -1,0 +1,19 @@
+{
+  "status": "PASS_DISTRIBUTABLE_WHEEL",
+  "wheel": "veritas_eth-3.8.2.post97-py3-none-any.whl",
+  "sha256": "215ad67e77c569b7ace853b7b4f28b4a1fbebd9ae64c08d026eba542682f2f2d",
+  "validation": {
+    "status": "PASS_INSTALLED_FINITE_EXECUTION",
+    "package_version": "3.8.2.post97",
+    "python": "3.12.0",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "one_wire_residue": 7,
+    "dense_16_wire_residue": 65536,
+    "source_pin_status": "PIN_AND_LABELS_CHECKED",
+    "wall_seconds": 1.3081674580462277,
+    "peak_process_rss_bytes": 31162368,
+    "theorem_mode_enabled": false
+  },
+  "elapsed_seconds": 2.192384249996394,
+  "exit_code": 0
+}

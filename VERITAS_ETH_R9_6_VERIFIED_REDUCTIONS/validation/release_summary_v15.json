@@ -1,0 +1,13 @@
+{
+  "version": "1.5.0",
+  "source_base": "1.4.0",
+  "pytest_passed": 234,
+  "new_seeded_instances": 500,
+  "new_differential_checks": 4500,
+  "inherited_reference_cases": 10000,
+  "inherited_copy3_cases": 800,
+  "benchmark_exact_count_agreements": 4,
+  "benchmark_general_speedup_claim": false,
+  "original_paper_subexponential_algorithm_implemented": false,
+  "lean_proof_rebuilt": false
+}

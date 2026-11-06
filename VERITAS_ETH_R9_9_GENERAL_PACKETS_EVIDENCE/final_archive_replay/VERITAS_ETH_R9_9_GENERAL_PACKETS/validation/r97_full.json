@@ -1,0 +1,22 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "-o",
+    "addopts=",
+    "-rs",
+    "--tb=short"
+  ],
+  "status": "FAIL",
+  "exit_code": 1,
+  "elapsed_seconds": 337.25700245797634,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 1392918528,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_full.stdout.log",
+  "stderr_log": "r97_full.stderr.log",
+  "test_summary": "1 failed, 1453 passed in 335.95s (0:05:35)"
+}

@@ -1,0 +1,665 @@
+{
+  "status": "PASS",
+  "source": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+  "commands": [
+    {
+      "name": "wheel_build",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "pip",
+        "wheel",
+        "--no-deps",
+        "--no-build-isolation",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_COUPLED_RECURSION",
+        "-w",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/wheels"
+      ],
+      "exit_code": 0,
+      "seconds": 3.1141834589652717,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "venv",
+      "command": [
+        "/opt/homebrew/bin/python3.10",
+        "-m",
+        "venv",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310"
+      ],
+      "exit_code": 0,
+      "seconds": 2.3111760830506682,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_install",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--force-reinstall",
+        "--no-deps",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/wheels/veritas_eth-3.8.2.post98-py3-none-any.whl"
+      ],
+      "exit_code": 0,
+      "seconds": 0.8425956249702722,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_identity",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "-c",
+        "from veritas.research.tapered_v4.provenance import source_binding; assert source_binding()[\"digest\"]==\"cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a\""
+      ],
+      "exit_code": 0,
+      "seconds": 0.12934545800089836,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_packet_fix",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/packet_fix.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.19306616694666445,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_math_corrections",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/math_corrections.py"
+      ],
+      "exit_code": 0,
+      "seconds": 1.7258416661061347,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_shrinking_installed",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/shrinking_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 41.44678300002124,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_general_installed",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/general_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 62.558232708019204,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_groups_installed",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/groups_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 35.496020458987914,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_transfer_installed",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/transfer_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 148.54524041700643,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_packets_installed",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/packets_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 8.338723749970086,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_supported_installed",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/supported_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 68.70559525000863,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_preflight_installed",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/preflight_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.25622420897707343,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_validate_r98_installed",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/validate_r98_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 109.91914574999828,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_validate_r97_installed",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/validate_r97_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 1.7609922080300748,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_build",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "veritas-eth:r911-portability-partial",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_COUPLED_RECURSION"
+      ],
+      "exit_code": 0,
+      "seconds": 10.953306791954674,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_packet_fix",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/packet_fix.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.551215749932453,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_math_corrections",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/math_corrections.py"
+      ],
+      "exit_code": 0,
+      "seconds": 1.5057579999556765,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_shrinking_installed",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/shrinking_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 28.954875624971464,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_general_installed",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/general_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 48.75229291606229,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_groups_installed",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/groups_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 26.153061416000128,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_transfer_installed",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/transfer_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 112.44140866701491,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_packets_installed",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/packets_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 6.896883333916776,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_supported_installed",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/supported_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 52.78345624997746,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_preflight_installed",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/preflight_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.4477541249943897,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_validate_r98_installed",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/validate_r98_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 85.7619422909338,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_validate_r97_installed",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/validate_r97_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 1.522575584007427,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_streaming_installed",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/streaming_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.67002566694282,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_streaming_installed",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/streaming_installed.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.45911987498402596,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_connection",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/connection.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3427951659541577,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_connection",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/connection.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.4386518750106916,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_replay235",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/r910_replay.py"
+      ],
+      "exit_code": 0,
+      "seconds": 69.72049375006463,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_replay235",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/r910_replay.py"
+      ],
+      "exit_code": 0,
+      "seconds": 53.55533291597385,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "wheel_replay242",
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/r910_replay242.py"
+      ],
+      "exit_code": 0,
+      "seconds": 65.4454595829593,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    },
+    {
+      "name": "docker_replay242",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+        "veritas-eth:r911-portability-partial",
+        "-I",
+        "/checks/r910_replay242.py"
+      ],
+      "exit_code": 0,
+      "seconds": 43.03977970906999,
+      "source_before": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a",
+      "source_after": "cc0029b8619f94b7d0173c6cf5e4683836efcb9548a40ec43cdaea29477f0a4a"
+    }
+  ]
+}

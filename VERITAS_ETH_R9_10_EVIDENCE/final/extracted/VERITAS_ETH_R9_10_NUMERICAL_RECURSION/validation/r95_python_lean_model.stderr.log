@@ -1,0 +1,19 @@
+12 cases, 0 mismatches, 47.8s -> <repository>/validation/r91_python_model.json
+       47.92 real        13.78 user        20.11 sys
+          1388986368  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             1626226  page reclaims
+               50466  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                1191  voluntary context switches
+              245612  involuntary context switches
+           602537217  instructions retired
+           363034609  cycles elapsed
+            15155632  peak memory footprint

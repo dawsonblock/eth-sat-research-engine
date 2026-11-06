@@ -1,0 +1,14 @@
+............................F                                            [100%]
+=================================== FAILURES ===================================
+_____________ test_cli_report_roundtrip_and_integer_math_boundary ______________
+tests/test_r99_supported_packets.py:250: in test_cli_report_roundtrip_and_integer_math_boundary
+    assert load_execution_report(path, max_bytes=policy.max_certificate_bytes) == report
+E   AssertionError: assert {'active_call...: 186157, ...} == {'active_call...: 186157, ...}
+E     
+E     Omitting 19 identical items, use -vv to show
+E     Differing items:
+E     {'result': [[35651584, 0]]} != {'result': ((35651584, 0),)}
+E     Use -v to get more diff
+=========================== short test summary info ============================
+FAILED tests/test_r99_supported_packets.py::test_cli_report_roundtrip_and_integer_math_boundary
+1 failed, 28 passed, 1 deselected in 9.38s

@@ -1,0 +1,28 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--memory=512m",
+    "--cpus=1",
+    "-w",
+    "/tmp",
+    "veritas-eth:r96-local-audit",
+    "python",
+    "-I",
+    "-c",
+    "from veritas.research.tapered_v4.source_state import SourceContext,SourceNode; from veritas.research.tapered_v4.source_leaf import contract_source_leaf; r=contract_source_leaf(SourceNode(SourceContext(2,2,1,2,2,1,19),0,(),0,2)); print(r[\"status\"],r.get(\"result\")); raise SystemExit(0 if r.get(\"result\")==((1,0,0,0),) else 1)"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 0.6761585409985855,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 31916032,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r96_docker_leaf.stdout.log",
+  "stderr_log": "r96_docker_leaf.stderr.log",
+  "test_summary": ""
+}

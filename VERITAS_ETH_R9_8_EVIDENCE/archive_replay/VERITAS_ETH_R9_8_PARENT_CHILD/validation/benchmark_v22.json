@@ -1,0 +1,81 @@
+{
+  "scope": "bounded local reference; not ETH asymptotics",
+  "cases": [
+    {
+      "name": "12_disjoint_or",
+      "variables": 26,
+      "clauses": 12,
+      "shannon_tree": {
+        "count": "2125764",
+        "nodes": 12286,
+        "serialized_bytes": 493161,
+        "generation_ms": 36.402,
+        "checker_nodes": 12286
+      },
+      "component_dag": {
+        "count": "2125764",
+        "nodes": 39,
+        "serialized_bytes": 2314,
+        "generation_ms": 0.742,
+        "checker_nodes": 39
+      }
+    },
+    {
+      "name": "shared_variable",
+      "variables": 9,
+      "clauses": 7,
+      "shannon_tree": {
+        "count": "56",
+        "nodes": 27,
+        "serialized_bytes": 1166,
+        "generation_ms": 0.089,
+        "checker_nodes": 27
+      },
+      "component_dag": {
+        "count": "56",
+        "nodes": 16,
+        "serialized_bytes": 1022,
+        "generation_ms": 0.161,
+        "checker_nodes": 16
+      }
+    },
+    {
+      "name": "chain",
+      "variables": 10,
+      "clauses": 9,
+      "shannon_tree": {
+        "count": "144",
+        "nodes": 265,
+        "serialized_bytes": 10004,
+        "generation_ms": 0.62,
+        "checker_nodes": 265
+      },
+      "component_dag": {
+        "count": "144",
+        "nodes": 31,
+        "serialized_bytes": 1891,
+        "generation_ms": 0.406,
+        "checker_nodes": 31
+      }
+    },
+    {
+      "name": "all_tautologies",
+      "variables": 26,
+      "clauses": 13,
+      "shannon_tree": {
+        "count": "67108864",
+        "nodes": 16383,
+        "serialized_bytes": 639726,
+        "generation_ms": 105.034,
+        "checker_nodes": 16383
+      },
+      "component_dag": {
+        "count": "67108864",
+        "nodes": 1,
+        "serialized_bytes": 215,
+        "generation_ms": 1.826,
+        "checker_nodes": 1
+      }
+    }
+  ]
+}

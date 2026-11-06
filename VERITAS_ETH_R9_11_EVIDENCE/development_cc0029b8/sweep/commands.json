@@ -1,0 +1,135 @@
+[
+  {
+    "nonconstant_row_ports": 1,
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/experiment_r911.py",
+      "--kind",
+      "matching",
+      "--active-rows",
+      "1",
+      "--max-seconds",
+      "120",
+      "--max-work",
+      "12000000",
+      "--output-dir",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/sweep/b1"
+    ],
+    "exit_code": 2,
+    "wall_seconds": 2.0931317090289667
+  },
+  {
+    "nonconstant_row_ports": 2,
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/experiment_r911.py",
+      "--kind",
+      "matching",
+      "--active-rows",
+      "2",
+      "--max-seconds",
+      "120",
+      "--max-work",
+      "12000000",
+      "--output-dir",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/sweep/b2"
+    ],
+    "exit_code": 2,
+    "wall_seconds": 2.112478374969214
+  },
+  {
+    "nonconstant_row_ports": 4,
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/experiment_r911.py",
+      "--kind",
+      "matching",
+      "--active-rows",
+      "4",
+      "--max-seconds",
+      "120",
+      "--max-work",
+      "12000000",
+      "--output-dir",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/sweep/b4"
+    ],
+    "exit_code": 2,
+    "wall_seconds": 2.0943065830506384
+  },
+  {
+    "nonconstant_row_ports": 8,
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/experiment_r911.py",
+      "--kind",
+      "matching",
+      "--active-rows",
+      "8",
+      "--max-seconds",
+      "120",
+      "--max-work",
+      "12000000",
+      "--output-dir",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/sweep/b8"
+    ],
+    "exit_code": 2,
+    "wall_seconds": 2.148783333017491
+  },
+  {
+    "nonconstant_row_ports": 16,
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/experiment_r911.py",
+      "--kind",
+      "matching",
+      "--active-rows",
+      "16",
+      "--max-seconds",
+      "120",
+      "--max-work",
+      "12000000",
+      "--output-dir",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/sweep/b16"
+    ],
+    "exit_code": 2,
+    "wall_seconds": 2.1968742080498487
+  },
+  {
+    "nonconstant_row_ports": 32,
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/experiment_r911.py",
+      "--kind",
+      "matching",
+      "--active-rows",
+      "32",
+      "--max-seconds",
+      "120",
+      "--max-work",
+      "12000000",
+      "--output-dir",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/sweep/b32"
+    ],
+    "exit_code": 2,
+    "wall_seconds": 2.285065749892965
+  },
+  {
+    "nonconstant_row_ports": 242,
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/experiment_r911.py",
+      "--kind",
+      "matching",
+      "--active-rows",
+      "242",
+      "--max-seconds",
+      "120",
+      "--max-work",
+      "12000000",
+      "--output-dir",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/sweep/b242"
+    ],
+    "exit_code": 2,
+    "wall_seconds": 14.59489275002852
+  }
+]

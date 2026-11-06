@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="18" time="56.935" timestamp="2026-11-05T04:29:19.983533-06:00" hostname="Mac.gateway.sasktel.net"><testcase classname="tests.test_r99_general_packets" name="test_multislot_shared_mode_exponent_two_is_nonzero" time="0.480" /><testcase classname="tests.test_r99_general_packets" name="test_general_mode_mutations[drop]" time="0.081" /><testcase classname="tests.test_r99_general_packets" name="test_general_mode_mutations[duplicate]" time="0.096" /><testcase classname="tests.test_r99_general_packets" name="test_general_mode_mutations[source]" time="0.081" /><testcase classname="tests.test_r99_general_packets" name="test_general_mode_mutations[target]" time="0.079" /><testcase classname="tests.test_r99_general_packets" name="test_general_mode_mutations[weight]" time="0.078" /><testcase classname="tests.test_r99_general_packets" name="test_general_mode_mutations[count]" time="0.080" /><testcase classname="tests.test_r99_general_packets" name="test_general_mode_mutations[coefficient]" time="0.080" /><testcase classname="tests.test_r99_general_packets" name="test_incomplete_tuple_budget_refuses_before_any_child" time="0.080" /><testcase classname="tests.test_r99_general_packets" name="test_term_mutations_return_no_result[value]" time="0.224" /><testcase classname="tests.test_r99_general_packets" name="test_term_mutations_return_no_result[beta]" time="0.089" /><testcase classname="tests.test_r99_general_packets" name="test_term_mutations_return_no_result[omitted_child]" time="0.079" /><testcase classname="tests.test_r99_general_packets" name="test_term_mutations_return_no_result[creation]" time="0.084" /><testcase classname="tests.test_r99_general_packets" name="test_independent_term_checker_does_not_call_production" time="0.217" /><testcase classname="tests.test_r99_general_packets" name="test_complete_multivaluation_grid_nonconstant_multislot" time="4.824" /><testcase classname="tests.test_r99_general_packets" name="test_production_leaf_does_not_call_oracle" time="0.037" /><testcase classname="tests.test_r99_general_packets" name="test_active_strict_recursion_without_contraction_oracles" time="50.060"><failure message="assert 645590698195138073036733040138561 == (17 ** 22)">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10b581010&gt;
+
+    def test_active_strict_recursion_without_contraction_oracles(monkeypatch):
+        from pathlib import Path
+        from veritas.research.parent_child_r98.shrinking_cli import load_input
+        from veritas.research.parent_child_r98.shrinking_layout import construct_vertex_shrinking_layout
+        from veritas.research.parent_child_r98.shrinking_engine import DEFAULT_SHRINKING_POLICY
+        import veritas.research.parent_child_r99.engine as engine
+        def forbidden(*a,**k):raise AssertionError('production contraction oracle called')
+        monkeypatch.setattr(engine,'tuple_coefficient',forbidden)
+        monkeypatch.setattr(engine,'verify_children',forbidden)
+        p=load_input(Path(__file__).resolve().parents[1]/'examples/r98_general_matching22.json')
+        def layout(call,a,u,budget):
+            assert (a,u)==(1,1)
+            return construct_vertex_shrinking_layout(call,budget=budget)
+        result=contract_packet_recursion(p,schedule=((1,1),),layout_factory=layout,
+                                        policy=replace(DEFAULT_SHRINKING_POLICY,max_work=1_000_000_000))
+        assert result['status']=='PASS_FINITE_GENERAL_PACKET_RECURSION',result
+&gt;       assert result['result'][0][0]==17**22
+E       assert 645590698195138073036733040138561 == (17 ** 22)
+
+tests/test_r99_general_packets.py:152: AssertionError</failure></testcase><testcase classname="tests.test_r99_general_packets" name="test_active_invalid_packing_has_no_result" time="0.039" /></testsuite></testsuites>

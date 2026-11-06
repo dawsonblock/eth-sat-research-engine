@@ -1,0 +1,17 @@
+{
+  "baseline": "VERITAS_ETH_R9_4_SOURCE_FOUNDATION_PARTIAL_FULL_UPGRADED.zip",
+  "changed": [
+    ".github/workflows/test.yml",
+    "AGENTS.md",
+    "README.md",
+    "scripts/validate_conditional_expectation_lean.py",
+    "tests/test_lean_proof_gate_fault_injection.py",
+    "validation/r91_benchmarks.json",
+    "validation/r91_python_model.json",
+    "validation/r9_1_differential.json",
+    "validation/r9_3_packet_differential.json",
+    "validation/r9_4_differential.json",
+    "validation/r9_conditional_expectation_proof.json"
+  ],
+  "missing": []
+}

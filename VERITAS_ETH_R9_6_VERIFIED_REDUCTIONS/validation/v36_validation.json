@@ -1,0 +1,9 @@
+{
+  "release": "3.6.0",
+  "status": "PASS",
+  "seed": 360036,
+  "packet_oracle_and_certificate_cases": 40,
+  "forged_claim_rejections": 40,
+  "independently_checked_boolean_coefficient_assignments": 577,
+  "subexponential_algorithm_claimed": false
+}

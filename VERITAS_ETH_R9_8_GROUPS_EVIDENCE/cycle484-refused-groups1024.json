@@ -1,0 +1,47 @@
+{
+  "active_calls": 0,
+  "group_preflight": {
+    "descendant_packing": "INCOMPLETE_OR_REFUSED",
+    "execution_family": "CONSTANT_DEFORMATION",
+    "failing_depth": 0,
+    "failing_edges": 484,
+    "failing_precision": 512,
+    "failing_topology": "6d3303b36a546a0b39ca8630757bac22d36e63f08edee443db8235cf8cde9379",
+    "groups": 1024,
+    "reason": "nonleaf descendant whole vertex exceeds available group capacity",
+    "root_digest": "1e54e9437cbd4d7ba56e6806677969221ff0521d0b424171b321bb9a0c27f2c5",
+    "source_qualified": false,
+    "status": "INCONCLUSIVE_DESCENDANT_PACKING",
+    "tensor_values_checked": false,
+    "topology_nodes_visited": 1
+  },
+  "implementation_source_sha256": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+  "ledger": {
+    "actual_calls": 0,
+    "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+    "elapsed_seconds": 0.022774667013436556,
+    "hard_memory_limit_enforced": false,
+    "maximum_depth": 0,
+    "nonshrinking_children": 0,
+    "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+    "point_evaluations": 0,
+    "transitions": 0,
+    "tuples": 0,
+    "work_units": 1995
+  },
+  "policy": {
+    "max_calls": 300000,
+    "max_certificate_bytes": 20000000,
+    "max_depth": 16,
+    "max_edges": 1024,
+    "max_factor_bits": 16,
+    "max_precision": 65536,
+    "max_seconds": 600,
+    "max_tuples": 4096,
+    "max_work": 300000000
+  },
+  "reason": "nonleaf descendant whole vertex exceeds available group capacity",
+  "source_qualified": false,
+  "status": "INCONCLUSIVE_DESCENDANT_PACKING",
+  "theorem_mode_enabled": false
+}

@@ -1,0 +1,76 @@
+{
+  "checks": {
+    "custom_axiom_and_forged_report": "REJECTED_BY_UNIT_TESTS",
+    "fake_version_gate": {
+      "lean_generated_symbol_port_bound_proven": false,
+      "manuscript_pin_matches": true,
+      "status": "FAIL",
+      "version_match": false
+    },
+    "final_focused_tests": {
+      "elapsed_seconds": 5.34,
+      "passed": 80
+    },
+    "lean_gate": {
+      "central_contract_types_checked": true,
+      "compiler_authenticated": false,
+      "elapsed_seconds": 27.613035,
+      "manuscript_pin_matches": true,
+      "modules": 19,
+      "pinned_lean_version_matches": true,
+      "status": "PASS"
+    },
+    "packing_replay": {
+      "elapsed_seconds": 4.445256,
+      "status": "PASS_FINITE_PACKING_STAGE"
+    },
+    "prior_full_suite_before_final_contract_inclusion": {
+      "elapsed_seconds": 102.56,
+      "passed": 1150
+    },
+    "three_edge_refinement_fixture": {
+      "a": 1,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "lean_row_labels": [
+        1,
+        0
+      ],
+      "python_row_labels": [
+        0,
+        1
+      ],
+      "radix": 2,
+      "same_labels": false
+    },
+    "trivial_port_theorem_replacement": "REJECTED_BY_LEAN_CONTRACT_COMPILATION"
+  },
+  "limitations": {
+    "compiler_or_source_authenticated": false,
+    "complete_type_contracts": false,
+    "theorem_mode_enabled": false,
+    "universal_packing_lemma_proven": false,
+    "universal_python_refinement_proven": false
+  },
+  "schema": "VERITAS_R9_PROOF_GATE_REVIEW_V1",
+  "scope": "LOCAL_VALIDATOR_AND_THREE_EDGE_ORDER_FIXTURE",
+  "source_sha256": {
+    "proofs/D3ExpectedContracts.lean": "d2faa9b653a2d13482ed8ac3394a95f2e9c1a14479133fd447ffc9623ea3b1bd",
+    "proofs/D3SymbolPorts.lean": "e0b6b1e16ff331bb11ab034acc950da19697a1093a886188b1a8df3a3b3fc42e",
+    "scripts/validate_conditional_expectation_lean.py": "7c2ec195ca22362da3c5bf3b1dabc6dab6152f746587e3133f795f0394000365",
+    "tests/test_d3_streaming_independent.py": "a5bacf7dba1fca3e197e8c9a2ce107257133e2baf12d4b7fe8246c9eb6699986",
+    "tests/test_lean_proof_gate_audit.py": "32d05eb085fc7fb0ba49fad3af1b22c8ab644ced147020e42b3e2974d6013d2b"
+  }
+}

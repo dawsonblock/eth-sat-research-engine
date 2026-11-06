@@ -1,0 +1,7 @@
+{
+  "status": "FAILED_FULL_SUITE",
+  "failed_test": "tests/test_tapered_v4.py::test_verifier_resource_limits_propagate",
+  "reason": "New required polynomial lookup preceded the existing source resource-limit exception",
+  "source_binding": "99918c467f95cdf844af33ee12edd70142edaf8ffe628ed7ad17e7bed78a1b5c",
+  "fresh_evidence_required_after_fix": true
+}

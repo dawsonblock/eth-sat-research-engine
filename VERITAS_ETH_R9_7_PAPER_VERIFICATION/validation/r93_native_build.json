@@ -1,0 +1,17 @@
+{
+  "build_command": "cmake --build build/cpp --parallel 2",
+  "build_exit_code": 0,
+  "cpp_formal_refinement_proven": false,
+  "elapsed_seconds": 0.8349001249298453,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "selftest_command": "./build/cpp/veritas_d3_selftest",
+  "selftest_exit_code": 0,
+  "selftest_output": "veritas_d3_selftest: PASS",
+  "status": "PASS",
+  "versions": {
+    "cmake": "cmake version 4.2.1\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.2.0\nThread model: posix",
+    "lean": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+    "python": "Python 3.12.0"
+  }
+}

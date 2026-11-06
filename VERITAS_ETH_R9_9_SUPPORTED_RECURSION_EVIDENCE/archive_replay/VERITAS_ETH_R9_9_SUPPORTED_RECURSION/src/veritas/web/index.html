@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VERITAS-ETH · Local Reasoning Console</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,system-ui,-apple-system,sans-serif;background:#0b111b;color:#edf5fb}
+*{box-sizing:border-box}body{margin:0;padding:20px;min-height:100vh;background:radial-gradient(ellipse at 90% 4%,#19314c 0,transparent 48%),#0b111b}
+main{max-width:1030px;margin:auto}.eyebrow{letter-spacing:.2em;font-size:12px;color:#80a9bb;text-transform:uppercase}.lead{color:#a0b1c5;max-width:700px;line-height:1.6}h1{font-size:clamp(28px,5vw,44px);margin:6px 0}h2{font-size:16px;margin:0 0 14px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:#121e2c;border:1px solid #2b4056;border-radius:14px;padding:24px;box-shadow:0 8px 35px #0002}.wide{grid-column:1/-1}label{display:block;color:#b4c9db;font-size:13px;margin:12px 0 7px}input,textarea,select{width:100%;border-radius:8px;border:1px solid #435971;background:#0e1927;color:#f4f8fb;padding:12px;font:inherit}textarea{min-height:100px;resize:vertical}button{cursor:pointer;margin-top:14px;border:0;background:#42bea8;color:#051b1b;padding:12px 19px;border-radius:8px;font-weight:750}button:hover{background:#7aded0}button:disabled{opacity:.5;cursor:wait}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#091521;border:1px solid #2a435a;border-radius:9px;padding:15px;font-size:12px;max-height:360px;overflow:auto}.muted{color:#8eabc0}.row{display:flex;justify-content:space-between;gap:15px;align-items:center}.tag{border:1px solid #3c665f;border-radius:40px;padding:6px 11px;font-size:11px;color:#8ad8ba}
+a{color:#79d8cf}@media(max-width:720px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}.panel{padding:18px}}
+</style></head>
+<body><main>
+<div class="row"><div class="eyebrow">VERITAS · local-first</div><span class="tag">Exact reasoning v3.2</span></div>
+<h1>Verified symbolic reasoning</h1>
+<p class="lead">Convert explicit logical propositions into checkable SAT queries, count Boolean solutions, and compare against exact tensor-network baselines. ETH-specific algorithms remain experimental and are not represented as complete.</p>
+<div class="grid">
+<section class="panel"><h2>Entailment &amp; counterexamples</h2><p class="muted">Formal syntax: <code>A -> B</code>, <code>A & B</code>, <code>!A</code>, parentheses. One premise per line.</p>
+<label for="premises">Premises</label><textarea id="premises">A -> B
+A</textarea><label for="conclusion">Proposed conclusion</label><input id="conclusion" value="B"><button onclick="run('entail')">Test entailment</button></section>
+<section class="panel"><h2>Exact Boolean counting</h2><p class="muted">Integer literals: each clause is a row; positive = true, negative = negated. Unused variables are counted.</p>
+<label for="vars">Declared variables</label><input id="vars" type="number" min="0" value="3"><label for="clauses">CNF clauses (one per line)</label><textarea id="clauses">1 2
+-1 3</textarea><label for="method">Operation</label><select id="method"><option value="count">Reference exact #SAT</option><option value="certified-count">Independently verified exact #SAT proof (tree)</option><option value="certified-count-dag">Proof-checked component DAG #SAT (v2.2)</option><option value="weighted-count-dag">Exact rational weighted model counting (v2.3)</option><option value="posterior-marginals">Exact all-variable posterior marginals (v2.4)</option><option value="conditional-probability">Proof-checked conditional probability (v2.3)</option><option value="spectrum">Clause violation spectrum (exact)</option><option value="spectrum-mod">Clause spectrum modulo 2^p</option><option value="projected">Projected #SAT (existential)</option><option value="wire">Split-wire deformation (exact research)</option><option value="cauchy">Cauchy D.4.3 local kernel (tiny exact research)</option><option value="modes">Certified cross-mode pruning (tiny research)</option><option value="hermite">Modular Hermite recovery (tiny research)</option><option value="grouped">Grouped Cauchy rank modes (exact research)</option><option value="separator">Recursive separator contraction (exact research)</option><option value="packet">Finite packet collision optimization (experimental)</option><option value="optimal-packets">Certified finite packet partition optimum (v1.8)</option><option value="bounded-packets">Bounded exact packet search (v2.1; sizes 1/2/4/8)</option><option value="matching-packets">Globally optimal pair packets via matching (v2.0)</option><option value="scalable-packets">Scalable packet search + independent lower bounds (v1.9)</option><option value="cauchy-eliminate">Cauchy exact polynomial bucket elimination (experimental)</option><option value="weighted-children">Weighted grouped modes + recursive child tensors (v1.2 research)</option><option value="weighted-recovery">End-to-end guarded #SAT via weighted child tensors (v1.3)</option><option value="wire-mod">Split-wire deformation modulo 2^p</option><option value="certify">Checked UNSAT certificate</option><option value="verify">SAT witness</option><option value="adaptive">Fast adaptive exact #SAT + separators (v1.6)</option><option value="optimal-order">Globally optimal small-instance dense order (v1.7)</option><option value="order-report">Analyze optimal ordering only (v1.7)</option><option value="bounded-degree">Bounded-degree COPY3 tensor (v1.4)</option><option value="gadget-contract">Exact gadget contraction (v1.4)</option><option value="contract">Tensor bucket elimination</option></select><label for="weights">Weights JSON: variable → [false,true]; omitted defaults to [1,1]</label><textarea id="weights" aria-label="Exact rational weights">{"1":["1/2","1/2"],"2":["1/3","2/3"],"3":["2/3","1/3"]}</textarea><label for="queryclauses">Query CNF clauses (for conditional probability)</label><textarea id="queryclauses" aria-label="Conditional query clauses">1</textarea><label for="projected">Projected variable indices (e.g. 1,2)</label><input id="projected" value="1,2" aria-label="Projected variable indices"><label for="precision">Modular precision bits (1–64)</label><input id="precision" type="number" min="1" max="64" value="4"><button onclick="run('cnf')">Run constraint solver</button></section>
+<section class="panel wide"><h2>Formula equivalence</h2><p class="muted">Check whether two propositional expressions have identical truth values for every assignment. Return a checked counterexample or optionally an UNSAT proof.</p>
+<div class="grid"><div><label for="left">Expression A</label><input id="left" value="A -> B"></div><div><label for="right">Expression B</label><input id="right" value="!A | B"></div></div>
+<label><input id="equivproof" type="checkbox" checked style="width:auto"> Request bounded checked proof for equivalence</label>
+<button onclick="run('equiv')">Check equivalence</button></section>
+<section class="panel wide"><h2>v2.6 Finite D.3 conditional-expectation packing</h2>
+<p class="muted">Exact ordered label-pair collision potential, uniform class padding, independent finite certificate verification. This does not implement D.4.4 or prove ETH complexity.</p>
+<label for="d3edges">Row/column edges JSON</label><textarea id="d3edges" aria-label="D3 row/column edge list">[[0,1],[1,0],[0,0],[1,1]]</textarea>
+<label for="d3radix">Symbol radix</label><input id="d3radix" type="number" min="2" max="64" value="2">
+<label for="d3coords">Symbol coordinates</label><input id="d3coords" type="number" min="1" max="5" value="1">
+<button onclick="runD3v26()">Construct and independently check D.3 packets</button>
+<pre id="d3result" aria-live="polite">Run an exact finite construction to inspect certification.</pre></section>
+
+<section class="panel wide"><h2>v2.8 Extension-ring Cauchy interpolation</h2>
+<p class="muted">Exact finite 2-adic extension-ring interpolation with unit-separated residue points and audited shift of the original Cauchy kernel. No recursive ETH speed claim.</p>
+<div class="grid"><div><label for="eth28l">Packet size (1,2,4,8)</label><input id="eth28l" type="number" value="2" min="1" max="8"><label for="eth28node">Integer interpolation node</label><input id="eth28node" type="number" value="1"></div><div><label for="eth28p">2-adic precision</label><input id="eth28p" type="number" value="8" min="1" max="32"><label for="eth28deg">Extension degree</label><input id="eth28deg" type="number" value="4" min="1" max="8"></div></div>
+<button onclick="runETH28()">Verify exact shifted Cauchy interpolation</button><pre id="eth28out" aria-live="polite">Finite certificate summary appears here.</pre></section>
+<section class="panel wide"><h2>v2.7 Finite D.4.4 weighted tile modes</h2>
+<p class="muted">Exact scalar Cauchy cross-group expansion using checked D.3 packets, modular precision and weight-bounded modes. Does not implement recursive ETH contraction.</p>
+<label for="modeedges">D.3 row/column edges JSON</label><textarea id="modeedges">[[0,0],[1,1],[0,1],[1,0]]</textarea>
+<div class="grid"><div><label for="modeprecision">2-adic precision bits</label><input id="modeprecision" type="number" min="2" max="12" value="5"></div>
+<div><label for="modenode">Nonzero interpolation node</label><input id="modenode" type="number" value="1"></div></div>
+<button onclick="runETH27()">Build and verify finite D.4.4 modes</button>
+<pre id="modeoutput" aria-live="polite">Mode-construction results and proof scope will appear here.</pre></section>
+<section class="panel wide"><h2>v2.5 Manuscript research laboratory</h2>
+<p class="muted">Experimental only: parameters, independent packet-invariant checking, exact finite-ring arithmetic. No ETH-breaking algorithm is claimed.</p>
+<div class="grid"><div><label for="ethedges">Network endpoint pairs (JSON)</label><textarea id="ethedges">[[0,1],[0,1],[2,3],[2,3]]</textarea></div><div><label for="ethpacka">Packet exponent a (L=2^a)</label><input id="ethpacka" type="number" min="1" max="5" value="2"><label for="ethr">Symbol radix</label><input id="ethr" type="number" min="2" max="64" value="4"></div></div>
+<button onclick="runETH25('packing')">Construct/check packing</button> <button onclick="runETH25('ring')">Test exact extension ring</button> <button onclick="runETH25('params')">Inspect manuscript parameters</button>
+</section>
+<section class="panel wide"><div class="row"><h2>Result + evidence</h2><span class="tag">Audited locally</span></div><pre id="result" aria-live="polite">Submit a query to inspect the result, evidence level and replay hash.</pre></section>
+</div><p class="muted">Documentation and API schema: <a href="/docs">/docs</a> · <a href="/v1/paper/audit">ETH implementation status</a>. No external AI API or cloud connection is required.</p>
+
+<section class="panel wide"><h2>v2.9 Finite tapered Hermite and extension-ring modes</h2>
+<p class="muted">Bounded exact-arithmetic reference. The tapered schedule uses manuscript multiplicity formulas but a small rational solver; the extension modes use exact rank-one column grouping, NOT the manuscript's specialized geometric modes. Neither establishes subexponential contraction.</p>
+<div class="grid"><div><label for="eth29poly">Polynomial coefficients (constant first)</label><input id="eth29poly" value="[12,9,-3,0,2]"></div>
+<div><label for="eth29wires">Number of tensor wires (M)</label><input id="eth29wires" type="number" min="1" max="8" value="2"></div></div>
+<button onclick="runETH29('tapered')">Check tapered Hermite reconstruction</button>
+<div class="grid"><div><label for="eth29edges">Row/column edges JSON</label><textarea id="eth29edges">[[0,0],[1,1],[0,1],[1,0]]</textarea></div>
+<div><label for="eth29p">Extension precision bits</label><input id="eth29p" type="number" min="2" max="32" value="8">
+<label for="eth29len">Taylor jet length</label><input id="eth29len" type="number" min="1" max="4" value="3"></div></div>
+<button onclick="runETH29('modes')">Construct and check extension-ring modes</button>
+<pre id="eth29out" aria-live="polite">Results are labeled FINITE_REFERENCE_ONLY.</pre></section>
+<section class="panel wide"><h2>v3.0 Finite implicit child tensors</h2>
+<p class="muted">D.3 label groups, extension-ring Cauchy jets and lazy boundary-child contraction, independently checked by direct half-edge enumeration. Finite reference only; no D.4.4 subexponential child recursion.</p>
+<div class="grid"><div><label for="eth30cnf">Clauses JSON (up to six literal occurrences)</label><textarea id="eth30cnf">[[1,2]]</textarea></div>
+<div><label for="eth30n">Declared Boolean variables</label><input id="eth30n" type="number" min="1" max="5" value="2"></div></div>
+<button onclick="runETH30()">Construct and verify implicit child tensors</button>
+<pre id="eth30out" aria-live="polite">No child computation has been performed.</pre></section>
+</main><script>
+async function run(which){let body,url;
+try{
+if(which==='equiv'){body={left:document.getElementById('left').value,right:document.getElementById('right').value,request_unsat_certificate:document.getElementById('equivproof').checked};url='/v1/equivalent';}
+else if(which==='entail'){body={premises:document.getElementById('premises').value.split('\n').map(s=>s.trim()).filter(Boolean),conclusion:document.getElementById('conclusion').value};url='/v1/counterexample';}
+else{const clauses=document.getElementById('clauses').value.split('\n').map(s=>s.trim()).filter(Boolean).map(s=>s.split(/\s+/).map(Number));if(clauses.some(a=>a.some(x=>!Number.isSafeInteger(x))))throw new Error('Use integer literals only');body={n:Number(document.getElementById('vars').value),clauses};const method=document.getElementById('method').value;if(method==='projected'){body.projected=document.getElementById('projected').value.split(',').map(s=>s.trim()).filter(Boolean).map(Number);url='/v1/count/projected';}else if(method==='certify'){url='/v1/certify/unsat';}else if(method==='certified-count'){url='/v1/certify/count';}else if(method==='certified-count-dag'){url='/v1/certify/count-dag';}else if(method==='weighted-count-dag'){url='/v1/certify/weighted-count-dag';body.weights=JSON.parse(document.getElementById('weights').value);}else if(method==='posterior-marginals'){url='/v1/probability/marginals';body.weights=JSON.parse(document.getElementById('weights').value);}else if(method==='conditional-probability'){url='/v1/probability/conditional';body.weights=JSON.parse(document.getElementById('weights').value);body.query_clauses=document.getElementById('queryclauses').value.split('\n').map(s=>s.trim()).filter(Boolean).map(s=>s.split(/\s+/).map(Number));}else if(method==='cauchy'){url='/v1/research/cauchy-deformation';}else if(method==='modes'){url='/v1/research/cauchy-modes';body.precision_bits=Number(document.getElementById('precision').value);}else if(method==='hermite'){url='/v1/research/cauchy-hermite';body.precision_bits=Number(document.getElementById('precision').value);}else if(method==='grouped'){url='/v1/research/grouped-cauchy';body.precision_bits=Number(document.getElementById('precision').value);body.node=1;body.jet_order=4;}else if(method==='separator'){url='/v1/research/separator-contract';}else if(method==='packet'||method==='optimal-packets'||method==='scalable-packets'||method==='matching-packets'||method==='bounded-packets'){url='/v1/research/packet-schedule';if(method==='optimal-packets')body.optimizer='exact_dp';if(method==='scalable-packets'){body.optimizer='scalable';body.cross_check=false;body.timeout_s=10;}if(method==='bounded-packets'){body.optimizer='bounded';body.packet_size=4;body.cross_check=false;body.timeout_s=10;}if(method==='matching-packets'){body.optimizer='matching';body.packet_size=2;body.cross_check=false;body.timeout_s=10;}}else if(method==='weighted-children'){url='/v1/research/weighted-children';body.precision_bits=Number(document.getElementById('precision').value);body.jet_order=4;}else if(method==='weighted-recovery'){url='/v1/research/weighted-recovery';body.precision_bits=null;body.timeout_s=15;}else if(method==='adaptive'){url='/v1/research/adaptive-contract';body.timeout_s=20;}else if(method==='optimal-order'){url='/v1/research/adaptive-contract';body.timeout_s=20;body.portfolio_mode='optimal_small';body.enable_separators=false;body.include_copy3=false;}else if(method==='order-report'){url='/v1/research/optimal-order';body.timeout_s=20;}else if(method==='bounded-degree'||method==='gadget-contract'){url='/v1/research/bounded-degree-tensor';body.contract=method==='gadget-contract';body.timeout_s=15;}else if(method==='cauchy-eliminate'){url='/v1/research/cauchy-eliminate';body.precision_bits=Number(document.getElementById('precision').value);body.jet_order=4;}else if(method==='wire'||method==='wire-mod'){url='/v1/research/wire-deformation';if(method==='wire-mod')body.precision_bits=Number(document.getElementById('precision').value);}else if(method==='spectrum'||method==='spectrum-mod'){url='/v1/research/violation-spectrum';if(method==='spectrum-mod')body.precision_bits=Number(document.getElementById('precision').value);}else{url=method==='contract'?'/v1/research/contract':'/v1/'+method;}}
+const el=document.getElementById('result');el.textContent='Calculating...';const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await res.json();el.textContent=JSON.stringify(data,null,2);}
+catch(err){document.getElementById('result').textContent=String(err)} }
+async function runETH25(which){let path,body;
+try {if(which==='packing'){path='/v1/research/eth/packing';body={edges:JSON.parse(document.getElementById('ethedges').value),a:Number(document.getElementById('ethpacka').value),r:Number(document.getElementById('ethr').value)};}
+else if(which==='ring'){path='/v1/research/eth/ring';body={degree:4,precision:8,coefficients:[1,1]};}
+else {path='/v1/research/eth/parameters';body={s:1000,mode:'MANUSCRIPT_EXACT'};}
+const res=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+document.getElementById('result').textContent=JSON.stringify(await res.json(),null,2);
+}catch(e){document.getElementById('result').textContent=String(e)}}
+async function runD3v26(){const target=document.getElementById('d3result');target.textContent='Computing...';
+try{const response=await fetch('/v1/research/eth/d3/construct',{method:'POST',headers:{'content-type':'application/json'},
+body:JSON.stringify({edges:JSON.parse(document.getElementById('d3edges').value),r:Number(document.getElementById('d3radix').value),a:Number(document.getElementById('d3coords').value)})});
+const obj=await response.json();if(!response.ok)throw Error(JSON.stringify(obj));
+target.textContent=JSON.stringify({verification:obj.verification,packet_count:obj.packets?.length,initial_expected_square_scaled:obj.initial_expected_square_scaled,final_square_scaled:obj.final_square_scaled,packet_sample:obj.packets?.slice(0,5),note:'Full JSON certificate available from POST endpoint or veritas-eth26 pack --output.'},null,2);
+}catch(e){target.textContent='ERROR: '+e.message;}}
+
+async function runETH27(){const out=document.getElementById('modeoutput');out.textContent='Computing...';
+try{const response=await fetch('/v1/research/eth/d44/modes',{method:'POST',headers:{'content-type':'application/json'},
+body:JSON.stringify({edges:JSON.parse(document.getElementById('modeedges').value),radix:2,a:2,
+node:Number(document.getElementById('modenode').value),zeta:1,
+precision:Number(document.getElementById('modeprecision').value)})});
+const body=await response.json();if(!response.ok)throw Error(JSON.stringify(body));
+out.textContent=JSON.stringify({verification:body.verification,
+example_modes:body.certificate?.modes?.slice(0,4),
+note:'Full certificate available from POST /v1/research/eth/d44/modes or veritas-eth27 CLI.'},null,2);
+}catch(e){out.textContent='ERROR: '+String(e)}}
+
+async function runETH28(){const out=document.getElementById('eth28out');out.textContent='Checking...';
+try{const req={packet_size:Number(document.getElementById('eth28l').value),node:Number(document.getElementById('eth28node').value),precision:Number(document.getElementById('eth28p').value),extension_degree:Number(document.getElementById('eth28deg').value)};
+const res=await fetch('/v1/research/eth/extension-cauchy',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(req)});
+const body=await res.json();if(!res.ok)throw Error(JSON.stringify(body));out.textContent=JSON.stringify(body,null,2);
+}catch(err){out.textContent='ERROR: '+String(err)}}
+
+async function runETH29(which){const out=document.getElementById('eth29out');out.textContent='Computing bounded exact reference...';
+try {const tapered=which==='tapered';const req=tapered?
+{wires:Number(document.getElementById('eth29wires').value),a:1,u:1,precision:8,coefficients:JSON.parse(document.getElementById('eth29poly').value)}:
+{edges:JSON.parse(document.getElementById('eth29edges').value),radix:2,a:1,node:1,precision:Number(document.getElementById('eth29p').value),extension_degree:4,jet_length:Number(document.getElementById('eth29len').value)};
+const res=await fetch(tapered?'/v1/research/eth/tapered-reference':'/v1/research/eth/extension-modes',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(req)});
+const data=await res.json();if(!res.ok)throw Error(JSON.stringify(data));out.textContent=JSON.stringify(tapered?data:{checker:data.checker,claim:data.certificate?.claim,mode_examples:data.certificate?.modes?.slice(0,3)},null,2);
+}catch(err){out.textContent='ERROR: '+String(err)}}
+async function runETH30(){const out=document.getElementById('eth30out');out.textContent='Running bounded exact computation...';
+try{const req={n:Number(document.getElementById('eth30n').value),clauses:JSON.parse(document.getElementById('eth30cnf').value),radix:2,a:1,node:1,precision:8,extension_degree:4,jet_length:3};
+const res=await fetch('/v1/research/eth/implicit-children',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(req)});
+const data=await res.json();if(!res.ok)throw Error(JSON.stringify(data));
+out.textContent=JSON.stringify({checker:data.checker,result:data.certificate?.result,children:data.certificate?.children,scope:data.certificate?.scope},null,2);
+}catch(err){out.textContent='ERROR: '+String(err)}}
+</script><section style="margin:1rem 0;padding:1rem;border:1px solid #777;border-radius:8px">
+  <h3>v3.1 Finite geometric-mode children</h3>
+  <p>Research-only: exact extension-ring Taylor jet expansion and group-local scalar checks (not manuscript recursion).</p>
+  <button type="button" onclick="veritasEth31Demo()">Run v3.1 reference (2 variables)</button>
+  <pre id="eth31-output" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre>
+</section>
+<script>
+async function veritasEth31Demo(){
+ const output=document.getElementById('eth31-output');output.textContent='Computing…';
+ try{
+   const r=await fetch('/v1/research/eth/geometric-mode-children',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({n:2,clauses:[[1,2]],precision:5,jet_length:2})});
+   const data=await r.json();
+   output.textContent=JSON.stringify(r.ok?{mode_checker:data.mode_checker,child_checker:data.child_checker,result:data.certificate.result,children:data.certificate.children}:data,null,2);
+ }catch(error){output.textContent=String(error)}
+}
+</script>
+
+<section aria-label="v3.2 exact mode-bond tensor network">
+  <h3>v3.2 Finite sparse mode-bond tensor contraction</h3>
+  <p class="muted">Creates actual source/target exponent-indexed group tensors and contracts their shared mode-index bonds exactly. Small finite reference only: no manuscript M/8 child-size guarantee or subexponential complexity proof.</p>
+  <button type="button" onclick="veritasEth32Demo()">Run v3.2 checked tensor bonds (2 variables)</button>
+  <pre id="eth32-output" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre>
+</section>
+<script>
+async function veritasEth32Demo(){
+ const el=document.getElementById('eth32-output');el.textContent='Calculating exact finite tensor bonds…';
+ try {const r=await fetch('/v1/research/eth/mode-bond-network',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({n:2,clauses:[[1,2]],precision:5,jet_length:2})});
+ const data=await r.json();el.textContent=JSON.stringify(r.ok?{checker:data.checker,result:data.certificate.result,stats:data.certificate.stats,children:data.certificate.children}:data,null,2);}
+ catch(e){el.textContent=String(e);}
+}
+</script>
+<section aria-label="v3.3 finite recursive mode bond contraction">
+<h3>v3.3 Recursive mode-bond contraction</h3>
+<p>Finite exact recursive separator-conditioning and component memoization; not manuscript M/8 recursion.</p>
+<button type="button" onclick="veritasEth33Demo()">Run checked recursive mode bonds</button>
+<pre id="eth33-output" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre>
+</section>
+<script>
+async function veritasEth33Demo(){
+ const el=document.getElementById('eth33-output');el.textContent='Running exact recursive contraction…';
+ try{const r=await fetch('/v1/research/eth/recursive-mode-bonds',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({n:2,clauses:[[1,2]],precision:5,jet_length:2})});
+ const data=await r.json();el.textContent=JSON.stringify(r.ok?{checker:data.checker,result:data.certificate.result,stats:data.certificate.stats}:data,null,2);}
+ catch(e){el.textContent='ERROR: '+String(e)}
+}
+</script>
+<section aria-label="v3.4 structural child topology">
+<h3>v3.4 D.3 child topology preflight</h3>
+<p class="muted">Independently checks D.3 original-half-port group loads, packet-slot coverage and geometric-mode endpoints. It does not construct the manuscript's smaller recursive packet tensors or prove the M/8 bound.</p>
+<button type="button" onclick="veritasEth34Demo()">Check finite group topology</button>
+<pre id="eth34-output" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre>
+</section>
+<script>
+async function veritasEth34Demo(){
+ const el=document.getElementById('eth34-output');el.textContent='Checking D.3 groups and finite mode incidence…';
+ try{const r=await fetch('/v1/research/eth/child-topology',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({n:2,clauses:[[1,2]],precision:5,jet_length:2,with_modes:true})});
+ const data=await r.json();el.textContent=JSON.stringify(r.ok?{checker:data.checker,summary:data.certificate.summary,groups:data.certificate.groups,mode_ledger:data.certificate.mode_ledger}:data,null,2);}
+ catch(e){el.textContent='ERROR: '+String(e)}
+}
+</script>
+
+<section style="margin:1rem 0;padding:1rem;border:1px solid var(--border,#666);border-radius:10px">
+<h3>v3.5 Finite Child Network Audit</h3>
+<p>Exact mode-bond group scopes, including both owned Boolean halfbits and cross-group mode bonds. Not a proof of the manuscript's M/8 theorem.</p>
+<button type="button" onclick="runEth35()">Verify sample child scopes</button>
+<pre id="eth35-output" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre>
+</section>
+<script>
+async function runEth35(){const el=document.getElementById('eth35-output');el.textContent='Building finite child scopes and replaying exact contraction...';try{const r=await fetch('/v1/research/eth/finite-child-network',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({n:2,clauses:[[1,2]],radix:2,a:1,node:1,precision:5,extension_degree:3,jet_length:2})});const z=await r.json();el.textContent=JSON.stringify({checker:z.checker,summary:z.certificate?.model?.summary,error:z.detail},null,2)}catch(e){el.textContent=String(e)}}
+</script>
+
+<section style="margin:1rem 0;padding:1rem;border:1px solid var(--border,#666);border-radius:10px">
+<h3>v3.6 Exact Finite Packet Coefficient Tensors</h3>
+<p>Extract Boolean-multilinear coefficients of whole Cauchy packets over exact extension jets. Independent M&#246;bius and half-edge oracles check the result. This is NOT a D.4.4 recursive complexity proof.</p>
+<button type="button" onclick="runEth36()">Verify sample packet tensors</button>
+<pre id="eth36-output" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre>
+</section>
+<script>
+async function runEth36(){const el=document.getElementById('eth36-output');el.textContent='Computing exact packet tensors and independent checks...';try{const r=await fetch('/v1/research/eth/finite-packet-tensors',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({n:2,clauses:[[1,2]],radix:2,a:1,node:1,precision:5,extension_degree:3,jet_length:2})});const z=await r.json();el.textContent=JSON.stringify({checker:z.checker,stats:z.certificate?.stats,packets:z.certificate?.packets?.map(p=>({id:p.packet_id,edges:p.edges,monomial_rows:p.coefficient_rows.length})),error:z.detail},null,2)}catch(e){el.textContent=String(e)}}
+</script>
+
+<section style="margin:1rem 0;padding:1rem;border:1px solid var(--border,#666);border-radius:10px" aria-label="v3.8 finite child factor elimination">
+<h3>v3.8 Exact D.4.4 Child Factor Elimination</h3>
+<p>Contracts fixed-mode group-local child tensor factors with bounded exact extension-ring bucket elimination. It checks the result against direct Cauchy contraction. No M/8 or subexponential theorem is claimed.</p>
+<button type="button" onclick="runEth38()">Run exact child elimination reference</button>
+<pre id="eth38-output" style="white-space:pre-wrap;overflow-wrap:anywhere" aria-live="polite"></pre>
+</section>
+<script>
+async function runEth38(){
+  const el=document.getElementById('eth38-output');
+  el.textContent='Computing exact child factors and independent oracle…';
+  try {
+    const response=await fetch('/v1/research/eth/finite-child-elimination',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({n:2,clauses:[[1,2]],radix:2,a:1,node:1,precision:5,extension_degree:3,jet_length:2})
+    });
+    const output=await response.json();
+    el.textContent=JSON.stringify(response.ok?{
+      checker:output.checker,
+      result:output.certificate?.result,
+      mode_tuples:output.certificate?.mode_tuples_evaluated,
+      max_intermediate_entries:output.certificate?.max_intermediate_entries,
+      packet_cache_hits:output.certificate?.packet_cache_hits,
+      children:output.certificate?.children,
+      subexponential_runtime_proven:false
+    }:output,null,2);
+  }catch(error){el.textContent='ERROR: '+String(error)}
+}
+</script>
+</body></html>

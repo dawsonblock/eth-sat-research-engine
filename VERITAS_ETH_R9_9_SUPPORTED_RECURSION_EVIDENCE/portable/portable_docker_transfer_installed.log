@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/checks/transfer_installed.py", line 56, in <module>
+    full = contract_cycle_transfer(p, l, policy=policy)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/veritas/research/parent_child_r98/cycle_transfer_recovery.py", line 144, in contract_cycle_transfer
+    checked = verify_transfer_recovery_certificate(parent, layout, payload, budget=budget,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/veritas/research/parent_child_r98/transfer_recovery_verify.py", line 122, in verify_transfer_recovery_certificate
+    value, expected = recover_general_grid(parent, layout, rows, budget=budget,
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/veritas/research/parent_child_r98/general_recovery.py", line 163, in recover_general_grid
+    polynomial = interpolate_newton(ring, points, values, max_points=max_points)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/veritas/research/eth_interpolation/extension_lagrange.py", line 44, in interpolate_newton
+    differences[i]=ring.mul(ring.sub(differences[i],differences[i-1]),ring.inverse(denom))
+                                                                      ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/veritas/research/eth_arithmetic/extension_ring.py", line 102, in inverse
+    y=self.mul(y,self.sub(two,self.mul(a,y)))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/veritas/research/eth_arithmetic/extension_ring.py", line 64, in mul
+    terms[i+j]=(terms[i+j]+x*y)%q
+               ~~~~~~~~~~~~~~~~^~
+KeyboardInterrupt

@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "platform": "macOS-26.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.13",
+  "commands": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        "cpp",
+        "-B",
+        "build/cpp-py313",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-Dpybind11_DIR=<python-prefix>/lib/python3.13/site-packages/pybind11/share/cmake/pybind11",
+        "-DPython_EXECUTABLE=<repository>/../VERITAS_ETH_R9_PACKING_STAGE/build/r93-py313-managed/bin/python"
+      ],
+      "exit_code": 0,
+      "seconds": 1.6580604169284925,
+      "output": "-- The CXX compiler identification is AppleClang 21.0.0.21000101\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Found Boost: /opt/homebrew/lib/cmake/Boost-1.90.0/BoostConfig.cmake (found version \"1.90.0\")\n-- Performing Test HAS_FLTO_THIN\n-- Performing Test HAS_FLTO_THIN - Success\n-- Performing Test HAS_FLTO\n-- Performing Test HAS_FLTO - Success\n-- pybind11 3.1.0 found: building veritas_d3\n-- Configuring done (1.6s)\n-- Generating done (0.0s)\n-- Build files have been written to: <repository>/build/cpp-py313\nCMake Warning (dev) at CMakeLists.txt:11 (find_package):\n  Policy CMP0167 is not set: The FindBoost module is removed.  Run \"cmake\n  --help-policy CMP0167\" for policy details.  Use the cmake_policy command to\n  set the policy and suppress this warning.\n\nThis warning is for project developers.  Use -Wno-dev to suppress it.\n\n"
+    },
+    {
+      "command": [
+        "cmake",
+        "--build",
+        "build/cpp-py313",
+        "--parallel",
+        "2"
+      ],
+      "exit_code": 0,
+      "seconds": 6.193729749997146,
+      "output": "[ 16%] Building CXX object CMakeFiles/veritas_d3_score.dir/src/score.cpp.o\n[ 33%] Linking CXX shared library libveritas_d3_score.dylib\n[ 33%] Built target veritas_d3_score\n[ 66%] Building CXX object CMakeFiles/veritas_d3.dir/src/bindings.cpp.o\n[ 66%] Building CXX object CMakeFiles/veritas_d3_selftest.dir/tests/selftest.cpp.o\n[ 83%] Linking CXX executable veritas_d3_selftest\n[ 83%] Built target veritas_d3_selftest\n[100%] Linking CXX shared module python/veritas_d3.cpython-313-darwin.so\n[100%] Built target veritas_d3\n"
+    },
+    {
+      "command": [
+        "./build/cpp-py313/veritas_d3_selftest"
+      ],
+      "exit_code": 0,
+      "seconds": 0.7386907079489902,
+      "output": "veritas_d3_selftest: PASS\n"
+    }
+  ],
+  "formal_verification": false,
+  "hosted_ci_run": false
+}

@@ -1,0 +1,116 @@
+................................FFFF..........F.                         [100%]
+=================================== FAILURES ===================================
+_____________ test_creation_precision_lift_is_not_re_evaluation[2] _____________
+
+degree = 2
+
+    @pytest.mark.parametrize("degree", [2, 3, 5])
+    def test_creation_precision_lift_is_not_re_evaluation(degree):
+        f = first_irreducible(degree)
+        # A row affine entry 1 - 3 = -2 is created mod 4 as 2; later it stays 2.
+        ref = make_reference(
+            kind="packet",
+            arity=2,
+            creation_precision=2,
+            defining_polynomial=f,
+            jet_length=1,
+            data=[[0], [1], [[[[3] + [0] * (degree - 1)]]], [], []],
+        )
+>       assert evaluate_source_entry(ref, (0, 1), precision=9)[0] == (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            (2,) + (0,) * (degree - 1),
+        )
+E       KeyError: 0
+
+tests/test_r98_parent_child.py:327: KeyError
+_____________ test_creation_precision_lift_is_not_re_evaluation[3] _____________
+
+degree = 3
+
+    @pytest.mark.parametrize("degree", [2, 3, 5])
+    def test_creation_precision_lift_is_not_re_evaluation(degree):
+        f = first_irreducible(degree)
+        # A row affine entry 1 - 3 = -2 is created mod 4 as 2; later it stays 2.
+        ref = make_reference(
+            kind="packet",
+            arity=2,
+            creation_precision=2,
+            defining_polynomial=f,
+            jet_length=1,
+            data=[[0], [1], [[[[3] + [0] * (degree - 1)]]], [], []],
+        )
+>       assert evaluate_source_entry(ref, (0, 1), precision=9)[0] == (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            (2,) + (0,) * (degree - 1),
+        )
+E       KeyError: 0
+
+tests/test_r98_parent_child.py:327: KeyError
+_____________ test_creation_precision_lift_is_not_re_evaluation[5] _____________
+
+degree = 5
+
+    @pytest.mark.parametrize("degree", [2, 3, 5])
+    def test_creation_precision_lift_is_not_re_evaluation(degree):
+        f = first_irreducible(degree)
+        # A row affine entry 1 - 3 = -2 is created mod 4 as 2; later it stays 2.
+        ref = make_reference(
+            kind="packet",
+            arity=2,
+            creation_precision=2,
+            defining_polynomial=f,
+            jet_length=1,
+            data=[[0], [1], [[[[3] + [0] * (degree - 1)]]], [], []],
+        )
+>       assert evaluate_source_entry(ref, (0, 1), precision=9)[0] == (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            (2,) + (0,) * (degree - 1),
+        )
+E       KeyError: 0
+
+tests/test_r98_parent_child.py:327: KeyError
+_____________ test_empty_target_source_and_zero_power_conventions ______________
+
+    def test_empty_target_source_and_zero_power_conventions():
+        for beta, expected in ((0, 1), (1, 0)):
+            for data in ([[], [], [], [[beta, []]], []], [[], [], [], [], [[beta, []]]]):
+                ref = make_reference(
+                    kind="packet",
+                    arity=0,
+                    creation_precision=3,
+                    defining_polynomial=7,
+                    jet_length=1,
+                    data=data,
+                )
+>               assert evaluate_source_entry(ref, (), precision=5)[0] == ((expected, 0),)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               KeyError: 0
+
+tests/test_r98_parent_child.py:359: KeyError
+_____________________ test_all_resource_limits_fail_closed _____________________
+
+    def test_all_resource_limits_fail_closed():
+        for policy in (
+            Policy(max_calls=1),
+            Policy(max_work=1),
+            Policy(max_precision=10),
+            Policy(max_edges=1),
+        ):
+            result = contract_scaled(
+                parent(), levels=2, strategy="scaled_singletons", policy=policy
+            )
+>           assert (
+                "result" not in result and result["status"] == "INCONCLUSIVE_RESOURCE_LIMIT"
+            )
+E           AssertionError: assert ('result' not in {'ledger': {'actual_calls': 1, 'bit_time_bound_status': 'COMPLEXITY_NOT_ESTABLISHED', 'elapsed_seconds': 0.00026704196...eason': 'source node precision exceeds cap', 'source_qualified': False, 'status': 'INCONCLUSIVE_SCALED_RECURSION', ...} and 'INCONCLUSIVE...LED_RECURSION' == 'INCONCLUSIVE_RESOURCE_LIMIT'
+E             
+E             - INCONCLUSIVE_RESOURCE_LIMIT
+E             + INCONCLUSIVE_SCALED_RECURSION)
+
+tests/test_r98_parent_child.py:472: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_r98_parent_child.py::test_creation_precision_lift_is_not_re_evaluation[2]
+FAILED tests/test_r98_parent_child.py::test_creation_precision_lift_is_not_re_evaluation[3]
+FAILED tests/test_r98_parent_child.py::test_creation_precision_lift_is_not_re_evaluation[5]
+FAILED tests/test_r98_parent_child.py::test_empty_target_source_and_zero_power_conventions
+FAILED tests/test_r98_parent_child.py::test_all_resource_limits_fail_closed

@@ -1,0 +1,61 @@
+{
+  "schema": "VERITAS_R99_PREFLIGHT_RELEASE_VALIDATION_V1",
+  "status": "PASS_FINITE_DEVELOPMENT_CHECKS",
+  "source_digest": "b3c8731f51f5432589a610db4556ce4fe49a58fd759f2e7a0222b64521db4c3f",
+  "baseline_commit": "739eb96bd01d1ced559013d0324eadc9b862c4d7",
+  "pytest": {
+    "tests": 1915,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2,
+    "passed": 1913
+  },
+  "skips": [
+    {
+      "name": "test_pybind_sequence_and_boolean_caps_when_available",
+      "class": "tests.test_r91_cpp_backend",
+      "reason": "optional pybind11 module is not built"
+    },
+    {
+      "name": "test_binding_rejects_misshapen_assignment_tables",
+      "class": "tests.test_r91_cpp_backend",
+      "reason": "shape validation lives in the pybind11 layer"
+    }
+  ],
+  "inherited_commands": 13,
+  "portable_commands": 26,
+  "lean_modules": 41,
+  "lean_accepted_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "universal_python_refinement_proven": false,
+  "source_qualified": false,
+  "theorem_mode_enabled": false,
+  "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "connected_multislot_two_level_full_hermite_acceptance": "NOT_RUN_RESOURCE_GAP",
+  "new_constant_row_full_hermite_test": {
+    "points": 134,
+    "calls": 8577,
+    "point_values_independently_replayed": true,
+    "degree_shortcut_used": false
+  },
+  "full_container_pytest": "NOT_RUN",
+  "preliminary_runs": "INTERRUPTED_NOT_RELEASE_EVIDENCE",
+  "fresh_two_level_regression": {
+    "largest_edges_by_depth": {
+      "0": 242,
+      "1": 22,
+      "2": 2
+    },
+    "actual_calls": 56449,
+    "points": 792,
+    "precision": 17408,
+    "independent_replay": "PASS",
+    "eight_root_points_closed_form": "PASS",
+    "recovery": "DEGREE_CERTIFIED_TAYLOR_NOT_FULL_TAPERED",
+    "events_sha256": "7fa70ee71363de51668ad018fead763e028c93fb726483c56dfaffaeffe9899c"
+  }
+}

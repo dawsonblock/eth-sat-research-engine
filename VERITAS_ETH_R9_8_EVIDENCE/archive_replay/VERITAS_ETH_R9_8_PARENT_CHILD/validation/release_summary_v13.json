@@ -1,0 +1,13 @@
+{
+  "release": "v1.3.0",
+  "full_automated_tests_passed": 219,
+  "v13_seeded_cases": 300,
+  "v13_independent_transcript_replays": 12,
+  "inherited_random_sat_count_cases": 10000,
+  "inherited_weighted_child_jet_cases": 241,
+  "inherited_certified_mode_prunes": 113,
+  "quality_gate": "PASS",
+  "formal_lean_build": "NOT_PERFORMED",
+  "manuscript_subexponential_ETH_algorithm": "NOT_IMPLEMENTED",
+  "note": "Finite regression test results do not establish mathematical completeness or an asymptotic speedup."
+}

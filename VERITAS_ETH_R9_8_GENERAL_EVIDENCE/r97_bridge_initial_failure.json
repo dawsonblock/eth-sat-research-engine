@@ -1,0 +1,14 @@
+{
+  "status": "INCONCLUSIVE_OR_REJECTED",
+  "universal_executable_refinement": false,
+  "lean_version": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "fixtures": 16,
+  "sha256": "d649dfa101ab6a21cc04e22e08d499a605d7467cab55f93839cd138b2300401c",
+  "model_source": {
+    "FiniteBoundaryReduction.lean": "c9b86a044d9c41067da087f6022e5e491473d84ffa524162e9c083db2745010b",
+    "BoundaryGather.lean": "be8e1db1174ad381c6d4c891f92e3f0a1761e8e5cede4f1f7428f901d8372bc9"
+  },
+  "compiler_output": "error: no default toolchain configured. run `elan default stable` to install & configure the latest Lean 4 stable release.\n",
+  "reason": "compiler rejected FiniteBoundaryReduction",
+  "wall_seconds": 0.05706154101062566
+}

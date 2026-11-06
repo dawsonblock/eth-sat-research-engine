@@ -1,0 +1,9 @@
+'SourceCreationPrecision.capture_lt' does not depend on any axioms
+'SourceCreationPrecision.lift_unchanged' depends on axioms: [propext]
+'SourceCreationPrecision.reduce_capture' depends on axioms: [propext]
+'SourceCreationPrecision.lift_roundtrip' depends on axioms: [propext]
+'SourceCreationPrecision.coordinates_lift_unchanged' depends on axioms: [propext, Quot.sound]
+'SourceCreationPrecision.coordinates_lift_chain' depends on axioms: [propext, Quot.sound]
+'SourceCreationPrecision.coordinates_two_levels' depends on axioms: [propext, Quot.sound]
+'SourceCreationPrecision.lift_not_additive' does not depend on any axioms
+'SourceCreationPrecision.lift_not_multiplicative' does not depend on any axioms

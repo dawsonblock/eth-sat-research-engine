@@ -1,0 +1,16 @@
+{
+  "status": "PASS_EXTENDED_GROUP_NONZERO_MODE",
+  "source_binding": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+  "groups": 128,
+  "source_group": 64,
+  "target_group": 0,
+  "beta": [
+    1
+  ],
+  "children_verified": 128,
+  "complete_point_tuple_count": 2821,
+  "point_precision": 2821,
+  "all_group_shrink": true,
+  "scope": "SINGLE_RETAINED_TUPLE_NOT_COMPLETE_POINT_RECURSION",
+  "source_qualified": false
+}

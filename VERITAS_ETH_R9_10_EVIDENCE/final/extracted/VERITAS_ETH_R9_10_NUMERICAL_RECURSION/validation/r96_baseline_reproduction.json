@@ -1,0 +1,12 @@
+{
+  "baseline_sha256": "5d5b88c748414bb468dc063de59fe94974beede4934c2500346fc0da4ece3756",
+  "zip_entries": 821,
+  "json_payload_hashes": 819,
+  "manifest": "PASS: 820 complete file hashes match release manifest; no unlisted files",
+  "baseline_accepted_corrupt_point": "FINITE_R82_EVIDENCE_REPLAYED",
+  "baseline_accepted_lean_mutations": {
+    "erase_reports": true,
+    "forged_axioms": true,
+    "erase_output": true
+  }
+}

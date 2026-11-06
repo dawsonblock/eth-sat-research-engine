@@ -1,0 +1,529 @@
+{
+  "additional_py313_native_and_new_tests": {
+    "command": [
+      "<user>/MATH SPEED/VERITAS_ETH_R9_PACKING_STAGE/build/r93-py313-managed/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "-o",
+      "addopts=",
+      "tests/test_r91_cpp_backend.py",
+      "tests/test_r95_source_recipes.py",
+      "tests/test_r95_source_leaf.py",
+      "tests/test_r95_hermite_grid.py"
+    ],
+    "elapsed_seconds": 1.1064462090143934,
+    "exit_code": 0,
+    "peak_rss_bytes_reported_by_time": 50823168,
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+    "status": "PASS",
+    "stderr_log": "r95_py313_native_and_new.stderr.log",
+    "stdout_log": "r95_py313_native_and_new.stdout.log",
+    "test_summary": "129 passed in 0.65s",
+    "timeout_seconds": 1800
+  },
+  "archive_integrity": "Verified externally after packaging; see ZIP .manifest.json and .verification.json sidecars",
+  "baseline": {
+    "archive": "VERITAS_ETH_R9_4_SOURCE_FOUNDATION_PARTIAL_FULL_UPGRADED.zip",
+    "duplicate_members": 0,
+    "manifest_entries": 736,
+    "manifest_mismatches": [],
+    "members": 738,
+    "prechange_full_suite_this_turn": "NOT_RUN; prior sealed R94 evidence retained, not promoted to current reproduction",
+    "sha256": "727abadd550efd7870add0bef4d4a16e30c272ecd77b1d165089337c27c81549",
+    "symlinks": [],
+    "unsafe_paths": [],
+    "zip_crc_ok": true
+  },
+  "blockers_document": "docs/R95_REMAINING_OBLIGATIONS.md",
+  "commands": {
+    "r95_cpp_benchmarks": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "scripts/benchmark_r91_scorer.py"
+      ],
+      "elapsed_seconds": 0.4687122500035912,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 26198016,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_cpp_benchmarks.stderr.log",
+      "stdout_log": "r95_cpp_benchmarks.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    },
+    "r95_cpp_differential": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "scripts/validate_r91_cpp.py"
+      ],
+      "elapsed_seconds": 0.1576020420761779,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 31358976,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_cpp_differential.stderr.log",
+      "stdout_log": "r95_cpp_differential.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    },
+    "r95_dense_cauchy": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "scripts/validate_dense_v382.py",
+        "--wires",
+        "8",
+        "10",
+        "12"
+      ],
+      "elapsed_seconds": 3.3337543749948964,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 28884992,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_dense_cauchy.stderr.log",
+      "stdout_log": "r95_dense_cauchy.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    },
+    "r95_eight_wire_replay": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "scripts/validate_tapered_v4.py",
+        "--replay",
+        "validation/r95_eight_wire_v3.json"
+      ],
+      "elapsed_seconds": 15.671206708066165,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 210632704,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_eight_wire_replay.stderr.log",
+      "stdout_log": "r95_eight_wire_replay.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    },
+    "r95_eight_wire_write": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "scripts/validate_tapered_v4.py",
+        "--write",
+        "validation/r95_eight_wire_v3.json"
+      ],
+      "elapsed_seconds": 14.922696624998935,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 177176576,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_eight_wire_write.stderr.log",
+      "stdout_log": "r95_eight_wire_write.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    },
+    "r95_final_full_py312": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-o",
+        "addopts=",
+        "-rs"
+      ],
+      "elapsed_seconds": 375.90942062507384,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 1394081792,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_final_full_py312.stderr.log",
+      "stdout_log": "r95_final_full_py312.stdout.log",
+      "test_summary": "1375 passed in 371.98s (0:06:11)",
+      "timeout_seconds": 1800
+    },
+    "r95_foundation": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "scripts/validate_r94_foundation.py",
+        "--output",
+        "validation/r9_4_differential.json"
+      ],
+      "elapsed_seconds": 89.27071449998766,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 1388937216,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_foundation.stderr.log",
+      "stdout_log": "r95_foundation.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    },
+    "r95_full_py312": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-o",
+        "addopts="
+      ],
+      "elapsed_seconds": 120.09775725007057,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 264159232,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_full_py312.stderr.log",
+      "stdout_log": "r95_full_py312.stdout.log",
+      "test_summary": "1367 passed, 7 skipped in 118.30s (0:01:58)",
+      "timeout_seconds": 1800
+    },
+    "r95_full_py313": {
+      "command": [
+        "<user>/MATH SPEED/VERITAS_ETH_R9_PACKING_STAGE/build/r93-py313-managed/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-o",
+        "addopts="
+      ],
+      "elapsed_seconds": 99.73213237489108,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 233029632,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_full_py313.stderr.log",
+      "stdout_log": "r95_full_py313.stdout.log",
+      "test_summary": "1368 passed, 7 skipped, 1 warning in 99.09s (0:01:39)",
+      "timeout_seconds": 1800
+    },
+    "r95_optimized_faults": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "-O",
+        "-m",
+        "pytest",
+        "-q",
+        "-o",
+        "addopts=",
+        "tests/test_r95_source_recipes.py",
+        "tests/test_r95_source_leaf.py",
+        "tests/test_r95_hermite_grid.py",
+        "tests/test_lean_proof_gate_audit.py"
+      ],
+      "elapsed_seconds": 3.372685374924913,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 101613568,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_optimized_faults.stderr.log",
+      "stdout_log": "r95_optimized_faults.stdout.log",
+      "test_summary": "118 passed, 1 warning in 1.18s",
+      "timeout_seconds": 1800
+    },
+    "r95_packet": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "scripts/validate_r93_packet_model.py",
+        "--output",
+        "validation/r9_3_packet_differential.json"
+      ],
+      "elapsed_seconds": 48.29191708297003,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 1391296512,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_packet.stderr.log",
+      "stdout_log": "r95_packet.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    },
+    "r95_point_replay": {
+      "command": [
+        "python",
+        "scripts/validate_r82.py",
+        "--replay",
+        "validation/r95_selected_points.json"
+      ],
+      "elapsed_seconds": 1.9850160829955712,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 27131904,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_point_replay.stderr.log",
+      "stdout_log": "r95_point_replay.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    },
+    "r95_point_validation": {
+      "command": [
+        "python",
+        "scripts/validate_r82.py",
+        "--write",
+        "validation/r95_selected_points.json"
+      ],
+      "elapsed_seconds": 1.9187746659154072,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 27148288,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_point_validation.stderr.log",
+      "stdout_log": "r95_point_validation.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    },
+    "r95_py313_native_and_new": {
+      "command": [
+        "<user>/MATH SPEED/VERITAS_ETH_R9_PACKING_STAGE/build/r93-py313-managed/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-o",
+        "addopts=",
+        "tests/test_r91_cpp_backend.py",
+        "tests/test_r95_source_recipes.py",
+        "tests/test_r95_source_leaf.py",
+        "tests/test_r95_hermite_grid.py"
+      ],
+      "elapsed_seconds": 1.1064462090143934,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 50823168,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_py313_native_and_new.stderr.log",
+      "stdout_log": "r95_py313_native_and_new.stdout.log",
+      "test_summary": "129 passed in 0.65s",
+      "timeout_seconds": 1800
+    },
+    "r95_python_lean_model": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "scripts/validate_r91_python_model.py"
+      ],
+      "elapsed_seconds": 47.9263193749357,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 1388986368,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_python_lean_model.stderr.log",
+      "stdout_log": "r95_python_lean_model.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    },
+    "r95_selected_points_command_initial": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "scripts/validate_r82.py",
+        "--write",
+        "validation/r95_selected_points.json"
+      ],
+      "elapsed_seconds": 1.9282222499605268,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 27836416,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_selected_points.stderr.log",
+      "stdout_log": "r95_selected_points.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    },
+    "r95_v28": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "scripts/validate_v28.py"
+      ],
+      "elapsed_seconds": 1.355033416999504,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 21921792,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_v28.stderr.log",
+      "stdout_log": "r95_v28.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    },
+    "r95_v32": {
+      "command": [
+        "<user>/.pyenv/versions/3.12.0/bin/python",
+        "scripts/validate_v32.py"
+      ],
+      "elapsed_seconds": 0.3325026670936495,
+      "exit_code": 0,
+      "peak_rss_bytes_reported_by_time": 23511040,
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+      "status": "PASS",
+      "stderr_log": "r95_v32.stderr.log",
+      "stdout_log": "r95_v32.stdout.log",
+      "test_summary": "",
+      "timeout_seconds": 1800
+    }
+  },
+  "complete_bit_complexity_proven": false,
+  "evidence_hashes": {
+    "r95_eight_wire_v3.json": "c5aa9f4d2ca0c7ac9c1640043f0ef8bc10eadfd1dc03643b662baa58269cca7f",
+    "r95_final_full_py312.json": "07ab8d05e787a54377d6ee2ed1c859996682e3137ee9702110ef916e4d0ddefb",
+    "r95_selected_points.json": "c40bc8212047252ee4857dcb037b31a446251bd718b9cc2617fac92a76f93cf2",
+    "r9_5_proof_gate.json": "ae1ecbae6a4265eca10e2f106ef2424424bda5278a43ac468daa61c31a851173",
+    "r9_5_recipes.json": "fadfe6962005254ef72a3204d6109d9b92907aeeb48e64fea053b8a2bb6a494a"
+  },
+  "full_py312": {
+    "command": [
+      "<user>/.pyenv/versions/3.12.0/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "-o",
+      "addopts=",
+      "-rs"
+    ],
+    "elapsed_seconds": 375.90942062507384,
+    "exit_code": 0,
+    "peak_rss_bytes_reported_by_time": 1394081792,
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+    "status": "PASS",
+    "stderr_log": "r95_final_full_py312.stderr.log",
+    "stdout_log": "r95_final_full_py312.stdout.log",
+    "test_summary": "1375 passed in 371.98s (0:06:11)",
+    "timeout_seconds": 1800
+  },
+  "full_py313": {
+    "command": [
+      "<user>/MATH SPEED/VERITAS_ETH_R9_PACKING_STAGE/build/r93-py313-managed/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "-o",
+      "addopts="
+    ],
+    "elapsed_seconds": 99.73213237489108,
+    "exit_code": 0,
+    "peak_rss_bytes_reported_by_time": 233029632,
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+    "status": "PASS",
+    "stderr_log": "r95_full_py313.stderr.log",
+    "stdout_log": "r95_full_py313.stdout.log",
+    "test_summary": "1368 passed, 7 skipped, 1 warning in 99.09s (0:01:39)",
+    "timeout_seconds": 1800
+  },
+  "hard_memory_limit_enforced": false,
+  "lean": {
+    "axioms_allowed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "elapsed_seconds": 176.331842,
+    "formal_scope": "Coordinate representatives and earlier packing models; no program extraction/refinement proof",
+    "modules": 36,
+    "status": "PASS",
+    "version": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)"
+  },
+  "new_checks": {
+    "entry_equalities": 160,
+    "hermite_points": 258,
+    "leaf_equalities": 9
+  },
+  "optimized_python_fault_tests": {
+    "command": [
+      "<user>/.pyenv/versions/3.12.0/bin/python",
+      "-O",
+      "-m",
+      "pytest",
+      "-q",
+      "-o",
+      "addopts=",
+      "tests/test_r95_source_recipes.py",
+      "tests/test_r95_source_leaf.py",
+      "tests/test_r95_hermite_grid.py",
+      "tests/test_lean_proof_gate_audit.py"
+    ],
+    "elapsed_seconds": 3.372685374924913,
+    "exit_code": 0,
+    "peak_rss_bytes_reported_by_time": 101613568,
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+    "status": "PASS",
+    "stderr_log": "r95_optimized_faults.stderr.log",
+    "stdout_log": "r95_optimized_faults.stdout.log",
+    "test_summary": "118 passed, 1 warning in 1.18s",
+    "timeout_seconds": 1800
+  },
+  "qualifiers": {
+    "CI": "CONFIGURED_NOT_HOSTED_REPRODUCED",
+    "COMPLEXITY": "NOT_ESTABLISHED",
+    "CPP_TESTED": "PASS_PY312_AND_PY313_NATIVE_BUILDS_AND_DIFFERENTIALS",
+    "LEAN_KERNEL_CHECKED": "PASS_36_FORMAL_MODEL_MODULES",
+    "PACKET_BIJECTION": "MODEL_PROVED_EXECUTABLE_BRIDGE_UNPROVED",
+    "PYTHON_LEAN_REFINEMENT": "EXECUTABLE_REFINEMENT_NOT_PROVED",
+    "PYTHON_TESTED": "PASS_1375_PY312_NO_SKIPS",
+    "RECURSION": "SOURCE_ACTIVE_EXECUTOR_BLOCKED",
+    "SOURCE_ENTRY_AND_LEAF_EXECUTION": "TESTED_BOUNDED",
+    "THEOREM_MODE": "DISABLED"
+  },
+  "release": "R9.5 SOURCE RECIPE AND LEAF EXECUTION",
+  "schema": "VERITAS_R95_PARTIAL_RELEASE_QUALIFICATION_V1",
+  "selected_point_checks": {
+    "checked": 3,
+    "coverage": "SELECTED_FINITE_CASES_ONLY",
+    "eight_wire": {
+      "child_expansion": {
+        "direct_oracle_matches": true,
+        "direct_oracle_result": [
+          [
+            169600000000,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "direct_oracle_work_units": 198144,
+        "result": [
+          [
+            169600000000,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "tuples_processed": 64,
+        "work_units": 36844
+      },
+      "mode_count": 6,
+      "node": -1,
+      "precision_bits": 521,
+      "structural_tuple_count": 64,
+      "zeta": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "total": 3
+  },
+  "source_manifest_sha256": "565d185117c6025b74fff06a6ab89fdda8d535b46ef87a27fb81de531644bbb4",
+  "status": "TESTED_PARTIAL_THEOREM_BLOCKED",
+  "theorem_mode_enabled": false
+}

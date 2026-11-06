@@ -1,0 +1,11 @@
+{
+  "status": "PASS_FRESH_EXTRACTION",
+  "archive_sha256": "b64fc0cbff2f663bb5b3cccfb0e75a98ff19f6eb0977e02a2fce88810191f896",
+  "archive_members": 1052,
+  "json_payload_hashes": 1050,
+  "sealed_manifest": "PASS: 1051 complete file hashes match release manifest; no unlisted files",
+  "optimized_manifest": "PASS: 1051 complete file hashes match release manifest; no unlisted files",
+  "separate_ci_artifact": "validation_v08.json",
+  "cli_model_count": 4,
+  "cli_replayed": true
+}

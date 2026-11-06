@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER/scripts/validate_r94_foundation.py", line 171, in <module>
+    raise SystemExit(run())
+                     ^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER/scripts/validate_r94_foundation.py", line 153, in run
+    result=subprocess.run([lean,str(path)],cwd=ROOT,env=env,text=True,capture_output=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/.pyenv/versions/3.12.0/lib/python3.12/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/.pyenv/versions/3.12.0/lib/python3.12/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/.pyenv/versions/3.12.0/lib/python3.12/subprocess.py", line 2108, in _communicate
+    ready = selector.select(timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/.pyenv/versions/3.12.0/lib/python3.12/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

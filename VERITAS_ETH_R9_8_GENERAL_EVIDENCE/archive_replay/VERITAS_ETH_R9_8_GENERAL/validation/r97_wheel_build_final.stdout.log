@@ -1,0 +1,9 @@
+Processing ./.
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: veritas-eth
+  Building wheel for veritas-eth (pyproject.toml): started
+  Building wheel for veritas-eth (pyproject.toml): finished with status 'done'
+  Created wheel for veritas-eth: filename=veritas_eth-3.8.2.post97-py3-none-any.whl size=609521 sha256=215ad67e77c569b7ace853b7b4f28b4a1fbebd9ae64c08d026eba542682f2f2d
+  Stored in directory: /private/var/folders/xt/jh84t2kj6hl26tk5qx3m_28h0000gn/T/pip-ephem-wheel-cache-e_zl2wv1/wheels/8a/9c/63/a6a7e64754801579dd04380476370bcf24e4c213719e7067d4
+Successfully built veritas-eth

@@ -1,0 +1,176 @@
+{
+  "status": "PASS",
+  "source": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+  "commands": [
+    {
+      "name": "r95",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r95_recipes.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/r95.json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.4575638750102371,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    },
+    {
+      "name": "lean",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_conditional_expectation_lean.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/lean.json"
+      ],
+      "exit_code": 0,
+      "seconds": 72.99389404209796,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    },
+    {
+      "name": "r94",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r94_foundation.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/r94.json"
+      ],
+      "exit_code": 0,
+      "seconds": 78.68545216694474,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    },
+    {
+      "name": "r97_bridge",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_bridge.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/r97_bridge.json"
+      ],
+      "exit_code": 0,
+      "seconds": 3.410318750073202,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    },
+    {
+      "name": "r97_matrix",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_matrix.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/r97_matrix.json"
+      ],
+      "exit_code": 0,
+      "seconds": 7.927691249991767,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    },
+    {
+      "name": "r96",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r96.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/r96.json"
+      ],
+      "exit_code": 0,
+      "seconds": 63.06605808308814,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    },
+    {
+      "name": "r98",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r98_parent_child.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/r98.json"
+      ],
+      "exit_code": 0,
+      "seconds": 128.74625175003894,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    },
+    {
+      "name": "r97_write",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_paper.py",
+        "--write",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/r97_grid.json"
+      ],
+      "exit_code": 0,
+      "seconds": 13.954498291946948,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    },
+    {
+      "name": "r96_grid",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r96_recipe_grid.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/r96_grid.json"
+      ],
+      "exit_code": 0,
+      "seconds": 54.79032412497327,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    },
+    {
+      "name": "shrinking",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r98_shrinking.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/shrinking.json"
+      ],
+      "exit_code": 0,
+      "seconds": 69.9753982500406,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    },
+    {
+      "name": "r97_verify",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_paper.py",
+        "--verify",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/r97_grid.json"
+      ],
+      "exit_code": 0,
+      "seconds": 8.041482500033453,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    },
+    {
+      "name": "r97_faults",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_grid_faults.py",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/r97_grid.json",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/r97_faults.json"
+      ],
+      "exit_code": 0,
+      "seconds": 11.152392416028306,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    },
+    {
+      "name": "r99",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r99_packets.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited_v2/r99.json"
+      ],
+      "exit_code": 0,
+      "seconds": 6.884744666982442,
+      "source_before": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be",
+      "source_after": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+    }
+  ]
+}

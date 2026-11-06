@@ -1,0 +1,15 @@
+{
+  "seed": 2606,
+  "cases": 150,
+  "trace_checked": 1438,
+  "mutated_certificates_rejected": 143,
+  "theorem_numeric_cases": 1,
+  "claim": "SEEDED_FINITE_TESTS_NOT_AN_ASYMPTOTIC_PROOF",
+  "full_d3_example": {
+    "M": 128,
+    "delta": 4,
+    "packet_count": 64,
+    "H_pad": 32,
+    "status": "D3_FINITE_BOUNDS_CERTIFIED"
+  }
+}

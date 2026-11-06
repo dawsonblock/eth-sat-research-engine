@@ -1,0 +1,102 @@
+{
+  "schema": "VERITAS_R94_ARCHIVE_VERIFICATION_V1",
+  "status": "PASS_COMPLETE_ARCHIVE_LOCAL_CHECKS",
+  "archive_sha256": "727abadd550efd7870add0bef4d4a16e30c272ecd77b1d165089337c27c81549",
+  "commands": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        "cpp",
+        "-B",
+        "build/cpp",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "wall_seconds": 1.2053286249283701,
+      "output": "-- The CXX compiler identification is AppleClang 21.0.0.21000101\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Found Boost: /opt/homebrew/lib/cmake/Boost-1.90.0/BoostConfig.cmake (found version \"1.90.0\")\n-- pybind11 not found: building only the C ABI library\n-- Configuring done (1.1s)\n-- Generating done (0.0s)\n-- Build files have been written to: <extracted-repository>/build/cpp\nCMake Warning (dev) at CMakeLists.txt:11 (find_package):\n  Policy CMP0167 is not set: The FindBoost module is removed.  Run \"cmake\n  --help-policy CMP0167\" for policy details.  Use the cmake_policy command to\n  set the policy and suppress this warning.\n\nThis warning is for project developers.  Use -Wno-dev to suppress it.\n\n"
+    },
+    {
+      "command": [
+        "cmake",
+        "--build",
+        "build/cpp",
+        "--parallel",
+        "2"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "wall_seconds": 2.160555165959522,
+      "output": "[ 25%] Building CXX object CMakeFiles/veritas_d3_score.dir/src/score.cpp.o\n[ 50%] Linking CXX shared library libveritas_d3_score.dylib\n[ 50%] Built target veritas_d3_score\n[ 75%] Building CXX object CMakeFiles/veritas_d3_selftest.dir/tests/selftest.cpp.o\n[100%] Linking CXX executable veritas_d3_selftest\n[100%] Built target veritas_d3_selftest\n"
+    },
+    {
+      "command": [
+        "./build/cpp/veritas_d3_selftest"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "wall_seconds": 0.7174599999561906,
+      "output": "veritas_d3_selftest: PASS\n"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/verify_manifest.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "wall_seconds": 0.2338606669800356,
+      "output": "PASS: 737 complete file hashes match release manifest; no unlisted files\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-O",
+        "scripts/verify_manifest.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "wall_seconds": 0.19049912504851818,
+      "output": "PASS: 737 complete file hashes match release manifest; no unlisted files\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-o",
+        "addopts=",
+        "tests/test_r94_source_state.py",
+        "tests/test_r94_foundation_validation.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "wall_seconds": 1.403183790971525,
+      "output": "....................................                                     [100%]\n36 passed in 0.39s\n"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/validate_conditional_expectation_lean.py",
+        "--output",
+        "<temporary>/proof.json"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "wall_seconds": 55.07878512504976,
+      "output": "{\"lean_version\": \"Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)\", \"output\": \"<temporary>/proof.json\", \"status\": \"PASS\"}\n"
+    }
+  ],
+  "hosted_ci_run": false,
+  "independent_executor_authenticated": false,
+  "member_count": 738,
+  "crc_passed": true,
+  "safe_paths": true,
+  "no_symlinks": true,
+  "member_manifest_matches": true,
+  "fresh_extraction_lean_modules": 34,
+  "fresh_extraction_lean_status": "PASS",
+  "deterministic_rebuild_identical": true
+}

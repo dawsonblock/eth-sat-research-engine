@@ -1,0 +1,1 @@
+{"edges":2,"extension_degree":4,"precision":5,"root_s":16,"vertices":[{"ports":[0],"side":"row","table":[1,3]},{"ports":[0],"side":"column","table":[2,5]},{"ports":[1],"side":"row","table":[1,3]},{"ports":[1],"side":"column","table":[2,5]}]}

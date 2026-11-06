@@ -1,0 +1,990 @@
+{
+  "actual_child_shrink": "PASS_EVERY_64_M_CHILD_LE_6_M",
+  "base_commit": "3a923e434f7e9d706181237fd11cfc51febddb37",
+  "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "branch": "dev/r9.8-shrinking-recursion",
+  "cases": [
+    {
+      "active_calls": 45,
+      "actual_calls": 5761,
+      "actual_child_shrink": "PASS_EVERY_64_M_CHILD_LE_6_M",
+      "child_count_per_tuple": 64,
+      "cli_exit_code": 0,
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "veritas.research.parent_child_r98.shrinking_cli",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING/examples/r98_shrinking_484.json",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r98_shrinking_matching_484_execution.json"
+      ],
+      "edge_layers": {
+        "0": [
+          484
+        ],
+        "1": [
+          0,
+          44
+        ],
+        "2": [
+          0,
+          4
+        ]
+      },
+      "exact_result": [
+        [
+          49947976805055875702105555676690660891977570282639538413746511354005947821116249921924897649015871538557230897942505966327167610868612564900642816,
+          0
+        ]
+      ],
+      "execution_file": "r98_shrinking_matching_484_execution.json",
+      "execution_sha256": "620fbcf2568c6fc0b62b8449b3885766b058a5607abcf90c54313d854476a92b",
+      "expected_result": "2^484 modulo 2^512",
+      "family": "ROW_CONSTANT_AT_EVERY_ACTIVE_CALL",
+      "independent_result_basis": "ALL_TENSORS_ONE_SO_ONE_PER_BOOLEAN_EDGE_ASSIGNMENT",
+      "interpolation": "CERTIFIED_DEGREE_ZERO_TWO_NODE_RECOVERY",
+      "name": "matching",
+      "recursive_depth": 2,
+      "status": "PASS_FINITE_SCALED_SHRINKING_RECURSION",
+      "termination": "STRICT_EDGE_DECREASE_TO_LEAF_THRESHOLD"
+    },
+    {
+      "active_calls": 45,
+      "actual_calls": 5761,
+      "actual_child_shrink": "PASS_EVERY_64_M_CHILD_LE_6_M",
+      "child_count_per_tuple": 64,
+      "cli_exit_code": 0,
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "veritas.research.parent_child_r98.shrinking_cli",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING/examples/r98_shrinking_cycle484.json",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r98_shrinking_connected_cycle_484_execution.json"
+      ],
+      "edge_layers": {
+        "0": [
+          484
+        ],
+        "1": [
+          0,
+          44
+        ],
+        "2": [
+          0,
+          4
+        ]
+      },
+      "exact_result": [
+        [
+          49947976805055875702105555676690660891977570282639538413746511354005947821116249921924897649015871538557230897942505966327167610868612564900642816,
+          0
+        ]
+      ],
+      "execution_file": "r98_shrinking_connected_cycle_484_execution.json",
+      "execution_sha256": "7b5b1a8100981e4dc932b0f2d15443db5f511b33dcd02c7169b4e9a09bd9f71f",
+      "expected_result": "2^484 modulo 2^512",
+      "family": "ROW_CONSTANT_AT_EVERY_ACTIVE_CALL",
+      "independent_result_basis": "ALL_TENSORS_ONE_SO_ONE_PER_BOOLEAN_EDGE_ASSIGNMENT",
+      "interpolation": "CERTIFIED_DEGREE_ZERO_TWO_NODE_RECOVERY",
+      "name": "connected_cycle",
+      "recursive_depth": 2,
+      "status": "PASS_FINITE_SCALED_SHRINKING_RECURSION",
+      "termination": "STRICT_EDGE_DECREASE_TO_LEAF_THRESHOLD"
+    }
+  ],
+  "child_count_per_tuple": 64,
+  "commit": "fba7ee961fc7d5980a396915b0dae93dda6640e0",
+  "creation_precision_inheritance": true,
+  "degree_verdict": "PASS_FIXED_DEGREE_INVARIANT",
+  "full_container_pytest": "NOT_RUN",
+  "general_source_active_executor": "REMAINS_UNQUALIFIED_AND_UNAVAILABLE",
+  "generated_utc": "2026-11-05T06:50:25.302482+00:00",
+  "generic_nonconstant_row_recursion": "NOT_IMPLEMENTED_IN_THIS_DRIVER",
+  "hermite_coefficient_precision": "CONSTANT_AT_POINT_PRECISION_ZERO_TAIL_EXACT",
+  "hosted_ci": "NOT_RUN",
+  "implementation_source_sha256": "4dc8b3adffe7d3baf923e8ce37140462b73769913ad4064b7c847d1faf948165",
+  "installed": {
+    "docker_shrinking_installed": {
+      "edge_layers": {
+        "0": [
+          484
+        ],
+        "1": [
+          0,
+          44
+        ],
+        "2": [
+          0,
+          4
+        ]
+      },
+      "ledger": {
+        "actual_calls": 5761,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 19.26106146699749,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 0,
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 90,
+        "transitions": 5760,
+        "tuples": 90,
+        "work_units": 18973161
+      },
+      "python": "3.12.14",
+      "result": [
+        [
+          49947976805055875702105555676690660891977570282639538413746511354005947821116249921924897649015871538557230897942505966327167610868612564900642816,
+          0
+        ]
+      ],
+      "source_binding": "4dc8b3adffe7d3baf923e8ce37140462b73769913ad4064b7c847d1faf948165",
+      "source_qualified": false,
+      "status": "PASS_INSTALLED_ACTUAL_SHRINKING_RECURSION"
+    },
+    "wheel_shrinking_installed": {
+      "edge_layers": {
+        "0": [
+          484
+        ],
+        "1": [
+          0,
+          44
+        ],
+        "2": [
+          0,
+          4
+        ]
+      },
+      "ledger": {
+        "actual_calls": 5761,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 24.15663866698742,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 0,
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 90,
+        "transitions": 5760,
+        "tuples": 90,
+        "work_units": 18973161
+      },
+      "python": "3.10.19",
+      "result": [
+        [
+          49947976805055875702105555676690660891977570282639538413746511354005947821116249921924897649015871538557230897942505966327167610868612564900642816,
+          0
+        ]
+      ],
+      "source_binding": "4dc8b3adffe7d3baf923e8ce37140462b73769913ad4064b7c847d1faf948165",
+      "source_qualified": false,
+      "status": "PASS_INSTALLED_ACTUAL_SHRINKING_RECURSION"
+    }
+  },
+  "lean": {
+    "all_axiom_audits_pass": true,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "details": "lean.json",
+    "modules": 41,
+    "scope": "Inherited conditional finite models; no universal Python refinement"
+  },
+  "maximal_precision_used": 34304,
+  "mode_basis_scope": "ZERO_REDUCED_GEOMETRIC_POINT_MODES",
+  "new_standalone_saved_trace_certificate_consumer": "NOT_IMPLEMENTED_RUNTIME_INDEPENDENT_CHECKS_AND_FRESH_CLI_EXECUTION",
+  "packing": "WHOLE_VERTEX_BALANCING_WITH_INDEPENDENT_ACTUAL_LOAD_CHECK",
+  "packing_source_padded_packet_bound": "FAIL_ON_VALIDATED_SCALED_ROOTS",
+  "paper": {
+    "commit": "4eaee87548250b2682affda7d05d947c05554bae",
+    "files": {
+      "main_full_version.tex": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa",
+      "quantitative-circuits.tex": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11",
+      "quantitative-contraction.tex": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+      "quantitative-reduction.tex": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a"
+    },
+    "labels": {
+      "eq:tensor-hermite-origin": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 280,
+        "last_line": 285,
+        "statement_sha256": "835d75e9250321435ea54e3fd66434e6b752d1bbac78b0f52541d4cf7509f148"
+      },
+      "eq:tensor-mode-budget": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 453,
+        "last_line": 455,
+        "statement_sha256": "55f1af17554aacabd25d0f3e2e06c63131c8457b6ae9431db2b305e9cca2e08c"
+      },
+      "eq:tensor-mode-expansion": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 418,
+        "last_line": 425,
+        "statement_sha256": "81df762a158145416a0c7edbe8793309a68d0aecce0924d6b8806e7a3c2e92c9"
+      },
+      "eq:tensor-packing-conditions": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 106,
+        "last_line": 109,
+        "statement_sha256": "e7989632209387ee3e7b14b0b0c762487bb8a9f9cf4a580888681325a43c7c2e"
+      },
+      "eq:tensor-parameters": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 87,
+        "last_line": 91,
+        "statement_sha256": "2347e08f794a10a7a1dc2275e2070d723142f04b71cd6cb81de98819e332816d"
+      },
+      "eq:tensor-recursion-identity": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 516,
+        "last_line": 521,
+        "statement_sha256": "9b254c1256f4c10de8cb180391048605b8f1741f95e6e8872c4018427c9a5c2e"
+      },
+      "lem:tapered-hermite": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 250,
+        "last_line": 269,
+        "statement_sha256": "1b737767366c0759f5ccafed0ce7c8efda85fc4ec8c6010316ddee990eb7794c"
+      },
+      "lem:tensor-packets": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 114,
+        "last_line": 130,
+        "statement_sha256": "cfd9c6331836c17a911c52a57fc7e8e2e1c12d22895960ee42f82ba364753c87"
+      },
+      "subsec:tensor-children": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 485,
+        "last_line": 556,
+        "statement_sha256": "bc4ca6c77cdb628b3b2ec0906cde6936364871859bc4fd90b46f7fd53b6aef10"
+      },
+      "subsec:tensor-cost": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 558,
+        "last_line": 619,
+        "statement_sha256": "5c1cabb59aed93b0dbfa239be44bdcd4239e7fd0bb3dd08ead09e02b6a492d73"
+      }
+    },
+    "status": "PIN_AND_LABELS_CHECKED"
+  },
+  "paper_formal_mode_domain_enumerated": false,
+  "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "per_point_independent_oracle": "PASS_INDEPENDENT_HALF_EDGE_ELIMINATION",
+  "per_tuple_independent_oracle": "PASS_INDEPENDENT_POLYNOMIAL_FACTOR_ELIMINATION",
+  "portable_commands": [
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "pip",
+        "wheel",
+        "--no-deps",
+        "--no-build-isolation",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING",
+        "-w",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/wheels"
+      ],
+      "exit_code": 0,
+      "name": "wheel_build",
+      "seconds": 3.1675981249427423
+    },
+    {
+      "command": [
+        "/opt/homebrew/bin/python3.10",
+        "-m",
+        "venv",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/clean_py310"
+      ],
+      "exit_code": 0,
+      "name": "venv",
+      "seconds": 1.9943384999642149
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/clean_py310/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/wheels/veritas_eth-3.8.2.post98-py3-none-any.whl"
+      ],
+      "exit_code": 0,
+      "name": "wheel_install",
+      "seconds": 3.1372382920235395
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/installed/packet_fix.py"
+      ],
+      "exit_code": 0,
+      "name": "wheel_packet_fix",
+      "seconds": 0.1339517500018701
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/installed/math_corrections.py"
+      ],
+      "exit_code": 0,
+      "name": "wheel_math_corrections",
+      "seconds": 1.0368258329108357
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/installed/shrinking_installed.py"
+      ],
+      "exit_code": 0,
+      "name": "wheel_shrinking_installed",
+      "seconds": 24.321852209046483
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/installed/validate_r98_installed.py"
+      ],
+      "exit_code": 0,
+      "name": "wheel_validate_r98_installed",
+      "seconds": 69.8825251669623
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/clean_py310/bin/python",
+        "-I",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/installed/validate_r97_installed.py"
+      ],
+      "exit_code": 0,
+      "name": "wheel_validate_r97_installed",
+      "seconds": 1.7174894580384716
+    },
+    {
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "veritas-eth:r98-shrinking",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING"
+      ],
+      "exit_code": 0,
+      "name": "docker_build",
+      "seconds": 10.146614541998133
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/installed:/checks:ro",
+        "veritas-eth:r98-shrinking",
+        "-I",
+        "/checks/packet_fix.py"
+      ],
+      "exit_code": 0,
+      "name": "docker_packet_fix",
+      "seconds": 0.4499889169819653
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/installed:/checks:ro",
+        "veritas-eth:r98-shrinking",
+        "-I",
+        "/checks/math_corrections.py"
+      ],
+      "exit_code": 0,
+      "name": "docker_math_corrections",
+      "seconds": 1.0394228750374168
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/installed:/checks:ro",
+        "veritas-eth:r98-shrinking",
+        "-I",
+        "/checks/shrinking_installed.py"
+      ],
+      "exit_code": 0,
+      "name": "docker_shrinking_installed",
+      "seconds": 19.584020790993236
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/installed:/checks:ro",
+        "veritas-eth:r98-shrinking",
+        "-I",
+        "/checks/validate_r98_installed.py"
+      ],
+      "exit_code": 0,
+      "name": "docker_validate_r98_installed",
+      "seconds": 57.33697083394509
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "1g",
+        "--pids-limit",
+        "256",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/installed:/checks:ro",
+        "veritas-eth:r98-shrinking",
+        "-I",
+        "/checks/validate_r97_installed.py"
+      ],
+      "exit_code": 0,
+      "name": "docker_validate_r97_installed",
+      "seconds": 1.4925872499588877
+    }
+  ],
+  "pytest": {
+    "errors": 0,
+    "failures": 0,
+    "new_shrinking_cases": 62,
+    "passed": 1616,
+    "seconds": 501.895,
+    "skipped": 2,
+    "tests": 1618
+  },
+  "release_archive": "NOT_CREATED_DEVELOPMENT_BRANCH_ONLY",
+  "root_packing_audits": {
+    "connected_cycle": {
+      "actual_group_loads": [
+        [
+          {
+            "0": 22,
+            "1": 22,
+            "10": 22,
+            "11": 22,
+            "12": 22,
+            "13": 22,
+            "14": 22,
+            "15": 22,
+            "16": 22,
+            "17": 22,
+            "18": 22,
+            "19": 22,
+            "2": 22,
+            "20": 22,
+            "21": 22,
+            "3": 22,
+            "4": 22,
+            "5": 22,
+            "6": 22,
+            "7": 22,
+            "8": 22,
+            "9": 22
+          },
+          {
+            "0": 22,
+            "1": 22,
+            "10": 22,
+            "11": 22,
+            "12": 22,
+            "13": 22,
+            "14": 22,
+            "15": 22,
+            "16": 22,
+            "17": 22,
+            "18": 22,
+            "19": 22,
+            "2": 22,
+            "20": 22,
+            "21": 22,
+            "3": 22,
+            "4": 22,
+            "5": 22,
+            "6": 22,
+            "7": 22,
+            "8": 22,
+            "9": 22
+          }
+        ]
+      ],
+      "all_child_six_M_over_r": true,
+      "child_edge_counts": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_edge_coverage": true,
+      "group_load_bound_met": true,
+      "largest_child_edges": 44,
+      "occupied_packets": 484,
+      "packet_bound_met": false,
+      "packet_load_proof": "FINITE_OCCURRENCE_AUDIT",
+      "packing_precondition_verdict": {
+        "above_leaf_cutoff": true,
+        "actual_packing_verified": false,
+        "checks": {
+          "2L_le_delta": true,
+          "M_ge_2_D_squared_delta": false,
+          "M_ge_LD": true
+        },
+        "descendant_schedules_verified": false,
+        "positive_u": false,
+        "schedule": {
+          "L": 1,
+          "a": 0,
+          "a_previous": 0,
+          "degree_limit": 512,
+          "extension_degree": 40,
+          "lambda": 10,
+          "leaf_threshold": 342,
+          "packing_class_count": 1,
+          "r": 64,
+          "u": 0
+        },
+        "scope": "CURRENT_NODE_NUMERICS_ONLY",
+        "source_active": false,
+        "source_qualified": false,
+        "status": "INCONCLUSIVE_SOURCE_SCHEDULE"
+      },
+      "padded_packets": 86016,
+      "same_slot_endpoints": true,
+      "scaled_experiment": true,
+      "source_eligible": false,
+      "source_qualified": false,
+      "status": "PASS_FINITE_SHRINKING_LAYOUT",
+      "strategy": "balanced_vertices",
+      "strict_shrink": true,
+      "universal_packer_proved": false,
+      "vertex_assignment_verified": true
+    },
+    "matching": {
+      "actual_group_loads": [
+        [
+          {
+            "0": 22,
+            "1": 22,
+            "10": 22,
+            "11": 22,
+            "12": 22,
+            "13": 22,
+            "14": 22,
+            "15": 22,
+            "16": 22,
+            "17": 22,
+            "18": 22,
+            "19": 22,
+            "2": 22,
+            "20": 22,
+            "21": 22,
+            "3": 22,
+            "4": 22,
+            "5": 22,
+            "6": 22,
+            "7": 22,
+            "8": 22,
+            "9": 22
+          },
+          {
+            "0": 22,
+            "1": 22,
+            "10": 22,
+            "11": 22,
+            "12": 22,
+            "13": 22,
+            "14": 22,
+            "15": 22,
+            "16": 22,
+            "17": 22,
+            "18": 22,
+            "19": 22,
+            "2": 22,
+            "20": 22,
+            "21": 22,
+            "3": 22,
+            "4": 22,
+            "5": 22,
+            "6": 22,
+            "7": 22,
+            "8": 22,
+            "9": 22
+          }
+        ]
+      ],
+      "all_child_six_M_over_r": true,
+      "child_edge_counts": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_edge_coverage": true,
+      "group_load_bound_met": true,
+      "largest_child_edges": 44,
+      "occupied_packets": 484,
+      "packet_bound_met": false,
+      "packet_load_proof": "FINITE_OCCURRENCE_AUDIT",
+      "packing_precondition_verdict": {
+        "above_leaf_cutoff": true,
+        "actual_packing_verified": false,
+        "checks": {
+          "2L_le_delta": true,
+          "M_ge_2_D_squared_delta": false,
+          "M_ge_LD": true
+        },
+        "descendant_schedules_verified": false,
+        "positive_u": false,
+        "schedule": {
+          "L": 1,
+          "a": 0,
+          "a_previous": 0,
+          "degree_limit": 512,
+          "extension_degree": 40,
+          "lambda": 10,
+          "leaf_threshold": 342,
+          "packing_class_count": 1,
+          "r": 64,
+          "u": 0
+        },
+        "scope": "CURRENT_NODE_NUMERICS_ONLY",
+        "source_active": false,
+        "source_qualified": false,
+        "status": "INCONCLUSIVE_SOURCE_SCHEDULE"
+      },
+      "padded_packets": 90112,
+      "same_slot_endpoints": true,
+      "scaled_experiment": true,
+      "source_eligible": false,
+      "source_qualified": false,
+      "status": "PASS_FINITE_SHRINKING_LAYOUT",
+      "strategy": "balanced_vertices",
+      "strict_shrink": true,
+      "universal_packer_proved": false,
+      "vertex_assignment_verified": true
+    }
+  },
+  "scaled_experiment": true,
+  "schema": "VERITAS_R98_ACTUAL_SHRINKING_REVIEW_V1",
+  "source_eligible": false,
+  "source_qualified": false,
+  "source_refinement_proven": false,
+  "status": "PASS_FINITE_SCALED_SHRINKING_RECURSION",
+  "supported_recovery_family": "ROW_CONSTANT_AT_EVERY_ACTIVE_CALL",
+  "termination": "STRICT_EDGE_DECREASE_TO_FOUR_EDGE_LEAVES",
+  "theorem_mode_enabled": false,
+  "tuple_domain": "ALL_WEIGHTED_TUPLES_OVER_RETAINED_MODES",
+  "validators": [
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_conditional_expectation_lean.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/lean.json"
+      ],
+      "exit_code": 0,
+      "name": "lean",
+      "wall_seconds": 54.00453179201577
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r98_parent_child.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r98.json"
+      ],
+      "exit_code": 0,
+      "name": "r98",
+      "wall_seconds": 85.74259766703472
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r94_foundation.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r94.json"
+      ],
+      "exit_code": 0,
+      "name": "r94",
+      "wall_seconds": 71.61034858401399
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r95_recipes.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r95.json"
+      ],
+      "exit_code": 0,
+      "name": "r95",
+      "wall_seconds": 0.45065254101064056
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r96.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r96.json"
+      ],
+      "exit_code": 0,
+      "name": "r96",
+      "wall_seconds": 63.49298754101619
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r96_recipe_grid.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r96_grid.json"
+      ],
+      "exit_code": 0,
+      "name": "r96_grid",
+      "wall_seconds": 51.6540129580535
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_bridge.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r97_bridge.json"
+      ],
+      "exit_code": 0,
+      "name": "r97_bridge",
+      "wall_seconds": 3.768079833011143
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_matrix.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r97_matrix.json"
+      ],
+      "exit_code": 0,
+      "name": "r97_matrix",
+      "wall_seconds": 8.41917825001292
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_paper.py",
+        "--write",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r97_grid.json"
+      ],
+      "exit_code": 0,
+      "name": "r97_write",
+      "wall_seconds": 11.438145707943477
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_paper.py",
+        "--verify",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r97_grid.json"
+      ],
+      "exit_code": 0,
+      "name": "r97_verify",
+      "wall_seconds": 6.411067750072107
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_grid_faults.py",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r97_grid.json",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r97_faults.json"
+      ],
+      "exit_code": 0,
+      "name": "r97_faults",
+      "wall_seconds": 9.83080333401449
+    },
+    {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r98_shrinking.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/shrinking.json"
+      ],
+      "exit_code": 0,
+      "name": "shrinking",
+      "wall_seconds": 46.839546915958636
+    }
+  ]
+}

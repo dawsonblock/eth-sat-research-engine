@@ -1,0 +1,21 @@
+commit 3a923e434f7e9d706181237fd11cfc51febddb37
+Author:     dawsonblock <dawsonblock@users.noreply.github.com>
+AuthorDate: Thu Nov 5 00:04:42 2026 -0600
+Commit:     dawsonblock <dawsonblock@users.noreply.github.com>
+CommitDate: Thu Nov 5 00:04:42 2026 -0600
+
+    Fix R9.8 ring identity, child ancestry and mathematical scope
+
+ RELEASE_REPORT_R98.md                              |   9 +-
+ docs/R98_MATHEMATICAL_CORRECTIONS.md               | 162 ++++++++++++
+ docs/R98_PARENT_CHILD_IMPLEMENTATION.md            |  28 +-
+ scripts/validate_r98_parent_child.py               |   5 +
+ src/veritas/binding/source.json                    |   2 +-
+ .../eth_recursive_contraction_v39/point_modes.py   |  22 +-
+ src/veritas/research/parent_child_r98/engine.py    |  26 +-
+ src/veritas/research/parent_child_r98/model.py     |  46 ++++
+ src/veritas/research/parent_child_r98/modes.py     |  23 +-
+ src/veritas/research/parent_child_r98/packing.py   |  28 +-
+ tests/test_r98_math_corrections.py                 | 283 +++++++++++++++++++++
+ tests/test_r98_math_review.py                      |  34 ++-
+ 12 files changed, 639 insertions(+), 29 deletions(-)

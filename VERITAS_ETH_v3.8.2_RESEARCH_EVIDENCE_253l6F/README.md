@@ -1,0 +1,9 @@
+# VERITAS finite research evidence
+
+Base commit: `810fd783f7fc599bf74a2a0e56a2307db8a8b825`. The project-only working-tree patch, including new files, is `project-working-tree.patch`; its SHA-256 is `7ceae8027e330ab2dcb47d84d3b4660ce74ec0a1cfd6c7f21b916afed129e736`. Unrelated workspace changes are excluded. The source snapshot manifest SHA-256 is `402d125fc105870e1518938e864d8a4c2ae566ddb784e7a7a55d0341ed8e5db4`. These hashes provide consistency checks, not an authenticated signature.
+
+To replay, obtain the recorded Git commit, apply the patch at the repository root, enter `VERITAS_ETH_v3.8.2`, and run the commands and environment described in `environment.json`. The patch was applied to a clean checkout and the manifest and complete 664-test suite passed. Python, operating-system, and package versions are recorded in `environment.json` and `dependencies.freeze.txt`.
+
+The `dense_*.final.stdout.json` and matching command files contain the separate-process dense experiments. The 14- and 16-wire successful reconstructions used explicitly raised resource caps. Earlier low-precision runs, blocked preflights, and the pre-optimization 14-wire process timeout are retained with their original labels. `child_audit.final.json` contains the replayed finite point-child certificate and the rejected size-invariant run. `two_level.final.json` records the successful two-wire two-level example and the inconclusive four-wire attempt. `symbolic_cauchy.final.json` records finite exact rational-polynomial checks.
+
+The dense experiment is a nonrecursive bounded reference; it does not establish geometric child shrinkage or a subexponential solver. The point and two-level runs use scaled parameters, and their observed children fail the one-eighth test. Work counters and RSS are partial finite measurements, not a complete bit-complexity or space proof.

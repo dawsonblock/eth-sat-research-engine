@@ -1,0 +1,23 @@
+{
+  "command": [
+    "python",
+    "-O",
+    "-m",
+    "pytest",
+    "-q",
+    "-o",
+    "addopts=",
+    "tests/test_r96_evidence_repairs.py",
+    "tests/test_r96_reductions.py"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 3.92986616701819,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 101072896,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r96_opt_faults.stdout.log",
+  "stderr_log": "r96_opt_faults.stderr.log",
+  "test_summary": "43 passed, 1 warning in 2.86s"
+}

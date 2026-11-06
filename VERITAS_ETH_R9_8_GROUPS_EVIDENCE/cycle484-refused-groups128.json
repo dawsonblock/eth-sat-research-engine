@@ -1,0 +1,47 @@
+{
+  "active_calls": 0,
+  "group_preflight": {
+    "descendant_packing": "INCOMPLETE_OR_REFUSED",
+    "execution_family": "CONSTANT_DEFORMATION",
+    "failing_depth": 1,
+    "failing_edges": 20,
+    "failing_precision": 31488,
+    "failing_topology": "9b0e932a2a90c11ab87898a6a5d2f506c2e53cd13cb24cfe263fc2d26e107f74",
+    "groups": 128,
+    "reason": "nonleaf descendant has zero per-side group capacity",
+    "root_digest": "1e54e9437cbd4d7ba56e6806677969221ff0521d0b424171b321bb9a0c27f2c5",
+    "source_qualified": false,
+    "status": "INCONCLUSIVE_DESCENDANT_PACKING",
+    "tensor_values_checked": false,
+    "topology_nodes_visited": 2
+  },
+  "implementation_source_sha256": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+  "ledger": {
+    "actual_calls": 0,
+    "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+    "elapsed_seconds": 0.024454208090901375,
+    "hard_memory_limit_enforced": false,
+    "maximum_depth": 0,
+    "nonshrinking_children": 0,
+    "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+    "point_evaluations": 0,
+    "transitions": 0,
+    "tuples": 0,
+    "work_units": 67368
+  },
+  "policy": {
+    "max_calls": 300000,
+    "max_certificate_bytes": 20000000,
+    "max_depth": 16,
+    "max_edges": 1024,
+    "max_factor_bits": 16,
+    "max_precision": 65536,
+    "max_seconds": 600,
+    "max_tuples": 4096,
+    "max_work": 300000000
+  },
+  "reason": "nonleaf descendant has zero per-side group capacity",
+  "source_qualified": false,
+  "status": "INCONCLUSIVE_DESCENDANT_PACKING",
+  "theorem_mode_enabled": false
+}

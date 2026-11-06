@@ -1,0 +1,17 @@
+{
+  "status": "PASS_INDEPENDENT_SCALAR_RATIONAL_COEFFICIENTS",
+  "precision": 149,
+  "point_T": 8796093022209,
+  "formulas": [
+    "49",
+    "140*(W00+W20)",
+    "480*W00*W20"
+  ],
+  "values": [
+    49,
+    396653543825061130524270060868075860577484800,
+    370097756673943605602163931406788519666909184
+  ],
+  "complete_point_evaluated": false,
+  "source_qualified": false
+}

@@ -1,0 +1,43 @@
+{
+  "archive": "VERITAS_ETH_R9_3_PACKET_MODEL_PARTIAL_FULL_UPGRADED.zip",
+  "archive_sha256": "173bb476ccf87e1f0518f5a2c4e5275e8dd570de41a2e5a7fd0a056e993c543d",
+  "commands": [
+    {
+      "command": "python scripts/verify_manifest.py",
+      "elapsed_seconds": 0.1637570000020787,
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS: 682 complete file hashes match release manifest; no unlisted files"
+    },
+    {
+      "command": "python -O scripts/verify_manifest.py",
+      "elapsed_seconds": 0.16945062496233732,
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS: 682 complete file hashes match release manifest; no unlisted files"
+    },
+    {
+      "command": "confirm extracted import origin",
+      "elapsed_seconds": 0.028603208949789405,
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "<extracted>/src/veritas/__init__.py"
+    },
+    {
+      "command": "PYTHONPATH=src python -m pytest -q -o addopts= tests/test_r93_global_packet_address.py",
+      "elapsed_seconds": 1.266015916946344,
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "....................                                                     [100%]\n20 passed in 0.24s"
+    }
+  ],
+  "crc_pass": true,
+  "member_count": 683,
+  "paths_safe": true,
+  "provenance": "HASH_MATCH_UNSIGNED",
+  "schema": "VERITAS_ETH_R93_ARCHIVE_VERIFICATION_V1",
+  "sidecar_members_match": true,
+  "status": "PASS_ARCHIVE_INTEGRITY_AND_EXTRACTED_PACKET_TESTS",
+  "symlinks": false,
+  "theorem_mode_enabled": false
+}

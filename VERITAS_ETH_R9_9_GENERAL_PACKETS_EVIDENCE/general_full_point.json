@@ -1,0 +1,465 @@
+{
+  "status": "PASS_FINITE_GENERAL_MULTISLOT_COMPLETE_POINT",
+  "result": [
+    [
+      713623827767716269911066174958604383263985855,
+      0,
+      0,
+      0
+    ]
+  ],
+  "full_weighted_tuples": 11175,
+  "modes": {
+    "cross_pairs": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "d3_certificate": {
+      "D": 68719476736,
+      "H_pad": 8,
+      "L": 8,
+      "M": 3,
+      "a": 3,
+      "claim": "FINITE_NONEMPTY_PACKET_VIEW_SPARSE_SLOTS",
+      "column_labels": {
+        "0": [
+          0,
+          0,
+          1
+        ],
+        "1": [
+          0,
+          0,
+          1
+        ],
+        "2": [
+          2,
+          2,
+          2
+        ]
+      },
+      "conditional_expectation_trace": [
+        [
+          "C",
+          0,
+          0,
+          0,
+          206158430214
+        ],
+        [
+          "C",
+          0,
+          1,
+          0,
+          206158430214
+        ],
+        [
+          "C",
+          0,
+          2,
+          0,
+          206158430214
+        ],
+        [
+          "C",
+          1,
+          0,
+          1,
+          206158430212
+        ],
+        [
+          "C",
+          1,
+          1,
+          0,
+          206158430212
+        ],
+        [
+          "C",
+          1,
+          2,
+          0,
+          206158430212
+        ],
+        [
+          "C",
+          2,
+          0,
+          2,
+          206158430208
+        ],
+        [
+          "C",
+          2,
+          1,
+          0,
+          206158430208
+        ],
+        [
+          "C",
+          2,
+          2,
+          0,
+          206158430208
+        ],
+        [
+          "R",
+          0,
+          0,
+          0,
+          206158430208
+        ],
+        [
+          "R",
+          0,
+          1,
+          0,
+          206158430208
+        ],
+        [
+          "R",
+          0,
+          2,
+          0,
+          206158430208
+        ],
+        [
+          "R",
+          1,
+          0,
+          0,
+          206158430208
+        ],
+        [
+          "R",
+          1,
+          1,
+          0,
+          206158430208
+        ],
+        [
+          "R",
+          1,
+          2,
+          0,
+          206158430208
+        ],
+        [
+          "R",
+          2,
+          0,
+          0,
+          206158430208
+        ],
+        [
+          "R",
+          2,
+          1,
+          0,
+          206158430208
+        ],
+        [
+          "R",
+          2,
+          2,
+          0,
+          206158430208
+        ]
+      ],
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "final_expected_square_scaled": 206158430208,
+      "initial_expected_square_scaled": 206158430214,
+      "packets": [
+        {
+          "index": 0,
+          "occupied_slots": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              1
+            ]
+          ],
+          "symbol_pairs": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ]
+        },
+        {
+          "index": 0,
+          "occupied_slots": [
+            [
+              0,
+              2
+            ]
+          ],
+          "symbol_pairs": [
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      ],
+      "r": 64,
+      "row_labels": {
+        "0": [
+          0,
+          0,
+          0
+        ],
+        "1": [
+          0,
+          0,
+          0
+        ],
+        "2": [
+          2,
+          2,
+          2
+        ]
+      },
+      "schema": "VERITAS_ETH_D3_IMPLICIT_SPARSE_ACTIVE_V1"
+    },
+    "extension_degree": 4,
+    "irreducible_polynomial": 19,
+    "jet_length": 1,
+    "local": [
+      [
+        2,
+        2,
+        [
+          [
+            713623846352979940529142984724747411580178572,
+            0,
+            0,
+            0
+          ]
+        ]
+      ]
+    ],
+    "mode_tuple_count": 11175,
+    "modes": [
+      {
+        "column_terms": [
+          [
+            0,
+            1
+          ]
+        ],
+        "exponent": 0,
+        "packet": 0,
+        "rows": [
+          [
+            0,
+            [
+              [
+                713623846352979940529142984724747411580178572,
+                0,
+                0,
+                0
+              ]
+            ]
+          ],
+          [
+            1,
+            [
+              [
+                713623846352979940529142984724747425817559912,
+                0,
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "source_group": 1,
+        "target_group": 0,
+        "tile_residue": 0,
+        "weight": 1
+      },
+      {
+        "column_terms": [
+          [
+            1,
+            1
+          ]
+        ],
+        "exponent": 0,
+        "packet": 0,
+        "rows": [
+          [
+            0,
+            [
+              [
+                713623846352979940529142984724747394178934712,
+                0,
+                0,
+                0
+              ]
+            ]
+          ],
+          [
+            1,
+            [
+              [
+                713623846352979940529142984724747411580178572,
+                0,
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "source_group": 1,
+        "target_group": 0,
+        "tile_residue": 2,
+        "weight": 1
+      }
+    ],
+    "node": 4,
+    "precision": 149,
+    "zeta": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "packing": {
+    "packing_precondition_verdict": {
+      "status": "INCONCLUSIVE_SOURCE_SCHEDULE",
+      "source_active": false,
+      "checks": {
+        "M_ge_2_D_squared_delta": false,
+        "M_ge_LD": true,
+        "2L_le_delta": true
+      },
+      "schedule": {
+        "lambda": 4,
+        "leaf_threshold": 8,
+        "degree_limit": 13,
+        "extension_degree": 16,
+        "u": 0,
+        "a": 0,
+        "a_previous": 0,
+        "r": 64,
+        "L": 1,
+        "packing_class_count": 1
+      },
+      "scope": "CURRENT_NODE_NUMERICS_ONLY",
+      "above_leaf_cutoff": false,
+      "positive_u": false,
+      "actual_packing_verified": false,
+      "descendant_schedules_verified": false,
+      "source_qualified": false
+    },
+    "source_eligible": false,
+    "scaled_experiment": true,
+    "occupied_packets": 2,
+    "padded_packets": 68719476736,
+    "packet_bound_met": false,
+    "group_load_bound_met": false,
+    "actual_group_loads": [
+      [
+        {
+          "0": 2,
+          "2": 1
+        },
+        {
+          "0": 2,
+          "2": 1
+        }
+      ],
+      [
+        {
+          "0": 2,
+          "2": 1
+        },
+        {
+          "0": 2,
+          "2": 1
+        }
+      ],
+      [
+        {
+          "0": 2,
+          "2": 1
+        },
+        {
+          "1": 2,
+          "2": 1
+        }
+      ]
+    ],
+    "exact_edge_coverage": true,
+    "same_slot_endpoints": true,
+    "source_qualified": false,
+    "packet_load_proof": "FINITE_OCCURRENCE_AUDIT"
+  },
+  "parent_digest": "2ed3f570bdec468154782429cc5c4fd55c4cad8284b0ba13388c280e2f1b489e",
+  "source": "4411d1fbbf002a86e36ccfadcbb20959dde9e7b398ecdee06e49c4393d6f36e9",
+  "source_qualified": false,
+  "shrinking_transition": false,
+  "recursive_depths": 0,
+  "ledger": {
+    "actual_calls": 715200,
+    "maximum_depth": 1,
+    "point_evaluations": 1,
+    "tuples": 11175,
+    "transitions": 715200,
+    "nonshrinking_children": 0,
+    "work_units": 55273889,
+    "elapsed_seconds": 756.7691426249221,
+    "hard_memory_limit_enforced": false,
+    "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+    "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED"
+  }
+}

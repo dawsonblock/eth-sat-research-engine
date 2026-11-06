@@ -1,0 +1,191 @@
+name: quality
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: work
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: sealed
+      - name: Verify the sealed release and create a separate validation tree
+        working-directory: .
+        run: |
+          python3 sealed/scripts/verify_manifest.py
+          cp -R sealed work
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install 'setuptools>=68' wheel -e '.[test,matching]'
+      - run: python -m pytest
+      - run: python scripts/smoke.py
+      - run: python scripts/validate_v06.py
+      - run: python scripts/validate_v07.py
+      - run: python scripts/validate_v08.py
+      - run: python scripts/validate_v09.py
+      - run: python scripts/validate_v10.py
+      - run: python scripts/validate_v11.py
+      - run: python scripts/validate_v12.py
+      - run: python scripts/validate_v13.py
+      - run: python scripts/validate_v14.py
+      - run: python scripts/validate_10000.py
+      - run: python scripts/validate_v20.py
+      - run: python scripts/validate_v23.py
+      - run: python scripts/validate_v26.py
+      - run: python scripts/validate_v29.py
+      - run: python scripts/validate_v30.py
+      - run: python scripts/validate_v33.py
+      - run: python scripts/validate_v34.py
+      - run: python -m pytest -q -o addopts='' tests/test_r91_cpp_backend.py
+      - name: Collect regenerated evidence and recheck sealed input
+        if: always()
+        working-directory: .
+        run: |
+          python sealed/scripts/verify_manifest.py
+          python sealed/scripts/collect_ci_evidence.py sealed/validation work/validation fresh-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fresh-validation-${{ matrix.python-version }}
+          path: fresh-validation/
+          if-no-files-found: warn
+
+  cpp-backend:
+    name: cpp-backend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/verify_manifest.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update && sudo apt-get install -y libboost-dev cmake
+      - run: python -m pip install pybind11
+      - name: Configure and build the C++ scorer
+        run: |
+          cmake -S cpp -B build/cpp -DCMAKE_BUILD_TYPE=Release \
+            -Dpybind11_DIR=$(python -c 'import pybind11; print(pybind11.get_cmake_dir())') \
+            -DPYTHON_EXECUTABLE=$(which python) \
+            -DPython_EXECUTABLE=$(which python) \
+            -DPython3_EXECUTABLE=$(which python)
+          cmake --build build/cpp -j2
+      - name: Run the native self-test
+        run: ./build/cpp/veritas_d3_selftest
+      - name: Differential tests against the Python reference
+        run: |
+          python -m pip install -e '.[test]'
+          python -m pytest -q -o addopts='' tests/test_r91_cpp_backend.py
+      - name: Measured benchmark (exact equality gate)
+        run: python scripts/benchmark_r91_scorer.py --output "$RUNNER_TEMP/validation/r91_benchmarks.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r91-cpp-evidence
+          path: ${{ runner.temp }}/validation/r91_benchmarks.json
+          if-no-files-found: warn
+
+  lean-proof:
+    name: lean-proof
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/verify_manifest.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pytest
+      # Immutable action commit; lean-action reads lean-toolchain, and the
+      # repository validator checks the reported compiler version exactly.
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6 # v1.6.2
+        with:
+          auto-config: false
+      - name: Compile and audit the R9 Lean proof manifest
+        id: proof-gate
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/validation"
+          printf '{"status":"NOT_RUN","reason":"proof validator has not completed"}\n' > "$RUNNER_TEMP/validation/r9_ci_proof.json"
+          set +e
+          python scripts/validate_conditional_expectation_lean.py --output "$RUNNER_TEMP/validation/r9_ci_proof.json"
+          status=$?
+          printf '%s\n' "$status" > "$RUNNER_TEMP/validation/r9_ci_proof.exitcode"
+          exit "$status"
+      - name: Run proof-gate fault injections
+        run: python -m pytest -q -o addopts='' tests/test_lean_proof_gate_audit.py tests/test_lean_proof_gate_fault_injection.py tests/test_r96_tooling.py -k 'not dimacs'
+      - name: Compare concrete Lean packet addresses with Python
+        run: python scripts/validate_r93_packet_model.py --output "$RUNNER_TEMP/validation/r9_3_packet_differential.json"
+      - name: Compare keyed runs and complete bounded packet domains
+        run: python scripts/validate_r94_foundation.py --output "$RUNNER_TEMP/validation/r9_4_differential.json"
+      - name: Independently check source entry and leaf semantics
+        run: python scripts/validate_r95_recipes.py --output "$RUNNER_TEMP/validation/r9_5_recipes.json"
+      - name: Recompute bounded recipe grids and finite recursive comparisons
+        env:
+          PYTHONPATH: src
+        run: |
+          python scripts/validate_r96_recipe_grid.py --output "$RUNNER_TEMP/validation/r96_recipe_grid.json"
+          python scripts/validate_r96.py --output "$RUNNER_TEMP/validation/r96_reductions.json"
+      - name: Check the paper-linked finite grid, boundary bridge and structural matrix
+        env:
+          PYTHONPATH: src
+        run: |
+          python scripts/validate_r97_paper.py --write "$RUNNER_TEMP/validation/r97_grid.json"
+          python scripts/validate_r97_paper.py --verify "$RUNNER_TEMP/validation/r97_grid.json"
+          python scripts/validate_r97_grid_faults.py "$RUNNER_TEMP/validation/r97_grid.json" --output "$RUNNER_TEMP/validation/r97_grid_faults.json"
+          python scripts/validate_r97_bridge.py --output "$RUNNER_TEMP/validation/r97_bridge.json"
+          python scripts/validate_r97_matrix.py --output "$RUNNER_TEMP/validation/r97_matrix.json"
+      - name: Preserve Lean proof evidence, including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r9-lean-proof-evidence
+          path: |
+            ${{ runner.temp }}/validation/r9_ci_proof.json
+            ${{ runner.temp }}/validation/r96_*.json
+            ${{ runner.temp }}/validation/r97_*.json
+            ${{ runner.temp }}/validation/r9_ci_proof.exitcode
+            ${{ runner.temp }}/validation/r9_3_packet_differential.json
+            ${{ runner.temp }}/validation/r9_4_differential.json
+            ${{ runner.temp }}/validation/r9_5_recipes.json
+          if-no-files-found: warn
+
+  cpp-differential:
+    name: cpp-differential
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/verify_manifest.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install C++20 build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake libboost-dev
+      - run: python -m pip install -e '.[test]'
+      - name: Build exact C++ scorer
+        run: |
+          cmake -S cpp -B build/cpp -DCMAKE_BUILD_TYPE=Release
+          cmake --build build/cpp --parallel 2
+      - name: Run finite differential and certificate replay
+        env:
+          VERITAS_D3_CPP_BUILD_DIR: ${{ github.workspace }}/build/cpp
+          PYTHONPATH: src
+        run: python scripts/validate_r91_cpp.py --output "$RUNNER_TEMP/validation/r9_1_differential.json"
+      - name: Run C++ scorer regressions
+        env:
+          VERITAS_D3_CPP_BUILD_DIR: ${{ github.workspace }}/build/cpp
+          PYTHONPATH: src
+        run: python -m pytest -q -o addopts='' tests/test_r91_cpp_backend.py
+      - name: Preserve C++ differential evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r9-cpp-differential-evidence
+          path: ${{ runner.temp }}/validation/r9_1_differential.json
+          if-no-files-found: warn

@@ -1,0 +1,27 @@
+{
+  "archive": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_CYCLE_TRANSFER_DEVELOPMENT.zip",
+  "archive_bytes": 17699806,
+  "archive_manifest_output": "PASS: 1127 complete file hashes match release manifest; no unlisted files",
+  "archive_member_count": 1128,
+  "archive_sha256": "8a3703554579fc9d85c268c4257cbde449bdcb499762472631e90d314718c8ed",
+  "build_command": [
+    "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+    "scripts/build_release.py",
+    "--output-name",
+    "VERITAS_ETH_R9_8_CYCLE_TRANSFER_DEVELOPMENT.zip"
+  ],
+  "extracted_tree": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER_EVIDENCE/post-meter/archive_replay/VERITAS_ETH_R9_8_TRANSFER",
+  "generated_utc": "2026-11-05T09:27:24.013225+00:00",
+  "manifest_sidecar": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_CYCLE_TRANSFER_DEVELOPMENT.zip.manifest.json",
+  "manifest_sidecar_sha256": "6bf8256562ec9fa5e9427d274c411d5d7f20159b40b03e2a136082e134a45c7c",
+  "schema": "VERITAS_R98_TRANSFER_RELEASE_V1",
+  "scope": "FILE_INTEGRITY_AND_CLEAN_EXTRACTION_ONLY_NOT_A_SOURCE_PROOF",
+  "source_binding_after": "67959db3d49f8d59caf82ad900eb9977f39356bcd8da023a1ad14306ae3afb5a",
+  "source_binding_before": "67959db3d49f8d59caf82ad900eb9977f39356bcd8da023a1ad14306ae3afb5a",
+  "source_manifest_output": "PASS: 1127 complete file hashes match release manifest; no unlisted files",
+  "status": "PASS",
+  "verify_command": [
+    "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+    "scripts/verify_manifest.py"
+  ]
+}

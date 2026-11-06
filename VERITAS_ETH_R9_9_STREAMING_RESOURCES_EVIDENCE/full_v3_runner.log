@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_STREAMING_RESOURCES/../VERITAS_ETH_R9_9_STREAMING_RESOURCES_EVIDENCE/run_checks.py", line 6, in <module>
+    from veritas.research.tapered_v4.provenance import source_binding
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_STREAMING_RESOURCES/src/veritas/research/tapered_v4/__init__.py", line 5, in <module>
+    from .cnf_count import count_source_cnf_finite
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_STREAMING_RESOURCES/src/veritas/research/tapered_v4/cnf_count.py", line 7, in <module>
+    from veritas.research.math_exact.oracle import exhaustive_count
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_STREAMING_RESOURCES/src/veritas/research/math_exact/__init__.py", line 2, in <module>
+    from .ring import Ring, Element, Polynomial
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_STREAMING_RESOURCES/src/veritas/research/math_exact/ring.py", line 13, in <module>
+    @dataclass(frozen=True, slots=True)
+TypeError: dataclass() got an unexpected keyword argument 'slots'

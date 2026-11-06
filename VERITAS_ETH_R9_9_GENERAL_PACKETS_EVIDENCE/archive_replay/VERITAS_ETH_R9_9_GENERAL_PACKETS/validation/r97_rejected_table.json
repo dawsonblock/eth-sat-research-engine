@@ -1,0 +1,14 @@
+{
+  "status": "INCONCLUSIVE_OR_REJECTED",
+  "universal_executable_refinement": false,
+  "lean_version": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "fixtures": 16,
+  "sha256": "acaf42051a09c631c20af411ecdc4274bcc8cae2a741172dcacc5de10eae188c",
+  "model_source": {
+    "FiniteBoundaryReduction.lean": "c9b86a044d9c41067da087f6022e5e491473d84ffa524162e9c083db2745010b",
+    "BoundaryGather.lean": "be8e1db1174ad381c6d4c891f92e3f0a1761e8e5cede4f1f7428f901d8372bc9"
+  },
+  "compiler_output": "ConcreteChecks.lean:4:350: error: Tactic `decide` proved that the proposition\n  List.map (fun w => if w = 0 then 0 else if w = 2 then 1 else 0)\n        (freePorts (fun w => if w = 1 then some false else if w = 4 then some false else none) f0_0_0.ports) =\n      [0, 1] \u2227\n    List.map (gather f0_0_0 fun w => if w = 1 then some false else if w = 4 then some false else none) (List.range 4) =\n      [47, -10, -34, -26]\nis false\n'bridge_f0_0_0' depends on axioms: [propext, sorryAx]\n'bridge_f0_0_2' depends on axioms: [propext]\n'bridge_f0_1_1' depends on axioms: [propext]\n'bridge_f0_1_3' depends on axioms: [propext]\n'bridge_f1_0_0' depends on axioms: [propext]\n'bridge_f1_0_2' depends on axioms: [propext]\n'bridge_f1_1_1' depends on axioms: [propext]\n'bridge_f1_1_3' depends on axioms: [propext]\n'bridge_f2_0_0' depends on axioms: [propext]\n'bridge_f2_0_2' depends on axioms: [propext]\n'bridge_f2_1_1' depends on axioms: [propext]\n'bridge_f2_1_3' depends on axioms: [propext]\n'bridge_f3_0_0' depends on axioms: [propext]\n'bridge_f3_0_2' depends on axioms: [propext]\n'bridge_f3_1_1' depends on axioms: [propext]\n'bridge_f3_1_3' depends on axioms: [propext]\n",
+  "reason": "compiler rejected ConcreteChecks",
+  "wall_seconds": 1.046975790988654
+}

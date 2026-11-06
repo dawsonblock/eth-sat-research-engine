@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/r911_coupled_replay.py", line 3, in <module>
+    from veritas.research.parent_child_r98.shrinking_cli import load_input
+ModuleNotFoundError: No module named 'veritas'

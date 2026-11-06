@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python",
+    "scripts/validate_v26.py"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 0.7370249999221414,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 28311552,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_v26.stdout.log",
+  "stderr_log": "r97_v26.stderr.log",
+  "test_summary": ""
+}

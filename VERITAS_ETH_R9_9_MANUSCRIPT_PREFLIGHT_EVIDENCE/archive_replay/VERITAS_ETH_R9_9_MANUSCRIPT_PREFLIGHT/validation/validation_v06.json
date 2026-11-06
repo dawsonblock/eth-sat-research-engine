@@ -1,0 +1,9 @@
+{
+  "release": "0.6.0",
+  "status": "PASS",
+  "seed": 20261029,
+  "independent_count_certificate_checks": 1000,
+  "independent_violation_spectra": 350,
+  "modular_residue_cross_checks": 1400,
+  "scope": "Small bounded random CNF, exact arithmetic, not ETH asymptotic validation"
+}

@@ -1,0 +1,1 @@
+{"status": "PASS_FINITE_RECIPE_LEAF_AND_GRID", "checks_executed": {"entry_equalities": 160, "leaf_equalities": 9, "hermite_points": 258}, "elapsed_seconds": 0.1619167079916224}

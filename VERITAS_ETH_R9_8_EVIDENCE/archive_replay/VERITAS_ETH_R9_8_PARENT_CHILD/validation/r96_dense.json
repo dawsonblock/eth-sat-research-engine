@@ -1,0 +1,20 @@
+{
+  "command": [
+    "python",
+    "scripts/validate_dense_v382.py",
+    "--wires",
+    "8",
+    "10",
+    "12"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 3.3823082079179585,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 25722880,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r96_dense.stdout.log",
+  "stderr_log": "r96_dense.stderr.log",
+  "test_summary": ""
+}

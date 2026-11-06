@@ -1,0 +1,45 @@
+{
+  "status": "FINITE_OPTIMAL_SCHEDULE",
+  "evidence_level": "FINITE_PARTITION_INDEPENDENT_DP",
+  "method": "BOUNDED_PACKET_BRANCH_AND_BOUND",
+  "stats": {
+    "wire_order": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "packet_size": 4,
+    "original_collisions": 3,
+    "optimized_collisions": 3,
+    "original_max_incidence": 2,
+    "optimized_max_incidence": 2,
+    "examined": 1,
+    "exact_optimum": true,
+    "algorithm": "finite-packet-branch-and-bound"
+  },
+  "optimality_evidence": null,
+  "scalable_lower_bound_evidence": null,
+  "matching_evidence": null,
+  "bounded_partition_evidence": {
+    "algorithm": "FINITE_PACKET_BRANCH_AND_BOUND",
+    "wires": 4,
+    "packet_size": 4,
+    "objective": 3,
+    "max_incidence": 2,
+    "lower_bound_pairs": 3,
+    "absolute_gap_pairs": 0,
+    "finished_search": true,
+    "optimum_status": "INDEPENDENT_SUBSET_DP",
+    "visited_states": 2,
+    "tested_blocks": 1,
+    "pruned_states": 1,
+    "candidate_tail_packets": 0,
+    "independent_oracle_checked": true,
+    "oracle_pairs": 3,
+    "elapsed_ms": 0.121
+  },
+  "bounded_partition_replay": "SCORE_BOUND_AND_INDEPENDENT_DP_OPTIMUM_REPLAYED",
+  "independent_lower_bound_check": null,
+  "warning": "Not the manuscript D.3 packing theorem or subexponential algorithm"
+}

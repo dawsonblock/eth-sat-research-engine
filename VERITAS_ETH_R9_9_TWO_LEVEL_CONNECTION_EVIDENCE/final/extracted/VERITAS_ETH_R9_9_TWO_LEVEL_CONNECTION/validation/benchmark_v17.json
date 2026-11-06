@@ -1,0 +1,68 @@
+{
+  "version": "1.7.0",
+  "repeat_count": 7,
+  "runtime_guaranteed_faster": false,
+  "environment": "local machine at validation time",
+  "cases": [
+    {
+      "case": "sparse_chain",
+      "variables": 9,
+      "clauses": 8,
+      "correct_count": "89",
+      "quick": {
+        "estimated_assignments": 34,
+        "induced_width": 1,
+        "median_planning_seconds": 5.918900001233851e-05,
+        "median_execution_seconds": 4.780199998322132e-05,
+        "median_total_seconds": 0.00010699099999555983
+      },
+      "optimal": {
+        "estimated_assignments": 34,
+        "induced_width": 1,
+        "median_planning_seconds": 0.0019053780000035658,
+        "median_execution_seconds": 5.9239999984583847e-05,
+        "median_total_seconds": 0.0019632149999893045
+      }
+    },
+    {
+      "case": "dense_triples",
+      "variables": 8,
+      "clauses": 6,
+      "correct_count": "135",
+      "quick": {
+        "estimated_assignments": 158,
+        "induced_width": 4,
+        "median_planning_seconds": 8.698000004869755e-05,
+        "median_execution_seconds": 9.145799998577786e-05,
+        "median_total_seconds": 0.0001809030000003986
+      },
+      "optimal": {
+        "estimated_assignments": 158,
+        "induced_width": 4,
+        "median_planning_seconds": 0.0010882980000133102,
+        "median_execution_seconds": 9.5514000008734e-05,
+        "median_total_seconds": 0.0012549389999776395
+      }
+    },
+    {
+      "case": "min_degree_counterexample",
+      "variables": 9,
+      "clauses": 21,
+      "correct_count": "4",
+      "quick": {
+        "estimated_assignments": 222,
+        "induced_width": 5,
+        "median_planning_seconds": 0.00011236900002131733,
+        "median_execution_seconds": 0.00016829300000154035,
+        "median_total_seconds": 0.000282114000015099
+      },
+      "optimal": {
+        "estimated_assignments": 190,
+        "induced_width": 4,
+        "median_planning_seconds": 0.0030072860000132096,
+        "median_execution_seconds": 0.0001614530000324521,
+        "median_total_seconds": 0.0031687390000456617
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "VERITAS_R99_FULL_GRID_FEASIBILITY_NOTE_V1",
+  "implementation_source_sha256": "b3c8731f51f5432589a610db4556ce4fe49a58fd759f2e7a0222b64521db4c3f",
+  "parent_digest": "1e54e9437cbd4d7ba56e6806677969221ff0521d0b424171b321bb9a0c27f2c5",
+  "groups_report_sha256": "d4e1633c9de4a8d3beeca5e03a645ddd6e5a53aefeb0441bfce530020ad82c98",
+  "group_count": 512,
+  "schedule": "FINITE_A_U_1",
+  "full_grid_points_per_node": 1453,
+  "required_extension_degree_at_least": 11,
+  "root_point_precision": 31488,
+  "raw_coordinate_payload_bytes_at_minimum_extension": 125818176,
+  "raw_payload_scope": "CURRENT_RETAINED_FULL_GRID_NOT_A_SPACE_LOWER_BOUND",
+  "nonzero_point_weighted_tuple_count_decimal_digits": 616,
+  "all_source_claims_qualified": false,
+  "large_run_launched": false,
+  "necessary_next_work": [
+    "certified aggregation before full mode inventory",
+    "streamed full-tapered evidence",
+    "measured bounded interpolation implementation",
+    "source proof and executable refinement remain open"
+  ]
+}

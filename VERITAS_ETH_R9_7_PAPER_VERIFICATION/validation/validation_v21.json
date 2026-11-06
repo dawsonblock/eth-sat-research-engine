@@ -1,0 +1,9 @@
+{
+  "version": "2.1.0",
+  "seed": 210026,
+  "independent_optimality_comparisons": 440,
+  "budget_cutoff_replays": 4,
+  "all_passed": true,
+  "elapsed_seconds": 0.351,
+  "scope": "finite packet incidence surrogate only; not ETH D.3 or D.4.4"
+}

@@ -1,0 +1,1592 @@
+{
+  "cases": [
+    {
+      "audit": {
+        "edge_occurrences": 0,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 0,
+        "padded_slots_checked": 0,
+        "padding_slots": 0,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 0,
+      "edges": [],
+      "encode_checks": 1,
+      "height": 0,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": null,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 0,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 0,
+        "padded_slots_checked": 0,
+        "padding_slots": 0,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 0,
+      "edges": [],
+      "encode_checks": 1,
+      "height": 0,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": true,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 1,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 1,
+        "padded_slots_checked": 64,
+        "padding_slots": 63,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 8,
+      "edges": [
+        [
+          0,
+          0
+        ]
+      ],
+      "encode_checks": 2,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": null,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 1,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 1,
+        "padded_slots_checked": 64,
+        "padding_slots": 63,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 8,
+      "edges": [
+        [
+          0,
+          0
+        ]
+      ],
+      "encode_checks": 2,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": true,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 3,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 3,
+        "padded_slots_checked": 8,
+        "padding_slots": 5,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 8,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "encode_checks": 4,
+      "height": 2,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": null,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 3,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 3,
+        "padded_slots_checked": 8,
+        "padding_slots": 5,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 8,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "encode_checks": 4,
+      "height": 2,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": true,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 5,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 5,
+        "padded_slots_checked": 64,
+        "padding_slots": 59,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 12,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "encode_checks": 6,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": null,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 5,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 5,
+        "padded_slots_checked": 64,
+        "padding_slots": 59,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 12,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "encode_checks": 6,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": true,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 14,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 14,
+        "padded_slots_checked": 32,
+        "padding_slots": 18,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 19,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "encode_checks": 15,
+      "height": 8,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": null,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 14,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 14,
+        "padded_slots_checked": 32,
+        "padding_slots": 18,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 19,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "encode_checks": 15,
+      "height": 8,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": true,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 4,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 4,
+        "padded_slots_checked": 324,
+        "padding_slots": 320,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 11,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "encode_checks": 5,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 3,
+      "streaming_certificate_valid": null,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 4,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 4,
+        "padded_slots_checked": 324,
+        "padding_slots": 320,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 11,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "encode_checks": 5,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 3,
+      "streaming_certificate_valid": true,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 4,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 4,
+        "padded_slots_checked": 18,
+        "padding_slots": 14,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 10,
+      "edges": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "encode_checks": 5,
+      "height": 2,
+      "height_checks": 1,
+      "radix": 3,
+      "streaming_certificate_valid": null,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 4,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 4,
+        "padded_slots_checked": 18,
+        "padding_slots": 14,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 10,
+      "edges": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "encode_checks": 5,
+      "height": 2,
+      "height_checks": 1,
+      "radix": 3,
+      "streaming_certificate_valid": true,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 5,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 5,
+        "padded_slots_checked": 64,
+        "padding_slots": 59,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 12,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "encode_checks": 6,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": null,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 5,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 5,
+        "padded_slots_checked": 64,
+        "padding_slots": 59,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 12,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "encode_checks": 6,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": true,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 7,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 7,
+        "padded_slots_checked": 16,
+        "padding_slots": 9,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 10,
+      "edges": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "encode_checks": 8,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": null,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 7,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 7,
+        "padded_slots_checked": 16,
+        "padding_slots": 9,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 11,
+      "edges": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "encode_checks": 8,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": true,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 3,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 3,
+        "padded_slots_checked": 324,
+        "padding_slots": 321,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 10,
+      "edges": [
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "encode_checks": 4,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 3,
+      "streaming_certificate_valid": null,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 3,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 3,
+        "padded_slots_checked": 324,
+        "padding_slots": 321,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 10,
+      "edges": [
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "encode_checks": 4,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 3,
+      "streaming_certificate_valid": true,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 4,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 4,
+        "padded_slots_checked": 324,
+        "padding_slots": 320,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 11,
+      "edges": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "encode_checks": 5,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 3,
+      "streaming_certificate_valid": null,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 4,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 4,
+        "padded_slots_checked": 324,
+        "padding_slots": 320,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 11,
+      "edges": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "encode_checks": 5,
+      "height": 4,
+      "height_checks": 1,
+      "radix": 3,
+      "streaming_certificate_valid": true,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 0,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 0,
+        "padded_slots_checked": 0,
+        "padding_slots": 0,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 0,
+      "edges": [],
+      "encode_checks": 1,
+      "height": 0,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": null,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 0,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 0,
+        "padded_slots_checked": 0,
+        "padding_slots": 0,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 0,
+      "edges": [],
+      "encode_checks": 1,
+      "height": 0,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": true,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 6,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 6,
+        "padded_slots_checked": 18,
+        "padding_slots": 12,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 12,
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "encode_checks": 7,
+      "height": 2,
+      "height_checks": 1,
+      "radix": 3,
+      "streaming_certificate_valid": null,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 6,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 6,
+        "padded_slots_checked": 18,
+        "padding_slots": 12,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 11,
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "encode_checks": 7,
+      "height": 2,
+      "height_checks": 1,
+      "radix": 3,
+      "streaming_certificate_valid": true,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 6,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 6,
+        "padded_slots_checked": 8,
+        "padding_slots": 2,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 8,
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "encode_checks": 7,
+      "height": 2,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": null,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 6,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 6,
+        "padded_slots_checked": 8,
+        "padding_slots": 2,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 8,
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "encode_checks": 7,
+      "height": 2,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": true,
+      "width": 1
+    },
+    {
+      "audit": {
+        "edge_occurrences": 0,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 0,
+        "padded_slots_checked": 0,
+        "padding_slots": 0,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "coordinate",
+      "decode_checks": 0,
+      "edges": [],
+      "encode_checks": 1,
+      "height": 0,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": null,
+      "width": 2
+    },
+    {
+      "audit": {
+        "edge_occurrences": 0,
+        "executable_refinement_proven": false,
+        "full_padded_domain_checked": true,
+        "label_selection_verified": false,
+        "occupied_slots": 0,
+        "padded_slots_checked": 0,
+        "padding_slots": 0,
+        "status": "FINITE_GLOBAL_PACKET_INDEX_AUDITED",
+        "universal_theorem_proven": false,
+        "valid": true
+      },
+      "builder": "whole_word",
+      "decode_checks": 0,
+      "edges": [],
+      "encode_checks": 1,
+      "height": 0,
+      "height_checks": 1,
+      "radix": 2,
+      "streaming_certificate_valid": true,
+      "width": 2
+    }
+  ],
+  "checks_executed": 446,
+  "checks_expected": 446,
+  "commands": [
+    {
+      "elapsed_seconds": 10.767776833032258,
+      "exit_code": 0,
+      "file": "proofs/ConditionalExpectationAverage.lean"
+    },
+    {
+      "elapsed_seconds": 1.3648262500064448,
+      "exit_code": 0,
+      "file": "proofs/ConcreteD3ConditionalExpectation.lean"
+    },
+    {
+      "elapsed_seconds": 1.4711615000851452,
+      "exit_code": 0,
+      "file": "proofs/D3VarianceBound.lean"
+    },
+    {
+      "elapsed_seconds": 1.3059705420164391,
+      "exit_code": 0,
+      "file": "proofs/D3PotentialIdentity.lean"
+    },
+    {
+      "elapsed_seconds": 1.50054358295165,
+      "exit_code": 0,
+      "file": "proofs/D3CollisionBridge.lean"
+    },
+    {
+      "elapsed_seconds": 1.4113874159520492,
+      "exit_code": 0,
+      "file": "proofs/D3InitialScore.lean"
+    },
+    {
+      "elapsed_seconds": 1.7887812089174986,
+      "exit_code": 0,
+      "file": "proofs/ConditionalExpectationSelection.lean"
+    },
+    {
+      "elapsed_seconds": 1.450602374970913,
+      "exit_code": 0,
+      "file": "proofs/D3SelectionBridge.lean"
+    },
+    {
+      "elapsed_seconds": 1.554983583977446,
+      "exit_code": 0,
+      "file": "proofs/D3CanonicalSequence.lean"
+    },
+    {
+      "elapsed_seconds": 1.5444726659916341,
+      "exit_code": 0,
+      "file": "proofs/D3StateInvariants.lean"
+    },
+    {
+      "elapsed_seconds": 1.5782129579456523,
+      "exit_code": 0,
+      "file": "proofs/D3ParentScoreIndependence.lean"
+    },
+    {
+      "elapsed_seconds": 1.8087694580899552,
+      "exit_code": 0,
+      "file": "proofs/D3ChildTransition.lean"
+    },
+    {
+      "elapsed_seconds": 1.5939115000655875,
+      "exit_code": 0,
+      "file": "proofs/D3RealizedLoads.lean"
+    },
+    {
+      "elapsed_seconds": 1.5581050000619143,
+      "exit_code": 0,
+      "file": "proofs/D3ClassAccounting.lean"
+    },
+    {
+      "elapsed_seconds": 1.6287942089838907,
+      "exit_code": 0,
+      "file": "proofs/D3VarianceAlgebra.lean"
+    },
+    {
+      "elapsed_seconds": 1.8412310410058126,
+      "exit_code": 0,
+      "file": "proofs/D3SymbolPorts.lean"
+    },
+    {
+      "elapsed_seconds": 1.6875449999934062,
+      "exit_code": 0,
+      "file": "proofs/D3PythonOrder.lean"
+    },
+    {
+      "elapsed_seconds": 1.736121708061546,
+      "exit_code": 0,
+      "file": "proofs/D3PythonScoreModel.lean"
+    },
+    {
+      "elapsed_seconds": 1.4811548750149086,
+      "exit_code": 0,
+      "file": "proofs/D3SlotSplit.lean"
+    },
+    {
+      "elapsed_seconds": 1.364310665987432,
+      "exit_code": 0,
+      "file": "proofs/D3PacketBijection.lean"
+    },
+    {
+      "elapsed_seconds": 1.4108747920254245,
+      "exit_code": 0,
+      "file": "proofs/D3GlobalPacketAddress.lean"
+    },
+    {
+      "elapsed_seconds": 1.528763125068508,
+      "exit_code": 0,
+      "file": "proofs/D3OccurrenceRank.lean"
+    },
+    {
+      "elapsed_seconds": 1.5401895000832155,
+      "exit_code": 0,
+      "file": "proofs/D3BinaryBits.lean"
+    },
+    {
+      "elapsed_seconds": 1.6406005410244688,
+      "exit_code": 0,
+      "file": "proofs/D3NumericSlot.lean"
+    },
+    {
+      "elapsed_seconds": 1.6730943750590086,
+      "exit_code": 0,
+      "file": "proofs/D3FullPacketModel.lean"
+    },
+    {
+      "elapsed_seconds": 1.4560689580393955,
+      "exit_code": 0,
+      "file": "proofs/D3PaddedConstruction.lean"
+    }
+  ],
+  "elapsed_seconds": 54.10095424996689,
+  "executable_refinement_proven": false,
+  "generated_lean_sha256": "2ad2eacddd9ec38375f15f804c1dc47c37c64b3b1f7a65acf4d718e44d3837bd",
+  "lean_version": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "limitations": [
+    "Hash matching is not executor authentication.",
+    "Lean #eval is finite executable testing, not a proof of CPython refinement.",
+    "Dense audit shares address datatypes and the R9.2 reference decoder.",
+    "Coarse work admission and per-command timeout; no enforced process memory cap.",
+    "No full recursion, source-active packing scale, or complexity qualification."
+  ],
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "policy": {
+    "command_timeout_seconds": 120,
+    "decode_samples_per_case": 8,
+    "max_audit_work": 5000000,
+    "max_constructor_work": 3000000,
+    "max_dense_slots": 50000,
+    "max_edges": 20,
+    "random_cases": 8,
+    "seed": 9303,
+    "theorem_mode_enabled": false
+  },
+  "python": "3.12.0",
+  "qualification": "FINITE_DIFFERENTIAL_ONLY",
+  "schema": "VERITAS_ETH_R93_PACKET_MODEL_DIFFERENTIAL_V1",
+  "source_manifest": {
+    ".github/workflows/test.yml": "2ee947b2a8baa471224c2a190a9f5f655e7ee0540e8b51826f139dbffac13e21",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "paper/quantitative-contraction.tex": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+    "proofs/ConcreteD3ConditionalExpectation.lean": "ef705b77ba6e8b9e1f90d32cadf54a4f24995f8d06960c79a8f6f838f5794783",
+    "proofs/ConditionalChildShrink.lean": "61a649c876a4261c62a25410ac00ac24e05ee8f3edbae93b20c159e4e9f62360",
+    "proofs/ConditionalExpectationAverage.lean": "eabd9dc90cdcaa3ab1e24790e971bdae10184a389f77e69482d5e8c3a6b8aed7",
+    "proofs/ConditionalExpectationSelection.lean": "d09a5ca2083fc576757449b85cc23d5fa9437a3da677ae8f88a9aba3f5ad86f8",
+    "proofs/D3BinaryBits.lean": "6da3925c77d547c4efe795481ad74de2f2543a20d64f806006d6b159c38b5023",
+    "proofs/D3CanonicalSequence.lean": "4f2f23c18d7d74344cf363170d89fe55a2d857fc375208a5c6ad2810c637e07e",
+    "proofs/D3ChildTransition.lean": "84a8ab6190a9efabf206dfd479a75b1c9d9996229d14b88cb4272204c4653b20",
+    "proofs/D3ClassAccounting.lean": "300d491b50e5432109e531c4c789a3f850ff85118c1346b4ec84d80ab3896ecd",
+    "proofs/D3CollisionBridge.lean": "eb59c479c1a66c018adf7d4daf431868c12074a9dae95b1be57fe027dd0ba80e",
+    "proofs/D3ExpectedContracts.lean": "02d72cfe862ad1c79553ed0f4d5e7a53c2a860a8c4f415aa6dc1a973a437a9db",
+    "proofs/D3FirstMinimum.lean": "60fce126a333380b7fb0b5bf0591b6c4a8d045ed126ab0271c0b6182ddea9bc5",
+    "proofs/D3FullPacketModel.lean": "8b7b562d88a5b69e07c489e2a3baa762136a000cf11c8606e967979a25993ac0",
+    "proofs/D3GlobalPacketAddress.lean": "73a81076d57663e1d280ee22fa8852e1e1ec929ff6aa295b2702204657120fd8",
+    "proofs/D3InitialScore.lean": "ffbfaa76a80e1b32a3a1895b4582fdf883f22e7150d11827635353fa30289899",
+    "proofs/D3NumericSlot.lean": "3fa7c0b860a977cd5e5b8cd6146c852ae4554cd9eb78450f3114623c196e900f",
+    "proofs/D3OccurrenceRank.lean": "4f762ba22b402264ab28eaf389bfbaab92f78a7dd5deea149b45764920a2ae6f",
+    "proofs/D3PacketBijection.lean": "d16f1fffea1b033638b96253705d20f0354e5049bcd46cf0b4566a81856f508e",
+    "proofs/D3PaddedConstruction.lean": "d52ca925e84b53d46ccfeb779b2b3f66d24e008fce65c5443b539f01a962d497",
+    "proofs/D3ParentScoreIndependence.lean": "c962a16fec5911970a782b07f5199cf7245f0f2c866660053ad45e9304f0d2de",
+    "proofs/D3PotentialIdentity.lean": "70e9f9b195ef4537cc66188f3563d0c37bb66ce54544d5134c368681d8560427",
+    "proofs/D3PythonOrder.lean": "41113b7594d5e96813d2e9d2cfc9732e7147cf697fb00302fb5418f2d98d35e0",
+    "proofs/D3PythonScoreModel.lean": "21667cf11bb266c5b15156c349bee779b5b2be1ed12639252d7e293167e00d92",
+    "proofs/D3R93Contracts.lean": "6b6c010f7d6d0c51f8c65f82b30f14cb5f515a37de29afa94dc5681fe51208d6",
+    "proofs/D3RealizedLoads.lean": "c28f26cbd9ba954d37f46f3ab9891dde2c6f551cf9e9db7547fee5d7a3fdc608",
+    "proofs/D3SelectionBridge.lean": "6d731f99ab7bf196b022981a959cd524eba76edb53a1037d2e31353953abefc7",
+    "proofs/D3SlotSplit.lean": "1185f1a30f8b50e1ac39ac9dfc76c57fd37287b3656f2ae3f1b05f28ca9af398",
+    "proofs/D3StateInvariants.lean": "f7f9bdc9dba9ea5538be8da79769976b4eefda1ce9b43333dad9fa097a2a1512",
+    "proofs/D3SymbolPorts.lean": "d4bf0354289f5855c8c29ab2d15d60d8e5fd90d9952425b2d8e1fb49848a9963",
+    "proofs/D3VarianceAlgebra.lean": "98e9e9c31ad8d91a43549cd594600316f739d5e9e9d752d291ec7d9b787c4b95",
+    "proofs/D3VarianceBound.lean": "2e15e338e68e9b6e2bbb96c5a554bd475caf654b3798c7819693bc8682dd8c25",
+    "pyproject.toml": "d336439f394def6f7d2787846279ace8337c4532127b290e00ac57f1d17ce78b",
+    "scripts/validate_conditional_expectation_lean.py": "5f4c5fd078fd4a453ad1237abd3a861c3330591dfe0f6d686b9cb3c7d05e720c",
+    "scripts/validate_r93_packet_model.py": "2b75ba3e6e4fbb50260226227eda39cdc2ee033ecf247fcdc1cc0b9d6fbde86b",
+    "src/veritas/__init__.py": "8f9c13e4e0555f309c36459f6392d568260b6115e61755b7e46429c2a5b2d20b",
+    "src/veritas/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/veritas/api/main.py": "faf50688d7189dd6b0c4ebb31f9132135a38cf903cbbcb43f38a7ec5ecfa5721",
+    "src/veritas/audit/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/veritas/audit/store.py": "dabe81f4c30977392c9c7cf6e708c76f0171aaafd7b0ae74db1d436867f424c4",
+    "src/veritas/cli.py": "398495345b515b20f267bd8f964625f5d70a286c875e8169f71bd475a4f55398",
+    "src/veritas/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/veritas/core/cnf.py": "07892d0c984563cf59bb0cf5e18d62daeaf9832e3949e80c83e484f94c68d044",
+    "src/veritas/core/logic.py": "dbbcc536f9e7646531bac81360633f81cb77892c7d6038b9a0e4e66e70f14047",
+    "src/veritas/research/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/veritas/research/adaptive_contract.py": "a194d6d8d456487d94d97d053896b01eecb9363376e155dd13065f7f1be95b27",
+    "src/veritas/research/algebra.py": "af3d76948852aabd8aa06154676047abcc8f83f8399a37a06bd5f67084fe7dfd",
+    "src/veritas/research/appendix_d_contract.py": "481af603c7b225a579091e508c60887ec564e0472f96e47617bafa1abd86a0c5",
+    "src/veritas/research/appendix_d_schedule.py": "30e4b71dd91eaaaee3549c77bdbd231fa493af69ab4eedf98500915bc682021d",
+    "src/veritas/research/boundary_dp.py": "8229f6aa89efedfcd3ef1691d70e3bc508ccaeb8c3683435e77d84962a7af328",
+    "src/veritas/research/bounded_degree.py": "a6d3c0eec33e1fe33a1d1f13e258179af1e9c5a8cf23520e06d666fe72fd5180",
+    "src/veritas/research/bounded_partition.py": "2a6b6b952e76e96e2cad34f54aee81d8767ce1e0068b32416f83d592a2996d1f",
+    "src/veritas/research/bounded_partition_checker.py": "689a651956542f1f445274d6362bf53934f01ad8cbb84e539036690524b953f7",
+    "src/veritas/research/cauchy_deformation.py": "e59f97614eca8cad0b16e7e9b0b83a7e204d50bdc4f1ec1d6cc9b10ac7e229f2",
+    "src/veritas/research/cauchy_elimination.py": "bc3a65e63f57c12a6814cbc66ea78a723a4ac1a13c489b78748be163f04c30ca",
+    "src/veritas/research/cauchy_modes.py": "8523aea52edb0ea22c67fee85376f2d776027efa51f23ea01459d88ccddcd0a3",
+    "src/veritas/research/clause_interface_rank.py": "10ef4621fcec99d56ecaae72512a36ccb2163f2a1f134bbfc8884f5510b83d3a",
+    "src/veritas/research/contraction_planner.py": "43052a8b9b20eb40425f2fb8b265b817bb5260075f71c352c071e54e269acd9c",
+    "src/veritas/research/dense_cauchy_testbed.py": "62144e94f373a68bc1d0f7505553e671aa5e4a2cb7b69b05f7295771caa14309",
+    "src/veritas/research/eth_arithmetic/__init__.py": "27ffdaf495837782059ed9281a3f06096bf880fe9085632ebbc4a59a57ff62f2",
+    "src/veritas/research/eth_arithmetic/boolean_count.py": "e0460056ecb7b0370b6f466d0da951dffdddce4cc8c52e74ef8e9a5a8d38817f",
+    "src/veritas/research/eth_arithmetic/creation_lifts.py": "09ded3ff0150315bf53e168d0e677502534b98dbd2c899fc1cd628e0f328f228",
+    "src/veritas/research/eth_arithmetic/extension_ring.py": "09e56b7f8a453e6223fb64a404aaa0b6fed1e73c834424d4a840e51692e06aee",
+    "src/veritas/research/eth_arithmetic/gf2.py": "b89f7c60c865b34d4a5c7d0819ec78e1493cc6f604c0fe84fcbed9de8b147c73",
+    "src/veritas/research/eth_arithmetic/jets.py": "69f2917e2b3b3f9798f77f319e599ab39deb6da5cbaed8e73d33ebea0c473893",
+    "src/veritas/research/eth_arithmetic/residue_points.py": "75839459a0440f9b852636e1e1f89da37fb5ed5a4f0689a525b3e91f50412226",
+    "src/veritas/research/eth_child_elimination_v38/__init__.py": "e7e9ec1bf82b12de54c9fb94a339e517086cf5ac6eb9b507cd41729555d53d4f",
+    "src/veritas/research/eth_child_elimination_v38/cli.py": "1007829974835a8f0905a84a04aa0b619a2007298e9576301f910b6feaf83f30",
+    "src/veritas/research/eth_child_elimination_v38/engine.py": "52f3dd13859d3ed0a1e760acfafe4c08a73f68b2897aabff22694258c6041880",
+    "src/veritas/research/eth_child_network_v35/__init__.py": "e91b2b621c452d3e387cfa4fecbd36cb043cb2b35c9171a504e6de2948d66420",
+    "src/veritas/research/eth_child_network_v35/cli.py": "a2b188f9752d6256b2f60505c0eba8f659f4778089ff3cbd984a0ba4cecbcaac",
+    "src/veritas/research/eth_child_network_v35/network.py": "41d11b5d614746341d66116a644e7a3256cb1997db1dc7fa401f7a4a4defacc9",
+    "src/veritas/research/eth_child_topology_v34/__init__.py": "efa30a1f95b927586396ae0e1d6c4c80ddb1c061acd0b11368ac04a6193cc111",
+    "src/veritas/research/eth_child_topology_v34/cli.py": "0822d90070971f5af56d334d9907935329a9e24e95956fb34bdc92fdb08b7238",
+    "src/veritas/research/eth_child_topology_v34/pipeline.py": "2afe97d29be319efb0e6d8d4bd7272da61a06ef49be67603a5de3a39aa8864d5",
+    "src/veritas/research/eth_child_topology_v34/topology.py": "76fb9108e5c7e765a651ecb94a6ed524bc187b4b565a90da2ca2e1683e7952f2",
+    "src/veritas/research/eth_counting_v39/__init__.py": "e9c5ef6076d7df59367ae9480eecf1a7eaed421dd30c67440b3246d315ade663",
+    "src/veritas/research/eth_counting_v39/auxiliary.py": "51376078b3397c0e40335921359097e8c5b2044e8925a31d079fe7f086234b1d",
+    "src/veritas/research/eth_counting_v39/count.py": "af91fb266f785a93c7273d9e27792360df85dc1c0f7140815f922fb5d6382106",
+    "src/veritas/research/eth_counting_v39/embedding.py": "b958b59b436b718d3fe511400af30653d4a34d2e59a308ec345d2481c6e34ee0",
+    "src/veritas/research/eth_counting_v39/instance.py": "0290609248f8e24f8994b4f4e932cc79782da624e93a2fc9c6f9b4aa84a6e238",
+    "src/veritas/research/eth_counting_v39/labels.py": "0f3950163813ed275619afe17e0c58953c047766c72f6c9947667d50409c535c",
+    "src/veritas/research/eth_counting_v39/layout.py": "2ffddb34c47ee6d07d24a8cfa10a7ba712d9529157fc2e91b2bc2f31c8eaaa19",
+    "src/veritas/research/eth_counting_v39/parameters.py": "68e1e60a8de0a153ba82ad9b07a6d2ea3cd52a8aece4aa1baa646f2125841693",
+    "src/veritas/research/eth_counting_v39/separation.py": "6d2ff4eee49ff538efcf4f03fbce480268fae2ee31f1eaee21a9f03adf82b8ba",
+    "src/veritas/research/eth_counting_v39/taylor.py": "b791bc3570afadda43ae977ef78fa8b8b56bcb0528c2b81056a0005b2ed5b219",
+    "src/veritas/research/eth_d44_child_reference/__init__.py": "6a5a2b6515eb925768c47c112bdaf5e422edbfeb79bd9088835dacbd0f3615f8",
+    "src/veritas/research/eth_d44_child_reference/children.py": "eaed5a508717847afc34a6eabdfae5b01cc2b6d6f212f1b15fa455dce215e66c",
+    "src/veritas/research/eth_d44_child_reference/cli.py": "1d66963b6b01114c96daf83eae6745a1c264d52ba93676f8808c47c7935c075b",
+    "src/veritas/research/eth_interpolation/__init__.py": "a636992b6ad372bf4b945492a8726672c8a355546facaf4570ba4e5bb3dff081",
+    "src/veritas/research/eth_interpolation/cauchy_product.py": "f733db73e7848bf33bc0afcffee24e740b707ef132278b695a9113069109472a",
+    "src/veritas/research/eth_interpolation/cli.py": "8663c285e76fc7ff1360945ddfbc4fb52624790a06b6babd948421d87b19e09b",
+    "src/veritas/research/eth_interpolation/cli_v29.py": "41b8150858c9fad3025f2184242fc95754010bb661106a90e2051197545323db",
+    "src/veritas/research/eth_interpolation/extension_lagrange.py": "82ea766aa2e48a11cb367886c9d5dea4cf90fd7827fb702a88bced250276555a",
+    "src/veritas/research/eth_interpolation/hermite_crt.py": "e723fc38694fa74fac75d3cd87154b40ef6f7249998bde008093eb735d173379",
+    "src/veritas/research/eth_interpolation/shifted_cauchy.py": "b518233c72e76ee87e9d77eb2abb080a335a46f4355f66ae1f0be684ad1a1e8d",
+    "src/veritas/research/eth_interpolation/source_hermite.py": "a43f477b02bdfb01d728bcf3fbb05b25e72283f439389ab6ca2ef17f97d72e35",
+    "src/veritas/research/eth_interpolation/tapered_hermite.py": "7c80d15d0f0f1898e6f0369ec051ecbe5c8157b0557edbe403f29d84fbdd3a7c",
+    "src/veritas/research/eth_mode_bonds_v32/__init__.py": "c9e08544aec82c0f1eee72fa99b14a622dcdd1b19060b81bdc8342a6ed61c2f2",
+    "src/veritas/research/eth_mode_bonds_v32/bonds.py": "d5488f0bd9bfcaa9e3827a73a19e9e84db6dd1f05347a034f8e48ca60dee4381",
+    "src/veritas/research/eth_mode_bonds_v32/cli.py": "d015a86acd314878896488b9f44e5af9a0d6ecf0615145e636d70b590f3c72ea",
+    "src/veritas/research/eth_modes_v27/__init__.py": "0c9d6154629dbd5cf0fe43a191bb523fbd69898e1f53d880f3b01ca0e36798f8",
+    "src/veritas/research/eth_modes_v27/checker.py": "cb4c43fc12fb1df3d8d8e9b35bf9121eb64be61d701154e03657953e76ce6b52",
+    "src/veritas/research/eth_modes_v27/cli.py": "fe0cdd318a7df0ab1462d9d2a55ea32e056bf5e3b0ca9c2271ea81fffd97cefd",
+    "src/veritas/research/eth_modes_v27/constructor.py": "3a1670149f4fb808fe66814fe9a26fc8edbcf90965dabeb10ea079591c6bc40e",
+    "src/veritas/research/eth_modes_v27/enumeration.py": "dc4028211b04646c6faa6048b3c0624cf7e8669e5bc7b26c9d1b9c0556496591",
+    "src/veritas/research/eth_modes_v27/reference.py": "649c7e9eba59fb4d8e92bff3dc5aa4eb3afa97428feb4ecc1e541f357d25251a",
+    "src/veritas/research/eth_modes_v29/__init__.py": "643ad67913c6ed0018d69d2668f2a834b5a67cd83e86585f207d213488504417",
+    "src/veritas/research/eth_modes_v29/extension_modes.py": "613e25a4c0a0754a80971dbc11048b206f7a807854dce983969f7d509b2bc257",
+    "src/veritas/research/eth_modes_v31/__init__.py": "40931daf5d9e3338ade0ad3a860ac8689053ae9e890fd79ace2ea0652b53f355",
+    "src/veritas/research/eth_modes_v31/cli.py": "44ee6baba06a8929321e81db4b056e7e0afddb99b955f1b8866a457f99cfeda3",
+    "src/veritas/research/eth_modes_v31/jet_tiles.py": "6dfde3a1026211bd0b1ce76655ce0fcadf6fcf6f076e55f63ba28877b23fad48",
+    "src/veritas/research/eth_packet_tensors_v36/__init__.py": "24b297eeb1b82219e79bccec8cd45308dc5b48c5115f154e3d0a584dcd9c8789",
+    "src/veritas/research/eth_packet_tensors_v36/cli.py": "ce5b50b09a14a6a17bc9966d2b5e5e497f44c12ec929bc7d7f0cade6358c9d1d",
+    "src/veritas/research/eth_packet_tensors_v36/packet.py": "07d58ae224641dec53df876ddd7dd568d355a001489dff0db199dfa19ba456c7",
+    "src/veritas/research/eth_packing/__init__.py": "4516408d9c137bc80d5e7ebc96489ae995350ec418a393ba40c4844f46bd881f",
+    "src/veritas/research/eth_packing/cauchy.py": "b2c113dc5a8e946354565664d83dcaa28470221d4930477bd7f302ef3ef893d7",
+    "src/veritas/research/eth_packing/checker.py": "fb5b42a25d7b3dacbbb1458edda976bdb221d403797a93d2965de185274897ee",
+    "src/veritas/research/eth_packing/cli.py": "49324e4757fc23b271b03a17461fb647c2501c746727ed96ae94aea8e6a4b883",
+    "src/veritas/research/eth_packing/labels.py": "90807d4e40bb48ecf60aebcc02959f77242ea1fa1bb6904d3f1ad0d6b0659f93",
+    "src/veritas/research/eth_packing/packing.py": "42a820695fdd6e45fa09587e70b2b8813a1123f41e4a0717058898d6aa353353",
+    "src/veritas/research/eth_packing/parameters.py": "7aac035f78509a9198253a44fd35f9c2c1d9ad82eb1aa5b7eed475b23d8965e0",
+    "src/veritas/research/eth_packing_v26/__init__.py": "1e319c435bc106ca351a8b97879d0c5eb32618b173751e512a4910ec7f1b3d72",
+    "src/veritas/research/eth_packing_v26/checker.py": "abe851688a4eed990a60c02ac13d3edca75661130531d6a7ad2a887dc9d920a0",
+    "src/veritas/research/eth_packing_v26/cli.py": "629fb70390ce0f120bf0477c362ec0cb530b1a33e6ac69c802c6c80444ab9826",
+    "src/veritas/research/eth_packing_v26/complete_bipartite.py": "6866ca97574c7c90dad938fa2797efb38855d1cd8ceb5aa2c4d72bfcc27040e4",
+    "src/veritas/research/eth_packing_v26/complete_bipartite_check.py": "22a416bca4e75de9f5be84edf9cd0fbc82b2a5b39b9f0e4a8f21017668f9d261",
+    "src/veritas/research/eth_packing_v26/constructor.py": "d53c78018a11d95742317434a0b3773025531949c54d18faa0a86c5f0d04d970",
+    "src/veritas/research/eth_packing_v26/cpp_backend.py": "91306fcf7e5cd53c20741c2e52ab886ebbc026c30d9b2d047247b3c70ca574b8",
+    "src/veritas/research/eth_packing_v26/expectation.py": "35b414e66ac9dcbc505bd1309e6879b5b8b70973ec1a92c463023273a82bf699",
+    "src/veritas/research/eth_packing_v26/geometry_audit.py": "c3ae21ccf5b058cb882e8453abef65c6673821f902356900df66c2fd077a8b41",
+    "src/veritas/research/eth_packing_v26/global_packet_address.py": "eb1f3dfa36945ce3148fc8f939f04a3bdb38d2ddebc5a2b790f33c810f9ed3ad",
+    "src/veritas/research/eth_packing_v26/global_packet_address_check.py": "f493580bcabc8f83f6354daf64ee82f4d6b19167859b774abc14ba249dbfbadf",
+    "src/veritas/research/eth_packing_v26/implicit.py": "592211335d427144d75f5b4b0c103f1eaebb5e1123b45b2256c54ba65f8d75fe",
+    "src/veritas/research/eth_packing_v26/packet_bijection.py": "13d5f24ca3824b6cd7fdbb1be7c1e1bc9c934801bd7ea5454e94168a816abea0",
+    "src/veritas/research/eth_packing_v26/packet_bijection_check.py": "3ecea942d8e85b9f3fe9d277d13572b83d212194111bb47e5b485d8826c6c664",
+    "src/veritas/research/eth_packing_v26/streaming.py": "002409180ce0a5bd334821f8a0725a50ee840d2064390ec01e24732b54255f33",
+    "src/veritas/research/eth_packing_v26/streaming_check.py": "d916bc5adc22c8f10e7f16ab885e1441431b09fbc4c6627af6e60f804be12f41",
+    "src/veritas/research/eth_packing_v26/symbolic_regular.py": "cfeb4f702538ef1951c11b8a25ca40e7838143d2ec663f2504b216e95ee35aad",
+    "src/veritas/research/eth_recursion_v30/__init__.py": "c9c1bb755cdeb0b7da0ba606a20f181e95f1a141322b10d2d532fd5c95d8458b",
+    "src/veritas/research/eth_recursion_v30/cli.py": "c58ec53b08a7da5b7e17afa8417551eb342ac00f71ce87d23f7b63c1dec0c105",
+    "src/veritas/research/eth_recursion_v30/implicit_children.py": "04b476b9cbf9fa5eea1750fa4cf0ec121cbb9154ca83a56e2d84d5489c10a087",
+    "src/veritas/research/eth_recursive_bonds_v33/__init__.py": "faddb44104e10dfcd67f9f567a8ff37c0490da34e3707cd20c485c2956f5fc49",
+    "src/veritas/research/eth_recursive_bonds_v33/cli.py": "90771e7d9b2d2a19371d5ff99825d9e96c24434e4bfb7cb024b5ad63b4027685",
+    "src/veritas/research/eth_recursive_bonds_v33/recursive.py": "e153eb1288f6670d0b962a5df36325e23b8fdb4a42c9f3daf4725fa13b0fa58e",
+    "src/veritas/research/eth_recursive_contraction_v39/__init__.py": "d173112c7bb223d60475615ab05daefbeee768dd8bbaf5addc19524929edf1e2",
+    "src/veritas/research/eth_recursive_contraction_v39/described_network.py": "1fab56ff96c8558f288562522a81ed8eb8e3c169bef2e0497bb3e5f05ef828c9",
+    "src/veritas/research/eth_recursive_contraction_v39/geometry_point.py": "9417e6e75dceeec21fa89f4824b0989df0e2d1c77f3bc0f5fdd0f5daff4c981c",
+    "src/veritas/research/eth_recursive_contraction_v39/independent_tuple_oracle.py": "34a3c9468b74ac3864611a05d65ea59206aae035c4e920f5dfa1b705add0a70d",
+    "src/veritas/research/eth_recursive_contraction_v39/lazy_children.py": "aa675f1f0829662cc36c55f9e8d0afa9a0622882dd8f755de54a24bdab690bca",
+    "src/veritas/research/eth_recursive_contraction_v39/mode_bound.py": "6139d5684070b7c6efea6e04e4e91b853f4c40c1049dd472cb86ff74a2c5ba5e",
+    "src/veritas/research/eth_recursive_contraction_v39/mode_matching.py": "69dd2f88593cc33e8c04904db145f871d5f2bf107e5d5efa2e6cd02f52529933",
+    "src/veritas/research/eth_recursive_contraction_v39/point_children.py": "51926df054539b0b1af4ad632dd454d23ae93775e67625a7ee45ac3cb82d6cc9",
+    "src/veritas/research/eth_recursive_contraction_v39/point_mode_matching.py": "e4dbf13b308eb30d4e6ba87ac64ece6312b9a8311760d25b00900aaecbb70e6d",
+    "src/veritas/research/eth_recursive_contraction_v39/point_modes.py": "379d241f15e8c95d44d58ac980377b6074f6978e7e0f93ea50e2cb85c6aaca90",
+    "src/veritas/research/eth_recursive_contraction_v39/structural_tuples.py": "40976306306962e09ea7e8a91662160eeea8a7d06a9daa8a549779cc10bfcf3a",
+    "src/veritas/research/eth_recursive_contraction_v39/tapered_described.py": "68d9df7fcd0636fc568d17f7fdfe1c61eabd31e3c15f115bf5988ef8bc83e04e",
+    "src/veritas/research/eth_recursive_contraction_v39/tuple_stream_check.py": "0d76c834828dcf2af63e11edaf5ef83b2d39be2de54569a310160b7b641493f7",
+    "src/veritas/research/eth_recursive_contraction_v39/zero_wire.py": "775b4c6d8fcacd679b4f15c94a1af25740ba8efb9b852898322c7d8ae1445116",
+    "src/veritas/research/graph_decomposition.py": "cd1489edb810dbd596ce0d21ad61206474d5973c17f690616c83e307446788c2",
+    "src/veritas/research/grouped_cauchy.py": "eac96ffe9f0195a381161a2c0e07bea2c988b3eae09b7102979308a9810942ff",
+    "src/veritas/research/hermite_ring.py": "5bcb1a27d74809be7e443c2eaafa78e7c8a076f5051bfeb25e8b61bef009d11f",
+    "src/veritas/research/independent_dense_oracle.py": "3d1bf88ef25783aaaf2f035966c0bb984b7989a3491fccc52aa35ee209c67066",
+    "src/veritas/research/independent_r82/__init__.py": "4fa711f7b1020ee0cf105249ec099bda4bbe64873a737255105300e86ba9584c",
+    "src/veritas/research/independent_r82/point_mode_oracle.py": "5d5389e7c31005d55df9ad96c292b030eecbfaeb53324886b8033f1b00d57f2f",
+    "src/veritas/research/independent_r82/pruning.py": "8fba5a55d4ff0798938c4506ef9d91736c65c40cd461c1ece191e08c873438ac",
+    "src/veritas/research/indexed_contract.py": "e4ca73e1338da4d091eaf8abe661b87f8817a5445fd451662614b0c29334e7a1",
+    "src/veritas/research/matching_checker.py": "53b9f65f6b4c5a64f9ad870c3b0e7868472f9f0caf620656bb77443c01c5ceb2",
+    "src/veritas/research/matching_packets.py": "74d8460dfe8932dbadbee77499f5f93ec2182b17c4c8c735e548dbcbaa05bac8",
+    "src/veritas/research/math_exact/__init__.py": "3a552fbd72e1ec3ef2d28e7f2b7a210b61e3bbfee19174ecd70085d5d362ef84",
+    "src/veritas/research/math_exact/oracle.py": "aad5ab063f901688d770df4b7757f31e4a00a8326649fced4607b355b16d8aec",
+    "src/veritas/research/math_exact/ring.py": "4edfeec5f820971f87a3eb4a097023c28434823306031701e70e5965e7287a7a",
+    "src/veritas/research/math_exact/status.py": "6cdc79f17897de46bcd450a979b1866415d6f2f360881df6ca84ddfa845c591e",
+    "src/veritas/research/minfill_contract.py": "e9f6d43309bbbeda779764ff77b2f4eedc011f56b2408482e2523708523a6683",
+    "src/veritas/research/optimal_order.py": "edc5c42d7b8242565936e7fb611bebb538610af6c3ec8154ba5a68b7673096f4",
+    "src/veritas/research/optimal_packets.py": "8b450509713f9fa032114bde758c45d4c9caa7d5cbbca24cfceeb5bf17bdecd3",
+    "src/veritas/research/packet_bound_checker.py": "543bc0b7d664b52ab977572c722bdc9fd2c1d9754480c7a4236a191512d1baf1",
+    "src/veritas/research/packet_schedule.py": "3be32da6bbf23f7c6ce663fbb1afceac8039feed6b37340b43af713e2f507f11",
+    "src/veritas/research/recursive_separator.py": "f2ee99d236e368b37b1285a476137efb30351b58d52fd7d024daabaafbfd6762",
+    "src/veritas/research/scalable_packets.py": "d45efa0cfc2a79fa8fdc3e599cfec25fe2ce65675a4b9d79ef80dc8687623fd9",
+    "src/veritas/research/source_cnf.py": "30412fe4cdbc0edd8b1cb22055221dabd86e3de462af861a4d8af613b7444f91",
+    "src/veritas/research/source_cnf_check.py": "c48e9c9ccad92ff122f2aacc3a4371bdb5c44d270a779a6615bfdea41e41c708",
+    "src/veritas/research/sparse_contract.py": "6f9961eb9ea184f99886f38d17835f2ee397939fa1f58ddebf4f9e8c7af1e701",
+    "src/veritas/research/symbolic_cauchy_reference.py": "a4034bef84e080d10615e6b82c3a13c11f13df2c23e8f8f90381891421399ac2",
+    "src/veritas/research/tapered_v4/__init__.py": "3267061efff9a44fbd8ed1d92a9036253e2ac399bc251a6640bfd4f32c582a58",
+    "src/veritas/research/tapered_v4/actual_child_certificate.py": "ca0e88a0aacbb2675acd0462e29cf3a532e80a3980aaf9a3de400c51c3551526",
+    "src/veritas/research/tapered_v4/budget.py": "ad7cd48b45961f6e955a41e9e42e74d69ac13b823a6aa268f43d04ca0b8eb731",
+    "src/veritas/research/tapered_v4/certificates.py": "454bd0ac4ad4f25a63ce32b2d1d0776c6385d6e66a5d92afa385cb91b6e9bf94",
+    "src/veritas/research/tapered_v4/child_audit.py": "9323974d94023776c1ba19e9b3598aaacaf2a8f5fb18612672c345f0e143a2ed",
+    "src/veritas/research/tapered_v4/child_partition.py": "1c87674110204510039b1bd1d65466a4ab6c514ad9595aa791f6a498a2e46f39",
+    "src/veritas/research/tapered_v4/child_recipe_check.py": "23b96a5d653dbf75a372ace82f5c391b7b5a7f21cf6c9cbd2432bc67d0042f8d",
+    "src/veritas/research/tapered_v4/cnf_count.py": "81ed1350dd64158cc2bb011e6def37851b553f07bd5f4fbf81e33b158b0b74c9",
+    "src/veritas/research/tapered_v4/model.py": "247afa79f4fa9dbb9f16022fe008ca95ba437453a18e4d4bca870a5ba15aeecd",
+    "src/veritas/research/tapered_v4/parameters.py": "980446280e8d58db895c7b8ff083b4d75559981db8ba6655e8b9240d8f703fc5",
+    "src/veritas/research/tapered_v4/provenance.py": "f9049f69a92ef6189cca9c2a154896b99067806c9fa42b94925fdacaf425fa10",
+    "src/veritas/research/tapered_v4/recursor.py": "6f04c7e2274b94f6a351612330c260319c79f42054ec077d1b5e7877875b2e35",
+    "src/veritas/research/tensor.py": "9265b20449aa8a8a1dbc739b8b1295456f0d99d2d6eef21187a67d8802a270f6",
+    "src/veritas/research/violation_polynomial.py": "b96cce9f02ffff8d395689efe7406785b981b109ee6bf42b8bdf7f69d99b91e4",
+    "src/veritas/research/weighted_children.py": "ee58c36953b181d323369cee07237e8eab69bd58cecfccc98764ec4563084dda",
+    "src/veritas/research/weighted_recovery.py": "1658e26469f4fbd0c477412a6bb2df8414f731286a2c3e2ee6a191b6ac61cd45",
+    "src/veritas/research/wire_deformation.py": "76e6d7c5086246e8cc78159de1e4c351666f1ee518fbd42aa1be7e5b754c915a",
+    "src/veritas/solvers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/veritas/solvers/certificates.py": "baa4a9f1cce7399faf307fbb9dfb60c1517a4841d25906b5ae9be16673878e3d",
+    "src/veritas/solvers/conditional.py": "8153e9af871bad3b2d39d85835aee09684ec978b3b68c8a46dc1a181e9ac04c4",
+    "src/veritas/solvers/count_certificates.py": "cd41c37778abbd1e2970b6019e730c8e4d485a711ff8d60f688d6323c2cb9db2",
+    "src/veritas/solvers/count_dag.py": "0d012829d5109c65436996e95e777f50f6226bdbdd33f90fa13429c01c9c1421",
+    "src/veritas/solvers/ganak.py": "b918f91a817b511b17b9d5f2e4ffd480954c8ec4cabac47cb17cca5142a5dd46",
+    "src/veritas/solvers/marginals.py": "5ca7ccfc2fc8c4678577d4eaefcb292b49f11aef902376672f8d17b2ed18c1c8",
+    "src/veritas/solvers/projected.py": "40be0dcfcc12855c780f8c869f554dc7c86f606055f57d2a20a79de18a788a49",
+    "src/veritas/solvers/reference.py": "1441df284f81c9731777526e89023f5ba03ceb6d3ca5dc2b1dfc54f176d2add2",
+    "src/veritas/solvers/weighted_dag.py": "84b34d6f10dcc1286a9ee5d7e1b5c81e43087d7c5e2bdc4e6c2b5171cf72bcbf"
+  },
+  "source_manifest_sha256": "bf10e66fd8673a02a9770a9554cb7a4369e5ab7a8ea344cca8b6a273b0984da2",
+  "status": "PASS_FINITE_DIFFERENTIAL",
+  "theorem_mode_enabled": false,
+  "vector_exit_code": 0
+}

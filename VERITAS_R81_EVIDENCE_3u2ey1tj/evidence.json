@@ -1,0 +1,140 @@
+{
+  "created_utc": "2026-11-03T06:34:26.169596+00:00",
+  "finite_certificate_sha256": "6191b63489fcda331a2e8e55dcbad7f87b2aa86a4fa96b5c5efa47506f7af6d3",
+  "ledger": {
+    "accumulator_operand_bits": 6571313,
+    "complete": false,
+    "counters": {
+      "accumulator_ring_additions": 3074,
+      "accumulator_ring_multiplications": 12296,
+      "algorithm_leaf_calls": 12296,
+      "algorithm_leaf_work": 1743918,
+      "child_partition_checks": 3074,
+      "child_recipe_replay_steps": 141362,
+      "description_items": 282873,
+      "finite_multiplicity_checks": 50,
+      "generated_children": 12296,
+      "hermite_plan_checks": 1,
+      "hermite_recoveries": 5,
+      "independent_tuple_check_steps": 25538,
+      "independent_tuple_count_checks": 50,
+      "interpolation_calls": 2,
+      "mode_precount_steps": 13058,
+      "mode_precount_tuples": 3074,
+      "mode_records": 288,
+      "mode_replay_precount_steps": 13058,
+      "oracle_leaf_calls": 1,
+      "oracle_leaf_work": 774,
+      "packing_calls": 1,
+      "packing_work": 688,
+      "point_evaluations": 50,
+      "recursive_calls": 12297,
+      "retained_jet_coordinates": 240,
+      "retained_tuples": 3074,
+      "tuple_execution_steps": 13058,
+      "tuple_valuation_checks": 3074
+    },
+    "hard_memory_limit_enforced": false,
+    "maximum_accumulator_operand_bits": 5210,
+    "maximum_child_degree": 2,
+    "maximum_child_edges": 6,
+    "maximum_depth": 1,
+    "maximum_parent_degree": 2,
+    "maximum_parent_edges": 8,
+    "maximum_precision_bits": 521,
+    "mode_counts_by_weight": [
+      [
+        1,
+        288
+      ]
+    ],
+    "observed_work_units": 2299570,
+    "serialized_certificate_bytes": 15030403,
+    "serialized_transcript_bytes": 15001682,
+    "unmeasured": [
+      "internal mode and packing verification arithmetic",
+      "source Hermite plan generation and verification bit costs",
+      "child recipe replay bit costs and allocation",
+      "independent tuple oracle mode and source replay",
+      "independent tuple checker integer bit costs and allocation",
+      "nominal weighted-tuple dynamic-programming work",
+      "Hall matching bit costs and allocation when enabled",
+      "child topology replay work and allocation",
+      "interpolation bit operations",
+      "tensor-description allocation",
+      "peak process memory"
+    ]
+  },
+  "legacy_v1_replay": false,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "point_identity_coverage": "PARTIAL_OR_NOT_CHECKED",
+  "policy": {
+    "allow_nonshrinking_leaf": false,
+    "auto_point_oracle_edges": 2,
+    "enable_hall_pruning": false,
+    "finite_parameters": [
+      1,
+      1,
+      4
+    ],
+    "leaf_edge_limit": 7,
+    "max_active_wires": 8,
+    "max_certificate_bytes": 30000000,
+    "max_depth": 4,
+    "max_description_bytes": 20000000,
+    "max_extension_degree": 8,
+    "max_jet_length": 64,
+    "max_memory_bytes": null,
+    "max_points": 32,
+    "max_precision_bits": 1024,
+    "max_seconds": 120,
+    "max_tuples": 3000,
+    "max_vertex_degree": 16,
+    "max_work": 3000000,
+    "mode": "finite",
+    "nonshrinking_leaf_limit": 6,
+    "oracle_edge_limit": 8,
+    "point_oracle_edge_limit": 3,
+    "require_complete_accounting": false,
+    "require_one_eighth_shrink": false,
+    "tuple_oracle_edge_limit": 3,
+    "verify_point_identities": false,
+    "verify_small_nodes": true,
+    "verify_tuple_identities": false
+  },
+  "python": "3.12.0",
+  "replay_independent_proof": false,
+  "replay_status": "FINITE_TRANSCRIPT_REPLAYED",
+  "source_archive_sha256": "0e4a06fc7f76a3e6d77be06a8cdf914aab3e32f5397bc9a91475eb766c24f1fd",
+  "subexponential_runtime_proven": false,
+  "validation_input": {
+    "clauses": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ]
+    ],
+    "n": 8
+  },
+  "validation_script": "scripts/validate_tapered_v4.py --write <path>"
+}

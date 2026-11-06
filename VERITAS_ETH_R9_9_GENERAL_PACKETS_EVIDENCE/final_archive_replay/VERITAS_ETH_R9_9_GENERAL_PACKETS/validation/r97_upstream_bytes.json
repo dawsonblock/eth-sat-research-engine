@@ -1,0 +1,30 @@
+{
+  "status": "PIN_BYTES_MATCH_UPSTREAM",
+  "files": [
+    {
+      "file": "main_full_version.tex",
+      "sha256": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa",
+      "upstream_sha256": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa",
+      "match": true
+    },
+    {
+      "file": "quantitative-circuits.tex",
+      "sha256": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11",
+      "upstream_sha256": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11",
+      "match": true
+    },
+    {
+      "file": "quantitative-contraction.tex",
+      "sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+      "upstream_sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+      "match": true
+    },
+    {
+      "file": "quantitative-reduction.tex",
+      "sha256": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a",
+      "upstream_sha256": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a",
+      "match": true
+    }
+  ],
+  "commit": "4eaee87548250b2682affda7d05d947c05554bae"
+}

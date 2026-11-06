@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "source": "b2a6f9876525e61080374c8b2693787a5cd88430c2c7a0b42a489dc20ff4e9fa",
+  "commands": [
+    {
+      "name": "cpp_configure",
+      "command": [
+        "cmake",
+        "-S",
+        "cpp",
+        "-B",
+        "build/cpp",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "exit_code": 0,
+      "seconds": 0.24713295802939683,
+      "source_before": "b2a6f9876525e61080374c8b2693787a5cd88430c2c7a0b42a489dc20ff4e9fa",
+      "source_after": "b2a6f9876525e61080374c8b2693787a5cd88430c2c7a0b42a489dc20ff4e9fa"
+    },
+    {
+      "name": "cpp_build",
+      "command": [
+        "cmake",
+        "--build",
+        "build/cpp",
+        "-j2"
+      ],
+      "exit_code": 0,
+      "seconds": 0.18331795802805573,
+      "source_before": "b2a6f9876525e61080374c8b2693787a5cd88430c2c7a0b42a489dc20ff4e9fa",
+      "source_after": "b2a6f9876525e61080374c8b2693787a5cd88430c2c7a0b42a489dc20ff4e9fa"
+    },
+    {
+      "name": "cpp_selftest",
+      "command": [
+        "./build/cpp/veritas_d3_selftest"
+      ],
+      "exit_code": 0,
+      "seconds": 0.13579883403144777,
+      "source_before": "b2a6f9876525e61080374c8b2693787a5cd88430c2c7a0b42a489dc20ff4e9fa",
+      "source_after": "b2a6f9876525e61080374c8b2693787a5cd88430c2c7a0b42a489dc20ff4e9fa"
+    },
+    {
+      "name": "pytest",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "--junitxml=/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_TWO_LEVEL_CONNECTION_EVIDENCE/final/full/pytest.xml"
+      ],
+      "exit_code": 0,
+      "seconds": 1380.5140756659675,
+      "source_before": "b2a6f9876525e61080374c8b2693787a5cd88430c2c7a0b42a489dc20ff4e9fa",
+      "source_after": "b2a6f9876525e61080374c8b2693787a5cd88430c2c7a0b42a489dc20ff4e9fa"
+    }
+  ]
+}

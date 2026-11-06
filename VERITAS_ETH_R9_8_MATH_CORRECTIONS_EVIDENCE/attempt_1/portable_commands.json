@@ -1,0 +1,193 @@
+[
+  {
+    "name": "wheel_build",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "-m",
+      "pip",
+      "wheel",
+      "--no-deps",
+      "--no-build-isolation",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW",
+      "-w",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/wheels"
+    ],
+    "exit_code": 0,
+    "seconds": 2.7532679170835763
+  },
+  {
+    "name": "venv",
+    "command": [
+      "/opt/homebrew/bin/python3.10",
+      "-m",
+      "venv",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/clean_py310"
+    ],
+    "exit_code": 0,
+    "seconds": 2.1528825839050114
+  },
+  {
+    "name": "wheel_install",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/clean_py310/bin/python",
+      "-m",
+      "pip",
+      "install",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/wheels/veritas_eth-3.8.2.post98-py3-none-any.whl"
+    ],
+    "exit_code": 0,
+    "seconds": 4.314755583065562
+  },
+  {
+    "name": "wheel_packet_fix",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed/packet_fix.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.21853462501894683
+  },
+  {
+    "name": "wheel_math_corrections",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed/math_corrections.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.1505229170434177
+  },
+  {
+    "name": "wheel_validate_r98_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed/validate_r98_installed.py"
+    ],
+    "exit_code": 0,
+    "seconds": 71.68808166694362
+  },
+  {
+    "name": "wheel_validate_r97_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed/validate_r97_installed.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.7286538749467582
+  },
+  {
+    "name": "docker_build",
+    "command": [
+      "docker",
+      "build",
+      "-t",
+      "veritas-eth:r98-math-corrections",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW"
+    ],
+    "exit_code": 0,
+    "seconds": 12.055860209045932
+  },
+  {
+    "name": "docker_packet_fix",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed:/checks:ro",
+      "veritas-eth:r98-math-corrections",
+      "-I",
+      "/checks/packet_fix.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.6683609579922631
+  },
+  {
+    "name": "docker_math_corrections",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed:/checks:ro",
+      "veritas-eth:r98-math-corrections",
+      "-I",
+      "/checks/math_corrections.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.218717792071402
+  },
+  {
+    "name": "docker_validate_r98_installed",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed:/checks:ro",
+      "veritas-eth:r98-math-corrections",
+      "-I",
+      "/checks/validate_r98_installed.py"
+    ],
+    "exit_code": 0,
+    "seconds": 59.82841950003058
+  },
+  {
+    "name": "docker_validate_r97_installed",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/installed:/checks:ro",
+      "veritas-eth:r98-math-corrections",
+      "-I",
+      "/checks/validate_r97_installed.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.5689670840511099
+  }
+]

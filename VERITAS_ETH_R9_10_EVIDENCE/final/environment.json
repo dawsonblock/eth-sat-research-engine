@@ -1,0 +1,19 @@
+{
+  "python": "3.12.0 (main, Apr 26 2026, 15:36:24) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "executable": "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "dependencies": {
+    "pytest": "8.4.2",
+    "networkx": "3.6.1",
+    "fastapi": "0.128.0",
+    "pydantic": "2.13.4"
+  },
+  "wheels": [
+    {
+      "name": "veritas_eth-3.8.2.post98-py3-none-any.whl",
+      "sha256": "064959930fb1c033968ecbc881855e32b91749ec031789b101852e3f51b576d0"
+    }
+  ],
+  "docker_image": "sha256:315b4be8001899a9a73886f49eb9747d5f7fd44884dcfabd6c5bf8925578473a"
+}

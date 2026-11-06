@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "source_binding": "b3c8731f51f5432589a610db4556ce4fe49a58fd759f2e7a0222b64521db4c3f",
+  "cases": [
+    {
+      "name": "groups",
+      "exit_code": 0,
+      "status": "FINITE_GROUP_COMPARISON_COMPLETE",
+      "report_digest": "639959860cc3738d3733930373f259f9a3dc788ded4316f0d4036014e1ebc6fe"
+    },
+    {
+      "name": "matching",
+      "exit_code": 2,
+      "status": "INCONCLUSIVE_RESOURCE_OR_STRUCTURE",
+      "report_digest": "755fb4dcdb2fbaf3c3ac66dd7e4c5af9c80074ca36c76b9f589fd038fed9de25"
+    },
+    {
+      "name": "point_count",
+      "exit_code": 0,
+      "status": "PASS_FINITE_NECESSARY_CONDITIONS",
+      "report_digest": "3fa2736c33a9b180b6a4c9c60830d9b58086414410ca589313e107fb146e7b8c"
+    }
+  ],
+  "source_qualified": false
+}

@@ -1,0 +1,6452 @@
+{
+  "W_copies_per_nonzero_point": 176,
+  "exclusions": [
+    "other interpolation grids",
+    "extension degree >12",
+    "deduplicated certificate schema",
+    "changed resource policy",
+    "source-regime complexity"
+  ],
+  "hard_uncompressed_byte_cap": 100000000,
+  "method": "INDEPENDENT_GF2_TRIAL_DIVISION_AND_INTEGER_POLYNOMIAL_REDUCTION",
+  "nodes": [
+    -1,
+    1
+  ],
+  "points_per_node": 133,
+  "precision": 2944,
+  "results": [
+    {
+      "degree": 8,
+      "fields": [
+        {
+          "f": "0x11b",
+          "hex_character_lower_bound": 135883264,
+          "max_abs_integer_coordinate": 2052,
+          "negative_coordinates_by_node": {
+            "-1": 529,
+            "1": 520
+          }
+        },
+        {
+          "f": "0x11d",
+          "hex_character_lower_bound": 143784960,
+          "max_abs_integer_coordinate": 2668,
+          "negative_coordinates_by_node": {
+            "-1": 551,
+            "1": 559
+          }
+        },
+        {
+          "f": "0x12b",
+          "hex_character_lower_bound": 128370176,
+          "max_abs_integer_coordinate": 1744,
+          "negative_coordinates_by_node": {
+            "-1": 499,
+            "1": 492
+          }
+        },
+        {
+          "f": "0x12d",
+          "hex_character_lower_bound": 140676096,
+          "max_abs_integer_coordinate": 1436,
+          "negative_coordinates_by_node": {
+            "-1": 547,
+            "1": 539
+          }
+        },
+        {
+          "f": "0x139",
+          "hex_character_lower_bound": 128499712,
+          "max_abs_integer_coordinate": 1252,
+          "negative_coordinates_by_node": {
+            "-1": 487,
+            "1": 505
+          }
+        },
+        {
+          "f": "0x13f",
+          "hex_character_lower_bound": 154018304,
+          "max_abs_integer_coordinate": 2572,
+          "negative_coordinates_by_node": {
+            "-1": 594,
+            "1": 595
+          }
+        },
+        {
+          "f": "0x14d",
+          "hex_character_lower_bound": 134328832,
+          "max_abs_integer_coordinate": 1004,
+          "negative_coordinates_by_node": {
+            "-1": 512,
+            "1": 525
+          }
+        },
+        {
+          "f": "0x15f",
+          "hex_character_lower_bound": 139898880,
+          "max_abs_integer_coordinate": 1468,
+          "negative_coordinates_by_node": {
+            "-1": 540,
+            "1": 540
+          }
+        },
+        {
+          "f": "0x163",
+          "hex_character_lower_bound": 127074816,
+          "max_abs_integer_coordinate": 2444,
+          "negative_coordinates_by_node": {
+            "-1": 473,
+            "1": 508
+          }
+        },
+        {
+          "f": "0x165",
+          "hex_character_lower_bound": 131738112,
+          "max_abs_integer_coordinate": 1832,
+          "negative_coordinates_by_node": {
+            "-1": 487,
+            "1": 530
+          }
+        },
+        {
+          "f": "0x169",
+          "hex_character_lower_bound": 138862592,
+          "max_abs_integer_coordinate": 1244,
+          "negative_coordinates_by_node": {
+            "-1": 512,
+            "1": 560
+          }
+        },
+        {
+          "f": "0x171",
+          "hex_character_lower_bound": 143784960,
+          "max_abs_integer_coordinate": 3100,
+          "negative_coordinates_by_node": {
+            "-1": 529,
+            "1": 581
+          }
+        },
+        {
+          "f": "0x177",
+          "hex_character_lower_bound": 139510272,
+          "max_abs_integer_coordinate": 1944,
+          "negative_coordinates_by_node": {
+            "-1": 531,
+            "1": 546
+          }
+        },
+        {
+          "f": "0x17b",
+          "hex_character_lower_bound": 137955840,
+          "max_abs_integer_coordinate": 1964,
+          "negative_coordinates_by_node": {
+            "-1": 529,
+            "1": 536
+          }
+        },
+        {
+          "f": "0x187",
+          "hex_character_lower_bound": 110235136,
+          "max_abs_integer_coordinate": 1052,
+          "negative_coordinates_by_node": {
+            "-1": 414,
+            "1": 437
+          }
+        },
+        {
+          "f": "0x18b",
+          "hex_character_lower_bound": 115287040,
+          "max_abs_integer_coordinate": 3704,
+          "negative_coordinates_by_node": {
+            "-1": 432,
+            "1": 458
+          }
+        },
+        {
+          "f": "0x18d",
+          "hex_character_lower_bound": 120338944,
+          "max_abs_integer_coordinate": 2860,
+          "negative_coordinates_by_node": {
+            "-1": 447,
+            "1": 482
+          }
+        },
+        {
+          "f": "0x19f",
+          "hex_character_lower_bound": 136790016,
+          "max_abs_integer_coordinate": 1132,
+          "negative_coordinates_by_node": {
+            "-1": 530,
+            "1": 526
+          }
+        },
+        {
+          "f": "0x1a3",
+          "hex_character_lower_bound": 118654976,
+          "max_abs_integer_coordinate": 8184,
+          "negative_coordinates_by_node": {
+            "-1": 438,
+            "1": 478
+          }
+        },
+        {
+          "f": "0x1a9",
+          "hex_character_lower_bound": 128240640,
+          "max_abs_integer_coordinate": 10400,
+          "negative_coordinates_by_node": {
+            "-1": 468,
+            "1": 522
+          }
+        },
+        {
+          "f": "0x1b1",
+          "hex_character_lower_bound": 139510272,
+          "max_abs_integer_coordinate": 3004,
+          "negative_coordinates_by_node": {
+            "-1": 505,
+            "1": 572
+          }
+        },
+        {
+          "f": "0x1bd",
+          "hex_character_lower_bound": 135753728,
+          "max_abs_integer_coordinate": 4660,
+          "negative_coordinates_by_node": {
+            "-1": 517,
+            "1": 531
+          }
+        },
+        {
+          "f": "0x1c3",
+          "hex_character_lower_bound": 127722496,
+          "max_abs_integer_coordinate": 1308,
+          "negative_coordinates_by_node": {
+            "-1": 464,
+            "1": 522
+          }
+        },
+        {
+          "f": "0x1cf",
+          "hex_character_lower_bound": 118525440,
+          "max_abs_integer_coordinate": 1124,
+          "negative_coordinates_by_node": {
+            "-1": 452,
+            "1": 463
+          }
+        },
+        {
+          "f": "0x1d7",
+          "hex_character_lower_bound": 132515328,
+          "max_abs_integer_coordinate": 1440,
+          "negative_coordinates_by_node": {
+            "-1": 491,
+            "1": 532
+          }
+        },
+        {
+          "f": "0x1dd",
+          "hex_character_lower_bound": 136012800,
+          "max_abs_integer_coordinate": 1540,
+          "negative_coordinates_by_node": {
+            "-1": 496,
+            "1": 554
+          }
+        },
+        {
+          "f": "0x1e7",
+          "hex_character_lower_bound": 124484096,
+          "max_abs_integer_coordinate": 796,
+          "negative_coordinates_by_node": {
+            "-1": 468,
+            "1": 493
+          }
+        },
+        {
+          "f": "0x1f3",
+          "hex_character_lower_bound": 132515328,
+          "max_abs_integer_coordinate": 948,
+          "negative_coordinates_by_node": {
+            "-1": 483,
+            "1": 540
+          }
+        },
+        {
+          "f": "0x1f5",
+          "hex_character_lower_bound": 138862592,
+          "max_abs_integer_coordinate": 972,
+          "negative_coordinates_by_node": {
+            "-1": 505,
+            "1": 567
+          }
+        },
+        {
+          "f": "0x1f9",
+          "hex_character_lower_bound": 138862592,
+          "max_abs_integer_coordinate": 884,
+          "negative_coordinates_by_node": {
+            "-1": 501,
+            "1": 571
+          }
+        }
+      ],
+      "fields_checked": 30,
+      "minimum": {
+        "f": "0x187",
+        "hex_character_lower_bound": 110235136,
+        "max_abs_integer_coordinate": 1052,
+        "negative_coordinates_by_node": {
+          "-1": 414,
+          "1": 437
+        }
+      }
+    },
+    {
+      "degree": 9,
+      "fields": [
+        {
+          "f": "0x203",
+          "hex_character_lower_bound": 105960448,
+          "max_abs_integer_coordinate": 2268,
+          "negative_coordinates_by_node": {
+            "-1": 364,
+            "1": 454
+          }
+        },
+        {
+          "f": "0x211",
+          "hex_character_lower_bound": 117100544,
+          "max_abs_integer_coordinate": 860,
+          "negative_coordinates_by_node": {
+            "-1": 406,
+            "1": 498
+          }
+        },
+        {
+          "f": "0x217",
+          "hex_character_lower_bound": 106737664,
+          "max_abs_integer_coordinate": 2244,
+          "negative_coordinates_by_node": {
+            "-1": 389,
+            "1": 435
+          }
+        },
+        {
+          "f": "0x21b",
+          "hex_character_lower_bound": 111919104,
+          "max_abs_integer_coordinate": 1900,
+          "negative_coordinates_by_node": {
+            "-1": 413,
+            "1": 451
+          }
+        },
+        {
+          "f": "0x221",
+          "hex_character_lower_bound": 126556672,
+          "max_abs_integer_coordinate": 692,
+          "negative_coordinates_by_node": {
+            "-1": 427,
+            "1": 550
+          }
+        },
+        {
+          "f": "0x22d",
+          "hex_character_lower_bound": 130831360,
+          "max_abs_integer_coordinate": 1308,
+          "negative_coordinates_by_node": {
+            "-1": 489,
+            "1": 521
+          }
+        },
+        {
+          "f": "0x233",
+          "hex_character_lower_bound": 122541056,
+          "max_abs_integer_coordinate": 1368,
+          "negative_coordinates_by_node": {
+            "-1": 460,
+            "1": 486
+          }
+        },
+        {
+          "f": "0x24b",
+          "hex_character_lower_bound": 116064256,
+          "max_abs_integer_coordinate": 1092,
+          "negative_coordinates_by_node": {
+            "-1": 421,
+            "1": 475
+          }
+        },
+        {
+          "f": "0x259",
+          "hex_character_lower_bound": 155572736,
+          "max_abs_integer_coordinate": 1004,
+          "negative_coordinates_by_node": {
+            "-1": 558,
+            "1": 643
+          }
+        },
+        {
+          "f": "0x25f",
+          "hex_character_lower_bound": 148448256,
+          "max_abs_integer_coordinate": 2020,
+          "negative_coordinates_by_node": {
+            "-1": 563,
+            "1": 583
+          }
+        },
+        {
+          "f": "0x265",
+          "hex_character_lower_bound": 135365120,
+          "max_abs_integer_coordinate": 708,
+          "negative_coordinates_by_node": {
+            "-1": 488,
+            "1": 557
+          }
+        },
+        {
+          "f": "0x269",
+          "hex_character_lower_bound": 143266816,
+          "max_abs_integer_coordinate": 652,
+          "negative_coordinates_by_node": {
+            "-1": 519,
+            "1": 587
+          }
+        },
+        {
+          "f": "0x26f",
+          "hex_character_lower_bound": 143784960,
+          "max_abs_integer_coordinate": 1796,
+          "negative_coordinates_by_node": {
+            "-1": 548,
+            "1": 562
+          }
+        },
+        {
+          "f": "0x277",
+          "hex_character_lower_bound": 157645312,
+          "max_abs_integer_coordinate": 1632,
+          "negative_coordinates_by_node": {
+            "-1": 603,
+            "1": 614
+          }
+        },
+        {
+          "f": "0x27d",
+          "hex_character_lower_bound": 179277824,
+          "max_abs_integer_coordinate": 2084,
+          "negative_coordinates_by_node": {
+            "-1": 678,
+            "1": 706
+          }
+        },
+        {
+          "f": "0x287",
+          "hex_character_lower_bound": 122800128,
+          "max_abs_integer_coordinate": 1308,
+          "negative_coordinates_by_node": {
+            "-1": 443,
+            "1": 505
+          }
+        },
+        {
+          "f": "0x295",
+          "hex_character_lower_bound": 135235584,
+          "max_abs_integer_coordinate": 684,
+          "negative_coordinates_by_node": {
+            "-1": 492,
+            "1": 552
+          }
+        },
+        {
+          "f": "0x299",
+          "hex_character_lower_bound": 146116608,
+          "max_abs_integer_coordinate": 1128,
+          "negative_coordinates_by_node": {
+            "-1": 535,
+            "1": 593
+          }
+        },
+        {
+          "f": "0x2a3",
+          "hex_character_lower_bound": 134717440,
+          "max_abs_integer_coordinate": 908,
+          "negative_coordinates_by_node": {
+            "-1": 478,
+            "1": 562
+          }
+        },
+        {
+          "f": "0x2a5",
+          "hex_character_lower_bound": 138344448,
+          "max_abs_integer_coordinate": 696,
+          "negative_coordinates_by_node": {
+            "-1": 497,
+            "1": 571
+          }
+        },
+        {
+          "f": "0x2af",
+          "hex_character_lower_bound": 134717440,
+          "max_abs_integer_coordinate": 980,
+          "negative_coordinates_by_node": {
+            "-1": 496,
+            "1": 544
+          }
+        },
+        {
+          "f": "0x2b7",
+          "hex_character_lower_bound": 142619136,
+          "max_abs_integer_coordinate": 848,
+          "negative_coordinates_by_node": {
+            "-1": 540,
+            "1": 561
+          }
+        },
+        {
+          "f": "0x2bd",
+          "hex_character_lower_bound": 161013248,
+          "max_abs_integer_coordinate": 1044,
+          "negative_coordinates_by_node": {
+            "-1": 607,
+            "1": 636
+          }
+        },
+        {
+          "f": "0x2cf",
+          "hex_character_lower_bound": 145987072,
+          "max_abs_integer_coordinate": 2088,
+          "negative_coordinates_by_node": {
+            "-1": 536,
+            "1": 591
+          }
+        },
+        {
+          "f": "0x2d1",
+          "hex_character_lower_bound": 159588352,
+          "max_abs_integer_coordinate": 948,
+          "negative_coordinates_by_node": {
+            "-1": 561,
+            "1": 671
+          }
+        },
+        {
+          "f": "0x2db",
+          "hex_character_lower_bound": 145339392,
+          "max_abs_integer_coordinate": 1204,
+          "negative_coordinates_by_node": {
+            "-1": 513,
+            "1": 609
+          }
+        },
+        {
+          "f": "0x2f5",
+          "hex_character_lower_bound": 149355008,
+          "max_abs_integer_coordinate": 1216,
+          "negative_coordinates_by_node": {
+            "-1": 542,
+            "1": 611
+          }
+        },
+        {
+          "f": "0x2f9",
+          "hex_character_lower_bound": 148318720,
+          "max_abs_integer_coordinate": 1092,
+          "negative_coordinates_by_node": {
+            "-1": 531,
+            "1": 614
+          }
+        },
+        {
+          "f": "0x301",
+          "hex_character_lower_bound": 161790464,
+          "max_abs_integer_coordinate": 1712,
+          "negative_coordinates_by_node": {
+            "-1": 562,
+            "1": 687
+          }
+        },
+        {
+          "f": "0x313",
+          "hex_character_lower_bound": 134199296,
+          "max_abs_integer_coordinate": 2512,
+          "negative_coordinates_by_node": {
+            "-1": 476,
+            "1": 560
+          }
+        },
+        {
+          "f": "0x315",
+          "hex_character_lower_bound": 143137280,
+          "max_abs_integer_coordinate": 3588,
+          "negative_coordinates_by_node": {
+            "-1": 527,
+            "1": 578
+          }
+        },
+        {
+          "f": "0x31f",
+          "hex_character_lower_bound": 131997184,
+          "max_abs_integer_coordinate": 2192,
+          "negative_coordinates_by_node": {
+            "-1": 482,
+            "1": 537
+          }
+        },
+        {
+          "f": "0x323",
+          "hex_character_lower_bound": 132515328,
+          "max_abs_integer_coordinate": 992,
+          "negative_coordinates_by_node": {
+            "-1": 462,
+            "1": 561
+          }
+        },
+        {
+          "f": "0x331",
+          "hex_character_lower_bound": 154536448,
+          "max_abs_integer_coordinate": 1500,
+          "negative_coordinates_by_node": {
+            "-1": 549,
+            "1": 644
+          }
+        },
+        {
+          "f": "0x33b",
+          "hex_character_lower_bound": 135494656,
+          "max_abs_integer_coordinate": 828,
+          "negative_coordinates_by_node": {
+            "-1": 494,
+            "1": 552
+          }
+        },
+        {
+          "f": "0x349",
+          "hex_character_lower_bound": 161790464,
+          "max_abs_integer_coordinate": 4576,
+          "negative_coordinates_by_node": {
+            "-1": 579,
+            "1": 670
+          }
+        },
+        {
+          "f": "0x34f",
+          "hex_character_lower_bound": 153629696,
+          "max_abs_integer_coordinate": 4768,
+          "negative_coordinates_by_node": {
+            "-1": 568,
+            "1": 618
+          }
+        },
+        {
+          "f": "0x35b",
+          "hex_character_lower_bound": 155702272,
+          "max_abs_integer_coordinate": 5952,
+          "negative_coordinates_by_node": {
+            "-1": 575,
+            "1": 627
+          }
+        },
+        {
+          "f": "0x361",
+          "hex_character_lower_bound": 171894272,
+          "max_abs_integer_coordinate": 2744,
+          "negative_coordinates_by_node": {
+            "-1": 608,
+            "1": 719
+          }
+        },
+        {
+          "f": "0x36b",
+          "hex_character_lower_bound": 143137280,
+          "max_abs_integer_coordinate": 2632,
+          "negative_coordinates_by_node": {
+            "-1": 517,
+            "1": 588
+          }
+        },
+        {
+          "f": "0x36d",
+          "hex_character_lower_bound": 155313664,
+          "max_abs_integer_coordinate": 3012,
+          "negative_coordinates_by_node": {
+            "-1": 553,
+            "1": 646
+          }
+        },
+        {
+          "f": "0x373",
+          "hex_character_lower_bound": 161920000,
+          "max_abs_integer_coordinate": 3928,
+          "negative_coordinates_by_node": {
+            "-1": 588,
+            "1": 662
+          }
+        },
+        {
+          "f": "0x37f",
+          "hex_character_lower_bound": 174614528,
+          "max_abs_integer_coordinate": 3544,
+          "negative_coordinates_by_node": {
+            "-1": 657,
+            "1": 691
+          }
+        },
+        {
+          "f": "0x385",
+          "hex_character_lower_bound": 153370624,
+          "max_abs_integer_coordinate": 888,
+          "negative_coordinates_by_node": {
+            "-1": 539,
+            "1": 645
+          }
+        },
+        {
+          "f": "0x38f",
+          "hex_character_lower_bound": 134846976,
+          "max_abs_integer_coordinate": 892,
+          "negative_coordinates_by_node": {
+            "-1": 486,
+            "1": 555
+          }
+        },
+        {
+          "f": "0x3a1",
+          "hex_character_lower_bound": 167101440,
+          "max_abs_integer_coordinate": 1248,
+          "negative_coordinates_by_node": {
+            "-1": 588,
+            "1": 702
+          }
+        },
+        {
+          "f": "0x3b5",
+          "hex_character_lower_bound": 145728000,
+          "max_abs_integer_coordinate": 1504,
+          "negative_coordinates_by_node": {
+            "-1": 527,
+            "1": 598
+          }
+        },
+        {
+          "f": "0x3b9",
+          "hex_character_lower_bound": 159847424,
+          "max_abs_integer_coordinate": 960,
+          "negative_coordinates_by_node": {
+            "-1": 573,
+            "1": 661
+          }
+        },
+        {
+          "f": "0x3c7",
+          "hex_character_lower_bound": 147282432,
+          "max_abs_integer_coordinate": 1372,
+          "negative_coordinates_by_node": {
+            "-1": 526,
+            "1": 611
+          }
+        },
+        {
+          "f": "0x3cb",
+          "hex_character_lower_bound": 151686656,
+          "max_abs_integer_coordinate": 720,
+          "negative_coordinates_by_node": {
+            "-1": 540,
+            "1": 631
+          }
+        },
+        {
+          "f": "0x3cd",
+          "hex_character_lower_bound": 154665984,
+          "max_abs_integer_coordinate": 1268,
+          "negative_coordinates_by_node": {
+            "-1": 552,
+            "1": 642
+          }
+        },
+        {
+          "f": "0x3d5",
+          "hex_character_lower_bound": 158940672,
+          "max_abs_integer_coordinate": 2660,
+          "negative_coordinates_by_node": {
+            "-1": 563,
+            "1": 664
+          }
+        },
+        {
+          "f": "0x3d9",
+          "hex_character_lower_bound": 172801024,
+          "max_abs_integer_coordinate": 1500,
+          "negative_coordinates_by_node": {
+            "-1": 608,
+            "1": 726
+          }
+        },
+        {
+          "f": "0x3e3",
+          "hex_character_lower_bound": 155443200,
+          "max_abs_integer_coordinate": 1116,
+          "negative_coordinates_by_node": {
+            "-1": 542,
+            "1": 658
+          }
+        },
+        {
+          "f": "0x3e9",
+          "hex_character_lower_bound": 168008192,
+          "max_abs_integer_coordinate": 864,
+          "negative_coordinates_by_node": {
+            "-1": 582,
+            "1": 715
+          }
+        },
+        {
+          "f": "0x3fb",
+          "hex_character_lower_bound": 157386240,
+          "max_abs_integer_coordinate": 652,
+          "negative_coordinates_by_node": {
+            "-1": 558,
+            "1": 657
+          }
+        }
+      ],
+      "fields_checked": 56,
+      "minimum": {
+        "f": "0x203",
+        "hex_character_lower_bound": 105960448,
+        "max_abs_integer_coordinate": 2268,
+        "negative_coordinates_by_node": {
+          "-1": 364,
+          "1": 454
+        }
+      }
+    },
+    {
+      "degree": 10,
+      "fields": [
+        {
+          "f": "0x409",
+          "hex_character_lower_bound": 136401408,
+          "max_abs_integer_coordinate": 1436,
+          "negative_coordinates_by_node": {
+            "-1": 469,
+            "1": 584
+          }
+        },
+        {
+          "f": "0x40f",
+          "hex_character_lower_bound": 106608128,
+          "max_abs_integer_coordinate": 3364,
+          "negative_coordinates_by_node": {
+            "-1": 377,
+            "1": 446
+          }
+        },
+        {
+          "f": "0x41b",
+          "hex_character_lower_bound": 106737664,
+          "max_abs_integer_coordinate": 2468,
+          "negative_coordinates_by_node": {
+            "-1": 379,
+            "1": 445
+          }
+        },
+        {
+          "f": "0x41d",
+          "hex_character_lower_bound": 108810240,
+          "max_abs_integer_coordinate": 2652,
+          "negative_coordinates_by_node": {
+            "-1": 389,
+            "1": 451
+          }
+        },
+        {
+          "f": "0x427",
+          "hex_character_lower_bound": 106089984,
+          "max_abs_integer_coordinate": 2380,
+          "negative_coordinates_by_node": {
+            "-1": 375,
+            "1": 444
+          }
+        },
+        {
+          "f": "0x42d",
+          "hex_character_lower_bound": 112825856,
+          "max_abs_integer_coordinate": 1892,
+          "negative_coordinates_by_node": {
+            "-1": 399,
+            "1": 472
+          }
+        },
+        {
+          "f": "0x435",
+          "hex_character_lower_bound": 113214464,
+          "max_abs_integer_coordinate": 1692,
+          "negative_coordinates_by_node": {
+            "-1": 404,
+            "1": 470
+          }
+        },
+        {
+          "f": "0x447",
+          "hex_character_lower_bound": 111271424,
+          "max_abs_integer_coordinate": 2028,
+          "negative_coordinates_by_node": {
+            "-1": 398,
+            "1": 461
+          }
+        },
+        {
+          "f": "0x453",
+          "hex_character_lower_bound": 118007296,
+          "max_abs_integer_coordinate": 1164,
+          "negative_coordinates_by_node": {
+            "-1": 418,
+            "1": 493
+          }
+        },
+        {
+          "f": "0x463",
+          "hex_character_lower_bound": 129147392,
+          "max_abs_integer_coordinate": 1036,
+          "negative_coordinates_by_node": {
+            "-1": 457,
+            "1": 540
+          }
+        },
+        {
+          "f": "0x465",
+          "hex_character_lower_bound": 137308160,
+          "max_abs_integer_coordinate": 884,
+          "negative_coordinates_by_node": {
+            "-1": 500,
+            "1": 560
+          }
+        },
+        {
+          "f": "0x46f",
+          "hex_character_lower_bound": 120727552,
+          "max_abs_integer_coordinate": 1732,
+          "negative_coordinates_by_node": {
+            "-1": 452,
+            "1": 480
+          }
+        },
+        {
+          "f": "0x481",
+          "hex_character_lower_bound": 172023808,
+          "max_abs_integer_coordinate": 1000,
+          "negative_coordinates_by_node": {
+            "-1": 595,
+            "1": 733
+          }
+        },
+        {
+          "f": "0x48b",
+          "hex_character_lower_bound": 129665536,
+          "max_abs_integer_coordinate": 1348,
+          "negative_coordinates_by_node": {
+            "-1": 457,
+            "1": 544
+          }
+        },
+        {
+          "f": "0x499",
+          "hex_character_lower_bound": 136012800,
+          "max_abs_integer_coordinate": 940,
+          "negative_coordinates_by_node": {
+            "-1": 489,
+            "1": 561
+          }
+        },
+        {
+          "f": "0x4a9",
+          "hex_character_lower_bound": 149355008,
+          "max_abs_integer_coordinate": 1208,
+          "negative_coordinates_by_node": {
+            "-1": 531,
+            "1": 622
+          }
+        },
+        {
+          "f": "0x4af",
+          "hex_character_lower_bound": 118784512,
+          "max_abs_integer_coordinate": 1444,
+          "negative_coordinates_by_node": {
+            "-1": 441,
+            "1": 476
+          }
+        },
+        {
+          "f": "0x4c5",
+          "hex_character_lower_bound": 156479488,
+          "max_abs_integer_coordinate": 920,
+          "negative_coordinates_by_node": {
+            "-1": 563,
+            "1": 645
+          }
+        },
+        {
+          "f": "0x4c9",
+          "hex_character_lower_bound": 155572736,
+          "max_abs_integer_coordinate": 704,
+          "negative_coordinates_by_node": {
+            "-1": 556,
+            "1": 645
+          }
+        },
+        {
+          "f": "0x4d7",
+          "hex_character_lower_bound": 130313216,
+          "max_abs_integer_coordinate": 1168,
+          "negative_coordinates_by_node": {
+            "-1": 494,
+            "1": 512
+          }
+        },
+        {
+          "f": "0x4e7",
+          "hex_character_lower_bound": 145598464,
+          "max_abs_integer_coordinate": 1392,
+          "negative_coordinates_by_node": {
+            "-1": 535,
+            "1": 589
+          }
+        },
+        {
+          "f": "0x4ed",
+          "hex_character_lower_bound": 163215360,
+          "max_abs_integer_coordinate": 1188,
+          "negative_coordinates_by_node": {
+            "-1": 600,
+            "1": 660
+          }
+        },
+        {
+          "f": "0x4f3",
+          "hex_character_lower_bound": 170469376,
+          "max_abs_integer_coordinate": 1384,
+          "negative_coordinates_by_node": {
+            "-1": 626,
+            "1": 690
+          }
+        },
+        {
+          "f": "0x4ff",
+          "hex_character_lower_bound": 158163456,
+          "max_abs_integer_coordinate": 1840,
+          "negative_coordinates_by_node": {
+            "-1": 596,
+            "1": 625
+          }
+        },
+        {
+          "f": "0x50b",
+          "hex_character_lower_bound": 140417024,
+          "max_abs_integer_coordinate": 1212,
+          "negative_coordinates_by_node": {
+            "-1": 492,
+            "1": 592
+          }
+        },
+        {
+          "f": "0x50d",
+          "hex_character_lower_bound": 147152896,
+          "max_abs_integer_coordinate": 1156,
+          "negative_coordinates_by_node": {
+            "-1": 516,
+            "1": 620
+          }
+        },
+        {
+          "f": "0x519",
+          "hex_character_lower_bound": 156090880,
+          "max_abs_integer_coordinate": 848,
+          "negative_coordinates_by_node": {
+            "-1": 558,
+            "1": 647
+          }
+        },
+        {
+          "f": "0x51f",
+          "hex_character_lower_bound": 125131776,
+          "max_abs_integer_coordinate": 1636,
+          "negative_coordinates_by_node": {
+            "-1": 445,
+            "1": 521
+          }
+        },
+        {
+          "f": "0x523",
+          "hex_character_lower_bound": 146764288,
+          "max_abs_integer_coordinate": 900,
+          "negative_coordinates_by_node": {
+            "-1": 512,
+            "1": 621
+          }
+        },
+        {
+          "f": "0x531",
+          "hex_character_lower_bound": 161790464,
+          "max_abs_integer_coordinate": 768,
+          "negative_coordinates_by_node": {
+            "-1": 569,
+            "1": 680
+          }
+        },
+        {
+          "f": "0x53d",
+          "hex_character_lower_bound": 138344448,
+          "max_abs_integer_coordinate": 1108,
+          "negative_coordinates_by_node": {
+            "-1": 506,
+            "1": 562
+          }
+        },
+        {
+          "f": "0x543",
+          "hex_character_lower_bound": 153629696,
+          "max_abs_integer_coordinate": 868,
+          "negative_coordinates_by_node": {
+            "-1": 531,
+            "1": 655
+          }
+        },
+        {
+          "f": "0x557",
+          "hex_character_lower_bound": 125649920,
+          "max_abs_integer_coordinate": 932,
+          "negative_coordinates_by_node": {
+            "-1": 447,
+            "1": 523
+          }
+        },
+        {
+          "f": "0x561",
+          "hex_character_lower_bound": 183422976,
+          "max_abs_integer_coordinate": 728,
+          "negative_coordinates_by_node": {
+            "-1": 634,
+            "1": 782
+          }
+        },
+        {
+          "f": "0x567",
+          "hex_character_lower_bound": 141712384,
+          "max_abs_integer_coordinate": 836,
+          "negative_coordinates_by_node": {
+            "-1": 509,
+            "1": 585
+          }
+        },
+        {
+          "f": "0x56b",
+          "hex_character_lower_bound": 144821248,
+          "max_abs_integer_coordinate": 716,
+          "negative_coordinates_by_node": {
+            "-1": 517,
+            "1": 601
+          }
+        },
+        {
+          "f": "0x585",
+          "hex_character_lower_bound": 162697216,
+          "max_abs_integer_coordinate": 1344,
+          "negative_coordinates_by_node": {
+            "-1": 566,
+            "1": 690
+          }
+        },
+        {
+          "f": "0x58f",
+          "hex_character_lower_bound": 143914496,
+          "max_abs_integer_coordinate": 1440,
+          "negative_coordinates_by_node": {
+            "-1": 531,
+            "1": 580
+          }
+        },
+        {
+          "f": "0x597",
+          "hex_character_lower_bound": 147541504,
+          "max_abs_integer_coordinate": 1152,
+          "negative_coordinates_by_node": {
+            "-1": 536,
+            "1": 603
+          }
+        },
+        {
+          "f": "0x59b",
+          "hex_character_lower_bound": 155054592,
+          "max_abs_integer_coordinate": 1408,
+          "negative_coordinates_by_node": {
+            "-1": 561,
+            "1": 636
+          }
+        },
+        {
+          "f": "0x5a1",
+          "hex_character_lower_bound": 175262208,
+          "max_abs_integer_coordinate": 828,
+          "negative_coordinates_by_node": {
+            "-1": 613,
+            "1": 740
+          }
+        },
+        {
+          "f": "0x5ab",
+          "hex_character_lower_bound": 143914496,
+          "max_abs_integer_coordinate": 780,
+          "negative_coordinates_by_node": {
+            "-1": 512,
+            "1": 599
+          }
+        },
+        {
+          "f": "0x5b9",
+          "hex_character_lower_bound": 173060096,
+          "max_abs_integer_coordinate": 1064,
+          "negative_coordinates_by_node": {
+            "-1": 644,
+            "1": 692
+          }
+        },
+        {
+          "f": "0x5c1",
+          "hex_character_lower_bound": 180055040,
+          "max_abs_integer_coordinate": 1376,
+          "negative_coordinates_by_node": {
+            "-1": 627,
+            "1": 763
+          }
+        },
+        {
+          "f": "0x5c7",
+          "hex_character_lower_bound": 150261760,
+          "max_abs_integer_coordinate": 1600,
+          "negative_coordinates_by_node": {
+            "-1": 537,
+            "1": 623
+          }
+        },
+        {
+          "f": "0x5e5",
+          "hex_character_lower_bound": 159199744,
+          "max_abs_integer_coordinate": 1256,
+          "negative_coordinates_by_node": {
+            "-1": 559,
+            "1": 670
+          }
+        },
+        {
+          "f": "0x5f7",
+          "hex_character_lower_bound": 141582848,
+          "max_abs_integer_coordinate": 960,
+          "negative_coordinates_by_node": {
+            "-1": 507,
+            "1": 586
+          }
+        },
+        {
+          "f": "0x5fb",
+          "hex_character_lower_bound": 156090880,
+          "max_abs_integer_coordinate": 832,
+          "negative_coordinates_by_node": {
+            "-1": 583,
+            "1": 622
+          }
+        },
+        {
+          "f": "0x613",
+          "hex_character_lower_bound": 144173568,
+          "max_abs_integer_coordinate": 968,
+          "negative_coordinates_by_node": {
+            "-1": 504,
+            "1": 609
+          }
+        },
+        {
+          "f": "0x615",
+          "hex_character_lower_bound": 157645312,
+          "max_abs_integer_coordinate": 1564,
+          "negative_coordinates_by_node": {
+            "-1": 567,
+            "1": 650
+          }
+        },
+        {
+          "f": "0x623",
+          "hex_character_lower_bound": 145987072,
+          "max_abs_integer_coordinate": 1816,
+          "negative_coordinates_by_node": {
+            "-1": 503,
+            "1": 624
+          }
+        },
+        {
+          "f": "0x625",
+          "hex_character_lower_bound": 153888768,
+          "max_abs_integer_coordinate": 1988,
+          "negative_coordinates_by_node": {
+            "-1": 543,
+            "1": 645
+          }
+        },
+        {
+          "f": "0x631",
+          "hex_character_lower_bound": 152722944,
+          "max_abs_integer_coordinate": 1464,
+          "negative_coordinates_by_node": {
+            "-1": 530,
+            "1": 649
+          }
+        },
+        {
+          "f": "0x637",
+          "hex_character_lower_bound": 123188736,
+          "max_abs_integer_coordinate": 1596,
+          "negative_coordinates_by_node": {
+            "-1": 431,
+            "1": 520
+          }
+        },
+        {
+          "f": "0x643",
+          "hex_character_lower_bound": 161531392,
+          "max_abs_integer_coordinate": 828,
+          "negative_coordinates_by_node": {
+            "-1": 556,
+            "1": 691
+          }
+        },
+        {
+          "f": "0x64f",
+          "hex_character_lower_bound": 136271872,
+          "max_abs_integer_coordinate": 1252,
+          "negative_coordinates_by_node": {
+            "-1": 478,
+            "1": 574
+          }
+        },
+        {
+          "f": "0x651",
+          "hex_character_lower_bound": 176039424,
+          "max_abs_integer_coordinate": 1048,
+          "negative_coordinates_by_node": {
+            "-1": 633,
+            "1": 726
+          }
+        },
+        {
+          "f": "0x65b",
+          "hex_character_lower_bound": 141971456,
+          "max_abs_integer_coordinate": 1016,
+          "negative_coordinates_by_node": {
+            "-1": 514,
+            "1": 582
+          }
+        },
+        {
+          "f": "0x679",
+          "hex_character_lower_bound": 153111552,
+          "max_abs_integer_coordinate": 728,
+          "negative_coordinates_by_node": {
+            "-1": 552,
+            "1": 630
+          }
+        },
+        {
+          "f": "0x67f",
+          "hex_character_lower_bound": 126297600,
+          "max_abs_integer_coordinate": 1036,
+          "negative_coordinates_by_node": {
+            "-1": 476,
+            "1": 499
+          }
+        },
+        {
+          "f": "0x685",
+          "hex_character_lower_bound": 167619584,
+          "max_abs_integer_coordinate": 3360,
+          "negative_coordinates_by_node": {
+            "-1": 605,
+            "1": 689
+          }
+        },
+        {
+          "f": "0x689",
+          "hex_character_lower_bound": 167230976,
+          "max_abs_integer_coordinate": 3616,
+          "negative_coordinates_by_node": {
+            "-1": 594,
+            "1": 697
+          }
+        },
+        {
+          "f": "0x6a7",
+          "hex_character_lower_bound": 141582848,
+          "max_abs_integer_coordinate": 4360,
+          "negative_coordinates_by_node": {
+            "-1": 506,
+            "1": 587
+          }
+        },
+        {
+          "f": "0x6ad",
+          "hex_character_lower_bound": 152204800,
+          "max_abs_integer_coordinate": 4808,
+          "negative_coordinates_by_node": {
+            "-1": 550,
+            "1": 625
+          }
+        },
+        {
+          "f": "0x6b5",
+          "hex_character_lower_bound": 153111552,
+          "max_abs_integer_coordinate": 3808,
+          "negative_coordinates_by_node": {
+            "-1": 548,
+            "1": 634
+          }
+        },
+        {
+          "f": "0x6bf",
+          "hex_character_lower_bound": 127592960,
+          "max_abs_integer_coordinate": 4032,
+          "negative_coordinates_by_node": {
+            "-1": 465,
+            "1": 520
+          }
+        },
+        {
+          "f": "0x6c1",
+          "hex_character_lower_bound": 184977408,
+          "max_abs_integer_coordinate": 1984,
+          "negative_coordinates_by_node": {
+            "-1": 664,
+            "1": 764
+          }
+        },
+        {
+          "f": "0x6cd",
+          "hex_character_lower_bound": 150261760,
+          "max_abs_integer_coordinate": 2276,
+          "negative_coordinates_by_node": {
+            "-1": 537,
+            "1": 623
+          }
+        },
+        {
+          "f": "0x6d3",
+          "hex_character_lower_bound": 153111552,
+          "max_abs_integer_coordinate": 1700,
+          "negative_coordinates_by_node": {
+            "-1": 549,
+            "1": 633
+          }
+        },
+        {
+          "f": "0x6df",
+          "hex_character_lower_bound": 131090432,
+          "max_abs_integer_coordinate": 1760,
+          "negative_coordinates_by_node": {
+            "-1": 486,
+            "1": 526
+          }
+        },
+        {
+          "f": "0x6f7",
+          "hex_character_lower_bound": 137437696,
+          "max_abs_integer_coordinate": 2336,
+          "negative_coordinates_by_node": {
+            "-1": 496,
+            "1": 565
+          }
+        },
+        {
+          "f": "0x6fd",
+          "hex_character_lower_bound": 151557120,
+          "max_abs_integer_coordinate": 2500,
+          "negative_coordinates_by_node": {
+            "-1": 555,
+            "1": 615
+          }
+        },
+        {
+          "f": "0x70f",
+          "hex_character_lower_bound": 145598464,
+          "max_abs_integer_coordinate": 1052,
+          "negative_coordinates_by_node": {
+            "-1": 508,
+            "1": 616
+          }
+        },
+        {
+          "f": "0x711",
+          "hex_character_lower_bound": 188474880,
+          "max_abs_integer_coordinate": 944,
+          "negative_coordinates_by_node": {
+            "-1": 668,
+            "1": 787
+          }
+        },
+        {
+          "f": "0x717",
+          "hex_character_lower_bound": 151168512,
+          "max_abs_integer_coordinate": 908,
+          "negative_coordinates_by_node": {
+            "-1": 542,
+            "1": 625
+          }
+        },
+        {
+          "f": "0x71d",
+          "hex_character_lower_bound": 155313664,
+          "max_abs_integer_coordinate": 832,
+          "negative_coordinates_by_node": {
+            "-1": 551,
+            "1": 648
+          }
+        },
+        {
+          "f": "0x721",
+          "hex_character_lower_bound": 197412864,
+          "max_abs_integer_coordinate": 984,
+          "negative_coordinates_by_node": {
+            "-1": 710,
+            "1": 814
+          }
+        },
+        {
+          "f": "0x72b",
+          "hex_character_lower_bound": 157645312,
+          "max_abs_integer_coordinate": 1016,
+          "negative_coordinates_by_node": {
+            "-1": 556,
+            "1": 661
+          }
+        },
+        {
+          "f": "0x735",
+          "hex_character_lower_bound": 177334784,
+          "max_abs_integer_coordinate": 920,
+          "negative_coordinates_by_node": {
+            "-1": 631,
+            "1": 738
+          }
+        },
+        {
+          "f": "0x739",
+          "hex_character_lower_bound": 166971904,
+          "max_abs_integer_coordinate": 792,
+          "negative_coordinates_by_node": {
+            "-1": 592,
+            "1": 697
+          }
+        },
+        {
+          "f": "0x747",
+          "hex_character_lower_bound": 148577792,
+          "max_abs_integer_coordinate": 808,
+          "negative_coordinates_by_node": {
+            "-1": 524,
+            "1": 623
+          }
+        },
+        {
+          "f": "0x74d",
+          "hex_character_lower_bound": 158940672,
+          "max_abs_integer_coordinate": 984,
+          "negative_coordinates_by_node": {
+            "-1": 568,
+            "1": 659
+          }
+        },
+        {
+          "f": "0x755",
+          "hex_character_lower_bound": 168137728,
+          "max_abs_integer_coordinate": 744,
+          "negative_coordinates_by_node": {
+            "-1": 605,
+            "1": 693
+          }
+        },
+        {
+          "f": "0x759",
+          "hex_character_lower_bound": 162956288,
+          "max_abs_integer_coordinate": 936,
+          "negative_coordinates_by_node": {
+            "-1": 577,
+            "1": 681
+          }
+        },
+        {
+          "f": "0x763",
+          "hex_character_lower_bound": 168267264,
+          "max_abs_integer_coordinate": 864,
+          "negative_coordinates_by_node": {
+            "-1": 592,
+            "1": 707
+          }
+        },
+        {
+          "f": "0x77b",
+          "hex_character_lower_bound": 147152896,
+          "max_abs_integer_coordinate": 776,
+          "negative_coordinates_by_node": {
+            "-1": 518,
+            "1": 618
+          }
+        },
+        {
+          "f": "0x77d",
+          "hex_character_lower_bound": 161531392,
+          "max_abs_integer_coordinate": 776,
+          "negative_coordinates_by_node": {
+            "-1": 568,
+            "1": 679
+          }
+        },
+        {
+          "f": "0x781",
+          "hex_character_lower_bound": 194563072,
+          "max_abs_integer_coordinate": 1092,
+          "negative_coordinates_by_node": {
+            "-1": 690,
+            "1": 812
+          }
+        },
+        {
+          "f": "0x787",
+          "hex_character_lower_bound": 158811136,
+          "max_abs_integer_coordinate": 904,
+          "negative_coordinates_by_node": {
+            "-1": 572,
+            "1": 654
+          }
+        },
+        {
+          "f": "0x78d",
+          "hex_character_lower_bound": 168396800,
+          "max_abs_integer_coordinate": 988,
+          "negative_coordinates_by_node": {
+            "-1": 607,
+            "1": 693
+          }
+        },
+        {
+          "f": "0x793",
+          "hex_character_lower_bound": 164381184,
+          "max_abs_integer_coordinate": 840,
+          "negative_coordinates_by_node": {
+            "-1": 586,
+            "1": 683
+          }
+        },
+        {
+          "f": "0x7a9",
+          "hex_character_lower_bound": 175132672,
+          "max_abs_integer_coordinate": 1656,
+          "negative_coordinates_by_node": {
+            "-1": 616,
+            "1": 736
+          }
+        },
+        {
+          "f": "0x7b1",
+          "hex_character_lower_bound": 176039424,
+          "max_abs_integer_coordinate": 952,
+          "negative_coordinates_by_node": {
+            "-1": 615,
+            "1": 744
+          }
+        },
+        {
+          "f": "0x7c5",
+          "hex_character_lower_bound": 185754624,
+          "max_abs_integer_coordinate": 928,
+          "negative_coordinates_by_node": {
+            "-1": 664,
+            "1": 770
+          }
+        },
+        {
+          "f": "0x7db",
+          "hex_character_lower_bound": 159458816,
+          "max_abs_integer_coordinate": 640,
+          "negative_coordinates_by_node": {
+            "-1": 568,
+            "1": 663
+          }
+        },
+        {
+          "f": "0x7eb",
+          "hex_character_lower_bound": 156997632,
+          "max_abs_integer_coordinate": 1112,
+          "negative_coordinates_by_node": {
+            "-1": 565,
+            "1": 647
+          }
+        },
+        {
+          "f": "0x7f3",
+          "hex_character_lower_bound": 163992576,
+          "max_abs_integer_coordinate": 596,
+          "negative_coordinates_by_node": {
+            "-1": 592,
+            "1": 674
+          }
+        },
+        {
+          "f": "0x7f9",
+          "hex_character_lower_bound": 170080768,
+          "max_abs_integer_coordinate": 544,
+          "negative_coordinates_by_node": {
+            "-1": 605,
+            "1": 708
+          }
+        },
+        {
+          "f": "0x7ff",
+          "hex_character_lower_bound": 146764288,
+          "max_abs_integer_coordinate": 544,
+          "negative_coordinates_by_node": {
+            "-1": 550,
+            "1": 583
+          }
+        }
+      ],
+      "fields_checked": 99,
+      "minimum": {
+        "f": "0x427",
+        "hex_character_lower_bound": 106089984,
+        "max_abs_integer_coordinate": 2380,
+        "negative_coordinates_by_node": {
+          "-1": 375,
+          "1": 444
+        }
+      }
+    },
+    {
+      "degree": 11,
+      "fields": [
+        {
+          "f": "0x805",
+          "hex_character_lower_bound": 170857984,
+          "max_abs_integer_coordinate": 1564,
+          "negative_coordinates_by_node": {
+            "-1": 579,
+            "1": 740
+          }
+        },
+        {
+          "f": "0x817",
+          "hex_character_lower_bound": 142360064,
+          "max_abs_integer_coordinate": 2404,
+          "negative_coordinates_by_node": {
+            "-1": 501,
+            "1": 598
+          }
+        },
+        {
+          "f": "0x82b",
+          "hex_character_lower_bound": 134458368,
+          "max_abs_integer_coordinate": 1892,
+          "negative_coordinates_by_node": {
+            "-1": 459,
+            "1": 579
+          }
+        },
+        {
+          "f": "0x82d",
+          "hex_character_lower_bound": 132515328,
+          "max_abs_integer_coordinate": 2012,
+          "negative_coordinates_by_node": {
+            "-1": 447,
+            "1": 576
+          }
+        },
+        {
+          "f": "0x847",
+          "hex_character_lower_bound": 139769344,
+          "max_abs_integer_coordinate": 2116,
+          "negative_coordinates_by_node": {
+            "-1": 473,
+            "1": 606
+          }
+        },
+        {
+          "f": "0x863",
+          "hex_character_lower_bound": 135494656,
+          "max_abs_integer_coordinate": 1468,
+          "negative_coordinates_by_node": {
+            "-1": 465,
+            "1": 581
+          }
+        },
+        {
+          "f": "0x865",
+          "hex_character_lower_bound": 139898880,
+          "max_abs_integer_coordinate": 1364,
+          "negative_coordinates_by_node": {
+            "-1": 487,
+            "1": 593
+          }
+        },
+        {
+          "f": "0x871",
+          "hex_character_lower_bound": 145468928,
+          "max_abs_integer_coordinate": 1652,
+          "negative_coordinates_by_node": {
+            "-1": 495,
+            "1": 628
+          }
+        },
+        {
+          "f": "0x87b",
+          "hex_character_lower_bound": 119432192,
+          "max_abs_integer_coordinate": 2324,
+          "negative_coordinates_by_node": {
+            "-1": 424,
+            "1": 498
+          }
+        },
+        {
+          "f": "0x88d",
+          "hex_character_lower_bound": 146116608,
+          "max_abs_integer_coordinate": 1596,
+          "negative_coordinates_by_node": {
+            "-1": 492,
+            "1": 636
+          }
+        },
+        {
+          "f": "0x895",
+          "hex_character_lower_bound": 154018304,
+          "max_abs_integer_coordinate": 1324,
+          "negative_coordinates_by_node": {
+            "-1": 536,
+            "1": 653
+          }
+        },
+        {
+          "f": "0x89f",
+          "hex_character_lower_bound": 129536000,
+          "max_abs_integer_coordinate": 2372,
+          "negative_coordinates_by_node": {
+            "-1": 445,
+            "1": 555
+          }
+        },
+        {
+          "f": "0x8a9",
+          "hex_character_lower_bound": 143396352,
+          "max_abs_integer_coordinate": 1044,
+          "negative_coordinates_by_node": {
+            "-1": 479,
+            "1": 628
+          }
+        },
+        {
+          "f": "0x8b1",
+          "hex_character_lower_bound": 157127168,
+          "max_abs_integer_coordinate": 1024,
+          "negative_coordinates_by_node": {
+            "-1": 538,
+            "1": 675
+          }
+        },
+        {
+          "f": "0x8c3",
+          "hex_character_lower_bound": 169303552,
+          "max_abs_integer_coordinate": 1084,
+          "negative_coordinates_by_node": {
+            "-1": 578,
+            "1": 729
+          }
+        },
+        {
+          "f": "0x8cf",
+          "hex_character_lower_bound": 131738112,
+          "max_abs_integer_coordinate": 1852,
+          "negative_coordinates_by_node": {
+            "-1": 462,
+            "1": 555
+          }
+        },
+        {
+          "f": "0x8d1",
+          "hex_character_lower_bound": 172541952,
+          "max_abs_integer_coordinate": 928,
+          "negative_coordinates_by_node": {
+            "-1": 594,
+            "1": 738
+          }
+        },
+        {
+          "f": "0x8e1",
+          "hex_character_lower_bound": 179666432,
+          "max_abs_integer_coordinate": 1024,
+          "negative_coordinates_by_node": {
+            "-1": 620,
+            "1": 767
+          }
+        },
+        {
+          "f": "0x8e7",
+          "hex_character_lower_bound": 142360064,
+          "max_abs_integer_coordinate": 1452,
+          "negative_coordinates_by_node": {
+            "-1": 500,
+            "1": 599
+          }
+        },
+        {
+          "f": "0x8eb",
+          "hex_character_lower_bound": 138862592,
+          "max_abs_integer_coordinate": 1272,
+          "negative_coordinates_by_node": {
+            "-1": 477,
+            "1": 595
+          }
+        },
+        {
+          "f": "0x8f5",
+          "hex_character_lower_bound": 150132224,
+          "max_abs_integer_coordinate": 1464,
+          "negative_coordinates_by_node": {
+            "-1": 529,
+            "1": 630
+          }
+        },
+        {
+          "f": "0x90d",
+          "hex_character_lower_bound": 158681600,
+          "max_abs_integer_coordinate": 1372,
+          "negative_coordinates_by_node": {
+            "-1": 539,
+            "1": 686
+          }
+        },
+        {
+          "f": "0x913",
+          "hex_character_lower_bound": 163992576,
+          "max_abs_integer_coordinate": 1180,
+          "negative_coordinates_by_node": {
+            "-1": 558,
+            "1": 708
+          }
+        },
+        {
+          "f": "0x925",
+          "hex_character_lower_bound": 157515776,
+          "max_abs_integer_coordinate": 892,
+          "negative_coordinates_by_node": {
+            "-1": 531,
+            "1": 685
+          }
+        },
+        {
+          "f": "0x929",
+          "hex_character_lower_bound": 158292992,
+          "max_abs_integer_coordinate": 884,
+          "negative_coordinates_by_node": {
+            "-1": 532,
+            "1": 690
+          }
+        },
+        {
+          "f": "0x937",
+          "hex_character_lower_bound": 137696768,
+          "max_abs_integer_coordinate": 1516,
+          "negative_coordinates_by_node": {
+            "-1": 477,
+            "1": 586
+          }
+        },
+        {
+          "f": "0x93b",
+          "hex_character_lower_bound": 139251200,
+          "max_abs_integer_coordinate": 1612,
+          "negative_coordinates_by_node": {
+            "-1": 490,
+            "1": 585
+          }
+        },
+        {
+          "f": "0x93d",
+          "hex_character_lower_bound": 137437696,
+          "max_abs_integer_coordinate": 1708,
+          "negative_coordinates_by_node": {
+            "-1": 482,
+            "1": 579
+          }
+        },
+        {
+          "f": "0x945",
+          "hex_character_lower_bound": 181479936,
+          "max_abs_integer_coordinate": 920,
+          "negative_coordinates_by_node": {
+            "-1": 632,
+            "1": 769
+          }
+        },
+        {
+          "f": "0x949",
+          "hex_character_lower_bound": 180184576,
+          "max_abs_integer_coordinate": 824,
+          "negative_coordinates_by_node": {
+            "-1": 618,
+            "1": 773
+          }
+        },
+        {
+          "f": "0x951",
+          "hex_character_lower_bound": 185236480,
+          "max_abs_integer_coordinate": 984,
+          "negative_coordinates_by_node": {
+            "-1": 648,
+            "1": 782
+          }
+        },
+        {
+          "f": "0x95b",
+          "hex_character_lower_bound": 145857536,
+          "max_abs_integer_coordinate": 1252,
+          "negative_coordinates_by_node": {
+            "-1": 504,
+            "1": 622
+          }
+        },
+        {
+          "f": "0x973",
+          "hex_character_lower_bound": 159070208,
+          "max_abs_integer_coordinate": 984,
+          "negative_coordinates_by_node": {
+            "-1": 561,
+            "1": 667
+          }
+        },
+        {
+          "f": "0x975",
+          "hex_character_lower_bound": 155961344,
+          "max_abs_integer_coordinate": 1080,
+          "negative_coordinates_by_node": {
+            "-1": 559,
+            "1": 645
+          }
+        },
+        {
+          "f": "0x97f",
+          "hex_character_lower_bound": 137178624,
+          "max_abs_integer_coordinate": 1676,
+          "negative_coordinates_by_node": {
+            "-1": 495,
+            "1": 564
+          }
+        },
+        {
+          "f": "0x983",
+          "hex_character_lower_bound": 199355904,
+          "max_abs_integer_coordinate": 1000,
+          "negative_coordinates_by_node": {
+            "-1": 698,
+            "1": 841
+          }
+        },
+        {
+          "f": "0x98f",
+          "hex_character_lower_bound": 156868096,
+          "max_abs_integer_coordinate": 1276,
+          "negative_coordinates_by_node": {
+            "-1": 541,
+            "1": 670
+          }
+        },
+        {
+          "f": "0x9ab",
+          "hex_character_lower_bound": 159976960,
+          "max_abs_integer_coordinate": 852,
+          "negative_coordinates_by_node": {
+            "-1": 553,
+            "1": 682
+          }
+        },
+        {
+          "f": "0x9ad",
+          "hex_character_lower_bound": 159588352,
+          "max_abs_integer_coordinate": 884,
+          "negative_coordinates_by_node": {
+            "-1": 550,
+            "1": 682
+          }
+        },
+        {
+          "f": "0x9b9",
+          "hex_character_lower_bound": 163863040,
+          "max_abs_integer_coordinate": 836,
+          "negative_coordinates_by_node": {
+            "-1": 567,
+            "1": 698
+          }
+        },
+        {
+          "f": "0x9c7",
+          "hex_character_lower_bound": 187049984,
+          "max_abs_integer_coordinate": 1144,
+          "negative_coordinates_by_node": {
+            "-1": 653,
+            "1": 791
+          }
+        },
+        {
+          "f": "0x9d9",
+          "hex_character_lower_bound": 193785856,
+          "max_abs_integer_coordinate": 784,
+          "negative_coordinates_by_node": {
+            "-1": 689,
+            "1": 807
+          }
+        },
+        {
+          "f": "0x9e5",
+          "hex_character_lower_bound": 204148736,
+          "max_abs_integer_coordinate": 1104,
+          "negative_coordinates_by_node": {
+            "-1": 711,
+            "1": 865
+          }
+        },
+        {
+          "f": "0x9ef",
+          "hex_character_lower_bound": 170080768,
+          "max_abs_integer_coordinate": 1272,
+          "negative_coordinates_by_node": {
+            "-1": 604,
+            "1": 709
+          }
+        },
+        {
+          "f": "0x9f7",
+          "hex_character_lower_bound": 176557568,
+          "max_abs_integer_coordinate": 1304,
+          "negative_coordinates_by_node": {
+            "-1": 622,
+            "1": 741
+          }
+        },
+        {
+          "f": "0xa01",
+          "hex_character_lower_bound": 211532288,
+          "max_abs_integer_coordinate": 1352,
+          "negative_coordinates_by_node": {
+            "-1": 732,
+            "1": 901
+          }
+        },
+        {
+          "f": "0xa07",
+          "hex_character_lower_bound": 169562624,
+          "max_abs_integer_coordinate": 1444,
+          "negative_coordinates_by_node": {
+            "-1": 588,
+            "1": 721
+          }
+        },
+        {
+          "f": "0xa13",
+          "hex_character_lower_bound": 176039424,
+          "max_abs_integer_coordinate": 1096,
+          "negative_coordinates_by_node": {
+            "-1": 619,
+            "1": 740
+          }
+        },
+        {
+          "f": "0xa15",
+          "hex_character_lower_bound": 169433088,
+          "max_abs_integer_coordinate": 1032,
+          "negative_coordinates_by_node": {
+            "-1": 589,
+            "1": 719
+          }
+        },
+        {
+          "f": "0xa29",
+          "hex_character_lower_bound": 171246592,
+          "max_abs_integer_coordinate": 888,
+          "negative_coordinates_by_node": {
+            "-1": 586,
+            "1": 736
+          }
+        },
+        {
+          "f": "0xa49",
+          "hex_character_lower_bound": 183422976,
+          "max_abs_integer_coordinate": 824,
+          "negative_coordinates_by_node": {
+            "-1": 640,
+            "1": 776
+          }
+        },
+        {
+          "f": "0xa61",
+          "hex_character_lower_bound": 202335232,
+          "max_abs_integer_coordinate": 728,
+          "negative_coordinates_by_node": {
+            "-1": 700,
+            "1": 862
+          }
+        },
+        {
+          "f": "0xa6d",
+          "hex_character_lower_bound": 157774848,
+          "max_abs_integer_coordinate": 916,
+          "negative_coordinates_by_node": {
+            "-1": 552,
+            "1": 666
+          }
+        },
+        {
+          "f": "0xa79",
+          "hex_character_lower_bound": 163474432,
+          "max_abs_integer_coordinate": 1044,
+          "negative_coordinates_by_node": {
+            "-1": 576,
+            "1": 686
+          }
+        },
+        {
+          "f": "0xa7f",
+          "hex_character_lower_bound": 138344448,
+          "max_abs_integer_coordinate": 1452,
+          "negative_coordinates_by_node": {
+            "-1": 485,
+            "1": 583
+          }
+        },
+        {
+          "f": "0xa85",
+          "hex_character_lower_bound": 183163904,
+          "max_abs_integer_coordinate": 968,
+          "negative_coordinates_by_node": {
+            "-1": 627,
+            "1": 787
+          }
+        },
+        {
+          "f": "0xa91",
+          "hex_character_lower_bound": 194174464,
+          "max_abs_integer_coordinate": 840,
+          "negative_coordinates_by_node": {
+            "-1": 676,
+            "1": 823
+          }
+        },
+        {
+          "f": "0xa9d",
+          "hex_character_lower_bound": 155184128,
+          "max_abs_integer_coordinate": 1092,
+          "negative_coordinates_by_node": {
+            "-1": 538,
+            "1": 660
+          }
+        },
+        {
+          "f": "0xaa7",
+          "hex_character_lower_bound": 164640256,
+          "max_abs_integer_coordinate": 964,
+          "negative_coordinates_by_node": {
+            "-1": 569,
+            "1": 702
+          }
+        },
+        {
+          "f": "0xaab",
+          "hex_character_lower_bound": 155443200,
+          "max_abs_integer_coordinate": 804,
+          "negative_coordinates_by_node": {
+            "-1": 539,
+            "1": 661
+          }
+        },
+        {
+          "f": "0xab3",
+          "hex_character_lower_bound": 171505664,
+          "max_abs_integer_coordinate": 700,
+          "negative_coordinates_by_node": {
+            "-1": 605,
+            "1": 719
+          }
+        },
+        {
+          "f": "0xab5",
+          "hex_character_lower_bound": 167878656,
+          "max_abs_integer_coordinate": 748,
+          "negative_coordinates_by_node": {
+            "-1": 589,
+            "1": 707
+          }
+        },
+        {
+          "f": "0xad5",
+          "hex_character_lower_bound": 165158400,
+          "max_abs_integer_coordinate": 704,
+          "negative_coordinates_by_node": {
+            "-1": 567,
+            "1": 708
+          }
+        },
+        {
+          "f": "0xadf",
+          "hex_character_lower_bound": 140157952,
+          "max_abs_integer_coordinate": 1124,
+          "negative_coordinates_by_node": {
+            "-1": 493,
+            "1": 589
+          }
+        },
+        {
+          "f": "0xae3",
+          "hex_character_lower_bound": 189252096,
+          "max_abs_integer_coordinate": 692,
+          "negative_coordinates_by_node": {
+            "-1": 669,
+            "1": 792
+          }
+        },
+        {
+          "f": "0xae9",
+          "hex_character_lower_bound": 185495552,
+          "max_abs_integer_coordinate": 660,
+          "negative_coordinates_by_node": {
+            "-1": 652,
+            "1": 780
+          }
+        },
+        {
+          "f": "0xaef",
+          "hex_character_lower_bound": 149743616,
+          "max_abs_integer_coordinate": 980,
+          "negative_coordinates_by_node": {
+            "-1": 525,
+            "1": 631
+          }
+        },
+        {
+          "f": "0xaf1",
+          "hex_character_lower_bound": 195858432,
+          "max_abs_integer_coordinate": 664,
+          "negative_coordinates_by_node": {
+            "-1": 689,
+            "1": 823
+          }
+        },
+        {
+          "f": "0xafb",
+          "hex_character_lower_bound": 158422528,
+          "max_abs_integer_coordinate": 820,
+          "negative_coordinates_by_node": {
+            "-1": 570,
+            "1": 653
+          }
+        },
+        {
+          "f": "0xb03",
+          "hex_character_lower_bound": 195599360,
+          "max_abs_integer_coordinate": 1168,
+          "negative_coordinates_by_node": {
+            "-1": 691,
+            "1": 819
+          }
+        },
+        {
+          "f": "0xb09",
+          "hex_character_lower_bound": 188086272,
+          "max_abs_integer_coordinate": 1080,
+          "negative_coordinates_by_node": {
+            "-1": 661,
+            "1": 791
+          }
+        },
+        {
+          "f": "0xb11",
+          "hex_character_lower_bound": 199096832,
+          "max_abs_integer_coordinate": 1040,
+          "negative_coordinates_by_node": {
+            "-1": 711,
+            "1": 826
+          }
+        },
+        {
+          "f": "0xb33",
+          "hex_character_lower_bound": 178241536,
+          "max_abs_integer_coordinate": 876,
+          "negative_coordinates_by_node": {
+            "-1": 633,
+            "1": 743
+          }
+        },
+        {
+          "f": "0xb3f",
+          "hex_character_lower_bound": 148707328,
+          "max_abs_integer_coordinate": 1260,
+          "negative_coordinates_by_node": {
+            "-1": 525,
+            "1": 623
+          }
+        },
+        {
+          "f": "0xb41",
+          "hex_character_lower_bound": 215418368,
+          "max_abs_integer_coordinate": 924,
+          "negative_coordinates_by_node": {
+            "-1": 759,
+            "1": 904
+          }
+        },
+        {
+          "f": "0xb4b",
+          "hex_character_lower_bound": 171246592,
+          "max_abs_integer_coordinate": 800,
+          "negative_coordinates_by_node": {
+            "-1": 592,
+            "1": 730
+          }
+        },
+        {
+          "f": "0xb59",
+          "hex_character_lower_bound": 177464320,
+          "max_abs_integer_coordinate": 824,
+          "negative_coordinates_by_node": {
+            "-1": 623,
+            "1": 747
+          }
+        },
+        {
+          "f": "0xb5f",
+          "hex_character_lower_bound": 151168512,
+          "max_abs_integer_coordinate": 1060,
+          "negative_coordinates_by_node": {
+            "-1": 536,
+            "1": 631
+          }
+        },
+        {
+          "f": "0xb65",
+          "hex_character_lower_bound": 188215808,
+          "max_abs_integer_coordinate": 692,
+          "negative_coordinates_by_node": {
+            "-1": 659,
+            "1": 794
+          }
+        },
+        {
+          "f": "0xb6f",
+          "hex_character_lower_bound": 161531392,
+          "max_abs_integer_coordinate": 884,
+          "negative_coordinates_by_node": {
+            "-1": 574,
+            "1": 673
+          }
+        },
+        {
+          "f": "0xb7d",
+          "hex_character_lower_bound": 163474432,
+          "max_abs_integer_coordinate": 820,
+          "negative_coordinates_by_node": {
+            "-1": 579,
+            "1": 683
+          }
+        },
+        {
+          "f": "0xb87",
+          "hex_character_lower_bound": 179795968,
+          "max_abs_integer_coordinate": 1240,
+          "negative_coordinates_by_node": {
+            "-1": 627,
+            "1": 761
+          }
+        },
+        {
+          "f": "0xb8b",
+          "hex_character_lower_bound": 171764736,
+          "max_abs_integer_coordinate": 1304,
+          "negative_coordinates_by_node": {
+            "-1": 591,
+            "1": 735
+          }
+        },
+        {
+          "f": "0xb93",
+          "hex_character_lower_bound": 179018752,
+          "max_abs_integer_coordinate": 1240,
+          "negative_coordinates_by_node": {
+            "-1": 626,
+            "1": 756
+          }
+        },
+        {
+          "f": "0xb95",
+          "hex_character_lower_bound": 173837312,
+          "max_abs_integer_coordinate": 1272,
+          "negative_coordinates_by_node": {
+            "-1": 607,
+            "1": 735
+          }
+        },
+        {
+          "f": "0xbaf",
+          "hex_character_lower_bound": 156997632,
+          "max_abs_integer_coordinate": 1112,
+          "negative_coordinates_by_node": {
+            "-1": 553,
+            "1": 659
+          }
+        },
+        {
+          "f": "0xbb7",
+          "hex_character_lower_bound": 161660928,
+          "max_abs_integer_coordinate": 1048,
+          "negative_coordinates_by_node": {
+            "-1": 566,
+            "1": 682
+          }
+        },
+        {
+          "f": "0xbbd",
+          "hex_character_lower_bound": 160883712,
+          "max_abs_integer_coordinate": 1144,
+          "negative_coordinates_by_node": {
+            "-1": 567,
+            "1": 675
+          }
+        },
+        {
+          "f": "0xbc9",
+          "hex_character_lower_bound": 194692608,
+          "max_abs_integer_coordinate": 1016,
+          "negative_coordinates_by_node": {
+            "-1": 680,
+            "1": 823
+          }
+        },
+        {
+          "f": "0xbdb",
+          "hex_character_lower_bound": 170857984,
+          "max_abs_integer_coordinate": 984,
+          "negative_coordinates_by_node": {
+            "-1": 602,
+            "1": 717
+          }
+        },
+        {
+          "f": "0xbdd",
+          "hex_character_lower_bound": 170210304,
+          "max_abs_integer_coordinate": 1016,
+          "negative_coordinates_by_node": {
+            "-1": 605,
+            "1": 709
+          }
+        },
+        {
+          "f": "0xbe7",
+          "hex_character_lower_bound": 183811584,
+          "max_abs_integer_coordinate": 876,
+          "negative_coordinates_by_node": {
+            "-1": 648,
+            "1": 771
+          }
+        },
+        {
+          "f": "0xbed",
+          "hex_character_lower_bound": 182516224,
+          "max_abs_integer_coordinate": 792,
+          "negative_coordinates_by_node": {
+            "-1": 659,
+            "1": 750
+          }
+        },
+        {
+          "f": "0xc0b",
+          "hex_character_lower_bound": 192231424,
+          "max_abs_integer_coordinate": 1280,
+          "negative_coordinates_by_node": {
+            "-1": 674,
+            "1": 810
+          }
+        },
+        {
+          "f": "0xc0d",
+          "hex_character_lower_bound": 185106944,
+          "max_abs_integer_coordinate": 1248,
+          "negative_coordinates_by_node": {
+            "-1": 645,
+            "1": 784
+          }
+        },
+        {
+          "f": "0xc19",
+          "hex_character_lower_bound": 188474880,
+          "max_abs_integer_coordinate": 1176,
+          "negative_coordinates_by_node": {
+            "-1": 647,
+            "1": 808
+          }
+        },
+        {
+          "f": "0xc1f",
+          "hex_character_lower_bound": 164510720,
+          "max_abs_integer_coordinate": 1612,
+          "negative_coordinates_by_node": {
+            "-1": 563,
+            "1": 707
+          }
+        },
+        {
+          "f": "0xc31",
+          "hex_character_lower_bound": 190806528,
+          "max_abs_integer_coordinate": 1100,
+          "negative_coordinates_by_node": {
+            "-1": 651,
+            "1": 822
+          }
+        },
+        {
+          "f": "0xc57",
+          "hex_character_lower_bound": 175391744,
+          "max_abs_integer_coordinate": 1780,
+          "negative_coordinates_by_node": {
+            "-1": 629,
+            "1": 725
+          }
+        },
+        {
+          "f": "0xc61",
+          "hex_character_lower_bound": 210107392,
+          "max_abs_integer_coordinate": 1272,
+          "negative_coordinates_by_node": {
+            "-1": 734,
+            "1": 888
+          }
+        },
+        {
+          "f": "0xc6b",
+          "hex_character_lower_bound": 170469376,
+          "max_abs_integer_coordinate": 1240,
+          "negative_coordinates_by_node": {
+            "-1": 586,
+            "1": 730
+          }
+        },
+        {
+          "f": "0xc73",
+          "hex_character_lower_bound": 173707776,
+          "max_abs_integer_coordinate": 1336,
+          "negative_coordinates_by_node": {
+            "-1": 598,
+            "1": 743
+          }
+        },
+        {
+          "f": "0xc75",
+          "hex_character_lower_bound": 174096384,
+          "max_abs_integer_coordinate": 1644,
+          "negative_coordinates_by_node": {
+            "-1": 610,
+            "1": 734
+          }
+        },
+        {
+          "f": "0xc85",
+          "hex_character_lower_bound": 202076160,
+          "max_abs_integer_coordinate": 980,
+          "negative_coordinates_by_node": {
+            "-1": 711,
+            "1": 849
+          }
+        },
+        {
+          "f": "0xc89",
+          "hex_character_lower_bound": 200392192,
+          "max_abs_integer_coordinate": 936,
+          "negative_coordinates_by_node": {
+            "-1": 696,
+            "1": 851
+          }
+        },
+        {
+          "f": "0xc97",
+          "hex_character_lower_bound": 170728448,
+          "max_abs_integer_coordinate": 1044,
+          "negative_coordinates_by_node": {
+            "-1": 591,
+            "1": 727
+          }
+        },
+        {
+          "f": "0xc9b",
+          "hex_character_lower_bound": 171894272,
+          "max_abs_integer_coordinate": 1004,
+          "negative_coordinates_by_node": {
+            "-1": 596,
+            "1": 731
+          }
+        },
+        {
+          "f": "0xc9d",
+          "hex_character_lower_bound": 169562624,
+          "max_abs_integer_coordinate": 1100,
+          "negative_coordinates_by_node": {
+            "-1": 590,
+            "1": 719
+          }
+        },
+        {
+          "f": "0xcb3",
+          "hex_character_lower_bound": 166065152,
+          "max_abs_integer_coordinate": 840,
+          "negative_coordinates_by_node": {
+            "-1": 563,
+            "1": 719
+          }
+        },
+        {
+          "f": "0xcbf",
+          "hex_character_lower_bound": 142878208,
+          "max_abs_integer_coordinate": 1332,
+          "negative_coordinates_by_node": {
+            "-1": 480,
+            "1": 623
+          }
+        },
+        {
+          "f": "0xcc7",
+          "hex_character_lower_bound": 179536896,
+          "max_abs_integer_coordinate": 1076,
+          "negative_coordinates_by_node": {
+            "-1": 612,
+            "1": 774
+          }
+        },
+        {
+          "f": "0xccd",
+          "hex_character_lower_bound": 172801024,
+          "max_abs_integer_coordinate": 1028,
+          "negative_coordinates_by_node": {
+            "-1": 592,
+            "1": 742
+          }
+        },
+        {
+          "f": "0xcd3",
+          "hex_character_lower_bound": 184329728,
+          "max_abs_integer_coordinate": 1268,
+          "negative_coordinates_by_node": {
+            "-1": 637,
+            "1": 786
+          }
+        },
+        {
+          "f": "0xcd5",
+          "hex_character_lower_bound": 187827200,
+          "max_abs_integer_coordinate": 1524,
+          "negative_coordinates_by_node": {
+            "-1": 671,
+            "1": 779
+          }
+        },
+        {
+          "f": "0xce3",
+          "hex_character_lower_bound": 186143232,
+          "max_abs_integer_coordinate": 692,
+          "negative_coordinates_by_node": {
+            "-1": 643,
+            "1": 794
+          }
+        },
+        {
+          "f": "0xce9",
+          "hex_character_lower_bound": 189640704,
+          "max_abs_integer_coordinate": 672,
+          "negative_coordinates_by_node": {
+            "-1": 651,
+            "1": 813
+          }
+        },
+        {
+          "f": "0xcf7",
+          "hex_character_lower_bound": 159717888,
+          "max_abs_integer_coordinate": 972,
+          "negative_coordinates_by_node": {
+            "-1": 543,
+            "1": 690
+          }
+        },
+        {
+          "f": "0xd03",
+          "hex_character_lower_bound": 207516672,
+          "max_abs_integer_coordinate": 2392,
+          "negative_coordinates_by_node": {
+            "-1": 731,
+            "1": 871
+          }
+        },
+        {
+          "f": "0xd0f",
+          "hex_character_lower_bound": 185754624,
+          "max_abs_integer_coordinate": 2360,
+          "negative_coordinates_by_node": {
+            "-1": 655,
+            "1": 779
+          }
+        },
+        {
+          "f": "0xd1d",
+          "hex_character_lower_bound": 182386688,
+          "max_abs_integer_coordinate": 2424,
+          "negative_coordinates_by_node": {
+            "-1": 647,
+            "1": 761
+          }
+        },
+        {
+          "f": "0xd27",
+          "hex_character_lower_bound": 191065600,
+          "max_abs_integer_coordinate": 2200,
+          "negative_coordinates_by_node": {
+            "-1": 664,
+            "1": 811
+          }
+        },
+        {
+          "f": "0xd2d",
+          "hex_character_lower_bound": 184200192,
+          "max_abs_integer_coordinate": 2168,
+          "negative_coordinates_by_node": {
+            "-1": 656,
+            "1": 766
+          }
+        },
+        {
+          "f": "0xd41",
+          "hex_character_lower_bound": 223320064,
+          "max_abs_integer_coordinate": 2904,
+          "negative_coordinates_by_node": {
+            "-1": 800,
+            "1": 924
+          }
+        },
+        {
+          "f": "0xd47",
+          "hex_character_lower_bound": 194563072,
+          "max_abs_integer_coordinate": 2936,
+          "negative_coordinates_by_node": {
+            "-1": 689,
+            "1": 813
+          }
+        },
+        {
+          "f": "0xd55",
+          "hex_character_lower_bound": 190676992,
+          "max_abs_integer_coordinate": 3352,
+          "negative_coordinates_by_node": {
+            "-1": 693,
+            "1": 779
+          }
+        },
+        {
+          "f": "0xd59",
+          "hex_character_lower_bound": 198449152,
+          "max_abs_integer_coordinate": 3064,
+          "negative_coordinates_by_node": {
+            "-1": 711,
+            "1": 821
+          }
+        },
+        {
+          "f": "0xd63",
+          "hex_character_lower_bound": 200521728,
+          "max_abs_integer_coordinate": 2584,
+          "negative_coordinates_by_node": {
+            "-1": 704,
+            "1": 844
+          }
+        },
+        {
+          "f": "0xd6f",
+          "hex_character_lower_bound": 180832256,
+          "max_abs_integer_coordinate": 2552,
+          "negative_coordinates_by_node": {
+            "-1": 646,
+            "1": 750
+          }
+        },
+        {
+          "f": "0xd71",
+          "hex_character_lower_bound": 209718784,
+          "max_abs_integer_coordinate": 2648,
+          "negative_coordinates_by_node": {
+            "-1": 752,
+            "1": 867
+          }
+        },
+        {
+          "f": "0xd93",
+          "hex_character_lower_bound": 200392192,
+          "max_abs_integer_coordinate": 1656,
+          "negative_coordinates_by_node": {
+            "-1": 703,
+            "1": 844
+          }
+        },
+        {
+          "f": "0xd9f",
+          "hex_character_lower_bound": 178371072,
+          "max_abs_integer_coordinate": 1624,
+          "negative_coordinates_by_node": {
+            "-1": 622,
+            "1": 755
+          }
+        },
+        {
+          "f": "0xda9",
+          "hex_character_lower_bound": 204666880,
+          "max_abs_integer_coordinate": 1624,
+          "negative_coordinates_by_node": {
+            "-1": 715,
+            "1": 865
+          }
+        },
+        {
+          "f": "0xdbb",
+          "hex_character_lower_bound": 176168960,
+          "max_abs_integer_coordinate": 1432,
+          "negative_coordinates_by_node": {
+            "-1": 609,
+            "1": 751
+          }
+        },
+        {
+          "f": "0xdbd",
+          "hex_character_lower_bound": 179536896,
+          "max_abs_integer_coordinate": 1636,
+          "negative_coordinates_by_node": {
+            "-1": 630,
+            "1": 756
+          }
+        },
+        {
+          "f": "0xdc9",
+          "hex_character_lower_bound": 213216256,
+          "max_abs_integer_coordinate": 1944,
+          "negative_coordinates_by_node": {
+            "-1": 755,
+            "1": 891
+          }
+        },
+        {
+          "f": "0xdd7",
+          "hex_character_lower_bound": 189640704,
+          "max_abs_integer_coordinate": 2292,
+          "negative_coordinates_by_node": {
+            "-1": 674,
+            "1": 790
+          }
+        },
+        {
+          "f": "0xddb",
+          "hex_character_lower_bound": 189381632,
+          "max_abs_integer_coordinate": 2008,
+          "negative_coordinates_by_node": {
+            "-1": 663,
+            "1": 799
+          }
+        },
+        {
+          "f": "0xde1",
+          "hex_character_lower_bound": 231221760,
+          "max_abs_integer_coordinate": 1784,
+          "negative_coordinates_by_node": {
+            "-1": 812,
+            "1": 973
+          }
+        },
+        {
+          "f": "0xde7",
+          "hex_character_lower_bound": 199744512,
+          "max_abs_integer_coordinate": 1784,
+          "negative_coordinates_by_node": {
+            "-1": 690,
+            "1": 852
+          }
+        },
+        {
+          "f": "0xdf5",
+          "hex_character_lower_bound": 196635648,
+          "max_abs_integer_coordinate": 2156,
+          "negative_coordinates_by_node": {
+            "-1": 710,
+            "1": 808
+          }
+        },
+        {
+          "f": "0xdff",
+          "hex_character_lower_bound": 179407360,
+          "max_abs_integer_coordinate": 1816,
+          "negative_coordinates_by_node": {
+            "-1": 631,
+            "1": 754
+          }
+        },
+        {
+          "f": "0xe05",
+          "hex_character_lower_bound": 208941568,
+          "max_abs_integer_coordinate": 1288,
+          "negative_coordinates_by_node": {
+            "-1": 736,
+            "1": 877
+          }
+        },
+        {
+          "f": "0xe1d",
+          "hex_character_lower_bound": 185625088,
+          "max_abs_integer_coordinate": 1032,
+          "negative_coordinates_by_node": {
+            "-1": 651,
+            "1": 782
+          }
+        },
+        {
+          "f": "0xe21",
+          "hex_character_lower_bound": 217879552,
+          "max_abs_integer_coordinate": 1128,
+          "negative_coordinates_by_node": {
+            "-1": 752,
+            "1": 930
+          }
+        },
+        {
+          "f": "0xe27",
+          "hex_character_lower_bound": 176298496,
+          "max_abs_integer_coordinate": 1032,
+          "negative_coordinates_by_node": {
+            "-1": 596,
+            "1": 765
+          }
+        },
+        {
+          "f": "0xe2b",
+          "hex_character_lower_bound": 185625088,
+          "max_abs_integer_coordinate": 1000,
+          "negative_coordinates_by_node": {
+            "-1": 644,
+            "1": 789
+          }
+        },
+        {
+          "f": "0xe33",
+          "hex_character_lower_bound": 192879104,
+          "max_abs_integer_coordinate": 936,
+          "negative_coordinates_by_node": {
+            "-1": 666,
+            "1": 823
+          }
+        },
+        {
+          "f": "0xe39",
+          "hex_character_lower_bound": 182516224,
+          "max_abs_integer_coordinate": 888,
+          "negative_coordinates_by_node": {
+            "-1": 610,
+            "1": 799
+          }
+        },
+        {
+          "f": "0xe47",
+          "hex_character_lower_bound": 184847872,
+          "max_abs_integer_coordinate": 1000,
+          "negative_coordinates_by_node": {
+            "-1": 633,
+            "1": 794
+          }
+        },
+        {
+          "f": "0xe4b",
+          "hex_character_lower_bound": 186143232,
+          "max_abs_integer_coordinate": 968,
+          "negative_coordinates_by_node": {
+            "-1": 651,
+            "1": 786
+          }
+        },
+        {
+          "f": "0xe55",
+          "hex_character_lower_bound": 190936064,
+          "max_abs_integer_coordinate": 1076,
+          "negative_coordinates_by_node": {
+            "-1": 673,
+            "1": 801
+          }
+        },
+        {
+          "f": "0xe5f",
+          "hex_character_lower_bound": 171376128,
+          "max_abs_integer_coordinate": 1036,
+          "negative_coordinates_by_node": {
+            "-1": 590,
+            "1": 733
+          }
+        },
+        {
+          "f": "0xe71",
+          "hex_character_lower_bound": 203501056,
+          "max_abs_integer_coordinate": 792,
+          "negative_coordinates_by_node": {
+            "-1": 718,
+            "1": 853
+          }
+        },
+        {
+          "f": "0xe7b",
+          "hex_character_lower_bound": 169951232,
+          "max_abs_integer_coordinate": 792,
+          "negative_coordinates_by_node": {
+            "-1": 588,
+            "1": 724
+          }
+        },
+        {
+          "f": "0xe7d",
+          "hex_character_lower_bound": 173578240,
+          "max_abs_integer_coordinate": 828,
+          "negative_coordinates_by_node": {
+            "-1": 604,
+            "1": 736
+          }
+        },
+        {
+          "f": "0xe81",
+          "hex_character_lower_bound": 232776192,
+          "max_abs_integer_coordinate": 1124,
+          "negative_coordinates_by_node": {
+            "-1": 825,
+            "1": 972
+          }
+        },
+        {
+          "f": "0xe93",
+          "hex_character_lower_bound": 208164352,
+          "max_abs_integer_coordinate": 1080,
+          "negative_coordinates_by_node": {
+            "-1": 732,
+            "1": 875
+          }
+        },
+        {
+          "f": "0xe9f",
+          "hex_character_lower_bound": 189252096,
+          "max_abs_integer_coordinate": 952,
+          "negative_coordinates_by_node": {
+            "-1": 657,
+            "1": 804
+          }
+        },
+        {
+          "f": "0xea3",
+          "hex_character_lower_bound": 212050432,
+          "max_abs_integer_coordinate": 840,
+          "negative_coordinates_by_node": {
+            "-1": 747,
+            "1": 890
+          }
+        },
+        {
+          "f": "0xebb",
+          "hex_character_lower_bound": 190676992,
+          "max_abs_integer_coordinate": 772,
+          "negative_coordinates_by_node": {
+            "-1": 671,
+            "1": 801
+          }
+        },
+        {
+          "f": "0xec9",
+          "hex_character_lower_bound": 208034816,
+          "max_abs_integer_coordinate": 1068,
+          "negative_coordinates_by_node": {
+            "-1": 730,
+            "1": 876
+          }
+        },
+        {
+          "f": "0xecf",
+          "hex_character_lower_bound": 187049984,
+          "max_abs_integer_coordinate": 984,
+          "negative_coordinates_by_node": {
+            "-1": 655,
+            "1": 789
+          }
+        },
+        {
+          "f": "0xedd",
+          "hex_character_lower_bound": 193915392,
+          "max_abs_integer_coordinate": 1016,
+          "negative_coordinates_by_node": {
+            "-1": 687,
+            "1": 810
+          }
+        },
+        {
+          "f": "0xef3",
+          "hex_character_lower_bound": 203630592,
+          "max_abs_integer_coordinate": 824,
+          "negative_coordinates_by_node": {
+            "-1": 712,
+            "1": 860
+          }
+        },
+        {
+          "f": "0xef9",
+          "hex_character_lower_bound": 202464768,
+          "max_abs_integer_coordinate": 900,
+          "negative_coordinates_by_node": {
+            "-1": 714,
+            "1": 849
+          }
+        },
+        {
+          "f": "0xf0b",
+          "hex_character_lower_bound": 200003584,
+          "max_abs_integer_coordinate": 1072,
+          "negative_coordinates_by_node": {
+            "-1": 694,
+            "1": 850
+          }
+        },
+        {
+          "f": "0xf19",
+          "hex_character_lower_bound": 211014144,
+          "max_abs_integer_coordinate": 992,
+          "negative_coordinates_by_node": {
+            "-1": 747,
+            "1": 882
+          }
+        },
+        {
+          "f": "0xf31",
+          "hex_character_lower_bound": 215288832,
+          "max_abs_integer_coordinate": 864,
+          "negative_coordinates_by_node": {
+            "-1": 755,
+            "1": 907
+          }
+        },
+        {
+          "f": "0xf37",
+          "hex_character_lower_bound": 188604416,
+          "max_abs_integer_coordinate": 864,
+          "negative_coordinates_by_node": {
+            "-1": 656,
+            "1": 800
+          }
+        },
+        {
+          "f": "0xf5d",
+          "hex_character_lower_bound": 185236480,
+          "max_abs_integer_coordinate": 1408,
+          "negative_coordinates_by_node": {
+            "-1": 657,
+            "1": 773
+          }
+        },
+        {
+          "f": "0xf6b",
+          "hex_character_lower_bound": 190806528,
+          "max_abs_integer_coordinate": 928,
+          "negative_coordinates_by_node": {
+            "-1": 667,
+            "1": 806
+          }
+        },
+        {
+          "f": "0xf6d",
+          "hex_character_lower_bound": 186272768,
+          "max_abs_integer_coordinate": 992,
+          "negative_coordinates_by_node": {
+            "-1": 646,
+            "1": 792
+          }
+        },
+        {
+          "f": "0xf75",
+          "hex_character_lower_bound": 196506112,
+          "max_abs_integer_coordinate": 1228,
+          "negative_coordinates_by_node": {
+            "-1": 688,
+            "1": 829
+          }
+        },
+        {
+          "f": "0xf79",
+          "hex_character_lower_bound": 203501056,
+          "max_abs_integer_coordinate": 1088,
+          "negative_coordinates_by_node": {
+            "-1": 706,
+            "1": 865
+          }
+        },
+        {
+          "f": "0xf83",
+          "hex_character_lower_bound": 204407808,
+          "max_abs_integer_coordinate": 1028,
+          "negative_coordinates_by_node": {
+            "-1": 707,
+            "1": 871
+          }
+        },
+        {
+          "f": "0xf91",
+          "hex_character_lower_bound": 222154240,
+          "max_abs_integer_coordinate": 904,
+          "negative_coordinates_by_node": {
+            "-1": 784,
+            "1": 931
+          }
+        },
+        {
+          "f": "0xf97",
+          "hex_character_lower_bound": 193138176,
+          "max_abs_integer_coordinate": 872,
+          "negative_coordinates_by_node": {
+            "-1": 674,
+            "1": 817
+          }
+        },
+        {
+          "f": "0xf9b",
+          "hex_character_lower_bound": 193397248,
+          "max_abs_integer_coordinate": 840,
+          "negative_coordinates_by_node": {
+            "-1": 668,
+            "1": 825
+          }
+        },
+        {
+          "f": "0xfa7",
+          "hex_character_lower_bound": 186402304,
+          "max_abs_integer_coordinate": 840,
+          "negative_coordinates_by_node": {
+            "-1": 644,
+            "1": 795
+          }
+        },
+        {
+          "f": "0xfad",
+          "hex_character_lower_bound": 187049984,
+          "max_abs_integer_coordinate": 776,
+          "negative_coordinates_by_node": {
+            "-1": 647,
+            "1": 797
+          }
+        },
+        {
+          "f": "0xfb5",
+          "hex_character_lower_bound": 200003584,
+          "max_abs_integer_coordinate": 812,
+          "negative_coordinates_by_node": {
+            "-1": 704,
+            "1": 840
+          }
+        },
+        {
+          "f": "0xfcd",
+          "hex_character_lower_bound": 193915392,
+          "max_abs_integer_coordinate": 860,
+          "negative_coordinates_by_node": {
+            "-1": 673,
+            "1": 824
+          }
+        },
+        {
+          "f": "0xfd3",
+          "hex_character_lower_bound": 208293888,
+          "max_abs_integer_coordinate": 1044,
+          "negative_coordinates_by_node": {
+            "-1": 726,
+            "1": 882
+          }
+        },
+        {
+          "f": "0xfe5",
+          "hex_character_lower_bound": 204278272,
+          "max_abs_integer_coordinate": 724,
+          "negative_coordinates_by_node": {
+            "-1": 703,
+            "1": 874
+          }
+        },
+        {
+          "f": "0xfe9",
+          "hex_character_lower_bound": 207128064,
+          "max_abs_integer_coordinate": 672,
+          "negative_coordinates_by_node": {
+            "-1": 714,
+            "1": 885
+          }
+        },
+        {
+          "f": "0xffb",
+          "hex_character_lower_bound": 185236480,
+          "max_abs_integer_coordinate": 640,
+          "negative_coordinates_by_node": {
+            "-1": 628,
+            "1": 802
+          }
+        }
+      ],
+      "fields_checked": 186,
+      "minimum": {
+        "f": "0x87b",
+        "hex_character_lower_bound": 119432192,
+        "max_abs_integer_coordinate": 2324,
+        "negative_coordinates_by_node": {
+          "-1": 424,
+          "1": 498
+        }
+      }
+    },
+    {
+      "degree": 12,
+      "fields": [
+        {
+          "f": "0x1009",
+          "hex_character_lower_bound": 196117504,
+          "max_abs_integer_coordinate": 1312,
+          "negative_coordinates_by_node": {
+            "-1": 663,
+            "1": 851
+          }
+        },
+        {
+          "f": "0x1017",
+          "hex_character_lower_bound": 172671488,
+          "max_abs_integer_coordinate": 1956,
+          "negative_coordinates_by_node": {
+            "-1": 596,
+            "1": 737
+          }
+        },
+        {
+          "f": "0x1021",
+          "hex_character_lower_bound": 195210752,
+          "max_abs_integer_coordinate": 1176,
+          "negative_coordinates_by_node": {
+            "-1": 648,
+            "1": 859
+          }
+        },
+        {
+          "f": "0x1033",
+          "hex_character_lower_bound": 167749120,
+          "max_abs_integer_coordinate": 1596,
+          "negative_coordinates_by_node": {
+            "-1": 573,
+            "1": 722
+          }
+        },
+        {
+          "f": "0x1035",
+          "hex_character_lower_bound": 163344896,
+          "max_abs_integer_coordinate": 1724,
+          "negative_coordinates_by_node": {
+            "-1": 557,
+            "1": 704
+          }
+        },
+        {
+          "f": "0x103f",
+          "hex_character_lower_bound": 149095936,
+          "max_abs_integer_coordinate": 2396,
+          "negative_coordinates_by_node": {
+            "-1": 517,
+            "1": 634
+          }
+        },
+        {
+          "f": "0x104d",
+          "hex_character_lower_bound": 161790464,
+          "max_abs_integer_coordinate": 1740,
+          "negative_coordinates_by_node": {
+            "-1": 544,
+            "1": 705
+          }
+        },
+        {
+          "f": "0x1053",
+          "hex_character_lower_bound": 162179072,
+          "max_abs_integer_coordinate": 1468,
+          "negative_coordinates_by_node": {
+            "-1": 547,
+            "1": 705
+          }
+        },
+        {
+          "f": "0x1069",
+          "hex_character_lower_bound": 157127168,
+          "max_abs_integer_coordinate": 1508,
+          "negative_coordinates_by_node": {
+            "-1": 522,
+            "1": 691
+          }
+        },
+        {
+          "f": "0x1077",
+          "hex_character_lower_bound": 141841920,
+          "max_abs_integer_coordinate": 1956,
+          "negative_coordinates_by_node": {
+            "-1": 494,
+            "1": 601
+          }
+        },
+        {
+          "f": "0x107b",
+          "hex_character_lower_bound": 142489600,
+          "max_abs_integer_coordinate": 2084,
+          "negative_coordinates_by_node": {
+            "-1": 495,
+            "1": 605
+          }
+        },
+        {
+          "f": "0x107d",
+          "hex_character_lower_bound": 140417024,
+          "max_abs_integer_coordinate": 2180,
+          "negative_coordinates_by_node": {
+            "-1": 487,
+            "1": 597
+          }
+        },
+        {
+          "f": "0x1081",
+          "hex_character_lower_bound": 214382080,
+          "max_abs_integer_coordinate": 1156,
+          "negative_coordinates_by_node": {
+            "-1": 716,
+            "1": 939
+          }
+        },
+        {
+          "f": "0x108b",
+          "hex_character_lower_bound": 176039424,
+          "max_abs_integer_coordinate": 1484,
+          "negative_coordinates_by_node": {
+            "-1": 598,
+            "1": 761
+          }
+        },
+        {
+          "f": "0x1099",
+          "hex_character_lower_bound": 173578240,
+          "max_abs_integer_coordinate": 1460,
+          "negative_coordinates_by_node": {
+            "-1": 591,
+            "1": 749
+          }
+        },
+        {
+          "f": "0x10a3",
+          "hex_character_lower_bound": 173578240,
+          "max_abs_integer_coordinate": 1372,
+          "negative_coordinates_by_node": {
+            "-1": 588,
+            "1": 752
+          }
+        },
+        {
+          "f": "0x10a5",
+          "hex_character_lower_bound": 167749120,
+          "max_abs_integer_coordinate": 1188,
+          "negative_coordinates_by_node": {
+            "-1": 557,
+            "1": 738
+          }
+        },
+        {
+          "f": "0x10cf",
+          "hex_character_lower_bound": 143784960,
+          "max_abs_integer_coordinate": 2092,
+          "negative_coordinates_by_node": {
+            "-1": 488,
+            "1": 622
+          }
+        },
+        {
+          "f": "0x10d1",
+          "hex_character_lower_bound": 173837312,
+          "max_abs_integer_coordinate": 1272,
+          "negative_coordinates_by_node": {
+            "-1": 582,
+            "1": 760
+          }
+        },
+        {
+          "f": "0x10eb",
+          "hex_character_lower_bound": 147671040,
+          "max_abs_integer_coordinate": 1656,
+          "negative_coordinates_by_node": {
+            "-1": 508,
+            "1": 632
+          }
+        },
+        {
+          "f": "0x10ed",
+          "hex_character_lower_bound": 143655424,
+          "max_abs_integer_coordinate": 1720,
+          "negative_coordinates_by_node": {
+            "-1": 487,
+            "1": 622
+          }
+        },
+        {
+          "f": "0x10ff",
+          "hex_character_lower_bound": 127074816,
+          "max_abs_integer_coordinate": 2236,
+          "negative_coordinates_by_node": {
+            "-1": 445,
+            "1": 536
+          }
+        },
+        {
+          "f": "0x1107",
+          "hex_character_lower_bound": 192620032,
+          "max_abs_integer_coordinate": 1636,
+          "negative_coordinates_by_node": {
+            "-1": 665,
+            "1": 822
+          }
+        },
+        {
+          "f": "0x111f",
+          "hex_character_lower_bound": 155702272,
+          "max_abs_integer_coordinate": 2068,
+          "negative_coordinates_by_node": {
+            "-1": 530,
+            "1": 672
+          }
+        },
+        {
+          "f": "0x1123",
+          "hex_character_lower_bound": 183422976,
+          "max_abs_integer_coordinate": 1212,
+          "negative_coordinates_by_node": {
+            "-1": 623,
+            "1": 793
+          }
+        },
+        {
+          "f": "0x1131",
+          "hex_character_lower_bound": 173966848,
+          "max_abs_integer_coordinate": 1116,
+          "negative_coordinates_by_node": {
+            "-1": 574,
+            "1": 769
+          }
+        },
+        {
+          "f": "0x1137",
+          "hex_character_lower_bound": 151038976,
+          "max_abs_integer_coordinate": 1636,
+          "negative_coordinates_by_node": {
+            "-1": 512,
+            "1": 654
+          }
+        },
+        {
+          "f": "0x113b",
+          "hex_character_lower_bound": 151686656,
+          "max_abs_integer_coordinate": 1756,
+          "negative_coordinates_by_node": {
+            "-1": 513,
+            "1": 658
+          }
+        },
+        {
+          "f": "0x114f",
+          "hex_character_lower_bound": 155961344,
+          "max_abs_integer_coordinate": 1900,
+          "negative_coordinates_by_node": {
+            "-1": 537,
+            "1": 667
+          }
+        },
+        {
+          "f": "0x1157",
+          "hex_character_lower_bound": 147152896,
+          "max_abs_integer_coordinate": 1604,
+          "negative_coordinates_by_node": {
+            "-1": 498,
+            "1": 638
+          }
+        },
+        {
+          "f": "0x1161",
+          "hex_character_lower_bound": 182645760,
+          "max_abs_integer_coordinate": 992,
+          "negative_coordinates_by_node": {
+            "-1": 613,
+            "1": 797
+          }
+        },
+        {
+          "f": "0x116b",
+          "hex_character_lower_bound": 151557120,
+          "max_abs_integer_coordinate": 1324,
+          "negative_coordinates_by_node": {
+            "-1": 519,
+            "1": 651
+          }
+        },
+        {
+          "f": "0x116d",
+          "hex_character_lower_bound": 150520832,
+          "max_abs_integer_coordinate": 1452,
+          "negative_coordinates_by_node": {
+            "-1": 513,
+            "1": 649
+          }
+        },
+        {
+          "f": "0x1179",
+          "hex_character_lower_bound": 150002688,
+          "max_abs_integer_coordinate": 1668,
+          "negative_coordinates_by_node": {
+            "-1": 508,
+            "1": 650
+          }
+        },
+        {
+          "f": "0x1183",
+          "hex_character_lower_bound": 197024256,
+          "max_abs_integer_coordinate": 1084,
+          "negative_coordinates_by_node": {
+            "-1": 669,
+            "1": 852
+          }
+        },
+        {
+          "f": "0x1185",
+          "hex_character_lower_bound": 195858432,
+          "max_abs_integer_coordinate": 1000,
+          "negative_coordinates_by_node": {
+            "-1": 665,
+            "1": 847
+          }
+        },
+        {
+          "f": "0x1191",
+          "hex_character_lower_bound": 190029312,
+          "max_abs_integer_coordinate": 904,
+          "negative_coordinates_by_node": {
+            "-1": 640,
+            "1": 827
+          }
+        },
+        {
+          "f": "0x11ab",
+          "hex_character_lower_bound": 157256704,
+          "max_abs_integer_coordinate": 1260,
+          "negative_coordinates_by_node": {
+            "-1": 535,
+            "1": 679
+          }
+        },
+        {
+          "f": "0x11b3",
+          "hex_character_lower_bound": 153370624,
+          "max_abs_integer_coordinate": 1180,
+          "negative_coordinates_by_node": {
+            "-1": 515,
+            "1": 669
+          }
+        },
+        {
+          "f": "0x11d9",
+          "hex_character_lower_bound": 158552064,
+          "max_abs_integer_coordinate": 1312,
+          "negative_coordinates_by_node": {
+            "-1": 536,
+            "1": 688
+          }
+        },
+        {
+          "f": "0x11df",
+          "hex_character_lower_bound": 134587904,
+          "max_abs_integer_coordinate": 1908,
+          "negative_coordinates_by_node": {
+            "-1": 462,
+            "1": 577
+          }
+        },
+        {
+          "f": "0x11e3",
+          "hex_character_lower_bound": 162179072,
+          "max_abs_integer_coordinate": 1344,
+          "negative_coordinates_by_node": {
+            "-1": 545,
+            "1": 707
+          }
+        },
+        {
+          "f": "0x11ef",
+          "hex_character_lower_bound": 140676096,
+          "max_abs_integer_coordinate": 1772,
+          "negative_coordinates_by_node": {
+            "-1": 485,
+            "1": 601
+          }
+        },
+        {
+          "f": "0x11f1",
+          "hex_character_lower_bound": 160883712,
+          "max_abs_integer_coordinate": 1536,
+          "negative_coordinates_by_node": {
+            "-1": 545,
+            "1": 697
+          }
+        },
+        {
+          "f": "0x1201",
+          "hex_character_lower_bound": 227076608,
+          "max_abs_integer_coordinate": 1352,
+          "negative_coordinates_by_node": {
+            "-1": 766,
+            "1": 987
+          }
+        },
+        {
+          "f": "0x120d",
+          "hex_character_lower_bound": 192749568,
+          "max_abs_integer_coordinate": 1260,
+          "negative_coordinates_by_node": {
+            "-1": 654,
+            "1": 834
+          }
+        },
+        {
+          "f": "0x1213",
+          "hex_character_lower_bound": 189899776,
+          "max_abs_integer_coordinate": 1160,
+          "negative_coordinates_by_node": {
+            "-1": 640,
+            "1": 826
+          }
+        },
+        {
+          "f": "0x1219",
+          "hex_character_lower_bound": 190417920,
+          "max_abs_integer_coordinate": 1108,
+          "negative_coordinates_by_node": {
+            "-1": 644,
+            "1": 826
+          }
+        },
+        {
+          "f": "0x1225",
+          "hex_character_lower_bound": 187827200,
+          "max_abs_integer_coordinate": 1032,
+          "negative_coordinates_by_node": {
+            "-1": 627,
+            "1": 823
+          }
+        },
+        {
+          "f": "0x1237",
+          "hex_character_lower_bound": 165935616,
+          "max_abs_integer_coordinate": 1404,
+          "negative_coordinates_by_node": {
+            "-1": 567,
+            "1": 714
+          }
+        },
+        {
+          "f": "0x123b",
+          "hex_character_lower_bound": 165547008,
+          "max_abs_integer_coordinate": 1500,
+          "negative_coordinates_by_node": {
+            "-1": 562,
+            "1": 716
+          }
+        },
+        {
+          "f": "0x123d",
+          "hex_character_lower_bound": 165676544,
+          "max_abs_integer_coordinate": 1596,
+          "negative_coordinates_by_node": {
+            "-1": 562,
+            "1": 717
+          }
+        },
+        {
+          "f": "0x1243",
+          "hex_character_lower_bound": 196117504,
+          "max_abs_integer_coordinate": 988,
+          "negative_coordinates_by_node": {
+            "-1": 663,
+            "1": 851
+          }
+        },
+        {
+          "f": "0x1245",
+          "hex_character_lower_bound": 191454208,
+          "max_abs_integer_coordinate": 936,
+          "negative_coordinates_by_node": {
+            "-1": 639,
+            "1": 839
+          }
+        },
+        {
+          "f": "0x1267",
+          "hex_character_lower_bound": 162567680,
+          "max_abs_integer_coordinate": 1348,
+          "negative_coordinates_by_node": {
+            "-1": 556,
+            "1": 699
+          }
+        },
+        {
+          "f": "0x126d",
+          "hex_character_lower_bound": 154925056,
+          "max_abs_integer_coordinate": 1228,
+          "negative_coordinates_by_node": {
+            "-1": 525,
+            "1": 671
+          }
+        },
+        {
+          "f": "0x1273",
+          "hex_character_lower_bound": 161401856,
+          "max_abs_integer_coordinate": 1188,
+          "negative_coordinates_by_node": {
+            "-1": 558,
+            "1": 688
+          }
+        },
+        {
+          "f": "0x127f",
+          "hex_character_lower_bound": 141582848,
+          "max_abs_integer_coordinate": 1756,
+          "negative_coordinates_by_node": {
+            "-1": 499,
+            "1": 594
+          }
+        },
+        {
+          "f": "0x12b5",
+          "hex_character_lower_bound": 173060096,
+          "max_abs_integer_coordinate": 1084,
+          "negative_coordinates_by_node": {
+            "-1": 581,
+            "1": 755
+          }
+        },
+        {
+          "f": "0x12b9",
+          "hex_character_lower_bound": 172282880,
+          "max_abs_integer_coordinate": 1180,
+          "negative_coordinates_by_node": {
+            "-1": 581,
+            "1": 749
+          }
+        },
+        {
+          "f": "0x12c1",
+          "hex_character_lower_bound": 209977856,
+          "max_abs_integer_coordinate": 924,
+          "negative_coordinates_by_node": {
+            "-1": 712,
+            "1": 909
+          }
+        },
+        {
+          "f": "0x12cb",
+          "hex_character_lower_bound": 174873600,
+          "max_abs_integer_coordinate": 1036,
+          "negative_coordinates_by_node": {
+            "-1": 601,
+            "1": 749
+          }
+        },
+        {
+          "f": "0x1309",
+          "hex_character_lower_bound": 219563520,
+          "max_abs_integer_coordinate": 1104,
+          "negative_coordinates_by_node": {
+            "-1": 751,
+            "1": 944
+          }
+        },
+        {
+          "f": "0x130f",
+          "hex_character_lower_bound": 197931008,
+          "max_abs_integer_coordinate": 1324,
+          "negative_coordinates_by_node": {
+            "-1": 700,
+            "1": 828
+          }
+        },
+        {
+          "f": "0x131b",
+          "hex_character_lower_bound": 191324672,
+          "max_abs_integer_coordinate": 1108,
+          "negative_coordinates_by_node": {
+            "-1": 658,
+            "1": 819
+          }
+        },
+        {
+          "f": "0x131d",
+          "hex_character_lower_bound": 188863488,
+          "max_abs_integer_coordinate": 1172,
+          "negative_coordinates_by_node": {
+            "-1": 653,
+            "1": 805
+          }
+        },
+        {
+          "f": "0x1321",
+          "hex_character_lower_bound": 221117952,
+          "max_abs_integer_coordinate": 944,
+          "negative_coordinates_by_node": {
+            "-1": 754,
+            "1": 953
+          }
+        },
+        {
+          "f": "0x1333",
+          "hex_character_lower_bound": 185495552,
+          "max_abs_integer_coordinate": 896,
+          "negative_coordinates_by_node": {
+            "-1": 633,
+            "1": 799
+          }
+        },
+        {
+          "f": "0x1339",
+          "hex_character_lower_bound": 184977408,
+          "max_abs_integer_coordinate": 988,
+          "negative_coordinates_by_node": {
+            "-1": 628,
+            "1": 800
+          }
+        },
+        {
+          "f": "0x133f",
+          "hex_character_lower_bound": 162308608,
+          "max_abs_integer_coordinate": 1468,
+          "negative_coordinates_by_node": {
+            "-1": 567,
+            "1": 686
+          }
+        },
+        {
+          "f": "0x134d",
+          "hex_character_lower_bound": 193138176,
+          "max_abs_integer_coordinate": 940,
+          "negative_coordinates_by_node": {
+            "-1": 664,
+            "1": 827
+          }
+        },
+        {
+          "f": "0x1365",
+          "hex_character_lower_bound": 192231424,
+          "max_abs_integer_coordinate": 736,
+          "negative_coordinates_by_node": {
+            "-1": 659,
+            "1": 825
+          }
+        },
+        {
+          "f": "0x1371",
+          "hex_character_lower_bound": 188345344,
+          "max_abs_integer_coordinate": 864,
+          "negative_coordinates_by_node": {
+            "-1": 640,
+            "1": 814
+          }
+        },
+        {
+          "f": "0x1399",
+          "hex_character_lower_bound": 205314560,
+          "max_abs_integer_coordinate": 872,
+          "negative_coordinates_by_node": {
+            "-1": 707,
+            "1": 878
+          }
+        },
+        {
+          "f": "0x139f",
+          "hex_character_lower_bound": 177593856,
+          "max_abs_integer_coordinate": 1332,
+          "negative_coordinates_by_node": {
+            "-1": 620,
+            "1": 751
+          }
+        },
+        {
+          "f": "0x13a3",
+          "hex_character_lower_bound": 205314560,
+          "max_abs_integer_coordinate": 808,
+          "negative_coordinates_by_node": {
+            "-1": 712,
+            "1": 873
+          }
+        },
+        {
+          "f": "0x13a9",
+          "hex_character_lower_bound": 205314560,
+          "max_abs_integer_coordinate": 776,
+          "negative_coordinates_by_node": {
+            "-1": 717,
+            "1": 868
+          }
+        },
+        {
+          "f": "0x13af",
+          "hex_character_lower_bound": 175780352,
+          "max_abs_integer_coordinate": 1196,
+          "negative_coordinates_by_node": {
+            "-1": 608,
+            "1": 749
+          }
+        },
+        {
+          "f": "0x13bb",
+          "hex_character_lower_bound": 175132672,
+          "max_abs_integer_coordinate": 1052,
+          "negative_coordinates_by_node": {
+            "-1": 610,
+            "1": 742
+          }
+        },
+        {
+          "f": "0x13c3",
+          "hex_character_lower_bound": 210884608,
+          "max_abs_integer_coordinate": 924,
+          "negative_coordinates_by_node": {
+            "-1": 726,
+            "1": 902
+          }
+        },
+        {
+          "f": "0x13d1",
+          "hex_character_lower_bound": 215936512,
+          "max_abs_integer_coordinate": 760,
+          "negative_coordinates_by_node": {
+            "-1": 742,
+            "1": 925
+          }
+        },
+        {
+          "f": "0x13d7",
+          "hex_character_lower_bound": 179925504,
+          "max_abs_integer_coordinate": 980,
+          "negative_coordinates_by_node": {
+            "-1": 618,
+            "1": 771
+          }
+        },
+        {
+          "f": "0x13dd",
+          "hex_character_lower_bound": 181609472,
+          "max_abs_integer_coordinate": 1012,
+          "negative_coordinates_by_node": {
+            "-1": 624,
+            "1": 778
+          }
+        },
+        {
+          "f": "0x13f3",
+          "hex_character_lower_bound": 177464320,
+          "max_abs_integer_coordinate": 928,
+          "negative_coordinates_by_node": {
+            "-1": 623,
+            "1": 747
+          }
+        },
+        {
+          "f": "0x13f5",
+          "hex_character_lower_bound": 182904832,
+          "max_abs_integer_coordinate": 960,
+          "negative_coordinates_by_node": {
+            "-1": 643,
+            "1": 769
+          }
+        },
+        {
+          "f": "0x1407",
+          "hex_character_lower_bound": 210496000,
+          "max_abs_integer_coordinate": 1344,
+          "negative_coordinates_by_node": {
+            "-1": 739,
+            "1": 886
+          }
+        },
+        {
+          "f": "0x1413",
+          "hex_character_lower_bound": 208812032,
+          "max_abs_integer_coordinate": 1248,
+          "negative_coordinates_by_node": {
+            "-1": 730,
+            "1": 882
+          }
+        },
+        {
+          "f": "0x1431",
+          "hex_character_lower_bound": 207905280,
+          "max_abs_integer_coordinate": 1088,
+          "negative_coordinates_by_node": {
+            "-1": 723,
+            "1": 882
+          }
+        },
+        {
+          "f": "0x1437",
+          "hex_character_lower_bound": 179277824,
+          "max_abs_integer_coordinate": 1252,
+          "negative_coordinates_by_node": {
+            "-1": 630,
+            "1": 754
+          }
+        },
+        {
+          "f": "0x1449",
+          "hex_character_lower_bound": 213345792,
+          "max_abs_integer_coordinate": 1088,
+          "negative_coordinates_by_node": {
+            "-1": 726,
+            "1": 921
+          }
+        },
+        {
+          "f": "0x144f",
+          "hex_character_lower_bound": 183293440,
+          "max_abs_integer_coordinate": 1420,
+          "negative_coordinates_by_node": {
+            "-1": 635,
+            "1": 780
+          }
+        },
+        {
+          "f": "0x145b",
+          "hex_character_lower_bound": 178630144,
+          "max_abs_integer_coordinate": 1204,
+          "negative_coordinates_by_node": {
+            "-1": 614,
+            "1": 765
+          }
+        },
+        {
+          "f": "0x145d",
+          "hex_character_lower_bound": 180184576,
+          "max_abs_integer_coordinate": 1300,
+          "negative_coordinates_by_node": {
+            "-1": 615,
+            "1": 776
+          }
+        },
+        {
+          "f": "0x1467",
+          "hex_character_lower_bound": 184459264,
+          "max_abs_integer_coordinate": 1220,
+          "negative_coordinates_by_node": {
+            "-1": 638,
+            "1": 786
+          }
+        },
+        {
+          "f": "0x146b",
+          "hex_character_lower_bound": 178759680,
+          "max_abs_integer_coordinate": 972,
+          "negative_coordinates_by_node": {
+            "-1": 605,
+            "1": 775
+          }
+        },
+        {
+          "f": "0x1475",
+          "hex_character_lower_bound": 173837312,
+          "max_abs_integer_coordinate": 1124,
+          "negative_coordinates_by_node": {
+            "-1": 582,
+            "1": 760
+          }
+        },
+        {
+          "f": "0x147f",
+          "hex_character_lower_bound": 156738560,
+          "max_abs_integer_coordinate": 1532,
+          "negative_coordinates_by_node": {
+            "-1": 533,
+            "1": 677
+          }
+        },
+        {
+          "f": "0x1489",
+          "hex_character_lower_bound": 225133568,
+          "max_abs_integer_coordinate": 992,
+          "negative_coordinates_by_node": {
+            "-1": 787,
+            "1": 951
+          }
+        },
+        {
+          "f": "0x14a1",
+          "hex_character_lower_bound": 225004032,
+          "max_abs_integer_coordinate": 864,
+          "negative_coordinates_by_node": {
+            "-1": 779,
+            "1": 958
+          }
+        },
+        {
+          "f": "0x14a7",
+          "hex_character_lower_bound": 189122560,
+          "max_abs_integer_coordinate": 1124,
+          "negative_coordinates_by_node": {
+            "-1": 659,
+            "1": 801
+          }
+        },
+        {
+          "f": "0x14ad",
+          "hex_character_lower_bound": 187309056,
+          "max_abs_integer_coordinate": 1004,
+          "negative_coordinates_by_node": {
+            "-1": 647,
+            "1": 799
+          }
+        },
+        {
+          "f": "0x14b5",
+          "hex_character_lower_bound": 191842816,
+          "max_abs_integer_coordinate": 956,
+          "negative_coordinates_by_node": {
+            "-1": 661,
+            "1": 820
+          }
+        },
+        {
+          "f": "0x14cd",
+          "hex_character_lower_bound": 199874048,
+          "max_abs_integer_coordinate": 972,
+          "negative_coordinates_by_node": {
+            "-1": 690,
+            "1": 853
+          }
+        },
+        {
+          "f": "0x14d3",
+          "hex_character_lower_bound": 197024256,
+          "max_abs_integer_coordinate": 796,
+          "negative_coordinates_by_node": {
+            "-1": 669,
+            "1": 852
+          }
+        },
+        {
+          "f": "0x14d9",
+          "hex_character_lower_bound": 198060544,
+          "max_abs_integer_coordinate": 852,
+          "negative_coordinates_by_node": {
+            "-1": 676,
+            "1": 853
+          }
+        },
+        {
+          "f": "0x14df",
+          "hex_character_lower_bound": 174484992,
+          "max_abs_integer_coordinate": 1396,
+          "negative_coordinates_by_node": {
+            "-1": 603,
+            "1": 744
+          }
+        },
+        {
+          "f": "0x14e5",
+          "hex_character_lower_bound": 192231424,
+          "max_abs_integer_coordinate": 824,
+          "negative_coordinates_by_node": {
+            "-1": 645,
+            "1": 839
+          }
+        },
+        {
+          "f": "0x150f",
+          "hex_character_lower_bound": 190547456,
+          "max_abs_integer_coordinate": 1196,
+          "negative_coordinates_by_node": {
+            "-1": 659,
+            "1": 812
+          }
+        },
+        {
+          "f": "0x151d",
+          "hex_character_lower_bound": 188604416,
+          "max_abs_integer_coordinate": 1076,
+          "negative_coordinates_by_node": {
+            "-1": 646,
+            "1": 810
+          }
+        },
+        {
+          "f": "0x154b",
+          "hex_character_lower_bound": 195858432,
+          "max_abs_integer_coordinate": 864,
+          "negative_coordinates_by_node": {
+            "-1": 665,
+            "1": 847
+          }
+        },
+        {
+          "f": "0x154d",
+          "hex_character_lower_bound": 195081216,
+          "max_abs_integer_coordinate": 876,
+          "negative_coordinates_by_node": {
+            "-1": 660,
+            "1": 846
+          }
+        },
+        {
+          "f": "0x1581",
+          "hex_character_lower_bound": 242880000,
+          "max_abs_integer_coordinate": 1156,
+          "negative_coordinates_by_node": {
+            "-1": 842,
+            "1": 1033
+          }
+        },
+        {
+          "f": "0x1593",
+          "hex_character_lower_bound": 210884608,
+          "max_abs_integer_coordinate": 904,
+          "negative_coordinates_by_node": {
+            "-1": 733,
+            "1": 895
+          }
+        },
+        {
+          "f": "0x15a5",
+          "hex_character_lower_bound": 212309504,
+          "max_abs_integer_coordinate": 840,
+          "negative_coordinates_by_node": {
+            "-1": 733,
+            "1": 906
+          }
+        },
+        {
+          "f": "0x15a9",
+          "hex_character_lower_bound": 208164352,
+          "max_abs_integer_coordinate": 808,
+          "negative_coordinates_by_node": {
+            "-1": 703,
+            "1": 904
+          }
+        },
+        {
+          "f": "0x15bb",
+          "hex_character_lower_bound": 181091328,
+          "max_abs_integer_coordinate": 956,
+          "negative_coordinates_by_node": {
+            "-1": 631,
+            "1": 767
+          }
+        },
+        {
+          "f": "0x15c5",
+          "hex_character_lower_bound": 218138624,
+          "max_abs_integer_coordinate": 892,
+          "negative_coordinates_by_node": {
+            "-1": 756,
+            "1": 928
+          }
+        },
+        {
+          "f": "0x15d7",
+          "hex_character_lower_bound": 189899776,
+          "max_abs_integer_coordinate": 836,
+          "negative_coordinates_by_node": {
+            "-1": 654,
+            "1": 812
+          }
+        },
+        {
+          "f": "0x15dd",
+          "hex_character_lower_bound": 190158848,
+          "max_abs_integer_coordinate": 916,
+          "negative_coordinates_by_node": {
+            "-1": 654,
+            "1": 814
+          }
+        },
+        {
+          "f": "0x15eb",
+          "hex_character_lower_bound": 185884160,
+          "max_abs_integer_coordinate": 716,
+          "negative_coordinates_by_node": {
+            "-1": 636,
+            "1": 799
+          }
+        },
+        {
+          "f": "0x15f9",
+          "hex_character_lower_bound": 190547456,
+          "max_abs_integer_coordinate": 864,
+          "negative_coordinates_by_node": {
+            "-1": 646,
+            "1": 825
+          }
+        },
+        {
+          "f": "0x1603",
+          "hex_character_lower_bound": 228501504,
+          "max_abs_integer_coordinate": 1352,
+          "negative_coordinates_by_node": {
+            "-1": 804,
+            "1": 960
+          }
+        },
+        {
+          "f": "0x1609",
+          "hex_character_lower_bound": 227724288,
+          "max_abs_integer_coordinate": 1256,
+          "negative_coordinates_by_node": {
+            "-1": 785,
+            "1": 973
+          }
+        },
+        {
+          "f": "0x161b",
+          "hex_character_lower_bound": 200910336,
+          "max_abs_integer_coordinate": 1096,
+          "negative_coordinates_by_node": {
+            "-1": 709,
+            "1": 842
+          }
+        },
+        {
+          "f": "0x163f",
+          "hex_character_lower_bound": 176168960,
+          "max_abs_integer_coordinate": 1212,
+          "negative_coordinates_by_node": {
+            "-1": 617,
+            "1": 743
+          }
+        },
+        {
+          "f": "0x1641",
+          "hex_character_lower_bound": 235885056,
+          "max_abs_integer_coordinate": 1128,
+          "negative_coordinates_by_node": {
+            "-1": 816,
+            "1": 1005
+          }
+        },
+        {
+          "f": "0x1647",
+          "hex_character_lower_bound": 206609920,
+          "max_abs_integer_coordinate": 1096,
+          "negative_coordinates_by_node": {
+            "-1": 728,
+            "1": 867
+          }
+        },
+        {
+          "f": "0x164b",
+          "hex_character_lower_bound": 196894720,
+          "max_abs_integer_coordinate": 1032,
+          "negative_coordinates_by_node": {
+            "-1": 674,
+            "1": 846
+          }
+        },
+        {
+          "f": "0x1655",
+          "hex_character_lower_bound": 196765184,
+          "max_abs_integer_coordinate": 936,
+          "negative_coordinates_by_node": {
+            "-1": 679,
+            "1": 840
+          }
+        },
+        {
+          "f": "0x1659",
+          "hex_character_lower_bound": 199614976,
+          "max_abs_integer_coordinate": 888,
+          "negative_coordinates_by_node": {
+            "-1": 678,
+            "1": 863
+          }
+        },
+        {
+          "f": "0x1663",
+          "hex_character_lower_bound": 202205696,
+          "max_abs_integer_coordinate": 936,
+          "negative_coordinates_by_node": {
+            "-1": 703,
+            "1": 858
+          }
+        },
+        {
+          "f": "0x1665",
+          "hex_character_lower_bound": 197024256,
+          "max_abs_integer_coordinate": 904,
+          "negative_coordinates_by_node": {
+            "-1": 676,
+            "1": 845
+          }
+        },
+        {
+          "f": "0x166f",
+          "hex_character_lower_bound": 172671488,
+          "max_abs_integer_coordinate": 1068,
+          "negative_coordinates_by_node": {
+            "-1": 595,
+            "1": 738
+          }
+        },
+        {
+          "f": "0x1693",
+          "hex_character_lower_bound": 213216256,
+          "max_abs_integer_coordinate": 904,
+          "negative_coordinates_by_node": {
+            "-1": 743,
+            "1": 903
+          }
+        },
+        {
+          "f": "0x16a5",
+          "hex_character_lower_bound": 208164352,
+          "max_abs_integer_coordinate": 840,
+          "negative_coordinates_by_node": {
+            "-1": 713,
+            "1": 894
+          }
+        },
+        {
+          "f": "0x16bd",
+          "hex_character_lower_bound": 181998080,
+          "max_abs_integer_coordinate": 924,
+          "negative_coordinates_by_node": {
+            "-1": 630,
+            "1": 775
+          }
+        },
+        {
+          "f": "0x16c3",
+          "hex_character_lower_bound": 222931456,
+          "max_abs_integer_coordinate": 924,
+          "negative_coordinates_by_node": {
+            "-1": 788,
+            "1": 933
+          }
+        },
+        {
+          "f": "0x16c9",
+          "hex_character_lower_bound": 220599808,
+          "max_abs_integer_coordinate": 828,
+          "negative_coordinates_by_node": {
+            "-1": 762,
+            "1": 941
+          }
+        },
+        {
+          "f": "0x16d1",
+          "hex_character_lower_bound": 220988416,
+          "max_abs_integer_coordinate": 764,
+          "negative_coordinates_by_node": {
+            "-1": 763,
+            "1": 943
+          }
+        },
+        {
+          "f": "0x16e1",
+          "hex_character_lower_bound": 218009088,
+          "max_abs_integer_coordinate": 732,
+          "negative_coordinates_by_node": {
+            "-1": 748,
+            "1": 935
+          }
+        },
+        {
+          "f": "0x16e7",
+          "hex_character_lower_bound": 189770240,
+          "max_abs_integer_coordinate": 780,
+          "negative_coordinates_by_node": {
+            "-1": 653,
+            "1": 812
+          }
+        },
+        {
+          "f": "0x16f3",
+          "hex_character_lower_bound": 185366016,
+          "max_abs_integer_coordinate": 704,
+          "negative_coordinates_by_node": {
+            "-1": 636,
+            "1": 795
+          }
+        },
+        {
+          "f": "0x16ff",
+          "hex_character_lower_bound": 164769792,
+          "max_abs_integer_coordinate": 1052,
+          "negative_coordinates_by_node": {
+            "-1": 578,
+            "1": 694
+          }
+        },
+        {
+          "f": "0x170b",
+          "hex_character_lower_bound": 211402752,
+          "max_abs_integer_coordinate": 1104,
+          "negative_coordinates_by_node": {
+            "-1": 740,
+            "1": 892
+          }
+        },
+        {
+          "f": "0x1715",
+          "hex_character_lower_bound": 214641152,
+          "max_abs_integer_coordinate": 1008,
+          "negative_coordinates_by_node": {
+            "-1": 759,
+            "1": 898
+          }
+        },
+        {
+          "f": "0x1719",
+          "hex_character_lower_bound": 216325120,
+          "max_abs_integer_coordinate": 992,
+          "negative_coordinates_by_node": {
+            "-1": 754,
+            "1": 916
+          }
+        },
+        {
+          "f": "0x173d",
+          "hex_character_lower_bound": 188345344,
+          "max_abs_integer_coordinate": 896,
+          "negative_coordinates_by_node": {
+            "-1": 662,
+            "1": 792
+          }
+        },
+        {
+          "f": "0x1743",
+          "hex_character_lower_bound": 230444544,
+          "max_abs_integer_coordinate": 1040,
+          "negative_coordinates_by_node": {
+            "-1": 812,
+            "1": 967
+          }
+        },
+        {
+          "f": "0x1745",
+          "hex_character_lower_bound": 229019648,
+          "max_abs_integer_coordinate": 976,
+          "negative_coordinates_by_node": {
+            "-1": 808,
+            "1": 960
+          }
+        },
+        {
+          "f": "0x174f",
+          "hex_character_lower_bound": 197283328,
+          "max_abs_integer_coordinate": 864,
+          "negative_coordinates_by_node": {
+            "-1": 686,
+            "1": 837
+          }
+        },
+        {
+          "f": "0x1757",
+          "hex_character_lower_bound": 194822144,
+          "max_abs_integer_coordinate": 832,
+          "negative_coordinates_by_node": {
+            "-1": 678,
+            "1": 826
+          }
+        },
+        {
+          "f": "0x175d",
+          "hex_character_lower_bound": 197931008,
+          "max_abs_integer_coordinate": 832,
+          "negative_coordinates_by_node": {
+            "-1": 683,
+            "1": 845
+          }
+        },
+        {
+          "f": "0x1773",
+          "hex_character_lower_bound": 198449152,
+          "max_abs_integer_coordinate": 736,
+          "negative_coordinates_by_node": {
+            "-1": 690,
+            "1": 842
+          }
+        },
+        {
+          "f": "0x1775",
+          "hex_character_lower_bound": 198319616,
+          "max_abs_integer_coordinate": 736,
+          "negative_coordinates_by_node": {
+            "-1": 680,
+            "1": 851
+          }
+        },
+        {
+          "f": "0x1779",
+          "hex_character_lower_bound": 197412864,
+          "max_abs_integer_coordinate": 736,
+          "negative_coordinates_by_node": {
+            "-1": 674,
+            "1": 850
+          }
+        },
+        {
+          "f": "0x1789",
+          "hex_character_lower_bound": 233682944,
+          "max_abs_integer_coordinate": 968,
+          "negative_coordinates_by_node": {
+            "-1": 815,
+            "1": 989
+          }
+        },
+        {
+          "f": "0x178f",
+          "hex_character_lower_bound": 210884608,
+          "max_abs_integer_coordinate": 968,
+          "negative_coordinates_by_node": {
+            "-1": 752,
+            "1": 876
+          }
+        },
+        {
+          "f": "0x1797",
+          "hex_character_lower_bound": 207905280,
+          "max_abs_integer_coordinate": 904,
+          "negative_coordinates_by_node": {
+            "-1": 734,
+            "1": 871
+          }
+        },
+        {
+          "f": "0x179d",
+          "hex_character_lower_bound": 210107392,
+          "max_abs_integer_coordinate": 872,
+          "negative_coordinates_by_node": {
+            "-1": 742,
+            "1": 880
+          }
+        },
+        {
+          "f": "0x17ad",
+          "hex_character_lower_bound": 208164352,
+          "max_abs_integer_coordinate": 808,
+          "negative_coordinates_by_node": {
+            "-1": 720,
+            "1": 887
+          }
+        },
+        {
+          "f": "0x17b3",
+          "hex_character_lower_bound": 209848320,
+          "max_abs_integer_coordinate": 744,
+          "negative_coordinates_by_node": {
+            "-1": 735,
+            "1": 885
+          }
+        },
+        {
+          "f": "0x17bf",
+          "hex_character_lower_bound": 181350400,
+          "max_abs_integer_coordinate": 828,
+          "negative_coordinates_by_node": {
+            "-1": 638,
+            "1": 762
+          }
+        },
+        {
+          "f": "0x17c1",
+          "hex_character_lower_bound": 243139072,
+          "max_abs_integer_coordinate": 924,
+          "negative_coordinates_by_node": {
+            "-1": 845,
+            "1": 1032
+          }
+        },
+        {
+          "f": "0x17df",
+          "hex_character_lower_bound": 197412864,
+          "max_abs_integer_coordinate": 788,
+          "negative_coordinates_by_node": {
+            "-1": 691,
+            "1": 833
+          }
+        },
+        {
+          "f": "0x17fb",
+          "hex_character_lower_bound": 194822144,
+          "max_abs_integer_coordinate": 704,
+          "negative_coordinates_by_node": {
+            "-1": 681,
+            "1": 823
+          }
+        },
+        {
+          "f": "0x1807",
+          "hex_character_lower_bound": 211014144,
+          "max_abs_integer_coordinate": 1344,
+          "negative_coordinates_by_node": {
+            "-1": 736,
+            "1": 893
+          }
+        },
+        {
+          "f": "0x180d",
+          "hex_character_lower_bound": 209977856,
+          "max_abs_integer_coordinate": 1312,
+          "negative_coordinates_by_node": {
+            "-1": 724,
+            "1": 897
+          }
+        },
+        {
+          "f": "0x181f",
+          "hex_character_lower_bound": 182257152,
+          "max_abs_integer_coordinate": 1332,
+          "negative_coordinates_by_node": {
+            "-1": 633,
+            "1": 774
+          }
+        },
+        {
+          "f": "0x1823",
+          "hex_character_lower_bound": 212827648,
+          "max_abs_integer_coordinate": 1216,
+          "negative_coordinates_by_node": {
+            "-1": 735,
+            "1": 908
+          }
+        },
+        {
+          "f": "0x1831",
+          "hex_character_lower_bound": 210107392,
+          "max_abs_integer_coordinate": 1176,
+          "negative_coordinates_by_node": {
+            "-1": 725,
+            "1": 897
+          }
+        },
+        {
+          "f": "0x1837",
+          "hex_character_lower_bound": 183293440,
+          "max_abs_integer_coordinate": 1176,
+          "negative_coordinates_by_node": {
+            "-1": 639,
+            "1": 776
+          }
+        },
+        {
+          "f": "0x1849",
+          "hex_character_lower_bound": 216713728,
+          "max_abs_integer_coordinate": 1144,
+          "negative_coordinates_by_node": {
+            "-1": 755,
+            "1": 918
+          }
+        },
+        {
+          "f": "0x1857",
+          "hex_character_lower_bound": 194304000,
+          "max_abs_integer_coordinate": 1112,
+          "negative_coordinates_by_node": {
+            "-1": 691,
+            "1": 809
+          }
+        },
+        {
+          "f": "0x185d",
+          "hex_character_lower_bound": 194822144,
+          "max_abs_integer_coordinate": 1112,
+          "negative_coordinates_by_node": {
+            "-1": 692,
+            "1": 812
+          }
+        },
+        {
+          "f": "0x186d",
+          "hex_character_lower_bound": 182775296,
+          "max_abs_integer_coordinate": 1080,
+          "negative_coordinates_by_node": {
+            "-1": 634,
+            "1": 777
+          }
+        },
+        {
+          "f": "0x1879",
+          "hex_character_lower_bound": 180832256,
+          "max_abs_integer_coordinate": 1076,
+          "negative_coordinates_by_node": {
+            "-1": 623,
+            "1": 773
+          }
+        },
+        {
+          "f": "0x187f",
+          "hex_character_lower_bound": 159070208,
+          "max_abs_integer_coordinate": 1300,
+          "negative_coordinates_by_node": {
+            "-1": 556,
+            "1": 672
+          }
+        },
+        {
+          "f": "0x1883",
+          "hex_character_lower_bound": 219304448,
+          "max_abs_integer_coordinate": 1092,
+          "negative_coordinates_by_node": {
+            "-1": 755,
+            "1": 938
+          }
+        },
+        {
+          "f": "0x1891",
+          "hex_character_lower_bound": 221247488,
+          "max_abs_integer_coordinate": 1048,
+          "negative_coordinates_by_node": {
+            "-1": 773,
+            "1": 935
+          }
+        },
+        {
+          "f": "0x1897",
+          "hex_character_lower_bound": 190288384,
+          "max_abs_integer_coordinate": 1048,
+          "negative_coordinates_by_node": {
+            "-1": 668,
+            "1": 801
+          }
+        },
+        {
+          "f": "0x18a1",
+          "hex_character_lower_bound": 222931456,
+          "max_abs_integer_coordinate": 1064,
+          "negative_coordinates_by_node": {
+            "-1": 776,
+            "1": 945
+          }
+        },
+        {
+          "f": "0x18b9",
+          "hex_character_lower_bound": 190417920,
+          "max_abs_integer_coordinate": 1064,
+          "negative_coordinates_by_node": {
+            "-1": 659,
+            "1": 811
+          }
+        },
+        {
+          "f": "0x18cb",
+          "hex_character_lower_bound": 190676992,
+          "max_abs_integer_coordinate": 952,
+          "negative_coordinates_by_node": {
+            "-1": 659,
+            "1": 813
+          }
+        },
+        {
+          "f": "0x18cd",
+          "hex_character_lower_bound": 189381632,
+          "max_abs_integer_coordinate": 952,
+          "negative_coordinates_by_node": {
+            "-1": 649,
+            "1": 813
+          }
+        },
+        {
+          "f": "0x18ef",
+          "hex_character_lower_bound": 168914944,
+          "max_abs_integer_coordinate": 1164,
+          "negative_coordinates_by_node": {
+            "-1": 585,
+            "1": 719
+          }
+        },
+        {
+          "f": "0x18f1",
+          "hex_character_lower_bound": 192231424,
+          "max_abs_integer_coordinate": 920,
+          "negative_coordinates_by_node": {
+            "-1": 661,
+            "1": 823
+          }
+        },
+        {
+          "f": "0x18fb",
+          "hex_character_lower_bound": 163733504,
+          "max_abs_integer_coordinate": 1080,
+          "negative_coordinates_by_node": {
+            "-1": 564,
+            "1": 700
+          }
+        },
+        {
+          "f": "0x1905",
+          "hex_character_lower_bound": 235755520,
+          "max_abs_integer_coordinate": 1232,
+          "negative_coordinates_by_node": {
+            "-1": 836,
+            "1": 984
+          }
+        },
+        {
+          "f": "0x1909",
+          "hex_character_lower_bound": 231480832,
+          "max_abs_integer_coordinate": 1168,
+          "negative_coordinates_by_node": {
+            "-1": 814,
+            "1": 973
+          }
+        },
+        {
+          "f": "0x191b",
+          "hex_character_lower_bound": 202076160,
+          "max_abs_integer_coordinate": 992,
+          "negative_coordinates_by_node": {
+            "-1": 700,
+            "1": 860
+          }
+        },
+        {
+          "f": "0x192d",
+          "hex_character_lower_bound": 206221312,
+          "max_abs_integer_coordinate": 960,
+          "negative_coordinates_by_node": {
+            "-1": 725,
+            "1": 867
+          }
+        },
+        {
+          "f": "0x1935",
+          "hex_character_lower_bound": 202076160,
+          "max_abs_integer_coordinate": 928,
+          "negative_coordinates_by_node": {
+            "-1": 710,
+            "1": 850
+          }
+        },
+        {
+          "f": "0x1941",
+          "hex_character_lower_bound": 246766080,
+          "max_abs_integer_coordinate": 944,
+          "negative_coordinates_by_node": {
+            "-1": 867,
+            "1": 1038
+          }
+        },
+        {
+          "f": "0x194b",
+          "hex_character_lower_bound": 206868992,
+          "max_abs_integer_coordinate": 896,
+          "negative_coordinates_by_node": {
+            "-1": 727,
+            "1": 870
+          }
+        },
+        {
+          "f": "0x195f",
+          "hex_character_lower_bound": 185884160,
+          "max_abs_integer_coordinate": 1140,
+          "negative_coordinates_by_node": {
+            "-1": 653,
+            "1": 782
+          }
+        },
+        {
+          "f": "0x1965",
+          "hex_character_lower_bound": 207128064,
+          "max_abs_integer_coordinate": 832,
+          "negative_coordinates_by_node": {
+            "-1": 719,
+            "1": 880
+          }
+        },
+        {
+          "f": "0x196f",
+          "hex_character_lower_bound": 188345344,
+          "max_abs_integer_coordinate": 1068,
+          "negative_coordinates_by_node": {
+            "-1": 664,
+            "1": 790
+          }
+        },
+        {
+          "f": "0x197b",
+          "hex_character_lower_bound": 182775296,
+          "max_abs_integer_coordinate": 980,
+          "negative_coordinates_by_node": {
+            "-1": 640,
+            "1": 771
+          }
+        },
+        {
+          "f": "0x1981",
+          "hex_character_lower_bound": 243916288,
+          "max_abs_integer_coordinate": 1156,
+          "negative_coordinates_by_node": {
+            "-1": 857,
+            "1": 1026
+          }
+        },
+        {
+          "f": "0x198b",
+          "hex_character_lower_bound": 208423424,
+          "max_abs_integer_coordinate": 968,
+          "negative_coordinates_by_node": {
+            "-1": 728,
+            "1": 881
+          }
+        },
+        {
+          "f": "0x1999",
+          "hex_character_lower_bound": 199744512,
+          "max_abs_integer_coordinate": 904,
+          "negative_coordinates_by_node": {
+            "-1": 684,
+            "1": 858
+          }
+        },
+        {
+          "f": "0x19b1",
+          "hex_character_lower_bound": 206998528,
+          "max_abs_integer_coordinate": 808,
+          "negative_coordinates_by_node": {
+            "-1": 717,
+            "1": 881
+          }
+        },
+        {
+          "f": "0x19b7",
+          "hex_character_lower_bound": 181091328,
+          "max_abs_integer_coordinate": 868,
+          "negative_coordinates_by_node": {
+            "-1": 636,
+            "1": 762
+          }
+        },
+        {
+          "f": "0x19bd",
+          "hex_character_lower_bound": 182127616,
+          "max_abs_integer_coordinate": 956,
+          "negative_coordinates_by_node": {
+            "-1": 634,
+            "1": 772
+          }
+        },
+        {
+          "f": "0x19c9",
+          "hex_character_lower_bound": 213475328,
+          "max_abs_integer_coordinate": 860,
+          "negative_coordinates_by_node": {
+            "-1": 734,
+            "1": 914
+          }
+        },
+        {
+          "f": "0x19cf",
+          "hex_character_lower_bound": 184459264,
+          "max_abs_integer_coordinate": 1004,
+          "negative_coordinates_by_node": {
+            "-1": 628,
+            "1": 796
+          }
+        },
+        {
+          "f": "0x19dd",
+          "hex_character_lower_bound": 183941120,
+          "max_abs_integer_coordinate": 884,
+          "negative_coordinates_by_node": {
+            "-1": 642,
+            "1": 778
+          }
+        },
+        {
+          "f": "0x19e7",
+          "hex_character_lower_bound": 181479936,
+          "max_abs_integer_coordinate": 836,
+          "negative_coordinates_by_node": {
+            "-1": 628,
+            "1": 773
+          }
+        },
+        {
+          "f": "0x19ed",
+          "hex_character_lower_bound": 185366016,
+          "max_abs_integer_coordinate": 768,
+          "negative_coordinates_by_node": {
+            "-1": 645,
+            "1": 786
+          }
+        },
+        {
+          "f": "0x19f9",
+          "hex_character_lower_bound": 178241536,
+          "max_abs_integer_coordinate": 888,
+          "negative_coordinates_by_node": {
+            "-1": 609,
+            "1": 767
+          }
+        },
+        {
+          "f": "0x1a1b",
+          "hex_character_lower_bound": 194951680,
+          "max_abs_integer_coordinate": 1416,
+          "negative_coordinates_by_node": {
+            "-1": 662,
+            "1": 843
+          }
+        },
+        {
+          "f": "0x1a1d",
+          "hex_character_lower_bound": 200003584,
+          "max_abs_integer_coordinate": 1416,
+          "negative_coordinates_by_node": {
+            "-1": 692,
+            "1": 852
+          }
+        },
+        {
+          "f": "0x1a21",
+          "hex_character_lower_bound": 228112896,
+          "max_abs_integer_coordinate": 1448,
+          "negative_coordinates_by_node": {
+            "-1": 793,
+            "1": 968
+          }
+        },
+        {
+          "f": "0x1a2b",
+          "hex_character_lower_bound": 198837760,
+          "max_abs_integer_coordinate": 1512,
+          "negative_coordinates_by_node": {
+            "-1": 696,
+            "1": 839
+          }
+        },
+        {
+          "f": "0x1a33",
+          "hex_character_lower_bound": 196635648,
+          "max_abs_integer_coordinate": 1448,
+          "negative_coordinates_by_node": {
+            "-1": 680,
+            "1": 838
+          }
+        },
+        {
+          "f": "0x1a4d",
+          "hex_character_lower_bound": 198060544,
+          "max_abs_integer_coordinate": 1352,
+          "negative_coordinates_by_node": {
+            "-1": 676,
+            "1": 853
+          }
+        },
+        {
+          "f": "0x1a53",
+          "hex_character_lower_bound": 203112448,
+          "max_abs_integer_coordinate": 1352,
+          "negative_coordinates_by_node": {
+            "-1": 708,
+            "1": 860
+          }
+        },
+        {
+          "f": "0x1a55",
+          "hex_character_lower_bound": 208812032,
+          "max_abs_integer_coordinate": 1388,
+          "negative_coordinates_by_node": {
+            "-1": 733,
+            "1": 879
+          }
+        },
+        {
+          "f": "0x1a5f",
+          "hex_character_lower_bound": 180184576,
+          "max_abs_integer_coordinate": 1352,
+          "negative_coordinates_by_node": {
+            "-1": 631,
+            "1": 760
+          }
+        },
+        {
+          "f": "0x1a63",
+          "hex_character_lower_bound": 200780800,
+          "max_abs_integer_coordinate": 1384,
+          "negative_coordinates_by_node": {
+            "-1": 681,
+            "1": 869
+          }
+        },
+        {
+          "f": "0x1a69",
+          "hex_character_lower_bound": 198319616,
+          "max_abs_integer_coordinate": 1384,
+          "negative_coordinates_by_node": {
+            "-1": 677,
+            "1": 854
+          }
+        },
+        {
+          "f": "0x1a7b",
+          "hex_character_lower_bound": 176039424,
+          "max_abs_integer_coordinate": 1384,
+          "negative_coordinates_by_node": {
+            "-1": 606,
+            "1": 753
+          }
+        },
+        {
+          "f": "0x1a8b",
+          "hex_character_lower_bound": 206868992,
+          "max_abs_integer_coordinate": 1872,
+          "negative_coordinates_by_node": {
+            "-1": 726,
+            "1": 871
+          }
+        },
+        {
+          "f": "0x1ab1",
+          "hex_character_lower_bound": 210496000,
+          "max_abs_integer_coordinate": 1904,
+          "negative_coordinates_by_node": {
+            "-1": 738,
+            "1": 887
+          }
+        },
+        {
+          "f": "0x1ac5",
+          "hex_character_lower_bound": 215159296,
+          "max_abs_integer_coordinate": 1544,
+          "negative_coordinates_by_node": {
+            "-1": 757,
+            "1": 904
+          }
+        },
+        {
+          "f": "0x1ad1",
+          "hex_character_lower_bound": 215288832,
+          "max_abs_integer_coordinate": 1544,
+          "negative_coordinates_by_node": {
+            "-1": 754,
+            "1": 908
+          }
+        },
+        {
+          "f": "0x1ae1",
+          "hex_character_lower_bound": 213734400,
+          "max_abs_integer_coordinate": 1648,
+          "negative_coordinates_by_node": {
+            "-1": 738,
+            "1": 912
+          }
+        },
+        {
+          "f": "0x1ae7",
+          "hex_character_lower_bound": 180573184,
+          "max_abs_integer_coordinate": 1616,
+          "negative_coordinates_by_node": {
+            "-1": 625,
+            "1": 769
+          }
+        },
+        {
+          "f": "0x1aeb",
+          "hex_character_lower_bound": 186272768,
+          "max_abs_integer_coordinate": 1712,
+          "negative_coordinates_by_node": {
+            "-1": 643,
+            "1": 795
+          }
+        },
+        {
+          "f": "0x1af5",
+          "hex_character_lower_bound": 185625088,
+          "max_abs_integer_coordinate": 1616,
+          "negative_coordinates_by_node": {
+            "-1": 650,
+            "1": 783
+          }
+        },
+        {
+          "f": "0x1b0b",
+          "hex_character_lower_bound": 213604864,
+          "max_abs_integer_coordinate": 1136,
+          "negative_coordinates_by_node": {
+            "-1": 747,
+            "1": 902
+          }
+        },
+        {
+          "f": "0x1b0d",
+          "hex_character_lower_bound": 214770688,
+          "max_abs_integer_coordinate": 1104,
+          "negative_coordinates_by_node": {
+            "-1": 743,
+            "1": 915
+          }
+        },
+        {
+          "f": "0x1b13",
+          "hex_character_lower_bound": 216195584,
+          "max_abs_integer_coordinate": 1104,
+          "negative_coordinates_by_node": {
+            "-1": 757,
+            "1": 912
+          }
+        },
+        {
+          "f": "0x1b19",
+          "hex_character_lower_bound": 221377024,
+          "max_abs_integer_coordinate": 1032,
+          "negative_coordinates_by_node": {
+            "-1": 774,
+            "1": 935
+          }
+        },
+        {
+          "f": "0x1b1f",
+          "hex_character_lower_bound": 192749568,
+          "max_abs_integer_coordinate": 1032,
+          "negative_coordinates_by_node": {
+            "-1": 675,
+            "1": 813
+          }
+        },
+        {
+          "f": "0x1b2f",
+          "hex_character_lower_bound": 190676992,
+          "max_abs_integer_coordinate": 1128,
+          "negative_coordinates_by_node": {
+            "-1": 665,
+            "1": 807
+          }
+        },
+        {
+          "f": "0x1b45",
+          "hex_character_lower_bound": 222801920,
+          "max_abs_integer_coordinate": 1052,
+          "negative_coordinates_by_node": {
+            "-1": 783,
+            "1": 937
+          }
+        },
+        {
+          "f": "0x1b57",
+          "hex_character_lower_bound": 197024256,
+          "max_abs_integer_coordinate": 1132,
+          "negative_coordinates_by_node": {
+            "-1": 701,
+            "1": 820
+          }
+        },
+        {
+          "f": "0x1b89",
+          "hex_character_lower_bound": 228112896,
+          "max_abs_integer_coordinate": 1224,
+          "negative_coordinates_by_node": {
+            "-1": 797,
+            "1": 964
+          }
+        },
+        {
+          "f": "0x1b8f",
+          "hex_character_lower_bound": 198449152,
+          "max_abs_integer_coordinate": 1224,
+          "negative_coordinates_by_node": {
+            "-1": 689,
+            "1": 843
+          }
+        },
+        {
+          "f": "0x1b91",
+          "hex_character_lower_bound": 229796864,
+          "max_abs_integer_coordinate": 1224,
+          "negative_coordinates_by_node": {
+            "-1": 806,
+            "1": 968
+          }
+        },
+        {
+          "f": "0x1ba7",
+          "hex_character_lower_bound": 198967296,
+          "max_abs_integer_coordinate": 1256,
+          "negative_coordinates_by_node": {
+            "-1": 682,
+            "1": 854
+          }
+        },
+        {
+          "f": "0x1bb5",
+          "hex_character_lower_bound": 199485440,
+          "max_abs_integer_coordinate": 1256,
+          "negative_coordinates_by_node": {
+            "-1": 681,
+            "1": 859
+          }
+        },
+        {
+          "f": "0x1bb9",
+          "hex_character_lower_bound": 199096832,
+          "max_abs_integer_coordinate": 1256,
+          "negative_coordinates_by_node": {
+            "-1": 685,
+            "1": 852
+          }
+        },
+        {
+          "f": "0x1bbf",
+          "hex_character_lower_bound": 174873600,
+          "max_abs_integer_coordinate": 1256,
+          "negative_coordinates_by_node": {
+            "-1": 605,
+            "1": 745
+          }
+        },
+        {
+          "f": "0x1bc1",
+          "hex_character_lower_bound": 239382528,
+          "max_abs_integer_coordinate": 1160,
+          "negative_coordinates_by_node": {
+            "-1": 836,
+            "1": 1012
+          }
+        },
+        {
+          "f": "0x1bcb",
+          "hex_character_lower_bound": 207128064,
+          "max_abs_integer_coordinate": 1160,
+          "negative_coordinates_by_node": {
+            "-1": 731,
+            "1": 868
+          }
+        },
+        {
+          "f": "0x1bd3",
+          "hex_character_lower_bound": 203371520,
+          "max_abs_integer_coordinate": 1160,
+          "negative_coordinates_by_node": {
+            "-1": 705,
+            "1": 865
+          }
+        },
+        {
+          "f": "0x1be3",
+          "hex_character_lower_bound": 207257600,
+          "max_abs_integer_coordinate": 1192,
+          "negative_coordinates_by_node": {
+            "-1": 714,
+            "1": 886
+          }
+        },
+        {
+          "f": "0x1bfd",
+          "hex_character_lower_bound": 178112000,
+          "max_abs_integer_coordinate": 1192,
+          "negative_coordinates_by_node": {
+            "-1": 620,
+            "1": 755
+          }
+        },
+        {
+          "f": "0x1c03",
+          "hex_character_lower_bound": 236014592,
+          "max_abs_integer_coordinate": 1352,
+          "negative_coordinates_by_node": {
+            "-1": 828,
+            "1": 994
+          }
+        },
+        {
+          "f": "0x1c05",
+          "hex_character_lower_bound": 231092224,
+          "max_abs_integer_coordinate": 1344,
+          "negative_coordinates_by_node": {
+            "-1": 806,
+            "1": 978
+          }
+        },
+        {
+          "f": "0x1c0f",
+          "hex_character_lower_bound": 200521728,
+          "max_abs_integer_coordinate": 1312,
+          "negative_coordinates_by_node": {
+            "-1": 695,
+            "1": 853
+          }
+        },
+        {
+          "f": "0x1c11",
+          "hex_character_lower_bound": 238087168,
+          "max_abs_integer_coordinate": 1280,
+          "negative_coordinates_by_node": {
+            "-1": 833,
+            "1": 1005
+          }
+        },
+        {
+          "f": "0x1c17",
+          "hex_character_lower_bound": 205962240,
+          "max_abs_integer_coordinate": 1280,
+          "negative_coordinates_by_node": {
+            "-1": 727,
+            "1": 863
+          }
+        },
+        {
+          "f": "0x1c27",
+          "hex_character_lower_bound": 202076160,
+          "max_abs_integer_coordinate": 1248,
+          "negative_coordinates_by_node": {
+            "-1": 696,
+            "1": 864
+          }
+        },
+        {
+          "f": "0x1c4d",
+          "hex_character_lower_bound": 225004032,
+          "max_abs_integer_coordinate": 1152,
+          "negative_coordinates_by_node": {
+            "-1": 792,
+            "1": 945
+          }
+        },
+        {
+          "f": "0x1c5f",
+          "hex_character_lower_bound": 195210752,
+          "max_abs_integer_coordinate": 1088,
+          "negative_coordinates_by_node": {
+            "-1": 686,
+            "1": 821
+          }
+        },
+        {
+          "f": "0x1c87",
+          "hex_character_lower_bound": 206221312,
+          "max_abs_integer_coordinate": 1120,
+          "negative_coordinates_by_node": {
+            "-1": 715,
+            "1": 877
+          }
+        },
+        {
+          "f": "0x1c9f",
+          "hex_character_lower_bound": 182904832,
+          "max_abs_integer_coordinate": 1024,
+          "negative_coordinates_by_node": {
+            "-1": 637,
+            "1": 775
+          }
+        },
+        {
+          "f": "0x1ca5",
+          "hex_character_lower_bound": 215288832,
+          "max_abs_integer_coordinate": 1024,
+          "negative_coordinates_by_node": {
+            "-1": 748,
+            "1": 914
+          }
+        },
+        {
+          "f": "0x1cb7",
+          "hex_character_lower_bound": 185495552,
+          "max_abs_integer_coordinate": 960,
+          "negative_coordinates_by_node": {
+            "-1": 647,
+            "1": 785
+          }
+        },
+        {
+          "f": "0x1cbb",
+          "hex_character_lower_bound": 187827200,
+          "max_abs_integer_coordinate": 928,
+          "negative_coordinates_by_node": {
+            "-1": 658,
+            "1": 792
+          }
+        },
+        {
+          "f": "0x1cc5",
+          "hex_character_lower_bound": 225392640,
+          "max_abs_integer_coordinate": 960,
+          "negative_coordinates_by_node": {
+            "-1": 797,
+            "1": 943
+          }
+        },
+        {
+          "f": "0x1cc9",
+          "hex_character_lower_bound": 230574080,
+          "max_abs_integer_coordinate": 928,
+          "negative_coordinates_by_node": {
+            "-1": 812,
+            "1": 968
+          }
+        },
+        {
+          "f": "0x1ccf",
+          "hex_character_lower_bound": 197671936,
+          "max_abs_integer_coordinate": 928,
+          "negative_coordinates_by_node": {
+            "-1": 692,
+            "1": 834
+          }
+        },
+        {
+          "f": "0x1cd7",
+          "hex_character_lower_bound": 197024256,
+          "max_abs_integer_coordinate": 896,
+          "negative_coordinates_by_node": {
+            "-1": 692,
+            "1": 829
+          }
+        },
+        {
+          "f": "0x1ceb",
+          "hex_character_lower_bound": 194822144,
+          "max_abs_integer_coordinate": 832,
+          "negative_coordinates_by_node": {
+            "-1": 667,
+            "1": 837
+          }
+        },
+        {
+          "f": "0x1ced",
+          "hex_character_lower_bound": 197283328,
+          "max_abs_integer_coordinate": 832,
+          "negative_coordinates_by_node": {
+            "-1": 684,
+            "1": 839
+          }
+        },
+        {
+          "f": "0x1cf3",
+          "hex_character_lower_bound": 194822144,
+          "max_abs_integer_coordinate": 800,
+          "negative_coordinates_by_node": {
+            "-1": 668,
+            "1": 836
+          }
+        },
+        {
+          "f": "0x1d01",
+          "hex_character_lower_bound": 248709120,
+          "max_abs_integer_coordinate": 1296,
+          "negative_coordinates_by_node": {
+            "-1": 862,
+            "1": 1058
+          }
+        },
+        {
+          "f": "0x1d07",
+          "hex_character_lower_bound": 215159296,
+          "max_abs_integer_coordinate": 1200,
+          "negative_coordinates_by_node": {
+            "-1": 760,
+            "1": 901
+          }
+        },
+        {
+          "f": "0x1d23",
+          "hex_character_lower_bound": 224744960,
+          "max_abs_integer_coordinate": 1072,
+          "negative_coordinates_by_node": {
+            "-1": 791,
+            "1": 944
+          }
+        },
+        {
+          "f": "0x1d2f",
+          "hex_character_lower_bound": 192490496,
+          "max_abs_integer_coordinate": 960,
+          "negative_coordinates_by_node": {
+            "-1": 666,
+            "1": 820
+          }
+        },
+        {
+          "f": "0x1d3d",
+          "hex_character_lower_bound": 194304000,
+          "max_abs_integer_coordinate": 928,
+          "negative_coordinates_by_node": {
+            "-1": 665,
+            "1": 835
+          }
+        },
+        {
+          "f": "0x1d43",
+          "hex_character_lower_bound": 233294336,
+          "max_abs_integer_coordinate": 1008,
+          "negative_coordinates_by_node": {
+            "-1": 816,
+            "1": 985
+          }
+        },
+        {
+          "f": "0x1d51",
+          "hex_character_lower_bound": 233294336,
+          "max_abs_integer_coordinate": 896,
+          "negative_coordinates_by_node": {
+            "-1": 811,
+            "1": 990
+          }
+        },
+        {
+          "f": "0x1d5b",
+          "hex_character_lower_bound": 207905280,
+          "max_abs_integer_coordinate": 896,
+          "negative_coordinates_by_node": {
+            "-1": 730,
+            "1": 875
+          }
+        },
+        {
+          "f": "0x1d5d",
+          "hex_character_lower_bound": 205055488,
+          "max_abs_integer_coordinate": 896,
+          "negative_coordinates_by_node": {
+            "-1": 710,
+            "1": 873
+          }
+        },
+        {
+          "f": "0x1d67",
+          "hex_character_lower_bound": 204019200,
+          "max_abs_integer_coordinate": 864,
+          "negative_coordinates_by_node": {
+            "-1": 719,
+            "1": 856
+          }
+        },
+        {
+          "f": "0x1d75",
+          "hex_character_lower_bound": 199355904,
+          "max_abs_integer_coordinate": 832,
+          "negative_coordinates_by_node": {
+            "-1": 683,
+            "1": 856
+          }
+        },
+        {
+          "f": "0x1d79",
+          "hex_character_lower_bound": 206998528,
+          "max_abs_integer_coordinate": 832,
+          "negative_coordinates_by_node": {
+            "-1": 717,
+            "1": 881
+          }
+        },
+        {
+          "f": "0x1d83",
+          "hex_character_lower_bound": 233942016,
+          "max_abs_integer_coordinate": 1092,
+          "negative_coordinates_by_node": {
+            "-1": 816,
+            "1": 990
+          }
+        },
+        {
+          "f": "0x1d85",
+          "hex_character_lower_bound": 223449600,
+          "max_abs_integer_coordinate": 1060,
+          "negative_coordinates_by_node": {
+            "-1": 776,
+            "1": 949
+          }
+        },
+        {
+          "f": "0x1d89",
+          "hex_character_lower_bound": 228112896,
+          "max_abs_integer_coordinate": 996,
+          "negative_coordinates_by_node": {
+            "-1": 794,
+            "1": 967
+          }
+        },
+        {
+          "f": "0x1d91",
+          "hex_character_lower_bound": 224226816,
+          "max_abs_integer_coordinate": 964,
+          "negative_coordinates_by_node": {
+            "-1": 781,
+            "1": 950
+          }
+        },
+        {
+          "f": "0x1da7",
+          "hex_character_lower_bound": 197153792,
+          "max_abs_integer_coordinate": 904,
+          "negative_coordinates_by_node": {
+            "-1": 684,
+            "1": 838
+          }
+        },
+        {
+          "f": "0x1db3",
+          "hex_character_lower_bound": 202723840,
+          "max_abs_integer_coordinate": 840,
+          "negative_coordinates_by_node": {
+            "-1": 709,
+            "1": 856
+          }
+        },
+        {
+          "f": "0x1dc1",
+          "hex_character_lower_bound": 238993920,
+          "max_abs_integer_coordinate": 924,
+          "negative_coordinates_by_node": {
+            "-1": 837,
+            "1": 1008
+          }
+        },
+        {
+          "f": "0x1def",
+          "hex_character_lower_bound": 180055040,
+          "max_abs_integer_coordinate": 748,
+          "negative_coordinates_by_node": {
+            "-1": 621,
+            "1": 769
+          }
+        },
+        {
+          "f": "0x1e07",
+          "hex_character_lower_bound": 219822592,
+          "max_abs_integer_coordinate": 1320,
+          "negative_coordinates_by_node": {
+            "-1": 772,
+            "1": 925
+          }
+        },
+        {
+          "f": "0x1e15",
+          "hex_character_lower_bound": 222154240,
+          "max_abs_integer_coordinate": 1224,
+          "negative_coordinates_by_node": {
+            "-1": 780,
+            "1": 935
+          }
+        },
+        {
+          "f": "0x1e19",
+          "hex_character_lower_bound": 223967744,
+          "max_abs_integer_coordinate": 1192,
+          "negative_coordinates_by_node": {
+            "-1": 787,
+            "1": 942
+          }
+        },
+        {
+          "f": "0x1e2f",
+          "hex_character_lower_bound": 195081216,
+          "max_abs_integer_coordinate": 1128,
+          "negative_coordinates_by_node": {
+            "-1": 677,
+            "1": 829
+          }
+        },
+        {
+          "f": "0x1e3b",
+          "hex_character_lower_bound": 195858432,
+          "max_abs_integer_coordinate": 1064,
+          "negative_coordinates_by_node": {
+            "-1": 691,
+            "1": 821
+          }
+        },
+        {
+          "f": "0x1e3d",
+          "hex_character_lower_bound": 195340288,
+          "max_abs_integer_coordinate": 1032,
+          "negative_coordinates_by_node": {
+            "-1": 681,
+            "1": 827
+          }
+        },
+        {
+          "f": "0x1e45",
+          "hex_character_lower_bound": 237309952,
+          "max_abs_integer_coordinate": 1128,
+          "negative_coordinates_by_node": {
+            "-1": 834,
+            "1": 998
+          }
+        },
+        {
+          "f": "0x1e51",
+          "hex_character_lower_bound": 231998976,
+          "max_abs_integer_coordinate": 1064,
+          "negative_coordinates_by_node": {
+            "-1": 809,
+            "1": 982
+          }
+        },
+        {
+          "f": "0x1e5d",
+          "hex_character_lower_bound": 212698112,
+          "max_abs_integer_coordinate": 968,
+          "negative_coordinates_by_node": {
+            "-1": 748,
+            "1": 894
+          }
+        },
+        {
+          "f": "0x1e61",
+          "hex_character_lower_bound": 234460160,
+          "max_abs_integer_coordinate": 1032,
+          "negative_coordinates_by_node": {
+            "-1": 817,
+            "1": 993
+          }
+        },
+        {
+          "f": "0x1e67",
+          "hex_character_lower_bound": 208423424,
+          "max_abs_integer_coordinate": 1000,
+          "negative_coordinates_by_node": {
+            "-1": 733,
+            "1": 876
+          }
+        },
+        {
+          "f": "0x1e73",
+          "hex_character_lower_bound": 206091776,
+          "max_abs_integer_coordinate": 936,
+          "negative_coordinates_by_node": {
+            "-1": 719,
+            "1": 872
+          }
+        },
+        {
+          "f": "0x1e8f",
+          "hex_character_lower_bound": 205444096,
+          "max_abs_integer_coordinate": 1032,
+          "negative_coordinates_by_node": {
+            "-1": 719,
+            "1": 867
+          }
+        },
+        {
+          "f": "0x1e97",
+          "hex_character_lower_bound": 206868992,
+          "max_abs_integer_coordinate": 1000,
+          "negative_coordinates_by_node": {
+            "-1": 732,
+            "1": 865
+          }
+        },
+        {
+          "f": "0x1e9b",
+          "hex_character_lower_bound": 207516672,
+          "max_abs_integer_coordinate": 968,
+          "negative_coordinates_by_node": {
+            "-1": 722,
+            "1": 880
+          }
+        },
+        {
+          "f": "0x1eb9",
+          "hex_character_lower_bound": 206091776,
+          "max_abs_integer_coordinate": 856,
+          "negative_coordinates_by_node": {
+            "-1": 722,
+            "1": 869
+          }
+        },
+        {
+          "f": "0x1ebf",
+          "hex_character_lower_bound": 181350400,
+          "max_abs_integer_coordinate": 856,
+          "negative_coordinates_by_node": {
+            "-1": 640,
+            "1": 760
+          }
+        },
+        {
+          "f": "0x1ecd",
+          "hex_character_lower_bound": 218527232,
+          "max_abs_integer_coordinate": 840,
+          "negative_coordinates_by_node": {
+            "-1": 773,
+            "1": 914
+          }
+        },
+        {
+          "f": "0x1ed3",
+          "hex_character_lower_bound": 216584192,
+          "max_abs_integer_coordinate": 840,
+          "negative_coordinates_by_node": {
+            "-1": 762,
+            "1": 910
+          }
+        },
+        {
+          "f": "0x1ee3",
+          "hex_character_lower_bound": 219304448,
+          "max_abs_integer_coordinate": 808,
+          "negative_coordinates_by_node": {
+            "-1": 768,
+            "1": 925
+          }
+        },
+        {
+          "f": "0x1ef1",
+          "hex_character_lower_bound": 216972800,
+          "max_abs_integer_coordinate": 792,
+          "negative_coordinates_by_node": {
+            "-1": 741,
+            "1": 934
+          }
+        },
+        {
+          "f": "0x1ef7",
+          "hex_character_lower_bound": 189770240,
+          "max_abs_integer_coordinate": 792,
+          "negative_coordinates_by_node": {
+            "-1": 661,
+            "1": 804
+          }
+        },
+        {
+          "f": "0x1f03",
+          "hex_character_lower_bound": 233812480,
+          "max_abs_integer_coordinate": 1264,
+          "negative_coordinates_by_node": {
+            "-1": 823,
+            "1": 982
+          }
+        },
+        {
+          "f": "0x1f11",
+          "hex_character_lower_bound": 232905728,
+          "max_abs_integer_coordinate": 1168,
+          "negative_coordinates_by_node": {
+            "-1": 824,
+            "1": 974
+          }
+        },
+        {
+          "f": "0x1f1b",
+          "hex_character_lower_bound": 208164352,
+          "max_abs_integer_coordinate": 1040,
+          "negative_coordinates_by_node": {
+            "-1": 731,
+            "1": 876
+          }
+        },
+        {
+          "f": "0x1f27",
+          "hex_character_lower_bound": 209071104,
+          "max_abs_integer_coordinate": 1040,
+          "negative_coordinates_by_node": {
+            "-1": 738,
+            "1": 876
+          }
+        },
+        {
+          "f": "0x1f39",
+          "hex_character_lower_bound": 211791360,
+          "max_abs_integer_coordinate": 928,
+          "negative_coordinates_by_node": {
+            "-1": 750,
+            "1": 885
+          }
+        },
+        {
+          "f": "0x1f47",
+          "hex_character_lower_bound": 221895168,
+          "max_abs_integer_coordinate": 976,
+          "negative_coordinates_by_node": {
+            "-1": 785,
+            "1": 928
+          }
+        },
+        {
+          "f": "0x1f4b",
+          "hex_character_lower_bound": 223579136,
+          "max_abs_integer_coordinate": 944,
+          "negative_coordinates_by_node": {
+            "-1": 794,
+            "1": 932
+          }
+        },
+        {
+          "f": "0x1f53",
+          "hex_character_lower_bound": 220470272,
+          "max_abs_integer_coordinate": 912,
+          "negative_coordinates_by_node": {
+            "-1": 768,
+            "1": 934
+          }
+        },
+        {
+          "f": "0x1f65",
+          "hex_character_lower_bound": 221636096,
+          "max_abs_integer_coordinate": 864,
+          "negative_coordinates_by_node": {
+            "-1": 780,
+            "1": 931
+          }
+        },
+        {
+          "f": "0x1f71",
+          "hex_character_lower_bound": 223060992,
+          "max_abs_integer_coordinate": 832,
+          "negative_coordinates_by_node": {
+            "-1": 771,
+            "1": 951
+          }
+        },
+        {
+          "f": "0x1f7d",
+          "hex_character_lower_bound": 197801472,
+          "max_abs_integer_coordinate": 832,
+          "negative_coordinates_by_node": {
+            "-1": 687,
+            "1": 840
+          }
+        },
+        {
+          "f": "0x1f81",
+          "hex_character_lower_bound": 241973248,
+          "max_abs_integer_coordinate": 1156,
+          "negative_coordinates_by_node": {
+            "-1": 837,
+            "1": 1031
+          }
+        },
+        {
+          "f": "0x1f8d",
+          "hex_character_lower_bound": 222413312,
+          "max_abs_integer_coordinate": 968,
+          "negative_coordinates_by_node": {
+            "-1": 771,
+            "1": 946
+          }
+        },
+        {
+          "f": "0x1f99",
+          "hex_character_lower_bound": 218397696,
+          "max_abs_integer_coordinate": 904,
+          "negative_coordinates_by_node": {
+            "-1": 750,
+            "1": 936
+          }
+        },
+        {
+          "f": "0x1faf",
+          "hex_character_lower_bound": 191065600,
+          "max_abs_integer_coordinate": 872,
+          "negative_coordinates_by_node": {
+            "-1": 654,
+            "1": 821
+          }
+        },
+        {
+          "f": "0x1fbb",
+          "hex_character_lower_bound": 197412864,
+          "max_abs_integer_coordinate": 808,
+          "negative_coordinates_by_node": {
+            "-1": 686,
+            "1": 838
+          }
+        },
+        {
+          "f": "0x1fbd",
+          "hex_character_lower_bound": 193656320,
+          "max_abs_integer_coordinate": 808,
+          "negative_coordinates_by_node": {
+            "-1": 661,
+            "1": 834
+          }
+        },
+        {
+          "f": "0x1fc3",
+          "hex_character_lower_bound": 233294336,
+          "max_abs_integer_coordinate": 924,
+          "negative_coordinates_by_node": {
+            "-1": 819,
+            "1": 982
+          }
+        },
+        {
+          "f": "0x1fc5",
+          "hex_character_lower_bound": 231739904,
+          "max_abs_integer_coordinate": 892,
+          "negative_coordinates_by_node": {
+            "-1": 812,
+            "1": 977
+          }
+        },
+        {
+          "f": "0x1fc9",
+          "hex_character_lower_bound": 234071552,
+          "max_abs_integer_coordinate": 860,
+          "negative_coordinates_by_node": {
+            "-1": 816,
+            "1": 991
+          }
+        },
+        {
+          "f": "0x1fe1",
+          "hex_character_lower_bound": 230833152,
+          "max_abs_integer_coordinate": 796,
+          "negative_coordinates_by_node": {
+            "-1": 792,
+            "1": 990
+          }
+        },
+        {
+          "f": "0x1fed",
+          "hex_character_lower_bound": 209977856,
+          "max_abs_integer_coordinate": 744,
+          "negative_coordinates_by_node": {
+            "-1": 725,
+            "1": 896
+          }
+        },
+        {
+          "f": "0x1fff",
+          "hex_character_lower_bound": 176298496,
+          "max_abs_integer_coordinate": 704,
+          "negative_coordinates_by_node": {
+            "-1": 603,
+            "1": 758
+          }
+        }
+      ],
+      "fields_checked": 335,
+      "minimum": {
+        "f": "0x10ff",
+        "hex_character_lower_bound": 127074816,
+        "max_abs_integer_coordinate": 2236,
+        "negative_coordinates_by_node": {
+          "-1": 445,
+          "1": 536
+        }
+      }
+    }
+  ],
+  "schema": "VERITAS_R98_CYCLE44_ALL_SUPPORTED_FIELDS_LOWER_BOUND_V1",
+  "scope": "CURRENT_SERIALIZED_CHILD_SCHEMA_AND_FIRST_133_BINARY_RESIDUE_LIFTS",
+  "script_sha256": "578c3f4b30be715b8040a1a9d5f0f538f5ff44321814fc93f10202eec66cca87"
+}

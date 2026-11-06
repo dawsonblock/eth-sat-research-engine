@@ -1,0 +1,55 @@
+[
+  {
+    "name": "crossing",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "-m",
+      "veritas.research.parent_child_r99.cli",
+      "examples/r99_multislot_crossing2.json",
+      "--layout-file",
+      "examples/r99_multislot_crossing2_layout.json",
+      "--certificate",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/final_v2/crossing_certificate.json",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/final_v2/crossing_report.json",
+      "--max-work",
+      "1000000000",
+      "--max-seconds",
+      "3600",
+      "--max-calls",
+      "2000000",
+      "--max-certificate-bytes",
+      "100000000"
+    ],
+    "exit_code": 0,
+    "seconds": 39.81778774992563,
+    "source": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+  },
+  {
+    "name": "crossing_replay",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "-m",
+      "veritas.research.parent_child_r99.cli",
+      "examples/r99_multislot_crossing2.json",
+      "--layout-file",
+      "examples/r99_multislot_crossing2_layout.json",
+      "--certificate",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/final_v2/crossing_certificate.json",
+      "--verify",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/final_v2/crossing_replay.json",
+      "--max-work",
+      "1000000000",
+      "--max-seconds",
+      "3600",
+      "--max-calls",
+      "2000000",
+      "--max-certificate-bytes",
+      "100000000"
+    ],
+    "exit_code": 0,
+    "seconds": 23.143833041074686,
+    "source": "e94e724d60a879b942081cf753017e90da4a7805b12d717cb7456e14debab8be"
+  }
+]

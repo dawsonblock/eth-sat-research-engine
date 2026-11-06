@@ -1,0 +1,19 @@
+wrote <repository>/validation/r96_aggregate.json
+        0.17 real         0.13 user         0.03 sys
+            27607040  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+                4980  page reclaims
+                   5  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                  72  voluntary context switches
+                 195  involuntary context switches
+           618907065  instructions retired
+           275528953  cycles elapsed
+            17383832  peak memory footprint

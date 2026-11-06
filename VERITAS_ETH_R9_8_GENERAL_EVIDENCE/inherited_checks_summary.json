@@ -1,0 +1,192 @@
+{
+  "schema": "VERITAS_R98_GENERAL_INHERITED_CHECKS_V1",
+  "generated_utc": "2026-11-05T07:21:14.387693+00:00",
+  "status": "PASS",
+  "checks": 12,
+  "effective_commands": [
+    {
+      "name": "lean",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_conditional_expectation_lean.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/lean.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 56.30719937500544,
+      "source_sha256_before": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff",
+      "source_sha256_after": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff"
+    },
+    {
+      "name": "r98",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r98_parent_child.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/r98.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 119.4685386660276,
+      "source_sha256_before": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff",
+      "source_sha256_after": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff"
+    },
+    {
+      "name": "r95",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r95_recipes.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/r95.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.43740550009533763,
+      "source_sha256_before": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff",
+      "source_sha256_after": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff"
+    },
+    {
+      "name": "r94",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r94_foundation.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/r94.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 81.49899174994789,
+      "source_sha256_before": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff",
+      "source_sha256_after": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff"
+    },
+    {
+      "name": "r96",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r96.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/r96.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 62.293980707996525,
+      "source_sha256_before": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff",
+      "source_sha256_after": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff"
+    },
+    {
+      "name": "r97_bridge",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_bridge.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/r97_bridge.json"
+      ],
+      "environment": {
+        "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean"
+      },
+      "exit_code": 0,
+      "wall_seconds": 1.2552633329760283,
+      "prior_failure_file": "r97_bridge_initial_failure.json"
+    },
+    {
+      "name": "r97_matrix",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_matrix.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/r97_matrix.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 7.589532750076614,
+      "source_sha256_before": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff",
+      "source_sha256_after": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff"
+    },
+    {
+      "name": "r96_grid",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r96_recipe_grid.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/r96_grid.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 54.29770387499593,
+      "source_sha256_before": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff",
+      "source_sha256_after": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff"
+    },
+    {
+      "name": "r97_write",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_paper.py",
+        "--write",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/r97_grid.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 14.885152124916203,
+      "source_sha256_before": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff",
+      "source_sha256_after": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff"
+    },
+    {
+      "name": "shrinking",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r98_shrinking.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/shrinking.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 66.9424618340563,
+      "source_sha256_before": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff",
+      "source_sha256_after": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff"
+    },
+    {
+      "name": "r97_verify",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_paper.py",
+        "--verify",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/r97_grid.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 8.14911958295852,
+      "source_sha256_before": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff",
+      "source_sha256_after": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff"
+    },
+    {
+      "name": "r97_faults",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_grid_faults.py",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/r97_grid.json",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/r97_faults.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 11.29884633293841,
+      "source_sha256_before": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff",
+      "source_sha256_after": "29985be06d97fa1beb706159a4d2b536abd878a17697c7dbee52a7019c58dcff"
+    }
+  ],
+  "initial_failure_preserved": "r97_bridge_initial_failure.json",
+  "retry_reason": "Elan wrapper run inside temporary proof directory had no default toolchain; retry used the actual pinned Lean4.35.0 binary.",
+  "all_initial_source_fingerprints_stable": true,
+  "lean_status": "PASS",
+  "lean_modules": 41,
+  "allowed_lean_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_scope": "Inherited conditional finite models; no new general recurrence theorem or universal Python refinement.",
+  "artifacts": {
+    "r98.json": "f9436fbc1bd9e6b734ad3dce6a8a2925eae2d67c909a003c42da1d6c742b969e",
+    "r94.json": "b551dd3d466dee962e5a9e03b197ccb1c7c36784572e99968d253aaa060d4f50",
+    "r95.json": "af066cfc41e44be2bbc908051a100e32b665c138ace205f4b1ddd71b4cfaadd6",
+    "r97_bridge.json": "750ec9fc72de5af0b1ed007f2bd7e0281f5e82e4d9377b5a449f06de1cb3638b",
+    "r97_grid.json": "33ba4adf5f0d182abc7b25685fa8d21b974db2797210b108105ae808a3b5e06f",
+    "r96_grid.json": "29f75ee05697dbade2c980b1a74d1e315bcf589566e4368748643b0102b69230",
+    "r97_faults.json": "701d203779481c2fd681dfe7f7247e18c8df605d5919a141b946822a6de5b80d",
+    "r97_matrix.json": "4e71f77c4f18024773c699a3a1e7f4357eb8c86cf531f74fc8bdffc5c6aad309",
+    "shrinking.json": "de35671fac371192b967274ef05a9734c8581cf8b3614cfd4a3075dcd8e9a91a",
+    "lean.json": "d8d1a725bf0329d15f9c11555edf3e9bdba8068df0b8f322d32da9eff61c7bd1",
+    "r96.json": "1b0ed0a2655c9db6c0e0b12cfff4a503c6cc0204d336efaa4d2e6e67e8e6c14f"
+  },
+  "lean_all_axiom_audits_pass": true
+}

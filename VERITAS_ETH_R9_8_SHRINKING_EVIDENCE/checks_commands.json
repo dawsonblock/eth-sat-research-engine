@@ -1,0 +1,135 @@
+[
+  {
+    "name": "lean",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_conditional_expectation_lean.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/lean.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 54.00453179201577
+  },
+  {
+    "name": "r98",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r98_parent_child.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r98.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 85.74259766703472
+  },
+  {
+    "name": "r94",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r94_foundation.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r94.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 71.61034858401399
+  },
+  {
+    "name": "r95",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r95_recipes.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r95.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.45065254101064056
+  },
+  {
+    "name": "r96",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r96.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r96.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 63.49298754101619
+  },
+  {
+    "name": "r96_grid",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r96_recipe_grid.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r96_grid.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 51.6540129580535
+  },
+  {
+    "name": "r97_bridge",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r97_bridge.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r97_bridge.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 3.768079833011143
+  },
+  {
+    "name": "r97_matrix",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r97_matrix.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r97_matrix.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 8.41917825001292
+  },
+  {
+    "name": "r97_write",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r97_paper.py",
+      "--write",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r97_grid.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 11.438145707943477
+  },
+  {
+    "name": "r97_verify",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r97_paper.py",
+      "--verify",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r97_grid.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 6.411067750072107
+  },
+  {
+    "name": "r97_faults",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r97_grid_faults.py",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r97_grid.json",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/r97_faults.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 9.83080333401449
+  },
+  {
+    "name": "shrinking",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r98_shrinking.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_SHRINKING_EVIDENCE/shrinking.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 46.839546915958636
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "name": "r95",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r95_recipes.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER_EVIDENCE/r95.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.3635743330232799,
+    "source_before": "8d6a38236fa3be9bdced65beb29ac11acf8392c84e94ab844b5068383826145f",
+    "source_after": "8d6a38236fa3be9bdced65beb29ac11acf8392c84e94ab844b5068383826145f"
+  },
+  {
+    "name": "lean",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_conditional_expectation_lean.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER_EVIDENCE/lean.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 60.17514212499373,
+    "source_before": "8d6a38236fa3be9bdced65beb29ac11acf8392c84e94ab844b5068383826145f",
+    "source_after": "8d6a38236fa3be9bdced65beb29ac11acf8392c84e94ab844b5068383826145f"
+  }
+]

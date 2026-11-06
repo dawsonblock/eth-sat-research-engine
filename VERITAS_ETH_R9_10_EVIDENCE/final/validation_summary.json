@@ -1,0 +1,39 @@
+{
+  "status": "PASS_FINITE_NUMERICAL_AND_RELEASE_CHECKS",
+  "source_sha256": "b27dc09a233e843d933e329d84df92f3bb94284f7767efff68782a93666e22da",
+  "pytest": {
+    "tests": 1959,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2,
+    "passed": 1957
+  },
+  "inherited_commands": 13,
+  "portable_commands": 31,
+  "additional_installed_replays": 3,
+  "release_scope": "PARTIAL_FINITE_R910",
+  "obligations": {
+    "completed_numerical_two_level_235": "PASS",
+    "completed_numerical_two_level_242": "PASS",
+    "independent_contribution_replay": "PASS_FINITE",
+    "independent_matching_integer_oracle": "PASS",
+    "small_exhaustive_cancellation_and_precision": "PASS_FINITE",
+    "original_22_edge_134_point_baseline": "PASS",
+    "zero_child_and_zero_result": "PASS_FINITE",
+    "point_prediction_and_work_charge_reconciliation": "PASS_FINITE_LOCAL_ACCOUNTING",
+    "total_recursive_cost_prediction": "NOT_ESTABLISHED",
+    "exact_bit_operations": "NOT_INSTRUMENTED",
+    "process_peak_memory": "MEASURED_RSS",
+    "polynomial_space_bound": "NOT_ESTABLISHED",
+    "subexponential_bit_time_bound": "NOT_ESTABLISHED",
+    "source_active_schedule": "NOT_IMPLEMENTED_BY_R910",
+    "arbitrary_ell": "NOT_IMPLEMENTED_BY_R910",
+    "full_higher_valuation_tapering": "NOT_IMPLEMENTED_BY_R910",
+    "resumable_checkpoints": "NOT_IMPLEMENTED",
+    "general_cnf_arbitrary_density_pipeline": "NOT_ESTABLISHED",
+    "conventional_solver_benchmark_suite": "NOT_RUN",
+    "new_python_lean_refinement": "NOT_PROVEN",
+    "source_qualified": false,
+    "theorem_mode_enabled": false
+  }
+}

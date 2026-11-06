@@ -1,0 +1,95 @@
+{
+  "inherited": [
+    [
+      "r98_cpp",
+      [
+        "scripts/validate_r91_cpp.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_cpp.json"
+      ]
+    ],
+    [
+      "r98_r94",
+      [
+        "scripts/validate_r94_foundation.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_r94.json"
+      ]
+    ],
+    [
+      "r98_r95",
+      [
+        "scripts/validate_r95_recipes.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_r95.json"
+      ]
+    ],
+    [
+      "r98_r96",
+      [
+        "scripts/validate_r96.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_r96.json"
+      ]
+    ],
+    [
+      "r98_v3_write",
+      [
+        "scripts/validate_tapered_v4.py",
+        "--write",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_v3.json"
+      ]
+    ],
+    [
+      "r98_v3_replay",
+      [
+        "scripts/validate_tapered_v4.py",
+        "--replay",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_v3.json"
+      ]
+    ]
+  ],
+  "grids": [
+    [
+      "r98_r97_grid_write",
+      [
+        "scripts/validate_r97_paper.py",
+        "--write",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_r97_grid.json"
+      ]
+    ],
+    [
+      "r98_r97_grid_verify",
+      [
+        "scripts/validate_r97_paper.py",
+        "--verify",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_r97_grid.json"
+      ]
+    ],
+    [
+      "r98_r97_grid_faults",
+      [
+        "scripts/validate_r97_grid_faults.py",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_r97_grid.json",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_r97_faults.json"
+      ]
+    ],
+    [
+      "r98_r96_grid",
+      [
+        "scripts/validate_r96_recipe_grid.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_r96_grid.json"
+      ]
+    ],
+    [
+      "r98_r97_matrix",
+      [
+        "scripts/validate_r97_matrix.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_r97_matrix.json"
+      ]
+    ]
+  ]
+}

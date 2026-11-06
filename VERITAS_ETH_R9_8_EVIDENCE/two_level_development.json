@@ -1,0 +1,719 @@
+{
+  "status": "PASS_FINITE_SCALED_PARENT_CHILD_IDENTITY",
+  "result": [
+    [
+      7,
+      0,
+      0,
+      0
+    ]
+  ],
+  "semantics": "FINITE_SCALED_EXPERIMENT",
+  "source_eligible": false,
+  "scaled_experiment": true,
+  "theorem_mode_enabled": false,
+  "source_qualified": false,
+  "parent_digest": "9488597d79e073dcd2330f7db7116c291a7d236b887672b8db17eef9cce2ef64",
+  "paper": {
+    "commit": "4eaee87548250b2682affda7d05d947c05554bae",
+    "files": {
+      "main_full_version.tex": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa",
+      "quantitative-contraction.tex": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+      "quantitative-reduction.tex": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a",
+      "quantitative-circuits.tex": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11"
+    },
+    "labels": {
+      "eq:tensor-parameters": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 87,
+        "last_line": 91,
+        "statement_sha256": "2347e08f794a10a7a1dc2275e2070d723142f04b71cd6cb81de98819e332816d"
+      },
+      "eq:tensor-packing-conditions": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 106,
+        "last_line": 109,
+        "statement_sha256": "e7989632209387ee3e7b14b0b0c762487bb8a9f9cf4a580888681325a43c7c2e"
+      },
+      "lem:tensor-packets": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 114,
+        "last_line": 130,
+        "statement_sha256": "cfd9c6331836c17a911c52a57fc7e8e2e1c12d22895960ee42f82ba364753c87"
+      },
+      "lem:tapered-hermite": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 250,
+        "last_line": 269,
+        "statement_sha256": "1b737767366c0759f5ccafed0ce7c8efda85fc4ec8c6010316ddee990eb7794c"
+      },
+      "eq:tensor-mode-expansion": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 418,
+        "last_line": 425,
+        "statement_sha256": "81df762a158145416a0c7edbe8793309a68d0aecce0924d6b8806e7a3c2e92c9"
+      },
+      "eq:tensor-mode-budget": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 453,
+        "last_line": 455,
+        "statement_sha256": "55f1af17554aacabd25d0f3e2e06c63131c8457b6ae9431db2b305e9cca2e08c"
+      },
+      "eq:tensor-recursion-identity": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 516,
+        "last_line": 521,
+        "statement_sha256": "9b254c1256f4c10de8cb180391048605b8f1741f95e6e8872c4018427c9a5c2e"
+      },
+      "subsec:tensor-children": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 485,
+        "last_line": 556,
+        "statement_sha256": "bc4ca6c77cdb628b3b2ec0906cde6936364871859bc4fd90b46f7fd53b6aef10"
+      },
+      "subsec:tensor-cost": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 558,
+        "last_line": 619,
+        "statement_sha256": "5c1cabb59aed93b0dbfa239be44bdcd4239e7fd0bb3dd08ead09e02b6a492d73"
+      },
+      "eq:tensor-hermite-origin": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 280,
+        "last_line": 285,
+        "statement_sha256": "835d75e9250321435ea54e3fd66434e6b752d1bbac78b0f52541d4cf7509f148"
+      }
+    },
+    "status": "PIN_AND_LABELS_CHECKED"
+  },
+  "policy": {
+    "max_edges": 8,
+    "max_tuples": 4096,
+    "max_calls": 300000,
+    "max_work": 500000000,
+    "max_depth": 4,
+    "max_precision": 1024,
+    "max_factor_bits": 16,
+    "max_seconds": 600,
+    "max_certificate_bytes": 20000000
+  },
+  "packing": [
+    {
+      "packing_precondition_verdict": {
+        "status": "INCONCLUSIVE_SOURCE_SCHEDULE",
+        "source_active": false,
+        "checks": {
+          "M_ge_2_D_squared_delta": false,
+          "M_ge_LD": true,
+          "2L_le_delta": true
+        },
+        "schedule": {
+          "lambda": 4,
+          "leaf_threshold": 8,
+          "degree_limit": 13,
+          "extension_degree": 16,
+          "u": 0,
+          "a": 0,
+          "a_previous": 0,
+          "r": 64,
+          "L": 1,
+          "packing_class_count": 1
+        }
+      },
+      "source_eligible": false,
+      "scaled_experiment": true,
+      "occupied_packets": 1,
+      "padded_packets": 16777216,
+      "packet_bound_met": false,
+      "group_load_bound_met": false,
+      "actual_group_loads": [
+        [
+          {
+            "0": 1
+          },
+          {
+            "0": 1
+          }
+        ],
+        [
+          {
+            "0": 1
+          },
+          {
+            "0": 1
+          }
+        ]
+      ],
+      "exact_edge_coverage": true,
+      "same_slot_endpoints": true,
+      "source_qualified": false,
+      "packet_load_proof": "FINITE_OCCURRENCE_AUDIT"
+    }
+  ],
+  "hermite_recovery": {
+    "coefficient_precisions": {
+      "-1": [
+        125,
+        125,
+        125
+      ],
+      "-3": [
+        125,
+        125,
+        125
+      ],
+      "1": [
+        125,
+        125,
+        125
+      ],
+      "3": [
+        125,
+        125,
+        125
+      ]
+    },
+    "degree_bound": 7,
+    "functional_checked_on_all_monomials": true,
+    "guard_bits": 18,
+    "layout_digest": "763e6774cbccdb4a0b56045c9443b1f639f39b28cb9160eeb11b50a757e86769",
+    "parent_digest": "9488597d79e073dcd2330f7db7116c291a7d236b887672b8db17eef9cce2ef64",
+    "point_rows": [
+      [
+        -3,
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        125,
+        [
+          270,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        -3,
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        125,
+        [
+          68310,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        -3,
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        125,
+        [
+          2930190,
+          42535295865117307932921825928970790392,
+          1029840,
+          2277120
+        ]
+      ],
+      [
+        -3,
+        [
+          1,
+          1,
+          0,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928952059862,
+          42535295865117307932921825928933493912,
+          42535295865117307932921825928946746832,
+          1555200
+        ]
+      ],
+      [
+        -3,
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        125,
+        [
+          5932350,
+          15290160,
+          14667000,
+          4542720
+        ]
+      ],
+      [
+        -3,
+        [
+          1,
+          0,
+          1,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928964335622,
+          42535295865117307932921825928968065072,
+          42535295865117307932921825928970438552,
+          10179840
+        ]
+      ],
+      [
+        -3,
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928843987262,
+          42535295865117307932921825928670040872,
+          42535295865117307932921825928707428552,
+          42535295865117307932921825928912129952
+        ]
+      ],
+      [
+        -3,
+        [
+          1,
+          1,
+          1,
+          0
+        ],
+        125,
+        [
+          128937990,
+          449467080,
+          561174120,
+          261643680
+        ]
+      ],
+      [
+        -1,
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        125,
+        [
+          270,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        -1,
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        125,
+        [
+          891270,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        -1,
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        125,
+        [
+          1816590,
+          2337480,
+          1253040,
+          42535295865117307932921825928969839872
+        ]
+      ],
+      [
+        -1,
+        [
+          1,
+          1,
+          0,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928918591622,
+          42535295865117307932921825928888797992,
+          42535295865117307932921825928947684272,
+          34494720
+        ]
+      ],
+      [
+        -1,
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        125,
+        [
+          7314270,
+          10904400,
+          1796040,
+          42535295865117307932921825928964778752
+        ]
+      ],
+      [
+        -1,
+        [
+          1,
+          0,
+          1,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928957716182,
+          17006160,
+          10511400,
+          4273920
+        ]
+      ],
+      [
+        -1,
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928754407262,
+          42535295865117307932921825928618477592,
+          42535295865117307932921825928848618872,
+          124564320
+        ]
+      ],
+      [
+        -1,
+        [
+          1,
+          1,
+          1,
+          0
+        ],
+        125,
+        [
+          434556630,
+          879102840,
+          595720920,
+          42535295865117307932921825928961920352
+        ]
+      ],
+      [
+        1,
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        125,
+        [
+          270,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        1,
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        125,
+        [
+          5405670,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        1,
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        125,
+        [
+          2085390,
+          1134600,
+          42535295865117307932921825928967367632,
+          42535295865117307932921825928966260992
+        ]
+      ],
+      [
+        1,
+        [
+          1,
+          1,
+          0,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928864392422,
+          42535295865117307932921825928834502312,
+          15429840,
+          113399040
+        ]
+      ],
+      [
+        1,
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        125,
+        [
+          2126910,
+          42535295865117307932921825928969593392,
+          42535295865117307932921825928963847432,
+          42535295865117307932921825928964425472
+        ]
+      ],
+      [
+        1,
+        [
+          1,
+          0,
+          1,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928931054102,
+          37662000,
+          25212840,
+          42535295865117307932921825928933751552
+        ]
+      ],
+      [
+        1,
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928757675582,
+          42535295865117307932921825928736511032,
+          109127640,
+          280613280
+        ]
+      ],
+      [
+        1,
+        [
+          1,
+          1,
+          1,
+          0
+        ],
+        125,
+        [
+          758724630,
+          1204671960,
+          367000440,
+          42535295865117307932921825928491649952
+        ]
+      ],
+      [
+        3,
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        125,
+        [
+          270,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        3,
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        125,
+        [
+          22113270,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        3,
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928968311822,
+          42535295865117307932921825928960736312,
+          42535295865117307932921825928957522352,
+          42535295865117307932921825928964410112
+        ]
+      ],
+      [
+        3,
+        [
+          1,
+          1,
+          0,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928791512822,
+          42535295865117307932921825928795899032,
+          136474800,
+          265916160
+        ]
+      ],
+      [
+        3,
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928967646302,
+          42535295865117307932921825928962005072,
+          42535295865117307932921825928963382072,
+          1639680
+        ]
+      ],
+      [
+        3,
+        [
+          1,
+          0,
+          1,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928854863942,
+          27470160,
+          54063000,
+          42535295865117307932921825928828911872
+        ]
+      ],
+      [
+        3,
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        125,
+        [
+          42535295865117307932921825928873865822,
+          48310920,
+          365781480,
+          345141600
+        ]
+      ],
+      [
+        3,
+        [
+          1,
+          1,
+          1,
+          0
+        ],
+        125,
+        [
+          1008366150,
+          1254042600,
+          42535295865117307932921825928753568072,
+          42535295865117307932921825927846223712
+        ]
+      ]
+    ],
+    "result": [
+      7,
+      0,
+      0,
+      0
+    ],
+    "schema": "VERITAS_R98_RECOVERY_V1",
+    "source_qualified": false
+  },
+  "per_point_independent_oracle_status": "PASS_HALF_EDGE_FACTOR_ELIMINATION",
+  "creation_precision_inheritance": true,
+  "ledger": {
+    "actual_calls": 124929,
+    "maximum_depth": 2,
+    "point_evaluations": 1952,
+    "tuples": 1952,
+    "transitions": 124928,
+    "nonshrinking_children": 1952,
+    "work_units": 36534525,
+    "elapsed_seconds": 61.49016458308324,
+    "hard_memory_limit_enforced": false,
+    "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+    "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED"
+  }
+}

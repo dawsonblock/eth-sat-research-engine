@@ -1,0 +1,50 @@
+Traceback (most recent call last):
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/../VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/probe_two_levels.py", line 29, in <module>
+    r=contract_supported_recursion(p,layout_factory=factory,policy=pol,evidence_sink=lambda raw:out.write(raw+b'\n'))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r99/degree_engine.py", line 98, in contract_supported_recursion
+    result = visit(parent)
+             ^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r99/degree_engine.py", line 85, in visit
+    value, point = evaluate_supported_point(call, layout, modes, budget=budget,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r99/supported_engine.py", line 46, in evaluate_supported_point
+    value = contractor(call)
+            ^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r99/degree_engine.py", line 85, in visit
+    value, point = evaluate_supported_point(call, layout, modes, budget=budget,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r99/supported_engine.py", line 34, in evaluate_supported_point
+    children = construct_children(parent, layout, folded, beta, budget=budget,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r98/constructor.py", line 128, in construct_children
+    modes.content_digest,
+    ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r98/model.py", line 409, in content_digest
+    return digest([self.layout_digest, self.certificate])
+                                       ^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r98/model.py", line 405, in certificate
+    return decode(self.certificate_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r98/model.py", line 69, in decode
+    value = json.loads(
+            ^^^^^^^^^^^
+  File "/Users/dawsonblock/.pyenv/versions/3.12.0/lib/python3.12/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/.pyenv/versions/3.12.0/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/.pyenv/versions/3.12.0/lib/python3.12/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/parent_child_r98/model.py", line 59, in pairs
+    return decode_integer_object(result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/bounded_integer_encoding.py", line 57, in decode_integer_object
+    or any(c not in "0123456789abcdef" for c in digits)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/src/veritas/research/bounded_integer_encoding.py", line 57, in <genexpr>
+    or any(c not in "0123456789abcdef" for c in digits)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

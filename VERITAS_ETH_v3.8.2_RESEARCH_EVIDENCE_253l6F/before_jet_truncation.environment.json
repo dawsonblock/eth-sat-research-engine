@@ -1,0 +1,24 @@
+{
+  "base_commit": "810fd783f7fc599bf74a2a0e56a2307db8a8b825",
+  "bounds_proven_for_implementation": false,
+  "child_command": "PYTHONPATH=src python scripts/validate_v39_child_audit.py",
+  "dense_command": "PYTHONPATH=src python scripts/validate_v39_dense_audit.py --wires M",
+  "dependency_versions": {
+    "fastapi": "0.128.0",
+    "httpx": "0.28.1",
+    "networkx": "3.6.1",
+    "pip": "26.1.2",
+    "pydantic": "2.13.4",
+    "pytest": "8.4.2",
+    "setuptools": "82.0.1",
+    "uvicorn": "0.52.1"
+  },
+  "manifest_command": "python scripts/verify_manifest.py",
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "project_patch_sha256": "9a245f99d7ee39c4174c82d47913da18ba294e56ee1ba28a4bc6558e52c68b94",
+  "project_sha256sums_sha256": "7cbaf79a7e0c5c2eb6ee932cde7490ad66976afc0edef7fc864e1a724dfd45af",
+  "python_executable": "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+  "python_version": "3.12.0 (main, Apr 26 2026, 15:36:24) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "scope": "project-only diff; unrelated workspace changes excluded",
+  "test_command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=src python -m pytest -q -o addopts=''"
+}

@@ -1,0 +1,44 @@
+{
+  "status": "RUNNING",
+  "source": "7c164edd3c050a308fb35a5f1f7f1705950e0b8a5f01d74c3fa8609ab92e5dce",
+  "commands": [
+    {
+      "name": "cpp_configure",
+      "command": [
+        "cmake",
+        "-S",
+        "cpp",
+        "-B",
+        "build/cpp",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3512690420029685,
+      "source_before": "7c164edd3c050a308fb35a5f1f7f1705950e0b8a5f01d74c3fa8609ab92e5dce",
+      "source_after": "7c164edd3c050a308fb35a5f1f7f1705950e0b8a5f01d74c3fa8609ab92e5dce"
+    },
+    {
+      "name": "cpp_build",
+      "command": [
+        "cmake",
+        "--build",
+        "build/cpp",
+        "-j2"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3488338330062106,
+      "source_before": "7c164edd3c050a308fb35a5f1f7f1705950e0b8a5f01d74c3fa8609ab92e5dce",
+      "source_after": "7c164edd3c050a308fb35a5f1f7f1705950e0b8a5f01d74c3fa8609ab92e5dce"
+    },
+    {
+      "name": "cpp_selftest",
+      "command": [
+        "./build/cpp/veritas_d3_selftest"
+      ],
+      "exit_code": 0,
+      "seconds": 0.18546266702469438,
+      "source_before": "7c164edd3c050a308fb35a5f1f7f1705950e0b8a5f01d74c3fa8609ab92e5dce",
+      "source_after": "7c164edd3c050a308fb35a5f1f7f1705950e0b8a5f01d74c3fa8609ab92e5dce"
+    }
+  ]
+}

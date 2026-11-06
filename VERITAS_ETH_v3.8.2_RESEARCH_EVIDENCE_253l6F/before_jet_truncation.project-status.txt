@@ -1,0 +1,26 @@
+ M VERITAS_ETH_v3.8.2/SHA256SUMS.txt
+ M VERITAS_ETH_v3.8.2/SHA256_MANIFEST.json
+ M VERITAS_ETH_v3.8.2/docs/APPENDIX_D_PROOF_AUDIT_20261031.md
+ M VERITAS_ETH_v3.8.2/docs/APPENDIX_D_WEIGHTED_TUPLE_BOUND.md
+ M VERITAS_ETH_v3.8.2/docs/FINITE_TAPERED_RECURSION_V39.md
+ M VERITAS_ETH_v3.8.2/src/veritas/research/dense_cauchy_testbed.py
+ M VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/__init__.py
+ M VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/mode_bound.py
+ M VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/point_children.py
+ M VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/tapered_described.py
+ M VERITAS_ETH_v3.8.2/tests/test_v382_dense_testbed.py
+ M VERITAS_ETH_v3.8.2/tests/test_v39_mode_bound.py
+ M VERITAS_ETH_v3.8.2/tests/test_v39_tapered_described.py
+?? VERITAS_ETH_v3.8.2/docs/APPENDIX_D_COUNT_AND_RECURRENCE.md
+?? VERITAS_ETH_v3.8.2/docs/DENSE_REFERENCE_AUDIT_V39.md
+?? VERITAS_ETH_v3.8.2/docs/FINITE_V39_AUDIT_REPRODUCIBILITY.md
+?? VERITAS_ETH_v3.8.2/scripts/validate_v39_child_audit.py
+?? VERITAS_ETH_v3.8.2/scripts/validate_v39_dense_audit.py
+?? VERITAS_ETH_v3.8.2/src/veritas/research/eth_arithmetic/boolean_count.py
+?? VERITAS_ETH_v3.8.2/src/veritas/research/eth_recursive_contraction_v39/zero_wire.py
+?? VERITAS_ETH_v3.8.2/src/veritas/research/independent_dense_oracle.py
+?? VERITAS_ETH_v3.8.2/src/veritas/research/symbolic_cauchy_reference.py
+?? VERITAS_ETH_v3.8.2/tests/test_boolean_count_recovery.py
+?? VERITAS_ETH_v3.8.2/tests/test_symbolic_cauchy_reference.py
+?? VERITAS_ETH_v3.8.2/tests/test_v39_point_child_certificate.py
+?? VERITAS_ETH_v3.8.2/tests/test_v39_zero_wire.py

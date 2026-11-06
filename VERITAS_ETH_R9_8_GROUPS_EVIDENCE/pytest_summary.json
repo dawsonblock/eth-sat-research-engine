@@ -1,0 +1,153 @@
+{
+  "artifacts": {
+    "cpp_build.log": "4a511a30f97930549149fbf4232b7dbdb8912fd3b035202853e89af12800cc9f",
+    "cpp_commands.json": "a93e9e5e221a56d33e1394a8a04eafa5102bc416be1d85456d5113e01801ccf0",
+    "cpp_configure.log": "bdbc0e1a9090dc2dfe61c55f12d9ea7b552e98a2ae02231f9d88bcbc14266959",
+    "cpp_selftest.log": "c557cd8196381ea5880ed12288734b394a554bd932636c20e5f3052dae19d55c",
+    "pytest.log": "81d4bcbd94ed639b5172222d032053ba45bd9c2955fddd2bf470e8fff079c72f",
+    "pytest.xml": "15922c068fde5beb0d829d21d4da5942aa9628ac6fe019f950a02445413808de",
+    "pytest_preflight_retry.log": "cbea295205f56e53b649af49657de4836411732b6afbd291b8aeebdc0e0be7ca",
+    "pytest_preflight_retry.xml": "f107ae3554971e7f619d50fa91e370725e1a687e77821c44e9fe70e20ebdba15"
+  },
+  "command": [
+    "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+    "-m",
+    "pytest",
+    "-q",
+    "--junitxml=/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/pytest.xml"
+  ],
+  "cpp_commands": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        "cpp",
+        "-B",
+        "build/cpp",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "exit_code": 0,
+      "name": "cpp_configure",
+      "seconds": 0.9576762500219047
+    },
+    {
+      "command": [
+        "cmake",
+        "--build",
+        "build/cpp",
+        "--config",
+        "Release",
+        "-j",
+        "2"
+      ],
+      "exit_code": 0,
+      "name": "cpp_build",
+      "seconds": 1.9767775000073016
+    },
+    {
+      "command": [
+        "./build/cpp/veritas_d3_selftest"
+      ],
+      "exit_code": 0,
+      "name": "cpp_selftest",
+      "seconds": 0.6715876669622958
+    }
+  ],
+  "cwd": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS",
+  "effective_unique_cases": {
+    "interpretation": "Original full run had one obsolete error-text expectation. Tests-only correction now checks stronger early-preflight refusal; exact case and related preflight/engine budgets pass. Raw failed log/XML remain preserved.",
+    "passed": 1765,
+    "skipped": 2,
+    "tests": 1767,
+    "unresolved_failures": 0
+  },
+  "environment": {
+    "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src"
+  },
+  "error_cases": [],
+  "errors": 0,
+  "exit_code": 1,
+  "failed_cases": [
+    "tests.test_shrinking_engine::test_depth_budget_refuses_instead_of_becoming_a_leaf"
+  ],
+  "failures": 1,
+  "lean_version": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "passed": 1764,
+  "raw_full_run": {
+    "error_cases": [],
+    "errors": 0,
+    "exit_code": 1,
+    "failed_cases": [
+      "tests.test_shrinking_engine::test_depth_budget_refuses_instead_of_becoming_a_leaf"
+    ],
+    "failures": 1,
+    "passed": 1764,
+    "seconds": 781.6952619579388,
+    "skipped": 2,
+    "skipped_cases": [
+      {
+        "case": "tests.test_r91_cpp_backend::test_pybind_sequence_and_boolean_caps_when_available",
+        "reason": "optional pybind11 module is not built"
+      },
+      {
+        "case": "tests.test_r91_cpp_backend::test_binding_rejects_misshapen_assignment_tables",
+        "reason": "shape validation lives in the pybind11 layer"
+      }
+    ],
+    "tests": 1767
+  },
+  "retry": {
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_shrinking_engine.py::test_depth_budget_refuses_instead_of_becoming_a_leaf",
+      "tests/test_shrinking_engine.py::test_arithmetic_evidence_and_call_caps_never_return_partial_counts",
+      "tests/test_group_preflight.py",
+      "tests/test_group_engines.py",
+      "--junitxml=/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS_EVIDENCE/pytest_preflight_retry.xml"
+    ],
+    "environment": {
+      "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GROUPS/src"
+    },
+    "errors": 0,
+    "exit_code": 0,
+    "failed_cases": [],
+    "failures": 0,
+    "passed": 43,
+    "seconds": 120.16495529201347,
+    "skipped": 0,
+    "tests": 43
+  },
+  "schema": "VERITAS_R98_GROUPS_PYTEST_V1",
+  "seconds": 781.6952619579388,
+  "skipped": 2,
+  "skipped_cases": [
+    {
+      "case": "tests.test_r91_cpp_backend::test_pybind_sequence_and_boolean_caps_when_available",
+      "reason": "optional pybind11 module is not built"
+    },
+    {
+      "case": "tests.test_r91_cpp_backend::test_binding_rejects_misshapen_assignment_tables",
+      "reason": "shape validation lives in the pybind11 layer"
+    }
+  ],
+  "source_after": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+  "source_after_retry": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+  "source_before": "dc674b6f9c193ba32845b827c85ff644a662e765ba3e1a95a8619f9d2e7d3ec9",
+  "source_unchanged": true,
+  "status": "PASS_AFTER_TEST_EXPECTATION_CORRECTION",
+  "tests": 1767,
+  "tests_only_correction": {
+    "case": "test_depth_budget_refuses_instead_of_becoming_a_leaf",
+    "file": "tests/test_shrinking_engine.py",
+    "new_expectation": "descendant-depth refusal, failing depth beyond policy, zero actual calls, inconclusive status and no result",
+    "prior_expectation": "reason contains depth budget",
+    "production_source_changed": false
+  }
+}

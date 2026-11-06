@@ -1,0 +1,79 @@
+{
+  "claim": "TARGETED_SOURCE_AND_QUALIFICATION_AUDIT",
+  "findings": {
+    "full_source_schedule_checked_by_packing_certificate": false,
+    "packing_inequalities_minimum_m_at_a_2": 4503599627370496,
+    "paper_has_appendix_d": true,
+    "positive_active_schedule_minimum_a": 2,
+    "previous_active_call_labels_overstated": true,
+    "previous_minimum_a_1_incorrect": true,
+    "wrapper_now_requires_replayed_bounds": true
+  },
+  "limitations": {
+    "complexity_proven": false,
+    "old_source_bound_transcripts_auto_promoted": false,
+    "paper_universally_proved_by_this_audit": false,
+    "python_refinement_proven": false,
+    "theorem_mode_enabled": false,
+    "transcript_is_independent_proof": false
+  },
+  "manuscript_pin_matches": true,
+  "manuscript_sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+  "python": "3.12.0",
+  "regressions": {
+    "eight_wire_replay": {
+      "elapsed_seconds": 13.529842,
+      "evidence_schema": "VERITAS_TAPERED_V4_EIGHT_WIRE_EXPERIMENT_V3",
+      "independent_proof": false,
+      "legacy_evidence_wrapper": false,
+      "legacy_replay": false,
+      "legacy_v1_replay": false,
+      "legacy_v2_replay": false,
+      "process_peak_rss_bytes": 271466496,
+      "status": "FINITE_TRANSCRIPT_REPLAYED",
+      "subexponential_runtime_proven": false,
+      "trust_class": "HASH_MATCH_UNSIGNED",
+      "valid": true
+    },
+    "eight_wire_write": {
+      "elapsed_seconds": 12.789181,
+      "peak_rss_bytes": 120389632,
+      "point_identity_coverage": "PARTIAL_OR_NOT_CHECKED",
+      "recursion_depth": 1,
+      "result": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "status": "EXACT_MODULAR_CONTRACTION_FINITE"
+    },
+    "finite_packing_replay": {
+      "elapsed_seconds": 4.293059,
+      "status": "PASS_FINITE_PACKING_STAGE"
+    },
+    "full_pytest": {
+      "command": "PYTHONPATH=src python3 -m pytest -o addopts= -q",
+      "elapsed_seconds": 99.05,
+      "passed": 1134
+    },
+    "lean_gate": {
+      "elapsed_seconds": 26.268007,
+      "status": "PASS",
+      "universal_packing_lemma_proven": false,
+      "universal_python_refinement_proven": false
+    },
+    "optimized_focused_pytest": {
+      "command": "PYTHONPATH=src python3 -O -m pytest -o addopts= -q tests/test_d3_streaming_independent.py tests/test_d3_complete_bipartite_compressed.py tests/test_openai_paper_conformance.py",
+      "elapsed_seconds": 5.59,
+      "passed": 74,
+      "warning": "Python -O ignores assertions outside rewritten test modules"
+    }
+  },
+  "schema": "VERITAS_R9_SOURCE_AUDIT_V1",
+  "source_digest": "85e5122c008d87347b6983153c22804a13656dd60874a550a7dc87de0d8f3837",
+  "source_digest_signed": false
+}

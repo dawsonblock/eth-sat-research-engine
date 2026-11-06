@@ -1,0 +1,37 @@
+{
+  "seed": 20261030,
+  "rows": [
+    {
+      "wires": 32,
+      "matching_pairs": 0,
+      "heuristic_pairs": 0,
+      "matching_plan_ms": 135.69,
+      "heuristic_plan_ms": 0.249,
+      "note": "surrogate plan only; not SAT counting throughput"
+    },
+    {
+      "wires": 64,
+      "matching_pairs": 0,
+      "heuristic_pairs": 0,
+      "matching_plan_ms": 6.773,
+      "heuristic_plan_ms": 0.874,
+      "note": "surrogate plan only; not SAT counting throughput"
+    },
+    {
+      "wires": 96,
+      "matching_pairs": 0,
+      "heuristic_pairs": 0,
+      "matching_plan_ms": 15.356,
+      "heuristic_plan_ms": 1.902,
+      "note": "surrogate plan only; not SAT counting throughput"
+    },
+    {
+      "wires": 128,
+      "matching_pairs": 0,
+      "heuristic_pairs": 0,
+      "matching_plan_ms": 23.492,
+      "heuristic_plan_ms": 2.175,
+      "note": "surrogate plan only; not SAT counting throughput"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "archive_sha256": "b64fc0cbff2f663bb5b3cccfb0e75a98ff19f6eb0977e02a2fce88810191f896",
+  "archive": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_7_PAPER_VERIFICATION_PARTIAL_FULL_UPGRADED.zip",
+  "archived_manifest_entries": 1051,
+  "live_manifest_entries": 1051,
+  "python": "3.12.0",
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "baseline_policy_sha256": "df25819b9422431c9b7699f26ecb2b5d8f88570adc9f482496fb1c3859b60f3c",
+  "evidence_directory": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE"
+}

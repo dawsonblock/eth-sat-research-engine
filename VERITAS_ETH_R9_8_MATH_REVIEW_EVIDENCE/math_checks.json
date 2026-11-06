@@ -1,0 +1,125 @@
+{
+  "status": "PASS_BOUNDED_MATH_REVIEW",
+  "source_qualified": false,
+  "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "cauchy": {
+    "status": "PASS_FINITE_EXACT_COEFFICIENT_CHECK",
+    "shifted_polynomials": 1300,
+    "a_range": [
+      1,
+      4
+    ],
+    "all_coefficients_integral": true,
+    "off_diagonal_content_bound_checked": true
+  },
+  "geometric_modes": {
+    "status": "PASS_FINITE_EXACT_RATIONAL_REMAINDER",
+    "cases": 6000,
+    "a_range": [
+      1,
+      3
+    ],
+    "precision_cases": [
+      1,
+      2,
+      5,
+      11
+    ]
+  },
+  "hermite": {
+    "status": "PASS_INDEPENDENT_CONFLUENT_VANDERMONDE",
+    "cases": [
+      {
+        "M": 1,
+        "a": 1,
+        "u": 1,
+        "matrix_order": 6,
+        "independent_weights_agree": true,
+        "minimum_coefficient_error_margin_bits": 57,
+        "rational_polynomial_recovered": 124
+      },
+      {
+        "M": 2,
+        "a": 1,
+        "u": 1,
+        "matrix_order": 12,
+        "independent_weights_agree": true,
+        "minimum_coefficient_error_margin_bits": 112,
+        "rational_polynomial_recovered": 124
+      },
+      {
+        "M": 1,
+        "a": 2,
+        "u": 1,
+        "matrix_order": 12,
+        "independent_weights_agree": true,
+        "minimum_coefficient_error_margin_bits": 102,
+        "rational_polynomial_recovered": 124
+      },
+      {
+        "M": 2,
+        "a": 2,
+        "u": 2,
+        "matrix_order": 30,
+        "independent_weights_agree": true,
+        "minimum_coefficient_error_margin_bits": 89,
+        "rational_polynomial_recovered": 124
+      },
+      {
+        "M": 1,
+        "a": 3,
+        "u": 1,
+        "matrix_order": 24,
+        "independent_weights_agree": true,
+        "minimum_coefficient_error_margin_bits": 183,
+        "rational_polynomial_recovered": 124
+      },
+      {
+        "M": 2,
+        "a": 3,
+        "u": 2,
+        "matrix_order": 60,
+        "independent_weights_agree": true,
+        "minimum_coefficient_error_margin_bits": 142,
+        "rational_polynomial_recovered": 124
+      }
+    ],
+    "universal_proof": false
+  },
+  "source_path": {
+    "status": "EXACT_NUMERIC_COUNTEREXAMPLE_TO_ROOT_ONLY_ADMISSION",
+    "root_s": "2^131080",
+    "leaf_divisor": 362,
+    "path": [
+      {
+        "depth": 0,
+        "M_log2": 131080,
+        "a": 2,
+        "u": 1,
+        "above_leaf_cutoff": true,
+        "three_packing_inequalities": [
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "depth": 1,
+        "M_log2": 131075,
+        "a": 2,
+        "u": 0,
+        "above_leaf_cutoff": true,
+        "three_packing_inequalities": [
+          true,
+          true,
+          true
+        ]
+      }
+    ],
+    "network_constructed": false,
+    "not_a_counterexample_to_sufficiently_large_manuscript_theorem": true
+  },
+  "seconds": 1.711877999943681,
+  "script_sha256": "0d739d025143a09b672ed4654c742f4121ede171e6506487ec87af94c52c3e8a"
+}

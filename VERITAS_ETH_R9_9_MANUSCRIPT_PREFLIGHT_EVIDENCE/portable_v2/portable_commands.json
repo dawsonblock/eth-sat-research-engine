@@ -1,0 +1,107 @@
+[
+  {
+    "name": "wheel_build",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "-m",
+      "pip",
+      "wheel",
+      "--no-deps",
+      "--no-build-isolation",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT",
+      "-w",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/wheels"
+    ],
+    "exit_code": 0,
+    "seconds": 3.266830165986903,
+    "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+    "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+  },
+  {
+    "name": "venv",
+    "command": [
+      "/opt/homebrew/bin/python3.10",
+      "-m",
+      "venv",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/clean_py310"
+    ],
+    "exit_code": 0,
+    "seconds": 2.5650290000485256,
+    "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+    "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+  },
+  {
+    "name": "wheel_install",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/clean_py310/bin/python",
+      "-m",
+      "pip",
+      "install",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/wheels/veritas_eth-3.8.2.post98-py3-none-any.whl"
+    ],
+    "exit_code": 0,
+    "seconds": 4.115582333994098,
+    "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+    "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+  },
+  {
+    "name": "wheel_packet_fix",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/installed/packet_fix.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.19793650007341057,
+    "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+    "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+  },
+  {
+    "name": "wheel_math_corrections",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/installed/math_corrections.py"
+    ],
+    "exit_code": 0,
+    "seconds": 2.207811708911322,
+    "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+    "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+  },
+  {
+    "name": "wheel_shrinking_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/installed/shrinking_installed.py"
+    ],
+    "exit_code": 0,
+    "seconds": 41.841014249948785,
+    "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+    "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+  },
+  {
+    "name": "wheel_general_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/installed/general_installed.py"
+    ],
+    "exit_code": 0,
+    "seconds": 68.01699079200625,
+    "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+    "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+  },
+  {
+    "name": "wheel_groups_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/portable_v2/installed/groups_installed.py"
+    ],
+    "exit_code": 0,
+    "seconds": 39.69087587494869,
+    "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+    "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+  }
+]

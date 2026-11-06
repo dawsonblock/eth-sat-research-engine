@@ -1,0 +1,396 @@
+{
+  "baseline": {
+    "baseline_archive_sha256": "173bb476ccf87e1f0518f5a2c4e5275e8dd570de41a2e5a7fd0a056e993c543d",
+    "baseline_lean_modules_freshly_checked": 30,
+    "baseline_manifest_initially_passed": 682,
+    "changed_existing_files": [
+      ".github/workflows/test.yml",
+      "AGENTS.md",
+      "README.md",
+      "scripts/validate_conditional_expectation_lean.py",
+      "scripts/validate_r91.py",
+      "tests/test_lean_proof_gate_fault_injection.py",
+      "validation/r91_benchmarks.json",
+      "validation/r91_python_model.json",
+      "validation/r9_1_differential.json",
+      "validation/r9_conditional_expectation_proof.json",
+      "validation/validation_v12.json",
+      "validation/validation_v15.json"
+    ],
+    "deleted_files": [],
+    "new_source_test_and_document_files": [
+      "docs/R94_REMAINING_OBLIGATIONS.md",
+      "docs/R94_SOURCE_FOUNDATION_AUDIT.md",
+      "proofs/D3CandidateOrder.lean",
+      "proofs/D3FinitePacketDomain.lean",
+      "proofs/D3KeyedRun.lean",
+      "proofs/D3R94Contracts.lean",
+      "scripts/validate_r94_foundation.py",
+      "src/veritas/research/tapered_v4/source_state.py",
+      "tests/test_r94_foundation_validation.py",
+      "tests/test_r94_source_state.py"
+    ],
+    "paper_unchanged": true,
+    "pre_change_full_python_suite": "NOT_RERUN",
+    "source_changes": [
+      ".github/workflows/test.yml",
+      "scripts/validate_conditional_expectation_lean.py",
+      "scripts/validate_r91.py",
+      "tests/test_lean_proof_gate_fault_injection.py"
+    ],
+    "theorem_guard_file_unchanged": true
+  },
+  "benchmarks": {
+    "all_direct_work_metrics_match": true,
+    "all_scores_exact": true,
+    "evidence": "validation/r91_benchmarks.json",
+    "instances": 5,
+    "isolated_machine": false,
+    "new_speedup_claimed": false
+  },
+  "cpp": {
+    "backends_tested": [
+      "cpp-pybind",
+      "cpp-ctypes"
+    ],
+    "candidate_score_cases": 1296,
+    "focused_test_logs": [
+      "validation/r94_native_focused.log",
+      "validation/r94_native_py313_focused.log"
+    ],
+    "focused_tests_per_python_version": 30,
+    "formally_verified": false,
+    "full_suite_skips_covered_in_separate_focused_runs": true,
+    "independent_certificate_replays": 12
+  },
+  "differential": {
+    "checks_executed": 887,
+    "command": "python3 scripts/validate_r94_foundation.py",
+    "complete_packet_domains": 7,
+    "exit_code": 0,
+    "source_manifest_matches": true,
+    "status": "PASS_FINITE_DIFFERENTIAL",
+    "wall_seconds": 75.99090687499847,
+    "whole_labeling_runs": 23
+  },
+  "eight_wire": {
+    "complete_bit_work": false,
+    "qualification": "FINITE_DEPTH_ONE_REGRESSION",
+    "replay": {
+      "elapsed_seconds": 15.094985,
+      "evidence_schema": "VERITAS_TAPERED_V4_EIGHT_WIRE_EXPERIMENT_V3",
+      "independent_proof": false,
+      "legacy_evidence_wrapper": false,
+      "legacy_replay": false,
+      "legacy_v1_replay": false,
+      "legacy_v2_replay": false,
+      "process_peak_rss_bytes": 209371136,
+      "status": "FINITE_TRANSCRIPT_REPLAYED",
+      "subexponential_runtime_proven": false,
+      "trust_class": "HASH_MATCH_UNSIGNED",
+      "valid": true
+    },
+    "write": {
+      "elapsed_seconds": 13.786999,
+      "ledger": {
+        "accumulator_operand_bits": 6571313,
+        "complete": false,
+        "counters": {
+          "accumulator_ring_additions": 3074,
+          "accumulator_ring_multiplications": 12296,
+          "algorithm_leaf_calls": 12296,
+          "algorithm_leaf_work": 1743918,
+          "child_partition_checks": 3074,
+          "child_recipe_replay_steps": 141362,
+          "description_items": 282873,
+          "finite_multiplicity_checks": 50,
+          "generated_children": 12296,
+          "hermite_plan_checks": 1,
+          "hermite_recoveries": 5,
+          "independent_tuple_check_steps": 25538,
+          "independent_tuple_count_checks": 50,
+          "interpolation_calls": 2,
+          "mode_precount_steps": 13058,
+          "mode_precount_tuples": 3074,
+          "mode_records": 288,
+          "mode_replay_precount_steps": 13058,
+          "oracle_leaf_calls": 1,
+          "oracle_leaf_work": 774,
+          "packing_calls": 1,
+          "packing_work": 688,
+          "point_evaluations": 50,
+          "recursive_calls": 12297,
+          "retained_jet_coordinates": 240,
+          "retained_tuples": 3074,
+          "tuple_execution_steps": 13058,
+          "tuple_valuation_checks": 3074
+        },
+        "hard_memory_limit_enforced": false,
+        "maximum_accumulator_operand_bits": 5210,
+        "maximum_child_degree": 2,
+        "maximum_child_edges": 6,
+        "maximum_depth": 1,
+        "maximum_parent_degree": 2,
+        "maximum_parent_edges": 8,
+        "maximum_precision_bits": 521,
+        "mode_counts_by_weight": [
+          [
+            1,
+            288
+          ]
+        ],
+        "observed_work_units": 2299570,
+        "serialized_certificate_bytes": 19175113,
+        "serialized_transcript_bytes": 19005202,
+        "unmeasured": [
+          "internal mode and packing verification arithmetic",
+          "source Hermite plan generation and verification bit costs",
+          "child recipe replay bit costs and allocation",
+          "independent tuple oracle mode and source replay",
+          "independent tuple checker integer bit costs and allocation",
+          "nominal weighted-tuple dynamic-programming work",
+          "Hall matching bit costs and allocation when enabled",
+          "child topology replay work and allocation",
+          "interpolation bit operations",
+          "tensor-description allocation",
+          "peak process memory"
+        ]
+      },
+      "path": "validation/r94_eight_wire_v3.json",
+      "point_identity_coverage": "PARTIAL_OR_NOT_CHECKED",
+      "process_peak_rss_bytes": 117604352,
+      "result": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "status": "EXACT_MODULAR_CONTRACTION_FINITE"
+    }
+  },
+  "environment": {
+    "cpp_builds": [
+      "validation/r94_native_build.json",
+      "validation/r94_native_py313_build.json"
+    ],
+    "hosted_ci_executed": false,
+    "lean": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+    "platform": "macOS-26.2-arm64-arm-64bit"
+  },
+  "initial_failures": [
+    {
+      "command": "pytest without installed package or PYTHONPATH",
+      "resolution": "PYTHONPATH=src; all tests rerun",
+      "result": "IMPORT_ERROR"
+    },
+    {
+      "command": "scripts/smoke.py without PYTHONPATH",
+      "log": "validation/r94_smoke_initial.log",
+      "resolution": "rerun with PYTHONPATH=src",
+      "result": "IMPORT_ERROR"
+    },
+    {
+      "command": "scripts/validate_tapered_v4.py without PYTHONPATH",
+      "log": "validation/r94_eight_wire_write_initial.log",
+      "resolution": "rerun with PYTHONPATH=src",
+      "result": "IMPORT_ERROR"
+    }
+  ],
+  "lean": {
+    "command": "python3 scripts/validate_conditional_expectation_lean.py --output validation/r9_4_proof_gate.json",
+    "executable_refinement_proved": false,
+    "exit_code": 0,
+    "model_refinement_proved": true,
+    "modules": 34,
+    "source_freshness": {
+      "expected_modules": 34,
+      "fresh": true,
+      "freshness_is_authentication": false,
+      "observed_modules": 34,
+      "reasons": []
+    },
+    "status": "PASS",
+    "wall_seconds": 49.050345
+  },
+  "legacy_validations": {
+    "complete": true,
+    "python": "3.12.0",
+    "records": [
+      {
+        "command": "PYTHONPATH=src python3 scripts/smoke.py",
+        "exit_code": 0,
+        "log": "validation/r94_smoke.log",
+        "status": "PASS",
+        "wall_seconds": 0.08561212511267513
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v12.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v12.log",
+        "status": "PASS",
+        "wall_seconds": 0.7483888330170885
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v13.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v13.log",
+        "status": "PASS",
+        "wall_seconds": 1.647686625015922
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v14.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v14.log",
+        "status": "PASS",
+        "wall_seconds": 0.259912500041537
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v15.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v15.log",
+        "status": "PASS",
+        "wall_seconds": 1.7078935829922557
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v17.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v17.log",
+        "status": "PASS",
+        "wall_seconds": 0.5316827499773353
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v19.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v19.log",
+        "status": "PASS",
+        "wall_seconds": 0.5554533749818802
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v20.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v20.log",
+        "status": "PASS",
+        "wall_seconds": 0.5870766249718145
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v23.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v23.log",
+        "status": "PASS",
+        "wall_seconds": 0.642028084024787
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v26.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v26.log",
+        "status": "PASS",
+        "wall_seconds": 0.806994832935743
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v28.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v28.log",
+        "status": "PASS",
+        "wall_seconds": 1.3798309579724446
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v29.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v29.log",
+        "status": "PASS",
+        "wall_seconds": 0.8328081250656396
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v32.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v32.log",
+        "status": "PASS",
+        "wall_seconds": 0.36834412498865277
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_v33.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_v33.log",
+        "status": "PASS",
+        "wall_seconds": 0.37493745901156217
+      },
+      {
+        "command": "PYTHONPATH=src python3 scripts/validate_10000.py",
+        "exit_code": 0,
+        "log": "validation/r94_validate_10000.log",
+        "status": "PASS",
+        "wall_seconds": 1.8408091251039878
+      }
+    ]
+  },
+  "limitations": [
+    "Partial research release; full source theorem remains blocked.",
+    "No source-active scale was executed.",
+    "Resource counters are incomplete and no hard OS memory cap was enforced.",
+    "Content hash agreement is not executor authentication.",
+    "Final archive verification is external to avoid self-referential hashing."
+  ],
+  "optimized_python": {
+    "commands": [
+      "PYTHONPATH=src python3 -O -m pytest -q -o addopts=\"\" tests/test_r94_source_state.py tests/test_r94_foundation_validation.py tests/test_lean_proof_gate_audit.py tests/test_r91_fresh_lean_evidence.py",
+      "PYTHONPATH=src python3 -O -m pytest -q -o addopts=\"\" tests/test_lean_proof_gate_fault_injection.py -k \"D3KeyedRun or D3FinitePacketDomain\""
+    ],
+    "evidence": [
+      "validation/r94_optimized_python.log",
+      "validation/r94_optimized_kernel_faults.log"
+    ],
+    "exit_codes": [
+      0,
+      0
+    ],
+    "focused_cases_passed": 61,
+    "kernel_fault_injection_cases_passed": 2
+  },
+  "python_suites": [
+    {
+      "collected": 1275,
+      "command": "PYTHONPATH=src python -m pytest -q --junitxml=validation/r94_pytest_full.xml",
+      "errors": 0,
+      "executed": 1273,
+      "exit_code": 0,
+      "failures": 0,
+      "log": "r94_pytest_full.log",
+      "passed": 1273,
+      "python": "3.12.0",
+      "skipped": 2,
+      "wall_seconds": 276.578
+    },
+    {
+      "collected": 1275,
+      "command": "PYTHONPATH=src python -m pytest -q --junitxml=validation/r94_pytest_py313.xml",
+      "errors": 0,
+      "executed": 1273,
+      "exit_code": 0,
+      "failures": 0,
+      "log": "r94_pytest_py313.log",
+      "passed": 1273,
+      "python": "3.13.13",
+      "skipped": 2,
+      "wall_seconds": 258.639
+    }
+  ],
+  "qualifications": {
+    "CI_CONFIGURATION_UPDATED": true,
+    "COMPLEXITY_ESTABLISHED": false,
+    "CPP_TESTED": true,
+    "EXECUTABLE_REFINEMENT_PROVED": false,
+    "FINITE_PACKET_DOMAIN_MODEL_PROVED": true,
+    "HOSTED_CI": "NOT_RUN",
+    "KEYED_MODEL_REFINEMENT_PROVED": true,
+    "LEAN_KERNEL_CHECKED": true,
+    "PYTHON_TESTED": true,
+    "SOURCE_ACTIVE_RECURSION_IMPLEMENTED": false,
+    "THEOREM_MODE_ENABLED": false
+  },
+  "remaining_obligations": "docs/R94_REMAINING_OBLIGATIONS.md",
+  "schema": "VERITAS_ETH_R94_PARTIAL_RELEASE_EVIDENCE_V1",
+  "status": "PASS_IMPLEMENTED_SCOPE_THEOREM_BLOCKED"
+}

@@ -1,0 +1,47 @@
+{
+  "version": "2.1.0",
+  "workload": "seeded small finite packet proxies",
+  "warning": "Not a SAT or tensor contraction speed benchmark; hardware dependent.",
+  "rows": [
+    {
+      "wires": 8,
+      "packet_size": 4,
+      "finite_collision_score": 5,
+      "subset_dp_ms": 0.226,
+      "bounded_branch_ms": 0.464,
+      "bounded_visited_states": 38,
+      "bounded_blocks": 37,
+      "full_search_completed": true
+    },
+    {
+      "wires": 10,
+      "packet_size": 4,
+      "finite_collision_score": 3,
+      "subset_dp_ms": 1.547,
+      "bounded_branch_ms": 12.678,
+      "bounded_visited_states": 1447,
+      "bounded_blocks": 1402,
+      "full_search_completed": true
+    },
+    {
+      "wires": 12,
+      "packet_size": 4,
+      "finite_collision_score": 7,
+      "subset_dp_ms": 6.16,
+      "bounded_branch_ms": 36.122,
+      "bounded_visited_states": 4787,
+      "bounded_blocks": 4786,
+      "full_search_completed": true
+    },
+    {
+      "wires": 12,
+      "packet_size": 8,
+      "finite_collision_score": 13,
+      "subset_dp_ms": 2.046,
+      "bounded_branch_ms": 10.346,
+      "bounded_visited_states": 514,
+      "bounded_blocks": 19,
+      "full_search_completed": true
+    }
+  ]
+}

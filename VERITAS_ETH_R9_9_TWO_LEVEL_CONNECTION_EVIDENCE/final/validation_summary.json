@@ -1,0 +1,35 @@
+{
+  "schema": "VERITAS_R99_TWO_LEVEL_CONNECTION_VALIDATION_V1",
+  "status": "PASS_FINITE_CONNECTION",
+  "implementation_source_sha256": "b2a6f9876525e61080374c8b2693787a5cd88430c2c7a0b42a489dc20ff4e9fa",
+  "pytest": {
+    "tests": 1935,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2,
+    "passed": 1933
+  },
+  "inherited_commands": 13,
+  "portable_commands": 31,
+  "lean_modules": 41,
+  "projected_edges": [
+    242,
+    22,
+    2
+  ],
+  "topology_status": "PASS_FINITE_TOPOLOGY_ONLY",
+  "numerical_22_status": "PASS_FINITE_STREAMED_TAPERED_RECURSION",
+  "independent_replay_status": "PASS_INDEPENDENT_STREAMED_RECURSION",
+  "actual_calls": 135,
+  "grid_points": 134,
+  "cache_hits": 8442,
+  "full_two_active_level_numerical_validation": "NOT_RUN_RESOURCE_GAP",
+  "resource_probe_status": "INCONCLUSIVE_RESOURCE_LIMIT",
+  "source_qualified": false,
+  "theorem_mode_enabled": false,
+  "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "full_container_pytest": "NOT_RUN",
+  "hosted_ci": "NOT_RUN",
+  "excluded_preliminary_evidence": "Parent evidence directory predates final digest correction; final/portable/initial_install_failure.json records rejected install attempt."
+}

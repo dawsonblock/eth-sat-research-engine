@@ -1,0 +1,99 @@
+{
+  "sealed_R98": {
+    "valid_alternative_polynomial": {
+      "status": "REJECT",
+      "exception": "ValueError",
+      "reason": "mode source/ring mismatch"
+    },
+    "wrong_parent_context": {
+      "status": "ACCEPT"
+    },
+    "boolean_half_edge": {
+      "status": "ACCEPT"
+    },
+    "boolean_jet_length": {
+      "status": "ACCEPT"
+    },
+    "boolean_packet_endpoint": {
+      "status": "REJECT",
+      "exception": "KeyError",
+      "reason": "'False'"
+    },
+    "preflight": {
+      "status": "INCONCLUSIVE_SOURCE_SCHEDULE",
+      "source_active": false,
+      "checks": {
+        "M_ge_2_D_squared_delta": false,
+        "M_ge_LD": true,
+        "2L_le_delta": true
+      },
+      "schedule": {
+        "lambda": 4,
+        "leaf_threshold": 8,
+        "degree_limit": 13,
+        "extension_degree": 16,
+        "u": 0,
+        "a": 0,
+        "a_previous": 0,
+        "r": 64,
+        "L": 1,
+        "packing_class_count": 1
+      }
+    },
+    "source_binding": "e5205d68b52431d2fc809d7a234f01d015bf857513e7c4178c5f977af95d4517"
+  },
+  "corrected": {
+    "valid_alternative_polynomial": {
+      "status": "ACCEPT"
+    },
+    "wrong_parent_context": {
+      "status": "REJECT",
+      "exception": "ValueError",
+      "reason": "child belongs to another parent"
+    },
+    "boolean_half_edge": {
+      "status": "REJECT",
+      "exception": "ValueError",
+      "reason": "half-edge metadata requires typed natural indices"
+    },
+    "boolean_jet_length": {
+      "status": "REJECT",
+      "exception": "ValueError",
+      "reason": "point arithmetic metadata requires integers"
+    },
+    "boolean_packet_endpoint": {
+      "status": "REJECT",
+      "exception": "ValueError",
+      "reason": "packet edge endpoints differ"
+    },
+    "preflight": {
+      "status": "INCONCLUSIVE_SOURCE_SCHEDULE",
+      "source_active": false,
+      "checks": {
+        "M_ge_2_D_squared_delta": false,
+        "M_ge_LD": true,
+        "2L_le_delta": true
+      },
+      "schedule": {
+        "lambda": 4,
+        "leaf_threshold": 8,
+        "degree_limit": 13,
+        "extension_degree": 16,
+        "u": 0,
+        "a": 0,
+        "a_previous": 0,
+        "r": 64,
+        "L": 1,
+        "packing_class_count": 1
+      },
+      "scope": "CURRENT_NODE_NUMERICS_ONLY",
+      "above_leaf_cutoff": false,
+      "positive_u": false,
+      "actual_packing_verified": false,
+      "descendant_schedules_verified": false,
+      "source_qualified": false
+    },
+    "source_binding": "99918c467f95cdf844af33ee12edd70142edaf8ffe628ed7ad17e7bed78a1b5c"
+  },
+  "scope": "Four behavior corrections plus explicit packet-type rejection; no source-regime qualification"
+}

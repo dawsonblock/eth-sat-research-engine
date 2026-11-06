@@ -1,0 +1,76 @@
+{
+  "baseline_10k_cases": 10000,
+  "benchmark_claim": "toy measurements only; no asymptotic speedup claim",
+  "built_utc": "2026-10-30T06:32:41.582577+00:00",
+  "evidence_scope": "finite-instance differential testing; no formal runtime proof",
+  "full_pytest": "PASS 201",
+  "independent_runtime_bound_proof": "NOT_AVAILABLE",
+  "inherited_10k_validation": "PASS (10000)",
+  "mathematical_claim": "bounded exact mode reconstruction + generic child-boundary contraction; NOT manuscript D.4.4 subexponential recursion",
+  "new_components": [
+    "exact coefficient-wise rational grouped rank-one modes with 2-adic valuations",
+    "certified modular dropping of entire modes",
+    "explicit polynomial-valued boundary child-tensor recursion and API/CLI/browser integration"
+  ],
+  "paper_subexponential_algorithm": "NOT_IMPLEMENTED",
+  "previous_inherited_validators": [
+    "validate_upgrade",
+    "validate_v06",
+    "validate_v07",
+    "validate_v08",
+    "validate_v09",
+    "validate_10000",
+    "smoke"
+  ],
+  "pytest_tests_passed": 201,
+  "release": "1.2.0",
+  "source_lean_compile": "NOT_RUN",
+  "status": "PASS",
+  "v09_inherited": {
+    "asymptotic_theorem": "NOT_IMPLEMENTED",
+    "certified_mode_branches_dropped_valuation": 5285,
+    "certified_mode_branches_dropped_z_degree": 720,
+    "cross_group_modes_vs_independent_local_jet": 213,
+    "elapsed_seconds": 0.572,
+    "hermite_vs_independent_original_tensor_count": 95,
+    "max_wires": 5,
+    "seed": 20091029,
+    "status": "PASS",
+    "version": "0.9.0"
+  },
+  "v10_new_standalone": {
+    "elapsed_seconds": 1.14,
+    "exact_rational_rank_decomposition_cases": 495,
+    "grouped_cauchy_vs_independent_shifted_jets": 495,
+    "paper_specific_recursive_mode_bound": "NOT_IMPLEMENTED",
+    "recursive_modular_vs_independent_edge_enumeration": 550,
+    "recursive_vs_independent_edge_enumeration": 550,
+    "runtime_improvement_claim": "NONE",
+    "seed": 100020261029,
+    "status": "PASS",
+    "version": "1.0.0"
+  },
+  "v11_new_standalone": {
+    "elapsed_seconds": 0.94,
+    "independent_cauchy_jet_comparisons": 441,
+    "optimized_packet_jet_comparisons": 219,
+    "relabel_count_preservation_checks": 219,
+    "seed": 2026103011,
+    "status": "PASS",
+    "subexponential_runtime_claim": "NONE",
+    "unoptimized_jet_comparisons": 222,
+    "upstream_D3_collision_packing_theorem": "NOT_IMPLEMENTED",
+    "upstream_D4_weighted_mode_recursion": "NOT_IMPLEMENTED",
+    "version": "1.1.0"
+  },
+  "v12_new_standalone": {
+    "certified_mode_drops": 113,
+    "cross_checked_cases": 241,
+    "elapsed_seconds": 0.632,
+    "max_join_variables": 9,
+    "scope": "bounded finite-instance differential tests; not a proof of ETH runtime",
+    "seed": 20261030,
+    "status": "PASS",
+    "version": "v1.2.0"
+  }
+}

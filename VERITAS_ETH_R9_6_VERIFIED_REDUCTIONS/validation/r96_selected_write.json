@@ -1,0 +1,18 @@
+{
+  "command": [
+    "python",
+    "scripts/validate_r82.py",
+    "--write",
+    "validation/r96_selected_points.json"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 1.9257333329878747,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 27754496,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r96_selected_write.stdout.log",
+  "stderr_log": "r96_selected_write.stderr.log",
+  "test_summary": ""
+}

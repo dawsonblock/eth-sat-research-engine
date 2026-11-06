@@ -1,0 +1,227 @@
+{
+  "schema": "VERITAS_ETH_R91_SCORER_BENCHMARK_V1",
+  "claim": "MEASURED_WALL_CLOCK_ON_IDENTICAL_INPUTS",
+  "qualification": "Timings are machine-specific observations, not asymptotic claims. The asymptotic analysis is separate and conditional.",
+  "environment": {
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.0",
+    "processor": "arm",
+    "native_backend": "cpp-pybind",
+    "native_algorithm_version": "d3-cpp20-direct-v1+batch-v1",
+    "cpu_count": 12
+  },
+  "peak_rss_bytes": 26279936,
+  "peak_rss_is_os_enforced_limit": false,
+  "repeats": 3,
+  "seed": 20261103,
+  "all_scores_exact": true,
+  "all_direct_work_metrics_match": true,
+  "records": [
+    {
+      "instance": "tiny-r2-a1",
+      "edges": 6,
+      "vertices": 5,
+      "r": 2,
+      "a": 1,
+      "candidates": 10,
+      "pair_count": 15,
+      "estimated_reference_work": 506,
+      "scores_equal": true,
+      "direct_work_matches_reference": true,
+      "score_digest": 808,
+      "python_reference": {
+        "wall_seconds_median": 9.529211092740297e-05,
+        "wall_seconds_min": 9.366706945002079e-05,
+        "cpu_seconds_median": 9.499999999999786e-05,
+        "repeats": 3,
+        "work_units": 312,
+        "work_metric_version": "d3-direct-pair-score-work-v1"
+      },
+      "cpp_direct": {
+        "wall_seconds_median": 0.000110041000880301,
+        "wall_seconds_min": 0.00010549998842179775,
+        "cpu_seconds_median": 0.00010999999999999899,
+        "repeats": 3,
+        "work_units": 312,
+        "work_metric_version": "d3-direct-pair-score-work-v1"
+      },
+      "cpp_batch": {
+        "wall_seconds_median": 7.291592191904783e-05,
+        "wall_seconds_min": 6.716698408126831e-05,
+        "cpu_seconds_median": 7.300000000000362e-05,
+        "repeats": 3,
+        "work_units": 443,
+        "work_metric_version": "d3-batch-pair-score-work-v1"
+      },
+      "speedup_direct_over_python": 0.8659691402758015,
+      "speedup_batch_over_python": 1.3068765835971665,
+      "speedup_batch_over_direct": 1.5091491403272648
+    },
+    {
+      "instance": "small-r2-a1",
+      "edges": 24,
+      "vertices": 12,
+      "r": 2,
+      "a": 1,
+      "candidates": 24,
+      "pair_count": 276,
+      "estimated_reference_work": 20725,
+      "scores_equal": true,
+      "direct_work_matches_reference": true,
+      "score_digest": 19984,
+      "python_reference": {
+        "wall_seconds_median": 0.004860958084464073,
+        "wall_seconds_min": 0.004856208921410143,
+        "cpu_seconds_median": 0.004862000000000005,
+        "repeats": 3,
+        "work_units": 16877,
+        "work_metric_version": "d3-direct-pair-score-work-v1"
+      },
+      "cpp_direct": {
+        "wall_seconds_median": 0.0008275830186903477,
+        "wall_seconds_min": 0.0008180830627679825,
+        "cpu_seconds_median": 0.0008269999999999944,
+        "repeats": 3,
+        "work_units": 16877,
+        "work_metric_version": "d3-direct-pair-score-work-v1"
+      },
+      "cpp_batch": {
+        "wall_seconds_median": 0.0007074170280247927,
+        "wall_seconds_min": 0.0006706250132992864,
+        "cpu_seconds_median": 0.00068,
+        "repeats": 3,
+        "work_units": 17157,
+        "work_metric_version": "d3-batch-pair-score-work-v1"
+      },
+      "speedup_direct_over_python": 5.873680313253107,
+      "speedup_batch_over_python": 6.871417978213711,
+      "speedup_batch_over_direct": 1.1698658441981178
+    },
+    {
+      "instance": "small-r3-a1",
+      "edges": 24,
+      "vertices": 10,
+      "r": 3,
+      "a": 1,
+      "candidates": 30,
+      "pair_count": 276,
+      "estimated_reference_work": 25699,
+      "scores_equal": true,
+      "direct_work_matches_reference": true,
+      "score_digest": 37296,
+      "python_reference": {
+        "wall_seconds_median": 0.005798291997052729,
+        "wall_seconds_min": 0.005701957968994975,
+        "cpu_seconds_median": 0.0057809999999999945,
+        "repeats": 3,
+        "work_units": 20024,
+        "work_metric_version": "d3-direct-pair-score-work-v1"
+      },
+      "cpp_direct": {
+        "wall_seconds_median": 0.0010269579943269491,
+        "wall_seconds_min": 0.001004040939733386,
+        "cpu_seconds_median": 0.0010270000000000001,
+        "repeats": 3,
+        "work_units": 20024,
+        "work_metric_version": "d3-direct-pair-score-work-v1"
+      },
+      "cpp_batch": {
+        "wall_seconds_median": 0.0005302909994497895,
+        "wall_seconds_min": 0.0005203329492360353,
+        "cpu_seconds_median": 0.0005299999999999888,
+        "repeats": 3,
+        "work_units": 16914,
+        "work_metric_version": "d3-batch-pair-score-work-v1"
+      },
+      "speedup_direct_over_python": 5.646084873074902,
+      "speedup_batch_over_python": 10.934170112388903,
+      "speedup_batch_over_direct": 1.9365932957423058
+    },
+    {
+      "instance": "medium-r2-a2",
+      "edges": 40,
+      "vertices": 12,
+      "r": 2,
+      "a": 2,
+      "candidates": 48,
+      "pair_count": 780,
+      "estimated_reference_work": 191149,
+      "scores_equal": true,
+      "direct_work_matches_reference": true,
+      "score_digest": 187136,
+      "python_reference": {
+        "wall_seconds_median": 0.0480839580995962,
+        "wall_seconds_min": 0.047872958006337285,
+        "cpu_seconds_median": 0.047954,
+        "repeats": 3,
+        "work_units": 150369,
+        "work_metric_version": "d3-direct-pair-score-work-v1"
+      },
+      "cpp_direct": {
+        "wall_seconds_median": 0.0037061249604448676,
+        "wall_seconds_min": 0.0034774589585140347,
+        "cpu_seconds_median": 0.0036740000000000106,
+        "repeats": 3,
+        "work_units": 150369,
+        "work_metric_version": "d3-direct-pair-score-work-v1"
+      },
+      "cpp_batch": {
+        "wall_seconds_median": 0.0018396250670775771,
+        "wall_seconds_min": 0.001530708046630025,
+        "cpu_seconds_median": 0.0017650000000000166,
+        "repeats": 3,
+        "work_units": 93813,
+        "work_metric_version": "d3-batch-pair-score-work-v1"
+      },
+      "speedup_direct_over_python": 12.974186950734767,
+      "speedup_batch_over_python": 26.1379119909375,
+      "speedup_batch_over_direct": 2.0146088606698576
+    },
+    {
+      "instance": "medium-r3-a2",
+      "edges": 36,
+      "vertices": 10,
+      "r": 3,
+      "a": 2,
+      "candidates": 90,
+      "pair_count": 630,
+      "estimated_reference_work": 286741,
+      "scores_equal": true,
+      "direct_work_matches_reference": true,
+      "score_digest": 810216,
+      "python_reference": {
+        "wall_seconds_median": 0.05440825002733618,
+        "wall_seconds_min": 0.053800583933480084,
+        "cpu_seconds_median": 0.05427799999999999,
+        "repeats": 3,
+        "work_units": 178964,
+        "work_metric_version": "d3-direct-pair-score-work-v1"
+      },
+      "cpp_direct": {
+        "wall_seconds_median": 0.00493508402723819,
+        "wall_seconds_min": 0.004751667031086981,
+        "cpu_seconds_median": 0.004927000000000015,
+        "repeats": 3,
+        "work_units": 178964,
+        "work_metric_version": "d3-direct-pair-score-work-v1"
+      },
+      "cpp_batch": {
+        "wall_seconds_median": 0.0012731250608339906,
+        "wall_seconds_min": 0.0012633330188691616,
+        "cpu_seconds_median": 0.0012729999999999686,
+        "repeats": 3,
+        "work_units": 91852,
+        "work_metric_version": "d3-batch-pair-score-work-v1"
+      },
+      "speedup_direct_over_python": 11.024786959460252,
+      "speedup_batch_over_python": 42.735982270033055,
+      "speedup_batch_over_direct": 3.8763544753453734
+    }
+  ],
+  "limitations": [
+    "No memory limit is enforced; peak RSS is the process maximum.",
+    "Wall-clock includes Python call overhead for the native backends.",
+    "Instances are small enough to run the pure-Python reference."
+  ]
+}

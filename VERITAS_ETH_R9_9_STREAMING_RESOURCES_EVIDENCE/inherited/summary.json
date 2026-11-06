@@ -1,0 +1,19 @@
+{
+  "status": "RUNNING",
+  "source": "7c164edd3c050a308fb35a5f1f7f1705950e0b8a5f01d74c3fa8609ab92e5dce",
+  "commands": [
+    {
+      "name": "r95",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r95_recipes.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_STREAMING_RESOURCES_EVIDENCE/inherited/r95.json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.816113542066887,
+      "source_before": "7c164edd3c050a308fb35a5f1f7f1705950e0b8a5f01d74c3fa8609ab92e5dce",
+      "source_after": "7c164edd3c050a308fb35a5f1f7f1705950e0b8a5f01d74c3fa8609ab92e5dce"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "status": "RUNNING",
+  "source": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+  "commands": [
+    {
+      "name": "r95",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r95_recipes.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/inherited_final/r95.json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.49960641690995544,
+      "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+      "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+    },
+    {
+      "name": "lean",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_conditional_expectation_lean.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/inherited_final/lean.json"
+      ],
+      "exit_code": 0,
+      "seconds": 79.29511129204184,
+      "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+      "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+    },
+    {
+      "name": "r94",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r94_foundation.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/inherited_final/r94.json"
+      ],
+      "exit_code": 0,
+      "seconds": 101.28310199989937,
+      "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+      "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+    },
+    {
+      "name": "r97_bridge",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_bridge.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/inherited_final/r97_bridge.json"
+      ],
+      "exit_code": 0,
+      "seconds": 1.8789314579917118,
+      "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+      "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+    },
+    {
+      "name": "r97_matrix",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r97_matrix.py",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_EVIDENCE/inherited_final/r97_matrix.json"
+      ],
+      "exit_code": 0,
+      "seconds": 8.133877417072654,
+      "source_before": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4",
+      "source_after": "8264bdc4f4414d056fce1d71919661d157dc3769aa8e194b9212d2fbed4485f4"
+    }
+  ]
+}

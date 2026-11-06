@@ -1,0 +1,10 @@
+Processing /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_10_EVIDENCE/final/portable/wheels/veritas_eth-3.8.2.post98-py3-none-any.whl
+Installing collected packages: veritas-eth
+  Attempting uninstall: veritas-eth
+    Found existing installation: veritas-eth 3.8.2.post98
+    Not uninstalling veritas-eth at /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_10_NUMERICAL_RECURSION/src, outside environment /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_10_EVIDENCE/final/portable/clean_py310
+    Can't uninstall 'veritas-eth'. No files were found to uninstall.
+Successfully installed veritas-eth-3.8.2.post98
+
+[notice] A new release of pip is available: 25.3 -> 26.3
+[notice] To update, run: /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_10_EVIDENCE/final/portable/clean_py310/bin/python -m pip install --upgrade pip

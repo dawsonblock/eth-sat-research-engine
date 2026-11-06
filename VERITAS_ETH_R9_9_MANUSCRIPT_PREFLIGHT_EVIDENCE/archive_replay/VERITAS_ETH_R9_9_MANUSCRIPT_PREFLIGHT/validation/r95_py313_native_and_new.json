@@ -1,0 +1,24 @@
+{
+  "command": [
+    "<user>/MATH SPEED/VERITAS_ETH_R9_PACKING_STAGE/build/r93-py313-managed/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "-o",
+    "addopts=",
+    "tests/test_r91_cpp_backend.py",
+    "tests/test_r95_source_recipes.py",
+    "tests/test_r95_source_leaf.py",
+    "tests/test_r95_hermite_grid.py"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 1.1064462090143934,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 50823168,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r95_py313_native_and_new.stdout.log",
+  "stderr_log": "r95_py313_native_and_new.stderr.log",
+  "test_summary": "129 passed in 0.65s"
+}

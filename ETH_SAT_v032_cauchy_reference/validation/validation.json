@@ -1,0 +1,251 @@
+{
+  "archive_verification": {
+    "archive_crc": "PASS",
+    "extracted_hermite_cases": 25,
+    "extracted_max_local_precision_bits": 1093,
+    "extracted_python": "Python 3.9.25",
+    "extracted_self_test_exit_code": 0,
+    "extracted_unit_test_exit_code": 0,
+    "extracted_unit_tests": 8,
+    "note": "Verified the distributable source payload; only validation metadata and manifest were refreshed afterward."
+  },
+  "runs": [
+    {
+      "compileall_exit_code": 0,
+      "label": "python3.9",
+      "runtime": "Python 3.9.25",
+      "self_test": {
+        "crossing_mode_expansion": {
+          "crossing_entry_expansions_checked": 7440,
+          "packet_sizes": 3,
+          "precisions": [
+            1,
+            2,
+            4,
+            8
+          ]
+        },
+        "deformed_contraction_identity": {
+          "cases": 24,
+          "max_packet_size": 5,
+          "seed": 20261031
+        },
+        "full_recursive_modular_mode_pruning_implemented": false,
+        "general_subexponential_claim": false,
+        "grid_nodes_checked": 72,
+        "local_2_adic_coordinates": {
+          "2_adically_integral_coefficients_checked": 17476,
+          "power_of_two_packet_sizes": 4
+        },
+        "packet_sizes_checked": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "polynomial_degrees": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16
+        ],
+        "rational_kernel_formula_entry_checks": 408,
+        "recursive_child_contraction_implemented": false,
+        "schema": "ETH_SAT_V032_CAUCHY_DEFORMATION_REFERENCE",
+        "tapered_hermite_reconstruction_implemented": true,
+        "tapered_hermite_recovery": {
+          "cases": 25,
+          "coefficient_dimensions": 3,
+          "max_degree": 237,
+          "max_local_precision_bits": 1093,
+          "seed": 20261031
+        },
+        "two_group_mode_factorization": {
+          "cases": 16,
+          "groups": 2,
+          "max_mode_tuples": 74,
+          "max_modes": 10,
+          "nonzero_direct_residues": 7,
+          "packet_size": 4,
+          "seed": 20261031
+        }
+      },
+      "self_test_exit_code": 0,
+      "unit_test_result": {
+        "command": "python3.9 -m unittest discover -s tests -v",
+        "exit_code": 0,
+        "runtime_seconds": 16.546,
+        "test_methods": 8
+      }
+    },
+    {
+      "compileall_exit_code": 0,
+      "label": "python3.10",
+      "runtime": "Python 3.10.19",
+      "self_test": {
+        "crossing_mode_expansion": {
+          "crossing_entry_expansions_checked": 7440,
+          "packet_sizes": 3,
+          "precisions": [
+            1,
+            2,
+            4,
+            8
+          ]
+        },
+        "deformed_contraction_identity": {
+          "cases": 24,
+          "max_packet_size": 5,
+          "seed": 20261031
+        },
+        "full_recursive_modular_mode_pruning_implemented": false,
+        "general_subexponential_claim": false,
+        "grid_nodes_checked": 72,
+        "local_2_adic_coordinates": {
+          "2_adically_integral_coefficients_checked": 17476,
+          "power_of_two_packet_sizes": 4
+        },
+        "packet_sizes_checked": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "polynomial_degrees": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16
+        ],
+        "rational_kernel_formula_entry_checks": 408,
+        "recursive_child_contraction_implemented": false,
+        "schema": "ETH_SAT_V032_CAUCHY_DEFORMATION_REFERENCE",
+        "tapered_hermite_reconstruction_implemented": true,
+        "tapered_hermite_recovery": {
+          "cases": 25,
+          "coefficient_dimensions": 3,
+          "max_degree": 237,
+          "max_local_precision_bits": 1093,
+          "seed": 20261031
+        },
+        "two_group_mode_factorization": {
+          "cases": 16,
+          "groups": 2,
+          "max_mode_tuples": 74,
+          "max_modes": 10,
+          "nonzero_direct_residues": 7,
+          "packet_size": 4,
+          "seed": 20261031
+        }
+      },
+      "self_test_exit_code": 0,
+      "unit_test_result": {
+        "command": "python3.10 -m unittest discover -s tests -v",
+        "exit_code": 0,
+        "runtime_seconds": 15.341,
+        "test_methods": 8
+      }
+    },
+    {
+      "compileall_exit_code": 0,
+      "label": "python3.12",
+      "runtime": "Python 3.12.13",
+      "self_test": {
+        "crossing_mode_expansion": {
+          "crossing_entry_expansions_checked": 7440,
+          "packet_sizes": 3,
+          "precisions": [
+            1,
+            2,
+            4,
+            8
+          ]
+        },
+        "deformed_contraction_identity": {
+          "cases": 24,
+          "max_packet_size": 5,
+          "seed": 20261031
+        },
+        "full_recursive_modular_mode_pruning_implemented": false,
+        "general_subexponential_claim": false,
+        "grid_nodes_checked": 72,
+        "local_2_adic_coordinates": {
+          "2_adically_integral_coefficients_checked": 17476,
+          "power_of_two_packet_sizes": 4
+        },
+        "packet_sizes_checked": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "polynomial_degrees": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16
+        ],
+        "rational_kernel_formula_entry_checks": 408,
+        "recursive_child_contraction_implemented": false,
+        "schema": "ETH_SAT_V032_CAUCHY_DEFORMATION_REFERENCE",
+        "tapered_hermite_reconstruction_implemented": true,
+        "tapered_hermite_recovery": {
+          "cases": 25,
+          "coefficient_dimensions": 3,
+          "max_degree": 237,
+          "max_local_precision_bits": 1093,
+          "seed": 20261031
+        },
+        "two_group_mode_factorization": {
+          "cases": 16,
+          "groups": 2,
+          "max_mode_tuples": 74,
+          "max_modes": 10,
+          "nonzero_direct_residues": 7,
+          "packet_size": 4,
+          "seed": 20261031
+        }
+      },
+      "self_test_exit_code": 0,
+      "unit_test_result": {
+        "command": "python3.12 -m unittest discover -s tests -v",
+        "exit_code": 0,
+        "runtime_seconds": 13.384,
+        "test_methods": 8
+      }
+    }
+  ],
+  "schema": "ETH_SAT_V032_CAUCHY_REFERENCE_VALIDATION",
+  "scope": "exact local Cauchy deformation, tiny two-group identity, and tapered Hermite recovery; no full recursion or asymptotic claim",
+  "source_sha256": {
+    "ETH_SAT_v032_cauchy_reference.py": "32f5b36ce95183a9eef1172b3c6d9056979667403d31d79cbcde27525d9876b3",
+    "MATHEMATICAL_NOTE.md": "6d6f53972c18a2f3affd5ecb460397f249de7aaf616787c90a0d56a139587924",
+    "README.md": "cb7acfc37cc12e5caf71f1c1e9be3794466aba905b317bf9fcd7dfe1c5b0de1f",
+    "tapered_hermite.py": "a55e88da38fc89fc326fb14caa29ea7d8b2da1342ad809fdac38142fcb95a6cd",
+    "tests/test_cauchy_reference.py": "a38f68b31ab6b1b67a3cc41550f8dbb0d2333e557621775707f055b65412f5ae"
+  }
+}

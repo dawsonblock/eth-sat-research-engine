@@ -1,0 +1,18 @@
+{
+  "command": [
+    "python",
+    "scripts/validate_r94_foundation.py",
+    "--output",
+    "validation/r97_order_differential.json"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 85.72706845891662,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 1388281856,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_r94.stdout.log",
+  "stderr_log": "r97_r94.stderr.log",
+  "test_summary": ""
+}

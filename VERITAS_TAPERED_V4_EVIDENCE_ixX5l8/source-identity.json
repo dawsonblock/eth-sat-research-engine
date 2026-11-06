@@ -1,0 +1,10 @@
+{
+  "repo_root": "/Users/dawsonblock/MATH SPEED",
+  "project": "VERITAS_ETH_v3.8.2",
+  "base_commit": "810fd783f7fc599bf74a2a0e56a2307db8a8b825",
+  "branch": "main",
+  "patch_bytes": 321465,
+  "patch_sha256": "6b511a203dc81c301a29c1a17f82c21a4a73e45639d23347f32c79187db7af02",
+  "manifest_sha256": "001c382e5eb1539c94b5547a1c458f773af591347f361f1ee15c9ecaa3e37448",
+  "scope": "project directory only; unrelated workspace changes excluded"
+}

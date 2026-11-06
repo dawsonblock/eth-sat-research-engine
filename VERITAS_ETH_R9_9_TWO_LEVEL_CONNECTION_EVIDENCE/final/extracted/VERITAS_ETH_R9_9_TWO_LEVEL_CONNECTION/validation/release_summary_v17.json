@@ -1,0 +1,20 @@
+{
+  "version": "1.7.0",
+  "archive_scope": "complete cumulative source",
+  "pytest_passed": 243,
+  "baseline_random_formula_count": 10000,
+  "v17_seeded_instances": 240,
+  "v17_count_comparisons": 720,
+  "v17_permutation_optimality_checks": 189,
+  "v17_fixed_counterexample": {
+    "variables": 9,
+    "baseline_dense_cost": 222,
+    "optimal_dense_cost": 190,
+    "baseline_width": 5,
+    "optimal_width": 4
+  },
+  "optimized_wall_clock_advantage_demonstrated": false,
+  "formal_ETH_subexponential_proof_reproduced": false,
+  "independent_order_verifier": "graph fill replay + tree decomposition verification",
+  "implementation_scope": "<=12 original-CNF variables for exact subset optimization"
+}

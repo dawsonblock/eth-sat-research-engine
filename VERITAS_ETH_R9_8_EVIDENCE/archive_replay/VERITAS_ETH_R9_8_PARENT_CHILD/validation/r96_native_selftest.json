@@ -1,0 +1,15 @@
+{
+  "command": [
+    "./build/cpp/veritas_d3_selftest"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 0.6923852090258151,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 1540096,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r96_native_selftest.stdout.log",
+  "stderr_log": "r96_native_selftest.stderr.log",
+  "test_summary": ""
+}

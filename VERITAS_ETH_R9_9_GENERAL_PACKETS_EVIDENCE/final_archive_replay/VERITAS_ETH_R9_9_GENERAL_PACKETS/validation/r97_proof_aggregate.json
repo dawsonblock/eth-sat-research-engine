@@ -1,0 +1,852 @@
+{
+  "schema": "VERITAS_ETH_R91_RELEASE_EVIDENCE_V2",
+  "release": "R9.1",
+  "theorem_mode_enabled": false,
+  "environment": {
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "python": "3.12.0"
+  },
+  "manuscript_sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+  "lean_toolchain": "leanprover/lean4:v4.35.0",
+  "source_hashes": {
+    "proofs/D3PythonOrder.lean": "41113b7594d5e96813d2e9d2cfc9732e7147cf697fb00302fb5418f2d98d35e0",
+    "proofs/D3PythonScoreModel.lean": "21667cf11bb266c5b15156c349bee779b5b2be1ed12639252d7e293167e00d92",
+    "proofs/D3PacketBijection.lean": "d16f1fffea1b033638b96253705d20f0354e5049bcd46cf0b4566a81856f508e",
+    "src/veritas/research/eth_packing_v26/streaming.py": "002409180ce0a5bd334821f8a0725a50ee840d2064390ec01e24732b54255f33",
+    "src/veritas/research/eth_packing_v26/cpp_backend.py": "91306fcf7e5cd53c20741c2e52ab886ebbc026c30d9b2d047247b3c70ca574b8",
+    "cpp/src/score.cpp": "69d28930e01f32d65a2d90310df34517df421cdb6c59bf580e4c6b8d8bc4d330",
+    "cpp/src/bindings.cpp": "7187e9c27ac9303ce87d1fb1a05bbe42fb5aab7139494fa8a015ca3e0ee41161",
+    "cpp/include/veritas_d3_score.h": "248271a59734114525a7b375c9eb817cb9d657527de8a85b411bc13cda64da77"
+  },
+  "gates": {
+    "lean_proof_gate": {
+      "status": "PASS_HASH_MATCH_UNAUTHENTICATED",
+      "modules": 41,
+      "source": "validation/r9_conditional_expectation_proof.json",
+      "freshness": {
+        "fresh": true,
+        "reasons": [],
+        "derived_flags": {
+          "finite_pair_marginal_variance_bound_proven": true,
+          "pointwise_collision_potential_identity_proven": true,
+          "unordered_pair_potential_decomposition_proven": true,
+          "empty_lean_score_matches_pair_marginals_proven": true,
+          "one_step_concrete_selection_proven": true,
+          "canonical_lean_first_step_bound_proven": true,
+          "canonical_run_monotone_under_explicit_transition_hypotheses": true,
+          "lean_labeling_freshness_validity_and_completion_proven": true,
+          "full_run_bound_under_score_potential_equalities": true,
+          "fresh_lean_parent_score_equals_raw_potential_proven": true,
+          "raw_run_bound_under_child_transition_hypothesis": true,
+          "lean_child_score_transition_proven": true,
+          "lean_canonical_raw_score_bound_proven": true,
+          "lean_generated_run_realized_class_square_bound_proven": true,
+          "lean_generated_class_accounting_proven": true,
+          "lean_generated_padded_class_bound_proven": true,
+          "lean_generated_symbol_port_bound_proven": true,
+          "lean_generated_group_half_wire_bound_proven": true,
+          "lean_any_distinct_covering_order_port_bound_proven": true,
+          "lean_python_sorted_vertex_order_model_proven": true,
+          "lean_python_sorted_order_port_bound_proven": true,
+          "lean_python_sorted_trace_fixture_proven": true,
+          "lean_python_score_transcription_compiles": true,
+          "lean_python_pair_aggregation_proven": true,
+          "lean_python_word_matches_bridge_proven": true,
+          "lean_python_score_equality_proven": true,
+          "lean_slot_bit_split_inverse_proven": true,
+          "lean_class_offset_address_bijection_proven": true,
+          "lean_single_coordinate_orientation_proven": true,
+          "lean_packet_slot_bijection_proven": true,
+          "lean_global_pattern_slot_bijection_proven": true,
+          "lean_raw_class_to_pattern_bijection_proven": true,
+          "lean_occurrence_rank_model_bijection_proven": true,
+          "lean_binary_slot_model_proven": true,
+          "lean_numeric_slot_model_bijection_proven": true,
+          "lean_global_edge_occurrence_model_bijection_proven": true,
+          "lean_padded_packet_model_bounds_proven": true,
+          "lean_computed_padding_model_proven": true,
+          "lean_first_minimum_model_proven": true,
+          "lean_r93_contracts_checked": true,
+          "lean_full_padded_offset_to_global_address_proven": true,
+          "lean_candidate_product_and_lex_order_model_proven": true,
+          "lean_keyed_full_run_and_trace_model_proven": true,
+          "lean_finite_packet_domain_cardinality_model_proven": true,
+          "lean_r94_contracts_checked": true,
+          "lean_central_contract_types_checked": true,
+          "lean_creation_coordinate_model_proven": true,
+          "lean_creation_contracts_checked": true
+        },
+        "derived_reports": {
+          "proofs/ConditionalExpectationAverage.lean": [
+            "countSatisfyingWords",
+            "constrained_pair_average",
+            "conditional_pair_term_average",
+            "conditional_pair_sum_average",
+            "conditional_score_average",
+            "coordinate_pair_term_average",
+            "coordinate_pair_sum_average",
+            "coordinate_score_average"
+          ],
+          "proofs/ConcreteD3ConditionalExpectation.lean": [
+            "concretePairCoordinate_valid",
+            "concrete_d3_pair_term_average",
+            "concrete_d3_pair_terms_average",
+            "concrete_d3_score_average",
+            "ordered_overlap_count_le_two_m_delta"
+          ],
+          "proofs/D3VarianceBound.lean": [
+            "edgePairScaledAgreement_ge_one",
+            "edgePairScaledAgreement_count_identity",
+            "edgePairLabelSamples_length",
+            "edgePairAgreementCount_eq",
+            "edgePairScaledAgreement_eq_one_of_disjoint",
+            "allOrderedEdgePairs_length",
+            "scaledPairSecondMoment_eq_centered_add_mul",
+            "scaled_centered_pair_sum_le",
+            "scaled_pair_second_moment_sub_square_le"
+          ],
+          "proofs/D3PotentialIdentity.lean": [
+            "d3_edge_class_square_sum_eq_ordered_collision_count",
+            "d3_scaled_ordered_collision_count_eq"
+          ],
+          "proofs/D3CollisionBridge.lean": [
+            "ordered_pair_sum_decomposition",
+            "d3_scaled_class_square_eq_diagonal_plus_unordered",
+            "scaled_pair_second_moment_eq_diagonal_plus_unordered",
+            "initial_unordered_pair_score_le"
+          ],
+          "proofs/D3InitialScore.lean": [
+            "empty_coordinates",
+            "empty_pair_parent_eq",
+            "empty_concrete_score_eq_second_moment",
+            "empty_concrete_score_le"
+          ],
+          "proofs/ConditionalExpectationSelection.lean": [
+            "sum_lower_bound_of_all_gt",
+            "exists_candidate_le_of_sum_le",
+            "exists_minimizing_candidate_no_worse_than_parent"
+          ],
+          "proofs/D3SelectionBridge.lean": [
+            "concreteD3CandidateScores_sum",
+            "concrete_d3_exists_nonincreasing_candidate"
+          ],
+          "proofs/D3CanonicalSequence.lean": [
+            "d3_conditional_trace_exists",
+            "d3_first_candidate_with_initial_bound",
+            "d3_first_canonical_candidate_with_initial_bound",
+            "d3_assign_word_valid",
+            "d3_canonical_word_mem",
+            "d3_canonical_word_nonincreasing",
+            "d3_conditional_canonical_run"
+          ],
+          "proofs/D3StateInvariants.lean": [
+            "d3_fresh_empty",
+            "d3_fresh_assign",
+            "d3_run_preserves_unlisted",
+            "d3_run_preserves_valid",
+            "d3_run_labels_all",
+            "d3_fresh_canonical_run_monotone",
+            "d3_fresh_run_initial_bound"
+          ],
+          "proofs/D3ParentScoreIndependence.lean": [
+            "classify_unknown_independent",
+            "classify_mismatch_independent",
+            "fresh_pair_parent_independent",
+            "fresh_parent_score_independent",
+            "fresh_pair_parent_eq_raw",
+            "fresh_parent_eq_raw_potential",
+            "fresh_raw_potential_eq_parent",
+            "d3_raw_run_initial_bound"
+          ],
+          "proofs/D3ChildTransition.lean": [
+            "classify_assign_transition",
+            "coordinate_fixed_is_sum",
+            "coordinate_rejects_is_constraint",
+            "concrete_coordinate_assign_transition",
+            "coordinate_transition_list",
+            "concrete_pair_coordinate_transitions",
+            "coordinate_mismatch_preserved",
+            "raw_pair_parent_independent",
+            "pair_mismatch_preserved",
+            "fresh_pair_candidate_eq_raw_child",
+            "fresh_candidate_eq_raw_child",
+            "d3_raw_canonical_run_bound"
+          ],
+          "proofs/D3RealizedLoads.lean": [
+            "complete_classification",
+            "complete_coordinate",
+            "mismatch_map_false_iff",
+            "complete_pair_unknown_zero",
+            "complete_pair_mismatch_iff_color",
+            "complete_pair_term_is_collision",
+            "unordered_pair_endpoints_mem",
+            "complete_raw_potential_eq_class_square",
+            "canonical_run_edges_complete",
+            "d3_realized_run_class_square_bound",
+            "d3_unique_vertices_mem",
+            "d3_unique_vertices_nodup",
+            "d3_graph_vertices_nodup",
+            "d3_graph_vertices_cover",
+            "d3_generated_run_class_square_bound"
+          ],
+          "proofs/D3ClassAccounting.lean": [
+            "class_loads_sum",
+            "class_squares_sum",
+            "valid_word_indicator_count",
+            "valid_color_indicator_count",
+            "canonical_run_color_indicator_count",
+            "generated_class_accounting"
+          ],
+          "proofs/D3VarianceAlgebra.lean": [
+            "d3_centered_scalar_identity",
+            "d3_centered_sum_identity",
+            "d3ZSum_member_le",
+            "d3_centered_class_square_bound",
+            "d3_generated_centered_class_bound",
+            "d3_centered_bound_implies_load_bound",
+            "d3_generated_class_load_bound",
+            "d3_class_load_le_max",
+            "d3_max_class_load_scaled_bound",
+            "d3_padded_class_load_bounds",
+            "d3_generated_packet_count_bound",
+            "d3_generated_padded_load_bound"
+          ],
+          "proofs/D3SymbolPorts.lean": [
+            "word_symbol_count",
+            "color_symbol_count",
+            "color_symbol_scaled_count",
+            "d3_symbol_loads_equal_ports",
+            "d3_symbol_port_bound_from_padded_classes",
+            "d3_generated_symbol_port_bound",
+            "d3_generated_group_half_wire_shrink",
+            "d3_any_order_padded_bound",
+            "d3_any_order_symbol_port_bound",
+            "d3_order_audit_fixture"
+          ],
+          "proofs/D3PythonOrder.lean": [
+            "d3_python_order_packet_count",
+            "d3_python_order_padded_bound",
+            "d3_unique_nat_ids_mem",
+            "d3_unique_nat_ids_nodup",
+            "d3_python_sorted_ids_sorted",
+            "d3_python_sorted_ids_perm",
+            "d3_python_ordered_vertices_nodup",
+            "d3_python_ordered_vertices_membership",
+            "d3_python_ordered_vertices_cover",
+            "d3_python_ordered_vertices_edge_permutation",
+            "d3_python_order_audit_fixture",
+            "d3_python_sorted_order_port_bound"
+          ],
+          "proofs/D3PythonScoreModel.lean": [
+            "D3PythonScore.py_side_unknown",
+            "D3PythonScore.py_side_mismatch",
+            "D3PythonScore.pyPairUnknown_eq",
+            "D3PythonScore.pyPairMismatch_eq",
+            "D3PythonScore.sumBy_pythonEdgePairs",
+            "D3PythonScore.pyCoordUnknown_add_fixed",
+            "D3PythonScore.fixedCount_constraints",
+            "D3PythonScore.coordinate_constraint_wordMatches",
+            "D3PythonScore.wordMatches_range_any",
+            "D3PythonScore.pyPairMismatch_iff",
+            "D3PythonScore.pyPairUnknown_eq_parent",
+            "D3PythonScore.pyPairTerm_eq",
+            "D3PythonScore.pyCandidateScore_eq"
+          ],
+          "proofs/D3SlotSplit.lean": [
+            "d3_merge_split_slot",
+            "d3_split_merge_slot",
+            "d3_split_slot_lengths",
+            "d3_offset_address_bounded",
+            "d3_offset_address_injective",
+            "d3_offset_address_inverse",
+            "d3_symbol_pair_roundtrip",
+            "d3_unequal_pair_orientation",
+            "d3_merge_unique_components"
+          ],
+          "proofs/D3PacketBijection.lean": [
+            "D3PacketBijection.d3_edge_slot_accounting",
+            "D3PacketBijection.encode_copy_bounded",
+            "D3PacketBijection.decode_encode",
+            "D3PacketBijection.encode_decode",
+            "D3PacketBijection.encode_injective",
+            "D3PacketBijection.decode_surjective",
+            "D3PacketBijection.packet_capacity",
+            "D3PacketBijection.slot_packet_count",
+            "D3PacketBijection.packet_count_exact",
+            "D3PacketBijection.empty_class_still_padded",
+            "D3PacketBijection.packet_positions_distinct"
+          ],
+          "proofs/D3GlobalPacketAddress.lean": [
+            "D3GlobalPacketAddress.class_pattern_orientation_roundtrip",
+            "D3GlobalPacketAddress.encode_decode",
+            "D3GlobalPacketAddress.decode_encode",
+            "D3GlobalPacketAddress.equal_symbol_orientation_is_false",
+            "D3GlobalPacketAddress.class_orientation_reconstructs"
+          ],
+          "proofs/D3OccurrenceRank.lean": [
+            "D3OccurrenceRank.decode_prefix_rank",
+            "D3OccurrenceRank.decode_encode",
+            "D3OccurrenceRank.encode_spec",
+            "D3OccurrenceRank.encode_succ",
+            "D3OccurrenceRank.encode_decode",
+            "D3OccurrenceRank.encode_injective",
+            "D3OccurrenceRank.encode_exists",
+            "D3OccurrenceRank.decode_in_bounds",
+            "D3OccurrenceRank.prefix_rank_lt_load"
+          ],
+          "proofs/D3BinaryBits.lean": [
+            "D3BinaryBits.bits_length",
+            "D3BinaryBits.value_bits",
+            "D3BinaryBits.bits_value",
+            "D3BinaryBits.value_bound"
+          ],
+          "proofs/D3NumericSlot.lean": [
+            "D3NumericSlot.merge_length",
+            "D3NumericSlot.merge_exists",
+            "D3NumericSlot.encode_exists",
+            "D3NumericSlot.decode_encode",
+            "D3NumericSlot.encode_decode",
+            "D3NumericSlot.encode_bounds",
+            "D3NumericSlot.decode_bounds"
+          ],
+          "proofs/D3FullPacketModel.lean": [
+            "D3FullPacketModel.class_orientation_length",
+            "D3FullPacketModel.class_pattern_length",
+            "D3FullPacketModel.encodeClass_exists",
+            "D3FullPacketModel.decodeClass_encodeClass",
+            "D3FullPacketModel.encodeClass_bounds",
+            "D3FullPacketModel.pattern_orientations_inverse",
+            "D3FullPacketModel.pattern_canonical",
+            "D3FullPacketModel.pattern_bounded",
+            "D3FullPacketModel.encodeClass_pattern",
+            "D3FullPacketModel.encodeClass_decodeClass",
+            "D3FullPacketModel.decodeClass_bounds",
+            "D3FullPacketModel.paddedClass_forward",
+            "D3FullPacketModel.paddedClass_reverse",
+            "D3FullPacketModel.encodeEdge_exists",
+            "D3FullPacketModel.decodeEdge_encodeEdge",
+            "D3FullPacketModel.encodeEdge_injective",
+            "D3FullPacketModel.encodeEdge_decodeEdge",
+            "D3FullPacketModel.decodedEdge_in_bounds",
+            "D3FullPacketModel.encodeEdge_bounds",
+            "D3FullPacketModel.encodeEdge_valid",
+            "D3FullPacketModel.padding_has_no_edge"
+          ],
+          "proofs/D3PaddedConstruction.lean": [
+            "D3PaddedConstruction.member_le_max",
+            "D3PaddedConstruction.absent_count_zero",
+            "D3PaddedConstruction.load_le_max",
+            "D3PaddedConstruction.height_divisible",
+            "D3PaddedConstruction.max_le_height",
+            "D3PaddedConstruction.height_lt_max_add_width",
+            "D3PaddedConstruction.empty_height",
+            "D3PaddedConstruction.constructed_real_edge_contract"
+          ],
+          "proofs/D3FirstMinimum.lean": [
+            "d3_canonical_word_first_minimum"
+          ],
+          "proofs/D3R93Contracts.lean": [
+            "r93_real_edge_packet_contract",
+            "r93_occupied_packet_contract",
+            "r93_padded_slot_contract",
+            "r93_first_minimum_contract",
+            "r93_constructed_edge_contract"
+          ],
+          "proofs/D3CandidateOrder.lean": [
+            "D3CandidateOrder.extend_labelWords",
+            "D3CandidateOrder.productWords_eq",
+            "D3CandidateOrder.minOn_congr_on",
+            "D3CandidateOrder.choose_eq",
+            "D3CandidateOrder.labelWords_lex_sorted",
+            "D3CandidateOrder.choose_pair_minimum"
+          ],
+          "proofs/D3KeyedRun.lean": [
+            "D3KeyedRun.write_view",
+            "D3KeyedRun.write_bounded",
+            "D3KeyedRun.run_correspondence",
+            "D3KeyedRun.trace_correspondence",
+            "D3KeyedRun.sorted_run_contract"
+          ],
+          "proofs/D3FinitePacketDomain.lean": [
+            "D3FinitePacketDomain.totalEncode_inverse",
+            "D3FinitePacketDomain.totalEncode_injective",
+            "D3FinitePacketDomain.classes_mem",
+            "D3FinitePacketDomain.positions_length",
+            "D3FinitePacketDomain.addresses_mem",
+            "D3FinitePacketDomain.addresses_nodup",
+            "D3FinitePacketDomain.forward_mem",
+            "D3FinitePacketDomain.reverse_mem",
+            "D3FinitePacketDomain.domain_permutation",
+            "D3FinitePacketDomain.domain_cardinality"
+          ],
+          "proofs/D3R94Contracts.lean": [
+            "r94_candidate_contract",
+            "r94_tie_contract",
+            "r94_sorted_contract",
+            "r94_run_contract",
+            "r94_packet_domain_contract"
+          ],
+          "proofs/D3ExpectedContracts.lean": [
+            "r9_checked_any_order_port_contract",
+            "r9_checked_generated_group_contract",
+            "r9_checked_slot_roundtrip_contract",
+            "r9_checked_class_offset_contract",
+            "r9_checked_python_sorted_port_contract"
+          ],
+          "proofs/ConditionalChildShrink.lean": [
+            "conditional_group_wire_bound",
+            "conditional_sixty_four_group_load",
+            "conditional_sixty_four_group_shrink"
+          ],
+          "proofs/SourceCreationPrecision.lean": [
+            "SourceCreationPrecision.capture_lt",
+            "SourceCreationPrecision.lift_unchanged",
+            "SourceCreationPrecision.reduce_capture",
+            "SourceCreationPrecision.lift_roundtrip",
+            "SourceCreationPrecision.coordinates_lift_unchanged",
+            "SourceCreationPrecision.lift_not_additive",
+            "SourceCreationPrecision.lift_not_multiplicative"
+          ],
+          "proofs/SourceCreationContracts.lean": [
+            "source_creation_coordinate_contract",
+            "source_creation_vector_contract"
+          ],
+          "proofs/FiniteBoundaryReduction.lean": [
+            "FiniteBoundaryReduction.factor_left",
+            "FiniteBoundaryReduction.factor_right",
+            "FiniteBoundaryReduction.boundary_mod"
+          ],
+          "proofs/FiniteBoundaryContract.lean": [
+            "finite_boundary_expected"
+          ],
+          "proofs/BoundaryGather.lean": [
+            "BoundaryGather.valid_gather_address",
+            "BoundaryGather.gather_index",
+            "BoundaryGather.restricted_eq",
+            "BoundaryGather.split_recovery"
+          ],
+          "proofs/BoundaryPartition.lean": [
+            "BoundaryPartition.network_recovery"
+          ],
+          "proofs/BoundaryGatherContract.lean": [
+            "r97_entry_contract",
+            "r97_recovery_contract",
+            "r97_partition_contract"
+          ]
+        },
+        "expected_modules": 41,
+        "observed_modules": 41,
+        "freshness_is_authentication": false
+      }
+    },
+    "lean_python_model_differential": {
+      "status": "PASS",
+      "cases": 12,
+      "mismatches": 0,
+      "source": "validation/r91_python_model.json"
+    },
+    "cpp_selftest": {
+      "return_code": 0,
+      "output": "veritas_d3_selftest: PASS",
+      "status": "PASS"
+    },
+    "cpp_benchmarks": {
+      "status": "PASS",
+      "instances": 5,
+      "all_direct_work_metrics_match": true,
+      "source": "validation/r91_benchmarks.json"
+    },
+    "cpp_differential_and_independent_replay": {
+      "status": "PASS",
+      "candidate_score_cases": 1296,
+      "certificate_replays": 12,
+      "large_integer_exact": true,
+      "source": "validation/r9_1_differential.json"
+    },
+    "ordering_fixture": {
+      "status": "PASS",
+      "records": [
+        {
+          "backend": "python",
+          "status": "PASS",
+          "observed": {
+            "vertices": [
+              [
+                "R",
+                0
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                "C",
+                0
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "labels": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "scores": [
+              22,
+              16,
+              16,
+              12
+            ],
+            "final": 12
+          },
+          "expected": {
+            "vertices": [
+              [
+                "R",
+                0
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                "C",
+                0
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "labels": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "scores": [
+              22,
+              16,
+              16,
+              12
+            ],
+            "final": 12
+          },
+          "initial": 22,
+          "work_units": 66,
+          "work_metric_version": "d3-direct-pair-score-work-v1",
+          "independent_replay": {
+            "valid": true,
+            "execution_backend": "python",
+            "backend_independently_replayed": true,
+            "status": "FINITE_GENERIC_RADIX_D3_REPLAYED",
+            "edge_count": 3,
+            "vertices_labeled": 4,
+            "conditional_expectation_steps": 4,
+            "independent_candidate_evaluations": 8,
+            "independent_work_units": 66,
+            "independently_recomputed_construction_work_units": 66,
+            "work_metric_version": "d3-direct-pair-score-work-v1",
+            "initial_variance_bound": true,
+            "packet_count_bound": true,
+            "port_load_bound": true,
+            "max_side_symbol_load": 2,
+            "numeric_active_call_inequalities": false,
+            "paper_active_call_eligible": false,
+            "source_schedule_checked": false,
+            "legacy_active_call_claim_discarded": false,
+            "universal_packing_lemma_proven": false,
+            "theorem_recursion_qualified": false
+          }
+        },
+        {
+          "backend": "cpp",
+          "status": "PASS",
+          "observed": {
+            "vertices": [
+              [
+                "R",
+                0
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                "C",
+                0
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "labels": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "scores": [
+              22,
+              16,
+              16,
+              12
+            ],
+            "final": 12
+          },
+          "expected": {
+            "vertices": [
+              [
+                "R",
+                0
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                "C",
+                0
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "labels": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "scores": [
+              22,
+              16,
+              16,
+              12
+            ],
+            "final": 12
+          },
+          "initial": 22,
+          "work_units": 96,
+          "work_metric_version": "d3-batch-pair-score-work-v1",
+          "independent_replay": {
+            "valid": true,
+            "execution_backend": "cpp-pybind",
+            "backend_independently_replayed": true,
+            "status": "FINITE_GENERIC_RADIX_D3_REPLAYED",
+            "edge_count": 3,
+            "vertices_labeled": 4,
+            "conditional_expectation_steps": 4,
+            "independent_candidate_evaluations": 8,
+            "independent_work_units": 162,
+            "independently_recomputed_construction_work_units": 96,
+            "work_metric_version": "d3-batch-pair-score-work-v1",
+            "initial_variance_bound": true,
+            "packet_count_bound": true,
+            "port_load_bound": true,
+            "max_side_symbol_load": 2,
+            "numeric_active_call_inequalities": false,
+            "paper_active_call_eligible": false,
+            "source_schedule_checked": false,
+            "legacy_active_call_claim_discarded": false,
+            "universal_packing_lemma_proven": false,
+            "theorem_recursion_qualified": false
+          }
+        },
+        {
+          "backend": "auto",
+          "status": "PASS",
+          "observed": {
+            "vertices": [
+              [
+                "R",
+                0
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                "C",
+                0
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "labels": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "scores": [
+              22,
+              16,
+              16,
+              12
+            ],
+            "final": 12
+          },
+          "expected": {
+            "vertices": [
+              [
+                "R",
+                0
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                "C",
+                0
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "labels": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "scores": [
+              22,
+              16,
+              16,
+              12
+            ],
+            "final": 12
+          },
+          "initial": 22,
+          "work_units": 96,
+          "work_metric_version": "d3-batch-pair-score-work-v1",
+          "independent_replay": {
+            "valid": true,
+            "execution_backend": "cpp-pybind",
+            "backend_independently_replayed": true,
+            "status": "FINITE_GENERIC_RADIX_D3_REPLAYED",
+            "edge_count": 3,
+            "vertices_labeled": 4,
+            "conditional_expectation_steps": 4,
+            "independent_candidate_evaluations": 8,
+            "independent_work_units": 162,
+            "independently_recomputed_construction_work_units": 96,
+            "work_metric_version": "d3-batch-pair-score-work-v1",
+            "initial_variance_bound": true,
+            "packet_count_bound": true,
+            "port_load_bound": true,
+            "max_side_symbol_load": 2,
+            "numeric_active_call_inequalities": false,
+            "paper_active_call_eligible": false,
+            "source_schedule_checked": false,
+            "legacy_active_call_claim_discarded": false,
+            "universal_packing_lemma_proven": false,
+            "theorem_recursion_qualified": false
+          }
+        }
+      ]
+    },
+    "finite_packing_replay": {
+      "status": "PRESENT",
+      "source": "validation/r9_streaming_packing.json"
+    }
+  },
+  "formal": {
+    "lean_model_sorted_vertex_order_proven": true,
+    "lean_model_sorted_order_port_bound_proven": true,
+    "lean_model_ordering_fixture_kernel_checked": true,
+    "lean_candidate_score_transcription_compiles": true,
+    "lean_model_per_comparison_equivalence_proven": true,
+    "lean_model_pair_aggregation_proven": true,
+    "lean_model_word_matches_bridge_proven": true,
+    "lean_model_candidate_score_identity_proven": true,
+    "lean_model_full_run_correspondence_proven": true,
+    "lean_finite_packet_domain_cardinality_model_proven": true,
+    "python_to_lean_source_refinement_proven": false,
+    "cpp_to_lean_source_refinement_proven": false,
+    "lean_packet_slot_bijection_proven": true,
+    "lean_occurrence_rank_model_bijection_proven": true,
+    "lean_binary_slot_model_proven": true,
+    "lean_numeric_slot_model_bijection_proven": true,
+    "lean_global_edge_occurrence_model_bijection_proven": true,
+    "lean_padded_packet_model_bounds_proven": true,
+    "lean_first_minimum_model_proven": true,
+    "lean_computed_padding_model_proven": true,
+    "lean_r93_contracts_checked": true,
+    "lean_full_padded_offset_to_global_address_proven": true,
+    "recursive_child_correctness_proven": false,
+    "complexity_bound_proven": false
+  },
+  "executable": {
+    "cpp_backend_available": true,
+    "cpp_matches_python_on_benchmark_corpus": true,
+    "lean_transcription_matches_cpython_on_corpus": true,
+    "cpp_is_formally_verified": false
+  },
+  "open_obligations": [
+    "Python source correspondence, candidate enumeration equality, and full-run simulation (Lean first-minimum model proved)",
+    "C++ source/ABI to Lean model correspondence or verified extraction",
+    "Source-to-model correspondence for executable edge-to-class assignment and packet mapping",
+    "Stage 2B recursive child correctness",
+    "Stage 2C complexity bound"
+  ],
+  "status": "PASS_R91_FINITE_AND_FORMAL_MODEL_GATES"
+}

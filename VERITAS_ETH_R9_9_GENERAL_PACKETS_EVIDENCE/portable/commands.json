@@ -1,0 +1,324 @@
+[
+  {
+    "name": "wheel_build",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "-m",
+      "pip",
+      "wheel",
+      "--no-deps",
+      "--no-build-isolation",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS",
+      "-w",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/wheels"
+    ]
+  },
+  {
+    "name": "venv",
+    "command": [
+      "/opt/homebrew/bin/python3.10",
+      "-m",
+      "venv",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/clean_py310"
+    ]
+  },
+  {
+    "name": "wheel_install",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/clean_py310/bin/python",
+      "-m",
+      "pip",
+      "install",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/wheels/veritas_eth-3.8.2.post98-py3-none-any.whl"
+    ]
+  },
+  {
+    "name": "wheel_packet_fix",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed/packet_fix.py"
+    ]
+  },
+  {
+    "name": "wheel_math_corrections",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed/math_corrections.py"
+    ]
+  },
+  {
+    "name": "wheel_shrinking_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed/shrinking_installed.py"
+    ]
+  },
+  {
+    "name": "wheel_general_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed/general_installed.py"
+    ]
+  },
+  {
+    "name": "wheel_groups_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed/groups_installed.py"
+    ]
+  },
+  {
+    "name": "wheel_transfer_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed/transfer_installed.py"
+    ]
+  },
+  {
+    "name": "wheel_packets_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed/packets_installed.py"
+    ]
+  },
+  {
+    "name": "wheel_validate_r98_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed/validate_r98_installed.py"
+    ]
+  },
+  {
+    "name": "wheel_validate_r97_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed/validate_r97_installed.py"
+    ]
+  },
+  {
+    "name": "docker_build",
+    "command": [
+      "docker",
+      "build",
+      "-t",
+      "veritas-eth:r99-packets",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS"
+    ]
+  },
+  {
+    "name": "docker_packet_fix",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed:/checks:ro",
+      "veritas-eth:r99-packets",
+      "-I",
+      "/checks/packet_fix.py"
+    ]
+  },
+  {
+    "name": "docker_math_corrections",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed:/checks:ro",
+      "veritas-eth:r99-packets",
+      "-I",
+      "/checks/math_corrections.py"
+    ]
+  },
+  {
+    "name": "docker_shrinking_installed",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed:/checks:ro",
+      "veritas-eth:r99-packets",
+      "-I",
+      "/checks/shrinking_installed.py"
+    ]
+  },
+  {
+    "name": "docker_general_installed",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed:/checks:ro",
+      "veritas-eth:r99-packets",
+      "-I",
+      "/checks/general_installed.py"
+    ]
+  },
+  {
+    "name": "docker_groups_installed",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed:/checks:ro",
+      "veritas-eth:r99-packets",
+      "-I",
+      "/checks/groups_installed.py"
+    ]
+  },
+  {
+    "name": "docker_transfer_installed",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed:/checks:ro",
+      "veritas-eth:r99-packets",
+      "-I",
+      "/checks/transfer_installed.py"
+    ]
+  },
+  {
+    "name": "docker_packets_installed",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed:/checks:ro",
+      "veritas-eth:r99-packets",
+      "-I",
+      "/checks/packets_installed.py"
+    ]
+  },
+  {
+    "name": "docker_validate_r98_installed",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed:/checks:ro",
+      "veritas-eth:r99-packets",
+      "-I",
+      "/checks/validate_r98_installed.py"
+    ]
+  },
+  {
+    "name": "docker_validate_r97_installed",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_EVIDENCE/portable/installed:/checks:ro",
+      "veritas-eth:r99-packets",
+      "-I",
+      "/checks/validate_r97_installed.py"
+    ]
+  }
+]

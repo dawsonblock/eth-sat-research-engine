@@ -1,0 +1,20 @@
+{
+  "command": [
+    "<user>/MATH SPEED/VERITAS_ETH_R9_PACKING_STAGE/build/r93-py313-managed/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "-o",
+    "addopts="
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 99.73213237489108,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 233029632,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r95_full_py313.stdout.log",
+  "stderr_log": "r95_full_py313.stderr.log",
+  "test_summary": "1368 passed, 7 skipped, 1 warning in 99.09s (0:01:39)"
+}

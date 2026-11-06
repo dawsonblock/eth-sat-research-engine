@@ -1,0 +1,158 @@
+[
+  {
+    "name": "wheel_build",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "-m",
+      "pip",
+      "wheel",
+      "--no-deps",
+      "--no-build-isolation",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW",
+      "-w",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/wheels"
+    ],
+    "exit_code": 0,
+    "seconds": 2.8649366250028834
+  },
+  {
+    "name": "venv",
+    "command": [
+      "/opt/homebrew/bin/python3.10",
+      "-m",
+      "venv",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/clean_py310"
+    ],
+    "exit_code": 0,
+    "seconds": 1.8951990409987047
+  },
+  {
+    "name": "wheel_install",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/clean_py310/bin/python",
+      "-m",
+      "pip",
+      "install",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/wheels/veritas_eth-3.8.2.post98-py3-none-any.whl"
+    ],
+    "exit_code": 0,
+    "seconds": 4.56193395901937
+  },
+  {
+    "name": "wheel_packet_fix",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/installed/packet_fix.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.1308843749575317
+  },
+  {
+    "name": "wheel_validate_r98_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/installed/validate_r98_installed.py"
+    ],
+    "exit_code": 0,
+    "seconds": 68.5363381250063
+  },
+  {
+    "name": "wheel_validate_r97_installed",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/installed/validate_r97_installed.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.693793416954577
+  },
+  {
+    "name": "docker_build",
+    "command": [
+      "docker",
+      "build",
+      "-t",
+      "veritas-eth:r98-math-review",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW"
+    ],
+    "exit_code": 0,
+    "seconds": 10.94113574991934
+  },
+  {
+    "name": "docker_packet_fix",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/installed:/checks:ro",
+      "veritas-eth:r98-math-review",
+      "-I",
+      "/checks/packet_fix.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.8143952910322696
+  },
+  {
+    "name": "docker_validate_r98_installed",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/installed:/checks:ro",
+      "veritas-eth:r98-math-review",
+      "-I",
+      "/checks/validate_r98_installed.py"
+    ],
+    "exit_code": 0,
+    "seconds": 55.791866458021104
+  },
+  {
+    "name": "docker_validate_r97_installed",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_REVIEW_EVIDENCE/installed:/checks:ro",
+      "veritas-eth:r98-math-review",
+      "-I",
+      "/checks/validate_r97_installed.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.5080937499878928
+  }
+]

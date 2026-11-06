@@ -1,0 +1,12 @@
+[
+  {
+    "name": "manifest",
+    "exit_code": 0,
+    "output": "PASS: 1172 complete file hashes match release manifest; no unlisted files\n"
+  },
+  {
+    "name": "connection",
+    "exit_code": 0,
+    "output": "PASS_INSTALLED_TWO_LEVEL_CONNECTION\n"
+  }
+]

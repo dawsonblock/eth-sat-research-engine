@@ -1,0 +1,1 @@
+{"status": "PASS_INSTALLED_FINITE_EXECUTION", "package_version": "3.8.2.post98", "python": "3.10.19", "platform": "macOS-26.2-arm64-arm-64bit", "one_wire_residue": 7, "dense_16_wire_residue": 65536, "source_pin_status": "PIN_AND_LABELS_CHECKED", "wall_seconds": 1.5355728339636698, "peak_process_rss_bytes": 33587200, "theorem_mode_enabled": false}

@@ -1,0 +1,8 @@
+{
+  "phase": "SUMMARY_ASSEMBLY_ONLY",
+  "initial_error": "missing bound installed report: wheel_validate_r97_installed",
+  "cause": "Inherited R97 installed validator reports source_pin_status, not source_binding. Its command exited0.",
+  "correction": "Preserved the original command logs; summary accepts the documented R97 pin result and checks source bindings on every report that supplies one.",
+  "source_changes": false,
+  "validation_commands_repeated": false
+}

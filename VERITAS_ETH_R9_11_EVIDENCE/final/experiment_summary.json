@@ -1,0 +1,851 @@
+{
+  "source_sha256": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702",
+  "measurement_scope": "FINITE_SHARED_HOST_POLICY_WORK_NOT_BIT_OPERATIONS",
+  "experiments": {
+    "coupled_core": {
+      "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "reason": "streamed evidence budget",
+      "resource_failure": null,
+      "ledger": {
+        "actual_calls": 59,
+        "bit_operation_measurement": "NOT_INSTRUMENTED",
+        "bit_operations": null,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 80.57700441591442,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 0,
+        "oracle_clock_scope": "METER_LIFETIME_INCLUDING_NESTED_COMPUTATION",
+        "oracle_policy": {
+          "max_seconds": 600,
+          "max_work": 20000000
+        },
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 15,
+        "process_peak_rss_before_bytes": 31850496,
+        "process_peak_rss_bytes": 69894144,
+        "rss_scope": "PROCESS_HIGH_WATER_INCLUDES_IMPORTS_AND_PRIOR_WORK",
+        "stage_sum_reconciles": true,
+        "stage_work_units": {
+          "child_construction": 150768,
+          "control": 19012,
+          "hermite_plan": 187804,
+          "interpolation": 12032,
+          "leaf_arithmetic": 1799289,
+          "modes_and_support": 1842378,
+          "preflight": 81796,
+          "row_degree": 54384
+        },
+        "transitions": 960,
+        "tuples": 15,
+        "work_units": 4147463
+      },
+      "event_counts": {
+        "start": 2,
+        "point": 16,
+        "leaf": 57,
+        "reuse": 903,
+        "term": 15,
+        "point_value": 15
+      },
+      "event_bytes_by_kind": {
+        "start": 91804,
+        "point": 17662932,
+        "leaf": 10602,
+        "reuse": 149898,
+        "term": 195120,
+        "point_value": 1890
+      },
+      "written_stream_bytes": 18112246,
+      "result_returned": false,
+      "active_calls_by_depth": null,
+      "cache": null,
+      "root_expected_samples": 26,
+      "root_nonconstant_rows": 2,
+      "structurally_connected": true,
+      "constant_row_padding": true,
+      "driver_sha256": "30b286b69601b2f4dfe4a6e5cd90c269d7973fc3c50ae28b2d6586e81a6f9aa0"
+    },
+    "coupled_core_100mb": {
+      "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "reason": "R9.8 work/time budget",
+      "resource_failure": {
+        "limit": 180000000,
+        "limit_scope": "GLOBAL",
+        "observed": 185795674,
+        "resource": "WALL_TIME_US",
+        "scope": "overall child_construction"
+      },
+      "ledger": {
+        "actual_calls": 113,
+        "bit_operation_measurement": "NOT_INSTRUMENTED",
+        "bit_operations": null,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 185.79573170805816,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 0,
+        "oracle_clock_scope": "METER_LIFETIME_INCLUDING_NESTED_COMPUTATION",
+        "oracle_policy": {
+          "max_seconds": 180,
+          "max_work": 20000000
+        },
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 33,
+        "process_peak_rss_before_bytes": 32309248,
+        "process_peak_rss_bytes": 66371584,
+        "rss_scope": "PROCESS_HIGH_WATER_INCLUDES_IMPORTS_AND_PRIOR_WORK",
+        "stage_sum_reconciles": true,
+        "stage_work_units": {
+          "child_construction": 261880,
+          "control": 44894,
+          "hermite_plan": 234724,
+          "interpolation": 24576,
+          "leaf_arithmetic": 3577715,
+          "modes_and_support": 3140430,
+          "preflight": 81796,
+          "row_degree": 67980
+        },
+        "transitions": 2123,
+        "tuples": 33,
+        "work_units": 7433995
+      },
+      "event_counts": {
+        "start": 5,
+        "point": 35,
+        "leaf": 108,
+        "reuse": 2012,
+        "term": 33,
+        "point_value": 33,
+        "end": 3
+      },
+      "event_bytes_by_kind": {
+        "start": 108012,
+        "point": 39057721,
+        "leaf": 37292,
+        "reuse": 333992,
+        "term": 463671,
+        "point_value": 21361,
+        "end": 574
+      },
+      "written_stream_bytes": 40022623,
+      "result_returned": false,
+      "active_calls_by_depth": null,
+      "cache": null,
+      "root_expected_samples": 26,
+      "root_nonconstant_rows": 2,
+      "structurally_connected": true,
+      "constant_row_padding": true,
+      "driver_sha256": "30b286b69601b2f4dfe4a6e5cd90c269d7973fc3c50ae28b2d6586e81a6f9aa0"
+    },
+    "coupled_one_level": {
+      "status": "PASS_FINITE_TWO_LEVEL_CAPABLE_RECURSION",
+      "reason": null,
+      "resource_failure": null,
+      "ledger": {
+        "actual_calls": 222,
+        "bit_operation_measurement": "NOT_INSTRUMENTED",
+        "bit_operations": null,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 94.55980449996423,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 1,
+        "nonshrinking_children": 0,
+        "oracle_clock_scope": "METER_LIFETIME_INCLUDING_NESTED_COMPUTATION",
+        "oracle_policy": {
+          "max_seconds": 300,
+          "max_work": 20000000
+        },
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 26,
+        "process_peak_rss_before_bytes": 30048256,
+        "process_peak_rss_bytes": 31096832,
+        "rss_scope": "PROCESS_HIGH_WATER_INCLUDES_IMPORTS_AND_PRIOR_WORK",
+        "stage_sum_reconciles": true,
+        "stage_work_units": {
+          "child_construction": 573104,
+          "control": 320273,
+          "hermite_plan": 18090,
+          "interpolation": 71344,
+          "leaf_arithmetic": 3007089,
+          "modes_and_support": 3299456,
+          "preflight": 8272,
+          "row_degree": 5368
+        },
+        "transitions": 6272,
+        "tuples": 98,
+        "work_units": 7302996
+      },
+      "event_counts": {
+        "start": 1,
+        "point": 26,
+        "leaf": 221,
+        "reuse": 6051,
+        "term": 98,
+        "point_value": 26,
+        "end": 1
+      },
+      "event_bytes_by_kind": {
+        "start": 8422,
+        "point": 3968092,
+        "leaf": 353706,
+        "reuse": 1004466,
+        "term": 2033108,
+        "point_value": 77660,
+        "end": 214
+      },
+      "written_stream_bytes": 7445668,
+      "result_returned": true,
+      "active_calls_by_depth": {
+        "0": 1
+      },
+      "cache": {
+        "evictions": 0,
+        "hits": 6051,
+        "max_payload_bytes": 1000000,
+        "misses": 222,
+        "peak_payload_bytes": 329279,
+        "python_object_overhead_included": false
+      },
+      "independent_replay": "PASS_INDEPENDENT_NUMERICAL_REPLAY",
+      "reference_matches": true,
+      "root_expected_samples": 26,
+      "root_nonconstant_rows": 2,
+      "structurally_connected": true,
+      "constant_row_padding": true,
+      "driver_sha256": "30b286b69601b2f4dfe4a6e5cd90c269d7973fc3c50ae28b2d6586e81a6f9aa0"
+    },
+    "coupled_one_level_no_cache": {
+      "status": "PASS_FINITE_TWO_LEVEL_CAPABLE_RECURSION",
+      "reason": null,
+      "resource_failure": null,
+      "ledger": {
+        "actual_calls": 6273,
+        "bit_operation_measurement": "NOT_INSTRUMENTED",
+        "bit_operations": null,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 93.06197974993847,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 1,
+        "nonshrinking_children": 0,
+        "oracle_clock_scope": "METER_LIFETIME_INCLUDING_NESTED_COMPUTATION",
+        "oracle_policy": {
+          "max_seconds": 300,
+          "max_work": 20000000
+        },
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 26,
+        "process_peak_rss_before_bytes": 29802496,
+        "process_peak_rss_bytes": 34586624,
+        "rss_scope": "PROCESS_HIGH_WATER_INCLUDES_IMPORTS_AND_PRIOR_WORK",
+        "stage_sum_reconciles": true,
+        "stage_work_units": {
+          "child_construction": 573104,
+          "control": 326324,
+          "hermite_plan": 18090,
+          "interpolation": 71344,
+          "leaf_arithmetic": 23492692,
+          "modes_and_support": 3299456,
+          "preflight": 8272,
+          "row_degree": 5368
+        },
+        "transitions": 6272,
+        "tuples": 98,
+        "work_units": 27794650
+      },
+      "event_counts": {
+        "start": 1,
+        "point": 26,
+        "leaf": 6272,
+        "term": 98,
+        "point_value": 26,
+        "end": 1
+      },
+      "event_bytes_by_kind": {
+        "start": 8422,
+        "point": 3968092,
+        "leaf": 1621101,
+        "term": 2033108,
+        "point_value": 77660,
+        "end": 214
+      },
+      "written_stream_bytes": 7708597,
+      "result_returned": true,
+      "active_calls_by_depth": {
+        "0": 1
+      },
+      "cache": {
+        "evictions": 0,
+        "hits": 0,
+        "max_payload_bytes": 0,
+        "misses": 6273,
+        "peak_payload_bytes": 0,
+        "python_object_overhead_included": false
+      },
+      "independent_replay": "PASS_INDEPENDENT_NUMERICAL_REPLAY",
+      "reference_matches": true,
+      "root_expected_samples": 26,
+      "root_nonconstant_rows": 2,
+      "structurally_connected": true,
+      "constant_row_padding": true,
+      "driver_sha256": "30b286b69601b2f4dfe4a6e5cd90c269d7973fc3c50ae28b2d6586e81a6f9aa0"
+    },
+    "fully_nonconstant_cycle": {
+      "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "reason": "R9.8 work/time budget",
+      "resource_failure": {
+        "limit": 1000000,
+        "limit_scope": "GLOBAL",
+        "observed": 1000992,
+        "resource": "WORK_UNITS",
+        "scope": "overall hermite_plan"
+      },
+      "ledger": {
+        "actual_calls": 1,
+        "bit_operation_measurement": "NOT_INSTRUMENTED",
+        "bit_operations": null,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 27.428629457950592,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 0,
+        "nonshrinking_children": 0,
+        "oracle_clock_scope": "METER_LIFETIME_INCLUDING_NESTED_COMPUTATION",
+        "oracle_policy": {
+          "max_seconds": 30,
+          "max_work": 20000000
+        },
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 0,
+        "process_peak_rss_before_bytes": 33259520,
+        "process_peak_rss_bytes": 35422208,
+        "rss_scope": "PROCESS_HIGH_WATER_INCLUDES_IMPORTS_AND_PRIOR_WORK",
+        "stage_sum_reconciles": true,
+        "stage_work_units": {
+          "control": 2,
+          "hermite_plan": 827234,
+          "preflight": 102850,
+          "row_degree": 70906
+        },
+        "transitions": 0,
+        "tuples": 0,
+        "work_units": 1000992
+      },
+      "event_counts": {},
+      "event_bytes_by_kind": {},
+      "written_stream_bytes": 0,
+      "result_returned": false,
+      "active_calls_by_depth": null,
+      "cache": null,
+      "root_expected_samples": 2906,
+      "root_nonconstant_rows": 242,
+      "structurally_connected": true,
+      "constant_row_padding": false,
+      "driver_sha256": "30b286b69601b2f4dfe4a6e5cd90c269d7973fc3c50ae28b2d6586e81a6f9aa0"
+    },
+    "sweep_shifted/b1": {
+      "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "reason": "R9.8 work/time budget",
+      "resource_failure": {
+        "limit": 120000000,
+        "limit_scope": "GLOBAL",
+        "observed": 120178318,
+        "resource": "WALL_TIME_US",
+        "scope": "overall child_construction"
+      },
+      "ledger": {
+        "actual_calls": 119,
+        "bit_operation_measurement": "NOT_INSTRUMENTED",
+        "bit_operations": null,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 120.17855154094286,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 0,
+        "oracle_clock_scope": "METER_LIFETIME_INCLUDING_NESTED_COMPUTATION",
+        "oracle_policy": {
+          "max_seconds": 120,
+          "max_work": 20000000
+        },
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 107,
+        "process_peak_rss_before_bytes": 31752192,
+        "process_peak_rss_bytes": 38699008,
+        "rss_scope": "PROCESS_HIGH_WATER_INCLUDES_IMPORTS_AND_PRIOR_WORK",
+        "stage_sum_reconciles": true,
+        "stage_work_units": {
+          "child_construction": 706028,
+          "control": 134307,
+          "hermite_plan": 172456,
+          "interpolation": 18576,
+          "leaf_arithmetic": 786904,
+          "modes_and_support": 7037809,
+          "preflight": 69938,
+          "row_degree": 90948
+        },
+        "transitions": 8256,
+        "tuples": 129,
+        "work_units": 9016966
+      },
+      "event_counts": {
+        "start": 16,
+        "point": 109,
+        "leaf": 103,
+        "reuse": 8139,
+        "term": 129,
+        "point_value": 107,
+        "end": 14
+      },
+      "event_bytes_by_kind": {
+        "start": 80251,
+        "point": 15749025,
+        "leaf": 362013,
+        "reuse": 1351074,
+        "term": 2592313,
+        "point_value": 478260,
+        "end": 19214
+      },
+      "written_stream_bytes": 20632150,
+      "result_returned": false,
+      "active_calls_by_depth": null,
+      "cache": null,
+      "root_expected_samples": 8,
+      "root_nonconstant_rows": 1,
+      "structurally_connected": false,
+      "constant_row_padding": true,
+      "driver_sha256": "30b286b69601b2f4dfe4a6e5cd90c269d7973fc3c50ae28b2d6586e81a6f9aa0"
+    },
+    "sweep_shifted/b2": {
+      "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "reason": "R9.8 work/time budget",
+      "resource_failure": {
+        "limit": 120000000,
+        "limit_scope": "GLOBAL",
+        "observed": 120070529,
+        "resource": "WALL_TIME_US",
+        "scope": "overall child_construction"
+      },
+      "ledger": {
+        "actual_calls": 111,
+        "bit_operation_measurement": "NOT_INSTRUMENTED",
+        "bit_operations": null,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 120.07056383299641,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 0,
+        "oracle_clock_scope": "METER_LIFETIME_INCLUDING_NESTED_COMPUTATION",
+        "oracle_policy": {
+          "max_seconds": 120,
+          "max_work": 20000000
+        },
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 84,
+        "process_peak_rss_before_bytes": 31522816,
+        "process_peak_rss_bytes": 38322176,
+        "rss_scope": "PROCESS_HIGH_WATER_INCLUDES_IMPORTS_AND_PRIOR_WORK",
+        "stage_sum_reconciles": true,
+        "stage_work_units": {
+          "child_construction": 629616,
+          "control": 150169,
+          "hermite_plan": 126214,
+          "interpolation": 22752,
+          "leaf_arithmetic": 852189,
+          "modes_and_support": 8929068,
+          "preflight": 69938,
+          "row_degree": 66462
+        },
+        "transitions": 11521,
+        "tuples": 180,
+        "work_units": 10846408
+      },
+      "event_counts": {
+        "start": 9,
+        "point": 86,
+        "leaf": 102,
+        "reuse": 11412,
+        "term": 180,
+        "point_value": 84,
+        "end": 7
+      },
+      "event_bytes_by_kind": {
+        "start": 63895,
+        "point": 14139275,
+        "leaf": 257746,
+        "reuse": 1894392,
+        "term": 4214143,
+        "point_value": 316509,
+        "end": 5452
+      },
+      "written_stream_bytes": 20891412,
+      "result_returned": false,
+      "active_calls_by_depth": null,
+      "cache": null,
+      "root_expected_samples": 14,
+      "root_nonconstant_rows": 2,
+      "structurally_connected": false,
+      "constant_row_padding": true,
+      "driver_sha256": "30b286b69601b2f4dfe4a6e5cd90c269d7973fc3c50ae28b2d6586e81a6f9aa0"
+    },
+    "sweep_shifted/b4": {
+      "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "reason": "R9.8 work/time budget",
+      "resource_failure": {
+        "limit": 120000000,
+        "limit_scope": "GLOBAL",
+        "observed": 120116005,
+        "resource": "WALL_TIME_US",
+        "scope": "overall child_construction"
+      },
+      "ledger": {
+        "actual_calls": 102,
+        "bit_operation_measurement": "NOT_INSTRUMENTED",
+        "bit_operations": null,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 120.11631308298092,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 0,
+        "oracle_clock_scope": "METER_LIFETIME_INCLUDING_NESTED_COMPUTATION",
+        "oracle_policy": {
+          "max_seconds": 120,
+          "max_work": 20000000
+        },
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 35,
+        "process_peak_rss_before_bytes": 31457280,
+        "process_peak_rss_bytes": 37109760,
+        "rss_scope": "PROCESS_HIGH_WATER_INCLUDES_IMPORTS_AND_PRIOR_WORK",
+        "stage_sum_reconciles": true,
+        "stage_work_units": {
+          "child_construction": 527596,
+          "control": 196199,
+          "hermite_plan": 88920,
+          "interpolation": 29056,
+          "leaf_arithmetic": 853952,
+          "modes_and_support": 4705951,
+          "preflight": 71390,
+          "row_degree": 47190
+        },
+        "transitions": 10561,
+        "tuples": 165,
+        "work_units": 6520254
+      },
+      "event_counts": {
+        "start": 3,
+        "point": 37,
+        "leaf": 99,
+        "reuse": 10461,
+        "term": 165,
+        "point_value": 35,
+        "end": 1
+      },
+      "event_bytes_by_kind": {
+        "start": 54397,
+        "point": 9833912,
+        "leaf": 94987,
+        "reuse": 1736526,
+        "term": 5426928,
+        "point_value": 62968,
+        "end": 188
+      },
+      "written_stream_bytes": 17209906,
+      "result_returned": false,
+      "active_calls_by_depth": null,
+      "cache": null,
+      "root_expected_samples": 26,
+      "root_nonconstant_rows": 4,
+      "structurally_connected": false,
+      "constant_row_padding": true,
+      "driver_sha256": "30b286b69601b2f4dfe4a6e5cd90c269d7973fc3c50ae28b2d6586e81a6f9aa0"
+    },
+    "sweep_shifted/b8": {
+      "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "reason": "R9.8 work/time budget",
+      "resource_failure": {
+        "limit": 120000000,
+        "limit_scope": "GLOBAL",
+        "observed": 120003928,
+        "resource": "WALL_TIME_US",
+        "scope": "overall child_construction"
+      },
+      "ledger": {
+        "actual_calls": 158,
+        "bit_operation_measurement": "NOT_INSTRUMENTED",
+        "bit_operations": null,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 120.01074312499259,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 0,
+        "oracle_clock_scope": "METER_LIFETIME_INCLUDING_NESTED_COMPUTATION",
+        "oracle_policy": {
+          "max_seconds": 120,
+          "max_work": 20000000
+        },
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 51,
+        "process_peak_rss_before_bytes": 31375360,
+        "process_peak_rss_bytes": 38354944,
+        "rss_scope": "PROCESS_HIGH_WATER_INCLUDES_IMPORTS_AND_PRIOR_WORK",
+        "stage_sum_reconciles": true,
+        "stage_work_units": {
+          "child_construction": 234836,
+          "control": 123639,
+          "hermite_plan": 92612,
+          "interpolation": 130200,
+          "leaf_arithmetic": 1676445,
+          "modes_and_support": 3027525,
+          "preflight": 72842,
+          "row_degree": 48906
+        },
+        "transitions": 4353,
+        "tuples": 68,
+        "work_units": 5407005
+      },
+      "event_counts": {
+        "start": 3,
+        "point": 53,
+        "leaf": 155,
+        "reuse": 4197,
+        "term": 68,
+        "point_value": 51,
+        "end": 1
+      },
+      "event_bytes_by_kind": {
+        "start": 79373,
+        "point": 22488866,
+        "leaf": 33643,
+        "reuse": 696702,
+        "term": 1082507,
+        "point_value": 6326,
+        "end": 190
+      },
+      "written_stream_bytes": 24387607,
+      "result_returned": false,
+      "active_calls_by_depth": null,
+      "cache": null,
+      "root_expected_samples": 50,
+      "root_nonconstant_rows": 8,
+      "structurally_connected": false,
+      "constant_row_padding": true,
+      "driver_sha256": "30b286b69601b2f4dfe4a6e5cd90c269d7973fc3c50ae28b2d6586e81a6f9aa0"
+    },
+    "sweep_shifted/b16": {
+      "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "reason": "R9.8 work/time budget",
+      "resource_failure": {
+        "limit": 120000000,
+        "limit_scope": "GLOBAL",
+        "observed": 121451567,
+        "resource": "WALL_TIME_US",
+        "scope": "overall child_construction"
+      },
+      "ledger": {
+        "actual_calls": 107,
+        "bit_operation_measurement": "NOT_INSTRUMENTED",
+        "bit_operations": null,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 121.45161658292636,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 0,
+        "oracle_clock_scope": "METER_LIFETIME_INCLUDING_NESTED_COMPUTATION",
+        "oracle_policy": {
+          "max_seconds": 120,
+          "max_work": 20000000
+        },
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 53,
+        "process_peak_rss_before_bytes": 28114944,
+        "process_peak_rss_bytes": 40337408,
+        "rss_scope": "PROCESS_HIGH_WATER_INCLUDES_IMPORTS_AND_PRIOR_WORK",
+        "stage_sum_reconciles": true,
+        "stage_work_units": {
+          "child_construction": 192940,
+          "control": 132083,
+          "hermite_plan": 89440,
+          "interpolation": 226080,
+          "leaf_arithmetic": 1150807,
+          "modes_and_support": 2402704,
+          "preflight": 74294,
+          "row_degree": 46728
+        },
+        "transitions": 3392,
+        "tuples": 53,
+        "work_units": 4315076
+      },
+      "event_counts": {
+        "start": 2,
+        "point": 55,
+        "leaf": 105,
+        "reuse": 3287,
+        "term": 53,
+        "point_value": 53
+      },
+      "event_bytes_by_kind": {
+        "start": 115846,
+        "point": 23821121,
+        "leaf": 19950,
+        "reuse": 545642,
+        "term": 702992,
+        "point_value": 6678
+      },
+      "written_stream_bytes": 25212229,
+      "result_returned": false,
+      "active_calls_by_depth": null,
+      "cache": null,
+      "root_expected_samples": 98,
+      "root_nonconstant_rows": 16,
+      "structurally_connected": false,
+      "constant_row_padding": true,
+      "driver_sha256": "30b286b69601b2f4dfe4a6e5cd90c269d7973fc3c50ae28b2d6586e81a6f9aa0"
+    },
+    "sweep_shifted/b32": {
+      "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "reason": "R9.8 work/time budget",
+      "resource_failure": {
+        "limit": 120000000,
+        "limit_scope": "GLOBAL",
+        "observed": 120449347,
+        "resource": "WALL_TIME_US",
+        "scope": "overall child_construction"
+      },
+      "ledger": {
+        "actual_calls": 87,
+        "bit_operation_measurement": "NOT_INSTRUMENTED",
+        "bit_operations": null,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 120.44938241702039,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 0,
+        "oracle_clock_scope": "METER_LIFETIME_INCLUDING_NESTED_COMPUTATION",
+        "oracle_policy": {
+          "max_seconds": 120,
+          "max_work": 20000000
+        },
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 43,
+        "process_peak_rss_before_bytes": 31981568,
+        "process_peak_rss_bytes": 43991040,
+        "rss_scope": "PROCESS_HIGH_WATER_INCLUDES_IMPORTS_AND_PRIOR_WORK",
+        "stage_sum_reconciles": true,
+        "stage_work_units": {
+          "child_construction": 163060,
+          "control": 143479,
+          "hermite_plan": 99136,
+          "interpolation": 250880,
+          "leaf_arithmetic": 1156185,
+          "modes_and_support": 2277976,
+          "preflight": 75988,
+          "row_degree": 48576
+        },
+        "transitions": 2752,
+        "tuples": 43,
+        "work_units": 4215280
+      },
+      "event_counts": {
+        "start": 2,
+        "point": 45,
+        "leaf": 85,
+        "reuse": 2667,
+        "term": 43,
+        "point_value": 43
+      },
+      "event_bytes_by_kind": {
+        "start": 199829,
+        "point": 23553603,
+        "leaf": 16320,
+        "reuse": 442722,
+        "term": 575942,
+        "point_value": 5504
+      },
+      "written_stream_bytes": 24793920,
+      "result_returned": false,
+      "active_calls_by_depth": null,
+      "cache": null,
+      "root_expected_samples": 194,
+      "root_nonconstant_rows": 32,
+      "structurally_connected": false,
+      "constant_row_padding": true,
+      "driver_sha256": "30b286b69601b2f4dfe4a6e5cd90c269d7973fc3c50ae28b2d6586e81a6f9aa0"
+    },
+    "sweep_shifted/b242": {
+      "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "reason": "R9.8 work/time budget",
+      "resource_failure": {
+        "limit": 120000000,
+        "limit_scope": "GLOBAL",
+        "observed": 121441163,
+        "resource": "WALL_TIME_US",
+        "scope": "overall interpolation"
+      },
+      "ledger": {
+        "actual_calls": 47,
+        "bit_operation_measurement": "NOT_INSTRUMENTED",
+        "bit_operations": null,
+        "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "elapsed_seconds": 121.44186312495731,
+        "hard_memory_limit_enforced": false,
+        "maximum_depth": 2,
+        "nonshrinking_children": 0,
+        "oracle_clock_scope": "METER_LIFETIME_INCLUDING_NESTED_COMPUTATION",
+        "oracle_policy": {
+          "max_seconds": 120,
+          "max_work": 20000000
+        },
+        "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+        "point_evaluations": 22,
+        "process_peak_rss_before_bytes": 31391744,
+        "process_peak_rss_bytes": 48218112,
+        "rss_scope": "PROCESS_HIGH_WATER_INCLUDES_IMPORTS_AND_PRIOR_WORK",
+        "stage_sum_reconciles": true,
+        "stage_work_units": {
+          "child_construction": 97324,
+          "control": 146617,
+          "hermite_plan": 629116,
+          "interpolation": 202400,
+          "leaf_arithmetic": 931079,
+          "modes_and_support": 3586016,
+          "preflight": 80586,
+          "row_degree": 53592
+        },
+        "transitions": 1408,
+        "tuples": 22,
+        "work_units": 5726730
+      },
+      "event_counts": {
+        "start": 2,
+        "point": 23,
+        "leaf": 45,
+        "reuse": 1363,
+        "term": 22,
+        "point_value": 22
+      },
+      "event_bytes_by_kind": {
+        "start": 1235334,
+        "point": 18249582,
+        "leaf": 418727,
+        "reuse": 226258,
+        "term": 5371928,
+        "point_value": 563641
+      },
+      "written_stream_bytes": 26065470,
+      "result_returned": false,
+      "active_calls_by_depth": null,
+      "cache": null,
+      "root_expected_samples": 1454,
+      "root_nonconstant_rows": 242,
+      "structurally_connected": false,
+      "constant_row_padding": false,
+      "driver_sha256": "30b286b69601b2f4dfe4a6e5cd90c269d7973fc3c50ae28b2d6586e81a6f9aa0"
+    }
+  },
+  "cache_ablation": {
+    "same_exact_result": true,
+    "cache_enabled_work_units": 7302996,
+    "cache_disabled_work_units": 27794650,
+    "cache_enabled_computations": 222,
+    "cache_disabled_computations": 6273
+  }
+}

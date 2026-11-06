@@ -1,0 +1,21 @@
+{
+  "baseline_archive_sha256": "2844ad664d57bc1a95b341c271ce062b7c311c56c975344515e978192e26970b",
+  "changed_existing_source_config_docs": [
+    ".github/workflows/test.yml",
+    "AGENTS.md",
+    "README.md",
+    "pyproject.toml",
+    "scripts/validate_conditional_expectation_lean.py",
+    "src/veritas/__init__.py",
+    "src/veritas/api/main.py",
+    "src/veritas/research/finite_reductions/__main__.py",
+    "src/veritas/research/finite_reductions/boundary.py",
+    "src/veritas/research/independent_r95/recipe_oracle.py",
+    "src/veritas/research/tapered_v4/provenance.py",
+    "src/veritas/research/tensor.py",
+    "tests/test_lean_proof_gate_fault_injection.py",
+    "tests/test_r96_wheel.py"
+  ],
+  "missing_original_source_config_docs": [],
+  "qualification": "Full release manifests cover all payload bytes; this comparison filters source, config and docs."
+}

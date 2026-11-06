@@ -1,0 +1,155 @@
+{
+  "environment": {
+    "cmake": "4.2.1",
+    "compiler": "AppleClang 21.0.0",
+    "cpp_standard": "C++20",
+    "lean_toolchain": "leanprover/lean4:v4.35.0",
+    "lean_version": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+    "manuscript_sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "python": "3.12.0"
+  },
+  "qualifications": {
+    "COMPLEXITY_ESTABLISHED": false,
+    "CPP_EXECUTABLE_REFINEMENT_PROVED": false,
+    "CPP_TESTED": true,
+    "GLOBAL_PACKET_BIJECTION_PROVED": false,
+    "LEAN_KERNEL_CHECKED": true,
+    "MODEL_REFINEMENT_PROVED": true,
+    "PYTHON_EXECUTABLE_REFINEMENT_PROVED": false,
+    "PYTHON_TESTED": true,
+    "RECURSION_PROVED": false,
+    "THEOREM_MODE_ENABLED": false
+  },
+  "runs": {
+    "aggregate": {
+      "complexity_bound_proven": false,
+      "cpp_to_lean_executable_refinement_proven": false,
+      "evidence": "validation/r91_release_evidence.json",
+      "formal_model_score_identity_proven": true,
+      "python_to_lean_executable_refinement_proven": false,
+      "recursive_correctness_proven": false,
+      "status": "PASS_R91_FINITE_AND_FORMAL_MODEL_GATES"
+    },
+    "benchmarks": {
+      "evidence": "validation/r9_1_benchmarks.json",
+      "exit_code": 0,
+      "repeats": 3,
+      "rows": [
+        {
+          "cpp_batch_median_ms": 0.087,
+          "cpp_direct_median_ms": 0.114,
+          "instance": "tiny-r2-a1",
+          "python_reference_median_ms": 0.095,
+          "repeats": 3,
+          "scores_equal": true
+        },
+        {
+          "cpp_batch_median_ms": 0.566,
+          "cpp_direct_median_ms": 0.797,
+          "instance": "small-r2-a1",
+          "python_reference_median_ms": 4.705,
+          "repeats": 3,
+          "scores_equal": true
+        },
+        {
+          "cpp_batch_median_ms": 0.577,
+          "cpp_direct_median_ms": 1.047,
+          "instance": "small-r3-a1",
+          "python_reference_median_ms": 5.724,
+          "repeats": 3,
+          "scores_equal": true
+        },
+        {
+          "cpp_batch_median_ms": 1.502,
+          "cpp_direct_median_ms": 3.425,
+          "instance": "medium-r2-a2",
+          "python_reference_median_ms": 47.287,
+          "repeats": 3,
+          "scores_equal": true
+        },
+        {
+          "cpp_batch_median_ms": 1.33,
+          "cpp_direct_median_ms": 4.865,
+          "instance": "medium-r3-a2",
+          "python_reference_median_ms": 53.073,
+          "repeats": 3,
+          "scores_equal": true
+        }
+      ],
+      "status": "PASS",
+      "work_metric_limit": "scalar work units are not complete bit-work; direct and batch metrics differ"
+    },
+    "cpp_build_and_ctest": {
+      "command": "cmake -S cpp -B build/cpp -DCMAKE_BUILD_TYPE=Release -DVERITAS_D3_BUILD_PYBIND=ON -Dpybind11_DIR=<python pybind11 CMake package>; cmake --build build/cpp --parallel 2; selftest; ctest",
+      "ctest_passed": true,
+      "evidence": "validation/r9_1_cpp_build_test.log",
+      "exit_code": 0,
+      "nonfatal_cmake_warning": "CMP0167 development-policy warning",
+      "selftest_passed": true
+    },
+    "cpp_differential": {
+      "backends": [
+        "cpp-pybind",
+        "cpp-ctypes"
+      ],
+      "candidate_score_cases": 1296,
+      "evidence": "validation/r9_1_differential.json",
+      "exit_code": 0,
+      "fixtures": 12,
+      "independent_rational_certificate_replays": 12,
+      "large_integer_exact": true,
+      "status": "PASS_FINITE_CPP_DIFFERENTIAL"
+    },
+    "cpp_focused_tests": {
+      "command": "PYTHONPATH=src VERITAS_D3_CPP_BUILD_DIR=\"$PWD/build/cpp\" python -m pytest -q -o addopts='' tests/test_r91_cpp_backend.py tests/test_d3_streaming_independent.py",
+      "elapsed_seconds": 4.66,
+      "evidence": "validation/r9_1_cpp_focused_tests.log",
+      "exit_code": 0,
+      "passed": 49
+    },
+    "lean_fault_injection": {
+      "command": "LEAN_BIN=/path/to/lean-4.35.0/bin/lean PYTHONPATH=src python -m pytest -q -o addopts='' tests/test_lean_proof_gate_fault_injection.py",
+      "elapsed_seconds": 37.82,
+      "evidence": "validation/r9_1_fault_injection.log",
+      "exit_code": 0,
+      "mutation": "replace d3_any_order_symbol_port_bound with True; gate rejects and clears dependent flags",
+      "passed": 1
+    },
+    "lean_gate": {
+      "command": "LEAN_BIN=/path/to/lean-4.35.0/bin/lean python scripts/validate_conditional_expectation_lean.py --output validation/r9_1_proof_gate.json",
+      "elapsed_seconds": 28.917908,
+      "evidence": "validation/r9_1_proof_gate.json",
+      "exit_code": 0,
+      "manuscript_pin_matches": true,
+      "modules": 22,
+      "pinned_lean_version_matches": true,
+      "pyCandidateScore_eq_proven": true,
+      "status": "PASS",
+      "theorem_mode_enabled": false,
+      "word_matches_range_any_proven": true
+    },
+    "python_full_suite": {
+      "command": "PYTHONPATH=src python -m pytest -q -o addopts='' -ra",
+      "evidence": "validation/r9_1_pytest_full.log",
+      "exit_code": 0,
+      "failed": 0,
+      "passed": 1186,
+      "peak_rss_bytes": null,
+      "pytest_elapsed_seconds": 106.27,
+      "skipped": 1,
+      "wall_seconds": 107.67
+    },
+    "python_model_differential": {
+      "cases": 12,
+      "command": "LEAN_BIN=/path/to/lean-4.35.0/bin/lean python scripts/validate_r91_python_model.py --output validation/r91_python_model.json",
+      "elapsed_seconds": 27.525841666036285,
+      "evidence": "validation/r91_python_model.json",
+      "limitation": "finite CPython-to-Lean-transcription comparison only",
+      "mismatches": 0,
+      "status": "PASS"
+    }
+  },
+  "schema": "VERITAS_ETH_R9_1_EXECUTION_SUMMARY_V1",
+  "scope": "R9.1 finite scorer and Lean-model evidence; no theorem qualification"
+}

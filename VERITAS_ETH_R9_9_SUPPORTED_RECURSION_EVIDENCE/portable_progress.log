@@ -1,0 +1,21 @@
+{"name": "wheel_build", "exit_code": 0, "seconds": 3.37}
+{"name": "venv", "exit_code": 0, "seconds": 2.82}
+{"name": "wheel_install", "exit_code": 0, "seconds": 3.73}
+{"name": "wheel_packet_fix", "exit_code": 0, "seconds": 0.23}
+{"name": "wheel_math_corrections", "exit_code": 0, "seconds": 2.06}
+{"name": "wheel_shrinking_installed", "exit_code": 0, "seconds": 39.46}
+{"name": "wheel_general_installed", "exit_code": 0, "seconds": 62.07}
+{"name": "wheel_groups_installed", "exit_code": 0, "seconds": 35.27}
+{"name": "wheel_transfer_installed", "exit_code": 0, "seconds": 142.51}
+{"name": "wheel_packets_installed", "exit_code": 0, "seconds": 7.21}
+{"name": "wheel_supported_installed", "exit_code": 0, "seconds": 63.33}
+{"name": "wheel_validate_r98_installed", "exit_code": 0, "seconds": 113.61}
+{"name": "wheel_validate_r97_installed", "exit_code": 0, "seconds": 1.79}
+{"name": "docker_build", "exit_code": 0, "seconds": 13.7}
+{"name": "docker_packet_fix", "exit_code": 0, "seconds": 0.86}
+{"name": "docker_math_corrections", "exit_code": 0, "seconds": 1.83}
+{"name": "docker_shrinking_installed", "exit_code": 0, "seconds": 29.72}
+{"name": "docker_general_installed", "exit_code": 0, "seconds": 48.47}
+{"name": "docker_groups_installed", "exit_code": 0, "seconds": 27.86}
+{"name": "docker_transfer_installed", "exit_code": 130, "seconds": 71.71}
+{"status": "FAILED_OR_INCONCLUSIVE", "commands": 20, "reason": "docker_transfer_installed failed, timed out, or ran across a source change"}

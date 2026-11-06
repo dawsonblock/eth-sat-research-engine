@@ -1,0 +1,108 @@
+{
+  "artifacts": {
+    "cpp_build.log": "4a511a30f97930549149fbf4232b7dbdb8912fd3b035202853e89af12800cc9f",
+    "cpp_configure.log": "afaad2790c20c803814ea76842a3ecd226ab22e4b20efa7ec1692dfb16de78a4",
+    "cpp_selftest.log": "c557cd8196381ea5880ed12288734b394a554bd932636c20e5f3052dae19d55c",
+    "pytest.log": "1b6627f27b3163ff36fd069a03a67041b4c5613d5c00655dde53948ec8a1dd91",
+    "pytest.xml": "c7a87bcfd75f46af9680dac89335e36a54b7003fe5a687511684f0b7c0299473",
+    "pytest_boundary_failure_recheck.log": "bfdb7f3bd5a8490252087abb92c55a2a2ee549ee64c52de47d9895884e6a3449",
+    "pytest_boundary_pinned.log": "a7b0e1d498a0ff55503cbe9fc022a59d14ab7b12a805ab8f8fb9ffd5760a8532",
+    "pytest_boundary_pinned.xml": "dbaa2f822e28b0d76dd6331914f4c626c5c82cb62e636b8d80b6b0347dbde288"
+  },
+  "cpp": {
+    "build_exit": 0,
+    "configure_exit": 0,
+    "selftest": "PASS",
+    "selftest_exit": 0
+  },
+  "cwd": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL",
+  "earlier_targeted_checks": {
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_high_precision_encoding.py",
+      "tests/test_r95_source_recipes.py",
+      "tests/test_shrinking_precision.py"
+    ],
+    "status": "PASS",
+    "tests": 84
+  },
+  "effective_unique_cases": {
+    "interpretation": "The original full run failed on one unconfigured Lean launcher; that exact case passed with the pinned compiler. The full run was not silently relabeled as passing.",
+    "passed": 1689,
+    "skipped": 2,
+    "tests": 1691,
+    "unresolved_failures": 0
+  },
+  "environment_failure": {
+    "executable": "/tmp/veritas-r9-elan-home/bin/lean",
+    "occurred_before_contract_fault_check": true,
+    "reason": "no default toolchain configured",
+    "source_change_required": false
+  },
+  "full_run": {
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "--junitxml=/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/pytest.xml"
+    ],
+    "environment": {
+      "LEAN_BIN": "UNSET",
+      "PYTHONPATH": "src"
+    },
+    "errors": 0,
+    "exit_code": 1,
+    "failed_cases": [
+      "tests.test_r96_tooling::test_boundary_contract_rejects_true_substitute"
+    ],
+    "failures": 1,
+    "log": "pytest.log",
+    "passed": 1688,
+    "seconds": 649.996,
+    "skipped": 2,
+    "skipped_cases": [
+      {
+        "case": "tests.test_r91_cpp_backend::test_pybind_sequence_and_boolean_caps_when_available",
+        "reason": "optional pybind11 module is not built"
+      },
+      {
+        "case": "tests.test_r91_cpp_backend::test_binding_rejects_misshapen_assignment_tables",
+        "reason": "shape validation lives in the pybind11 layer"
+      }
+    ],
+    "tests": 1691,
+    "xml": "pytest.xml"
+  },
+  "pinned_retry": {
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_r96_tooling.py::test_boundary_contract_rejects_true_substitute",
+      "--junitxml=/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL_EVIDENCE/pytest_boundary_pinned.xml"
+    ],
+    "environment": {
+      "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+      "PYTHONPATH": "src"
+    },
+    "errors": 0,
+    "exit_code": 0,
+    "failed_cases": [],
+    "failures": 0,
+    "log": "pytest_boundary_pinned.log",
+    "passed": 1,
+    "seconds": 3.114,
+    "skipped": 0,
+    "skipped_cases": [],
+    "tests": 1,
+    "xml": "pytest_boundary_pinned.xml"
+  },
+  "schema": "VERITAS_R98_GENERAL_PYTEST_V1",
+  "source_binding": "a9e706bd9724da766e8e87eb93f81b4d6ecb077c0c2c513c50b8872cecea3d76",
+  "status": "PASS_AFTER_EXPLICIT_LEAN_ENVIRONMENT_RETRY"
+}

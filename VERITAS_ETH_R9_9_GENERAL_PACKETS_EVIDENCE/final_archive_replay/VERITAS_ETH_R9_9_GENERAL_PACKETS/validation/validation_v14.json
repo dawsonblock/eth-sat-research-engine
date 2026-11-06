@@ -1,0 +1,8 @@
+{
+  "version": "1.4.0",
+  "seed": 2026103014,
+  "cases": 800,
+  "result": "PASS",
+  "method": "exact_COPY3_bijection_plus_min_neighbor_oracle",
+  "subexponential_ETH_contraction": "NOT_IMPLEMENTED"
+}

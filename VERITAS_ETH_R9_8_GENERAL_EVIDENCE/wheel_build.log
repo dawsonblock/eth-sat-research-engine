@@ -1,0 +1,12 @@
+Processing /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_GENERAL
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: veritas-eth
+  Building wheel for veritas-eth (pyproject.toml): started
+  Building wheel for veritas-eth (pyproject.toml): finished with status 'done'
+  Created wheel for veritas-eth: filename=veritas_eth-3.8.2.post98-py3-none-any.whl size=668268 sha256=c94582ed3e13ebfc1efc46b6e6ab99dafef296e3e53fd2dae13a7226c14a3b71
+  Stored in directory: /private/var/folders/xt/jh84t2kj6hl26tk5qx3m_28h0000gn/T/pip-ephem-wheel-cache-r3mpu6mj/wheels/54/e9/76/53e21239cde06cc8dbd711b3821222e0c039a0e6e1d903e945
+Successfully built veritas-eth
+
+[notice] A new release of pip is available: 26.1.2 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip

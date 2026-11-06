@@ -1,0 +1,20 @@
+{
+  "all_three_previously_post_collection_tests_collected": true,
+  "full_pytest_seconds": 935.8761724589858,
+  "full_test_count": 1847,
+  "passed": 1845,
+  "pytest_summary_sha256": "a977313ee44a3f2085425e87fe2a91ced7b9d9eb7ddf397fae259d9b0f78cffa",
+  "pytest_xml_sha256": "071ad0351d342f1503d7fcd0ee1ee2dc44941affa9716e2811ecd14c4cb38b9e",
+  "required_test_names": [
+    "test_same_count_substitution_of_local_states_is_rejected",
+    "test_rehashed_child_with_changed_packet_coefficient_is_rejected",
+    "test_preexisting_call_reduces_available_full_grid_budget"
+  ],
+  "schema": "VERITAS_R98_POST_METER_TEST_TREE_BINDING_V1",
+  "skipped": 2,
+  "source_binding": "67959db3d49f8d59caf82ad900eb9977f39356bcd8da023a1ad14306ae3afb5a",
+  "status": "PASS",
+  "test_files": 166,
+  "test_tree_sha256": "e1ced170a5b45e1d6c68c83870c08d9ad8f005736c2f40c21d749a3563b07289",
+  "unchanged_since_recorded_start": true
+}

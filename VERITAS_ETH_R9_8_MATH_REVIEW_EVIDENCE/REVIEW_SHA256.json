@@ -1,0 +1,13 @@
+{
+  "MATH_REVIEW.md": "f82e8493d72f2b876cc81be0ab792ee92c4b75f9b2e35221ecf70767c0a600f4",
+  "checks_commands.json": "f8fd75ba0ef1f045026db86876f0ee84282d26f22b3cbd9f1a2b480c77d7930e",
+  "lean.json": "15cb668404fa9cd2fcfd76af4a2a9ca14153f5dd94f93c75319e5d6b7e770717",
+  "math_checks.json": "03ab943c90dbc0930cd574448c57aca6adf15871c6d6aab45fac8f24123e66a2",
+  "packet-index-fix.patch": "33f4aa9bc5c603956813c16eba4ff58fe5f8c1c9cbbb0660702639c55958f577",
+  "packet_counterexample.json": "3d2cc14330c79ee6b600e42aedd6e51f03c85e4a23430fc24c7b4b8627e7dcf8",
+  "portable_commands.json": "1ad22609c8ae26dbb65a10bda840ce2eff17142c98254867320f9d909db0b863",
+  "pytest.log": "c512eda25bb8c3979e6823ba4e0c3e472e56b4028f6d3ec7d151c0540bd8ba87",
+  "pytest.xml": "885c52b9c93d0262ca19cbbac18a1fb04a8a74b8b98b676570b7483cc57838e3",
+  "review_math.py": "0d739d025143a09b672ed4654c742f4121ede171e6506487ec87af94c52c3e8a",
+  "verification.json": "67721100d2f21ce056bc94bf9e78d1443c90dce1ae61b0298daa4e9d19013afb"
+}

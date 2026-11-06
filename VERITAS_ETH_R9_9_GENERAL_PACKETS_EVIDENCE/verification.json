@@ -1,0 +1,143 @@
+{
+  "status": "PARTIAL_GENERAL_PACKET_MILESTONE",
+  "source_sha256": "4411d1fbbf002a86e36ccfadcbb20959dde9e7b398ecdee06e49c4393d6f36e9",
+  "source_qualified": false,
+  "theorem_mode_enabled": false,
+  "source_active_executor": "NOT_IMPLEMENTED",
+  "full_tests": {
+    "collected": 1865,
+    "passed": 1863,
+    "skipped": 2,
+    "failures": 0,
+    "errors": 0
+  },
+  "inherited_checks": 13,
+  "existing_lean_gate": "PASS_41_MODULES_NO_NEW_GENERAL_RECURRENCE_PROOF",
+  "portable_commands": 22,
+  "full_container_pytest": "NOT_RUN",
+  "hosted_ci": "NOT_RUN",
+  "general_multislot_complete_point": {
+    "status": "PASS_FINITE_GENERAL_MULTISLOT_COMPLETE_POINT",
+    "report": "general_full_point.json",
+    "full_weighted_tuples": 11175,
+    "actual_child_calls": 715200,
+    "shrinking_bound_met": false,
+    "global_tuple_stream_enumerated": true,
+    "independent_half_edge_check": "PASS",
+    "independent_scalar_check": "PASS",
+    "full_parent_recovery": false
+  },
+  "selected_higher_order_coefficients": "PASS_BETA_0_1_2_INCLUDING_NONZERO_QUADRATIC",
+  "independent_scalar_check": "scalar_coefficient_check.json",
+  "multi_valuation_grid": "PASS_90_POINTS_NONCONSTANT_LOCAL_MULTISLOT",
+  "active_recursion": "PASS_ONE_LEVEL_MATCHING22_RECOVERY_31_TO_22_WITHOUT_CONTRACTION_ORACLE",
+  "creation_precision": "INHERITED_IMMUTABLE_REFERENCES_RETAINED",
+  "fully_recovered_parent_with_crossing_modes": "NOT_ESTABLISHED_BY_R99",
+  "general_two_active_levels": {
+    "status": "EXACT_FINITE_POLICY_OBSTRUCTION",
+    "premises": [
+      "64 fixed groups",
+      "separate side capacity floor(3M/64)",
+      "leaf threshold 4",
+      "complete degree M(2L-1) grid",
+      "L >= 2",
+      "driver maximum points per node 256"
+    ],
+    "minimum_packable_nonempty_active_edges": 22,
+    "minimum_parent_for_such_child": 235,
+    "minimum_points_per_parent_node": 706,
+    "driver_point_cap": 256,
+    "two_active_levels_possible_under_current_driver_cap": false,
+    "source_theorem_claim": false
+  },
+  "source_packing_correspondence": "NOT_ESTABLISHED",
+  "universal_python_refinement": "NOT_PROVED",
+  "bit_time": "COMPLEXITY_NOT_ESTABLISHED",
+  "peak_space": "COMPLEXITY_NOT_ESTABLISHED",
+  "prior_runs": {
+    "targeted": "17 passed, 1 failed due to wrong expected fixture value; corrected 17^22 to 31^22",
+    "full": "terminated after collecting the stale assertion; superseded by full_final"
+  },
+  "release": {
+    "archive": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_PARTIAL_VALIDATED.zip",
+    "sha256": "edec7b2ea79eb409cd9ffb0b3763d26552db0b87235a7d0ba5c8b43a6562fcc4",
+    "bytes": 17736048,
+    "extracted_manifest_exit": 0,
+    "manifest_result": "PASS: 1135 complete file hashes match release manifest; no unlisted files"
+  },
+  "commit": "f1b82607566e5f4e70dfb094a3e785f704a918e1",
+  "paper": {
+    "commit": "4eaee87548250b2682affda7d05d947c05554bae",
+    "files": {
+      "main_full_version.tex": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa",
+      "quantitative-contraction.tex": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+      "quantitative-reduction.tex": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a",
+      "quantitative-circuits.tex": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11"
+    },
+    "labels": {
+      "eq:tensor-parameters": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 87,
+        "last_line": 91,
+        "statement_sha256": "2347e08f794a10a7a1dc2275e2070d723142f04b71cd6cb81de98819e332816d"
+      },
+      "eq:tensor-packing-conditions": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 106,
+        "last_line": 109,
+        "statement_sha256": "e7989632209387ee3e7b14b0b0c762487bb8a9f9cf4a580888681325a43c7c2e"
+      },
+      "lem:tensor-packets": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 114,
+        "last_line": 130,
+        "statement_sha256": "cfd9c6331836c17a911c52a57fc7e8e2e1c12d22895960ee42f82ba364753c87"
+      },
+      "lem:tapered-hermite": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 250,
+        "last_line": 269,
+        "statement_sha256": "1b737767366c0759f5ccafed0ce7c8efda85fc4ec8c6010316ddee990eb7794c"
+      },
+      "eq:tensor-mode-expansion": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 418,
+        "last_line": 425,
+        "statement_sha256": "81df762a158145416a0c7edbe8793309a68d0aecce0924d6b8806e7a3c2e92c9"
+      },
+      "eq:tensor-mode-budget": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 453,
+        "last_line": 455,
+        "statement_sha256": "55f1af17554aacabd25d0f3e2e06c63131c8457b6ae9431db2b305e9cca2e08c"
+      },
+      "eq:tensor-recursion-identity": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 516,
+        "last_line": 521,
+        "statement_sha256": "9b254c1256f4c10de8cb180391048605b8f1741f95e6e8872c4018427c9a5c2e"
+      },
+      "subsec:tensor-children": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 485,
+        "last_line": 556,
+        "statement_sha256": "bc4ca6c77cdb628b3b2ec0906cde6936364871859bc4fd90b46f7fd53b6aef10"
+      },
+      "subsec:tensor-cost": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 558,
+        "last_line": 619,
+        "statement_sha256": "5c1cabb59aed93b0dbfa239be44bdcd4239e7fd0bb3dd08ead09e02b6a492d73"
+      },
+      "eq:tensor-hermite-origin": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 280,
+        "last_line": 285,
+        "statement_sha256": "835d75e9250321435ea54e3fd66434e6b752d1bbac78b0f52541d4cf7509f148"
+      }
+    },
+    "status": "PIN_AND_LABELS_CHECKED"
+  },
+  "source_eligible": false,
+  "scaled_experiment": true
+}

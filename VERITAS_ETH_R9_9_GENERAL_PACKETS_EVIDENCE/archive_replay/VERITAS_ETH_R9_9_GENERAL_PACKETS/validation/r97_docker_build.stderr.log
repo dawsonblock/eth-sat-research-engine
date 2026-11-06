@@ -1,0 +1,127 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 410B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-slim
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/5] FROM docker.io/library/python:3.12-slim@sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f
+#4 resolve docker.io/library/python:3.12-slim@sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 4.05MB 0.1s done
+#5 DONE 0.1s
+
+#6 [2/5] WORKDIR /app
+#6 CACHED
+
+#7 [3/5] COPY pyproject.toml README.md ./
+#7 DONE 0.0s
+
+#8 [4/5] COPY src ./src
+#8 DONE 0.2s
+
+#9 [5/5] RUN pip install --no-cache-dir . && useradd -r -u 10001 app && mkdir -p /app/.veritas && chown 10001:10001 /app/.veritas
+#9 1.258 Processing /app
+#9 1.261   Installing build dependencies: started
+#9 3.183   Installing build dependencies: finished with status 'done'
+#9 3.186   Getting requirements to build wheel: started
+#9 3.344   Getting requirements to build wheel: finished with status 'done'
+#9 3.346   Preparing metadata (pyproject.toml): started
+#9 3.469   Preparing metadata (pyproject.toml): finished with status 'done'
+#9 3.702 Collecting fastapi<1,>=0.100 (from veritas-eth==3.8.2.post97)
+#9 3.841   Downloading fastapi-0.162.0-py3-none-any.whl.metadata (26 kB)
+#9 3.911 Collecting uvicorn<1,>=0.23 (from veritas-eth==3.8.2.post97)
+#9 3.958   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+#9 4.115 Collecting pydantic<3,>=2 (from veritas-eth==3.8.2.post97)
+#9 4.160   Downloading pydantic-2.14.2-py3-none-any.whl.metadata (137 kB)
+#9 4.283 Collecting starlette>=0.46.0 (from fastapi<1,>=0.100->veritas-eth==3.8.2.post97)
+#9 4.325   Downloading starlette-1.10.0-py3-none-any.whl.metadata (6.6 kB)
+#9 4.385 Collecting typing-extensions>=4.8.0 (from fastapi<1,>=0.100->veritas-eth==3.8.2.post97)
+#9 4.428   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#9 4.477 Collecting typing-inspection>=0.4.2 (from fastapi<1,>=0.100->veritas-eth==3.8.2.post97)
+#9 4.519   Downloading typing_inspection-0.4.5-py3-none-any.whl.metadata (2.6 kB)
+#9 4.565 Collecting annotated-doc>=0.0.2 (from fastapi<1,>=0.100->veritas-eth==3.8.2.post97)
+#9 4.609   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+#9 4.664 Collecting opentelemetry-api>=1.44.0 (from fastapi<1,>=0.100->veritas-eth==3.8.2.post97)
+#9 4.705   Downloading opentelemetry_api-1.45.2-py3-none-any.whl.metadata (1.4 kB)
+#9 4.753 Collecting annotated-types>=0.6.0 (from pydantic<3,>=2->veritas-eth==3.8.2.post97)
+#9 4.800   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#9 5.279 Collecting pydantic-core==2.50.2 (from pydantic<3,>=2->veritas-eth==3.8.2.post97)
+#9 5.326   Downloading pydantic_core-2.50.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl.metadata (6.5 kB)
+#9 5.379 Collecting click>=7.0 (from uvicorn<1,>=0.23->veritas-eth==3.8.2.post97)
+#9 5.421   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#9 5.467 Collecting h11>=0.8 (from uvicorn<1,>=0.23->veritas-eth==3.8.2.post97)
+#9 5.510   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#9 5.568 Collecting anyio<5,>=4.0.0 (from starlette>=0.46.0->fastapi<1,>=0.100->veritas-eth==3.8.2.post97)
+#9 5.617   Downloading anyio-4.16.0-py3-none-any.whl.metadata (4.7 kB)
+#9 5.673 Collecting idna>=2.8 (from anyio<5,>=4.0.0->starlette>=0.46.0->fastapi<1,>=0.100->veritas-eth==3.8.2.post97)
+#9 5.715   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+#9 5.769 Downloading fastapi-0.162.0-py3-none-any.whl (148 kB)
+#9 5.830 Downloading pydantic-2.14.2-py3-none-any.whl (490 kB)
+#9 5.944 Downloading pydantic_core-2.50.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (2.1 MB)
+#9 6.292    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 6.7 MB/s eta 0:00:00
+#9 6.338 Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+#9 6.388 Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+#9 6.432 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#9 6.476 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#9 6.536 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#9 6.598 Downloading opentelemetry_api-1.45.2-py3-none-any.whl (60 kB)
+#9 6.642 Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
+#9 6.696 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#9 6.748 Downloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+#9 6.788 Downloading anyio-4.16.0-py3-none-any.whl (134 kB)
+#9 6.848 Downloading idna-3.20-py3-none-any.whl (69 kB)
+#9 6.869 Building wheels for collected packages: veritas-eth
+#9 6.876   Building wheel for veritas-eth (pyproject.toml): started
+#9 7.265   Building wheel for veritas-eth (pyproject.toml): finished with status 'done'
+#9 7.267   Created wheel for veritas-eth: filename=veritas_eth-3.8.2.post97-py3-none-any.whl size=608455 sha256=e7cebc22da10c2b8d99c49e6c8ddfeb259c0b4da40bbf6666011bcd9f27dbfdc
+#9 7.267   Stored in directory: /tmp/pip-ephem-wheel-cache-2814khpm/wheels/54/1b/b7/aa63e25c8f14f4f2ae7b04e6097bdecb770e455c5c1ee0a600
+#9 7.271 Successfully built veritas-eth
+#9 7.290 Installing collected packages: typing-extensions, idna, h11, click, annotated-types, annotated-doc, uvicorn, typing-inspection, pydantic-core, opentelemetry-api, anyio, starlette, pydantic, fastapi, veritas-eth
+#9 8.407 Successfully installed annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.16.0 click-8.5.0 fastapi-0.162.0 h11-0.16.0 idna-3.20 opentelemetry-api-1.45.2 pydantic-2.14.2 pydantic-core-2.50.2 starlette-1.10.0 typing-extensions-4.16.0 typing-inspection-0.4.5 uvicorn-0.54.0 veritas-eth-3.8.2.post97
+#9 8.409 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#9 8.615 
+#9 8.615 [notice] A new release of pip is available: 25.0.1 -> 26.3
+#9 8.615 [notice] To update, run: pip install --upgrade pip
+#9 8.752 useradd warning: app's uid 10001 is greater than SYS_UID_MAX 999
+#9 DONE 8.9s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 1.1s done
+#10 exporting manifest sha256:b23b8c4c06845c3ec1c2cf3ef640229d40bb63e225be829860638c4e25957518 0.0s done
+#10 exporting config sha256:c30c682643152a5a760c964af67acb677b751852df1b5170f3b1eceb11e4a5ef done
+#10 exporting attestation manifest sha256:3e1ef8e813872843ba4d4d29639cb1af614fce7f5d720a36c6eb27351781389e 0.0s done
+#10 exporting manifest list sha256:319d17601a68e77e8b104f919fd5d4e84eb68e1a50820a11f962f1cf305028b1 done
+#10 naming to docker.io/library/veritas-eth:r97-local-audit done
+#10 unpacking to docker.io/library/veritas-eth:r97-local-audit
+#10 unpacking to docker.io/library/veritas-eth:r97-local-audit 0.6s done
+#10 DONE 1.8s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/fo6mtgziuetiqym9t5291udyx
+       12.52 real         0.15 user         0.26 sys
+            61276160  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               17998  page reclaims
+                3466  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                2570  messages sent
+                1689  messages received
+                 192  signals received
+                 539  voluntary context switches
+               16732  involuntary context switches
+           271019963  instructions retired
+           184088933  cycles elapsed
+            14254656  peak memory footprint

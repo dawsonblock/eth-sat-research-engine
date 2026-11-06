@@ -1,0 +1,12 @@
+{
+  "asymptotic_theorem": "NOT_IMPLEMENTED",
+  "certified_mode_branches_dropped_valuation": 5285,
+  "certified_mode_branches_dropped_z_degree": 720,
+  "cross_group_modes_vs_independent_local_jet": 213,
+  "elapsed_seconds": 0.639,
+  "hermite_vs_independent_original_tensor_count": 95,
+  "max_wires": 5,
+  "seed": 20091029,
+  "status": "PASS",
+  "version": "0.9.0"
+}

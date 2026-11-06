@@ -1,0 +1,93 @@
+{
+  "archive": "VERITAS_ETH_R9_PACKING_STAGE_FULL_UPGRADED.zip",
+  "archive_bytes": 5353052,
+  "archive_integrity": {
+    "duplicates": 0,
+    "manifest_normal_python": "PASS",
+    "manifest_optimized_python": "PASS",
+    "members": 580,
+    "payload_files": 578,
+    "safe_paths": "PASS",
+    "sha256_manifest_entries": 579,
+    "symlinks": 0,
+    "zip_crc": "PASS"
+  },
+  "archive_sha256": "66f7c20f70b95fc5763a26740673f56d4f82f9821624fb7d241928e666c1ea80",
+  "fresh_extraction_checks": [
+    {
+      "exit_code": 0,
+      "name": "manifest_normal",
+      "output_tail": "PASS: 579 complete file hashes match release manifest; no unlisted files",
+      "passed": true
+    },
+    {
+      "exit_code": 0,
+      "name": "manifest_optimized",
+      "output_tail": "PASS: 579 complete file hashes match release manifest; no unlisted files",
+      "passed": true
+    },
+    {
+      "exit_code": 0,
+      "name": "lean_validator",
+      "output_tail": "{\"lean_version\": \"Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)\", \"output\": \"/tmp/veritas-r91-final-lean.json\", \"status\": \"PASS\"}",
+      "passed": true
+    },
+    {
+      "exit_code": 0,
+      "name": "packing_replay",
+      "output_tail": "_qualified\": false,\n        \"universal_packing_lemma_proven\": false,\n        \"valid\": true,\n        \"vertices_labeled\": 5\n      },\n      \"construction_work_units\": 990,\n      \"edges\": 4,\n      \"estimated_work_units\": 1426,\n      \"name\": \"mixed_sides\",\n      \"r\": 3\n    }\n  ],\n  \"source_binding\": {\n    \"digest\": \"7353c065629e40fba4a1b4ad2430ff85d202889ce6c73d031b8b3023b931ca1f\",\n    \"file_count\": 179,\n    \"signature_status\": \"UNSIGNED_HASH_MATCH_ONLY\"\n  },\n  \"status\": \"PASS_FINITE_PACKING_STAGE\"\n}",
+      "passed": true
+    }
+  ],
+  "lean": {
+    "compiled_modules": 6,
+    "elapsed_seconds": 13.656229,
+    "finite_pair_marginal_variance_bound": true,
+    "global_product_space_variance_bridge": false,
+    "one_step_concrete_selection": true,
+    "sorryAx_absent": true,
+    "status": "PASS",
+    "theorem_mode_enabled": false,
+    "version": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)"
+  },
+  "packing_validation": {
+    "fixed_radix_fixture_status": "INCONCLUSIVE_D3_PRECONDITIONS",
+    "generic_fixture_is_paper_eligible": false,
+    "normal": "PASS_FINITE_PACKING_STAGE",
+    "normal_seconds": 4.232991,
+    "optimized": "PASS_FINITE_PACKING_STAGE",
+    "optimized_seconds": 4.161737,
+    "semantic_records_match": true,
+    "source_digest": "7353c065629e40fba4a1b4ad2430ff85d202889ce6c73d031b8b3023b931ca1f",
+    "source_signature": "UNSIGNED_HASH_MATCH_ONLY"
+  },
+  "qualification": {
+    "global_product_space_variance_bridge_proven": false,
+    "multilevel_recursion_qualified": false,
+    "packet_padding_and_port_load_lemma_proven": false,
+    "python_score_refinement_proven": false,
+    "subexponential_bound_proven": false,
+    "theorem_mode_enabled": false,
+    "universal_packing_lemma_proven": false
+  },
+  "release": "VERITAS-ETH R9.1 finite D3 variance and one-step selection proof update",
+  "release_evidence_sha256": "642447bbd074cc1aa81f03d50c484fc6b69cc7ee1e53aa4046a76a8ca820a6ff",
+  "signature": "NONE; SHA-256 is an unsigned consistency digest",
+  "tests": {
+    "focused_packing_suite": {
+      "command": "PYTHONPATH=src python3 -m pytest -o addopts= -q tests/test_d3_streaming_independent.py tests/test_d3_implicit.py tests/manuscript_invariants/test_eth26_d3.py tests/test_d3_conditional_expectation_independent.py",
+      "elapsed_seconds": 4.64,
+      "executed": 47,
+      "failed": 0,
+      "passed": 47
+    },
+    "full_suite": {
+      "command": "PYTHONPATH=src python3 -m pytest -o addopts= -q",
+      "elapsed_seconds": 96.47,
+      "executed": 1127,
+      "failed": 0,
+      "passed": 1127
+    },
+    "python": "3.12.0"
+  }
+}

@@ -1,0 +1,1289 @@
+{
+  "scope": "TWO_SELECTED_TRANSITIONS_NOT_UNIVERSAL_PROOF",
+  "samples": [
+    {
+      "parent_depth": 0,
+      "parent_edges": 1,
+      "parent_precision": 5,
+      "child_precision": 125,
+      "layout": {
+        "packing_precondition_verdict": {
+          "status": "INCONCLUSIVE_SOURCE_SCHEDULE",
+          "source_active": false,
+          "checks": {
+            "M_ge_2_D_squared_delta": false,
+            "M_ge_LD": true,
+            "2L_le_delta": true
+          },
+          "schedule": {
+            "lambda": 4,
+            "leaf_threshold": 8,
+            "degree_limit": 13,
+            "extension_degree": 16,
+            "u": 0,
+            "a": 0,
+            "a_previous": 0,
+            "r": 64,
+            "L": 1,
+            "packing_class_count": 1
+          }
+        },
+        "source_eligible": false,
+        "scaled_experiment": true,
+        "occupied_packets": 1,
+        "padded_packets": 16777216,
+        "packet_bound_met": false,
+        "group_load_bound_met": false,
+        "actual_group_loads": [
+          [
+            {
+              "0": 1
+            },
+            {
+              "0": 1
+            }
+          ],
+          [
+            {
+              "0": 1
+            },
+            {
+              "0": 1
+            }
+          ]
+        ],
+        "exact_edge_coverage": true,
+        "same_slot_endpoints": true,
+        "source_qualified": false,
+        "packet_load_proof": "FINITE_OCCURRENCE_AUDIT"
+      },
+      "children": [
+        {
+          "group": 0,
+          "edges": 2,
+          "maximum_degree": 2,
+          "source_shrink": false,
+          "strict_decrease": false,
+          "degree_preserved": true
+        },
+        {
+          "group": 1,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 2,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 3,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 4,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 5,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 6,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 7,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 8,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 9,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 10,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 11,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 12,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 13,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 14,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 15,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 16,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 17,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 18,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 19,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 20,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 21,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 22,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 23,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 24,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 25,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 26,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 27,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 28,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 29,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 30,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 31,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 32,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 33,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 34,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 35,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 36,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 37,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 38,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 39,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 40,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 41,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 42,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 43,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 44,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 45,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 46,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 47,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 48,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 49,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 50,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 51,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 52,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 53,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 54,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 55,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 56,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 57,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 58,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 59,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 60,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 61,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 62,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 63,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        }
+      ],
+      "creation_precisions": [
+        [
+          5,
+          5,
+          125
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "parent_depth": 1,
+      "parent_edges": 2,
+      "parent_precision": 125,
+      "child_precision": 365,
+      "layout": {
+        "packing_precondition_verdict": {
+          "status": "INCONCLUSIVE_SOURCE_SCHEDULE",
+          "source_active": false,
+          "checks": {
+            "M_ge_2_D_squared_delta": false,
+            "M_ge_LD": true,
+            "2L_le_delta": true
+          },
+          "schedule": {
+            "lambda": 4,
+            "leaf_threshold": 8,
+            "degree_limit": 13,
+            "extension_degree": 16,
+            "u": 0,
+            "a": 0,
+            "a_previous": 0,
+            "r": 64,
+            "L": 1,
+            "packing_class_count": 1
+          }
+        },
+        "source_eligible": false,
+        "scaled_experiment": true,
+        "occupied_packets": 2,
+        "padded_packets": 33554432,
+        "packet_bound_met": false,
+        "group_load_bound_met": false,
+        "actual_group_loads": [
+          [
+            {
+              "0": 2
+            },
+            {
+              "0": 2
+            }
+          ],
+          [
+            {
+              "0": 2
+            },
+            {
+              "0": 2
+            }
+          ]
+        ],
+        "exact_edge_coverage": true,
+        "same_slot_endpoints": true,
+        "source_qualified": false,
+        "packet_load_proof": "FINITE_OCCURRENCE_AUDIT"
+      },
+      "children": [
+        {
+          "group": 0,
+          "edges": 4,
+          "maximum_degree": 2,
+          "source_shrink": false,
+          "strict_decrease": false,
+          "degree_preserved": true
+        },
+        {
+          "group": 1,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 2,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 3,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 4,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 5,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 6,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 7,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 8,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 9,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 10,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 11,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 12,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 13,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 14,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 15,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 16,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 17,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 18,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 19,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 20,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 21,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 22,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 23,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 24,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 25,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 26,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 27,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 28,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 29,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 30,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 31,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 32,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 33,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 34,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 35,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 36,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 37,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 38,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 39,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 40,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 41,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 42,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 43,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 44,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 45,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 46,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 47,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 48,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 49,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 50,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 51,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 52,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 53,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 54,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 55,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 56,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 57,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 58,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 59,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 60,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 61,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 62,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        },
+        {
+          "group": 63,
+          "edges": 0,
+          "maximum_degree": 0,
+          "source_shrink": true,
+          "strict_decrease": true,
+          "degree_preserved": true
+        }
+      ],
+      "creation_precisions": [
+        [
+          5,
+          5,
+          125,
+          365,
+          365
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "archive": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_GENERAL_PACKETS_PARTIAL_VALIDATED.zip",
+  "sha256": "edec7b2ea79eb409cd9ffb0b3763d26552db0b87235a7d0ba5c8b43a6562fcc4",
+  "bytes": 17736048,
+  "extracted_manifest_exit": 0,
+  "manifest_result": "PASS: 1135 complete file hashes match release manifest; no unlisted files"
+}

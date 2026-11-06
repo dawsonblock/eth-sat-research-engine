@@ -1,0 +1,1185 @@
+{
+  "actual_calls": 11522,
+  "actual_child_shrink": "PASS_EVERY_64_M_CHILD_LE_6_M",
+  "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "case_count": 2,
+  "cases": [
+    {
+      "active_calls": 45,
+      "actual_calls": 5761,
+      "actual_child_shrink": "PASS_EVERY_64_M_CHILD_LE_6_M",
+      "child_count_per_tuple": 64,
+      "cli_exit_code": 0,
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "veritas.research.parent_child_r98.shrinking_cli",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/examples/r98_shrinking_484.json",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited/r98_shrinking_matching_484_execution.json"
+      ],
+      "edge_layers": {
+        "0": [
+          484
+        ],
+        "1": [
+          0,
+          44
+        ],
+        "2": [
+          0,
+          4
+        ]
+      },
+      "exact_result": [
+        [
+          49947976805055875702105555676690660891977570282639538413746511354005947821116249921924897649015871538557230897942505966327167610868612564900642816,
+          0
+        ]
+      ],
+      "execution_file": "r98_shrinking_matching_484_execution.json",
+      "execution_sha256": "a0b0dfe198b2228c9f6fc21d350baff0558dc74eed87d4b7b4275341468d4186",
+      "expected_result": "2^484 modulo 2^512",
+      "family": "ROW_CONSTANT_AT_EVERY_ACTIVE_CALL",
+      "independent_result_basis": "ALL_TENSORS_ONE_SO_ONE_PER_BOOLEAN_EDGE_ASSIGNMENT",
+      "interpolation": "CERTIFIED_DEGREE_ZERO_TWO_NODE_RECOVERY",
+      "name": "matching",
+      "recursive_depth": 2,
+      "status": "PASS_FINITE_SCALED_SHRINKING_RECURSION",
+      "termination": "STRICT_EDGE_DECREASE_TO_LEAF_THRESHOLD"
+    },
+    {
+      "active_calls": 45,
+      "actual_calls": 5761,
+      "actual_child_shrink": "PASS_EVERY_64_M_CHILD_LE_6_M",
+      "child_count_per_tuple": 64,
+      "cli_exit_code": 0,
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "veritas.research.parent_child_r98.shrinking_cli",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION/examples/r98_shrinking_cycle484.json",
+        "--output",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_SUPPORTED_RECURSION_EVIDENCE/inherited/r98_shrinking_connected_cycle_484_execution.json"
+      ],
+      "edge_layers": {
+        "0": [
+          484
+        ],
+        "1": [
+          0,
+          44
+        ],
+        "2": [
+          0,
+          4
+        ]
+      },
+      "exact_result": [
+        [
+          49947976805055875702105555676690660891977570282639538413746511354005947821116249921924897649015871538557230897942505966327167610868612564900642816,
+          0
+        ]
+      ],
+      "execution_file": "r98_shrinking_connected_cycle_484_execution.json",
+      "execution_sha256": "176a595226b9bd9dcb7b25cb20893a57ae0a11ecf3799dd3b10b054064a6a65d",
+      "expected_result": "2^484 modulo 2^512",
+      "family": "ROW_CONSTANT_AT_EVERY_ACTIVE_CALL",
+      "independent_result_basis": "ALL_TENSORS_ONE_SO_ONE_PER_BOOLEAN_EDGE_ASSIGNMENT",
+      "interpolation": "CERTIFIED_DEGREE_ZERO_TWO_NODE_RECOVERY",
+      "name": "connected_cycle",
+      "recursive_depth": 2,
+      "status": "PASS_FINITE_SCALED_SHRINKING_RECURSION",
+      "termination": "STRICT_EDGE_DECREASE_TO_LEAF_THRESHOLD"
+    }
+  ],
+  "paper": {
+    "commit": "4eaee87548250b2682affda7d05d947c05554bae",
+    "files": {
+      "main_full_version.tex": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa",
+      "quantitative-circuits.tex": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11",
+      "quantitative-contraction.tex": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+      "quantitative-reduction.tex": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a"
+    },
+    "labels": {
+      "eq:tensor-hermite-origin": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 280,
+        "last_line": 285,
+        "statement_sha256": "835d75e9250321435ea54e3fd66434e6b752d1bbac78b0f52541d4cf7509f148"
+      },
+      "eq:tensor-mode-budget": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 453,
+        "last_line": 455,
+        "statement_sha256": "55f1af17554aacabd25d0f3e2e06c63131c8457b6ae9431db2b305e9cca2e08c"
+      },
+      "eq:tensor-mode-expansion": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 418,
+        "last_line": 425,
+        "statement_sha256": "81df762a158145416a0c7edbe8793309a68d0aecce0924d6b8806e7a3c2e92c9"
+      },
+      "eq:tensor-packing-conditions": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 106,
+        "last_line": 109,
+        "statement_sha256": "e7989632209387ee3e7b14b0b0c762487bb8a9f9cf4a580888681325a43c7c2e"
+      },
+      "eq:tensor-parameters": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 87,
+        "last_line": 91,
+        "statement_sha256": "2347e08f794a10a7a1dc2275e2070d723142f04b71cd6cb81de98819e332816d"
+      },
+      "eq:tensor-recursion-identity": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 516,
+        "last_line": 521,
+        "statement_sha256": "9b254c1256f4c10de8cb180391048605b8f1741f95e6e8872c4018427c9a5c2e"
+      },
+      "lem:tapered-hermite": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 250,
+        "last_line": 269,
+        "statement_sha256": "1b737767366c0759f5ccafed0ce7c8efda85fc4ec8c6010316ddee990eb7794c"
+      },
+      "lem:tensor-packets": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 114,
+        "last_line": 130,
+        "statement_sha256": "cfd9c6331836c17a911c52a57fc7e8e2e1c12d22895960ee42f82ba364753c87"
+      },
+      "subsec:tensor-children": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 485,
+        "last_line": 556,
+        "statement_sha256": "bc4ca6c77cdb628b3b2ec0906cde6936364871859bc4fd90b46f7fd53b6aef10"
+      },
+      "subsec:tensor-cost": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 558,
+        "last_line": 619,
+        "statement_sha256": "5c1cabb59aed93b0dbfa239be44bdcd4239e7fd0bb3dd08ead09e02b6a492d73"
+      }
+    },
+    "status": "PIN_AND_LABELS_CHECKED"
+  },
+  "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "python": "3.12.0",
+  "scaled_experiment": true,
+  "schema": "VERITAS_R98_SHRINKING_VALIDATION_V1",
+  "source": {
+    "algorithm": "sha256",
+    "digest": "ccd70975e64b2b29ed72cb222287a1b072800e5687701b5d517467c9e511e5be",
+    "files": [
+      {
+        "path": "docs/OPENAI_PAPER_CONFORMANCE.md",
+        "sha256": "58d7980a7f1941f5a95a592f73b9f199a5ace897725e211dc61ab54d62d69948"
+      },
+      {
+        "path": "paper/README.md",
+        "sha256": "0818dac1a3a3a9b6c9beb221417c1437aef19f172f5e73e6f7f20a0001515ed7"
+      },
+      {
+        "path": "paper/README.upstream.md",
+        "sha256": "a40b8829123b44bd9cfb589e5afa856b0018dc8cb36de36fa79e4315a03fe506"
+      },
+      {
+        "path": "paper/main_full_version.tex",
+        "sha256": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa"
+      },
+      {
+        "path": "paper/quantitative-circuits.tex",
+        "sha256": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11"
+      },
+      {
+        "path": "paper/quantitative-contraction.tex",
+        "sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860"
+      },
+      {
+        "path": "paper/quantitative-reduction.tex",
+        "sha256": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a"
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "8458cebb42a42149dbbd78d101270ae11f76d696865bd950059d934fb7da04b4"
+      },
+      {
+        "path": "src/veritas/__init__.py",
+        "sha256": "0c73340103cca02e1fd30edab22ef1fa7f682f63ff6815bc40d9c7f8efcef3c0"
+      },
+      {
+        "path": "src/veritas/api/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "src/veritas/api/main.py",
+        "sha256": "1c4c96b725625d605fadf7b8836aa03c803af87b0eb4699289cc5d8f9a51f596"
+      },
+      {
+        "path": "src/veritas/audit/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "src/veritas/audit/store.py",
+        "sha256": "dabe81f4c30977392c9c7cf6e708c76f0171aaafd7b0ae74db1d436867f424c4"
+      },
+      {
+        "path": "src/veritas/cli.py",
+        "sha256": "398495345b515b20f267bd8f964625f5d70a286c875e8169f71bd475a4f55398"
+      },
+      {
+        "path": "src/veritas/core/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "src/veritas/core/cnf.py",
+        "sha256": "07892d0c984563cf59bb0cf5e18d62daeaf9832e3949e80c83e484f94c68d044"
+      },
+      {
+        "path": "src/veritas/core/logic.py",
+        "sha256": "dbbcc536f9e7646531bac81360633f81cb77892c7d6038b9a0e4e66e70f14047"
+      },
+      {
+        "path": "src/veritas/research/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "src/veritas/research/adaptive_contract.py",
+        "sha256": "a194d6d8d456487d94d97d053896b01eecb9363376e155dd13065f7f1be95b27"
+      },
+      {
+        "path": "src/veritas/research/algebra.py",
+        "sha256": "af3d76948852aabd8aa06154676047abcc8f83f8399a37a06bd5f67084fe7dfd"
+      },
+      {
+        "path": "src/veritas/research/appendix_d_contract.py",
+        "sha256": "481af603c7b225a579091e508c60887ec564e0472f96e47617bafa1abd86a0c5"
+      },
+      {
+        "path": "src/veritas/research/appendix_d_schedule.py",
+        "sha256": "30e4b71dd91eaaaee3549c77bdbd231fa493af69ab4eedf98500915bc682021d"
+      },
+      {
+        "path": "src/veritas/research/boundary_dp.py",
+        "sha256": "8229f6aa89efedfcd3ef1691d70e3bc508ccaeb8c3683435e77d84962a7af328"
+      },
+      {
+        "path": "src/veritas/research/bounded_degree.py",
+        "sha256": "a6d3c0eec33e1fe33a1d1f13e258179af1e9c5a8cf23520e06d666fe72fd5180"
+      },
+      {
+        "path": "src/veritas/research/bounded_integer_encoding.py",
+        "sha256": "941c36fb6c3ad8be4fd41920729f5c2ca51048434b6f321f7bd752275839dbb0"
+      },
+      {
+        "path": "src/veritas/research/bounded_partition.py",
+        "sha256": "2a6b6b952e76e96e2cad34f54aee81d8767ce1e0068b32416f83d592a2996d1f"
+      },
+      {
+        "path": "src/veritas/research/bounded_partition_checker.py",
+        "sha256": "689a651956542f1f445274d6362bf53934f01ad8cbb84e539036690524b953f7"
+      },
+      {
+        "path": "src/veritas/research/cauchy_deformation.py",
+        "sha256": "e59f97614eca8cad0b16e7e9b0b83a7e204d50bdc4f1ec1d6cc9b10ac7e229f2"
+      },
+      {
+        "path": "src/veritas/research/cauchy_elimination.py",
+        "sha256": "bc3a65e63f57c12a6814cbc66ea78a723a4ac1a13c489b78748be163f04c30ca"
+      },
+      {
+        "path": "src/veritas/research/cauchy_modes.py",
+        "sha256": "8523aea52edb0ea22c67fee85376f2d776027efa51f23ea01459d88ccddcd0a3"
+      },
+      {
+        "path": "src/veritas/research/clause_interface_rank.py",
+        "sha256": "10ef4621fcec99d56ecaae72512a36ccb2163f2a1f134bbfc8884f5510b83d3a"
+      },
+      {
+        "path": "src/veritas/research/contraction_planner.py",
+        "sha256": "43052a8b9b20eb40425f2fb8b265b817bb5260075f71c352c071e54e269acd9c"
+      },
+      {
+        "path": "src/veritas/research/dense_cauchy_testbed.py",
+        "sha256": "62144e94f373a68bc1d0f7505553e671aa5e4a2cb7b69b05f7295771caa14309"
+      },
+      {
+        "path": "src/veritas/research/eth_arithmetic/__init__.py",
+        "sha256": "27ffdaf495837782059ed9281a3f06096bf880fe9085632ebbc4a59a57ff62f2"
+      },
+      {
+        "path": "src/veritas/research/eth_arithmetic/boolean_count.py",
+        "sha256": "e0460056ecb7b0370b6f466d0da951dffdddce4cc8c52e74ef8e9a5a8d38817f"
+      },
+      {
+        "path": "src/veritas/research/eth_arithmetic/creation_lifts.py",
+        "sha256": "09ded3ff0150315bf53e168d0e677502534b98dbd2c899fc1cd628e0f328f228"
+      },
+      {
+        "path": "src/veritas/research/eth_arithmetic/extension_ring.py",
+        "sha256": "b8c0ec740b8d9f9beacee70e0fea4484531faee9a60a3dd17199d6adab5a8b83"
+      },
+      {
+        "path": "src/veritas/research/eth_arithmetic/gf2.py",
+        "sha256": "b89f7c60c865b34d4a5c7d0819ec78e1493cc6f604c0fe84fcbed9de8b147c73"
+      },
+      {
+        "path": "src/veritas/research/eth_arithmetic/jets.py",
+        "sha256": "69f2917e2b3b3f9798f77f319e599ab39deb6da5cbaed8e73d33ebea0c473893"
+      },
+      {
+        "path": "src/veritas/research/eth_arithmetic/residue_points.py",
+        "sha256": "75839459a0440f9b852636e1e1f89da37fb5ed5a4f0689a525b3e91f50412226"
+      },
+      {
+        "path": "src/veritas/research/eth_child_elimination_v38/__init__.py",
+        "sha256": "e7e9ec1bf82b12de54c9fb94a339e517086cf5ac6eb9b507cd41729555d53d4f"
+      },
+      {
+        "path": "src/veritas/research/eth_child_elimination_v38/cli.py",
+        "sha256": "1007829974835a8f0905a84a04aa0b619a2007298e9576301f910b6feaf83f30"
+      },
+      {
+        "path": "src/veritas/research/eth_child_elimination_v38/engine.py",
+        "sha256": "52f3dd13859d3ed0a1e760acfafe4c08a73f68b2897aabff22694258c6041880"
+      },
+      {
+        "path": "src/veritas/research/eth_child_network_v35/__init__.py",
+        "sha256": "e91b2b621c452d3e387cfa4fecbd36cb043cb2b35c9171a504e6de2948d66420"
+      },
+      {
+        "path": "src/veritas/research/eth_child_network_v35/cli.py",
+        "sha256": "a2b188f9752d6256b2f60505c0eba8f659f4778089ff3cbd984a0ba4cecbcaac"
+      },
+      {
+        "path": "src/veritas/research/eth_child_network_v35/network.py",
+        "sha256": "41d11b5d614746341d66116a644e7a3256cb1997db1dc7fa401f7a4a4defacc9"
+      },
+      {
+        "path": "src/veritas/research/eth_child_topology_v34/__init__.py",
+        "sha256": "efa30a1f95b927586396ae0e1d6c4c80ddb1c061acd0b11368ac04a6193cc111"
+      },
+      {
+        "path": "src/veritas/research/eth_child_topology_v34/cli.py",
+        "sha256": "0822d90070971f5af56d334d9907935329a9e24e95956fb34bdc92fdb08b7238"
+      },
+      {
+        "path": "src/veritas/research/eth_child_topology_v34/pipeline.py",
+        "sha256": "2afe97d29be319efb0e6d8d4bd7272da61a06ef49be67603a5de3a39aa8864d5"
+      },
+      {
+        "path": "src/veritas/research/eth_child_topology_v34/topology.py",
+        "sha256": "76fb9108e5c7e765a651ecb94a6ed524bc187b4b565a90da2ca2e1683e7952f2"
+      },
+      {
+        "path": "src/veritas/research/eth_counting_v39/__init__.py",
+        "sha256": "e9c5ef6076d7df59367ae9480eecf1a7eaed421dd30c67440b3246d315ade663"
+      },
+      {
+        "path": "src/veritas/research/eth_counting_v39/auxiliary.py",
+        "sha256": "51376078b3397c0e40335921359097e8c5b2044e8925a31d079fe7f086234b1d"
+      },
+      {
+        "path": "src/veritas/research/eth_counting_v39/count.py",
+        "sha256": "af91fb266f785a93c7273d9e27792360df85dc1c0f7140815f922fb5d6382106"
+      },
+      {
+        "path": "src/veritas/research/eth_counting_v39/embedding.py",
+        "sha256": "b958b59b436b718d3fe511400af30653d4a34d2e59a308ec345d2481c6e34ee0"
+      },
+      {
+        "path": "src/veritas/research/eth_counting_v39/instance.py",
+        "sha256": "0290609248f8e24f8994b4f4e932cc79782da624e93a2fc9c6f9b4aa84a6e238"
+      },
+      {
+        "path": "src/veritas/research/eth_counting_v39/labels.py",
+        "sha256": "0f3950163813ed275619afe17e0c58953c047766c72f6c9947667d50409c535c"
+      },
+      {
+        "path": "src/veritas/research/eth_counting_v39/layout.py",
+        "sha256": "2ffddb34c47ee6d07d24a8cfa10a7ba712d9529157fc2e91b2bc2f31c8eaaa19"
+      },
+      {
+        "path": "src/veritas/research/eth_counting_v39/parameters.py",
+        "sha256": "68e1e60a8de0a153ba82ad9b07a6d2ea3cd52a8aece4aa1baa646f2125841693"
+      },
+      {
+        "path": "src/veritas/research/eth_counting_v39/separation.py",
+        "sha256": "6d2ff4eee49ff538efcf4f03fbce480268fae2ee31f1eaee21a9f03adf82b8ba"
+      },
+      {
+        "path": "src/veritas/research/eth_counting_v39/taylor.py",
+        "sha256": "b791bc3570afadda43ae977ef78fa8b8b56bcb0528c2b81056a0005b2ed5b219"
+      },
+      {
+        "path": "src/veritas/research/eth_d44_child_reference/__init__.py",
+        "sha256": "6a5a2b6515eb925768c47c112bdaf5e422edbfeb79bd9088835dacbd0f3615f8"
+      },
+      {
+        "path": "src/veritas/research/eth_d44_child_reference/children.py",
+        "sha256": "eaed5a508717847afc34a6eabdfae5b01cc2b6d6f212f1b15fa455dce215e66c"
+      },
+      {
+        "path": "src/veritas/research/eth_d44_child_reference/cli.py",
+        "sha256": "1d66963b6b01114c96daf83eae6745a1c264d52ba93676f8808c47c7935c075b"
+      },
+      {
+        "path": "src/veritas/research/eth_interpolation/__init__.py",
+        "sha256": "a636992b6ad372bf4b945492a8726672c8a355546facaf4570ba4e5bb3dff081"
+      },
+      {
+        "path": "src/veritas/research/eth_interpolation/cauchy_product.py",
+        "sha256": "f733db73e7848bf33bc0afcffee24e740b707ef132278b695a9113069109472a"
+      },
+      {
+        "path": "src/veritas/research/eth_interpolation/cli.py",
+        "sha256": "8663c285e76fc7ff1360945ddfbc4fb52624790a06b6babd948421d87b19e09b"
+      },
+      {
+        "path": "src/veritas/research/eth_interpolation/cli_v29.py",
+        "sha256": "41b8150858c9fad3025f2184242fc95754010bb661106a90e2051197545323db"
+      },
+      {
+        "path": "src/veritas/research/eth_interpolation/extension_lagrange.py",
+        "sha256": "82ea766aa2e48a11cb367886c9d5dea4cf90fd7827fb702a88bced250276555a"
+      },
+      {
+        "path": "src/veritas/research/eth_interpolation/hermite_crt.py",
+        "sha256": "e723fc38694fa74fac75d3cd87154b40ef6f7249998bde008093eb735d173379"
+      },
+      {
+        "path": "src/veritas/research/eth_interpolation/shifted_cauchy.py",
+        "sha256": "b518233c72e76ee87e9d77eb2abb080a335a46f4355f66ae1f0be684ad1a1e8d"
+      },
+      {
+        "path": "src/veritas/research/eth_interpolation/source_hermite.py",
+        "sha256": "1215f433526d25034a786181d73f33fa8052b9ddb75f83a6761f8c6d6611f32f"
+      },
+      {
+        "path": "src/veritas/research/eth_interpolation/tapered_hermite.py",
+        "sha256": "7c80d15d0f0f1898e6f0369ec051ecbe5c8157b0557edbe403f29d84fbdd3a7c"
+      },
+      {
+        "path": "src/veritas/research/eth_mode_bonds_v32/__init__.py",
+        "sha256": "c9e08544aec82c0f1eee72fa99b14a622dcdd1b19060b81bdc8342a6ed61c2f2"
+      },
+      {
+        "path": "src/veritas/research/eth_mode_bonds_v32/bonds.py",
+        "sha256": "d5488f0bd9bfcaa9e3827a73a19e9e84db6dd1f05347a034f8e48ca60dee4381"
+      },
+      {
+        "path": "src/veritas/research/eth_mode_bonds_v32/cli.py",
+        "sha256": "d015a86acd314878896488b9f44e5af9a0d6ecf0615145e636d70b590f3c72ea"
+      },
+      {
+        "path": "src/veritas/research/eth_modes_v27/__init__.py",
+        "sha256": "0c9d6154629dbd5cf0fe43a191bb523fbd69898e1f53d880f3b01ca0e36798f8"
+      },
+      {
+        "path": "src/veritas/research/eth_modes_v27/checker.py",
+        "sha256": "cb4c43fc12fb1df3d8d8e9b35bf9121eb64be61d701154e03657953e76ce6b52"
+      },
+      {
+        "path": "src/veritas/research/eth_modes_v27/cli.py",
+        "sha256": "fe0cdd318a7df0ab1462d9d2a55ea32e056bf5e3b0ca9c2271ea81fffd97cefd"
+      },
+      {
+        "path": "src/veritas/research/eth_modes_v27/constructor.py",
+        "sha256": "3a1670149f4fb808fe66814fe9a26fc8edbcf90965dabeb10ea079591c6bc40e"
+      },
+      {
+        "path": "src/veritas/research/eth_modes_v27/enumeration.py",
+        "sha256": "dc4028211b04646c6faa6048b3c0624cf7e8669e5bc7b26c9d1b9c0556496591"
+      },
+      {
+        "path": "src/veritas/research/eth_modes_v27/reference.py",
+        "sha256": "649c7e9eba59fb4d8e92bff3dc5aa4eb3afa97428feb4ecc1e541f357d25251a"
+      },
+      {
+        "path": "src/veritas/research/eth_modes_v29/__init__.py",
+        "sha256": "643ad67913c6ed0018d69d2668f2a834b5a67cd83e86585f207d213488504417"
+      },
+      {
+        "path": "src/veritas/research/eth_modes_v29/extension_modes.py",
+        "sha256": "613e25a4c0a0754a80971dbc11048b206f7a807854dce983969f7d509b2bc257"
+      },
+      {
+        "path": "src/veritas/research/eth_modes_v31/__init__.py",
+        "sha256": "40931daf5d9e3338ade0ad3a860ac8689053ae9e890fd79ace2ea0652b53f355"
+      },
+      {
+        "path": "src/veritas/research/eth_modes_v31/cli.py",
+        "sha256": "44ee6baba06a8929321e81db4b056e7e0afddb99b955f1b8866a457f99cfeda3"
+      },
+      {
+        "path": "src/veritas/research/eth_modes_v31/jet_tiles.py",
+        "sha256": "6dfde3a1026211bd0b1ce76655ce0fcadf6fcf6f076e55f63ba28877b23fad48"
+      },
+      {
+        "path": "src/veritas/research/eth_packet_tensors_v36/__init__.py",
+        "sha256": "24b297eeb1b82219e79bccec8cd45308dc5b48c5115f154e3d0a584dcd9c8789"
+      },
+      {
+        "path": "src/veritas/research/eth_packet_tensors_v36/cli.py",
+        "sha256": "ce5b50b09a14a6a17bc9966d2b5e5e497f44c12ec929bc7d7f0cade6358c9d1d"
+      },
+      {
+        "path": "src/veritas/research/eth_packet_tensors_v36/packet.py",
+        "sha256": "07d58ae224641dec53df876ddd7dd568d355a001489dff0db199dfa19ba456c7"
+      },
+      {
+        "path": "src/veritas/research/eth_packing/__init__.py",
+        "sha256": "4516408d9c137bc80d5e7ebc96489ae995350ec418a393ba40c4844f46bd881f"
+      },
+      {
+        "path": "src/veritas/research/eth_packing/cauchy.py",
+        "sha256": "b2c113dc5a8e946354565664d83dcaa28470221d4930477bd7f302ef3ef893d7"
+      },
+      {
+        "path": "src/veritas/research/eth_packing/checker.py",
+        "sha256": "fb5b42a25d7b3dacbbb1458edda976bdb221d403797a93d2965de185274897ee"
+      },
+      {
+        "path": "src/veritas/research/eth_packing/cli.py",
+        "sha256": "49324e4757fc23b271b03a17461fb647c2501c746727ed96ae94aea8e6a4b883"
+      },
+      {
+        "path": "src/veritas/research/eth_packing/labels.py",
+        "sha256": "90807d4e40bb48ecf60aebcc02959f77242ea1fa1bb6904d3f1ad0d6b0659f93"
+      },
+      {
+        "path": "src/veritas/research/eth_packing/packing.py",
+        "sha256": "42a820695fdd6e45fa09587e70b2b8813a1123f41e4a0717058898d6aa353353"
+      },
+      {
+        "path": "src/veritas/research/eth_packing/parameters.py",
+        "sha256": "7aac035f78509a9198253a44fd35f9c2c1d9ad82eb1aa5b7eed475b23d8965e0"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/__init__.py",
+        "sha256": "1e319c435bc106ca351a8b97879d0c5eb32618b173751e512a4910ec7f1b3d72"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/checker.py",
+        "sha256": "abe851688a4eed990a60c02ac13d3edca75661130531d6a7ad2a887dc9d920a0"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/cli.py",
+        "sha256": "629fb70390ce0f120bf0477c362ec0cb530b1a33e6ac69c802c6c80444ab9826"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/complete_bipartite.py",
+        "sha256": "6866ca97574c7c90dad938fa2797efb38855d1cd8ceb5aa2c4d72bfcc27040e4"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/complete_bipartite_check.py",
+        "sha256": "22a416bca4e75de9f5be84edf9cd0fbc82b2a5b39b9f0e4a8f21017668f9d261"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/constructor.py",
+        "sha256": "d53c78018a11d95742317434a0b3773025531949c54d18faa0a86c5f0d04d970"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/cpp_backend.py",
+        "sha256": "91306fcf7e5cd53c20741c2e52ab886ebbc026c30d9b2d047247b3c70ca574b8"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/expectation.py",
+        "sha256": "35b414e66ac9dcbc505bd1309e6879b5b8b70973ec1a92c463023273a82bf699"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/geometry_audit.py",
+        "sha256": "cfe5bab18888a886fbabcf80a9090344fadab91597325833e6a61498a65ba8a4"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/global_packet_address.py",
+        "sha256": "eb1f3dfa36945ce3148fc8f939f04a3bdb38d2ddebc5a2b790f33c810f9ed3ad"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/global_packet_address_check.py",
+        "sha256": "f493580bcabc8f83f6354daf64ee82f4d6b19167859b774abc14ba249dbfbadf"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/implicit.py",
+        "sha256": "592211335d427144d75f5b4b0c103f1eaebb5e1123b45b2256c54ba65f8d75fe"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/packet_bijection.py",
+        "sha256": "13d5f24ca3824b6cd7fdbb1be7c1e1bc9c934801bd7ea5454e94168a816abea0"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/packet_bijection_check.py",
+        "sha256": "3ecea942d8e85b9f3fe9d277d13572b83d212194111bb47e5b485d8826c6c664"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/streaming.py",
+        "sha256": "002409180ce0a5bd334821f8a0725a50ee840d2064390ec01e24732b54255f33"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/streaming_check.py",
+        "sha256": "d916bc5adc22c8f10e7f16ab885e1441431b09fbc4c6627af6e60f804be12f41"
+      },
+      {
+        "path": "src/veritas/research/eth_packing_v26/symbolic_regular.py",
+        "sha256": "cfeb4f702538ef1951c11b8a25ca40e7838143d2ec663f2504b216e95ee35aad"
+      },
+      {
+        "path": "src/veritas/research/eth_recursion_v30/__init__.py",
+        "sha256": "c9c1bb755cdeb0b7da0ba606a20f181e95f1a141322b10d2d532fd5c95d8458b"
+      },
+      {
+        "path": "src/veritas/research/eth_recursion_v30/cli.py",
+        "sha256": "c58ec53b08a7da5b7e17afa8417551eb342ac00f71ce87d23f7b63c1dec0c105"
+      },
+      {
+        "path": "src/veritas/research/eth_recursion_v30/implicit_children.py",
+        "sha256": "04b476b9cbf9fa5eea1750fa4cf0ec121cbb9154ca83a56e2d84d5489c10a087"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_bonds_v33/__init__.py",
+        "sha256": "faddb44104e10dfcd67f9f567a8ff37c0490da34e3707cd20c485c2956f5fc49"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_bonds_v33/cli.py",
+        "sha256": "90771e7d9b2d2a19371d5ff99825d9e96c24434e4bfb7cb024b5ad63b4027685"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_bonds_v33/recursive.py",
+        "sha256": "e153eb1288f6670d0b962a5df36325e23b8fdb4a42c9f3daf4725fa13b0fa58e"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/__init__.py",
+        "sha256": "d173112c7bb223d60475615ab05daefbeee768dd8bbaf5addc19524929edf1e2"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/described_network.py",
+        "sha256": "1fab56ff96c8558f288562522a81ed8eb8e3c169bef2e0497bb3e5f05ef828c9"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/geometry_point.py",
+        "sha256": "9417e6e75dceeec21fa89f4824b0989df0e2d1c77f3bc0f5fdd0f5daff4c981c"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/independent_tuple_oracle.py",
+        "sha256": "34a3c9468b74ac3864611a05d65ea59206aae035c4e920f5dfa1b705add0a70d"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/lazy_children.py",
+        "sha256": "aa675f1f0829662cc36c55f9e8d0afa9a0622882dd8f755de54a24bdab690bca"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/mode_bound.py",
+        "sha256": "6139d5684070b7c6efea6e04e4e91b853f4c40c1049dd472cb86ff74a2c5ba5e"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/mode_matching.py",
+        "sha256": "69dd2f88593cc33e8c04904db145f871d5f2bf107e5d5efa2e6cd02f52529933"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/point_children.py",
+        "sha256": "51926df054539b0b1af4ad632dd454d23ae93775e67625a7ee45ac3cb82d6cc9"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/point_mode_matching.py",
+        "sha256": "e4dbf13b308eb30d4e6ba87ac64ece6312b9a8311760d25b00900aaecbb70e6d"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/point_modes.py",
+        "sha256": "7e6dd9a385a3db228a152714052cc12e92a428abb594297c93ec23648e03c461"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/structural_tuples.py",
+        "sha256": "40976306306962e09ea7e8a91662160eeea8a7d06a9daa8a549779cc10bfcf3a"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/tapered_described.py",
+        "sha256": "68d9df7fcd0636fc568d17f7fdfe1c61eabd31e3c15f115bf5988ef8bc83e04e"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/tuple_stream_check.py",
+        "sha256": "0d76c834828dcf2af63e11edaf5ef83b2d39be2de54569a310160b7b641493f7"
+      },
+      {
+        "path": "src/veritas/research/eth_recursive_contraction_v39/zero_wire.py",
+        "sha256": "775b4c6d8fcacd679b4f15c94a1af25740ba8efb9b852898322c7d8ae1445116"
+      },
+      {
+        "path": "src/veritas/research/finite_reductions/__init__.py",
+        "sha256": "d61583b151a6dd65c6657ef15e1de11a323b0a365b76e69399f141749e8e88d9"
+      },
+      {
+        "path": "src/veritas/research/finite_reductions/__main__.py",
+        "sha256": "df7f74b6e3d155cbf85a15c2e9ea01ed780c1aa8b886d7a23165c58aa7574b64"
+      },
+      {
+        "path": "src/veritas/research/finite_reductions/boundary.py",
+        "sha256": "1abd01093e7d1e709e3014ca4d6690473c8ebda7af74177b09fc8c0294f0a0a7"
+      },
+      {
+        "path": "src/veritas/research/finite_reductions/elimination.py",
+        "sha256": "ed7fcfe55134763db7801e3247be58ee4990760a92d190917b70e70518b425d1"
+      },
+      {
+        "path": "src/veritas/research/finite_reductions/recipe_point.py",
+        "sha256": "9c3d0c7674081448994e0733d1f7f6ac869ce170466e690f9d555062fa14a00e"
+      },
+      {
+        "path": "src/veritas/research/graph_decomposition.py",
+        "sha256": "cd1489edb810dbd596ce0d21ad61206474d5973c17f690616c83e307446788c2"
+      },
+      {
+        "path": "src/veritas/research/grouped_cauchy.py",
+        "sha256": "eac96ffe9f0195a381161a2c0e07bea2c988b3eae09b7102979308a9810942ff"
+      },
+      {
+        "path": "src/veritas/research/hermite_ring.py",
+        "sha256": "5bcb1a27d74809be7e443c2eaafa78e7c8a076f5051bfeb25e8b61bef009d11f"
+      },
+      {
+        "path": "src/veritas/research/independent_dense_oracle.py",
+        "sha256": "3d1bf88ef25783aaaf2f035966c0bb984b7989a3491fccc52aa35ee209c67066"
+      },
+      {
+        "path": "src/veritas/research/independent_r82/__init__.py",
+        "sha256": "4fa711f7b1020ee0cf105249ec099bda4bbe64873a737255105300e86ba9584c"
+      },
+      {
+        "path": "src/veritas/research/independent_r82/point_mode_oracle.py",
+        "sha256": "b9bd51aa8950680b91802383a3f74e9e7809a45d25a6f3900ef43ae098014318"
+      },
+      {
+        "path": "src/veritas/research/independent_r82/pruning.py",
+        "sha256": "8fba5a55d4ff0798938c4506ef9d91736c65c40cd461c1ece191e08c873438ac"
+      },
+      {
+        "path": "src/veritas/research/independent_r95/__init__.py",
+        "sha256": "088da8e34f3f521e5cec161f137e9f5827c2cc4f344ccc2aca25bde98243fd51"
+      },
+      {
+        "path": "src/veritas/research/independent_r95/hermite_grid.py",
+        "sha256": "b929a036c20e06605f8cd59e1cc356e16a37fb0091f1e398a3fb4b2c9a33155d"
+      },
+      {
+        "path": "src/veritas/research/independent_r95/recipe_oracle.py",
+        "sha256": "77f106e2dd48b8e41a2c9cfcbe4dac612690e7e64616737b786e2eef2f8e30a6"
+      },
+      {
+        "path": "src/veritas/research/indexed_contract.py",
+        "sha256": "e4ca73e1338da4d091eaf8abe661b87f8817a5445fd451662614b0c29334e7a1"
+      },
+      {
+        "path": "src/veritas/research/matching_checker.py",
+        "sha256": "53b9f65f6b4c5a64f9ad870c3b0e7868472f9f0caf620656bb77443c01c5ceb2"
+      },
+      {
+        "path": "src/veritas/research/matching_packets.py",
+        "sha256": "74d8460dfe8932dbadbee77499f5f93ec2182b17c4c8c735e548dbcbaa05bac8"
+      },
+      {
+        "path": "src/veritas/research/math_exact/__init__.py",
+        "sha256": "3a552fbd72e1ec3ef2d28e7f2b7a210b61e3bbfee19174ecd70085d5d362ef84"
+      },
+      {
+        "path": "src/veritas/research/math_exact/oracle.py",
+        "sha256": "aad5ab063f901688d770df4b7757f31e4a00a8326649fced4607b355b16d8aec"
+      },
+      {
+        "path": "src/veritas/research/math_exact/ring.py",
+        "sha256": "4edfeec5f820971f87a3eb4a097023c28434823306031701e70e5965e7287a7a"
+      },
+      {
+        "path": "src/veritas/research/math_exact/status.py",
+        "sha256": "6cdc79f17897de46bcd450a979b1866415d6f2f360881df6ca84ddfa845c591e"
+      },
+      {
+        "path": "src/veritas/research/minfill_contract.py",
+        "sha256": "e9f6d43309bbbeda779764ff77b2f4eedc011f56b2408482e2523708523a6683"
+      },
+      {
+        "path": "src/veritas/research/optimal_order.py",
+        "sha256": "edc5c42d7b8242565936e7fb611bebb538610af6c3ec8154ba5a68b7673096f4"
+      },
+      {
+        "path": "src/veritas/research/optimal_packets.py",
+        "sha256": "8b450509713f9fa032114bde758c45d4c9caa7d5cbbca24cfceeb5bf17bdecd3"
+      },
+      {
+        "path": "src/veritas/research/packet_bound_checker.py",
+        "sha256": "543bc0b7d664b52ab977572c722bdc9fd2c1d9754480c7a4236a191512d1baf1"
+      },
+      {
+        "path": "src/veritas/research/packet_schedule.py",
+        "sha256": "3be32da6bbf23f7c6ce663fbb1afceac8039feed6b37340b43af713e2f507f11"
+      },
+      {
+        "path": "src/veritas/research/paper_verification/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "src/veritas/research/paper_verification/boundary_identity.py",
+        "sha256": "4ce7d0fd15eabfec2f437bfa01cad7299bac5d68f05bd8c22f0fab44f3a1ea75"
+      },
+      {
+        "path": "src/veritas/research/paper_verification/child_identity.py",
+        "sha256": "ff0de5cbcbb3ea3fddae0d306c5497ef579d07c7c8de08c3ef3a378af4935828"
+      },
+      {
+        "path": "src/veritas/research/paper_verification/evidence_report.py",
+        "sha256": "a7bbd1bd1cd41ab86061250d35cde3d149682ff4c7efbfba845900fd85c10f12"
+      },
+      {
+        "path": "src/veritas/research/paper_verification/exact_parameters.py",
+        "sha256": "f1ca6910221fbb431760e175c5f6ca5a4adfe5390b6561aea6a6f7bb143a20b3"
+      },
+      {
+        "path": "src/veritas/research/paper_verification/hermite_checker.py",
+        "sha256": "e62fbde25397b729e912bc683a901d6944eed3177443975c038a377223515bc5"
+      },
+      {
+        "path": "src/veritas/research/paper_verification/packing_checker.py",
+        "sha256": "6bab635460e57bac0e947486b1c198583112d9173aad731fe8d1353d2411a8c1"
+      },
+      {
+        "path": "src/veritas/research/paper_verification/source_registry.py",
+        "sha256": "4e868433953b1caf79b1d91213b3356eb2221b4399969a1353a11e6320bf18b2"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/__init__.py",
+        "sha256": "c26048149da382bb6f3c62b546b95e1a6926d33c508b2dcb85e183b20832e66e"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/__main__.py",
+        "sha256": "9aceab704e420b351fdc308d99f6374dd113c112b8fffe4704c40664f4fb33f8"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/constructor.py",
+        "sha256": "a308e5de43a666facaf8099c272c8de2d0fc56cc8a379b0d71b7c1a3f41dcb29"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/cycle_recovery_cli.py",
+        "sha256": "6c668eb5f8210ab2e5eb586aa51d87a53cc417b22a966de79a7573540ab4bdf8"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/cycle_transfer.py",
+        "sha256": "6b078448d884f908827319346d937834fedf78a8d24c90568e0f390f526712eb"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/cycle_transfer_cli.py",
+        "sha256": "5375155d398bd6a0648ce2999102ad0afe726307f6aa2d9efa025f025edeaabd"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/cycle_transfer_recovery.py",
+        "sha256": "0cfbb076f577e86400c21d42fbb4f87c63d5b6ca5d062320f905166bf1422bdd"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/engine.py",
+        "sha256": "d9e9e46f1321d83f2c4a67c9fe1a28581cd04e021fa16962282e1b07dada1e47"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/general_cli.py",
+        "sha256": "8819708df591eba533c4019008c8368a4bd08bd6062c06d37161723566f7ee7f"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/general_engine.py",
+        "sha256": "004220f7ae7968e616c4535e32132d163aa48ead9aaec4c435557def9b487ab0"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/general_modes.py",
+        "sha256": "74aacd74cba6adcdeff083412ad6d891579e51ca86e04f853d7a33f2b768b3db"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/general_recovery.py",
+        "sha256": "c72f9561a77f434cf9df01f95e71f6d3d77b50d7dcc1b095b7dbff1823222574"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/group_preflight.py",
+        "sha256": "782d96bf92d2252dec09664af8836d972f271328d3567082b43839c1b3133648"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/independent.py",
+        "sha256": "ec4b47502c598f3c83f275d4a38ba0f41fc68663f8a89f2688edf7b7471ca7e7"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/model.py",
+        "sha256": "41ee53511c7494fe2bf59ac6807db68d828d34b6a422269ca47bc25ddccc0996"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/modes.py",
+        "sha256": "5d95068b0755f6a5a19cb80916f864c1090c7ade25a9c4912e40b6c3b3183347"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/packing.py",
+        "sha256": "a4780227c9aeba05e6632ea0e77be1618dd0881c0bdcb6cbc02919d0ab381d1b"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/shrinking_cli.py",
+        "sha256": "0497a48c4af5b3805a43562dbfbbc4de4f8958e3a883fde617ab7cdb310276e0"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/shrinking_engine.py",
+        "sha256": "d3aa0773e85d957e29c680fe2bc52becf40ce015a8de6ccca9cac223365c3ae4"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/shrinking_layout.py",
+        "sha256": "ba50149e639065de3341b96d86c79602353b9387a1e9743683e7d62c7452ded9"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/shrinking_oracle.py",
+        "sha256": "340c5f2b7a165c8451e61dd8f07f59750806ae74dc9201f5e1d00391567068ff"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/transfer_basis.py",
+        "sha256": "31149d045213d00f0d40245773b76208618b73a5296c7e3e44133b197973b93d"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/transfer_children.py",
+        "sha256": "d49108884e9f7542cb2ab172c80f60504f724a5bcce3bf66bc6a142534f2181f"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/transfer_io.py",
+        "sha256": "23dd97d8f120f1ede18d702e7f3e3abeeb5116c016ad1b52b9bd155cc42c5ee6"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/transfer_recovery_verify.py",
+        "sha256": "fb94ee4af8ad7f136b7477950ba3eee0f05061b18a61291f333cef1ac9917660"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r98/transfer_verify.py",
+        "sha256": "e7cabf589f2291d0129919f6262c62cb6165cb43dc6eb79de0e187ae93f6e28a"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/__init__.py",
+        "sha256": "54ad25072e35761d3c0c5ccc8188baa9fb40225896e4b45aa59b2e4c91f2b7fe"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/basis.py",
+        "sha256": "5e0c9799e06f10a30f93687b78b8b9b33a849dc3d06e4805abdb56c5b2828458"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/cli.py",
+        "sha256": "4cb1cba2889ae1fa263785aa1de5c2691f8a52547e55d9883f78e8a28b2a71e1"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/degree_check.py",
+        "sha256": "893f364144f38e578c291aeae0d8e000614d32a4b15f064cc889933d7cbffe5c"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/degree_engine.py",
+        "sha256": "cbad9428d4849fc16ab80dae22885000997b234eabd4757c644afae0c7a8f903"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/degree_recovery.py",
+        "sha256": "14cdc92707cb64ea1a36870fabd89e68be57cbe34f549cfbb0b3f0129380a8f4"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/degree_verify.py",
+        "sha256": "229846e3bdb73a1e1c60d317c1ef60d47abfff539f5321c14d1d67bbc5027f2c"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/engine.py",
+        "sha256": "39e12613c6bbd1bdae2a2f32c4c12ade1ef7686956e9df0a777b570e501990ce"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/recovery.py",
+        "sha256": "6ab9dd1e4f587598dd88f096c7c0c88d3667fc968325475029a09ccea6a25064"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/row_degree.py",
+        "sha256": "9db6c592e5b1844572cd7448f6a11ee7dc1ff6b4457c00a2b3f4a751ccfe83ca"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/support.py",
+        "sha256": "d3e11c60ed8472bdb073d152481c3a25dc6de44b8e117c32440984f8d8645bdd"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/support_check.py",
+        "sha256": "4c0ba883e4fa6ade423d22f9df669cd66078abe02e24f181bc4f2549c3e278a8"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/supported_engine.py",
+        "sha256": "5a2de04f27266057e67dc926483625749ac1c5b2b657aa6eb762f1abbccd28b2"
+      },
+      {
+        "path": "src/veritas/research/parent_child_r99/supported_verify.py",
+        "sha256": "5a7262183de0a0a7e09287e4b9d53b353e8a0c2d9c05ec621d1685d0829980f4"
+      },
+      {
+        "path": "src/veritas/research/recursive_separator.py",
+        "sha256": "f2ee99d236e368b37b1285a476137efb30351b58d52fd7d024daabaafbfd6762"
+      },
+      {
+        "path": "src/veritas/research/scalable_packets.py",
+        "sha256": "d45efa0cfc2a79fa8fdc3e599cfec25fe2ce65675a4b9d79ef80dc8687623fd9"
+      },
+      {
+        "path": "src/veritas/research/source_cnf.py",
+        "sha256": "30412fe4cdbc0edd8b1cb22055221dabd86e3de462af861a4d8af613b7444f91"
+      },
+      {
+        "path": "src/veritas/research/source_cnf_check.py",
+        "sha256": "c48e9c9ccad92ff122f2aacc3a4371bdb5c44d270a779a6615bfdea41e41c708"
+      },
+      {
+        "path": "src/veritas/research/source_parent_child.py",
+        "sha256": "60be3e7d68bf1bd17d5a73399fb6bda0edb100ceec8e507ea455a84b00cae13f"
+      },
+      {
+        "path": "src/veritas/research/source_recursive_engine.py",
+        "sha256": "02e44784c96b42804f0191da6141369753b45314660eb408d8bf91cad27d946a"
+      },
+      {
+        "path": "src/veritas/research/sparse_contract.py",
+        "sha256": "6f9961eb9ea184f99886f38d17835f2ee397939fa1f58ddebf4f9e8c7af1e701"
+      },
+      {
+        "path": "src/veritas/research/symbolic_cauchy_reference.py",
+        "sha256": "a4034bef84e080d10615e6b82c3a13c11f13df2c23e8f8f90381891421399ac2"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/__init__.py",
+        "sha256": "3267061efff9a44fbd8ed1d92a9036253e2ac399bc251a6640bfd4f32c582a58"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/actual_child_certificate.py",
+        "sha256": "ca0e88a0aacbb2675acd0462e29cf3a532e80a3980aaf9a3de400c51c3551526"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/budget.py",
+        "sha256": "ad7cd48b45961f6e955a41e9e42e74d69ac13b823a6aa268f43d04ca0b8eb731"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/certificates.py",
+        "sha256": "454bd0ac4ad4f25a63ce32b2d1d0776c6385d6e66a5d92afa385cb91b6e9bf94"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/child_audit.py",
+        "sha256": "9323974d94023776c1ba19e9b3598aaacaf2a8f5fb18612672c345f0e143a2ed"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/child_partition.py",
+        "sha256": "1c87674110204510039b1bd1d65466a4ab6c514ad9595aa791f6a498a2e46f39"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/child_recipe_check.py",
+        "sha256": "23b96a5d653dbf75a372ace82f5c391b7b5a7f21cf6c9cbd2432bc67d0042f8d"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/cnf_count.py",
+        "sha256": "81ed1350dd64158cc2bb011e6def37851b553f07bd5f4fbf81e33b158b0b74c9"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/model.py",
+        "sha256": "247afa79f4fa9dbb9f16022fe008ca95ba437453a18e4d4bca870a5ba15aeecd"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/parameters.py",
+        "sha256": "980446280e8d58db895c7b8ff083b4d75559981db8ba6655e8b9240d8f703fc5"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/provenance.py",
+        "sha256": "16d20193ea1af2954f6ea8a2f0ceb1900bdf16fdc1e6c757be9d8498a419d0e9"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/recursor.py",
+        "sha256": "6f04c7e2274b94f6a351612330c260319c79f42054ec077d1b5e7877875b2e35"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/source_leaf.py",
+        "sha256": "3f474549fd4e860c9d4523aa4815fe181f47656e59f683a9e775711668c02cc2"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/source_recipe_bridge.py",
+        "sha256": "407f4ace00a034de55215671ab8bbe7191da0bd03e6bcc58352fc2467e3e9469"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/source_recipes.py",
+        "sha256": "97e99605c897a96c4df0d4e45b4ff0be28d4a07d6e4a844cbbad8767eab04a90"
+      },
+      {
+        "path": "src/veritas/research/tapered_v4/source_state.py",
+        "sha256": "50becd412aa083116d2ffff744b5883504de1d7e9af0525abddd79535d23c0d3"
+      },
+      {
+        "path": "src/veritas/research/tensor.py",
+        "sha256": "4a6858718a79a20b3b018cfb5e7b1f49781927c4c6d759749c9c8cedf8e5c359"
+      },
+      {
+        "path": "src/veritas/research/violation_polynomial.py",
+        "sha256": "b96cce9f02ffff8d395689efe7406785b981b109ee6bf42b8bdf7f69d99b91e4"
+      },
+      {
+        "path": "src/veritas/research/weighted_children.py",
+        "sha256": "ee58c36953b181d323369cee07237e8eab69bd58cecfccc98764ec4563084dda"
+      },
+      {
+        "path": "src/veritas/research/weighted_recovery.py",
+        "sha256": "1658e26469f4fbd0c477412a6bb2df8414f731286a2c3e2ee6a191b6ac61cd45"
+      },
+      {
+        "path": "src/veritas/research/wire_deformation.py",
+        "sha256": "76e6d7c5086246e8cc78159de1e4c351666f1ee518fbd42aa1be7e5b754c915a"
+      },
+      {
+        "path": "src/veritas/solvers/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "src/veritas/solvers/certificates.py",
+        "sha256": "baa4a9f1cce7399faf307fbb9dfb60c1517a4841d25906b5ae9be16673878e3d"
+      },
+      {
+        "path": "src/veritas/solvers/conditional.py",
+        "sha256": "8153e9af871bad3b2d39d85835aee09684ec978b3b68c8a46dc1a181e9ac04c4"
+      },
+      {
+        "path": "src/veritas/solvers/count_certificates.py",
+        "sha256": "cd41c37778abbd1e2970b6019e730c8e4d485a711ff8d60f688d6323c2cb9db2"
+      },
+      {
+        "path": "src/veritas/solvers/count_dag.py",
+        "sha256": "0d012829d5109c65436996e95e777f50f6226bdbdd33f90fa13429c01c9c1421"
+      },
+      {
+        "path": "src/veritas/solvers/ganak.py",
+        "sha256": "b918f91a817b511b17b9d5f2e4ffd480954c8ec4cabac47cb17cca5142a5dd46"
+      },
+      {
+        "path": "src/veritas/solvers/marginals.py",
+        "sha256": "5ca7ccfc2fc8c4678577d4eaefcb292b49f11aef902376672f8d17b2ed18c1c8"
+      },
+      {
+        "path": "src/veritas/solvers/projected.py",
+        "sha256": "40be0dcfcc12855c780f8c869f554dc7c86f606055f57d2a20a79de18a788a49"
+      },
+      {
+        "path": "src/veritas/solvers/reference.py",
+        "sha256": "1441df284f81c9731777526e89023f5ba03ceb6d3ca5dc2b1dfc54f176d2add2"
+      },
+      {
+        "path": "src/veritas/solvers/weighted_dag.py",
+        "sha256": "84b34d6f10dcc1286a9ee5d7e1b5c81e43087d7c5e2bdc4e6c2b5171cf72bcbf"
+      }
+    ],
+    "hash_exclusions": [
+      "tests/**",
+      "scripts/**",
+      "validation/**",
+      "generated release manifests",
+      "generated transcripts and evidence",
+      "ZIP archives",
+      "__pycache__/**",
+      "*.pyc"
+    ],
+    "path_encoding": "UTF-8",
+    "path_separator": "/",
+    "signature_status": "UNSIGNED_HASH_MATCH_ONLY",
+    "symlink_policy": "REJECT"
+  },
+  "source_eligible": false,
+  "source_qualified": false,
+  "status": "PASS_FINITE_SCALED_SHRINKING_RECURSION",
+  "theorem_mode_enabled": false
+}

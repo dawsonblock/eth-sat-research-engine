@@ -1,0 +1,33 @@
+[
+  {
+    "name": "wheel_coupled_replay",
+    "command": [
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/clean_py310/bin/python",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed/r911_coupled_replay.py"
+    ]
+  },
+  {
+    "name": "docker_coupled_replay",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/portable/installed:/checks:ro",
+      "veritas-eth:r911-portability-partial",
+      "-I",
+      "/checks/r911_coupled_replay.py"
+    ]
+  }
+]

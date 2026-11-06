@@ -1,0 +1,9 @@
+{
+  "release": "1.3.0",
+  "seed": 2026103013,
+  "differential_cases_passed": 300,
+  "transcript_replays": 12,
+  "algorithm": "bounded_weighted_child_jets_plus_guarded_hermite",
+  "status": "PASS",
+  "eth_asymptotic_claim": "NOT_IMPLEMENTED"
+}

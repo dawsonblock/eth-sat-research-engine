@@ -1,0 +1,56 @@
+{
+  "schema_version": "VERITAS_ETH_R9_2_GLOBAL_PACKET_BIJECTION_V1",
+  "qualification": "PARTIAL_FINITE_AND_LEAN_MODEL_CHECKED",
+  "source": {
+    "paper/quantitative-contraction.tex": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+    "lean_toolchain": "leanprover/lean4:v4.35.0"
+  },
+  "python_tests": {
+    "command": "PYTHONPATH=src python -m pytest -q -o addopts='' tests/test_r92_global_packet_bijection.py tests/test_d3_implicit.py tests/test_sparse_packet_source_equivalence.py tests/test_v34_child_topology.py tests/test_v36_packet_tensors.py tests/test_v37_d44_group_local_children.py",
+    "python": "3.12.0",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "exit_code": 0,
+    "executed": 72,
+    "passed": 72,
+    "failed": 0,
+    "elapsed_seconds": 1.58
+  },
+  "finite_domain_coverage": {
+    "radix_width_height_multiple_cases": 12,
+    "radix_values": [2, 3],
+    "width_values": [1, 2],
+    "padded_height_multiples_of_L": [0, 1, 2],
+    "directed_class_offset_roundtrips": 1242,
+    "production_word_offset_roundtrips": 42,
+    "actual_builder_fixture_sets": 5,
+    "real_edge_occurrences_checked": 12,
+    "parallel_edge_occurrences_remain_distinct": true,
+    "empty_padded_domain_checked": true,
+    "resource_cap_fails_closed": true,
+    "corrupt_class_table_fails_closed": true
+  },
+  "lean_gate": {
+    "command": "python scripts/validate_conditional_expectation_lean.py --output validation/r9_2_packet_lean.json",
+    "exit_code": 0,
+    "status": "PASS",
+    "modules_compiled": 23,
+    "elapsed_seconds": 37.380447,
+    "lean_version": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+    "manuscript_pin_matches": true,
+    "new_model_claims": {
+      "canonical_pattern_slot_word_inverse": true,
+      "directed_symbol_class_pattern_orientation_reconstruction": true,
+      "full_integer_offset_to_copy_bit_composition": false,
+      "python_builder_refinement": false
+    },
+    "theorem_mode_enabled": false,
+    "universal_packing_lemma_proven": false
+  },
+  "remaining_r92_obligations": [
+    "prove binary copy-bit list/value bijection and compose it with quotient/remainder offset split",
+    "formalize exact finite types and cardinality for all directed classes and patterns",
+    "prove source-level correspondence to deterministic Python/C++ edge assignment and packet builder",
+    "establish universal source packing hypotheses and actual port-load construction"
+  ],
+  "scope": "Finite exhaustive evidence and kernel-checked canonical address model only; no universal packing or theorem qualification."
+}

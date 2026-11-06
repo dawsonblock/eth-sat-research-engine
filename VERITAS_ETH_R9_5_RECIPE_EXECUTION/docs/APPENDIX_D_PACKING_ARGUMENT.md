@@ -1,0 +1,23 @@
+# Directed-label packing: mathematical argument and implementation scope
+
+The following is an independent derivation of the collision and padding bounds in the [pinned Appendix D.3](https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/build/quantitative-contraction.tex). It concerns the abstract construction, not a proof that the bounded Python implementation covers the theorem's full parameter regime.
+
+Let G be a bipartite multigraph with M edges, maximum degree at most Δ, r≥2, a≥1, L=2^a and D=r^(2a). Vertices on the two sides are distinct even if their identifiers coincide. Independently label every vertex uniformly in [r]^a. For a directed label pair γ, let X_γ count its edges and put Φ=Σ_γ(X_γ−M/D)^2.
+
+For each ordered pair (e,f), E Σ_γ 1[e has γ]1[f has γ] is the probability that the endpoints' label pairs agree. Therefore
+
+    E Φ = Σ_(e,f) (Pr[pair labels agree] − 1/D).
+
+If e and f have no common endpoint, their four endpoint labels are independent and the summand is zero. For the other ordered pairs it is at most 1. Each edge has at most Δ edges sharing its row endpoint and at most Δ sharing its column endpoint, so there are at most 2MΔ such ordered pairs, including repeated and parallel edges. Hence E Φ≤2MΔ.
+
+Fix vertex labels coordinate by coordinate. Given a partial assignment, averaging the exact conditional expectation of Φ over the r possible values of the next coordinate gives the present conditional expectation. Choosing a minimizing value cannot increase it. Iterating yields deterministic labels with Φ≤2MΔ. Conditional expectations can be computed as rational sums over ordered edge pairs: for each equality constraint, assigned conflicting symbols give probability zero, equal vertices give probability one, and each remaining equality of two distinct uniform symbols contributes 1/r. The number of choices and pair computations is polynomial in the explicit graph size, a and r, with polynomial bit lengths. This argument assumes exact arithmetic; it does not depend on sampling.
+
+Each class load satisfies |X_γ−M/D|≤sqrt(Φ)≤sqrt(2MΔ). Let H_pad be the maximum class load rounded upward to a multiple of L. If M≥2D²Δ and M≥LD, then
+
+    H_pad ≤ M/D + sqrt(2MΔ) + L ≤ 3M/D.
+
+Pad *every* directed class to H_pad, including empty classes. For each coordinate fix an unordered pair of symbols. If a′ coordinates differ, a packet includes 2^(a−a′) copies from each of its 2^a′ orientations, giving exactly L slots. Because H_pad is a multiple of L, each orientation's padded slots can be partitioned into these equal-size groups. Slot bits encode the orientation in differing coordinates and select the copy in equal coordinates. Every padded class slot is used exactly once. Therefore the number of packets is H_pad D/L≤3M/L. For each coordinate and fixed symbol, exactly D/r directed class labels have that symbol on a specified side, so the number of real ports of that symbol on that side is at most H_pad D/r≤3M/r. A child with one edge for each of the two sides' group ports and no extra mode edges consequently has at most 6M/r edges.
+
+The inequality 2L≤Δ is a further condition used to bound new packet-vertex degree; it is not needed for the potential or padding bound above. This proof does not establish the Cauchy mode identity, the representation of actual recursive child tensors, Hermite precision, total runtime, or space. The explicit `construct_d3_packing` reference still caps `D` at 4096 and the explicit certificate size. The implicit constructor retains only nonempty classes and now supports arbitrary positive `a` subject to its optional finite work estimate; its sparse mode source stores occupied slots only. This removes the `D<=4096` class-array bridge for that representation, but does not establish theorem-scale execution, and the point-mode engine remains parameter-bounded.
+
+The implicit labeler now updates the conditional-expectation score incrementally. It stores one record per unordered edge pair and endpoint-update lists; a candidate label changes only pairs whose other endpoint has already been fixed. Summed across all vertices, these lists contain at most `2M(M-1)` entries, so all candidate evaluations and commits use `O(a r M^2)` arithmetic operations, rather than rescanning all `M^2` edge pairs for every vertex-coordinate-candidate. It performs a direct all-pairs score replay at the end. The implementation uses `O(M^2)` pair/update storage, arbitrary-precision integers, and still needs bit-cost accounting and differential validation; this optimization does not remove the later mode, recursion, or interpolation obligations.

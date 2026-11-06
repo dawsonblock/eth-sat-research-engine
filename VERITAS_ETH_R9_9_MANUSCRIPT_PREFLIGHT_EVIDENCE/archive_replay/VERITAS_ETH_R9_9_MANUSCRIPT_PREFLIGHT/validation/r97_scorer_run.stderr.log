@@ -1,0 +1,24 @@
+tiny-r2-a1: equal=True python=0.0001s direct=0.0001s batch=0.0001s
+small-r2-a1: equal=True python=0.0047s direct=0.0008s batch=0.0007s
+small-r3-a1: equal=True python=0.0056s direct=0.0009s batch=0.0005s
+medium-r2-a2: equal=True python=0.0462s direct=0.0035s batch=0.0016s
+medium-r3-a2: equal=True python=0.0533s direct=0.0047s batch=0.0013s
+wrote <repository>/validation/r91_benchmarks.json
+        0.44 real         0.42 user         0.02 sys
+            26017792  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+                4079  page reclaims
+                  11  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   8  voluntary context switches
+                 181  involuntary context switches
+          6199128154  instructions retired
+          1463561640  cycles elapsed
+            15778200  peak memory footprint

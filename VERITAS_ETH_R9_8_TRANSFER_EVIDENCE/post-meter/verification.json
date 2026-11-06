@@ -1,0 +1,327 @@
+{
+  "active_source_recursion": "NOT_IMPLEMENTED",
+  "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "branch": "dev/r9.8-cycle-transfer",
+  "commit": "1b47f9dd8e5f3ff7f633458e60a2bddb73246e37",
+  "computational_status": "PASS_FINITE_CYCLE_TRANSFER_VALIDATION",
+  "connected_484_full_grid": {
+    "absolute_policy_max_calls": 2000000,
+    "evidence_lower_bound_scope": "FIXED_JSON_GROUP_RECORD_SHAPES_ONLY_EXCLUDES_ALL_CHILD_DATA_AND_RECOVERY; DOES_NOT_PROVE_100M_CAP_EXCEEDED",
+    "field_reinterpretation_permitted": false,
+    "input_field_degree": 2,
+    "measured_single_point_is_not_all_grid_evidence": true,
+    "measured_single_scalar_point_certificate_bytes": 29539153,
+    "minimum_cumulative_raw_group_record_bytes": 81832960,
+    "minimum_raw_group_record_bytes_each": 55,
+    "minimum_residue_field_degree": 11,
+    "point_count": 2906,
+    "projected_calls_if_same_layout_and_all_local_admissions_pass": 3599083,
+    "required_distinct_points_per_node": 1453,
+    "status": "NOT_RUN_INCONCLUSIVE_UNDER_CURRENT_LIMITS"
+  },
+  "connected_484_point": {
+    "certificate_artifact": "validation/cycle484-nonconstant-point-final.certificate.json",
+    "certificate_bytes": 29539153,
+    "certificate_sha256": "3ba3882fbb2a205c8b2dcfef110ff98bd2bbc8ea22ee07d10b29536552eb02ef",
+    "complete_weighted_tuple_count_decimal": "3776441500356069778560435763411409694297184861727017525652033524666231163582308604354401296047782599753257197132796826782444624121151124635135104751403863177179361090406305114012211883993782485244331203502337867105588595324944624540048446203831976774056129331067162603674214993879087066275211218571251146006077227657802226161401578573986795844229086991169499979637959258559830658619538690470680683629720584485570904196816535395015593360657663132420708902898624918033509840921752929509657051049145491476214362004446736317850190230308721952372459414761853320552250710445038073605474643680641096671148009908649910876800",
+    "cross_modes": 242,
+    "global_tuple_stream_enumerated": false,
+    "group_child_state_calls": 1238,
+    "groups": 512,
+    "node": 1,
+    "packing": {
+      "actual_group_load_bound": "PASS",
+      "occupied_packets": 484,
+      "padded_packets": 262144,
+      "source_padded_packet_bound": "FAIL"
+    },
+    "parent_digest": "8312dad79db3c749eb5125d1919f0bf4b8f62c3eb55a03a0559d083a582a0928",
+    "point_precision": 31488,
+    "policy": {
+      "max_calls": 300000,
+      "max_certificate_bytes": 100000000,
+      "max_depth": 16,
+      "max_edges": 1024,
+      "max_factor_bits": 16,
+      "max_precision": 65536,
+      "max_seconds": 1200,
+      "max_tuples": 4096,
+      "max_work": 1000000000
+    },
+    "potential_binary_tuple_count_decimal": "7067388259113537318333190002971674063309935587502475832486424805170479104",
+    "replay_artifact": "validation/cycle484-nonconstant-point-replay.json",
+    "result_artifact": "validation/cycle484-nonconstant-point-final.json",
+    "result_coordinates_hex": [
+      "0x5efc0d822f336641d9c3c2128603d79fe3e310d608ac767e34d1ec87c80efb8ff5dc2ba788b5d96156659d2dade9cb53f0bed057b475324acbb4f1d0b7d5e3c90f123bdf302d52916274073d5d841e11ac4713a6df6f29d3ebf964798cdc6e9a14935df2749c6bdd71f77a4612e1c841ceba40afbd99f836862c6ad436c77d09a57b70f75da2c9728e2fb012eb05a2a7340bda8ef3b478b8d86105cd36b6fc220b0eda24f9f7cf9bd850c3b2530a6f3b11431d77453edef05c1bedced7d8b64fa370641199b70f1e6a0a03ebc1957a801df4f1e680c7bbadd179f43503364d867c337d80a00b8a53c8c8e992062d6b3862f7b18519b0f7010a1636f9fb92cb4831c06afbae787f6e24fff4637b70780baa80553d5879ba7a10fe597ec223aab227c29be303be5470bc6a69bdfc6d453b5f022e13ebd8bd4f424a86dc78ae921fe326f6d541955969",
+      "0x0"
+    ],
+    "scope": "ONE_POINT_ONLY_PARENT_CONTRACTION_NOT_RECOVERED",
+    "standalone_replay": "PASS",
+    "status": "PASS_FINITE_SCALED_CYCLE_TRANSFER_POINT",
+    "total_calls": 1239,
+    "wires": 484,
+    "zeta": [
+      1,
+      0
+    ]
+  },
+  "full_container_pytest": "NOT_RUN",
+  "full_mode_cycle_matching22": {
+    "actual_calls": 9899,
+    "certificate_artifact": "validation/mode-cycle22-recovery.certificate.json",
+    "certificate_bytes": 1780813,
+    "certificate_sha256": "850d82558edf79008f13c41ed76afb3771040480b331c7bc04944e5fe44b9600",
+    "complete_weighted_tuples_per_nonzero_point": 605159936,
+    "compressed_point_bytes": 1157125,
+    "cumulative_uncompressed_bytes": 44661427,
+    "extension_degree": 7,
+    "full_grid_standalone_replay": "PASS_134_POINT_CERTIFICATES",
+    "global_tuple_stream_enumerated": false,
+    "group_mode_graph": "SIMPLE_3_CYCLE",
+    "groups": 64,
+    "layout_digest": "84b5bc86e8323d9f581de0c3f011f6f8e839b48a91aa84c18e07258a4f85f9f7",
+    "original_network": "DISCONNECTED_MATCHING",
+    "packing": {
+      "actual_group_load_bound": "PASS",
+      "occupied_packets": 22,
+      "padded_packets": 4096,
+      "source_padded_packet_bound": "FAIL"
+    },
+    "parent_contraction_recovered": true,
+    "parent_digest": "6f673122d9abcac6c44d4755325b4566375624e3c1093073a157cd857307e179",
+    "point_count": 134,
+    "point_precision": 1536,
+    "points_per_node": 67,
+    "policy": {
+      "max_calls": 300000,
+      "max_certificate_bytes": 100000000,
+      "max_depth": 16,
+      "max_edges": 1024,
+      "max_factor_bits": 16,
+      "max_precision": 65536,
+      "max_seconds": 1200,
+      "max_tuples": 4096,
+      "max_work": 1000000000
+    },
+    "potential_binary_tuple_count": 8,
+    "replay_artifact": "validation/mode-cycle22-recovery-replay.json",
+    "result_artifact": "validation/mode-cycle22-recovery.json",
+    "retained_modes_per_nonzero_point": 3,
+    "root_result_decimal": "1174562876521148458974062689",
+    "status": "PASS_FINITE_SCALED_CYCLE_TRANSFER_RECOVERY",
+    "target_precision": 128,
+    "wires": 22
+  },
+  "generated_utc": "2026-11-05T09:29:50.558828+00:00",
+  "hosted_ci": "NOT_RUN",
+  "implementation_source_sha256": "67959db3d49f8d59caf82ad900eb9977f39356bcd8da023a1ad14306ae3afb5a",
+  "inherited": {
+    "allowed_lean_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "checks": 12,
+    "lean_axiom_audits_pass": true,
+    "lean_modules": 41,
+    "report": "inherited/inherited_checks_summary.json",
+    "status": "PASS"
+  },
+  "new_transfer_lean_refinement": "NOT_PROVED",
+  "paper": {
+    "commit": "4eaee87548250b2682affda7d05d947c05554bae",
+    "files": {
+      "main_full_version.tex": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa",
+      "quantitative-circuits.tex": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11",
+      "quantitative-contraction.tex": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+      "quantitative-reduction.tex": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a"
+    },
+    "labels": {
+      "eq:tensor-hermite-origin": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 280,
+        "last_line": 285,
+        "statement_sha256": "835d75e9250321435ea54e3fd66434e6b752d1bbac78b0f52541d4cf7509f148"
+      },
+      "eq:tensor-mode-budget": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 453,
+        "last_line": 455,
+        "statement_sha256": "55f1af17554aacabd25d0f3e2e06c63131c8457b6ae9431db2b305e9cca2e08c"
+      },
+      "eq:tensor-mode-expansion": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 418,
+        "last_line": 425,
+        "statement_sha256": "81df762a158145416a0c7edbe8793309a68d0aecce0924d6b8806e7a3c2e92c9"
+      },
+      "eq:tensor-packing-conditions": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 106,
+        "last_line": 109,
+        "statement_sha256": "e7989632209387ee3e7b14b0b0c762487bb8a9f9cf4a580888681325a43c7c2e"
+      },
+      "eq:tensor-parameters": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 87,
+        "last_line": 91,
+        "statement_sha256": "2347e08f794a10a7a1dc2275e2070d723142f04b71cd6cb81de98819e332816d"
+      },
+      "eq:tensor-recursion-identity": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 516,
+        "last_line": 521,
+        "statement_sha256": "9b254c1256f4c10de8cb180391048605b8f1741f95e6e8872c4018427c9a5c2e"
+      },
+      "lem:tapered-hermite": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 250,
+        "last_line": 269,
+        "statement_sha256": "1b737767366c0759f5ccafed0ce7c8efda85fc4ec8c6010316ddee990eb7794c"
+      },
+      "lem:tensor-packets": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 114,
+        "last_line": 130,
+        "statement_sha256": "cfd9c6331836c17a911c52a57fc7e8e2e1c12d22895960ee42f82ba364753c87"
+      },
+      "subsec:tensor-children": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 485,
+        "last_line": 556,
+        "statement_sha256": "bc4ca6c77cdb628b3b2ec0906cde6936364871859bc4fd90b46f7fd53b6aef10"
+      },
+      "subsec:tensor-cost": {
+        "file": "quantitative-contraction.tex",
+        "first_line": 558,
+        "last_line": 619,
+        "statement_sha256": "5c1cabb59aed93b0dbfa239be44bdcd4239e7fd0bb3dd08ead09e02b6a492d73"
+      }
+    },
+    "status": "PIN_AND_LABELS_CHECKED"
+  },
+  "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "portable": {
+    "commands": 20,
+    "docker": {
+      "cpus": 2,
+      "memory": "1g",
+      "network": "none",
+      "pids": 256
+    },
+    "docker_python": "Python 3.12.14",
+    "extra_source_seal": "PASS",
+    "report": "portable/portable_summary.json",
+    "status": "PASS",
+    "wheel_python": "Python 3.10.19"
+  },
+  "preserved_pre_freeze_attempts": "../targeted_pre_freeze_attempts.json",
+  "pytest": {
+    "artifacts": {
+      "cpp_build.log": "0c32a76f7bc62a5842bdac109011e8f46e5b81254fe3a62660a3cc9658111855",
+      "cpp_configure.log": "a2c7e168a6dc12f87f432f17269927fcea9d1b3e635594b99406ebb9c02ed2df",
+      "cpp_selftest.log": "c557cd8196381ea5880ed12288734b394a554bd932636c20e5f3052dae19d55c",
+      "pytest.log": "221b6efd3b28bb66e3847efa299a1c89227f58a4feb29851bb673d8539355df3",
+      "pytest.xml": "071ad0351d342f1503d7fcd0ee1ee2dc44941affa9716e2811ecd14c4cb38b9e"
+    },
+    "cpp_commands": [
+      {
+        "command": [
+          "cmake",
+          "-S",
+          "cpp",
+          "-B",
+          "build/cpp",
+          "-DCMAKE_BUILD_TYPE=Release"
+        ],
+        "exit_code": 0,
+        "log": "cpp_configure.log",
+        "name": "cpp_configure",
+        "seconds": 0.28861425002105534
+      },
+      {
+        "command": [
+          "cmake",
+          "--build",
+          "build/cpp",
+          "-j2"
+        ],
+        "exit_code": 0,
+        "log": "cpp_build.log",
+        "name": "cpp_build",
+        "seconds": 0.23695841699372977
+      },
+      {
+        "command": [
+          "./build/cpp/veritas_d3_selftest"
+        ],
+        "exit_code": 0,
+        "log": "cpp_selftest.log",
+        "name": "cpp_selftest",
+        "seconds": 0.12898737494833767
+      }
+    ],
+    "cwd": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER",
+    "environment": {
+      "LEAN_BIN": "/Users/dawsonblock/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "src"
+    },
+    "errors": [],
+    "failures": [],
+    "full_run": {
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "--junitxml=/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_TRANSFER_EVIDENCE/post-meter/pytest.xml"
+      ],
+      "exit_code": 0,
+      "log": "pytest.log",
+      "name": "pytest",
+      "seconds": 935.8761724589858
+    },
+    "passed": 1845,
+    "python": "3.12.0",
+    "schema": "VERITAS_R98_TRANSFER_PYTEST_V1",
+    "skipped": [
+      "tests.test_r91_cpp_backend::test_pybind_sequence_and_boolean_caps_when_available",
+      "tests.test_r91_cpp_backend::test_binding_rejects_misshapen_assignment_tables"
+    ],
+    "source_after": "67959db3d49f8d59caf82ad900eb9977f39356bcd8da023a1ad14306ae3afb5a",
+    "source_before": "67959db3d49f8d59caf82ad900eb9977f39356bcd8da023a1ad14306ae3afb5a",
+    "status": "PASS",
+    "tests": 1847
+  },
+  "release": {
+    "archive_sha256": "8a3703554579fc9d85c268c4257cbde449bdcb499762472631e90d314718c8ed",
+    "manifest_file_hashes": 1127,
+    "report": "release_summary.json",
+    "scope": "FILE_INTEGRITY_AND_CLEAN_EXTRACTION_ONLY",
+    "status": "PASS"
+  },
+  "review_status": "PASS_FINITE_REVIEW",
+  "scaled_experiment": true,
+  "schema": "VERITAS_R98_CYCLE_TRANSFER_REVIEW_V1",
+  "scope": {
+    "child_execution": "FOUR_EDGE_LEAVES_ONLY",
+    "creation_precision": "CREATION_RESIDUE_BEFORE_LIFT",
+    "full_grid_verifier": "REPLAY_EVERY_POINT_AND_CHECK_RATIONAL_RECOVERY",
+    "global_weighted_tuple_stream_enumerated": false,
+    "group_mode_graph": "ONE_SIMPLE_CYCLE_OR_NO_CROSS_MODES",
+    "independent_verifier": "ACTUAL_CHILD_RECORDS_AND_RECIPES_PLUS_INDEPENDENT_LOCAL_FACTORS_MODE_ELIMINATION_AND_HALF_EDGE_POINT",
+    "mode_sum": "COMPLETE_SUM_ALGEBRAICALLY_AGGREGATED",
+    "old_full_tuple_driver_changed": false,
+    "packet": "SINGLETON_L2_ONLY",
+    "source_group_schedule": 64,
+    "transfer_group_count": "FINITE_SCALED_64_TO_1024"
+  },
+  "semantics": "FINITE_SCALED_EXPERIMENT",
+  "source_eligible": false,
+  "source_qualified": false,
+  "source_schedule_changed": false,
+  "theorem_complexity_proven": false,
+  "theorem_mode_enabled": false,
+  "universal_python_refinement": false
+}

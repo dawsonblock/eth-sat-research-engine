@@ -1,0 +1,1938 @@
+{
+  "status": "PASS_ALL_134_INDEPENDENT_CAUCHY_POINT_VALUES",
+  "implementation_source_sha256": "8c573334553c18e65be712e85e1176e7dc1ffee32a0ba14dbf1693db8410002e",
+  "formula": "W(T)=-(T+2)(T+1)(T-1)/2; F(T)=(24+7W(T))^22",
+  "method": "external validation observer; independent ring arithmetic at p_t+1 before exact division by two",
+  "production_answers_substituted": false,
+  "points": [
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": -1,
+      "zeta": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "precision": 1536,
+      "equality": true
+    },
+    {
+      "node": 1,
+      "zeta": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "precision": 1536,
+      "equality": true
+    }
+  ],
+  "run": {
+    "status": "PASS_FINITE_STREAMED_TAPERED_RECURSION",
+    "result": [
+      [
+        645590698195138073036733040138561,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "parent_digest": "aedc90e8d03af751b236ffae8275c7cb41cde7ba565fa721904c6664a6cc4d21",
+    "implementation_source_sha256": "8c573334553c18e65be712e85e1176e7dc1ffee32a0ba14dbf1693db8410002e",
+    "schedule": [
+      [
+        1,
+        1
+      ]
+    ],
+    "max_points": 256,
+    "cache": {
+      "hits": 8442,
+      "misses": 135,
+      "evictions": 0,
+      "peak_payload_bytes": 142501,
+      "max_payload_bytes": 1000000,
+      "python_object_overhead_included": false
+    },
+    "requests": 8577,
+    "ledger": {
+      "actual_calls": 135,
+      "maximum_depth": 1,
+      "point_evaluations": 134,
+      "tuples": 134,
+      "transitions": 8576,
+      "nonshrinking_children": 0,
+      "work_units": 8747793,
+      "elapsed_seconds": 56.7185322920559,
+      "hard_memory_limit_enforced": false,
+      "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+      "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED"
+    },
+    "evidence_chain": "9c06410935b42f594689084ca66a602ee193b13a23442a7dcb18f1fd1b1f6511",
+    "evidence_bytes": 8293909,
+    "evidence_stream_written": false,
+    "source_tapered_functional_used": true,
+    "original_weighted_stream_enumerated": false,
+    "source_qualified": false,
+    "theorem_mode_enabled": false
+  },
+  "source_qualified": false
+}

@@ -1,0 +1,145 @@
+{
+  "schema": "VERITAS_R97_RELEASE_QUALIFICATION_V1",
+  "status": "PASS_FINITE_RELEASE_GATES_THEOREM_BLOCKED",
+  "version": "3.8.2.post97",
+  "python_tests": {
+    "executed_passes": 1456,
+    "skips": 0,
+    "command_elapsed_seconds": 381.28875212499406
+  },
+  "lean": {
+    "modules": 41,
+    "status": "KERNEL_CHECKED_MODEL_ONLY",
+    "concrete_bridge_fixtures": 16,
+    "universal_executable_refinement": false
+  },
+  "cpp": {
+    "candidate_score_comparisons": 1296,
+    "independent_certificate_replays": 12,
+    "status": "FINITE_DIFFERENTIAL_TESTED",
+    "formal_refinement": false
+  },
+  "grid": {
+    "status": "FINITE_GRID_VERIFIED",
+    "points_checked": 116,
+    "points_total": 116,
+    "tuples": 452,
+    "group_contractions": 28928,
+    "distinct_group_descriptors_with_precision": 962,
+    "maximum_child_wires": 4,
+    "independent_reference_work": 12033856,
+    "newton_interpolations": 4,
+    "coordinate_recoveries": 5,
+    "source_active": false,
+    "result": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "certificate_sha256": "3f10556d85b7a7ed3d5f65739afc8087f0a615213d8267aec05551e445d4803a"
+  },
+  "boundary_matrix": {
+    "cases": 15,
+    "status": "PASS_FINITE_MATRIX",
+    "strict_refusals": [
+      {
+        "family": "dense",
+        "wires": 14,
+        "status": "INCONCLUSIVE_RESOURCE_LIMIT"
+      },
+      {
+        "family": "dense",
+        "wires": 16,
+        "status": "INCONCLUSIVE_RESOURCE_LIMIT"
+      }
+    ],
+    "all_results_match": true
+  },
+  "wheel": {
+    "status": "PASS_DISTRIBUTABLE_WHEEL",
+    "wheel": "veritas_eth-3.8.2.post97-py3-none-any.whl",
+    "sha256": "215ad67e77c569b7ace853b7b4f28b4a1fbebd9ae64c08d026eba542682f2f2d",
+    "validation": {
+      "status": "PASS_INSTALLED_FINITE_EXECUTION",
+      "package_version": "3.8.2.post97",
+      "python": "3.12.0",
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "one_wire_residue": 7,
+      "dense_16_wire_residue": 65536,
+      "source_pin_status": "PIN_AND_LABELS_CHECKED",
+      "wall_seconds": 1.3081674580462277,
+      "peak_process_rss_bytes": 31162368,
+      "theorem_mode_enabled": false
+    },
+    "elapsed_seconds": 2.192384249996394,
+    "exit_code": 0
+  },
+  "source": {
+    "status": "PIN_BYTES_MATCH_UPSTREAM",
+    "files": [
+      {
+        "file": "main_full_version.tex",
+        "sha256": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa",
+        "upstream_sha256": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa",
+        "match": true
+      },
+      {
+        "file": "quantitative-circuits.tex",
+        "sha256": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11",
+        "upstream_sha256": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11",
+        "match": true
+      },
+      {
+        "file": "quantitative-contraction.tex",
+        "sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+        "upstream_sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+        "match": true
+      },
+      {
+        "file": "quantitative-reduction.tex",
+        "sha256": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a",
+        "upstream_sha256": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a",
+        "match": true
+      }
+    ],
+    "commit": "4eaee87548250b2682affda7d05d947c05554bae"
+  },
+  "negative_grid_cases": 8,
+  "formal_blockers": [
+    "universal_executable_refinement",
+    "source_active_child_generation_and_mode_completeness",
+    "recursive_creation_precision_and_Hermite_composition",
+    "source_active_shrinkage_and_termination",
+    "arbitrary_density_reduction",
+    "complete_bit_time_and_peak_space_bound"
+  ],
+  "theorem_mode_enabled": false,
+  "source_active_execution_implemented": false,
+  "complexity_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "hosted_ci": "NOT_RUN",
+  "github_branch_protection": "NOT_INSPECTED",
+  "archive_verification": "REFER_TO_EXTERNAL_SHA256_AND_VERIFICATION_SIDECARS",
+  "evidence_files": {
+    "r97_full_final.json": "55f16c16d5a95f078fff342c066d41ef0f92a2fef092087c6ed68afb01822418",
+    "r97_lean.json": "e62ed53072b68c86bd78782155307e1cecf259a6898248837b9f98e20ec00b45",
+    "r97_aggregate_final.json": "25d145ca36e9756d5495a4203a992053c54aa01ed95d69c816778525c63183b1",
+    "r97_grid_write.json": "195fdcb53bdee42317a7d1aff98c762b3838611c2a4873b54c7bec94e0de9730",
+    "r97_grid_verify.json": "4ed079ae4f29a0b662a9df10b649605ef4f8dfdb44af7f0b851712c694f6690a",
+    "r97_py313_grid.json": "de3fc73def09aa2c2390c3ccc6683cbb3fe241e529ab958f9d15b02825dcaeab",
+    "r97_grid_fault_run.json": "ae0d538702eb8316b151db13b45fdd0892fa95594b2fce594dde665015e4fb83",
+    "r97_cpp.json": "c62d3156297764f094899aa165d02fb2d3e5ba487a6195e7c556a62f4b00be6b",
+    "r97_cpp_build.json": "eea42c966a24bdcb9293eac8073dd0667bf47eb2741600e67a813ef3fdf71c3c",
+    "r97_cpp_native.json": "34a2681717d5fd88b186d8990f750e3efcebd305917a6ad389bbeec7f7625b2f",
+    "r97_r94.json": "c5ddf0f4e1ee5f554c86931527fdb1b597ea8fa1bf0a414634f1d143abb60cfb",
+    "r97_r95.json": "9e669c6ff312f9aa8498de38f56ef876681e586f17fe6fbcef3177959d3058f1",
+    "r97_r96.json": "101a61e44df148097f4e93f83e61d26abb381e5b4a1e02ebae180fef2b51ad5b",
+    "r97_legacy_grid.json": "0861c80717161b56f7eb4c756274952c96c716db82a544093206bbb72c24848c",
+    "r97_v3_write.json": "8419f464a827f4eeccdf8f853c601a2ca5f4cf22d7930b4546a9447be8416079",
+    "r97_v3_replay.json": "67bc5a9e232a165e970093c0341d46ad0b1cdb76c49b41f266156b955c6dd82b",
+    "r97_docker_build.json": "27e058bb38c53366fef6f0af9640bb263a353f78825961a2b76887d7437afb19",
+    "r97_docker_execution.json": "3807a48217f9f26be8bf1314d75d9655927af5c6f4954566d0cea04d84ddb443",
+    "r97_wheel_build_final.json": "6c4f8fe8c670dbec878782d86c6b475109d2a7c32366c50216f9794c2a820ae1"
+  }
+}

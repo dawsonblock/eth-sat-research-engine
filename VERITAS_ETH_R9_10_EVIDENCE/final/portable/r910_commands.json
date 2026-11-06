@@ -1,0 +1,62 @@
+[
+  {
+    "name": "r910_wheel_replay",
+    "command": [
+      "/opt/homebrew/Cellar/python@3.10/3.10.19_1/Frameworks/Python.framework/Versions/3.10/bin/python3.10",
+      "-I",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_10_EVIDENCE/final/portable/installed/r910_replay.py"
+    ],
+    "exit_code": 0,
+    "source_sha256": "b27dc09a233e843d933e329d84df92f3bb94284f7767efff68782a93666e22da"
+  },
+  {
+    "name": "r910_docker_replay",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_10_EVIDENCE/final/portable/installed:/checks:ro",
+      "veritas-eth:r910-numerical-partial",
+      "-I",
+      "/checks/r910_replay.py"
+    ],
+    "exit_code": 0,
+    "source_sha256": "b27dc09a233e843d933e329d84df92f3bb94284f7767efff68782a93666e22da"
+  },
+  {
+    "name": "r910_docker_replay242",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--pids-limit",
+      "256",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_10_EVIDENCE/final/portable/installed:/checks:ro",
+      "veritas-eth:r910-numerical-partial",
+      "-I",
+      "/checks/r910_replay242.py"
+    ],
+    "exit_code": 0,
+    "source_sha256": "b27dc09a233e843d933e329d84df92f3bb94284f7767efff68782a93666e22da"
+  }
+]

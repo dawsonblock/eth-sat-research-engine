@@ -1,0 +1,46 @@
+{
+  "status": "PASS_VALIDATED_FINITE_STREAMING_CORRECTIONS",
+  "implementation_source_sha256": "8c573334553c18e65be712e85e1176e7dc1ffee32a0ba14dbf1693db8410002e",
+  "pytest": {
+    "tests": 1930,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2,
+    "passed": 1928
+  },
+  "inherited_commands": 13,
+  "lean_modules": 41,
+  "portable_commands": 30,
+  "cli_result": [
+    [
+      645590698195138073036733040138561,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "cli_requests": 8577,
+  "cli_actual_calls": 135,
+  "cli_cache": {
+    "evictions": 0,
+    "hits": 8442,
+    "max_payload_bytes": 1000000,
+    "misses": 135,
+    "peak_payload_bytes": 142501,
+    "python_object_overhead_included": false
+  },
+  "cli_points": 134,
+  "cli_evidence_bytes": 8293909,
+  "cli_replay_status": "PASS_INDEPENDENT_STREAMED_RECURSION",
+  "per_point_oracle_status": "PASS_ALL_134_INDEPENDENT_CAUCHY_POINT_VALUES",
+  "source_qualified": false,
+  "theorem_mode_enabled": false,
+  "general_two_active_level_full_tapered_acceptance": "NOT_RUN_RESOURCE_GAP",
+  "bit_time_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "peak_space_bound_status": "COMPLEXITY_NOT_ESTABLISHED",
+  "hard_host_memory_limit_enforced": false,
+  "full_container_pytest": "NOT_RUN"
+}

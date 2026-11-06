@@ -1,0 +1,13 @@
+{
+  "claim": "small finite test evidence only; no ETH runtime theorem or recursive algorithm",
+  "elapsed_s": 1.606,
+  "grid_invariant_checks_including_randomized": 997,
+  "independent_shifted_jets_checked": 519,
+  "local_kernel_2adic_integrality_grid_checks": 30,
+  "max_original_wire_budget": 5,
+  "max_packet_size": 8,
+  "randomized_cnf_networks_checked": 173,
+  "seed": 26081029,
+  "status": "PASS",
+  "version": "0.8.0"
+}

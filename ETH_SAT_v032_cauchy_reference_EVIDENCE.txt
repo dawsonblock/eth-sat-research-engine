@@ -1,0 +1,38 @@
+ETH-SAT v0.32 Cauchy + tapered Hermite reference
+================================================
+
+Archive: ETH_SAT_v032_cauchy_reference.zip
+SHA-256: de824da7637f9c958b8d535a51fac593cd9e027e844ee45a749897449b8f4aa6
+Archive size: 20,027 bytes
+
+Implementation added
+--------------------
+- Exact tapered Hermite schedule q_t and p_t from the October 25 manuscript.
+- Exact construction of E_t(0) and truncated E_t(t+alpha*z) factors.
+- Unit-series inversion modulo each node-specific power of two.
+- Coordinatewise recovery of F(0) modulo the requested precision.
+- Input checks for schedule bounds, active nodes, jet order, vector dimension,
+  canonical residues, unit inverses, and final 2-adic integrality.
+
+Validation
+----------
+- 8/8 tests passed on Python 3.9.25, 3.10.19, and 3.12.13.
+- compileall passed on Python 3.9, 3.10, and 3.12.
+- 25 seeded vector-polynomial reconstructions passed, including packet size
+  L=16, degree bound 248, and local precision up to 1,093 bits.
+- All 81 integer scalar polynomials of degree at most 3 passed for L=2.
+- Cauchy checks: 408 rational-kernel checks, 72 grid matrices, 17,476 local
+  2-adic coefficient checks, 7,440 crossing-mode checks, and 16 tiny
+  two-group factorizations.
+- Final ZIP CRC and every manifest SHA-256 verified. The extracted ZIP passed
+  its command-line self-test and all 8 unit tests on Python 3.9.25.
+
+Scope boundary
+--------------
+This adds a tested reference implementation of tapered Hermite recovery; it
+is not the complete manuscript algorithm. The full coefficient algebra,
+interpolation at all lifted residue-field points, general packing, recursive
+child-network construction, global mode-count theorem, and total bit/time/
+space accounting remain unimplemented. The v0.32 source archive is not in the
+workspace, so this remains a standalone reference and was not integrated into
+that build. No universal SAT or subexponential runtime claim is made.

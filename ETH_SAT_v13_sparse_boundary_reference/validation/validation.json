@@ -1,0 +1,122 @@
+{
+  "runs": [
+    {
+      "label": "python3.9",
+      "runtime": "Python 3.9.6",
+      "self_test": {
+        "arbitrary_dense_permanent_solved": false,
+        "bundled_example": {
+          "coefficients": [
+            "1",
+            "0",
+            "61",
+            "144"
+          ],
+          "permanent_at_one": "206",
+          "permutation_oracle": "MATCH"
+        },
+        "large_cycle_case": {
+          "arithmetic_operations": 3216,
+          "coefficients": [
+            "1",
+            "0",
+            "6",
+            "14",
+            "0",
+            "84",
+            "48",
+            "0",
+            "288"
+          ],
+          "cross_entries": 8,
+          "dimension": 64,
+          "independent_cycle_product": "(1+6*z^2)(1+8*z^3)(1+6*z^3)",
+          "permanent_at_one": "441",
+          "subset_dp_state_visits": 1312,
+          "subset_dp_transition_scans": 656
+        },
+        "randomized_differential": {
+          "cases": 330,
+          "max_cross_entries": 11,
+          "max_dimension": 7,
+          "max_exact_arithmetic_operations": 5719,
+          "max_subset_dp_state_visits": 834,
+          "max_subset_dp_transition_scans": 2574,
+          "seed": 20261031
+        },
+        "resource_caps_fail_closed": true,
+        "schema": "ETH_SAT_V13_SPARSE_BOUNDARY_PERMANENT_REFERENCE",
+        "subexponential_sat_claim": false
+      },
+      "self_test_exit_code": 0,
+      "unit_test_exit_code": 0,
+      "unit_test_summary": [
+        "",
+        "OK"
+      ]
+    },
+    {
+      "label": "python3.10",
+      "runtime": "Python 3.10.19",
+      "self_test": {
+        "arbitrary_dense_permanent_solved": false,
+        "bundled_example": {
+          "coefficients": [
+            "1",
+            "0",
+            "61",
+            "144"
+          ],
+          "permanent_at_one": "206",
+          "permutation_oracle": "MATCH"
+        },
+        "large_cycle_case": {
+          "arithmetic_operations": 3216,
+          "coefficients": [
+            "1",
+            "0",
+            "6",
+            "14",
+            "0",
+            "84",
+            "48",
+            "0",
+            "288"
+          ],
+          "cross_entries": 8,
+          "dimension": 64,
+          "independent_cycle_product": "(1+6*z^2)(1+8*z^3)(1+6*z^3)",
+          "permanent_at_one": "441",
+          "subset_dp_state_visits": 1312,
+          "subset_dp_transition_scans": 656
+        },
+        "randomized_differential": {
+          "cases": 330,
+          "max_cross_entries": 11,
+          "max_dimension": 7,
+          "max_exact_arithmetic_operations": 5719,
+          "max_subset_dp_state_visits": 834,
+          "max_subset_dp_transition_scans": 2574,
+          "seed": 20261031
+        },
+        "resource_caps_fail_closed": true,
+        "schema": "ETH_SAT_V13_SPARSE_BOUNDARY_PERMANENT_REFERENCE",
+        "subexponential_sat_claim": false
+      },
+      "self_test_exit_code": 0,
+      "unit_test_exit_code": 0,
+      "unit_test_summary": [
+        "",
+        "OK"
+      ]
+    }
+  ],
+  "schema": "ETH_SAT_V13_SPARSE_BOUNDARY_VALIDATION",
+  "scope": "finite exact reference prototype; no general SAT complexity claim",
+  "source_sha256": {
+    "ETH_SAT_v13_sparse_boundary_reference.py": "4e10c4ea29d7283a2f872d3ee6e4116625997f5a2ab5a4a673655f9d09fa0a08",
+    "MATHEMATICAL_NOTE.md": "1c5c221e3e70cfbd28105b71de21fdba94ec8c92518e44ffaf72506c9d6d0f62",
+    "README.md": "6688e6c4bb22a9b47575c0b85fc39e9aa0f102ca28d7ed3fd167624730dd0a37",
+    "tests/test_sparse_boundary_permanent.py": "42469c10abc08d1e5229cd2b7ba2df8f226bb3ebf8952eaf975c54ae4394a308"
+  }
+}

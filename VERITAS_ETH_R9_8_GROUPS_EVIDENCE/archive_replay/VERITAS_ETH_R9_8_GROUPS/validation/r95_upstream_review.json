@@ -1,0 +1,52 @@
+{
+  "repository": "openai/math",
+  "commit": "4eaee87548250b2682affda7d05d947c05554bae",
+  "listing": [
+    {
+      "name": "main_full_version.tex",
+      "path": "preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/build/main_full_version.tex",
+      "git_blob_sha1": "f7af85e623b58e0ca9f4b9416916d442defa963a",
+      "bytes": 214857,
+      "local_sha256": "b2e6159d4fb7ea6aa4f89ac15605152b0333a5f7cafe93323492bc20a5c066aa",
+      "blob_matches_local": true
+    },
+    {
+      "name": "quantitative-circuits.tex",
+      "path": "preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/build/quantitative-circuits.tex",
+      "git_blob_sha1": "e25def5eb03ee53feefd3fe480dd5a1293761fae",
+      "bytes": 4152,
+      "local_sha256": "0059668a666a35a6e0a67a7c5ed2e9b504862f4207d86e83ce5b7ab4b23fcc11",
+      "blob_matches_local": true
+    },
+    {
+      "name": "quantitative-contraction.tex",
+      "path": "preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/build/quantitative-contraction.tex",
+      "git_blob_sha1": "51ba54efc29f51bbc0426f848003030da484f354",
+      "bytes": 27544,
+      "local_sha256": "671642d7b53154d92344e8c4be0240f18929632ebcfdf73b07c3e9939b873860",
+      "blob_matches_local": true
+    },
+    {
+      "name": "quantitative-reduction.tex",
+      "path": "preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/build/quantitative-reduction.tex",
+      "git_blob_sha1": "80389ac39d987133b71b2ddc2593e6fcdd99871a",
+      "bytes": 17832,
+      "local_sha256": "0b2b136c4f37ee0583dda40ee0c0d692f4751537d3d18539a389cd467ea8359a",
+      "blob_matches_local": true
+    }
+  ],
+  "scope": {
+    "content": "# The Exponential Time Hypothesis is False\n\nThe following describes the scope of the Lean formalization related to the following accompanying paper(s):\n\n- [The Exponential Time Hypothesis is False](../../preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf)\n\n## Scope\n\nFor fixed $k\\ge2$, Lean proves that a deterministic machine exactly counts satisfying assignments of a canonically encoded $k$-CNF on $n$ variables in time $(L+1)^{O_k(1)}2^{O_k(n(\\log\\log n)^2/\\sqrt{\\log n})}$, where $L$ is the encoding's bit length. At every step, the machine has visited at most $(L+1)^{O_k(1)}$ tape cells in total.\n\nFor $m$ clauses, the October 25 manuscript gives the sharper time bound $(n+m)^{O_k(1)}2^{O_k(n\\log\\log n/\\sqrt{\\log n})}$. When $m\\le Dn$ for fixed $D>0$, this improves to $(n+m)^{O_{k,D}(1)}2^{O_{k,D}(n/\\sqrt{\\log n})}$.\n\n## Comparator links\n\n| Result | Comparator statement |\n| --- | --- |\n| Exact counting and SAT on canonical inputs in subexponential time and polynomial space | [SubexponentialSAT.lean](../ComparatorChallenges/SubexponentialSAT.lean) |\n",
+    "encoding": "utf-8",
+    "sha": "223bbe187394bffca8a2c7ba1656538bfba26e3b",
+    "display_url": "https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/lean/docs/378.md",
+    "display_title": "378.md"
+  },
+  "comparator": {
+    "sha": "a8d5ff3a3e80323675b1f2d1ea611560b783e9ca",
+    "url": "https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/lean/ComparatorChallenges/SubexponentialSAT.lean",
+    "tail": ".move .left => -1\n  | .move .right => 1\n  | .write _ => 0\n\ndef LocatedCfg.monitor {machine : PrimitiveMachine} (c : LocatedCfg machine)\n    (config : machine.Cfg) : LocatedCfg machine :=\n  Sum.elim\n    (fun _ => { c with config })\n    (fun q =>\n      Sum.elim\n        (fun _ => { c with config })\n        (fun targetAction =>\n          let action := targetAction.2\n          let i := machine.scan q\n          let position := c.position i + headDisplacement action\n          { config\n            position := Function.update c.position i position\n            lower := Function.update c.lower i (min (c.lower i) position)\n            upper := Function.update c.upper i (max (c.upper i) position) })\n        (machine.transition q (c.config.tapes (machine.scan q)).head))\n    c.config.state\n\ndef locatedStep (machine : PrimitiveMachine) (c : LocatedCfg machine) :\n    Option (LocatedCfg machine) :=\n  (machine.step c.config).map c.monitor\n\ndef visitedSpace {machine : PrimitiveMachine} (c : LocatedCfg machine) : \u2115 :=\n  \u2211 i, (c.upper i - c.lower i + 1).toNat\n\n/-- One fixed primitive machine exactly counts every bounded-width formula,\ndecides satisfiability, meets the square-root-logarithmic time bound, and uses\nonly polynomially many visited tape cells at every execution prefix. -/\ntheorem exact_count_and_sat (k : \u2115) (hk : 2 \u2264 k) :\n    \u2203 (machine : Computation.PrimitiveMachine)\n      (countTape answerTape : Fin machine.tapeCount)\n      (C A S : \u211d) (d e : \u2115),\n      0 < C \u2227 0 < A \u2227 0 < S \u2227 0 < d \u2227 0 < e \u2227\n      \u2200 (n : \u2115) (F : SAT.CNF (Fin n)), SAT.WidthAtMost k F \u2192\n        \u2203 (time : \u2115) (final : LocatedCfg machine),\n          Computation.Trace (locatedStep machine) time\n            (locatedInit machine (Encoding.encodeCNF F)) final \u2227\n          final.config.tapes countTape =\n            Turing.Tape.mk\u2081 ((countWord (SAT.count F)).map some) \u2227\n          final.config.tapes answerTape =\n            Turing.Tape.mk\u2081 [some (decide (0 < SAT.count F))] \u2227\n          final.config.state = Sum.inl (decide (0 < SAT.count F)) \u2227\n          BinaryArithmetic.toNat (countWord (SAT.count F)) = SAT.count F \u2227\n          (countWord (SAT.count F)).length \u2264 n + 1 \u2227\n          (time : \u211d) \u2264 OAI.Algorithms.SubexponentialSAT.SqrtLog.Statement.runtimeBound C A d\n            (Encoding.formulaBitLength F) n \u2227\n          \u2200 (prefixSteps : \u2115) (intermediate : LocatedCfg machine),\n            prefixSteps \u2264 time \u2192\n            Computation.Trace (locatedStep machine) prefixSteps\n              (locatedInit machine (Encoding.encodeCNF F)) intermediate \u2192\n            (visitedSpace intermediate : \u211d) \u2264\n              S * ((Encoding.formulaBitLength F : \u211d) + 1) ^ e := by\n  sorry\n\nend OAI.Algorithms.SubexponentialSAT.SqrtLogSpace\n"
+  },
+  "checked_at_utc": "2026-11-04",
+  "scope_claims_not_recompiled": true
+}

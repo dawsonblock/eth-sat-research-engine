@@ -1,0 +1,18 @@
+{
+  "command": [
+    "python",
+    "scripts/validate_conditional_expectation_lean.py",
+    "--output",
+    "validation/r9_conditional_expectation_proof.json"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 44.79040929209441,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 1388986368,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_lean.stdout.log",
+  "stderr_log": "r97_lean.stderr.log",
+  "test_summary": ""
+}

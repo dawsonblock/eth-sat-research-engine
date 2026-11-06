@@ -1,0 +1,68 @@
+[
+  {
+    "name": "r98_cpp",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r91_cpp.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_cpp.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.24151795799843967
+  },
+  {
+    "name": "r98_r94",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r94_foundation.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_r94.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 79.86535579198971
+  },
+  {
+    "name": "r98_r95",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r95_recipes.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_r95.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.4091551669407636
+  },
+  {
+    "name": "r98_r96",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_r96.py",
+      "--output",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_r96.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 63.21182145900093
+  },
+  {
+    "name": "r98_v3_write",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_tapered_v4.py",
+      "--write",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_v3.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 14.397576457937248
+  },
+  {
+    "name": "r98_v3_replay",
+    "command": [
+      "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+      "scripts/validate_tapered_v4.py",
+      "--replay",
+      "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_EVIDENCE/r98_v3.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 14.83693587500602
+  }
+]

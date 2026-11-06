@@ -1,0 +1,16 @@
+{
+  "command": [
+    "<user>/.pyenv/versions/3.12.0/bin/python",
+    "scripts/benchmark_r91_scorer.py"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 0.4687122500035912,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 26198016,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r95_cpp_benchmarks.stdout.log",
+  "stderr_log": "r95_cpp_benchmarks.stderr.log",
+  "test_summary": ""
+}

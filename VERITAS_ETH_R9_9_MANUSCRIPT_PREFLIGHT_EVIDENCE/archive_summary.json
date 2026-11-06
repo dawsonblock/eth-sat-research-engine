@@ -1,0 +1,21 @@
+{
+  "status": "PASS_FINITE_ARCHIVE_CHECKS",
+  "archive": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_9_MANUSCRIPT_PREFLIGHT_VALIDATED_FINITE.zip",
+  "bytes": 17816475,
+  "sha256": "627e6bc8d80732409a6a2d167d6c503621d26cc142811bebdc9c921738d07ec6",
+  "source_qualified": false,
+  "checks": [
+    {
+      "name": "source_manifest",
+      "exit_code": 0
+    },
+    {
+      "name": "archive_manifest",
+      "exit_code": 0
+    },
+    {
+      "name": "archive_preflight",
+      "exit_code": 0
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+........................................................................ [  4%]
+........................................................................ [  9%]
+........................................................................ [ 13%]
+........................................................................ [ 18%]
+........................................................................ [ 23%]
+........................................................................ [ 27%]
+........................................................................ [ 32%]
+........................................................................ [ 37%]
+........................................................................ [ 41%]
+............................................s......................s.... [ 46%]
+........................................................................ [ 50%]
+........................................................................ [ 55%]
+........................................................................ [ 60%]
+........................................................................ [ 64%]
+........................................................................ [ 69%]
+........................................................................ [ 74%]
+.....................................................F.................. [ 78%]
+........................................................................ [ 83%]
+........................................................................ [ 88%]
+........................................................................ [ 92%]
+........................................................................ [ 97%]
+.........................................                                [100%]
+=================================== FAILURES ===================================
+___________________ test_verifier_resource_limits_propagate ____________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10c9ad2b0>
+
+    def test_verifier_resource_limits_propagate(monkeypatch):
+        from veritas.research.eth_packing_v26 import implicit
+        from veritas.research.eth_packing_v26.expectation import PackingBudgetExceeded
+        from veritas.research.eth_modes_v27.enumeration import ModeBudgetExceeded
+        from veritas.research.eth_recursive_contraction_v39 import point_modes, point_children
+    
+        def packing_limit(*args, **kwargs):
+            raise PackingBudgetExceeded('packing replay limit')
+    
+        monkeypatch.setattr(implicit, 'construct_implicit_packing', packing_limit)
+        source = {'schema': implicit.SPARSE_MODE_SCHEMA,
+                  'claim': 'FINITE_NONEMPTY_PACKET_VIEW_SPARSE_SLOTS',
+                  'edges': [], 'r': 2, 'a': 1}
+        assert implicit.check_implicit_mode_source(source)['status'] == 'INCONCLUSIVE_RESOURCE_LIMIT'
+        monkeypatch.setattr(implicit, 'check_implicit_packing',
+                            lambda *args, **kwargs: {'valid': False, 'status': 'INCONCLUSIVE_RESOURCE_LIMIT'})
+        with pytest.raises(PackingBudgetExceeded):
+            implicit.sparse_active_packet_view(object())
+    
+        def mode_limit(*args, **kwargs):
+            raise ModeBudgetExceeded('mode replay limit')
+    
+        monkeypatch.setattr(point_modes, '_source_check', mode_limit)
+        cert = {'schema': point_modes.SCHEMA, 'claim': point_modes.CLAIM,
+                'scope': point_modes.SCOPE, 'jet_length': 1,
+                'd3_certificate': {}, 'node': 1, 'precision': 2,
+                'extension_degree': 1, 'zeta': [0]}
+>       assert point_modes.check_point_modes(cert)['status'] == 'INCONCLUSIVE_RESOURCE_LIMIT'
+E       AssertionError: assert 'INVALID_POINT_MODES' == 'INCONCLUSIVE_RESOURCE_LIMIT'
+E         
+E         - INCONCLUSIVE_RESOURCE_LIMIT
+E         + INVALID_POINT_MODES
+
+tests/test_tapered_v4.py:330: AssertionError
+- generated xml file: /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_8_MATH_CORRECTIONS_EVIDENCE/pytest.xml -
+=========================== short test summary info ============================
+FAILED tests/test_tapered_v4.py::test_verifier_resource_limits_propagate - As...

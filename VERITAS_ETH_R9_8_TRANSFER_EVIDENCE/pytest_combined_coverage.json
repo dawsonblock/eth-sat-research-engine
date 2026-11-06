@@ -1,0 +1,37 @@
+{
+  "artifacts": {
+    "pytest.log": "4f1502aa6b3af7b59bbb3c6399c903d68b4886af30b92e7df2d26f24e475bb16",
+    "pytest.xml": "6f74b5efaff2a18e394f8db46ecc704248b102a0b0582b13d5e84f707d17237e",
+    "pytest_post_collection.log": "bd96185af4b0515dc1f4accbd7af8c9f87d2434d2a462e952c85a0b5584960d1",
+    "pytest_post_collection.xml": "c156501ca35a5ca6da0711cb2ee8d89272cbf094d655108f0afb7b42d9da0e67",
+    "pytest_summary.json": "c2f7d3d5deb717691825afb919d9f9ff466449a2158a3dd355f85640908afdd1"
+  },
+  "effective_unique_cases": {
+    "passed": 1841,
+    "skipped": 2,
+    "tests": 1843,
+    "unresolved_failures": 0
+  },
+  "full_run": {
+    "artifact": "pytest_summary.json",
+    "raw_failures": 0,
+    "raw_passed": 1838,
+    "raw_skipped": 2,
+    "raw_tests": 1840
+  },
+  "interpretation": "The unmodified full run passed its originally collected tests. Three subsequently added tests were passed separately; raw full-suite numbers are not relabeled.",
+  "post_collection_run": {
+    "added_after_full_collection": {
+      "tests.test_cycle_transfer_shared_budget::test_preexisting_call_reduces_available_full_grid_budget": "PASS",
+      "tests.test_transfer_verify::test_rehashed_child_with_changed_packet_coefficient_is_rejected": "PASS",
+      "tests.test_transfer_verify::test_same_count_substitution_of_local_states_is_rejected": "PASS"
+    },
+    "artifact": "pytest_post_collection.xml",
+    "cases": 17,
+    "log": "pytest_post_collection.log",
+    "passed": 17
+  },
+  "schema": "VERITAS_R98_TRANSFER_COMBINED_TEST_COVERAGE_V1",
+  "source_binding": "754269972a90627c6d4e9f2e18ed17df03fbabb7ac5c70a5508a9865af56ee41",
+  "status": "PASS_FULL_RUN_PLUS_POST_COLLECTION_CASES"
+}

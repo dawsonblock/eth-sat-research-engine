@@ -1,0 +1,24 @@
+[
+  {
+    "status": "FINITE_SYMBOLIC_CAUCHY_IDENTITIES_CHECKED",
+    "packet_size": 2,
+    "precision": 7,
+    "jet_order": 6,
+    "equality_entries_checked": 4,
+    "crossings_checked": 4,
+    "modes_checked": 24,
+    "mode_coefficients_checked": 144,
+    "full_recursive_theorem_proven": false
+  },
+  {
+    "status": "FINITE_SYMBOLIC_CAUCHY_IDENTITIES_CHECKED",
+    "packet_size": 4,
+    "precision": 7,
+    "jet_order": 6,
+    "equality_entries_checked": 16,
+    "crossings_checked": 48,
+    "modes_checked": 288,
+    "mode_coefficients_checked": 1728,
+    "full_recursive_theorem_proven": false
+  }
+]

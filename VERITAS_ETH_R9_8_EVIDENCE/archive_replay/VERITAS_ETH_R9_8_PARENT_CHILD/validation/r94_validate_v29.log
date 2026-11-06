@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "seed": 20261031,
+  "tapered_integer_polynomial_exact_cases": 240,
+  "extension_mode_certificate_cases": 288,
+  "independent_rational_Cauchy_entry_checks": 720,
+  "claims_not_established": [
+    "D.4.4 geometric tile expansion over full extension ring",
+    "implicit recursive child contraction",
+    "subexponential runtime"
+  ]
+}

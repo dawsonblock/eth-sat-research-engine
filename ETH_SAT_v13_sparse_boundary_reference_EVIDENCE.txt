@@ -1,0 +1,8 @@
+ETH-SAT v1.3 sparse-boundary permanent reference artifact
+========================================================
+Archive: ETH_SAT_v13_sparse_boundary_reference.zip
+SHA-256: 1914891650f159ea7859a6d930821c09045e29c2d6516ac548696721d5b875ab
+Archive size: 11248 bytes
+Contents: exact reference implementation, coefficient identity proof note, tests, validation JSON, SHA-256 manifest.
+Extracted ZIP check: passed using Python 3.9.6; unit test summary: Ran 6 tests in 1.113s |  | OK.
+Scope: block-diagonal B plus k explicitly nonzero cross-block entries D; computes coefficients of per(B+zD) exactly. This does not solve arbitrary dense permanents or establish a general subexponential SAT algorithm.

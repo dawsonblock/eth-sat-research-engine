@@ -1,0 +1,18 @@
+{
+  "command": [
+    "<user>/.pyenv/versions/3.12.0/bin/python",
+    "scripts/validate_tapered_v4.py",
+    "--replay",
+    "validation/r95_eight_wire_v3.json"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 15.671206708066165,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 210632704,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r95_eight_wire_replay.stdout.log",
+  "stderr_log": "r95_eight_wire_replay.stderr.log",
+  "test_summary": ""
+}

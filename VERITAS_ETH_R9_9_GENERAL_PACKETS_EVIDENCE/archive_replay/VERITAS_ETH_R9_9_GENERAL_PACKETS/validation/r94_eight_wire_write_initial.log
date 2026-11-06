@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "<repository>/scripts/validate_tapered_v4.py", line 15, in <module>
+    from veritas.core.cnf import CNF
+ModuleNotFoundError: No module named 'veritas'

@@ -1,0 +1,8 @@
+{"name": "wheel_build", "exit_code": 0, "seconds": 8.57}
+{"name": "venv", "exit_code": 0, "seconds": 2.7}
+{"name": "wheel_install", "exit_code": 0, "seconds": 0.89}
+{"name": "wheel_packet_fix", "exit_code": 0, "seconds": 0.44}
+{"name": "wheel_math_corrections", "exit_code": 0, "seconds": 2.92}
+{"name": "wheel_shrinking_installed", "exit_code": 0, "seconds": 59.1}
+{"name": "wheel_general_installed", "exit_code": 0, "seconds": 89.93}
+{"name": "wheel_groups_installed", "exit_code": 0, "seconds": 37.56}

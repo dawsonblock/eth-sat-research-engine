@@ -1,0 +1,13 @@
+{
+  "python": "3.12.0",
+  "records": [
+    {
+      "command": "python3 scripts/smoke.py",
+      "exit_code": 1,
+      "status": "FAIL",
+      "wall_seconds": 0.04782333294861019,
+      "log": "validation/r94_smoke.log"
+    }
+  ],
+  "complete": false
+}

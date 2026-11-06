@@ -1,0 +1,8 @@
+{
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "python": "3.12.0 (main, Apr 26 2026, 15:36:24) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "checker_source_sha256": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702",
+  "timing_scope": "SHARED_HOST_WITH_CONCURRENT_VALIDATION_JOBS_NOT_CONTROLLED_BENCHMARKS",
+  "producer_r910_sha256": "b27dc09a233e843d933e329d84df92f3bb94284f7767efff68782a93666e22da",
+  "recorded_utc": "2026-11-06T06:01:48.959164+00:00"
+}

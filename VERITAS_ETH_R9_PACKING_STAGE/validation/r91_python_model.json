@@ -1,0 +1,394 @@
+{
+  "schema": "VERITAS_ETH_R91_PYTHON_MODEL_DIFFERENTIAL_V1",
+  "claim": "LEAN_TRANSCRIPTION_MATCHES_CPYTHON_ON_A_CORPUS",
+  "qualification": "Evidence about the CPython -> Lean-transcription boundary only. It does not prove the score identity with concreteD3ScoreCandidate.",
+  "lean_binary": "lean",
+  "lean_binary_path_recorded": false,
+  "lean_version_output": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "compiled_modules": [
+    "ConditionalExpectationAverage",
+    "ConcreteD3ConditionalExpectation",
+    "D3VarianceBound",
+    "D3PotentialIdentity",
+    "D3CollisionBridge",
+    "D3InitialScore",
+    "ConditionalExpectationSelection",
+    "D3SelectionBridge",
+    "D3CanonicalSequence",
+    "D3StateInvariants",
+    "D3ParentScoreIndependence",
+    "D3ChildTransition",
+    "D3RealizedLoads",
+    "D3ClassAccounting",
+    "D3VarianceAlgebra",
+    "D3SymbolPorts",
+    "D3PythonOrder",
+    "D3PythonScoreModel"
+  ],
+  "model_sha256": "21667cf11bb266c5b15156c349bee779b5b2be1ed12639252d7e293167e00d92",
+  "streaming_sha256": "002409180ce0a5bd334821f8a0725a50ee840d2064390ec01e24732b54255f33",
+  "corpus_source_sha256": "579c28ab8e1509b475975bfbac9cdf6a1b1833fbc0a6a0729675751a34d972f3",
+  "elapsed_seconds": 34.311683667008765,
+  "cases": 12,
+  "mismatches": 0,
+  "all_equal": true,
+  "records": [
+    {
+      "case": 0,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "r": 2,
+      "a": 1,
+      "vertex": [
+        "",
+        -1
+      ],
+      "label": [],
+      "partial_entries": 0,
+      "lean_score": 22,
+      "python_score": 22,
+      "equal": true
+    },
+    {
+      "case": 1,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "r": 2,
+      "a": 1,
+      "vertex": [
+        "R",
+        0
+      ],
+      "label": [
+        0
+      ],
+      "partial_entries": 0,
+      "lean_score": 22,
+      "python_score": 22,
+      "equal": true
+    },
+    {
+      "case": 2,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "r": 2,
+      "a": 1,
+      "vertex": [
+        "R",
+        1
+      ],
+      "label": [
+        1
+      ],
+      "partial_entries": 0,
+      "lean_score": 22,
+      "python_score": 22,
+      "equal": true
+    },
+    {
+      "case": 3,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "r": 2,
+      "a": 1,
+      "vertex": [
+        "C",
+        0
+      ],
+      "label": [
+        0
+      ],
+      "partial_entries": 0,
+      "lean_score": 22,
+      "python_score": 22,
+      "equal": true
+    },
+    {
+      "case": 4,
+      "edges": [
+        [
+          0,
+          0
+        ]
+      ],
+      "r": 3,
+      "a": 2,
+      "vertex": [
+        "R",
+        0
+      ],
+      "label": [
+        1,
+        2
+      ],
+      "partial_entries": 0,
+      "lean_score": 81,
+      "python_score": 81,
+      "equal": true
+    },
+    {
+      "case": 5,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "r": 2,
+      "a": 1,
+      "vertex": [
+        "C",
+        0
+      ],
+      "label": [
+        1
+      ],
+      "partial_entries": 0,
+      "lean_score": 16,
+      "python_score": 16,
+      "equal": true
+    },
+    {
+      "case": 6,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "r": 2,
+      "a": 1,
+      "vertex": [
+        "R",
+        2
+      ],
+      "label": [
+        0
+      ],
+      "partial_entries": 1,
+      "lean_score": 10,
+      "python_score": 10,
+      "equal": true
+    },
+    {
+      "case": 7,
+      "edges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "r": 2,
+      "a": 2,
+      "vertex": [
+        "R",
+        2
+      ],
+      "label": [
+        1,
+        0
+      ],
+      "partial_entries": 6,
+      "lean_score": 32,
+      "python_score": 32,
+      "equal": true
+    },
+    {
+      "case": 8,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "r": 2,
+      "a": 2,
+      "vertex": [
+        "",
+        -1
+      ],
+      "label": [
+        0,
+        0
+      ],
+      "partial_entries": 4,
+      "lean_score": 96,
+      "python_score": 96,
+      "equal": true
+    },
+    {
+      "case": 9,
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "r": 3,
+      "a": 1,
+      "vertex": [
+        "R",
+        0
+      ],
+      "label": [
+        0
+      ],
+      "partial_entries": 3,
+      "lean_score": 83,
+      "python_score": 83,
+      "equal": true
+    },
+    {
+      "case": 10,
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "r": 3,
+      "a": 1,
+      "vertex": [
+        "R",
+        0
+      ],
+      "label": [
+        0
+      ],
+      "partial_entries": 4,
+      "lean_score": 75,
+      "python_score": 75,
+      "equal": true
+    },
+    {
+      "case": 11,
+      "edges": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "r": 3,
+      "a": 1,
+      "vertex": [
+        "R",
+        1
+      ],
+      "label": [
+        1
+      ],
+      "partial_entries": 1,
+      "lean_score": 37,
+      "python_score": 37,
+      "equal": true
+    }
+  ]
+}

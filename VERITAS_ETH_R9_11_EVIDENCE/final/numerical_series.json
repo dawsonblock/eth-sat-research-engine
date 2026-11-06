@@ -1,0 +1,140 @@
+{
+  "status": "PASS_EXPECTED_OUTCOMES",
+  "source": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702",
+  "commands": [
+    {
+      "name": "fresh235",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "scripts/validate_r910.py",
+        "--output-dir",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/numerical"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "seconds": 219.83805066696368,
+      "source_before": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702",
+      "source_after": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702"
+    },
+    {
+      "name": "replay235",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "veritas.research.parent_child_r910.cli",
+        "examples/r910_matching235.json",
+        "--layout-file",
+        "examples/r910_matching235_layout.json",
+        "--replay-dir",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/sealed_r910/235",
+        "--output-dir",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/replay235",
+        "--max-seconds",
+        "600",
+        "--oracle-max-seconds",
+        "600",
+        "--oracle-max-work",
+        "5000000"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "seconds": 61.05686012504157,
+      "source_before": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702",
+      "source_after": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702"
+    },
+    {
+      "name": "replay242",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "veritas.research.parent_child_r910.cli",
+        "examples/r99_nonconstant_matching242.json",
+        "--layout-file",
+        "examples/r99_nonconstant_matching242_layout.json",
+        "--replay-dir",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/sealed_r910/242",
+        "--output-dir",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/replay242",
+        "--max-seconds",
+        "600",
+        "--oracle-max-seconds",
+        "600",
+        "--oracle-max-work",
+        "5000000"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "seconds": 49.40299899992533,
+      "source_before": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702",
+      "source_after": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702"
+    },
+    {
+      "name": "refused_oracle_work",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "veritas.research.parent_child_r910.cli",
+        "examples/r910_matching235.json",
+        "--layout-file",
+        "examples/r910_matching235_layout.json",
+        "--replay-dir",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/sealed_r910/235",
+        "--output-dir",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/refused_oracle_work",
+        "--oracle-max-work",
+        "1",
+        "--oracle-max-seconds",
+        "600"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "seconds": 0.4263137080706656,
+      "source_before": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702",
+      "source_after": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702"
+    },
+    {
+      "name": "refused_oracle_time",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "veritas.research.parent_child_r910.cli",
+        "examples/r910_matching235.json",
+        "--layout-file",
+        "examples/r910_matching235_layout.json",
+        "--replay-dir",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/sealed_r910/235",
+        "--output-dir",
+        "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/refused_oracle_time",
+        "--oracle-max-work",
+        "5000000",
+        "--oracle-max-seconds",
+        "1"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "seconds": 2.8386820829473436,
+      "source_before": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702",
+      "source_after": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702"
+    },
+    {
+      "name": "focused",
+      "command": [
+        "/Users/dawsonblock/.pyenv/versions/3.12.0/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_r911_portability.py",
+        "tests/test_r911_experiments.py",
+        "tests/test_r910_numerical.py",
+        "-k",
+        "not two_levels and not nested",
+        "--junitxml=/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/focused.xml"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "seconds": 3.0895422919420525,
+      "source_before": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702",
+      "source_after": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702"
+    }
+  ]
+}
