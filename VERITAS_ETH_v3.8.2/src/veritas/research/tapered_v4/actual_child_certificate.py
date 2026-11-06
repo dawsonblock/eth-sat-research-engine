@@ -21,7 +21,7 @@ from veritas.research.eth_recursive_contraction_v39.point_children import (
 
 from .budget import Inconclusive, WorkBudget
 from .certificates import canonical
-from .child_partition import verify_constructed_child_partition
+from .child_recipe_check import verify_constructed_child_recipes
 from .model import RecursionPolicy
 
 
@@ -82,7 +82,9 @@ def certify_actual_point_children(parent, mode_certificate, beta, children, *,
         if tuple(c.group for c in children) != tuple(c.group for c in expected):
             raise ValueError('actual child groups differ from checked mode construction')
         coordinate = (abs(mode_certificate['node']) & -abs(mode_certificate['node'])).bit_length() - 1
-        verify_constructed_child_partition(parent, source, coordinate, children)
+        recipe_check = verify_constructed_child_recipes(
+            parent, source, mode_certificate, beta, children, ring,
+            on_step=lambda: budget.charge('child_recipe_replay_steps'))
 
         # The digest routine binds the complete immutable creation recipes,
         # not just port topology. It also enforces a finite description cap.
@@ -158,6 +160,7 @@ def certify_actual_point_children(parent, mode_certificate, beta, children, *,
             raise Inconclusive('INCONCLUSIVE_RESOURCE_LIMIT', 'certificate byte budget exhausted')
         return {'status': 'FINITE_ACTUAL_POINT_CHILDREN_CHECKED', 'certificate': certificate,
                 'observed_work_units': budget.used, 'complete_resource_accounting': False,
+                'independent_recipe_and_actual_load_check': recipe_check,
                 'source_validation_and_mode_replay_fully_metered': False}
     except (Inconclusive, ChildEvaluationBudgetExceeded, ModeBudgetExceeded, MemoryError) as exc:
         return {'status': 'INCONCLUSIVE_RESOURCE_LIMIT', 'reason': str(exc),

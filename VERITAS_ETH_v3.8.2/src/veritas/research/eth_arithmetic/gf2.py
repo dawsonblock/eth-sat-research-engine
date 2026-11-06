@@ -43,7 +43,8 @@ def gcd(a: int,b: int):
 
 def is_irreducible(f: int):
     d=degree(f)
-    if d<1 or (f & 1)==0 or (f >> d) != 1:
+    # U is also irreducible (the only irreducible with zero constant term).
+    if d<1 or ((f & 1)==0 and f != 2) or (f >> d) != 1:
         return False
     x=mod(2,f)
     y=x

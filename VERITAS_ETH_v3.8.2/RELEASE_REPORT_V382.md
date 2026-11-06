@@ -1,35 +1,46 @@
-# v3.8.2 validation report
+# VERITAS-ETH v3.8.2 historical report and R8.1 validation refresh
 
-## Local evidence
+The original v3.8.2 report recorded 522 tests on Python 3.12.0 and 3.10.19
+for an earlier source snapshot. That historical result is not a test result
+for the current R8.1 working tree.
 
-- Full source test suite: **522 passed** under Python 3.12.0 and Python
-  3.10.19. Tests were run after the reconstruction and independent-jet checks
-  were added.
-- Focused v3.8 child-elimination validation: **40/40** exact finite
-  oracle/certificate comparisons passed.
-- `scripts/validate_dense_v382.py`: completed seeded cases at 8, 10, 12, 14,
-  and 16 wires. Nonzero-node Hermite reconstruction passed at 8 and 10 wires;
-  the 8-wire case also passed six independent half-edge jet-evaluation
-  checks. The 12-, 14-, and 16-wire reconstructions returned
-  `BLOCKED_RESOURCE_LIMIT` before running the transforms.
-- The 8-wire reconstruction used 13 guard bits and 2,501,120 counted scalar
-  operations; the 10-wire reconstruction used 17 guard bits and 15,913,472
-  counted scalar operations. These counters omit matrix construction, exact
-  rational plan construction, validation, modular-reduction bit costs and
-  the independent jet oracle.
-- Validation artifact:
-  `validation/v382_dense_cauchy.json`, SHA-256
-  `eb39feae37f33615e4a4ce2275ee678ed0204560a7d2598c8dad9ee83b776854`.
-- The source-pinned manuscript identity is inherited from v3.8.1; its pin is
-  not independent verification of the manuscript proof.
+## Fresh dense-Cauchy validation
 
-## Release and remaining gates
+The current `scripts/validate_dense_v382.py` was run with its defaults on
+Python 3.12.0. Its regenerated output is
+[`validation/r81_dense_cauchy.json`](validation/r81_dense_cauchy.json),
+SHA-256 `6f6a2d3bc548f27b8ea780ab6b0675c41f9739fecdd55aa4bb6b718560192a81`.
+The seeded reconstruction results are:
 
-Archive SHA-256, byte count, package manifest verification in normal and
-optimized Python, extracted-archive checks, and source identity are recorded
-in the sibling `VERITAS_ETH_v3.8.2_RELEASE_EVIDENCE.txt` file.
+| Wires | Status | Guard bits | Counted scalar operations |
+|---:|---|---:|---:|
+| 8 | EXACT_HERMITE_RECONSTRUCTION_CHECKED | 13 | 579,584 |
+| 10 | EXACT_HERMITE_RECONSTRUCTION_CHECKED | 17 | 4,033,536 |
+| 12 | EXACT_HERMITE_RECONSTRUCTION_CHECKED | 21 | 24,813,568 |
+| 14 | BLOCKED_RESOURCE_LIMIT | — | — |
+| 16 | BLOCKED_RESOURCE_LIMIT | — | — |
 
-Hosted CI, Linux execution, independent mathematical review, full D.4.4
-recursion, the universal child-size bound, asymptotic runtime, and polynomial
-space remain **NOT EVALUATED / NOT IMPLEMENTED**. This candidate is not a
-qualified release or a universal SAT solver.
+The eight-wire case includes six independent half-edge jet-evaluation checks.
+The scalar counters omit matrix and exact rational plan construction,
+validation, modular-reduction bit costs and the independent jet oracle. They
+are finite scoped measurements, not complete work or memory bounds.
+
+The prior [`validation/v382_dense_cauchy.json`](validation/v382_dense_cauchy.json)
+is preserved as historical evidence, SHA-256
+`eb39feae37f33615e4a4ce2275ee678ed0204560a7d2598c8dad9ee83b776854`. Its old
+8- and 10-wire operation counts and 12-wire resource outcome do **not**
+describe the current script's output. The precise cause of that historical
+difference was not independently established.
+
+## Qualification boundaries
+
+The separate eight-wire tapered-recursion experiment has a different input,
+algorithm, counters and evidence record; its numbers must not be compared as
+if they were the dense-Cauchy measurements above. See
+[`docs/TUPLE_STREAM_R81.md`](docs/TUPLE_STREAM_R81.md) for the current tuple
+stream repair and its finite scope.
+
+Hosted CI, independent proof review, the theorem-mode recursive construction,
+universal child shrinking, the asymptotic runtime and polynomial space remain
+**NOT EVALUATED / NOT IMPLEMENTED**. The source pin and finite tests are not
+independent verification of the manuscript's proof.

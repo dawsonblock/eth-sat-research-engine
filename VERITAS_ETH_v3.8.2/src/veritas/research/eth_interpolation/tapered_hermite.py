@@ -176,6 +176,13 @@ def reconstruct_tapered(plan:TaperedPlan, jets:dict[int,tuple[int,...]], *,
     coefficient; zero bits means the unique residue modulo one. The caller
     remains responsible for obtaining each residue at its declared precision.
     """
+    validate_tapered_plan(plan)
+    return _reconstruct_tapered_validated(plan, jets, coefficient_precisions=coefficient_precisions)
+
+
+def _reconstruct_tapered_validated(plan:TaperedPlan, jets:dict[int,tuple[int,...]], *,
+                                   coefficient_precisions=None) -> int:
+    """Internal fast path: caller must validate this exact immutable plan."""
     rec=plan.recovery_plan
     if (not isinstance(jets,dict) or any(type(t) is not int for t in jets) or
             set(jets)!={x.t for x in plan.nodes}):

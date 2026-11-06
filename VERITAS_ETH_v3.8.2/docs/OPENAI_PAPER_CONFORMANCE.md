@@ -85,7 +85,7 @@ All formulas are from `quantitative-contraction.tex`; `λ = ⌈log₂ s⌉`.
 | `eth_packing_v26/expectation.py` — `assign_full_d3_labels` | The proof of `lem:tensor-packets` (l. 131–147): exact conditional expectation by enumerating edge pairs. The incremental score update is an implementation optimisation of the same quantity. |
 | `eth_packing_v26/implicit.py` — `audit_d3_child_wire_loads` | The port bound in `lem:tensor-packets`(3) and the deduction at l. 525–527. |
 | `eth_interpolation/shifted_cauchy.py`, `eth_interpolation/cauchy_product.py` | `eq:tensor-cauchy` and `lem:tensor-integrality`. `shift_cauchy_entry` is the integral `W(t+αz)`; `cauchy_point_value` evaluates it at a residue. |
-| `eth_interpolation/tapered_hermite.py` | `lem:tapered-hermite`: `h`, `q_t`, `p_t`, and the exact rational functional. |
+| `eth_interpolation/source_hermite.py` | `lem:tapered-hermite`, `eq:tensor-hermite-origin`: bounded full-node source functional, `h`, `q_t` and `p_t`; the finite recursor uses this path. The older `tapered_hermite.py` retains its separately checked prefix functional. Neither implementation establishes the general precision or complexity proof. |
 | `eth_recursive_contraction_v39/point_modes.py` | `subsec:tensor-modes`: tiles `y = y₀ + 2^{i+1}j`, the geometric expansion `eq:tensor-mode-expansion`, mode weights and `column_terms`. |
 | `eth_recursive_contraction_v39/structural_tuples.py`, `eth_modes_v27/enumeration.py` | `eq:tensor-mode-budget` and the enumeration remark at l. 476–482. |
 | `eth_recursive_contraction_v39/point_children.py`, `lazy_children.py` | `subsec:tensor-children`: one child per group, packet vertices with retained ports, coefficient extraction, source-mode substitution. |
@@ -136,7 +136,7 @@ Still absent:
 | Paper object | Status here |
 |---|---|
 | `thm:main` (main theorem) | Not claimed. The build has no subexponential-time result. |
-| `subsec:sharp-fixed-density` -- the CNF-to-network encoding (clause vertices, equality chains, edge subdivision) | Partially: `veritas.research.tensor.from_cnf` builds a count-preserving network, but it is not checked against the paper's exact construction (subdivision by binary equality tensors, `d`-port trees for `d >= 3`). |
+| `subsec:sharp-fixed-density` -- the CNF-to-network encoding (clause vertices, equality chains, edge subdivision) | `source_cnf.source_cnf_network` normalizes clauses, constructs trivalent equality trees and subdivides every edge. `source_cnf_check` independently checks finite graph structure; count agreement is tested separately. The general proof and theorem-scale execution are not established by these tests. |
 | `subsec:sharp-dense`, `sec:hashes` -- sparsification and parity tests for arbitrary clause density | **Not implemented.** |
 | `sec:setup`, `sec:construction` beyond the bounded-occurrence case -- one factor per sparse polynomial equation, `M_0`/`C^B` at the general incidence parameters | Partially: the factor interface is general rational polynomials, but only the `b, w <= 3` bounded-occurrence instance is exercised. |
 | `app:sparsify`, `app:arithmetic` | Partially: `eth_arithmetic/` covers the ring and canonical lifts; the sparsification tree is absent. |

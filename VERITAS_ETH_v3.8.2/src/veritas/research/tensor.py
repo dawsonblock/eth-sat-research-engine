@@ -18,6 +18,12 @@ class Factor:
     label: str
 
     def __post_init__(self):
+        object.__setattr__(self, 'ports', tuple(self.ports))
+        object.__setattr__(self, 'table', tuple(self.table))
+        if not isinstance(self.label, str):
+            raise ValueError("factor label must be a string")
+        if any(type(port) is not int or port < 0 for port in self.ports):
+            raise ValueError("ports must be nonnegative integers")
         if len(self.table) != 1 << len(self.ports):
             raise ValueError("table must contain 2^degree entries")
         if len(set(self.ports)) != len(self.ports):
@@ -36,6 +42,11 @@ class TensorNetwork:
     factors: tuple[Factor, ...]
 
     def __post_init__(self):
+        if type(self.edges) is not int or self.edges < 0:
+            raise ValueError("edges must be a nonnegative integer")
+        object.__setattr__(self, 'factors', tuple(self.factors))
+        if any(not isinstance(factor, Factor) for factor in self.factors):
+            raise ValueError("factors must be Factor objects")
         counts = [0]*self.edges
         for factor in self.factors:
             for port in factor.ports:

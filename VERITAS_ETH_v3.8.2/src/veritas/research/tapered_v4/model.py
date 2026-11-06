@@ -67,6 +67,11 @@ class RecursionPolicy:
     enable_hall_pruning: bool = False
     finite_parameters: tuple[int, int, int] = (1, 1, 2)
     require_complete_accounting: bool = False
+    verify_point_identities: bool = False
+    point_oracle_edge_limit: int = 3
+    verify_tuple_identities: bool = False
+    tuple_oracle_edge_limit: int = 3
+    auto_point_oracle_edges: int = 2
 
     def __post_init__(self):
         if self.mode not in ('finite', 'theorem'):
@@ -76,7 +81,9 @@ class RecursionPolicy:
                           self.max_active_wires, self.max_extension_degree, self.max_jet_length,
                           self.max_vertex_degree,
                           self.max_certificate_bytes, self.max_description_bytes,
-                          self.oracle_edge_limit, self.nonshrinking_leaf_limit)
+                          self.oracle_edge_limit, self.nonshrinking_leaf_limit,
+                          self.point_oracle_edge_limit, self.tuple_oracle_edge_limit,
+                          self.auto_point_oracle_edges)
         if any(type(value) is not int for value in integer_limits):
             raise ValueError('integer resource limits required')
         if (not 0 <= self.leaf_edge_limit <= 16 or not 0 <= self.max_depth <= 64 or
@@ -89,7 +96,10 @@ class RecursionPolicy:
                 not 1 <= self.max_certificate_bytes <= 50_000_000 or
                 not 1 <= self.max_description_bytes <= 50_000_000 or
                 not 0 <= self.oracle_edge_limit <= 16 or
-                not 0 <= self.nonshrinking_leaf_limit <= 16):
+                not 0 <= self.nonshrinking_leaf_limit <= 16 or
+                not 1 <= self.point_oracle_edge_limit <= 4 or
+                not 1 <= self.tuple_oracle_edge_limit <= 3 or
+                not 2 <= self.auto_point_oracle_edges <= 4):
             raise ValueError('resource limit outside finite reference bounds')
         if type(self.max_seconds) not in (int, float) or not 0 < self.max_seconds <= 120:
             raise ValueError('max_seconds must be in (0,120]')
@@ -98,7 +108,8 @@ class RecursionPolicy:
             raise ValueError('hard memory limit must be a positive integer or None')
         for flag in (self.verify_small_nodes, self.allow_nonshrinking_leaf,
                      self.require_one_eighth_shrink, self.enable_hall_pruning,
-                     self.require_complete_accounting):
+                     self.require_complete_accounting, self.verify_point_identities,
+                     self.verify_tuple_identities):
             if type(flag) is not bool:
                 raise ValueError('policy flags must be Boolean')
         if (type(self.finite_parameters) is not tuple or len(self.finite_parameters) != 3 or

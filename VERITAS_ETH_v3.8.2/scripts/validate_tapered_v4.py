@@ -45,10 +45,9 @@ def main():
     if args.write:
         cnf = CNF.from_lists(8, [[i] for i in range(1, 9)]).as_dict()
         state = state_for(cnf)
-        # The eight-wire run observes about 2.13M work units. The 2M default
-        # is just below that, so pin an explicit cap with headroom instead of
-        # relying on the dataclass default; otherwise this script fails closed
-        # at exactly 2_000_000 units and reports no count.
+        # Pin a finite cap with headroom for tuple, recipe and oracle checks.
+        # Work-unit totals depend on the implementation and are reported by
+        # each run; they do not include all bit operations or hard memory use.
         policy = RecursionPolicy(max_active_wires=8, leaf_edge_limit=7,
                                  finite_parameters=(1, 1, 4), max_depth=4,
                                  max_certificate_bytes=30_000_000,
@@ -62,11 +61,13 @@ def main():
         if result['result'] != ((1, 0, 0, 0, 0),):
             raise ArithmeticError('forced-assignment count differs from one')
         record = {'schema': SCHEMA, 'cnf': cnf, 'policy': asdict(policy),
-                  'certificate': result['certificate'], 'ledger': result['ledger']}
+                  'certificate': result['certificate'], 'ledger': result['ledger'],
+                  'point_identity_coverage': result['point_identity_coverage']}
         args.write.write_text(json.dumps(record, sort_keys=True, separators=(',', ':')) + '\n',
                               encoding='utf8')
         print(json.dumps({'status': result['status'], 'path': str(args.write),
                           'result': result['result'], 'ledger': result['ledger'],
+                          'point_identity_coverage': result['point_identity_coverage'],
                           'elapsed_seconds': round(monotonic() - start, 6),
                           'process_peak_rss_bytes': process_peak_rss_bytes()}))
         return 0

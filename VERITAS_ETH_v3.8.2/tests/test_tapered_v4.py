@@ -82,13 +82,16 @@ def test_seeded_eight_to_sixteen_wire_cnf_matches_independent_assignments(wires)
     assert result['result'] == ((expected,),)
 
 
-def test_two_level_hybrid_recursion_without_hidden_point_oracle(monkeypatch):
+def test_two_level_hybrid_recursion_uses_required_point_oracle(monkeypatch):
     from veritas.research.eth_recursive_contraction_v39 import point_children
 
-    def forbidden(*args, **kwargs):
-        raise AssertionError('normal execution must not call the point oracle')
+    original = point_children._direct_point_oracle
+    calls = []
+    def observed(*args, **kwargs):
+        calls.append(True)
+        return original(*args, **kwargs)
 
-    monkeypatch.setattr(point_children, '_direct_point_oracle', forbidden)
+    monkeypatch.setattr(point_children, '_direct_point_oracle', observed)
     state = state_for_cnf(2, [[1, 2]])
     policy = RecursionPolicy(max_depth=8, allow_nonshrinking_leaf=True,
                              max_certificate_bytes=8_000_000)
@@ -98,6 +101,7 @@ def test_two_level_hybrid_recursion_without_hidden_point_oracle(monkeypatch):
     assert result['ledger']['maximum_depth'] >= 2
     assert result['ledger']['maximum_child_edges'] >= state.network.edges
     assert result['ledger']['counters']['nonshrinking_children'] > 0
+    assert calls and result['ledger']['counters']['oracle_point_checks'] > 0
     assert result['ledger']['counters'].get('oracle_leaf_work', 0) == 0
     assert result['ledger']['counters']['packing_work'] > 0
     assert not result['ledger']['complete']

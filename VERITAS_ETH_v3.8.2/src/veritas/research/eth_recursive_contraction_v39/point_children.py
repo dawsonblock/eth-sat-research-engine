@@ -25,6 +25,7 @@ from .described_network import (
 )
 from .point_modes import SCHEMA as POINT_MODE_SCHEMA, check_point_modes
 from .structural_tuples import structural_tuples
+from .tuple_stream_check import TupleStreamVerifier
 from .mode_matching import _BudgetExceeded as MatchingBudgetExceeded, _Work as MatchingWork, certify_structural_tuple_matching
 from .point_mode_matching import _verify_hall_witness
 from veritas.research.eth_packing_v26.implicit import real_packet_slots
@@ -210,6 +211,19 @@ def contract_point_child_expansion(parent, mode_certificate, *, max_tuples=3000,
     total, work, nested_oracle_work, rows = ring.zero, 0, 0, []
     hall_work, hall_pruned = 0, 0
 
+    def charge_tuple_check():
+        nonlocal work
+        if monotonic() >= deadline or work + nested_oracle_work >= max_work:
+            raise ChildEvaluationBudgetExceeded('point-child tuple checker work/time budget exhausted',
+                                                work_units=work)
+        work += 1
+
+    verifier = TupleStreamVerifier(mode_certificate['modes'], ring.base.p,
+                                   max_tuples=max_tuples, on_step=charge_tuple_check)
+    if (mode_certificate.get('schema') == POINT_MODE_SCHEMA and
+            verifier.expected_count != mode_certificate['structural_tuple_count']):
+        raise ValueError('mode certificate differs from independent structural tuple count')
+
     def charge_hall():
         nonlocal work, hall_work
         if monotonic() >= deadline or work + nested_oracle_work >= max_work:
@@ -218,6 +232,7 @@ def contract_point_child_expansion(parent, mode_certificate, *, max_tuples=3000,
         hall_work += 1
 
     for beta in structural_tuples(mode_certificate['modes'], ring.base.p, max_tuples=max_tuples):
+        verifier.accept(beta)
         if monotonic() >= deadline:
             raise ChildEvaluationBudgetExceeded('point-child wall-time budget exhausted')
         if enable_hall_pruning:
@@ -277,6 +292,7 @@ def contract_point_child_expansion(parent, mode_certificate, *, max_tuples=3000,
         total = ring.add(total, term)
         rows.append({'beta': tuple(beta), 'children': tuple(summaries),
                      'term': term, 'structurally_zero': False})
+    verifier.finish()
     left_time = deadline - monotonic()
     if left_time <= 0:
         raise ChildEvaluationBudgetExceeded('point-child wall-time budget exhausted')

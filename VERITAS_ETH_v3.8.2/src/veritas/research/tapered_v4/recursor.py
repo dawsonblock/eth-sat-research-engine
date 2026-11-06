@@ -2,7 +2,7 @@
 
 This is an experimental adapter over bounded v39 components. It does not
 implement the manuscript schedule, a complete cost ledger, or a hard memory
-limit. Its ordinary execution path does not invoke the 4**M point oracle.
+limit. Small active calls require a bounded 4**M point-oracle cross-check.
 """
 from __future__ import annotations
 
@@ -15,7 +15,9 @@ from veritas.research.eth_arithmetic.gf2 import first_irreducible
 from veritas.research.eth_arithmetic.jets import JetRing
 from veritas.research.eth_arithmetic.residue_points import distinct_residue_points
 from veritas.research.eth_interpolation.extension_lagrange import interpolate_newton
-from veritas.research.eth_interpolation.tapered_hermite import make_tapered_plan, reconstruct_tapered
+from veritas.research.eth_interpolation.source_hermite import (
+    make_source_tapered_plan, validate_source_tapered_plan, _reconstruct_source_tapered_validated,
+)
 from veritas.research.eth_modes_v27.enumeration import ModeBudgetExceeded
 from veritas.research.eth_packing_v26.expectation import PackingBudgetExceeded
 from veritas.research.eth_packing_v26.implicit import (
@@ -31,15 +33,20 @@ from veritas.research.eth_recursive_contraction_v39.mode_matching import (
 )
 from veritas.research.eth_recursive_contraction_v39.point_mode_matching import _verify_hall_witness
 from veritas.research.eth_recursive_contraction_v39.point_children import _ring_for, _build_point_children_checked
+from veritas.research.eth_recursive_contraction_v39 import point_children
+from veritas.research.eth_recursive_contraction_v39 import independent_tuple_oracle
+from veritas.research.eth_recursive_contraction_v39.lazy_children import _Budget as PointOracleBudget
 from veritas.research.eth_recursive_contraction_v39.point_modes import make_point_modes
 from veritas.research.eth_recursive_contraction_v39.structural_tuples import structural_tuples
+from veritas.research.eth_recursive_contraction_v39.tuple_stream_check import TupleStreamVerifier
 
 from .budget import Inconclusive, WorkBudget
 from .certificates import Transcript, canonical, same_json
-from .child_partition import verify_constructed_child_partition
+from .child_recipe_check import verify_constructed_child_recipes
 from .model import RecursionPolicy, TaperedState
 
-SCHEMA = 'VERITAS_FINITE_TAPERED_V4_TRANSCRIPT_V1'
+SCHEMA = 'VERITAS_FINITE_TAPERED_V4_TRANSCRIPT_V2'
+LEGACY_SCHEMA = 'VERITAS_FINITE_TAPERED_V4_TRANSCRIPT_V1'
 SOURCE_REVISION = '4eaee87548250b2682affda7d05d947c05554bae'
 
 
@@ -145,7 +152,27 @@ def _run_leaf(state, ring, budget, *, oracle=False):
     return result['result']
 
 
-def _contract(state, policy, budget, transcript, *, forced_leaf_reason=None):
+def _verify_tuple_term(state, modes, beta, term, budget, transcript, state_hash, node, point_index):
+    """Compare one produced term with independent half-wire/row selections."""
+    available, seconds = budget.remaining()
+    try:
+        oracle = independent_tuple_oracle.direct_tuple_contribution(
+            state.network, modes, beta, max_work=available, timeout_s=seconds)
+    except ChildEvaluationBudgetExceeded as exc:
+        budget.record_interrupted_work('oracle_failed_tuple_work', exc.work_units)
+        raise Inconclusive('INCONCLUSIVE_RESOURCE_LIMIT', 'tuple identity oracle budget exhausted') from exc
+    budget.charge('oracle_tuple_work', oracle['work_units'])
+    budget.charge('oracle_tuple_checks')
+    if term != oracle['result']:
+        raise Inconclusive('INCONCLUSIVE_INVARIANT_FAILURE',
+                           'independent tuple oracle disagrees with recursive child product')
+    transcript.add({'kind': 'tuple_identity_checked', 'state_sha256': state_hash,
+                    'node': node, 'point_index': point_index, 'beta': beta,
+                    'direct_tuple_result': oracle['result']})
+
+
+def _contract(state, policy, budget, transcript, *, forced_leaf_reason=None,
+              legacy_point_policy=False):
     if state.depth > policy.max_depth:
         raise Inconclusive('INCONCLUSIVE_RESOURCE_LIMIT', 'maximum recursion depth exceeded')
     if state.target_precision > policy.max_precision_bits:
@@ -186,17 +213,25 @@ def _contract(state, policy, budget, transcript, *, forced_leaf_reason=None):
         raise Inconclusive('INCONCLUSIVE_RESOURCE_LIMIT', 'maximum depth reached before a valid leaf')
     if state.network.edges > policy.max_active_wires:
         raise Inconclusive('INCONCLUSIVE_RESOURCE_LIMIT', 'finite active-wire budget exceeded')
+    check_point = (policy.verify_point_identities or
+                   (not legacy_point_policy and state.network.edges <= policy.auto_point_oracle_edges))
+    if check_point and state.network.edges > policy.point_oracle_edge_limit:
+        raise Inconclusive('INCONCLUSIVE_RESOURCE_LIMIT', 'point identity oracle edge cap exceeded')
+    if policy.verify_tuple_identities and state.network.edges > policy.tuple_oracle_edge_limit:
+        raise Inconclusive('INCONCLUSIVE_RESOURCE_LIMIT', 'tuple identity oracle edge cap exceeded')
     degree = ring.base.e
     if degree > 8 or state.extension_polynomial != first_irreducible(degree):
         raise Inconclusive('INCONCLUSIVE_UNSUPPORTED_RING',
                            'finite mode builder requires its canonical extension polynomial of degree at most eight')
     a, u, radix = policy.finite_parameters
     try:
-        plan = make_tapered_plan(M=state.network.edges, a=a, u=u, p=state.target_precision,
-                                 max_work_precision=policy.max_precision_bits,
-                                 max_target_precision=policy.max_precision_bits)
+        plan = make_source_tapered_plan(M=state.network.edges, a=a, u=u, p=state.target_precision,
+                                        max_precision_bits=policy.max_precision_bits)
     except ValueError as exc:
         raise Inconclusive('INCONCLUSIVE_RESOURCE_LIMIT', f'finite tapered plan unavailable: {exc}') from exc
+    budget.charge('hermite_plan_checks')
+    validate_source_tapered_plan(plan, max_precision_bits=policy.max_precision_bits, max_terms=128)
+    budget.check()
     point_count = plan.degree_bound + 1
     if point_count > policy.max_points or point_count > 1 << degree:
         raise Inconclusive('INCONCLUSIVE_RESOURCE_LIMIT', 'insufficient interpolation points or residue classes')
@@ -263,9 +298,17 @@ def _contract(state, policy, budget, transcript, *, forced_leaf_reason=None):
             point_ring = JetRing(base, state.jet_length)
             total = point_ring.zero
             tuple_count = 0
+            verifier = TupleStreamVerifier(
+                modes['modes'], node.precision_bits, max_tuples=policy.max_tuples,
+                on_step=lambda: budget.charge('independent_tuple_check_steps'))
+            budget.charge('independent_tuple_count_checks')
+            if verifier.expected_count != modes['structural_tuple_count']:
+                raise Inconclusive('INCONCLUSIVE_INVARIANT_FAILURE',
+                                   'mode certificate differs from independent structural tuple count')
             for beta in structural_tuples(modes['modes'], node.precision_bits,
                                            max_tuples=policy.max_tuples,
                                            _on_step=lambda: budget.charge('tuple_execution_steps')):
+                verifier.accept(beta)
                 budget.charge('retained_tuples')
                 tuple_count += 1
                 declared_weight = sum(exponent * mode['weight']
@@ -281,6 +324,9 @@ def _contract(state, policy, budget, transcript, *, forced_leaf_reason=None):
                 if policy.enable_hall_pruning:
                     witness = _hall_zero_witness(modes['modes'], beta, budget)
                     if witness is not None:
+                        if policy.verify_tuple_identities:
+                            _verify_tuple_term(state, modes, beta, point_ring.zero, budget,
+                                               transcript, state_hash, node.t, point_index)
                         transcript.add({'kind': 'tuple_hall_zero', 'state_sha256': state_hash,
                                         'node': node.t, 'point_index': point_index, 'beta': beta,
                                         'declared_weight': declared_weight,
@@ -290,11 +336,15 @@ def _contract(state, policy, budget, transcript, *, forced_leaf_reason=None):
                                                            checked_ring, checked_source)
                 budget.charge('child_partition_checks')
                 try:
-                    verify_constructed_child_partition(state.network, checked_source,
-                                                       node_valuation, children)
+                    recipe_check = verify_constructed_child_recipes(
+                        state.network, checked_source, modes, beta, children, checked_ring,
+                        on_step=lambda: budget.charge('child_recipe_replay_steps'))
                 except (KeyError, IndexError, TypeError, ValueError) as exc:
                     raise Inconclusive('INCONCLUSIVE_INVARIANT_FAILURE',
-                                       f'child half-wire partition is invalid: {exc}') from exc
+                                       f'child recipe or half-wire partition is invalid: {exc}') from exc
+                if policy.require_one_eighth_shrink and not recipe_check['all_sides_meet_port_bound']:
+                    raise Inconclusive('INCONCLUSIVE_CHILD_SIZE_INVARIANT',
+                                       'actual child row or column load exceeds its port bound')
                 term = point_ring.one
                 child_rows = []
                 for child in children:
@@ -322,13 +372,17 @@ def _contract(state, policy, budget, transcript, *, forced_leaf_reason=None):
                                                state.extension_polynomial, state.jet_length,
                                                state.root_size, state.schedule_id, state_hash)
                     child_value, child_hash = _contract(child_state, policy, budget, transcript,
-                                                        forced_leaf_reason=forced)
+                                                        forced_leaf_reason=forced,
+                                                        legacy_point_policy=legacy_point_policy)
                     budget.accumulator_operation('accumulator_ring_multiplications', term, child_value)
                     term = point_ring.mul(term, child_value)
                     child_rows.append({'group': child.group, 'edges': child_edges,
                                        'maximum_degree': child_degree,
                                        'state_sha256': child_hash, 'result': child_value,
                                        'finite_fallback': forced is not None})
+                if policy.verify_tuple_identities:
+                    _verify_tuple_term(state, modes, beta, term, budget,
+                                       transcript, state_hash, node.t, point_index)
                 budget.accumulator_operation('accumulator_ring_additions', total, term)
                 total = point_ring.add(total, term)
                 transcript.add({'kind': 'tuple', 'state_sha256': state_hash, 'node': node.t,
@@ -338,6 +392,24 @@ def _contract(state, policy, budget, transcript, *, forced_leaf_reason=None):
                                 'children': child_rows, 'term': term})
             if tuple_count != modes['structural_tuple_count']:
                 raise Inconclusive('INCONCLUSIVE_INVARIANT_FAILURE', 'tuple stream differs from mode certificate')
+            verifier.finish()
+            if check_point:
+                available, seconds = budget.remaining()
+                oracle_budget = PointOracleBudget(available, seconds)
+                try:
+                    oracle = point_children._direct_point_oracle(
+                        state.network, checked_source, node.t, point, point_ring, oracle_budget)
+                except ChildEvaluationBudgetExceeded as exc:
+                    budget.record_interrupted_work('oracle_failed_point_work', exc.work_units)
+                    raise Inconclusive('INCONCLUSIVE_RESOURCE_LIMIT', 'point identity oracle budget exhausted') from exc
+                budget.charge('oracle_point_work', oracle_budget.used)
+                budget.charge('oracle_point_checks')
+                if total != oracle:
+                    raise Inconclusive('INCONCLUSIVE_INVARIANT_FAILURE',
+                                       'direct half-edge point oracle disagrees with recursive children')
+                transcript.add({'kind': 'point_identity_checked', 'state_sha256': state_hash,
+                                'node': node.t, 'point_index': point_index,
+                                'direct_half_edge_result': oracle})
             values.append(total)
         columns = []
         for v in range(state.jet_length):
@@ -359,7 +431,7 @@ def _contract(state, policy, budget, transcript, *, forced_leaf_reason=None):
                     for node in plan.nodes}
             precisions = {node.t: (node.precision_bits,) * len(node_samples[node.t])
                           for node in plan.nodes}
-            coordinates.append(reconstruct_tapered(plan, jets, coefficient_precisions=precisions))
+            coordinates.append(_reconstruct_source_tapered_validated(plan, jets, coefficient_precisions=precisions))
         output.append(tuple(coordinates))
     result = tuple(output)
     if policy.verify_small_nodes and state.network.edges <= policy.oracle_edge_limit:
@@ -373,8 +445,7 @@ def _contract(state, policy, budget, transcript, *, forced_leaf_reason=None):
     return result, state_hash
 
 
-def contract_recursive(state, policy):
-    """Return a finite modular result or an inconclusive status without a result."""
+def _execute_recursive(state, policy, *, legacy_point_policy=False):
     if not isinstance(state, TaperedState) or not isinstance(policy, RecursionPolicy):
         raise TypeError('TaperedState and RecursionPolicy required')
     budget = WorkBudget(policy)
@@ -393,11 +464,20 @@ def contract_recursive(state, policy):
             raise Inconclusive('INCONCLUSIVE_RESOURCE_LIMIT', 'a hard process memory limit is not implemented')
         if policy.require_complete_accounting:
             raise Inconclusive('INCONCLUSIVE_RESOURCE_LIMIT', 'complete bit-work and memory accounting is not implemented')
-        result, root_hash = _contract(state, policy, budget, transcript)
+        result, root_hash = _contract(state, policy, budget, transcript,
+                                      legacy_point_policy=legacy_point_policy)
         budget.check()
+        policy_data = asdict(policy)
+        # Preserve replay of pre-existing V1 certificates for the default policy.
+        if not policy.verify_point_identities and policy.point_oracle_edge_limit == 3:
+            policy_data.pop('verify_point_identities')
+            policy_data.pop('point_oracle_edge_limit')
+        if not policy.verify_tuple_identities and policy.tuple_oracle_edge_limit == 3:
+            policy_data.pop('verify_tuple_identities')
+            policy_data.pop('tuple_oracle_edge_limit')
         certificate = {'schema': SCHEMA, 'claim': 'FINITE_BOUNDED_TAPERED_EXECUTION_ONLY',
                        'source_revision': SOURCE_REVISION,
-                       'root_state_sha256': root_hash, 'policy': asdict(policy),
+                       'root_state_sha256': root_hash, 'policy': policy_data,
                        'events': transcript.events, 'transcript_sha256': transcript.head,
                        'result': result, 'uniform_complexity_proven': False}
         certificate_bytes = len(canonical(certificate))
@@ -406,9 +486,18 @@ def contract_recursive(state, policy):
         ledger = budget.snapshot()
         ledger['serialized_transcript_bytes'] = transcript.serialized_bytes
         ledger['serialized_certificate_bytes'] = certificate_bytes
+        points = ledger['counters'].get('point_evaluations', 0)
+        checked_points = ledger['counters'].get('oracle_point_checks', 0)
+        point_coverage = ('NO_ACTIVE_POINTS' if points == 0 else
+                          'ALL_ACTIVE_POINTS_CHECKED' if points == checked_points else
+                          'PARTIAL_OR_NOT_CHECKED')
         return {'status': 'EXACT_MODULAR_CONTRACTION_FINITE', 'result': result,
                 'certificate': certificate, 'ledger': ledger,
-                'independent_oracle_enabled': policy.verify_small_nodes,
+                'independent_oracle_enabled': bool(policy.verify_small_nodes or checked_points or
+                                                   ledger['counters'].get('oracle_tuple_checks', 0)),
+                'node_contraction_oracle_enabled': policy.verify_small_nodes,
+                'automatic_point_oracle_edge_limit': policy.auto_point_oracle_edges,
+                'point_identity_coverage': point_coverage,
                 'subexponential_runtime_proven': False}
     except Inconclusive as exc:
         return {'status': exc.status, 'reason': exc.reason, 'ledger': budget.snapshot(),
@@ -421,16 +510,31 @@ def contract_recursive(state, policy):
                 'subexponential_runtime_proven': False}
 
 
+def contract_recursive(state, policy):
+    """Return a finite modular result or an inconclusive status without a result."""
+    return _execute_recursive(state, policy)
+
+
 def replay_certificate(state, policy, certificate):
     """Deterministically replay a finite transcript; this is not independent proof."""
-    if type(certificate) is not dict or certificate.get('schema') != SCHEMA:
+    if type(certificate) is not dict or certificate.get('schema') not in (SCHEMA, LEGACY_SCHEMA):
         return {'valid': False, 'status': 'INVALID_CERTIFICATE'}
-    outcome = contract_recursive(state, policy)
+    legacy = certificate['schema'] == LEGACY_SCHEMA
+    if legacy and (not isinstance(certificate.get('policy'), dict) or
+                   'auto_point_oracle_edges' in certificate['policy']):
+        return {'valid': False, 'status': 'INVALID_CERTIFICATE'}
+    outcome = _execute_recursive(state, policy, legacy_point_policy=legacy)
     if outcome['status'] != 'EXACT_MODULAR_CONTRACTION_FINITE':
         return {'valid': False, 'status': outcome['status'], 'reason': outcome.get('reason')}
     try:
-        valid = same_json(certificate, outcome['certificate'])
+        replayed = outcome['certificate']
+        if legacy:
+            replay_policy_data = dict(replayed['policy'])
+            replay_policy_data.pop('auto_point_oracle_edges')
+            replayed = dict(replayed, schema=LEGACY_SCHEMA, policy=replay_policy_data)
+        valid = same_json(certificate, replayed)
     except (TypeError, ValueError):
         valid = False
     return {'valid': valid, 'status': 'FINITE_TRANSCRIPT_REPLAYED' if valid else 'INVALID_CERTIFICATE',
+            'legacy_v1_replay': legacy,
             'independent_proof': False, 'subexponential_runtime_proven': False}

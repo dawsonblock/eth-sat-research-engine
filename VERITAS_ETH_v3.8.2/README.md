@@ -655,3 +655,25 @@ Local API: `POST /v1/research/eth/d3/construct`, `POST /v1/research/eth/d3/check
 ## v3.1 finite geometric Taylor-mode children
 
 The `veritas-eth31` command and `/v1/research/eth/geometric-mode-children` route compute bounded exact D.3-driven geometric cross-mode expansions with group-local scalar child factorization, checked against direct half-edge enumeration. See `docs/GEOMETRIC_JET_MODE_CHILDREN_V31.md`. This does not implement the manuscript's subexponential recursion.
+
+### R0/R1 exact-foundation development
+
+The bounded quotient-ring API and independently evaluated CNF/tensor checks
+are documented in [R1 exact foundation](docs/R1_EXACT_FOUNDATION.md).
+The source lock, open function-level audit, and unqualified theorem obligations
+are explicit there. These finite checks do not establish the recursive theorem
+or its complexity bound.
+
+The [source-shaped CNF recursion bridge](docs/SOURCE_CNF_RECURSION.md) now
+checks the finite equality-tree reduction and can compare active point-child
+sums with a direct half-edge oracle. Its nonshrinking finite fallback is
+explicit; the manuscript theorem branch remains unimplemented.
+
+The current finite child-recipe, per-tuple identity and source-Hermite repairs,
+including their limits, are documented in
+[mathematical repair progress](docs/MATHEMATICAL_REPAIR_PROGRESS.md).
+
+The [R8.1 tuple-stream check](docs/TUPLE_STREAM_R81.md) independently counts
+and verifies the finite structural tuple domain, rejects substitution and
+reordering, and enables direct point checks by default for very small active
+calls. The theorem branch remains disabled.
