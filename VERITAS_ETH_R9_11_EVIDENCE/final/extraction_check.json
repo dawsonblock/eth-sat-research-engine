@@ -2,5 +2,6 @@
   "status": "PASS_MANIFESTED_FRESH_EXTRACTION",
   "archive_sha256": "b3e8a679d12b39df747909d1199249f01ddda3a685ae2fd0bc8531c57d178225",
   "manifested_files_verified": 1190,
-  "extracted_root": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/extracted/VERITAS_ETH_R9_11_COUPLED_RECURSION"
+  "extracted_root": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_11_EVIDENCE/final/extracted/VERITAS_ETH_R9_11_COUPLED_RECURSION",
+  "full_manifest_verifier": "PASS: 1191 complete file hashes match release manifest; no unlisted files"
 }

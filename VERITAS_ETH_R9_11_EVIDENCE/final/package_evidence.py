@@ -26,6 +26,10 @@ for name,resource in [('refused_oracle_work','WORK_UNITS'),('refused_oracle_time
  r=read(base/name/'verification.json');assert r['status']=='INCONCLUSIVE_RESOURCE_LIMIT' and 'result' not in r
  assert r['resource_failure']['resource']==resource
 assert read(base/'numerical/summary.json')['status']=='PASS_FINITE_R910_NUMERICAL_GATES'
+extracted=read(base/'extracted_replay235/verification.json')
+assert extracted['status']=='PASS_INDEPENDENT_NUMERICAL_REPLAY' and extracted['checker_source_sha256']==source
+assert read(base/'extraction_check.json')['status']=='PASS_MANIFESTED_FRESH_EXTRACTION'
+assert read(base/'deterministic_rebuild.json')['status']=='PASS_IDENTICAL_SOURCE_ARCHIVE_REBUILD'
 experiments=read(base/'experiment_summary.json');assert experiments['source_sha256']==source
 obligations=read(base/'obligation_status.json')
 obligations['certificate_portability']['status']='PASS_LOCAL_CLEAN_WHEEL_AND_DOCKER'

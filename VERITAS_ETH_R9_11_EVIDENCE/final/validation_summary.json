@@ -1,0 +1,62 @@
+{
+  "status": "PASS_PORTABILITY_RELEASE_CHECKS_GENERALIZATION_PARTIAL",
+  "source_sha256": "925b1196f1b5ee1363a97810ef0fca8bbb561a36ffac2c41800a08e236f96702",
+  "pytest": {
+    "tests": 1992,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2,
+    "passed": 1990
+  },
+  "inherited_commands": 13,
+  "portable_commands": 35,
+  "additional_connected_portable_replays": 2,
+  "connected_two_active_level_gate": "INCONCLUSIVE_RESOURCE_LIMIT",
+  "connected_one_level_reference_and_replay": "PASS_WITH_AND_WITHOUT_CACHE",
+  "source_qualified": false,
+  "theorem_mode_enabled": false,
+  "obligations": {
+    "release": "R9.11 partial portability and bounded generalization",
+    "certificate_portability": {
+      "status": "PASS_LOCAL_CLEAN_WHEEL_AND_DOCKER",
+      "completed_sealed_replays": [
+        235,
+        242
+      ],
+      "work_limit_probe": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "time_limit_probe": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "skipped_required_checks": false
+    },
+    "connected_two_active_levels": {
+      "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+      "completed_reference_and_replay": false,
+      "one_active_level_connected_case": "PASS",
+      "constant_padding_disclosed": true
+    },
+    "manuscript_active_schedule": {
+      "status": "NOT_IMPLEMENTED",
+      "implemented_schedule": "finite a=u=1 ell=1"
+    },
+    "coefficient_ring_generalization": {
+      "status": "NOT_IMPLEMENTED_FOR_RECURSIVE_EXECUTOR"
+    },
+    "bit_operation_accounting": {
+      "status": "NOT_INSTRUMENTED",
+      "policy_work_units_are_bit_operations": false
+    },
+    "asymptotic_time_and_space": {
+      "status": "NOT_ESTABLISHED"
+    },
+    "python_lean_refinement": {
+      "status": "NOT_ESTABLISHED"
+    },
+    "general_cnf_integration_and_competitive_benchmarks": {
+      "status": "NOT_EXTENDED_IN_THIS_REVISION"
+    },
+    "resumable_checkpoints": {
+      "status": "NOT_IMPLEMENTED"
+    },
+    "source_qualified": false,
+    "theorem_mode_enabled": false
+  }
+}
