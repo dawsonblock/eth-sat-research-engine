@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/workspace/VERITAS_ETH_R9_12_RING_OPTIMIZATION/scripts/experiment_r912_interaction.py", line 119, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/VERITAS_ETH_R9_12_RING_OPTIMIZATION/scripts/experiment_r912_interaction.py", line 97, in main
+    ref=integer_elimination(data,max_work=args.reference_max_work,max_frontier=args.reference_max_frontier);(args.output_dir/'reference.json').write_bytes(canonical(ref))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/VERITAS_ETH_R9_12_RING_OPTIMIZATION/scripts/experiment_r912_interaction.py", line 43, in integer_elimination
+    if width>max_frontier:raise RuntimeError('independent integer frontier cap')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: independent integer frontier cap
+EXIT 1

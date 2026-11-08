@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/workspace/VERITAS_ETH_R9_12_RING_OPTIMIZATION/scripts/experiment_r912_interaction.py", line 119, in <module>
+    layout_factory=separated_layout,coefficient_encoding=True,compressed_records=True,
+                ^^^^^^
+  File "/workspace/VERITAS_ETH_R9_12_RING_OPTIMIZATION/scripts/experiment_r912_interaction.py", line 97, in main
+    ap.add_argument('--elimination-max-width',type=int,default=20)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/VERITAS_ETH_R9_12_RING_OPTIMIZATION/scripts/experiment_r912_interaction.py", line 43, in integer_elimination
+    if pending is None:v=min(all_vars,key=lambda x:(len(scope_for[x]),x))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: independent integer frontier cap
+EXIT 1
