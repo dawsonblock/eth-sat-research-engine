@@ -1,0 +1,33 @@
+         1076 function calls (1064 primitive calls) in 0.000 seconds
+
+   Ordered by: cumulative time
+   List reduced from 42 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION_EVIDENCE/profile_routes.py:58(_)
+        1    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:96(common_zeros_factored)
+        1    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:53(_factored_components)
+        1    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:332(common_zeros)
+        1    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:314(_exhaustive_zeros)
+      157    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:34(tick)
+        2    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse.py:44(normalize_system)
+        8    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse.py:48(<genexpr>)
+        6    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse.py:25(normalize_equation)
+        1    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:22(_independent_components)
+      104    0.000    0.000    0.000    0.000 {built-in method builtins.all}
+      248    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:324(<genexpr>)
+    25/13    0.000    0.000    0.000    0.000 {built-in method builtins.sorted}
+       12    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse.py:41(<lambda>)
+      160    0.000    0.000    0.000    0.000 {built-in method time.monotonic}
+        8    0.000    0.000    0.000    0.000 {built-in method builtins.sum}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        6    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:62(<genexpr>)
+      149    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        7    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:43(items)
+        5    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:54(<genexpr>)
+       24    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:25(root)
+        9    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:101(<genexpr>)
+       10    0.000    0.000    0.000    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:63(<genexpr>)
+       18    0.000    0.000    0.000    0.000 {method 'setdefault' of 'dict' objects}
+
+

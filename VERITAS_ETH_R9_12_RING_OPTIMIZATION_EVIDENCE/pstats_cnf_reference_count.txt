@@ -1,0 +1,33 @@
+         160858 function calls in 0.039 seconds
+
+   Ordered by: cumulative time
+   List reduced from 117 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.039    0.039 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION_EVIDENCE/profile_routes.py:74(_)
+        1    0.000    0.000    0.039    0.039 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:158(count)
+        1    0.000    0.000    0.039    0.039 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:163(_count)
+        1    0.012    0.012    0.035    0.035 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:110(direct_count)
+    17885    0.003    0.000    0.012    0.000 {built-in method builtins.any}
+    49344    0.009    0.000    0.011    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:118(<genexpr>)
+    21975    0.006    0.000    0.008    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:34(tick)
+        1    0.000    0.000    0.004    0.004 <frozen importlib._bootstrap>:1343(_find_and_load)
+        1    0.000    0.000    0.004    0.004 <frozen importlib._bootstrap>:1298(_find_and_load_unlocked)
+        1    0.000    0.000    0.004    0.004 <frozen importlib._bootstrap>:905(_load_unlocked)
+        1    0.000    0.000    0.004    0.004 <frozen importlib._bootstrap_external>:988(exec_module)
+        1    0.000    0.000    0.004    0.004 <frozen importlib._bootstrap_external>:1061(get_code)
+        3    0.000    0.000    0.002    0.001 <frozen importlib._bootstrap>:480(_call_with_frames_removed)
+        1    0.000    0.000    0.002    0.002 <frozen importlib._bootstrap_external>:1053(source_to_code)
+        1    0.002    0.002    0.002    0.002 {built-in method builtins.compile}
+        2    0.000    0.000    0.002    0.001 <frozen importlib._bootstrap_external>:1182(get_data)
+    21977    0.002    0.000    0.002    0.000 {built-in method time.monotonic}
+        1    0.002    0.002    0.002    0.002 {method 'read' of '_io.BufferedReader' objects}
+    31508    0.002    0.000    0.002    0.000 {built-in method builtins.abs}
+    17881    0.001    0.000    0.001    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1234(_find_spec)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1516(find_spec)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1487(_get_spec)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1589(find_spec)
+        2    0.000    0.000    0.000    0.000 {built-in method _io.open_code}
+
+

@@ -1,0 +1,33 @@
+         80644988 function calls (80028743 primitive calls) in 29.715 seconds
+
+   Ordered by: cumulative time
+   List reduced from 203 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000   30.000   30.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION_EVIDENCE/profile_routes.py:91(_)
+        1    0.000    0.000   30.000   30.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/experimental.py:90(count_scaled_cnf)
+        1    0.000    0.000   30.000   30.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/experimental.py:78(contract_scaled)
+        1    0.000    0.000   30.000   30.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:27(_contract)
+    302/1    0.002    0.000   30.000   30.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:51(visit)
+        1    0.000    0.000   29.999   29.999 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/recovery.py:62(recover)
+        1    0.000    0.000   29.994   29.994 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/recovery.py:40(interpolate_values)
+       10    0.000    0.000   29.987    2.999 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/recovery.py:88(<lambda>)
+       10    0.000    0.000   29.987    2.999 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:78(point_value)
+       10    0.002    0.000   29.965    2.996 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/children.py:103(point_contraction)
+      301    0.001    0.000   29.895    0.099 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:83(<lambda>)
+      301    1.049    0.003   29.889    0.099 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/model.py:125(direct)
+   307947    2.382    0.000   15.957    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/children.py:23(entry)
+  1308717   11.660    0.000   13.667    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:61(scalar_mul)
+   616195    0.735    0.000    9.149    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:112(mul)
+  1194566    1.854    0.000    3.821    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:52(scalar_add)
+   615904    0.288    0.000    2.483    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:127(canonical)
+   308453    1.320    0.000    2.231    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:25(__post_init__)
+1312277/696333    0.846    0.000    2.217    0.000 {built-in method builtins.any}
+  1231808    0.335    0.000    1.948    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:129(<genexpr>)
+  4375132    1.439    0.000    1.859    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:34(tick)
+ 15529358    1.456    0.000    1.456    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:54(<genexpr>)
+ 17013308    1.326    0.000    1.326    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:78(<genexpr>)
+  8006752    0.966    0.000    0.966    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:130(<genexpr>)
+    75727    0.044    0.000    0.822    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:80(scalar_pow)
+
+

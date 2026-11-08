@@ -1,0 +1,1300 @@
+{
+ "direct_grouped_sparse_small": {
+  "outcome": "COMPLETED",
+  "wall_seconds": 4.322,
+  "receipt": {
+   "status": "PASS_EXACT_COUNT",
+   "count": 262144,
+   "route": "SPARSE_POLY_CONTRACT"
+  },
+  "hotspots": [
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION_EVIDENCE/profile_routes.py:38:_",
+    "ncalls": 1,
+    "tottime": 1.2e-05,
+    "cumtime": 4.321675
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:332:common_zeros",
+    "ncalls": 1,
+    "tottime": 5.2e-05,
+    "cumtime": 4.321663
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:278:_branch_count",
+    "ncalls": 1,
+    "tottime": 0.000285,
+    "cumtime": 4.321427
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:21:contract",
+    "ncalls": 16,
+    "tottime": 2.6e-05,
+    "cumtime": 4.318655
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:27:_contract",
+    "ncalls": 16,
+    "tottime": 0.00021,
+    "cumtime": 4.318629
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:51:visit",
+    "ncalls": 16,
+    "tottime": 0.000131,
+    "cumtime": 4.299833
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/model.py:125:direct",
+    "ncalls": 16,
+    "tottime": 0.002616,
+    "cumtime": 4.299283
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:112:mul",
+    "ncalls": 600,
+    "tottime": 0.060203,
+    "cumtime": 4.204604
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:61:scalar_mul",
+    "ncalls": 138600,
+    "tottime": 3.348844,
+    "cumtime": 3.586304
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:52:scalar_add",
+    "ncalls": 140700,
+    "tottime": 0.279334,
+    "cumtime": 0.562555
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:54:<genexpr>",
+    "ncalls": 3517500,
+    "tottime": 0.227552,
+    "cumtime": 0.227552
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:78:<genexpr>",
+    "ncalls": 3465000,
+    "tottime": 0.174699,
+    "cumtime": 0.174699
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:34:tick",
+    "ncalls": 281527,
+    "tottime": 0.084559,
+    "cumtime": 0.109013
+   },
+   {
+    "func": "~:0:<built-in method builtins.any>",
+    "ncalls": 14788,
+    "tottime": 0.020694,
+    "cumtime": 0.059114
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:127:canonical",
+    "ncalls": 600,
+    "tottime": 0.000468,
+    "cumtime": 0.055948
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:129:<genexpr>",
+    "ncalls": 13200,
+    "tottime": 0.005518,
+    "cumtime": 0.054216
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:130:<genexpr>",
+    "ncalls": 315000,
+    "tottime": 0.030171,
+    "cumtime": 0.030171
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/model.py:26:entry",
+    "ncalls": 600,
+    "tottime": 0.003049,
+    "cumtime": 0.027268
+   },
+   {
+    "func": "~:0:<built-in method time.monotonic>",
+    "ncalls": 281545,
+    "tottime": 0.024456,
+    "cumtime": 0.024456
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/eth_arithmetic/gf2.py:44:is_irreducible",
+    "ncalls": 240,
+    "tottime": 0.000536,
+    "cumtime": 0.017633
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/eth_arithmetic/gf2.py:7:mod",
+    "ncalls": 6096,
+    "tottime": 0.005486,
+    "cumtime": 0.014368
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:7:choose_polynomial",
+    "ncalls": 16,
+    "tottime": 0.000102,
+    "cumtime": 0.013941
+   },
+   {
+    "func": "~:0:<built-in method builtins.len>",
+    "ncalls": 173189,
+    "tottime": 0.012767,
+    "cumtime": 0.012767
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:134:evaluate",
+    "ncalls": 300,
+    "tottime": 0.002323,
+    "cumtime": 0.011257
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/eth_arithmetic/gf2.py:38:gcd",
+    "ncalls": 736,
+    "tottime": 0.000531,
+    "cumtime": 0.010424
+   }
+  ]
+ },
+ "direct_grouped_sparse_capped": {
+  "outcome": "CAPPED_OR_REFUSED",
+  "wall_seconds": 30.0,
+  "receipt": {
+   "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+   "reason": "sparse network contraction: INCONCLUSIVE_RESOURCE_LIMIT"
+  },
+  "hotspots": [
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION_EVIDENCE/profile_routes.py:45:_",
+    "ncalls": 1,
+    "tottime": 1.3e-05,
+    "cumtime": 30.00013
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:332:common_zeros",
+    "ncalls": 1,
+    "tottime": 4.8e-05,
+    "cumtime": 30.000117
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:278:_branch_count",
+    "ncalls": 1,
+    "tottime": 0.001033,
+    "cumtime": 29.999842
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:21:contract",
+    "ncalls": 58,
+    "tottime": 8.2e-05,
+    "cumtime": 29.989722
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:27:_contract",
+    "ncalls": 58,
+    "tottime": 0.000814,
+    "cumtime": 29.989641
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:51:visit",
+    "ncalls": 58,
+    "tottime": 0.000469,
+    "cumtime": 29.921057
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/model.py:125:direct",
+    "ncalls": 58,
+    "tottime": 0.018033,
+    "cumtime": 29.918941
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:112:mul",
+    "ncalls": 4156,
+    "tottime": 0.423004,
+    "cumtime": 29.20839
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:61:scalar_mul",
+    "ncalls": 959844,
+    "tottime": 23.255542,
+    "cumtime": 24.900668
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:52:scalar_add",
+    "ncalls": 974376,
+    "tottime": 1.941575,
+    "cumtime": 3.914546
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:54:<genexpr>",
+    "ncalls": 24359375,
+    "tottime": 1.58236,
+    "cumtime": 1.58236
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:78:<genexpr>",
+    "ncalls": 23996100,
+    "tottime": 1.212031,
+    "cumtime": 1.212031
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:34:tick",
+    "ncalls": 1951792,
+    "tottime": 0.592572,
+    "cumtime": 0.761047
+   },
+   {
+    "func": "~:0:<built-in method builtins.any>",
+    "ncalls": 101126,
+    "tottime": 0.143409,
+    "cumtime": 0.410018
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:127:canonical",
+    "ncalls": 4156,
+    "tottime": 0.003332,
+    "cumtime": 0.388996
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:129:<genexpr>",
+    "ncalls": 91432,
+    "tottime": 0.037594,
+    "cumtime": 0.376603
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/model.py:26:entry",
+    "ncalls": 4156,
+    "tottime": 0.021272,
+    "cumtime": 0.2425
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:130:<genexpr>",
+    "ncalls": 2181900,
+    "tottime": 0.209782,
+    "cumtime": 0.209782
+   },
+   {
+    "func": "~:0:<built-in method time.monotonic>",
+    "ncalls": 1951852,
+    "tottime": 0.168482,
+    "cumtime": 0.168482
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:134:evaluate",
+    "ncalls": 2079,
+    "tottime": 0.022167,
+    "cumtime": 0.126625
+   },
+   {
+    "func": "~:0:<built-in method builtins.len>",
+    "ncalls": 1216225,
+    "tottime": 0.088243,
+    "cumtime": 0.088243
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse.py:128:incidence_coefficient",
+    "ncalls": 2556,
+    "tottime": 0.020354,
+    "cumtime": 0.078373
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/eth_arithmetic/gf2.py:44:is_irreducible",
+    "ncalls": 870,
+    "tottime": 0.001904,
+    "cumtime": 0.064362
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:107:add",
+    "ncalls": 692,
+    "tottime": 0.001644,
+    "cumtime": 0.059322
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:107:<genexpr>",
+    "ncalls": 15224,
+    "tottime": 0.003314,
+    "cumtime": 0.057678
+   }
+  ]
+ },
+ "direct_factored_two_components": {
+  "outcome": "COMPLETED",
+  "wall_seconds": 0.0,
+  "receipt": {
+   "status": "PASS_EXACT_COUNT",
+   "count": 102400,
+   "route": "EXACT_INDEPENDENT_COMPONENT_PRODUCT",
+   "component_variables": [
+    5,
+    5
+   ],
+   "reused_components": 1
+  },
+  "hotspots": [
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION_EVIDENCE/profile_routes.py:58:_",
+    "ncalls": 1,
+    "tottime": 1.1e-05,
+    "cumtime": 0.000389
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:96:common_zeros_factored",
+    "ncalls": 1,
+    "tottime": 3.1e-05,
+    "cumtime": 0.000378
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:53:_factored_components",
+    "ncalls": 1,
+    "tottime": 2.3e-05,
+    "cumtime": 0.000295
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:332:common_zeros",
+    "ncalls": 1,
+    "tottime": 7e-06,
+    "cumtime": 0.0002
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:314:_exhaustive_zeros",
+    "ncalls": 1,
+    "tottime": 7.4e-05,
+    "cumtime": 0.000177
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:34:tick",
+    "ncalls": 157,
+    "tottime": 4.5e-05,
+    "cumtime": 5.8e-05
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse.py:44:normalize_system",
+    "ncalls": 2,
+    "tottime": 4e-06,
+    "cumtime": 5.7e-05
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse.py:48:<genexpr>",
+    "ncalls": 8,
+    "tottime": 2e-06,
+    "cumtime": 5.2e-05
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse.py:25:normalize_equation",
+    "ncalls": 6,
+    "tottime": 2.1e-05,
+    "cumtime": 4.9e-05
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:22:_independent_components",
+    "ncalls": 1,
+    "tottime": 2.8e-05,
+    "cumtime": 4.6e-05
+   },
+   {
+    "func": "~:0:<built-in method builtins.all>",
+    "ncalls": 104,
+    "tottime": 2.1e-05,
+    "cumtime": 3.6e-05
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:324:<genexpr>",
+    "ncalls": 248,
+    "tottime": 2.6e-05,
+    "cumtime": 2.6e-05
+   },
+   {
+    "func": "~:0:<built-in method builtins.sorted>",
+    "ncalls": 25,
+    "tottime": 1.7e-05,
+    "cumtime": 2.4e-05
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse.py:41:<lambda>",
+    "ncalls": 12,
+    "tottime": 5e-06,
+    "cumtime": 1.4e-05
+   },
+   {
+    "func": "~:0:<built-in method builtins.sum>",
+    "ncalls": 8,
+    "tottime": 6e-06,
+    "cumtime": 1.3e-05
+   },
+   {
+    "func": "~:0:<built-in method time.monotonic>",
+    "ncalls": 160,
+    "tottime": 1.3e-05,
+    "cumtime": 1.3e-05
+   },
+   {
+    "func": "~:0:<method 'disable' of '_lsprof.Profiler' objects>",
+    "ncalls": 1,
+    "tottime": 1.2e-05,
+    "cumtime": 1.2e-05
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:62:<genexpr>",
+    "ncalls": 6,
+    "tottime": 4e-06,
+    "cumtime": 1.2e-05
+   },
+   {
+    "func": "~:0:<built-in method builtins.len>",
+    "ncalls": 149,
+    "tottime": 1e-05,
+    "cumtime": 1e-05
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:43:items",
+    "ncalls": 7,
+    "tottime": 2e-06,
+    "cumtime": 5e-06
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:54:<genexpr>",
+    "ncalls": 5,
+    "tottime": 3e-06,
+    "cumtime": 4e-06
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:25:root",
+    "ncalls": 24,
+    "tottime": 3e-06,
+    "cumtime": 3e-06
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:48:bits",
+    "ncalls": 3,
+    "tottime": 1e-06,
+    "cumtime": 2e-06
+   },
+   {
+    "func": "~:0:<method 'get' of 'dict' objects>",
+    "ncalls": 13,
+    "tottime": 2e-06,
+    "cumtime": 2e-06
+   },
+   {
+    "func": "~:0:<method 'setdefault' of 'dict' objects>",
+    "ncalls": 18,
+    "tottime": 2e-06,
+    "cumtime": 2e-06
+   }
+  ]
+ },
+ "cnf_reference_count": {
+  "outcome": "COMPLETED",
+  "wall_seconds": 0.039,
+  "receipt": {
+   "status": "PASS_EXACT_COUNT",
+   "count": 1764,
+   "route": "BOUNDED_EXHAUSTIVE_SEARCH"
+  },
+  "hotspots": [
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION_EVIDENCE/profile_routes.py:74:_",
+    "ncalls": 1,
+    "tottime": 1e-06,
+    "cumtime": 0.039217
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:158:count",
+    "ncalls": 1,
+    "tottime": 1.4e-05,
+    "cumtime": 0.039216
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:163:_count",
+    "ncalls": 1,
+    "tottime": 3.8e-05,
+    "cumtime": 0.039201
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:110:direct_count",
+    "ncalls": 1,
+    "tottime": 0.01158,
+    "cumtime": 0.034906
+   },
+   {
+    "func": "~:0:<built-in method builtins.any>",
+    "ncalls": 17885,
+    "tottime": 0.003492,
+    "cumtime": 0.011635
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:118:<genexpr>",
+    "ncalls": 49344,
+    "tottime": 0.009313,
+    "cumtime": 0.010903
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:34:tick",
+    "ncalls": 21975,
+    "tottime": 0.006125,
+    "cumtime": 0.007936
+   },
+   {
+    "func": "<frozen importlib._bootstrap>:1343:_find_and_load",
+    "ncalls": 1,
+    "tottime": 1.3e-05,
+    "cumtime": 0.004193
+   },
+   {
+    "func": "<frozen importlib._bootstrap>:1298:_find_and_load_unlocked",
+    "ncalls": 1,
+    "tottime": 1.4e-05,
+    "cumtime": 0.004096
+   },
+   {
+    "func": "<frozen importlib._bootstrap>:905:_load_unlocked",
+    "ncalls": 1,
+    "tottime": 1.2e-05,
+    "cumtime": 0.003864
+   },
+   {
+    "func": "<frozen importlib._bootstrap_external>:988:exec_module",
+    "ncalls": 1,
+    "tottime": 4e-06,
+    "cumtime": 0.003811
+   },
+   {
+    "func": "<frozen importlib._bootstrap_external>:1061:get_code",
+    "ncalls": 1,
+    "tottime": 1e-05,
+    "cumtime": 0.00378
+   },
+   {
+    "func": "<frozen importlib._bootstrap>:480:_call_with_frames_removed",
+    "ncalls": 3,
+    "tottime": 2.1e-05,
+    "cumtime": 0.001979
+   },
+   {
+    "func": "<frozen importlib._bootstrap_external>:1053:source_to_code",
+    "ncalls": 1,
+    "tottime": 2e-06,
+    "cumtime": 0.001935
+   },
+   {
+    "func": "~:0:<built-in method builtins.compile>",
+    "ncalls": 1,
+    "tottime": 0.00193,
+    "cumtime": 0.00193
+   },
+   {
+    "func": "<frozen importlib._bootstrap_external>:1182:get_data",
+    "ncalls": 2,
+    "tottime": 1.1e-05,
+    "cumtime": 0.001822
+   },
+   {
+    "func": "~:0:<built-in method time.monotonic>",
+    "ncalls": 21977,
+    "tottime": 0.001811,
+    "cumtime": 0.001811
+   },
+   {
+    "func": "~:0:<method 'read' of '_io.BufferedReader' objects>",
+    "ncalls": 1,
+    "tottime": 0.00171,
+    "cumtime": 0.00171
+   },
+   {
+    "func": "~:0:<built-in method builtins.abs>",
+    "ncalls": 31508,
+    "tottime": 0.001594,
+    "cumtime": 0.001594
+   },
+   {
+    "func": "~:0:<built-in method builtins.len>",
+    "ncalls": 17881,
+    "tottime": 0.001008,
+    "cumtime": 0.001008
+   },
+   {
+    "func": "<frozen importlib._bootstrap>:1234:_find_spec",
+    "ncalls": 1,
+    "tottime": 2.8e-05,
+    "cumtime": 0.000216
+   },
+   {
+    "func": "<frozen importlib._bootstrap_external>:1516:find_spec",
+    "ncalls": 1,
+    "tottime": 2e-06,
+    "cumtime": 0.000111
+   },
+   {
+    "func": "<frozen importlib._bootstrap_external>:1487:_get_spec",
+    "ncalls": 1,
+    "tottime": 1.1e-05,
+    "cumtime": 0.000109
+   },
+   {
+    "func": "<frozen importlib._bootstrap_external>:1589:find_spec",
+    "ncalls": 1,
+    "tottime": 2.1e-05,
+    "cumtime": 9.7e-05
+   },
+   {
+    "func": "~:0:<built-in method _io.open_code>",
+    "ncalls": 2,
+    "tottime": 9.4e-05,
+    "cumtime": 9.4e-05
+   }
+  ]
+ },
+ "cnf_optimized_count": {
+  "outcome": "COMPLETED",
+  "wall_seconds": 0.001,
+  "receipt": {
+   "status": "PASS_EXACT_COUNT",
+   "count": 1764,
+   "route": "EXACT_INDEPENDENT_COMPONENT_PRODUCT",
+   "component_variables": [
+    6,
+    6
+   ],
+   "reused_components": 1
+  },
+  "hotspots": [
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION_EVIDENCE/profile_routes.py:79:_",
+    "ncalls": 1,
+    "tottime": 6e-06,
+    "cumtime": 0.000536
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:207:count_optimized",
+    "ncalls": 1,
+    "tottime": 2.7e-05,
+    "cumtime": 0.00053
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:163:_count",
+    "ncalls": 1,
+    "tottime": 5e-06,
+    "cumtime": 0.000369
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:110:direct_count",
+    "ncalls": 1,
+    "tottime": 0.000116,
+    "cumtime": 0.000344
+   },
+   {
+    "func": "~:0:<built-in method builtins.any>",
+    "ncalls": 192,
+    "tottime": 4.5e-05,
+    "cumtime": 0.000137
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:118:<genexpr>",
+    "ncalls": 464,
+    "tottime": 8.5e-05,
+    "cumtime": 0.000101
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:34:tick",
+    "ncalls": 265,
+    "tottime": 7.5e-05,
+    "cumtime": 9.7e-05
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:27:normalize",
+    "ncalls": 2,
+    "tottime": 1.8e-05,
+    "cumtime": 6.8e-05
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:22:_independent_components",
+    "ncalls": 1,
+    "tottime": 2.4e-05,
+    "cumtime": 4.7e-05
+   },
+   {
+    "func": "<string>:2:__init__",
+    "ncalls": 3,
+    "tottime": 4e-06,
+    "cumtime": 2.8e-05
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:19:__post_init__",
+    "ncalls": 3,
+    "tottime": 5e-06,
+    "cumtime": 2.4e-05
+   },
+   {
+    "func": "~:0:<built-in method builtins.abs>",
+    "ncalls": 395,
+    "tottime": 2.2e-05,
+    "cumtime": 2.2e-05
+   },
+   {
+    "func": "~:0:<built-in method time.monotonic>",
+    "ncalls": 268,
+    "tottime": 2.2e-05,
+    "cumtime": 2.2e-05
+   },
+   {
+    "func": "~:0:<built-in method builtins.sorted>",
+    "ncalls": 19,
+    "tottime": 1e-05,
+    "cumtime": 1.6e-05
+   },
+   {
+    "func": "~:0:<built-in method builtins.len>",
+    "ncalls": 205,
+    "tottime": 1.2e-05,
+    "cumtime": 1.2e-05
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:24:<genexpr>",
+    "ncalls": 48,
+    "tottime": 7e-06,
+    "cumtime": 9e-06
+   },
+   {
+    "func": "~:0:<built-in method builtins.sum>",
+    "ncalls": 9,
+    "tottime": 5e-06,
+    "cumtime": 9e-06
+   },
+   {
+    "func": "~:0:<method 'disable' of '_lsprof.Profiler' objects>",
+    "ncalls": 1,
+    "tottime": 7e-06,
+    "cumtime": 7e-06
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:43:items",
+    "ncalls": 8,
+    "tottime": 3e-06,
+    "cumtime": 6e-06
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:34:<lambda>",
+    "ncalls": 27,
+    "tottime": 4e-06,
+    "cumtime": 6e-06
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:225:<genexpr>",
+    "ncalls": 7,
+    "tottime": 4e-06,
+    "cumtime": 6e-06
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cnf.py:32:<genexpr>",
+    "ncalls": 36,
+    "tottime": 5e-06,
+    "cumtime": 5e-06
+   },
+   {
+    "func": "<frozen importlib._bootstrap>:645:parent",
+    "ncalls": 4,
+    "tottime": 2e-06,
+    "cumtime": 4e-06
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:233:<genexpr>",
+    "ncalls": 24,
+    "tottime": 3e-06,
+    "cumtime": 4e-06
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/optimizations.py:25:root",
+    "ncalls": 30,
+    "tottime": 3e-06,
+    "cumtime": 3e-06
+   }
+  ]
+ },
+ "scaled_certified_n5_1cl": {
+  "outcome": "COMPLETED",
+  "wall_seconds": 1.12,
+  "receipt": {
+   "status": "PASS_EXACT_COUNT",
+   "count": 24,
+   "route": "EXPERIMENTAL_SCALED_CNF",
+   "inner_route": "EXPERIMENTAL_CERTIFIED_RECURSION",
+   "encoded_wires": 4,
+   "extension_degree": 12
+  },
+  "hotspots": [
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION_EVIDENCE/profile_routes.py:86:_",
+    "ncalls": 1,
+    "tottime": 9e-06,
+    "cumtime": 1.120209
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/experimental.py:90:count_scaled_cnf",
+    "ncalls": 1,
+    "tottime": 2.2e-05,
+    "cumtime": 1.120194
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/experimental.py:78:contract_scaled",
+    "ncalls": 1,
+    "tottime": 3e-06,
+    "cumtime": 1.11997
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:27:_contract",
+    "ncalls": 1,
+    "tottime": 2.5e-05,
+    "cumtime": 1.119963
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:51:visit",
+    "ncalls": 209,
+    "tottime": 0.000785,
+    "cumtime": 1.119645
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/recovery.py:62:recover",
+    "ncalls": 1,
+    "tottime": 0.00045,
+    "cumtime": 1.118278
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/recovery.py:40:interpolate_values",
+    "ncalls": 2,
+    "tottime": 0.000619,
+    "cumtime": 1.114025
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/recovery.py:88:<lambda>",
+    "ncalls": 26,
+    "tottime": 9.8e-05,
+    "cumtime": 1.091494
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:78:point_value",
+    "ncalls": 26,
+    "tottime": 0.000207,
+    "cumtime": 1.091396
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/children.py:103:point_contraction",
+    "ncalls": 26,
+    "tottime": 0.000844,
+    "cumtime": 1.061544
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:83:<lambda>",
+    "ncalls": 208,
+    "tottime": 0.000215,
+    "cumtime": 1.030479
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/model.py:125:direct",
+    "ncalls": 208,
+    "tottime": 0.034777,
+    "cumtime": 1.027441
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/children.py:23:entry",
+    "ncalls": 13312,
+    "tottime": 0.085592,
+    "cumtime": 0.553852
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:61:scalar_mul",
+    "ncalls": 46020,
+    "tottime": 0.401829,
+    "cumtime": 0.46981
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:112:mul",
+    "ncalls": 21840,
+    "tottime": 0.02535,
+    "cumtime": 0.318849
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:52:scalar_add",
+    "ncalls": 42094,
+    "tottime": 0.063825,
+    "cumtime": 0.13128
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:25:__post_init__",
+    "ncalls": 13991,
+    "tottime": 0.057531,
+    "cumtime": 0.0978
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:127:canonical",
+    "ncalls": 21658,
+    "tottime": 0.009925,
+    "cumtime": 0.085779
+   },
+   {
+    "func": "~:0:<built-in method builtins.any>",
+    "ncalls": 47809,
+    "tottime": 0.031846,
+    "cumtime": 0.081756
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:129:<genexpr>",
+    "ncalls": 43316,
+    "tottime": 0.011555,
+    "cumtime": 0.067216
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:34:tick",
+    "ncalls": 163931,
+    "tottime": 0.051685,
+    "cumtime": 0.067064
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:54:<genexpr>",
+    "ncalls": 547222,
+    "tottime": 0.050045,
+    "cumtime": 0.050045
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:78:<genexpr>",
+    "ncalls": 598260,
+    "tottime": 0.045223,
+    "cumtime": 0.045223
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:130:<genexpr>",
+    "ncalls": 281554,
+    "tottime": 0.03316,
+    "cumtime": 0.03316
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/experimental.py:46:domain",
+    "ncalls": 26,
+    "tottime": 0.000186,
+    "cumtime": 0.029191
+   }
+  ]
+ },
+ "scaled_certified_n2_2cl": {
+  "outcome": "CAPPED_OR_REFUSED",
+  "wall_seconds": 30.0,
+  "receipt": {
+   "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+   "reason": "elapsed-time allowance exhausted"
+  },
+  "hotspots": [
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION_EVIDENCE/profile_routes.py:91:_",
+    "ncalls": 1,
+    "tottime": 8e-06,
+    "cumtime": 30.000191
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/experimental.py:90:count_scaled_cnf",
+    "ncalls": 1,
+    "tottime": 1.6e-05,
+    "cumtime": 30.000175
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/experimental.py:78:contract_scaled",
+    "ncalls": 1,
+    "tottime": 4e-06,
+    "cumtime": 30.000037
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:27:_contract",
+    "ncalls": 1,
+    "tottime": 8e-05,
+    "cumtime": 30.000029
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:51:visit",
+    "ncalls": 302,
+    "tottime": 0.001727,
+    "cumtime": 29.99963
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/recovery.py:62:recover",
+    "ncalls": 1,
+    "tottime": 3e-05,
+    "cumtime": 29.998636
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/recovery.py:40:interpolate_values",
+    "ncalls": 1,
+    "tottime": 0.000228,
+    "cumtime": 29.994467
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/recovery.py:88:<lambda>",
+    "ncalls": 10,
+    "tottime": 4.7e-05,
+    "cumtime": 29.987245
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:78:point_value",
+    "ncalls": 10,
+    "tottime": 0.000145,
+    "cumtime": 29.987198
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/children.py:103:point_contraction",
+    "ncalls": 10,
+    "tottime": 0.001774,
+    "cumtime": 29.964743
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:83:<lambda>",
+    "ncalls": 301,
+    "tottime": 0.000538,
+    "cumtime": 29.894843
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/model.py:125:direct",
+    "ncalls": 301,
+    "tottime": 1.048538,
+    "cumtime": 29.889449
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/children.py:23:entry",
+    "ncalls": 307947,
+    "tottime": 2.382403,
+    "cumtime": 15.956512
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:61:scalar_mul",
+    "ncalls": 1308717,
+    "tottime": 11.659515,
+    "cumtime": 13.666851
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:112:mul",
+    "ncalls": 616195,
+    "tottime": 0.734988,
+    "cumtime": 9.14929
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:52:scalar_add",
+    "ncalls": 1194566,
+    "tottime": 1.854352,
+    "cumtime": 3.821075
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:127:canonical",
+    "ncalls": 615904,
+    "tottime": 0.287517,
+    "cumtime": 2.482635
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:25:__post_init__",
+    "ncalls": 308453,
+    "tottime": 1.320234,
+    "cumtime": 2.231143
+   },
+   {
+    "func": "~:0:<built-in method builtins.any>",
+    "ncalls": 1312277,
+    "tottime": 0.846264,
+    "cumtime": 2.217351
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:129:<genexpr>",
+    "ncalls": 1231808,
+    "tottime": 0.335289,
+    "cumtime": 1.94786
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:34:tick",
+    "ncalls": 4375132,
+    "tottime": 1.438859,
+    "cumtime": 1.859093
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:54:<genexpr>",
+    "ncalls": 15529358,
+    "tottime": 1.456266,
+    "cumtime": 1.456266
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:78:<genexpr>",
+    "ncalls": 17013308,
+    "tottime": 1.325854,
+    "cumtime": 1.325854
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:130:<genexpr>",
+    "ncalls": 8006752,
+    "tottime": 0.966087,
+    "cumtime": 0.966087
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:80:scalar_pow",
+    "ncalls": 75727,
+    "tottime": 0.043681,
+    "cumtime": 0.822381
+   }
+  ]
+ },
+ "scaled_full_domain_capped": {
+  "outcome": "CAPPED_OR_REFUSED",
+  "wall_seconds": 30.0,
+  "receipt": {
+   "status": "INCONCLUSIVE_RESOURCE_LIMIT",
+   "reason": "elapsed-time allowance exhausted"
+  },
+  "hotspots": [
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION_EVIDENCE/profile_routes.py:98:_",
+    "ncalls": 1,
+    "tottime": 1.2e-05,
+    "cumtime": 30.000221
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/experimental.py:90:count_scaled_cnf",
+    "ncalls": 1,
+    "tottime": 2.9e-05,
+    "cumtime": 30.000201
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/experimental.py:78:contract_scaled",
+    "ncalls": 1,
+    "tottime": 8e-06,
+    "cumtime": 30.000088
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:27:_contract",
+    "ncalls": 1,
+    "tottime": 7.2e-05,
+    "cumtime": 30.000077
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:51:visit",
+    "ncalls": 3272,
+    "tottime": 0.014017,
+    "cumtime": 29.999706
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/recovery.py:62:recover",
+    "ncalls": 1,
+    "tottime": 2.5e-05,
+    "cumtime": 29.999406
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/recovery.py:40:interpolate_values",
+    "ncalls": 1,
+    "tottime": 7e-06,
+    "cumtime": 29.997881
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/recovery.py:88:<lambda>",
+    "ncalls": 1,
+    "tottime": 1e-06,
+    "cumtime": 29.997872
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:78:point_value",
+    "ncalls": 1,
+    "tottime": 9e-06,
+    "cumtime": 29.997871
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/children.py:103:point_contraction",
+    "ncalls": 1,
+    "tottime": 0.014417,
+    "cumtime": 29.997792
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:83:<lambda>",
+    "ncalls": 3271,
+    "tottime": 0.003717,
+    "cumtime": 29.389084
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/model.py:125:direct",
+    "ncalls": 3271,
+    "tottime": 0.62384,
+    "cumtime": 29.332442
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/children.py:23:entry",
+    "ncalls": 209314,
+    "tottime": 1.364839,
+    "cumtime": 21.494875
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:61:scalar_mul",
+    "ncalls": 1242947,
+    "tottime": 10.990618,
+    "cumtime": 12.799262
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cauchy.py:52:mode_coefficient",
+    "ncalls": 12224,
+    "tottime": 0.058656,
+    "cumtime": 5.310403
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:112:mul",
+    "ncalls": 343401,
+    "tottime": 0.438473,
+    "cumtime": 5.175105
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/modes.py:42:packet_modes",
+    "ncalls": 316849,
+    "tottime": 1.617329,
+    "cumtime": 4.794836
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:34:tick",
+    "ncalls": 11586826,
+    "tottime": 3.278882,
+    "cumtime": 4.227524
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/cauchy.py:36:value",
+    "ncalls": 51620,
+    "tottime": 0.288655,
+    "cumtime": 4.016121
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:89:inverse",
+    "ncalls": 12224,
+    "tottime": 0.168402,
+    "cumtime": 3.066379
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:52:scalar_add",
+    "ncalls": 702025,
+    "tottime": 1.152807,
+    "cumtime": 2.277613
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:25:__post_init__",
+    "ncalls": 285931,
+    "tottime": 1.265593,
+    "cumtime": 2.126532
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:127:canonical",
+    "ncalls": 340131,
+    "tottime": 0.175067,
+    "cumtime": 1.453359
+   },
+   {
+    "func": "~:0:<built-in method builtins.any>",
+    "ncalls": 709717,
+    "tottime": 0.520158,
+    "cumtime": 1.352985
+   },
+   {
+    "func": "/Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:80:scalar_pow",
+    "ncalls": 56608,
+    "tottime": 0.056999,
+    "cumtime": 1.29623
+   }
+  ]
+ }
+}

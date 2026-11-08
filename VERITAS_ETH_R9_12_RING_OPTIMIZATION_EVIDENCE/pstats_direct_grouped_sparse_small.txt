@@ -1,0 +1,33 @@
+         8539019 function calls (8526079 primitive calls) in 4.322 seconds
+
+   Ordered by: cumulative time
+   List reduced from 132 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    4.322    4.322 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION_EVIDENCE/profile_routes.py:38(_)
+        1    0.000    0.000    4.322    4.322 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:332(common_zeros)
+        1    0.000    0.000    4.321    4.321 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:278(_branch_count)
+       16    0.000    0.000    4.319    0.270 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:21(contract)
+       16    0.000    0.000    4.319    0.270 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:27(_contract)
+       16    0.000    0.000    4.300    0.269 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/executor.py:51(visit)
+       16    0.003    0.000    4.299    0.269 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/model.py:125(direct)
+      600    0.060    0.000    4.205    0.007 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:112(mul)
+   138600    3.349    0.000    3.586    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:61(scalar_mul)
+   140700    0.279    0.000    0.563    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:52(scalar_add)
+  3517500    0.228    0.000    0.228    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:54(<genexpr>)
+  3465000    0.175    0.000    0.175    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:78(<genexpr>)
+   281527    0.085    0.000    0.109    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/resources.py:34(tick)
+14788/1852    0.021    0.000    0.059    0.000 {built-in method builtins.any}
+      600    0.000    0.000    0.056    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:127(canonical)
+    13200    0.006    0.000    0.054    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:129(<genexpr>)
+   315000    0.030    0.000    0.030    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:130(<genexpr>)
+      600    0.003    0.000    0.027    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/model.py:26(entry)
+   281545    0.024    0.000    0.024    0.000 {built-in method time.monotonic}
+      240    0.001    0.000    0.018    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/eth_arithmetic/gf2.py:44(is_irreducible)
+     6096    0.005    0.000    0.014    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/eth_arithmetic/gf2.py:7(mod)
+       16    0.000    0.000    0.014    0.001 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/ring.py:7(choose_polynomial)
+   173189    0.013    0.000    0.013    0.000 {built-in method builtins.len}
+      300    0.002    0.000    0.011    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/manuscript/sparse_query.py:134(evaluate)
+      736    0.001    0.000    0.010    0.000 /Users/dawsonblock/MATH SPEED/VERITAS_ETH_R9_12_RING_OPTIMIZATION/src/veritas/research/eth_arithmetic/gf2.py:38(gcd)
+
+
