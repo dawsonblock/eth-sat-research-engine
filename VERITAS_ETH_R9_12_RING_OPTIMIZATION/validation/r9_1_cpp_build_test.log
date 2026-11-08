@@ -1,0 +1,22 @@
+CMake Warning (dev) at CMakeLists.txt:11 (find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- pybind11 3.1.0 found: building veritas_d3
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: build/cpp
+[ 33%] Built target veritas_d3_score
+[ 66%] Built target veritas_d3_selftest
+[100%] Built target veritas_d3
+veritas_d3_selftest: PASS
+Test project build/cpp
+    Start 1: veritas_d3_selftest
+1/1 Test #1: veritas_d3_selftest ..............   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec

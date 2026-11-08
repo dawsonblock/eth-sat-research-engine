@@ -1,0 +1,10 @@
+{
+  "version": "2.4.0",
+  "n": 16,
+  "clauses": 15,
+  "batch_seconds": 0.009079,
+  "repeated_conditional_seconds": 0.127295,
+  "ratio_repeated_over_batch": 14.02,
+  "matching_exact_results": true,
+  "interpretation": "Illustrative single-machine benchmark; one case; no general speedup guarantee"
+}

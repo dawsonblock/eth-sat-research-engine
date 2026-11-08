@@ -1,0 +1,94 @@
+{
+  "version": "1.5.0",
+  "warning": "one run per case; hardware-dependent, includes planning and conversion; not a universal speedup or ETH result",
+  "results": [
+    {
+      "case": "path_25",
+      "n": 25,
+      "clauses": 24,
+      "v15": {
+        "status": "EXACT_COUNT",
+        "count": "196418",
+        "engine": "EXACT_BOUNDARY_DP",
+        "representation": "ORIGINAL_CNF_VARIABLES",
+        "heuristic": "min_degree",
+        "peak_table_entries": 4,
+        "evaluated_assignments": 154,
+        "elapsed_seconds": 0.01048
+      },
+      "v14_copy3_legacy": {
+        "status": "EXACT_COUNT",
+        "count": "196418",
+        "elapsed_seconds": 0.00245,
+        "peak_intermediate_entries": 2,
+        "evaluated_assignments": 190
+      }
+    },
+    {
+      "case": "star_22",
+      "n": 22,
+      "clauses": 21,
+      "v15": {
+        "status": "EXACT_COUNT",
+        "count": "2097153",
+        "engine": "EXACT_BOUNDARY_DP",
+        "representation": "ORIGINAL_CNF_VARIABLES",
+        "heuristic": "min_degree",
+        "peak_table_entries": 4,
+        "evaluated_assignments": 84,
+        "elapsed_seconds": 0.01171
+      },
+      "v14_copy3_legacy": {
+        "status": "EXACT_COUNT",
+        "count": "2097153",
+        "elapsed_seconds": 0.004414,
+        "peak_intermediate_entries": 4,
+        "evaluated_assignments": 314
+      }
+    },
+    {
+      "case": "two_chains_24",
+      "n": 24,
+      "clauses": 22,
+      "v15": {
+        "status": "EXACT_COUNT",
+        "count": "142129",
+        "engine": "EXACT_BOUNDARY_DP",
+        "representation": "ORIGINAL_CNF_VARIABLES",
+        "heuristic": "min_degree",
+        "peak_table_entries": 4,
+        "evaluated_assignments": 140,
+        "elapsed_seconds": 0.007727
+      },
+      "v14_copy3_legacy": {
+        "status": "EXACT_COUNT",
+        "count": "142129",
+        "elapsed_seconds": 0.002068,
+        "peak_intermediate_entries": 2,
+        "evaluated_assignments": 172
+      }
+    },
+    {
+      "case": "cycle_10",
+      "n": 10,
+      "clauses": 10,
+      "v15": {
+        "status": "EXACT_COUNT",
+        "count": "123",
+        "engine": "EXACT_BOUNDARY_DP",
+        "representation": "ORIGINAL_CNF_VARIABLES",
+        "heuristic": "min_degree",
+        "peak_table_entries": 4,
+        "evaluated_assignments": 60,
+        "elapsed_seconds": 0.003532
+      },
+      "v14_copy3_legacy": {
+        "status": "EXACT_COUNT",
+        "count": "123",
+        "elapsed_seconds": 0.000522,
+        "peak_intermediate_entries": 4,
+        "evaluated_assignments": 150
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python",
+    "scripts/validate_r96_recipe_grid.py"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 52.45223754202016,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 29065216,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r96_grid_run.stdout.log",
+  "stderr_log": "r96_grid_run.stderr.log",
+  "test_summary": ""
+}

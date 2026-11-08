@@ -1,0 +1,18 @@
+{
+  "release": "1.9.0",
+  "pytest_tests_passed": 257,
+  "pytest_failed": 0,
+  "v19_validation": {
+    "status": "PASS",
+    "oracle_score_cases": 496,
+    "finite_lower_bound_optima_certified": 489,
+    "finite_bound_not_attained": 7,
+    "small_relabel_count_checks": 124,
+    "disclaimer": "Finite surrogate packet objective; no manuscript D.3 packing theorem or subexponential algorithm."
+  },
+  "inherited_validation_10000_passed": true,
+  "inherited_v18_validation_passed": true,
+  "inherited_v17_validation_passed": true,
+  "smoke_passed": true,
+  "scope": "Bounded packet proxy optimizer with certified lower bounds; does not reproduce manuscript D.3 or subexponential algorithm."
+}

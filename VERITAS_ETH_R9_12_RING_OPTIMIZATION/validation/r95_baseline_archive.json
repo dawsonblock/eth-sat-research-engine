@@ -1,0 +1,12 @@
+{
+  "archive": "VERITAS_ETH_R9_4_SOURCE_FOUNDATION_PARTIAL_FULL_UPGRADED.zip",
+  "sha256": "727abadd550efd7870add0bef4d4a16e30c272ecd77b1d165089337c27c81549",
+  "zip_crc_ok": true,
+  "members": 738,
+  "duplicate_members": 0,
+  "unsafe_paths": [],
+  "symlinks": [],
+  "manifest_entries": 736,
+  "manifest_mismatches": [],
+  "prechange_full_suite_this_turn": "NOT_RUN; prior sealed R94 evidence retained, not promoted to current reproduction"
+}

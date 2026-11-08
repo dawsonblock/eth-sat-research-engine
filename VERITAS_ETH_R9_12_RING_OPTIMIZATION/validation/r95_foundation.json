@@ -1,0 +1,18 @@
+{
+  "command": [
+    "<user>/.pyenv/versions/3.12.0/bin/python",
+    "scripts/validate_r94_foundation.py",
+    "--output",
+    "validation/r9_4_differential.json"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 89.27071449998766,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 1388937216,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r95_foundation.stdout.log",
+  "stderr_log": "r95_foundation.stderr.log",
+  "test_summary": ""
+}
