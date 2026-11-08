@@ -31,14 +31,20 @@ def graph(n=32,offset=5):
     return {'root_s':4*n,'edges':3*n,'precision':512,'extension_degree':10,'vertices':vertices}
 
 
-def integer_elimination(data,max_work=50_000_000,max_frontier=18):
-    """Exact Python integer sum-product; no tensor executor or modular arithmetic."""
+def integer_elimination(data,max_work=50_000_000,max_frontier=18,order=None):
+    """Exact Python integer sum-product; no tensor executor or modular arithmetic.
+
+    An explicit order changes only cost; every scope is recomputed here."""
     factors=[(tuple(v['ports']),list(v['table'])) for v in data['vertices']]
-    work=width=peak=0;started=monotonic()
+    work=width=peak=0;started=monotonic();pending=None if order is None else list(order)
     while any(scope for scope,_ in factors):
         all_vars={v for scope,_ in factors for v in scope}
         scope_for={v:set().union(*(set(s) for s,_ in factors if v in s)) for v in all_vars}
-        v=min(all_vars,key=lambda x:(len(scope_for[x]),x));joined=[(s,t) for s,t in factors if v in s]
+        if pending is None:v=min(all_vars,key=lambda x:(len(scope_for[x]),x))
+        else:
+            v=pending.pop(0)
+            if v not in all_vars:raise ValueError('explicit order repeats or omits a wire')
+        joined=[(s,t) for s,t in factors if v in s]
         remaining=tuple(sorted(scope_for[v]-{v}));width=max(width,len(remaining))
         if width>max_frontier:raise RuntimeError('independent integer frontier cap')
         output=[]
@@ -91,10 +97,16 @@ def main():
     ap.add_argument('--elimination-max-width',type=int,default=20)
     ap.add_argument('--reference-max-frontier',type=int,default=18)
     ap.add_argument('--reference-max-work',type=int,default=50_000_000)
+    ap.add_argument('--reference-order',choices=('min_degree','planned_min_fill'),default='min_degree')
     ap.add_argument('--skip-recursive',action='store_true');args=ap.parse_args()
     _check_output(args.output_dir);args.output_dir.mkdir(parents=True,exist_ok=False)
     data=graph(32,args.offset);source=args.output_dir/'input.json';source.write_bytes(canonical(data));parent=load_input(source,max_extension_degree=12)
-    ref=integer_elimination(data,max_work=args.reference_max_work,max_frontier=args.reference_max_frontier);(args.output_dir/'reference.json').write_bytes(canonical(ref))
+    order=None
+    if args.reference_order=='planned_min_fill':
+        from veritas.research.parent_child_r912.elimination import call_scopes,plan_order
+        order=plan_order(*call_scopes(parent))
+    ref=integer_elimination(data,max_work=args.reference_max_work,max_frontier=args.reference_max_frontier,order=order)
+    ref['order_source']=args.reference_order;(args.output_dir/'reference.json').write_bytes(canonical(ref))
     routed=eliminate_and_compare(parent,ref,EliminationBudget(max_width=args.elimination_max_width))
     (args.output_dir/'elimination.json').write_bytes(canonical(routed))
     print(routed['status'],routed.get('elimination_width'),routed.get('matches_independent_integer_reference'))

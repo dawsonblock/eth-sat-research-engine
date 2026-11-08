@@ -78,6 +78,15 @@ def test_interaction_family_matches_independent_integer_oracle(tmp_path, n, offs
     assert not any(report['result'][0][1:])
 
 
+def test_integer_oracle_explicit_order_changes_only_cost(tmp_path):
+    data, parent = interaction_parent(tmp_path, 8, 3)
+    order = plan_order(*call_scopes(parent))
+    planned = probe.integer_elimination(data, order=order)
+    assert planned['integer'] == probe.integer_elimination(data)['integer']
+    with pytest.raises(ValueError, match='order'):
+        probe.integer_elimination(data, order=order[:1] + order)
+
+
 @pytest.mark.parametrize('offset', [5, 2, 16, 31])
 def test_96_wire_interacting_fixture_exact_via_elimination_route(tmp_path, offset):
     data, parent = interaction_parent(tmp_path, 32, offset)
