@@ -69,7 +69,12 @@ is `O_C(s/√λ)` independent of the depth.
   there too, but that instance is not formalised.
 - That the coefficient extraction factors over groups into the child
   contractions `Z_{g,β}` of `eq:tensor-recursion-identity`.
-- Correctness of the tapered-Hermite recovery (`lem:tapered-hermite`).
+- Correctness of the tapered-Hermite recovery (`lem:tapered-hermite`). Not
+  formalised; `scripts/check_tapered_hermite.py` checks it exactly on the
+  paper's deformed contraction for `a ≤ 3`, with adversarial lifts of every
+  jet coefficient, and finds the loss bound `6Dh + 4M(a+1)` with margin. Its
+  negative control (precision one bit below the actual loss) fails, as it
+  should.
 - The polynomial factor `Q` in `total_calls`: that interpolation nodes,
   values and groups per call are polynomially many in `s`. The `(n+1)·Q^n`
   factor with `Q = s^{O(1)}` and `n = O(log λ)` is `exp(O(λ log λ))`; its
