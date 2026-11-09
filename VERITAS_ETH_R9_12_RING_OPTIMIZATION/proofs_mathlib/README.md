@@ -34,11 +34,29 @@ every loop is charged too, and each emitted tuple costs one unit.
 
 `active_node_bounds` no longer assumes `P·L ≤ 3M` or `p·u ≤ C·M·D`.
 
+| `crossing_not_dvd`, `crossing_valuation` | for `t = 2^i(2k+1)` and a crossing column, `v₂(T - y₀ + x) ≤ i` | `eq:tensor-mode-expansion` inputs |
+| `odd_choose_two_pow_sub_one`, `factorization_prodAbs_eq` | `C(2^a - 1, n)` is odd; `∏_{m ≠ n} |n - m| = n!(N-1-n)!` has the matching 2-adic valuation | Kummer step |
+| `first_fraction`, `ratio_even` | in any ring where odd integers plus even elements are units (`OddUnits`, e.g. `ZMod (2^p)`, `oddUnits_zmod`): the first fraction is `2^(a+1-i)` times an element, and `2^(i+1)/(T - y₀ + x)` is even | the two valuation facts |
+| `crossing_entry_expansion` | both facts in the paper's variables (`i < a`, `x < 2^a`, `y₀ < 2^(i+1)`, crossing bit), feeding `geometric_mode_expansion` | `eq:tensor-mode-expansion` |
+| `depth_bound` | `M·8^d ≤ C·s`, `s ≤ M·r`, `r² ≤ λ` ⇒ `(2^d)^6 ≤ C²λ` | `d ≤ log λ/6 + O_C(1)` |
+| `schedule_bound` | on `u_d = ⌊λ/(2^17 2^d)⌋`, for all `λ ≥ λ₀(C)` and all active depths: `u_d ≥ 1` and `u_d` is large enough | `eq:tensor-parameter-bounds` |
+| `size_conditions` | for all `λ ≥ λ₀(C)`: `A·u ≤ M·2^u` and `8(a+1)u ≤ 2^{a_{d-1}+u}` on the schedule, with `A` the envelope of `path_precision` (`envelope_le`) | the two size conditions |
+| `scheduled_precision_bound` | `precision_bound` on the schedule with both size conditions discharged | `eq:tensor-precision-bound` |
+| `child_edges`, `child_edges_le_eighth` | with loads `≤ H_pad` and `P·L = H_pad·D_arr ≤ 3M`, a symbol of one coordinate of `[r]^a` owns `≤ 3M/r` real ports per side, so a group's child has `≤ 6M/r` edges, `≤ M/8` for `r = 64` | `lem:tensor-packets`, item 3; `subsec:tensor-children` |
+| `path_edges` | children with `≤ M/8` edges ⇒ `M_j·8^j ≤ M_0` | `M ≤ Cs·8^{-d}` |
+| `CallTree.size_le` | a call tree with `≤ b_j` children per depth-`j` call and `b_n = 0` has `≤ ∑_{d ≤ n} ∏_{j<d} b_j` calls | "multiplying these bounds over the depths" |
+| `depth_exponent` | `M_j·8^j ≤ Cs`, `u_j ≥ 1` ⇒ `M_j/√u_j ≤ 2^10 Cs/√λ · (√2/8)^j` | per-depth exponent |
+| `total_calls` | if `b_j ≤ Q·exp(κ M_j/√u_j)` at every active depth: at most `(n+1)·Q^n·exp(2^11 κ C s/√λ)` calls | `subsec:tensor-cost`, call count |
+
+With `κ = 2π√34` from `active_node_bounds`, `total_calls` is the paper's
+call count `exp(O_C(s/√λ))·Q^n`. No gap was found in the assembly: the
+per-depth exponents form a geometric series with ratio `√2/8`, so their sum
+is `O_C(s/√λ)` independent of the depth.
+
 ## Taken as hypotheses, not proved here
 
-- Two size conditions in `precision_bound`, which the paper asserts for
-  sufficiently large `s`: `A·u ≤ M·2^u` and `8(a+1)u ≤ 2^{a_{d-1}+u}`.
-  They are not derived from the parameter schedule.
+- `λ₀(C)` in `schedule_bound` and `size_conditions` is shown to exist but is
+  not computed. With `λ = ⌈log₂ s⌉` it corresponds to astronomically large `s`.
 - The tapered-Hermite inputs `h·u ≤ 4M` (true for `h = ⌈3M/u⌉` when `u ≤ M`)
   and `D_t·2^i = L`.
 - Only existence of a good labeling is proved; the deterministic
@@ -46,13 +64,18 @@ every loop is charged too, and each emitted tuple costs one unit.
 - That the construction of `subsec:tensor-modes` produces modes tagged by
   distinct `(packet, tile, b)` with weight `b+1`. The tags are modelled, not
   derived from the tensor algebra.
-- The two valuation facts that feed `geometric_mode_expansion`: the first
-  fraction `C(T)/(C'(0)(T - y₀ + x))` is divisible by 2 (valuation at least
-  `a + 1 - i`), and `2^(i+1)/(T - y₀ + x)` is divisible by 2 because
-  `v₂(T - y₀ + x) ≤ i`. The ring-level argument from them is proved; these
-  2-adic estimates for the specific Cauchy kernel are not.
+- That the coefficient ring is `OddUnits`. This is proved for `ZMod (2^p)`;
+  the paper's `𝒜_p` is a Galois ring with maximal ideal `(2)`, so it holds
+  there too, but that instance is not formalised.
 - That the coefficient extraction factors over groups into the child
   contractions `Z_{g,β}` of `eq:tensor-recursion-identity`.
+- Correctness of the tapered-Hermite recovery (`lem:tapered-hermite`).
+- The polynomial factor `Q` in `total_calls`: that interpolation nodes,
+  values and groups per call are polynomially many in `s`. The `(n+1)·Q^n`
+  factor with `Q = s^{O(1)}` and `n = O(log λ)` is `exp(O(λ log λ))`; its
+  absorption into `exp(O(s/√λ))` is not formalised.
+- The leaf cost `2^H` times entry evaluation `exp(O(L log s))`, and the
+  per-call work being polynomial apart from those.
 
 ## Runtime checks
 
@@ -79,8 +102,9 @@ source qualification or evidence for the recursion bound.
 
 ## Not covered
 
-- Child construction, child contraction, Hermite recovery, packing, entry
-  evaluation and the recursion over depths; only tuple enumeration is costed.
+- Child construction and contraction as tensor algebra, Hermite recovery,
+  entry evaluation, and the running time of each call; the recursion is
+  costed by counting calls only.
 - Any statement about the Python or C++ implementation.
 
 ## Reading the bound
