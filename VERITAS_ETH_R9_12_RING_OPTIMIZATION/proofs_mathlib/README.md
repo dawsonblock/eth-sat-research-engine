@@ -21,10 +21,23 @@ Cost model: each try of an exponent performs one addition (`w·b` from
 each charged the sum of its operands' `Nat.size`; the final failing try of
 every loop is charged too, and each emitted tuple costs one unit.
 
+| `sum_labelings_load_sq`, `exists_labeling` | averaged over all row/column labelings, `∑_γ X_γ² ≤ M²/D_arr + 2MΔ`; some labeling has `∑_γ (X_γ - M/D_arr)² ≤ 2MΔ` | `lem:tensor-packets` proof |
+| `packet_count` | under `M ≥ 2D_arr²Δ`, `M ≥ L·D_arr`: a labeling and `H_pad` with `L ∣ H_pad`, every load `≤ H_pad`, and `P·L = H_pad·D_arr ≤ 3M` | `lem:tensor-packets`, item 1 |
+| `path_precision` | along a path, `p_d ≤ A_d·2^{a_{d-1}}` with `A_{d+1} = A_d + 8h_d + 8M_d(a_d+1)` | `eq:tensor-precision-bound`, first part |
+| `precision_bound` | `i < u`, `D_t·2^i = 2^{a'+2u}`, `h·u ≤ 4M`, `p ≤ A·2^{a'}` ⇒ `p_t·u ≤ 34·M·D_t` | `eq:tensor-precision-bound`, second part (`C = 34`) |
+| `active_node_bounds` | the two previous rows discharged: tuple count `≤ exp (2π √34 M/√u)` and the matching bit-cost bound, from the packing conditions alone | combined |
+
+`active_node_bounds` no longer assumes `P·L ≤ 3M` or `p·u ≤ C·M·D`.
+
 ## Taken as hypotheses, not proved here
 
-- Item 1 of `lem:tensor-packets`: at most `3M/L` packets (`P·L ≤ 3M`).
-- `eq:tensor-precision-bound`: `p_t = O_C(M D_t / u)`, as `p·u ≤ C·M·D`.
+- Two size conditions in `precision_bound`, which the paper asserts for
+  sufficiently large `s`: `A·u ≤ M·2^u` and `8(a+1)u ≤ 2^{a_{d-1}+u}`.
+  They are not derived from the parameter schedule.
+- The tapered-Hermite inputs `h·u ≤ 4M` (true for `h = ⌈3M/u⌉` when `u ≤ M`)
+  and `D_t·2^i = L`.
+- Only existence of a good labeling is proved; the deterministic
+  conditional-expectation search and its running time are not.
 - That the construction of `subsec:tensor-modes` produces modes tagged by
   distinct `(packet, tile, b)` with weight `b+1`. The tags are modelled, not
   derived from the tensor algebra.

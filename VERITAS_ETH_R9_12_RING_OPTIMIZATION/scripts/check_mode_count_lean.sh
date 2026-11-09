@@ -11,6 +11,6 @@ lake build
 out=$(lake env lean Axioms.lean 2>&1)
 printf '%s\n' "$out"
 n=$(printf '%s\n' "$out" | grep -c "depends on axioms: \[propext, Classical.choice, Quot.sound\]$" || true)
-[[ "$n" -eq 8 ]] || { echo "expected 8 theorems on the standard axioms only, got $n" >&2; exit 1; }
+[[ "$n" -eq 14 ]] || { echo "expected 14 theorems on the standard axioms only, got $n" >&2; exit 1; }
 if printf '%s\n' "$out" | grep -qiE 'error|sorryAx'; then exit 1; fi
 echo 'PASS_MODE_COUNT_LEAN'

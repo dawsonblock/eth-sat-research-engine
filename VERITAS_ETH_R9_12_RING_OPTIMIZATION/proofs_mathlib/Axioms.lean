@@ -8,5 +8,11 @@ import ModeCount
 #print axioms ModeCount.paper_tuple_count
 #print axioms ModeCount.cost_le
 #print axioms ModeCount.paper_enumeration_cost
+#print axioms ModeCount.sum_labelings_load_sq
+#print axioms ModeCount.exists_labeling
+#print axioms ModeCount.packet_count
+#print axioms ModeCount.path_precision
+#print axioms ModeCount.precision_bound
+#print axioms ModeCount.active_node_bounds
 
 example : ModeCount.enum [1, 2] 4 = [[0, 0], [0, 1], [1, 0], [1, 1], [2, 0], [3, 0]] := by decide
