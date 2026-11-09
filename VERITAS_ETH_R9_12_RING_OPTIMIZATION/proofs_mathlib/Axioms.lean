@@ -31,5 +31,11 @@ import ModeCount
 #print axioms ModeCount.schedule_bound
 #print axioms ModeCount.size_conditions
 #print axioms ModeCount.scheduled_precision_bound
+#print axioms ModeCount.child_edges
+#print axioms ModeCount.child_edges_le_eighth
+#print axioms ModeCount.CallTree.size_le
+#print axioms ModeCount.depth_exponent
+#print axioms ModeCount.path_edges
+#print axioms ModeCount.total_calls
 
 example : ModeCount.enum [1, 2] 4 = [[0, 0], [0, 1], [1, 0], [1, 1], [2, 0], [3, 0]] := by decide
