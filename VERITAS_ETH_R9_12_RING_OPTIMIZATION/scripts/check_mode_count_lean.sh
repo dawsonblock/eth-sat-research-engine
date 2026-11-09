@@ -10,7 +10,8 @@ lake exe cache get >/dev/null
 lake build
 out=$(lake env lean Axioms.lean 2>&1)
 printf '%s\n' "$out"
-n=$(printf '%s\n' "$out" | grep -c "depends on axioms: \[propext, Classical.choice, Quot.sound\]$" || true)
-[[ "$n" -eq 27 ]] || { echo "expected 27 theorems on the standard axioms only, got $n" >&2; exit 1; }
+std='(propext|Classical\.choice|Quot\.sound)'
+n=$(printf '%s\n' "$out" | grep -cE "(depends on axioms: \[$std(, $std)*\]|does not depend on any axioms)$" || true)
+[[ "$n" -eq 31 ]] || { echo "expected 31 theorems using at most the standard axioms, got $n" >&2; exit 1; }
 if printf '%s\n' "$out" | grep -qiE 'error|sorryAx'; then exit 1; fi
 echo 'PASS_MODE_COUNT_LEAN'

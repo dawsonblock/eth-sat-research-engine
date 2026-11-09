@@ -27,5 +27,9 @@ import ModeCount
 #print axioms ModeCount.ratio_even
 #print axioms ModeCount.crossing_entry_expansion
 #print axioms ModeCount.oddUnits_zmod
+#print axioms ModeCount.depth_bound
+#print axioms ModeCount.schedule_bound
+#print axioms ModeCount.size_conditions
+#print axioms ModeCount.scheduled_precision_bound
 
 example : ModeCount.enum [1, 2] 4 = [[0, 0], [0, 1], [1, 0], [1, 1], [2, 0], [3, 0]] := by decide
