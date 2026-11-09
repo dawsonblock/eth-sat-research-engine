@@ -27,6 +27,11 @@ every loop is charged too, and each emitted tuple costs one unit.
 | `precision_bound` | `i < u`, `D_t·2^i = 2^{a'+2u}`, `h·u ≤ 4M`, `p ≤ A·2^{a'}` ⇒ `p_t·u ≤ 34·M·D_t` | `eq:tensor-precision-bound`, second part (`C = 34`) |
 | `active_node_bounds` | the two previous rows discharged: tuple count `≤ exp (2π √34 M/√u)` and the matching bit-cost bound, from the packing conditions alone | combined |
 
+| `geometric_mode_expansion` | if `(1-ρj)v = 1`, `W = cv`, `q ∣ c`, `q ∣ ρ`: `W = ∑_{b<N} cρ^b j^b + q^(N+1) r`, and `q^(b+1) ∣ cρ^b` | `eq:tensor-mode-expansion` |
+| `WDiv.affine_product` | a product of affine forms `c₀ + ∑ c_Z Z` with `q^(w_Z) ∣ c_Z` has `q^(∑ w_Z β_Z) ∣ coeff_β` | "every coefficient of `Z^β` is divisible by `2^{∑ w_Z β_Z}`" |
+| `eq_budget_add`, `eval_eq_budget_sum` | then `f = ∑_{∑ w_Z β_Z < p} coeff_β Z^β + q^p g`, and after any substitution `Z ↦ L_Z` the same holds with `∏ L_Z^{β_Z}` | `eq:tensor-mode-budget`; omitted monomials in `eq:tensor-recursion-identity` |
+| `budget_iff_enum` | the kept exponents are exactly the tuples `enum` lists | links the budget to the count |
+
 `active_node_bounds` no longer assumes `P·L ≤ 3M` or `p·u ≤ C·M·D`.
 
 ## Taken as hypotheses, not proved here
@@ -41,7 +46,13 @@ every loop is charged too, and each emitted tuple costs one unit.
 - That the construction of `subsec:tensor-modes` produces modes tagged by
   distinct `(packet, tile, b)` with weight `b+1`. The tags are modelled, not
   derived from the tensor algebra.
-- The divisibility argument that tuples outside the budget contribute zero.
+- The two valuation facts that feed `geometric_mode_expansion`: the first
+  fraction `C(T)/(C'(0)(T - y₀ + x))` is divisible by 2 (valuation at least
+  `a + 1 - i`), and `2^(i+1)/(T - y₀ + x)` is divisible by 2 because
+  `v₂(T - y₀ + x) ≤ i`. The ring-level argument from them is proved; these
+  2-adic estimates for the specific Cauchy kernel are not.
+- That the coefficient extraction factors over groups into the child
+  contractions `Z_{g,β}` of `eq:tensor-recursion-identity`.
 
 ## Runtime checks
 
