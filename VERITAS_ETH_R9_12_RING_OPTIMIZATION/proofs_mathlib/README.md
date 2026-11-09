@@ -43,6 +43,29 @@ every loop is charged too, and each emitted tuple costs one unit.
   derived from the tensor algebra.
 - The divisibility argument that tuples outside the budget contribute zero.
 
+## Runtime checks
+
+`veritas.research.parent_child_r912.conformance` evaluates these hypotheses
+on the engine's actual objects. Pass `conformance='report'` to
+`parent_child_r910.engine.contract` (or `--conformance report` to
+`parent_child_r912.cli`) to attach a `theorem_conformance` record per active
+call. Pass `'strict'` to refuse with `INCONCLUSIVE_THEOREM_HYPOTHESIS` at the
+first unmet hypothesis. A proved conclusion that fails while its hypotheses
+hold raises an error. `layout_factory=derandomized_layout` (`--layout
+derandomized`) uses the conditional-expectation labeler, with no repair.
+
+| Check | Hypotheses evaluated | Conclusion evaluated |
+| --- | --- | --- |
+| `packet_count` | `M ≥ 2D_arr²Δ`, `M ≥ L·D_arr`, spread `≤ 2MΔ`, `L ∣ H_pad`, loads `≤ H_pad`, `P·L ≤ 3M` | minimal padding gives `P·L ≤ 3M` |
+| `mode_multiplicity` | distinct `(packet, tile, b)` tags, `packet < P`, `tile < 2^(i+1)`, weight `b+1`, `D_t·2^i = L`, packing held | per weight `≤ P·2^(i+1)` and `·D_t ≤ 6M` |
+| `precision_bound` | `a ≥ 2u`, `i < u`, `h·u ≤ 4M`, both size conditions, `p_t` as in `lem:tapered-hermite` | `p_t·u ≤ 34·M·D_t` |
+| `tuple_count` | all of the above, support inside the weight budget | count `≤ exp (2π √34 M/√u)` |
+
+On every parent the engine can run, these fail: the packing conditions
+need `M ≥ 2·64^(4a)·Δ`, the finite schedules use `a < 2u` or `u = 1`, and the
+bound beats `2^M` only for `u ≥ 2794`. A conforming run would still not be
+source qualification or evidence for the recursion bound.
+
 ## Not covered
 
 - Child construction, child contraction, Hermite recovery, packing, entry
