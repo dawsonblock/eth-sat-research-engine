@@ -20,5 +20,12 @@ import ModeCount
 #print axioms ModeCount.eq_budget_add
 #print axioms ModeCount.eval_eq_budget_sum
 #print axioms ModeCount.budget_iff_enum
+#print axioms ModeCount.crossing_not_dvd
+#print axioms ModeCount.odd_choose_two_pow_sub_one
+#print axioms ModeCount.factorization_prodAbs_eq
+#print axioms ModeCount.first_fraction
+#print axioms ModeCount.ratio_even
+#print axioms ModeCount.crossing_entry_expansion
+#print axioms ModeCount.oddUnits_zmod
 
 example : ModeCount.enum [1, 2] 4 = [[0, 0], [0, 1], [1, 0], [1, 1], [2, 0], [3, 0]] := by decide
