@@ -11,7 +11,7 @@ from veritas.research.parent_child_r99.execution import ExecutionSpec
 from veritas.research.parent_child_r910.engine import contract
 from veritas.research.parent_child_r910.checker import verify
 from veritas.research.independent_r82.point_mode_oracle import OracleLimits
-from .layout import finite_layout
+from .layout import derandomized_layout, finite_layout
 
 
 def load_parent(path):
@@ -45,6 +45,9 @@ def main(argv=None):
     parser.add_argument('--cache-bytes', type=int, default=8_000_000)
     parser.add_argument('--max-certificate-bytes', type=int, default=100_000_000)
     parser.add_argument('--max-points', type=int, default=4096)
+    parser.add_argument('--conformance', choices=('report', 'strict'),
+                        help='check the hypotheses of the Lean theorem active_node_bounds')
+    parser.add_argument('--layout', choices=('finite', 'derandomized'), default='finite')
     args = parser.parse_args(argv)
     _check_output(args.output_dir)
     schedule = tuple(tuple(int(n) for n in pair.split(':')) for pair in args.schedule.split(','))
@@ -62,8 +65,8 @@ def main(argv=None):
         source = args.output_dir
         with (source/'events.jsonl').open('xb') as out:
             report = contract(parent, schedule=schedule, policy=policy, oracle_limits=oracle,
-                max_points=args.max_points, cache_bytes=args.cache_bytes, layout_factory=finite_layout,
-                coefficient_encoding=True, compressed_records=True, evidence_sink=lambda raw: out.write(raw+b'\n'))
+                max_points=args.max_points, cache_bytes=args.cache_bytes, layout_factory=finite_layout if args.layout == 'finite' else derandomized_layout,
+                conformance=args.conformance, coefficient_encoding=True, compressed_records=True, evidence_sink=lambda raw: out.write(raw+b'\n'))
         (source/'report.json').write_bytes(canonical(report))
     if report.get('status') != 'PASS_FINITE_TWO_LEVEL_CAPABLE_RECURSION':
         print(report['status'])

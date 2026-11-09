@@ -27,8 +27,15 @@ from veritas.research.parent_child_r99.support_check import verify_support
 
 def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
                        max_points=256, cache_bytes=1_000_000, evidence_sink=None, layout_factory=None,
-                       preflight_work=0, oracle_limits=None, coefficient_encoding=False, compressed_records=False):
+                       preflight_work=0, oracle_limits=None, coefficient_encoding=False, compressed_records=False,
+                       conformance=None):
     budget = AccountedBudget(policy, oracle_limits)
+    if conformance not in (None, 'report', 'strict'):
+        raise ValueError("conformance must be None, 'report' or 'strict'")
+    audit = None
+    if conformance is not None:
+        from veritas.research.parent_child_r912.conformance import NodeAudit
+        audit = NodeAudit(strict=conformance == 'strict')
     binding = source_binding()['digest']
     chain, evidence_bytes, requests = '0'*64, 0, 0
     active, sizes, degrees = {}, {}, {}
@@ -95,6 +102,15 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
                 raise ValueError('streaming layout schedule mismatch')
             if not audit_layout(call, layout)['group_load_bound_met']:
                 raise Refusal('INCONCLUSIVE_SOURCE_PACKING', 'actual group load failure')
+            if audit is not None:
+                from veritas.research.parent_child_r912 import conformance as theorem
+                from veritas.research.paper_verification.exact_parameters import hermite_parameters
+                packing = theorem.layout_packing_check(call, layout)
+                audit.add(call, 'packet_count', packing, depth=depth, a=a, u=u)
+                hermite = hermite_parameters(call.edge_count, a, u, call.precision,
+                                             max_wires=policy.max_edges, max_precision=policy.max_precision)
+                node_info = {n[0]: n for n in hermite['nodes']}
+                checked_nodes = set()
             with budget.at('row_degree'):
                 row_certificate = certify_row_degree(call, a, budget=budget)
             with budget.at('hermite_plan'):
@@ -118,6 +134,23 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
                     verify_support(call, layout, original, folded, support, budget=budget)
                 emit({'kind': 'point', 'original': original.certificate, 'folded': folded.certificate,
                       'support': support.record})
+                if audit is not None and t not in checked_nodes:
+                    checked_nodes.add(t)
+                    _, i, _, Dt, p_t = node_info[t]
+                    L, M = 1 << a, call.edge_count
+                    modes_v = theorem.mode_check(original.certificate['modes'], P=packing['padded_packets'],
+                                                 i=i, L=L, M=M, Dt=Dt, packed=packing['hypotheses_met'])
+                    audit.add(call, 'mode_multiplicity', modes_v, depth=depth, node=t)
+                    prec_v = theorem.precision_check(M=M, a=a, u=u, i=i, p=call.precision,
+                                                     h=hermite['h'], Dt=Dt, precision=precision)
+                    audit.add(call, 'precision_bound', prec_v, depth=depth, node=t)
+                    audit.add(call, 'tuple_count', theorem.tuple_check(
+                        weighted_count=original.certificate['mode_tuple_count'],
+                        support_tuples=support.record['tuples'],
+                        support_weights=[m['weight'] for m in folded.certificate['modes']],
+                        precision=precision, M=M, u=u,
+                        upstream=packing['hypotheses_met'] and modes_v['hypotheses_met'] and
+                        prec_v['hypotheses_met']), depth=depth, node=t)
                 ring = JetRing(ExtensionRing(precision, call.defining_polynomial,
                                max_precision_bits=policy.max_precision), call.jet_length)
                 total = ring.zero
@@ -156,7 +189,8 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
         if source_binding()['digest'] != binding:
             raise ValueError('source changed during streaming run')
         budget.tick(0)
-        return {'schema': 'VERITAS_R912_NUMERICAL_V1' if coefficient_encoding or compressed_records else 'VERITAS_R910_NUMERICAL_V1',
+        extra = {} if audit is None else {'theorem_conformance': audit.report()}
+        return {**extra, 'schema': 'VERITAS_R912_NUMERICAL_V1' if coefficient_encoding or compressed_records else 'VERITAS_R910_NUMERICAL_V1',
                 'status': 'PASS_FINITE_TWO_LEVEL_CAPABLE_RECURSION', 'result': result,
                 'parent_digest': parent.content_digest, 'implementation_source_sha256': binding,
                 'active_calls_by_depth': active, 'largest_active_edges_by_depth': sizes,
@@ -171,7 +205,8 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
                 'source_tapered_functional_used': bool(budget.points), 'original_weighted_stream_enumerated': False,
                 'source_qualified': False, 'theorem_mode_enabled': False}
     except (ValueError, TypeError, KeyError, IndexError, ArithmeticError, RuntimeError, MemoryError, OSError) as exc:
-        return {'status': getattr(exc, 'status', 'INCONCLUSIVE_STREAMED_RECURSION'),
+        extra = {} if audit is None else {'theorem_conformance': audit.report()}
+        return {**extra, 'status': getattr(exc, 'status', 'INCONCLUSIVE_STREAMED_RECURSION'),
                 'reason': str(exc), 'resource_failure': getattr(exc, 'resource_failure', None),
                 'ledger': budget.report(), 'requests': requests,
                 'source_qualified': False, 'theorem_mode_enabled': False}
