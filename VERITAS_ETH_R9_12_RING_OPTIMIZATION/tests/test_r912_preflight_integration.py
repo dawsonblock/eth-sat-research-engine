@@ -14,8 +14,15 @@ from veritas.research.parent_child_r98.shrinking_cli import load_input
 from veritas.research.parent_child_r98.shrinking_engine import DEFAULT_SHRINKING_POLICY
 from veritas.research.parent_child_r98.shrinking_layout import construct_vertex_shrinking_layout
 from veritas.research.parent_child_r99.cli import load_layout
+from veritas.research.parent_child_r913.algebraic_resummation import (
+    compare_resummation_methods,
+    polynomial_target_value,
+    production_packet_value,
+)
 from veritas.research.parent_child_r913.support_resummation import compare_support_aware_resummation
 from veritas.research.tapered_v4.source_recipes import EntryLimits
+from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
+from veritas.research.eth_arithmetic.jets import JetRing
 
 ROOT = Path(__file__).resolve().parents[1]
 POLICY = replace(DEFAULT_SHRINKING_POLICY, max_work=2_000_000, max_seconds=600)
@@ -90,6 +97,49 @@ def test_interaction_fixture_wire_preflight_only(tmp_path):
     selection = select_route(parent, Route.AUTO, EliminationBudget())
     assert selection["preflight"]["wire"]["status"] == "COMPLETE"
     assert selection["preflight"]["mode_dependency"] is None
+
+
+def test_jet_point_packet_oracle_and_substitution_identity():
+    """Single interpolation point: jet recovery → packet → resummation vs production."""
+    parent = load_input(ROOT / "examples/r99_multislot_crossing2.json")
+    layout = load_layout(
+        parent,
+        ROOT / "examples/r99_multislot_crossing2_layout.json",
+        Budget(POLICY),
+    )
+    compiled, row_certificate = compiled_child_packet_at_jet_point(
+        parent, layout, budget=Budget(POLICY), point_index=0
+    )
+    ring = JetRing(
+        ExtensionRing(
+            compiled.reference.creation_precision,
+            compiled.reference.defining_polynomial,
+        ),
+        compiled.reference.jet_length,
+    )
+
+    def scalar_jet(value):
+        return ring.elem([[value % ring.base.modulus]])
+
+    bits = (0,) * compiled.reference.arity
+    n_targets = sum(1 for beta, _ in compiled.data[3] if beta)
+    weights = tuple(scalar_jet(3 + j) for j in range(n_targets))
+    assert compare_resummation_methods(
+        compiled, bits, weights, limits=EntryLimits(max_work=2_000_000)
+    ).agree
+    assert polynomial_target_value(compiled, bits, limits=EntryLimits(max_work=2_000_000)) == production_packet_value(
+        compiled, bits, limits=EntryLimits(max_work=2_000_000)
+    )
+    aware = compare_support_aware_resummation(
+        compiled,
+        bits,
+        weights,
+        precision=parent.precision,
+        limits=EntryLimits(max_work=2_000_000),
+        row_certificate=row_certificate,
+    )
+    if aware.supported_monomial_count == aware.total_monomial_count:
+        assert aware.full_agrees_with_enumerated
 
 
 def test_multislot_packet_support_resummation_via_fixture_bridge():

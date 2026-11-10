@@ -57,6 +57,28 @@ def test_full_support_matches_algebraic_resummation(small_ring):
     assert aware.enumerated_supported == base.explicit_sum
 
 
+def test_precision_truncation_identity_when_support_is_full(small_ring):
+    """High precision keeps all monomials; substitution identity still holds."""
+    ring = small_ring
+    data = [
+        [0],
+        [1],
+        [[jet(ring, 2)]],
+        [[1, [jet(ring, 3)]], [1, [jet(ring, 4)]]],
+        [],
+    ]
+    _, compiled = build_packet_reference(arity=2, data=data, creation_precision=3, jet_length=2)
+    bits = (1, 0)
+    weights = (jet(ring, 2), jet(ring, 5))
+    for precision in (3, 8, 32):
+        aware = compare_support_aware_resummation(
+            compiled, bits, weights, precision=precision, limits=EntryLimits(max_work=500_000)
+        )
+        if aware.supported_monomial_count == aware.total_monomial_count:
+            assert aware.full_agrees_with_enumerated
+            assert aware.enumerate_agrees_with_hybrid
+
+
 def test_weight_cutoff_distinguishes_full_and_supported(small_ring):
     ring = small_ring
     data = [
