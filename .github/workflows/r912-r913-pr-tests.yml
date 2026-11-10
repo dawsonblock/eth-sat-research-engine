@@ -31,7 +31,8 @@ jobs:
             tests/test_support_resummation.py \
             tests/test_dependency_analyzer.py \
             tests/test_r912_preflight_integration.py \
-            tests/test_bench_sat_methods.py
+            tests/test_bench_sat_methods.py \
+            tests/test_coefficient_extraction_spec.py
       - name: Bench smoke
         env:
           PYTHONPATH: src

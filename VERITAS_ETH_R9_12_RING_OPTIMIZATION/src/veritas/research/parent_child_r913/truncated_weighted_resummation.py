@@ -14,6 +14,14 @@ for mode integer weights ``w_j``. This respects the **global** precision cutoff;
 unlike per-component full substitution, it does not reintroduce forbidden terms.
 
 No ETH theorem or subexponential bound is claimed.
+
+**Proof sketch (row induction).** Let D_r[d] denote the sum of contributions with
+total t-degree d after processing rows 1..r.  Start D_0[0]=1.  One row updates
+D_{r+1}[d] = c_r D_r[d] + Σ_{j: w_j≤d} a_{rj} s_j D_r[d-w_j], which is exactly
+the convolution form of multiplying by (c_r + Σ_j a_{rj} s_j t^{w_j}) in the
+ring modulo t^P.  The returned value is Σ_{d<P} D_R[d].
+
+This proves **problem A** only.  It does not extract a single A_β (**problem B**).
 """
 from __future__ import annotations
 
