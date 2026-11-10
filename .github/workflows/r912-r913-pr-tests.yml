@@ -1,0 +1,39 @@
+name: r912-r913-pr-tests
+on:
+  pull_request:
+    paths:
+      - 'VERITAS_ETH_R9_12_RING_OPTIMIZATION/**'
+      - '.github/workflows/r912-r913-pr-tests.yml'
+  push:
+    branches:
+      - 'cursor/**'
+    paths:
+      - 'VERITAS_ETH_R9_12_RING_OPTIMIZATION/**'
+jobs:
+  r913-regression:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: VERITAS_ETH_R9_12_RING_OPTIMIZATION
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'setuptools>=68' wheel pytest
+      - name: R9.13 correctness slice
+        env:
+          PYTHONPATH: src
+        run: |
+          python -m pytest -q -o addopts='' \
+            tests/test_r913_correctness_regressions.py \
+            tests/test_algebraic_resummation.py \
+            tests/test_support_resummation.py \
+            tests/test_dependency_analyzer.py \
+            tests/test_r912_preflight_integration.py \
+            tests/test_bench_sat_methods.py \
+            tests/test_coefficient_extraction_spec.py
+      - name: Bench smoke
+        env:
+          PYTHONPATH: src
+        run: python scripts/bench_sat_methods.py --smoke
