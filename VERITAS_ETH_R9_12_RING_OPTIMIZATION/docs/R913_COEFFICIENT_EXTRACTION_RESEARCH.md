@@ -94,11 +94,24 @@ until proved.
 Prototype module: `coefficient_extraction.py` (`estimate_extraction_state`, reference
 extractors).
 
-### Step 4 — Two-level recursive children
+### Step 4 — Parent→child reconstruction
 
-After a correct **B** on one jet point, compress through constructor children with
-source columns and precision; compare two active levels to independent exact
-replay (future milestone).
+Module: ``parent_child_r913.coefficient_reconstruction``.
+
+At one retained exponent tuple β and **one active constructor level**:
+
+```text
+C_parent(β) = ∏_g C_child_g(β)
+```
+
+``C_child_g`` is the verified half-edge elimination value on group child ``g``
+(``verify_children``), checked against ``shrinking_oracle.tuple_coefficient``.
+Bounded tests: 2-wire tensor parent and 22-wire three-crossing fixture.  The
+96-wire interaction harness remains parallel diagnostics until this equality is
+wired to the circulant instance with enforced extraction budgets.
+
+``contract_scaled(..., levels=1)`` on the scaled-singleton parent exercises
+Hermite-interpolated **two-level** engine recursion separately.
 
 ### Step 5 — Honest cost bounds
 

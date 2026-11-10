@@ -53,7 +53,7 @@ PIPELINE_OBLIGATIONS: Tuple[PreservationObligation, ...] = (
             "factors, precision rules, and interpolation points."
         ),
         proved_in_this_repo=False,
-        qualification="not_established_no_reconstruct_equality",
+        qualification="bounded_one_level_product_proved_see_coefficient_reconstruction",
     ),
     PreservationObligation(
         schema="VERITAS_R913_OBLIGATION_PRECISION_V1",
