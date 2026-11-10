@@ -66,3 +66,6 @@ def test_circulant_96_wire_child_coefficient_vs_elimination_baseline(interaction
     assert recon["child_group_count"] == 64
     assert recon["active_levels"] == 1
     assert recon["elapsed_seconds"] < 120
+    wire_cmp = report["wire_vs_parent_coefficient"]
+    assert wire_cmp["wire_elimination_equals_parent_coefficient"] is False
+    assert wire_cmp["reconstruction_equals_oracle"] is True

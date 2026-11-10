@@ -179,6 +179,19 @@ def interaction_coefficient_end_to_end(
 
     proved = parent_child_block["parent_child_reconstruction_proved"]
 
+    from veritas.research.parent_child_r913.coefficient_reconstruction import (
+        wire_elimination_vs_parent_coefficient,
+    )
+
+    wire_vs_coeff = wire_elimination_vs_parent_coefficient(
+        parent,
+        layout,
+        budget=shrink_budget,
+        elimination_budget=elimination_budget,
+        point_index=point_index,
+        beta_values=tuple(0 for _ in range(mode_count)),
+    )
+
     return {
         "schema": "VERITAS_R912_INTERACTION_PARALLEL_DIAG_V2",
         "wires": parent.edge_count,
@@ -218,6 +231,7 @@ def interaction_coefficient_end_to_end(
         "source_qualified": False,
         "subexponential_bound_evidence": False,
         "parent_child_reconstruction": parent_child_block,
+        "wire_vs_parent_coefficient": wire_vs_coeff,
         "qualification": (
             "parent_wire_elimination_and_independent_row_A_beta_remain_parallel_diagnostics; "
             "C_parent_beta_from_constructor_children_proved_at_jet_point"

@@ -25,9 +25,21 @@ from veritas.research.eth_arithmetic.jets import JetRing
 from veritas.research.parent_child_r98.constructor import construct_children
 from veritas.research.parent_child_r98.engine import leaf
 from veritas.research.parent_child_r98.independent import verify_children
-from veritas.research.parent_child_r98.model import Budget, ExponentTuple, ModeSet, PacketLayout, ParentCall, canonical
+from veritas.research.parent_child_r98.modes import build_modes
+from veritas.research.parent_child_r98.model import (
+    Budget,
+    ExponentTuple,
+    ModeSet,
+    PacketLayout,
+    ParentCall,
+    Refusal,
+    canonical,
+)
+from veritas.research.parent_child_r98.packing import construct_layout
 from veritas.research.parent_child_r98.shrinking_oracle import tuple_coefficient
+from veritas.research.parent_child_r912.elimination import EliminationBudget
 from veritas.research.parent_child_r912.interaction_jet_point import packet_modes_at_jet_point
+from veritas.research.parent_child_r912.routes import Route, contract_routed
 
 
 @dataclass(frozen=True)
@@ -41,6 +53,8 @@ class ParentChildReconstructionResult:
     parent_oracle: object
     reconstruction_equals_oracle: bool
     qualification: str
+    nested_child_groups: int = 0
+    second_level_kind: str = "none"
 
 
 ChildContractor = Callable[[object, object], object]
@@ -228,7 +242,7 @@ def reconstruct_interaction_with_leaf_at_jet_point(
     if beta_values is None:
         beta_values = tuple(0 for _ in range(mode_count))
     beta = ExponentTuple(modes.content_digest, beta_values)
-    return reconstruct_with_leaf_child_contractor(
+    base = reconstruct_with_leaf_child_contractor(
         parent,
         layout,
         modes,
@@ -236,6 +250,167 @@ def reconstruct_interaction_with_leaf_at_jet_point(
         budget=budget,
         require_shrink=require_shrink,
     )
+    return ParentChildReconstructionResult(
+        schema=base.schema,
+        active_levels=2,
+        beta=base.beta,
+        child_group_count=base.child_group_count,
+        child_values=base.child_values,
+        reconstructed=base.reconstructed,
+        parent_oracle=base.parent_oracle,
+        reconstruction_equals_oracle=base.reconstruction_equals_oracle,
+        nested_child_groups=0,
+        second_level_kind="leaf_recheck",
+        qualification="second_level_leaf_recheck; " + base.qualification,
+    )
+
+
+def _two_level_child_contractor(
+    ancestor: ParentCall,
+    layout: PacketLayout,
+    *,
+    node: int,
+    zeta: Tuple[int, ...],
+    budget: Budget,
+    max_child_edges_for_recursion: int = 8,
+) -> ChildContractor:
+    """Recompute each child by grandchild product when the child graph is small enough."""
+
+    nested_count = {"n": 0}
+
+    def contractor(child, expected):
+        call = child.as_parent(ancestor)
+        if call.edge_count <= 1:
+            actual = leaf(call, budget)
+        elif call.edge_count > max_child_edges_for_recursion:
+            actual = leaf(call, budget)
+        else:
+            try:
+                child_layout = construct_layout(
+                    call, a=layout.a, u=layout.u, budget=budget
+                )
+                child_modes = build_modes(
+                    call, child_layout, node, zeta, budget=budget
+                )
+                child_beta = ExponentTuple(
+                    child_modes.content_digest,
+                    tuple(0 for _ in child_modes.certificate["modes"]),
+                )
+                nested = reconstruct_parent_coefficient_one_level(
+                    call,
+                    child_layout,
+                    child_modes,
+                    child_beta,
+                    budget=budget,
+                    require_shrink=False,
+                )
+                actual = nested.reconstructed
+                nested_count["n"] += 1
+            except (ValueError, Refusal):
+                actual = leaf(call, budget)
+        if actual != expected:
+            raise ValueError("two-level child reconstruction disagrees with independent elimination")
+        return actual
+
+    contractor.nested_count = nested_count  # type: ignore[attr-defined]
+    return contractor
+
+
+def reconstruct_interaction_two_level_at_jet_point(
+    parent: ParentCall,
+    layout: PacketLayout,
+    *,
+    budget: Budget,
+    point_index: int = 1,
+    beta_values: Tuple[int, ...] | None = None,
+) -> ParentChildReconstructionResult:
+    modes, _row_certificate, _jet_index, node, zeta = modes_at_jet_point(
+        parent, layout, budget=budget, point_index=point_index
+    )
+    mode_count = len(modes.certificate["modes"])
+    if beta_values is None:
+        beta_values = tuple(0 for _ in range(mode_count))
+    beta = ExponentTuple(modes.content_digest, beta_values)
+    contractor = _two_level_child_contractor(
+        parent, layout, node=node, zeta=zeta, budget=budget
+    )
+    result = reconstruct_parent_coefficient_one_level(
+        parent,
+        layout,
+        modes,
+        beta,
+        budget=budget,
+        child_contractor=contractor,
+        require_shrink=True,
+    )
+    nested_groups = int(contractor.nested_count["n"])  # type: ignore[attr-defined]
+    kind = "grandchild_product" if nested_groups else "leaf_recheck"
+    return ParentChildReconstructionResult(
+        schema=result.schema,
+        active_levels=2,
+        beta=result.beta,
+        child_group_count=result.child_group_count,
+        child_values=result.child_values,
+        reconstructed=result.reconstructed,
+        parent_oracle=result.parent_oracle,
+        reconstruction_equals_oracle=result.reconstruction_equals_oracle,
+        nested_child_groups=nested_groups,
+        second_level_kind=kind,
+        qualification=(
+            f"second_level_{kind}; "
+            "grandchild_product_requires_point_modes_precision_leq_1024; "
+            + result.qualification
+        ),
+    )
+
+
+def wire_elimination_vs_parent_coefficient(
+    parent: ParentCall,
+    layout: PacketLayout,
+    *,
+    budget: Budget,
+    elimination_budget: EliminationBudget | None = None,
+    point_index: int = 1,
+    beta_values: Tuple[int, ...] | None = None,
+) -> Dict[str, Any]:
+    """Record whether full wire elimination agrees with jet C_parent(beta) — expected false here."""
+    elimination_budget = elimination_budget or EliminationBudget(max_width=20)
+    wire = contract_routed(
+        parent, route=Route.ELIMINATION, elimination_budget=elimination_budget
+    )
+    recon = reconstruct_interaction_parent_at_jet_point(
+        parent,
+        layout,
+        budget=budget,
+        point_index=point_index,
+        beta_values=beta_values,
+    )
+
+    def _low_word(jet):
+        if type(jet) in (list, tuple) and jet:
+            head = jet[0]
+            if type(head) in (list, tuple) and head:
+                return head[0]
+        return None
+
+    wire_word = None
+    if wire.get("status") == "PASS_EXACT_BOUNDED_WIDTH_ELIMINATION":
+        wire_word = wire.get("result", [[None]])[0][0]
+    coeff_word = _low_word(recon.parent_oracle)
+    reconstructed_word = _low_word(recon.reconstructed)
+    return {
+        "schema": "VERITAS_R913_WIRE_VS_DEFORMATION_COEFF_V1",
+        "wire_elimination_status": wire.get("status"),
+        "wire_elimination_low_word": wire_word,
+        "parent_coefficient_low_word": coeff_word,
+        "reconstructed_low_word": reconstructed_word,
+        "wire_elimination_equals_parent_coefficient": wire_word == coeff_word,
+        "reconstruction_equals_oracle": recon.reconstruction_equals_oracle,
+        "qualification": (
+            "full_wire_contraction_and_jet_C_parent_beta_are_different_quantities; "
+            "no_equality_claimed"
+        ),
+    }
 
 
 def interaction_parent_child_reconstruction_report(

@@ -205,7 +205,14 @@ def verify_modes(parent, layout, modes, *, budget):
         or m["irreducible_polynomial"] != parent.defining_polynomial
     ):
         raise ValueError("mode source/ring mismatch")
-    plan = hermite_parameters(parent.edge_count, layout.a, layout.u, parent.precision)
+    plan = hermite_parameters(
+        parent.edge_count,
+        layout.a,
+        layout.u,
+        parent.precision,
+        max_wires=budget.policy.max_edges,
+        max_precision=budget.policy.max_precision,
+    )
     n = next((n for n in plan["nodes"] if n[0] == m["node"]), None)
     if n is None or m["precision"] != n[-1] or m["jet_length"] != 1:
         raise ValueError("node or source-prescribed precision mismatch")
@@ -259,7 +266,14 @@ def verify_modes(parent, layout, modes, *, budget):
 
 
 def build_modes(parent, layout, node, zeta, *, budget):
-    pars = hermite_parameters(parent.edge_count, layout.a, layout.u, parent.precision)
+    pars = hermite_parameters(
+        parent.edge_count,
+        layout.a,
+        layout.u,
+        parent.precision,
+        max_wires=budget.policy.max_edges,
+        max_precision=budget.policy.max_precision,
+    )
     n = next((x for x in pars["nodes"] if x[0] == node), None)
     if n is None:
         raise ValueError("invalid Hermite node")
