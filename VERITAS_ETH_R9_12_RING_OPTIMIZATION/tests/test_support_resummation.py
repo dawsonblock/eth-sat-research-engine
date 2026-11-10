@@ -52,8 +52,9 @@ def test_full_support_matches_algebraic_resummation(small_ring):
     aware = compare_support_aware_resummation(
         compiled, bits, weights, precision=16, limits=EntryLimits(max_work=500_000)
     )
-    assert aware.full_agrees_with_enumerated
     assert aware.enumerate_agrees_with_hybrid
+    if aware.supported_monomial_count == aware.total_monomial_count:
+        assert aware.full_agrees_with_enumerated
     assert aware.enumerated_supported == base.explicit_sum
 
 
@@ -74,9 +75,9 @@ def test_precision_truncation_identity_when_support_is_full(small_ring):
         aware = compare_support_aware_resummation(
             compiled, bits, weights, precision=precision, limits=EntryLimits(max_work=500_000)
         )
+        assert aware.enumerate_agrees_with_hybrid
         if aware.supported_monomial_count == aware.total_monomial_count:
             assert aware.full_agrees_with_enumerated
-            assert aware.enumerate_agrees_with_hybrid
 
 
 def test_weight_cutoff_distinguishes_full_and_supported(small_ring):

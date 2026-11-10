@@ -156,10 +156,13 @@ def expand_packet_polynomial(
     ar: Arithmetic,
     *,
     max_monomials: int = 50_000,
+    mode_count: int | None = None,
 ) -> PacketPoly:
     """Multilinear convolution ∏_r (c_r + Σ_j z_j a_{rj}) in exponent space."""
     if not factors:
-        return {(): ar.ring.one}
+        dim = mode_count if mode_count is not None else 0
+        unit = tuple(0 for _ in range(dim))
+        return {unit: ar.ring.one}
     dim = len(factors[0].mode_coefficients)
     poly: PacketPoly = {tuple(0 for _ in range(dim)): ar.ring.one}
     unit = tuple(0 for _ in range(dim))

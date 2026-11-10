@@ -113,7 +113,8 @@ def mode_factor_graph_from_modes(
     incidence = affine_incidence(modes, row_certificate)
     row_keys = tuple(sorted(incidence))
     scopes = tuple(tuple(sorted(incidence[key])) for key in row_keys)
-    variables = tuple(range(len(modes)))
+    active = sorted({mid for scope in scopes for mid in scope})
+    variables = tuple(active)
     return ModeFactorGraph(scopes=scopes, variables=variables, row_keys=row_keys)
 
 

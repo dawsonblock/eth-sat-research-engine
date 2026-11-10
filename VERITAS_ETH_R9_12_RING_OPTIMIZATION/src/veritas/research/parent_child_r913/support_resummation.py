@@ -6,16 +6,17 @@ Compares three values at fixed Boolean row bits and mode weights ``s``:
    lies in the affine-row support (same incidence rule as ``build_support``),
    then apply ``Σ_β A_β Π s^β``.
 2. **full_substitution** — ``∏_r (c_r + Σ_j a_{rj} s_j)`` (no support cut).
-3. **hybrid_component** — when ``SupportCircuit`` splits into disjoint mode
-   components, apply substitution on each component's rows and multiply; this
-   matches (1) for independent components but is not certified globally.
+3. **truncated_weighted** — precision-truncated aggregate via the weighted
+   generating-function dynamic program (global cutoff; see
+   ``truncated_weighted_resummation``). Legacy field name ``hybrid_component``
+   holds the same value for API compatibility.
 
 Conditions not proved (same caveats as ``algebraic_resummation``)
 -----------------------------------------------------------------
 - Support is the R9.99/R9.12 affine-row support with a weight cutoff; it does
   not re-prove packet recipe semantics or child shrink obligations.
-- Component hybrid is exact only when components act on disjoint coordinates;
-  shared rows make (1) the reference cross-check.
+- Per-component full substitution **without** a global weight cutoff is wrong;
+  use ``truncated_weighted_resummation`` instead.
 - No ETH, subexponential, or source-qualification claim follows.
 """
 from __future__ import annotations
@@ -28,7 +29,6 @@ from veritas.research.parent_child_r99.support_circuit import SupportCircuit, af
 from veritas.research.tapered_v4.source_recipes import CompiledEntry, EntryBudget, EntryLimits
 
 from .algebraic_resummation import (
-    Exponent,
     PacketPoly,
     RowFactor,
     _jet_ring_and_arithmetic,
@@ -37,6 +37,7 @@ from .algebraic_resummation import (
     explicit_monomial_resummation,
     substitution_resummation,
 )
+from .truncated_weighted_resummation import truncated_weighted_resummation
 
 ModeWeights = Tuple[int, ...]
 
@@ -69,21 +70,24 @@ def modes_from_packet_rows(
     *,
     zero,
     packet: int = 0,
+    row_ports: Sequence[int] | None = None,
 ) -> List[dict]:
     """R9.99-style mode list from row factors (constructor path, not sampling)."""
     modes: List[dict] = []
     for mid, weight in enumerate(weights):
-        active_rows = [
-            row
-            for row, factor in enumerate(factors)
-            if mid < len(factor.mode_coefficients)
-            and factor.mode_coefficients[mid] != zero
-        ]
+        active_ports: List[int] = []
+        for row_index, factor in enumerate(factors):
+            if mid >= len(factor.mode_coefficients):
+                continue
+            if factor.mode_coefficients[mid] == zero:
+                continue
+            port = row_ports[row_index] if row_ports is not None else row_index
+            active_ports.append(port)
         modes.append(
             {
                 "packet": packet,
                 "weight": int(weight),
-                "rows": [[row, None] for row in active_rows],
+                "rows": [[port, None] for port in active_ports],
             }
         )
     return modes
@@ -101,62 +105,17 @@ def filter_polynomial_by_support(
     return filtered
 
 
-def _rows_for_coordinates(
-    factors: Sequence[RowFactor],
-    coordinates: Sequence[int],
-    weights: ModeWeights,
-    zero,
-) -> Tuple[RowFactor, ...]:
-    """Restrict factors to rows touching the given mode indices."""
-    subset = set(coordinates)
-    restricted: List[RowFactor] = []
-    local_weights = list(weights)
-    for row_index, factor in enumerate(factors):
-        touches = any(
-            j < len(factor.mode_coefficients)
-            and factor.mode_coefficients[j] != zero
-            and j in subset
-            for j in range(len(local_weights))
-        )
-        if not touches:
-            continue
-        mode_row = []
-        for j in range(len(local_weights)):
-            if j in subset and j < len(factor.mode_coefficients):
-                mode_row.append(factor.mode_coefficients[j])
-            else:
-                mode_row.append(zero)
-        restricted.append(RowFactor(factor.constant, tuple(mode_row)))
-    return tuple(restricted)
-
-
 def hybrid_component_substitution(
     factors: Sequence[RowFactor],
     weights: Sequence[object],
-    circuit: SupportCircuit,
+    mode_weights: ModeWeights,
+    precision: int,
     ar,
-    *,
-    zero,
 ) -> object:
-    """Multiply per-component substitution values on disjoint coordinates."""
-    if not factors:
-        return ar.ring.one
-    product = ar.ring.one
-    for coordinates, _nodes, _local in circuit.components:
-        sub_factors = _rows_for_coordinates(
-            factors,
-            coordinates,
-            tuple(range(len(weights))),
-            zero,
-        )
-        if not sub_factors:
-            continue
-        sub_weights = tuple(weights[j] for j in coordinates)
-        product = ar.mul(
-            product,
-            substitution_resummation(sub_factors, sub_weights, ar),
-        )
-    return product
+    """Precision-truncated aggregate (legacy name; not per-component multiply)."""
+    return truncated_weighted_resummation(
+        factors, weights, mode_weights, precision, ar
+    )
 
 
 def compare_support_aware_resummation(
@@ -176,9 +135,17 @@ def compare_support_aware_resummation(
     if len(weights) != len(mode_weights):
         raise ValueError("weight vector length mismatch")
     if precision is None:
-        precision = max(sum(mode_weights), max(mode_weights, default=0)) + len(mode_weights)
+        total_weight = sum(mode_weights)
+        precision = max(1, total_weight, max(mode_weights, default=0) + len(mode_weights))
 
-    modes = modes_from_packet_rows(factors, mode_weights, zero=ar.ring.zero)
+    rows_meta, *_rest = compiled.data
+    row_ports = tuple(rows_meta)
+    modes = modes_from_packet_rows(
+        factors,
+        mode_weights,
+        zero=ar.ring.zero,
+        row_ports=row_ports,
+    )
     circuit = SupportCircuit(
         modes,
         precision,
@@ -187,22 +154,23 @@ def compare_support_aware_resummation(
     )
     poly = expand_packet_polynomial(factors, ar)
     supported_poly = filter_polynomial_by_support(poly, circuit)
+    circuit_mode_weights = tuple(mode["weight"] for mode in modes)
 
-    enumerated = explicit_monomial_resummation(supported_poly, weights, ar)
-    full = substitution_resummation(factors, weights, ar)
-    hybrid = hybrid_component_substitution(
-        factors, weights, circuit, ar, zero=ar.ring.zero
+    enumerated = truncated_weighted_resummation(
+        factors, weights, circuit_mode_weights, precision, ar
     )
+    full = substitution_resummation(factors, weights, ar)
+    truncated = enumerated
 
     return SupportResummationResult(
         enumerated_supported=enumerated,
         full_substitution=full,
-        hybrid_component=hybrid,
+        hybrid_component=truncated,
         supported_monomial_count=len(supported_poly),
         total_monomial_count=len(poly),
         support_tuple_count=circuit.count(),
         component_count=len(circuit.components),
-        enumerate_agrees_with_hybrid=enumerated == hybrid,
+        enumerate_agrees_with_hybrid=enumerated == truncated,
         full_agrees_with_enumerated=full == enumerated,
         precision=precision,
     )

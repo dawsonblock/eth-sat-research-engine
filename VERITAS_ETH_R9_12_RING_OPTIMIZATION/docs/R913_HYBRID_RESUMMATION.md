@@ -36,8 +36,8 @@ reference for “one mode per row” semantics, not an automatic substitute for
 | ----- | ------------ | ----------- | ---------- |
 | **Original-wire elimination** (`Route.ELIMINATION`) | Exact bounded-width Boolean elimination on wire scopes; preflight budgets fail closed | Production baseline on fixtures where width fits `EliminationBudget` | Exponential in verified width; heuristic order only |
 | **Full packet substitution** (`substitution_resummation`) | `Π_r (c_r + Σ_j a_{rj} s_j)` without enumerating β | Cross-check / small packet children at a jet point | Does not replace wire elimination on large parents |
-| **Support-filtered resummation** (`compare_support_aware_resummation`) | Expand `P(z)`, keep supported β, then substitute | Same jet point when support is strict subset of all monomials | Truncation can change the value vs full `P(s)` |
-| **Component hybrid** | Substitute per `SupportCircuit` component and multiply | Disjoint single-mode rows (e.g. metadata 96-wire sketch) | Shared rows: use enumerated support, not hybrid alone |
+| **Support-filtered resummation** (`compare_support_aware_resummation`) | Truncated weighted DP with `SupportCircuit` weights | Same jet point under affine-row support + cutoff | Multilinear `expand` path is diagnostic only, not the supported aggregate |
+| **Truncated weighted DP** (`truncated_weighted_resummation`) | `Q(t)=∏_r(c_r+Σ a_{rj} s_j t^{w_j})` mod `t^P`; sum degrees `<P` | **Primary** precision-truncated aggregate | Does not extract a single recipe exponent; not full recursion |
 | **Mode-graph elimination width** (`dependency_analyzer`) | Min-fill order on mode incidence; **no** factor evaluation | Preflight / planning next to wire width | Width is heuristic, not treewidth; NP-hard optimum not sought |
 | **Recursive tapered contraction** (`Route.TAPERED` / explicit support) | Factorized support circuit + child construction | Research path when support stays under caps | 96-wire interaction: full `2^96` support — refuses at tuple cap |
 
