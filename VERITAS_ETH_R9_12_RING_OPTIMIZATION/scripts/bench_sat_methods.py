@@ -10,7 +10,7 @@ Compares (where budgets allow):
 - **support_resummation** — support-filtered vs full substitution at parent precision.
 - **mode_width_metadata** — ``dependency_analyzer`` width estimate without enumerating
   mode support (96/192-wire metadata).
-- **interaction_96_e2e** — circulant parent wire elimination + child ``A_β`` (jet point 1).
+- **interaction_96_e2e** — parallel diagnostics: parent wire elimination + independent-row child ``A_β``.
 - **coefficient_extract_{96,192}** — independent-row separator Problem B without ``2**n``.
 - **elimination_budget_refusal** — width-17 fixture refuses at ``max_width=16``, passes at 20.
 - **wire_elimination_192** — optional (``--full``): 64+64 vertices, 192 edges, offset 5.
@@ -272,7 +272,7 @@ def bench_mode_width_metadata(*, mode_count: int = 96, max_width: int = 20) -> d
 
 
 def bench_interaction_96_coefficient_e2e(*, max_width: int = 20) -> dict:
-    """Circulant 32+32 / offset 5: wire elimination + child A_beta (jet point 1)."""
+    """Circulant 32+32 / offset 5: parent elimination + independent-row child A_beta."""
     probe = _load_interaction_probe()
     import tempfile
     from veritas.research.parent_child_r98.model import canonical

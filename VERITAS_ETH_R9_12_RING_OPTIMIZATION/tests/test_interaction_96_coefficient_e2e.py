@@ -1,4 +1,4 @@
-"""End-to-end circulant 96-wire: wire elimination vs child coefficient (problem B)."""
+"""Parallel diagnostics on circulant 96-wire: parent elimination + independent-row child A_beta."""
 import importlib.util
 from dataclasses import replace
 from pathlib import Path

@@ -114,11 +114,12 @@ state**, not only “vectors avoided.”
 
 ## Milestones
 
-1. Correct end-to-end **96-wire child** computation under explicit budgets:
+1. **96-wire parallel diagnostics** (not parent-to-child reconstruction):
    `interaction_coefficient_harness.interaction_coefficient_end_to_end` (circulant
-   32+32 / offset 5, jet point 1) reports parent wire elimination (width 17) and
-   child separator `A_β` vs independent row reference without `2^96` expansion.
-   Bench: ``interaction_96_e2e``. Remaining: two-level recursive child vs same oracle.
+   32+32 / offset 5, jet point 1) reports parent wire elimination (width 17) and,
+   separately, jet-point separator `A_β` vs an **independent row-product** reference
+   without `2^96` expansion. Bench: ``interaction_96_e2e``. Remaining:
+   `C_parent = Reconstruct(C_child,…)` with enforced extraction budgets (open).
 2. **192-wire** metadata + independent-row separator (`coefficient_extract_192`,
    `mode_width_192`); wire timing via ``bench_sat_methods.py --full``
    (``wire_elimination_192``). Child jet e2e at 192 modes awaits valid separated

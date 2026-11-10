@@ -48,9 +48,12 @@ PIPELINE_OBLIGATIONS: Tuple[PreservationObligation, ...] = (
     PreservationObligation(
         schema="VERITAS_R913_OBLIGATION_PARENT_CHILD_V1",
         kind=PacketQuantityKind.TARGET_COEFFICIENT,
-        description="Recursive child contraction preserves parent prescribed value.",
+        description=(
+            "Parent coefficient equals reconstruction from child outputs, source "
+            "factors, precision rules, and interpolation points."
+        ),
         proved_in_this_repo=False,
-        qualification="not_established",
+        qualification="not_established_no_reconstruct_equality",
     ),
     PreservationObligation(
         schema="VERITAS_R913_OBLIGATION_PRECISION_V1",

@@ -14,6 +14,8 @@ No ETH theorem or subexponential bound is claimed.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from math import prod
+from time import monotonic
 from typing import Dict, List, Mapping, Sequence, Tuple
 
 from veritas.research.parent_child_r912.elimination import (
@@ -21,6 +23,7 @@ from veritas.research.parent_child_r912.elimination import (
     plan_order,
     verify_order,
 )
+from veritas.research.parent_child_r98.model import Refusal
 from veritas.research.parent_child_r913.algebraic_resummation import (
     Exponent,
     RowFactor,
@@ -81,6 +84,32 @@ def _tick(ar, n: int = 1) -> None:
     budget = getattr(ar, "budget", None)
     if budget is not None:
         budget.tick(n)
+
+
+class _ExtractionMeter:
+    def __init__(self, budget: EliminationBudget):
+        self.budget = budget
+        self.work = 0
+        self.started = monotonic()
+
+    def tick(self, n: int = 1) -> None:
+        self.work += n
+        if self.work > self.budget.max_work:
+            raise Refusal("INCONCLUSIVE_RESOURCE_LIMIT", "coefficient extraction work budget")
+        if monotonic() - self.started > self.budget.max_seconds:
+            raise Refusal("INCONCLUSIVE_RESOURCE_LIMIT", "coefficient extraction time budget")
+
+    def check_table(self, entries: int) -> None:
+        if entries > self.budget.max_table_entries:
+            raise Refusal("INCONCLUSIVE_RESOURCE_LIMIT", "coefficient extraction table budget")
+
+
+def _require_fitting_plan(plan: dict) -> None:
+    if not plan.get("fits"):
+        raise Refusal(
+            "INCONCLUSIVE_ELIMINATION_BUDGET",
+            plan.get("reason") or "coefficient extraction elimination plan refuses",
+        )
 
 
 def _row_factors_to_polys(
@@ -197,17 +226,30 @@ def target_coefficient_by_separator_elimination(
     heuristic: str = "min_fill",
 ) -> SeparatorExtractionResult:
     """Exact A_β via variable elimination on the row factor graph (problem B)."""
+    budget = EliminationBudget() if budget is None else budget
+    meter = _ExtractionMeter(budget)
+    zero = ar.ring.zero
+    one = ar.ring.one
     if not factors:
-        raise ValueError("at least one row factor required")
+        stats = SeparatorExtractionStats(
+            elimination_width=0,
+            max_monomial_table=1,
+            peak_monomial_table=1,
+            variable_eliminations=0,
+            join_count=0,
+            work_ticks=0,
+            fits_plan=True,
+        )
+        if any(b > 0 for b in target_beta):
+            return SeparatorExtractionResult(zero, stats, tuple())
+        return SeparatorExtractionResult(one, stats, tuple())
     mode_count = len(factors[0].mode_coefficients)
     if len(target_beta) != mode_count:
         raise ValueError("target_beta length mismatch")
     if any(b < 0 for b in target_beta):
         raise ValueError("negative exponent in target_beta")
-    budget = EliminationBudget() if budget is None else budget
     polys, scalars = _row_factors_to_polys(factors, ar)
     variables = sorted({v for poly in polys for v in poly.variables})
-    zero = ar.ring.zero
     active = set(variables)
     for mode_index, need in enumerate(target_beta):
         if need <= 0:
@@ -242,8 +284,10 @@ def target_coefficient_by_separator_elimination(
     scopes = _scopes_from_polys(polys)
     order = plan_order(scopes, tuple(variables), heuristic)
     plan = verify_order(scopes, tuple(variables), order, budget)
+    _require_fitting_plan(plan)
 
     peak = max((len(p.terms) for p in polys), default=1)
+    meter.check_table(peak)
     largest = peak
     joins = 0
     work = 0
@@ -259,13 +303,18 @@ def target_coefficient_by_separator_elimination(
                     peak_monomial_table=peak,
                     variable_eliminations=len(order),
                     join_count=joins,
-                    work_ticks=work,
-                    fits_plan=bool(plan["fits"]),
+                    work_ticks=meter.work,
+                    fits_plan=True,
                 )
                 return SeparatorExtractionResult(zero, stats, order)
             continue
         joins += 1
+        meter.tick(len(joined) * 8)
         combined = _multiply_many(joined, target_beta, ar)
+        meter.tick(len(combined.terms))
+        meter.check_table(len(combined.terms))
+        peak = max(peak, len(combined.terms))
+        largest = max(largest, len(combined.terms))
         if not combined.terms:
             zero = ar.ring.zero
             stats = SeparatorExtractionStats(
@@ -274,14 +323,13 @@ def target_coefficient_by_separator_elimination(
                 peak_monomial_table=peak,
                 variable_eliminations=len(order),
                 join_count=joins,
-                work_ticks=work,
-                fits_plan=bool(plan["fits"]),
+                work_ticks=meter.work,
+                fits_plan=True,
             )
             return SeparatorExtractionResult(zero, stats, order)
         work += len(combined.terms)
-        peak = max(peak, len(combined.terms))
-        largest = max(largest, len(combined.terms))
         projected = _eliminate_at_variable(combined, variable, target_beta, ar)
+        meter.check_table(len(projected.terms))
         if not projected.terms:
             zero = ar.ring.zero
             stats = SeparatorExtractionStats(
@@ -290,8 +338,8 @@ def target_coefficient_by_separator_elimination(
                 peak_monomial_table=peak,
                 variable_eliminations=len(order),
                 join_count=joins,
-                work_ticks=work,
-                fits_plan=bool(plan["fits"]),
+                work_ticks=meter.work,
+                fits_plan=True,
             )
             return SeparatorExtractionResult(zero, stats, order)
         polys = [p for p in polys if variable not in p.variables] + [projected]
@@ -310,8 +358,8 @@ def target_coefficient_by_separator_elimination(
                     peak_monomial_table=peak,
                     variable_eliminations=len(order),
                     join_count=joins,
-                    work_ticks=work,
-                    fits_plan=bool(plan["fits"]),
+                    work_ticks=meter.work,
+                    fits_plan=True,
                 ),
                 order,
             )
@@ -324,8 +372,8 @@ def target_coefficient_by_separator_elimination(
                     peak_monomial_table=peak,
                     variable_eliminations=len(order),
                     join_count=joins,
-                    work_ticks=work,
-                    fits_plan=bool(plan["fits"]),
+                    work_ticks=meter.work,
+                    fits_plan=True,
                 ),
                 order,
             )
@@ -340,8 +388,8 @@ def target_coefficient_by_separator_elimination(
         peak_monomial_table=peak,
         variable_eliminations=len(order),
         join_count=joins,
-        work_ticks=work,
-        fits_plan=bool(plan["fits"]),
+        work_ticks=meter.work,
+        fits_plan=True,
     )
     return SeparatorExtractionResult(total, stats, order)
 
@@ -429,8 +477,7 @@ def estimate_extraction_state(
     graph = mode_factor_graph_from_modes(modes, row_certificate=row_certificate)
     order = plan_order(graph.scopes, graph.variables, heuristic)
     certificate = verify_order(graph.scopes, graph.variables, order, budget)
-    max_exp = max(target_beta) if target_beta else 0
-    exp_multiplier = max_exp + 1 if max_exp > 1 else 1
+    exp_multiplier = prod((int(b) + 1) for b in target_beta) if target_beta else 1
     bool_states = certificate["max_table_entries"]
     return ExtractionStateEstimate(
         target_beta=target_beta,

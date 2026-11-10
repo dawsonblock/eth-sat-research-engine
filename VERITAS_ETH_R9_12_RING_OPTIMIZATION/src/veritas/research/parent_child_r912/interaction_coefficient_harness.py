@@ -200,7 +200,7 @@ def interaction_coefficient_end_to_end(
     rows_one_mode = all(len(v) == 1 for v in incidence.values())
 
     return {
-        "schema": "VERITAS_R912_INTERACTION_COEFFICIENT_E2E_V1",
+        "schema": "VERITAS_R912_INTERACTION_PARALLEL_DIAG_V1",
         "wires": parent.edge_count,
         "jet_point_index": jet_index,
         "jet_node": jet_node,
@@ -238,7 +238,9 @@ def interaction_coefficient_end_to_end(
         "source_qualified": False,
         "subexponential_bound_evidence": False,
         "qualification": (
-            "parent_contraction_and_child_A_beta_are_different_quantities; "
-            "reference_is_independent_row_product_not_parent_integer"
+            "NOT_end_to_end_recursive_child: parent wire elimination and jet-point "
+            "row-product A_beta are computed in parallel; reference is independent-row "
+            "closure not parent-to-child reconstruction"
         ),
+        "parent_child_reconstruction_proved": False,
     }

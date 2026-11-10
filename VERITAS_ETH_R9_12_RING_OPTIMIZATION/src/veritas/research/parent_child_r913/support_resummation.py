@@ -156,11 +156,11 @@ def compare_support_aware_resummation(
     supported_poly = filter_polynomial_by_support(poly, circuit)
     circuit_mode_weights = tuple(mode["weight"] for mode in modes)
 
-    enumerated = truncated_weighted_resummation(
+    enumerated = explicit_monomial_resummation(supported_poly, weights, ar)
+    full = substitution_resummation(factors, weights, ar)
+    truncated = truncated_weighted_resummation(
         factors, weights, circuit_mode_weights, precision, ar
     )
-    full = substitution_resummation(factors, weights, ar)
-    truncated = enumerated
 
     return SupportResummationResult(
         enumerated_supported=enumerated,
