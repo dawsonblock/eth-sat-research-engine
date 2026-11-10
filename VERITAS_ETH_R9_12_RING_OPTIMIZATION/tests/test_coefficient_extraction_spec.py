@@ -5,11 +5,9 @@ from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
 from veritas.research.eth_arithmetic.jets import JetRing
 from veritas.research.parent_child_r913.algebraic_resummation import (
     RowFactor,
-    _jet_ring_and_arithmetic,
     substitution_resummation,
-    build_packet_reference,
 )
-from veritas.research.tapered_v4.source_recipes import EntryBudget, EntryLimits
+from veritas.research.tapered_v4.source_recipes import Arithmetic, EntryBudget, EntryLimits
 from veritas.research.parent_child_r913.coefficient_extraction import (
     target_coefficient_by_expansion,
 )
@@ -34,18 +32,8 @@ def test_two_problem_distinction_separable_example():
     subs = (1, 1)
     w = (1, 1)
     assert truncated_weighted_resummation_int(c, coef, subs, w, 2, 97) == 3
-    ring = JetRing(ExtensionRing(8, 19), 1)
-    data = [
-        [0],
-        [1],
-        [[jet(ring, 1)]],
-        [[1, [jet(ring, 1), jet(ring, 0)]], [1, [jet(ring, 0), jet(ring, 1)]]],
-        [],
-    ]
-    _, compiled = build_packet_reference(
-        arity=2, data=data, creation_precision=8, jet_length=1, defining_polynomial=19
-    )
-    _, ar = _jet_ring_and_arithmetic(compiled, EntryBudget(EntryLimits()))
+    ring = JetRing(ExtensionRing(3, 7), 1)
+    ar = Arithmetic(ring, EntryBudget(EntryLimits()))
     factors = (
         RowFactor(jet(ring, 1), (jet(ring, 1), jet(ring, 0))),
         RowFactor(jet(ring, 1), (jet(ring, 0), jet(ring, 1))),
