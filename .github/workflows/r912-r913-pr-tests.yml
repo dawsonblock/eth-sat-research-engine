@@ -34,6 +34,10 @@ jobs:
             tests/test_bench_sat_methods.py \
             tests/test_coefficient_extraction_spec.py \
             tests/test_coefficient_separator.py
+      - name: Interaction 96-wire e2e (slow)
+        env:
+          PYTHONPATH: src
+        run: python -m pytest -q -o addopts='' tests/test_interaction_96_coefficient_e2e.py
       - name: Bench smoke
         env:
           PYTHONPATH: src

@@ -46,6 +46,9 @@ from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
 from veritas.research.eth_arithmetic.jets import JetRing
 from veritas.research.parent_child_r912.elimination import EliminationBudget
 from veritas.research.parent_child_r912.fixture_bridge import compiled_child_packet_at_jet_point
+from veritas.research.parent_child_r912.interaction_coefficient_harness import (
+    interaction_coefficient_end_to_end,
+)
 from veritas.research.parent_child_r912.preflight import wire_elimination_preflight
 from veritas.research.parent_child_r912.routes import Route, contract_routed
 from veritas.research.parent_child_r913.algebraic_resummation import (
@@ -264,6 +267,45 @@ def bench_mode_width_metadata(*, mode_count: int = 96, max_width: int = 20) -> d
     }
 
 
+def bench_interaction_96_coefficient_e2e(*, max_width: int = 20) -> dict:
+    """Circulant 32+32 / offset 5: wire elimination + child A_beta (jet point 1)."""
+    probe = _load_interaction_probe()
+    import tempfile
+    from veritas.research.parent_child_r98.model import canonical
+    from veritas.research.parent_child_r98.shrinking_cli import load_input
+    from veritas.research.parent_child_r98.shrinking_engine import DEFAULT_SHRINKING_POLICY
+    from veritas.research.parent_child_r98.model import Budget
+    from dataclasses import replace
+
+    policy = replace(
+        DEFAULT_SHRINKING_POLICY,
+        max_work=8_000_000,
+        max_edges=128,
+        max_precision=16384,
+    )
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp) / "interaction.json"
+        path.write_bytes(canonical(probe.graph(32, 5)))
+        parent = load_input(path, max_extension_degree=12)
+    layout = probe.separated_layout(parent, 1, 1, Budget(policy))
+    t0 = time.perf_counter()
+    report = interaction_coefficient_end_to_end(
+        parent,
+        layout,
+        shrink_budget=Budget(policy),
+        elimination_budget=EliminationBudget(max_width=max_width),
+        point_index=1,
+    )
+    elapsed = time.perf_counter() - t0
+    report["case"] = "interaction_96_coefficient_e2e"
+    report["elapsed_seconds_total"] = elapsed
+    report.update(QUALIFICATION)
+    report["status"] = "OK" if report["child_target_coefficient"][
+        "separator_agrees_with_independent_reference"
+    ] else "MISMATCH"
+    return report
+
+
 def bench_coefficient_extract_independent(*, mode_count: int = 96, max_width: int = 20) -> dict:
     """96-wire-style independent row factors: separator A_beta without 2**n expansion."""
     modes = [
@@ -333,6 +375,9 @@ CASES = {
     ),
     "coefficient_extract_96": lambda args: bench_coefficient_extract_independent(
         mode_count=96, max_width=args.elimination_max_width
+    ),
+    "interaction_96_e2e": lambda args: bench_interaction_96_coefficient_e2e(
+        max_width=args.elimination_max_width
     ),
 }
 

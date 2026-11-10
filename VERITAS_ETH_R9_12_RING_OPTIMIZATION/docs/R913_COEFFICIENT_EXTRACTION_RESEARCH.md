@@ -114,7 +114,11 @@ state**, not only “vectors avoided.”
 
 ## Milestones
 
-1. Correct end-to-end **96-wire child** computation under explicit budgets (existing
+1. Correct end-to-end **96-wire child** computation under explicit budgets:
+   `interaction_coefficient_harness.interaction_coefficient_end_to_end` (circulant
+   32+32 / offset 5, jet point 1) reports parent wire elimination (width 17) and
+   child separator `A_β` vs independent row reference without `2^96` expansion.
+   Bench: ``interaction_96_e2e``. (Remaining:
    elimination route + independent oracle).
 2. Harder **192-wire** comparison with documented refusal when width exceeds budget.
 3. Separator coefficient extractor matching expansion on n≤12 mode graphs before
