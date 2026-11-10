@@ -106,9 +106,11 @@ C_parent(β) = ∏_g C_child_g(β)
 
 ``C_child_g`` is the verified half-edge elimination value on group child ``g``
 (``verify_children``), checked against ``shrinking_oracle.tuple_coefficient``.
-Bounded tests: 2-wire tensor parent and 22-wire three-crossing fixture.  The
-96-wire interaction harness remains parallel diagnostics until this equality is
-wired to the circulant instance with enforced extraction budgets.
+Bounded tests: 2-wire tensor parent, 22-wire three-crossing, and **96-wire
+circulant** at jet point 1 (β all zero, ``interaction_coefficient_harness`` schema
+V2).  Parent wire elimination and independent-row ``A_β`` remain separate
+quantities; two-level grandchild reconstruction on circulant children is blocked
+today by inherited jet precision / layout preflight on 3-edge children.
 
 ``contract_scaled(..., levels=1)`` on the scaled-singleton parent exercises
 Hermite-interpolated **two-level** engine recursion separately.

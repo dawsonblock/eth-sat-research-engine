@@ -60,3 +60,9 @@ def test_circulant_96_wire_child_coefficient_vs_elimination_baseline(interaction
     assert child_block["largest_local_support"] == 2
     assert not report["source_qualified"]
     assert child_block["elapsed_seconds"] < 120
+    assert report["parent_child_reconstruction_proved"] is True
+    recon = report["parent_child_reconstruction"]
+    assert recon["reconstruction_equals_oracle"]
+    assert recon["child_group_count"] == 64
+    assert recon["active_levels"] == 1
+    assert recon["elapsed_seconds"] < 120

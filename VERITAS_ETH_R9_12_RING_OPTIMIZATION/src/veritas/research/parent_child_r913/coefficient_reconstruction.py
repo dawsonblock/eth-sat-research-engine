@@ -25,8 +25,9 @@ from veritas.research.eth_arithmetic.jets import JetRing
 from veritas.research.parent_child_r98.constructor import construct_children
 from veritas.research.parent_child_r98.engine import leaf
 from veritas.research.parent_child_r98.independent import verify_children
-from veritas.research.parent_child_r98.model import Budget, ExponentTuple, ModeSet, PacketLayout, ParentCall
+from veritas.research.parent_child_r98.model import Budget, ExponentTuple, ModeSet, PacketLayout, ParentCall, canonical
 from veritas.research.parent_child_r98.shrinking_oracle import tuple_coefficient
+from veritas.research.parent_child_r912.interaction_jet_point import packet_modes_at_jet_point
 
 
 @dataclass(frozen=True)
@@ -155,3 +156,114 @@ def reconstruction_report(result: ParentChildReconstructionResult) -> Dict[str, 
         "parent_child_reconstruction_proved": result.reconstruction_equals_oracle,
         "qualification": result.qualification,
     }
+
+
+def modes_at_jet_point(
+    parent: ParentCall,
+    layout: PacketLayout,
+    *,
+    budget: Budget,
+    point_index: int = 1,
+    max_points: int | None = None,
+) -> Tuple[ModeSet, dict, int, Tuple[int, ...], Tuple[int, ...]]:
+    """ModeSet at a jet point (for constructor / reconstruction paths)."""
+    certificate, row_certificate, jet_index, node, zeta = packet_modes_at_jet_point(
+        parent,
+        layout,
+        budget=budget,
+        point_index=point_index,
+        max_points=max_points,
+    )
+    return (
+        ModeSet(layout.content_digest, canonical(certificate)),
+        row_certificate,
+        jet_index,
+        node,
+        zeta,
+    )
+
+
+def reconstruct_interaction_parent_at_jet_point(
+    parent: ParentCall,
+    layout: PacketLayout,
+    *,
+    budget: Budget,
+    point_index: int = 1,
+    beta_values: Tuple[int, ...] | None = None,
+    require_shrink: bool = True,
+    child_contractor: Optional[ChildContractor] = None,
+) -> ParentChildReconstructionResult:
+    """Circulant / interaction parent: reconstruct ``C_parent(β)`` from child groups at a jet point."""
+    modes, _row_certificate, _jet_index, _node, _zeta = modes_at_jet_point(
+        parent, layout, budget=budget, point_index=point_index
+    )
+    mode_count = len(modes.certificate["modes"])
+    if beta_values is None:
+        beta_values = tuple(0 for _ in range(mode_count))
+    if len(beta_values) != mode_count:
+        raise ValueError("beta length must match jet-point mode count")
+    beta = ExponentTuple(modes.content_digest, beta_values)
+    return reconstruct_parent_coefficient_one_level(
+        parent,
+        layout,
+        modes,
+        beta,
+        budget=budget,
+        child_contractor=child_contractor,
+        require_shrink=require_shrink,
+    )
+
+
+def reconstruct_interaction_with_leaf_at_jet_point(
+    parent: ParentCall,
+    layout: PacketLayout,
+    *,
+    budget: Budget,
+    point_index: int = 1,
+    beta_values: Tuple[int, ...] | None = None,
+    require_shrink: bool = True,
+) -> ParentChildReconstructionResult:
+    modes, *_rest = modes_at_jet_point(parent, layout, budget=budget, point_index=point_index)
+    mode_count = len(modes.certificate["modes"])
+    if beta_values is None:
+        beta_values = tuple(0 for _ in range(mode_count))
+    beta = ExponentTuple(modes.content_digest, beta_values)
+    return reconstruct_with_leaf_child_contractor(
+        parent,
+        layout,
+        modes,
+        beta,
+        budget=budget,
+        require_shrink=require_shrink,
+    )
+
+
+def interaction_parent_child_reconstruction_report(
+    parent: ParentCall,
+    layout: PacketLayout,
+    *,
+    budget: Budget,
+    point_index: int = 1,
+    beta_values: Tuple[int, ...] | None = None,
+) -> Dict[str, Any]:
+    """JSON-serializable block for harness / bench consumers."""
+    modes, _row_certificate, jet_index, node, _zeta = modes_at_jet_point(
+        parent, layout, budget=budget, point_index=point_index
+    )
+    result = reconstruct_interaction_parent_at_jet_point(
+        parent,
+        layout,
+        budget=budget,
+        point_index=point_index,
+        beta_values=beta_values,
+    )
+    report = reconstruction_report(result)
+    report["jet_point_index"] = jet_index
+    report["jet_node"] = node
+    report["wires"] = parent.edge_count
+    report["mode_count"] = len(modes.certificate["modes"])
+    report["qualification"] = (
+        result.qualification
+        + "; wire_elimination_is_separate_quantity_from_C_parent_beta"
+    )
+    return report

@@ -5,11 +5,9 @@ from itertools import product
 from pathlib import Path
 import random
 from time import monotonic
-from veritas.research.parent_child_r98.model import Budget,PacketLayout,canonical
-from veritas.research.parent_child_r98.packing import audit_layout
+from veritas.research.parent_child_r98.model import Budget,canonical
 from veritas.research.parent_child_r98.shrinking_cli import load_input,_check_output
 from veritas.research.parent_child_r98.shrinking_engine import DEFAULT_SHRINKING_POLICY
-from veritas.research.parent_child_r98.shrinking_layout import construct_vertex_shrinking_layout
 from veritas.research.parent_child_r910.engine import contract
 from veritas.research.parent_child_r910.checker import verify
 from veritas.research.independent_r82.point_mode_oracle import OracleLimits
@@ -66,18 +64,8 @@ def integer_elimination(data,max_work=50_000_000,max_frontier=18,order=None):
 
 
 def separated_layout(parent,a,u,budget):
-    if (a,u)!=(1,1):raise ValueError('probe uses a=u=1')
-    n=parent.edge_count//3
-    if n!=32:raise ValueError('32+32 vertices required for singleton child groups')
-    src=construct_vertex_shrinking_layout(parent,budget=budget).source
-    src['row_labels']={str(i):[i] for i in range(n)}
-    src['column_labels']={str(i):[n+i] for i in range(n)}
-    src['H_pad']=2
-    src['packets']=sorted([{'symbol_pairs':[[r,n+c]],'index':0,'occupied_slots':[[0,e]]}
-        for e,(r,c) in enumerate(parent.bipartite_edges())],key=lambda p:p['symbol_pairs'])
-    result=PacketLayout(parent.content_digest,1,1,canonical(src),'balanced_vertices')
-    assert audit_layout(parent,result)['group_load_bound_met']
-    return result
+    from veritas.research.parent_child_r912.interaction_layout import circulant_separated_layout
+    return circulant_separated_layout(parent, a, u, budget)
 
 
 def eliminate_and_compare(parent,ref,budget):

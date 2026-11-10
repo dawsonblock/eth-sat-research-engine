@@ -18,7 +18,7 @@ from typing import Dict, List, Sequence, Tuple
 from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
 from veritas.research.eth_arithmetic.jets import JetRing
 from veritas.research.parent_child_r912.elimination import EliminationBudget
-from veritas.research.parent_child_r912.jet_recovery import JetRecovery
+from veritas.research.parent_child_r912.interaction_jet_point import packet_modes_at_jet_point
 from veritas.research.parent_child_r912.routes import Route, contract_routed
 from veritas.research.parent_child_r913.algebraic_resummation import RowFactor
 from veritas.research.parent_child_r913.coefficient_extraction import (
@@ -27,8 +27,6 @@ from veritas.research.parent_child_r913.coefficient_extraction import (
 )
 from veritas.research.parent_child_r98.model import Budget, PacketLayout, ParentCall
 from veritas.research.parent_child_r98.shrinking_engine import DEFAULT_SHRINKING_POLICY
-from veritas.research.parent_child_r99.basis import build_packet_modes
-from veritas.research.parent_child_r99.row_degree import certify_row_degree
 from veritas.research.parent_child_r99.support_circuit import SupportCircuit, affine_incidence
 from veritas.research.tapered_v4.source_recipes import Arithmetic, EntryBudget, EntryLimits
 
@@ -90,41 +88,6 @@ def independent_row_product_reference(
         else:
             return zero
     return total
-
-
-def packet_modes_at_jet_point(
-    parent: ParentCall,
-    layout: PacketLayout,
-    *,
-    budget: Budget,
-    point_index: int = 1,
-    max_points: int | None = None,
-) -> Tuple[dict, dict, int, Tuple[int, ...], Tuple[int, ...]]:
-    """Return modes certificate, row certificate, jet index, node, zeta."""
-    row_certificate = certify_row_degree(parent, layout.a, budget=budget)
-    if max_points is None:
-        degree_cap = int(row_certificate["degree_bound"]) + 1
-        max_points = min(4096, max(256, degree_cap))
-    recovery = JetRecovery(
-        parent,
-        layout,
-        row_certificate,
-        budget=budget,
-        max_points=max_points,
-    )
-    for index, (node, zeta, _residue) in enumerate(recovery.points()):
-        if index != point_index:
-            continue
-        modes = build_packet_modes(
-            parent,
-            layout,
-            node,
-            zeta,
-            budget=budget,
-            row_certificate=row_certificate,
-        )
-        return modes.certificate, row_certificate, index, node, tuple(zeta)
-    raise ValueError("jet recovery produced no point at the requested index")
 
 
 def interaction_coefficient_end_to_end(
@@ -199,8 +162,25 @@ def interaction_coefficient_end_to_end(
     matches_reference = extracted.value == reference
     rows_one_mode = all(len(v) == 1 for v in incidence.values())
 
+    from veritas.research.parent_child_r913.coefficient_reconstruction import (
+        interaction_parent_child_reconstruction_report,
+    )
+
+    t_reconstruct = time.perf_counter()
+    parent_child_block = interaction_parent_child_reconstruction_report(
+        parent,
+        layout,
+        budget=shrink_budget,
+        point_index=point_index,
+        beta_values=tuple(0 for _ in range(mode_count)),
+    )
+    reconstruct_elapsed = time.perf_counter() - t_reconstruct
+    parent_child_block["elapsed_seconds"] = reconstruct_elapsed
+
+    proved = parent_child_block["parent_child_reconstruction_proved"]
+
     return {
-        "schema": "VERITAS_R912_INTERACTION_PARALLEL_DIAG_V1",
+        "schema": "VERITAS_R912_INTERACTION_PARALLEL_DIAG_V2",
         "wires": parent.edge_count,
         "jet_point_index": jet_index,
         "jet_node": jet_node,
@@ -237,10 +217,16 @@ def interaction_coefficient_end_to_end(
         },
         "source_qualified": False,
         "subexponential_bound_evidence": False,
+        "parent_child_reconstruction": parent_child_block,
         "qualification": (
-            "NOT_end_to_end_recursive_child: parent wire elimination and jet-point "
-            "row-product A_beta are computed in parallel; reference is independent-row "
-            "closure not parent-to-child reconstruction"
+            "parent_wire_elimination_and_independent_row_A_beta_remain_parallel_diagnostics; "
+            "C_parent_beta_from_constructor_children_proved_at_jet_point"
+            if proved
+            else (
+                "parent wire elimination and row-product A_beta are parallel; "
+                "parent-to-child product reconstruction not established"
+            )
         ),
-        "parent_child_reconstruction_proved": False,
+        "parent_child_reconstruction_proved": proved,
+        "wire_elimination_equals_C_parent_beta": False,
     }
