@@ -434,7 +434,8 @@ def _read_coord(ring, encoded):
 
 
 def verify_point_mode_action(source, certificate, *, max_entries=4096,
-                             max_work=1_000_000, timeout_s=30.0):
+                             max_work=1_000_000, timeout_s=30.0,
+                             max_precision_bits=1024, max_extension_degree=8):
     """Check finite mode action against an independent rational-polynomial oracle.
 
     The supplied mode basis is not required to equal the canonical basis
@@ -456,7 +457,13 @@ def verify_point_mode_action(source, certificate, *, max_entries=4096,
         f = certificate.get("irreducible_polynomial")
         if type(node) is not int or node == 0 or type(precision) is not int:
             raise ValueError("invalid interpolation node or precision")
-        ring = _IndependentExtension(precision, f, meter)
+        ring = _IndependentExtension(
+            precision,
+            f,
+            meter,
+            max_precision_bits=max_precision_bits,
+            max_extension_degree=max_extension_degree,
+        )
         if certificate.get("extension_degree") != ring.e:
             raise ValueError("extension degree does not match its polynomial")
         zeta = _read_coord(ring, certificate.get("zeta"))

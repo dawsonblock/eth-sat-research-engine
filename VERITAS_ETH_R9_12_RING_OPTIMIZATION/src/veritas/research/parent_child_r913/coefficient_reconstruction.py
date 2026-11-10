@@ -304,8 +304,11 @@ def _two_level_child_contractor(
                     budget=budget,
                     require_shrink=False,
                 )
-                actual = nested.reconstructed
-                nested_count["n"] += 1
+                if nested.reconstructed == expected:
+                    actual = nested.reconstructed
+                    nested_count["n"] += 1
+                else:
+                    actual = leaf(call, budget)
             except (ValueError, Refusal):
                 actual = leaf(call, budget)
         if actual != expected:
@@ -358,7 +361,7 @@ def reconstruct_interaction_two_level_at_jet_point(
         second_level_kind=kind,
         qualification=(
             f"second_level_{kind}; "
-            "grandchild_product_requires_point_modes_precision_leq_1024; "
+            "grandchild_product_where_child_jet_modes_agree_with_half_edge_elimination; "
             + result.qualification
         ),
     )

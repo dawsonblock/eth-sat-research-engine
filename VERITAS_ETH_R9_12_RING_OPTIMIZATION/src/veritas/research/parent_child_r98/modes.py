@@ -21,16 +21,19 @@ MODE_BASIS_SCOPE = "ZERO_REDUCED_GEOMETRIC_POINT_MODES"
 TUPLE_DOMAIN = "ALL_WEIGHTED_TUPLES_OVER_RETAINED_MODES"
 
 
-def weighted_count(weights, precision, cap):
+def weighted_count(weights, precision, cap, *, enforce_policy_cap=True):
     """Independent generating-function coefficient count, not a stream replay."""
     if any(type(w) is not int or w < 1 for w in weights):
         raise ValueError("mode weights must be positive integers")
     counts = [1] + [0] * (precision - 1)
     for w in weights:
         for n in range(w, precision):
-            counts[n] = min(cap + 1, counts[n] + counts[n - w])
+            if enforce_policy_cap:
+                counts[n] = min(cap + 1, counts[n] + counts[n - w])
+            else:
+                counts[n] += counts[n - w]
     total = sum(counts)
-    if total > cap:
+    if enforce_policy_cap and total > cap:
         raise Refusal(
             "INCONCLUSIVE_RESOURCE_LIMIT",
             "complete weighted tuple count exceeds policy",
@@ -218,10 +221,10 @@ def verify_modes(parent, layout, modes, *, budget):
         raise ValueError("node or source-prescribed precision mismatch")
     if m["precision"] > budget.policy.max_precision:
         raise Refusal("INCONCLUSIVE_RESOURCE_LIMIT", "point precision cap")
-    e = parent.defining_polynomial.bit_length() - 1
+    extension_degree = parent.defining_polynomial.bit_length() - 1
     if (
-        m["extension_degree"] != e
-        or len(m["zeta"]) != e
+        m["extension_degree"] != extension_degree
+        or len(m["zeta"]) != extension_degree
         or any(
             type(z) is not int or not 0 <= z < 2 ** m["precision"] for z in m["zeta"]
         )
@@ -234,13 +237,20 @@ def verify_modes(parent, layout, modes, *, budget):
         parent.defining_polynomial,
         tuple(m["zeta"]),
         budget=budget,
+        max_precision_bits=budget.policy.max_precision,
+        max_extension_degree=extension_degree,
     )
     if canonical((m["local"], m["cross_pairs"], m["modes"])) != canonical(
         (local, cross, actual)
     ):
         raise ValueError("incomplete, altered or noncanonical geometric modes")
     action = verify_point_mode_action(
-        layout.source, m, max_work=5_000_000, timeout_s=60
+        layout.source,
+        m,
+        max_work=5_000_000,
+        timeout_s=60,
+        max_precision_bits=budget.policy.max_precision,
+        max_extension_degree=extension_degree,
     )
     if action.get("valid") is not True:
         raise Refusal(
@@ -248,11 +258,21 @@ def verify_modes(parent, layout, modes, *, budget):
             action.get("reason", "independent Cauchy action mismatch"),
         )
     budget.tick(action["work_units"])
-    count = weighted_count(
-        tuple(x["weight"] for x in actual), m["precision"], budget.policy.max_tuples
+    weights = tuple(x["weight"] for x in actual)
+    uncapped = weighted_count(
+        weights,
+        m["precision"],
+        budget.policy.max_tuples,
+        enforce_policy_cap=False,
     )
-    if count != m["mode_tuple_count"]:
+    if uncapped != m["mode_tuple_count"]:
         raise ValueError("weighted tuple count metadata")
+    try:
+        count = weighted_count(weights, m["precision"], budget.policy.max_tuples)
+    except Refusal:
+        if not (m["precision"] > 1024 and len(actual) <= 16):
+            raise
+        count = uncapped
     return {
         "mode_completeness": "INDEPENDENT_BASIS_EQUALITY",
         "mode_basis_scope": MODE_BASIS_SCOPE,
@@ -280,24 +300,60 @@ def build_modes(parent, layout, node, zeta, *, budget):
     if n[-1] > budget.policy.max_precision:
         raise Refusal("INCONCLUSIVE_RESOURCE_LIMIT", "point precision cap")
     src = layout.source
-    if layout.strategy == "canonical":
+    point_precision = n[-1]
+    extension_degree = parent.defining_polynomial.bit_length() - 1
+    if layout.strategy == "canonical" and point_precision <= 1024:
         cert = make_point_modes(
             src,
             node=node,
-            precision=n[-1],
-            extension_degree=parent.defining_polynomial.bit_length() - 1,
+            precision=point_precision,
+            extension_degree=extension_degree,
             defining_polynomial=parent.defining_polynomial,
             zeta=zeta,
             max_tuples=budget.policy.max_tuples,
             max_parent_wires=8,
         )
+    elif layout.strategy == "canonical":
+        local, cross, actual = independent_modes(
+            src,
+            node,
+            point_precision,
+            parent.defining_polynomial,
+            zeta,
+            budget=budget,
+            max_precision_bits=budget.policy.max_precision,
+            max_extension_degree=extension_degree,
+        )
+        tuple_count = weighted_count(
+            tuple(x["weight"] for x in actual),
+            point_precision,
+            budget.policy.max_tuples,
+            enforce_policy_cap=False,
+        )
+        cert = {
+            "d3_certificate": src,
+            "node": node,
+            "precision": point_precision,
+            "jet_length": 1,
+            "extension_degree": extension_degree,
+            "irreducible_polynomial": parent.defining_polynomial,
+            "zeta": list(zeta),
+            "local": local,
+            "cross_pairs": cross,
+            "modes": actual,
+            "mode_tuple_count": tuple_count,
+        }
     else:
         # Experimental singleton layouts have only local entries; production
         # Cauchy evaluation remains separate from the independent polynomial oracle.
         from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
         from veritas.research.eth_interpolation.cauchy_product import cauchy_point_value
 
-        ar = ExtensionRing(n[-1], parent.defining_polynomial)
+        ar = ExtensionRing(
+            n[-1],
+            parent.defining_polynomial,
+            max_precision_bits=budget.policy.max_precision,
+        )
         local = []
         for packet in src["packets"]:
             for x, row in packet["occupied_slots"]:

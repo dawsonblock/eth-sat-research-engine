@@ -66,8 +66,8 @@ def test_circulant_96_wire_parent_child_coefficient_reconstruction(interaction_9
     )
     assert two_level.active_levels == 2
     assert two_level.reconstruction_equals_oracle
-    assert two_level.second_level_kind == "leaf_recheck"
-    assert two_level.nested_child_groups == 0
+    assert two_level.second_level_kind == "grandchild_product"
+    assert two_level.nested_child_groups == 32
 
     sparse_beta = tuple(1 if i < 3 else 0 for i in range(len(result.beta)))
     sparse = reconstruct_interaction_parent_at_jet_point(
