@@ -119,6 +119,10 @@ state**, not only “vectors avoided.”
    32+32 / offset 5, jet point 1) reports parent wire elimination (width 17) and
    child separator `A_β` vs independent row reference without `2^96` expansion.
    Bench: ``interaction_96_e2e``. Remaining: two-level recursive child vs same oracle.
-2. Harder **192-wire** comparison with documented refusal when width exceeds budget.
+2. **192-wire** metadata + independent-row separator (`coefficient_extract_192`,
+   `mode_width_192`); wire timing via ``bench_sat_methods.py --full``
+   (``wire_elimination_192``). Child jet e2e at 192 modes awaits valid separated
+   layout beyond the 32+32 probe. Budget refusal: ``elimination_budget_refusal``
+   (width 17 vs ``max_width=16``).
 3. Separator coefficient extractor matching expansion on n≤12 mode graphs before
    claiming solver-level benefit.

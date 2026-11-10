@@ -9,7 +9,11 @@ Compares (where budgets allow):
   identity) on a toy packet or a multislot jet point from ``fixture_bridge``.
 - **support_resummation** — support-filtered vs full substitution at parent precision.
 - **mode_width_metadata** — ``dependency_analyzer`` width estimate without enumerating
-  mode support (96-wire style metadata).
+  mode support (96/192-wire metadata).
+- **interaction_96_e2e** — circulant parent wire elimination + child ``A_β`` (jet point 1).
+- **coefficient_extract_{96,192}** — independent-row separator Problem B without ``2**n``.
+- **elimination_budget_refusal** — width-17 fixture refuses at ``max_width=16``, passes at 20.
+- **wire_elimination_192** — optional (``--full``): 64+64 vertices, 192 edges, offset 5.
 
 Qualification (always reported on each record):
 
@@ -44,7 +48,7 @@ sys.path.insert(0, str(VERITAS_R912_ROOT / "src"))
 
 from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
 from veritas.research.eth_arithmetic.jets import JetRing
-from veritas.research.parent_child_r912.elimination import EliminationBudget
+from veritas.research.parent_child_r912.elimination import EliminationBudget, plan
 from veritas.research.parent_child_r912.fixture_bridge import compiled_child_packet_at_jet_point
 from veritas.research.parent_child_r912.interaction_coefficient_harness import (
     interaction_coefficient_end_to_end,
@@ -186,7 +190,7 @@ def bench_wire_elimination(
     *,
     temporary_parent_path: Path | None = None,
     n: int = 8,
-    offset: int = 3,
+    offset: int = 5,
     max_width: int = 20,
 ) -> dict:
     probe = _load_interaction_probe()
@@ -306,6 +310,59 @@ def bench_interaction_96_coefficient_e2e(*, max_width: int = 20) -> dict:
     return report
 
 
+def bench_wire_elimination_192(*, offset: int = 5, max_width: int = 20) -> dict:
+    """64+64 circulant interaction (192 wires); wire elimination timing + width."""
+    return bench_wire_elimination(n=64, offset=offset, max_width=max_width)
+
+
+def bench_elimination_budget_refusal(
+    *,
+    n: int = 32,
+    offset: int = 5,
+    tight_max_width: int = 16,
+    admit_max_width: int = 20,
+) -> dict:
+    """Document explicit width budget: planned width 17 refuses below 17."""
+    probe = _load_interaction_probe()
+    data = probe.graph(n, offset)
+    temporary_parent_path = VERITAS_R912_ROOT / ".bench_sat_wire_budget_parent.json"
+    temporary_parent_path.write_bytes(canonical(data))
+    parent = load_input(temporary_parent_path, max_extension_degree=12)
+    certificate = plan(parent, EliminationBudget(max_width=max(admit_max_width, 30)))
+    planned_width = int(certificate["width"])
+    t0 = time.perf_counter()
+    tight = contract_routed(
+        parent,
+        route=Route.ELIMINATION,
+        elimination_budget=EliminationBudget(max_width=tight_max_width),
+    )
+    tight_elapsed = time.perf_counter() - t0
+    t1 = time.perf_counter()
+    admitted = contract_routed(
+        parent,
+        route=Route.ELIMINATION,
+        elimination_budget=EliminationBudget(max_width=admit_max_width),
+    )
+    admitted_elapsed = time.perf_counter() - t1
+    return {
+        "case": "elimination_budget_refusal",
+        "wires": parent.edge_count,
+        "offset": offset,
+        "planned_elimination_width": planned_width,
+        "tight_max_width": tight_max_width,
+        "tight_status": tight.get("status"),
+        "tight_refused": tight.get("status") == "INCONCLUSIVE_ELIMINATION_BUDGET",
+        "tight_elapsed_seconds": tight_elapsed,
+        "admit_max_width": admit_max_width,
+        "admitted_status": admitted.get("status"),
+        "admitted_elimination_width": admitted.get("elimination_width"),
+        "admitted_elapsed_seconds": admitted_elapsed,
+        "note": "offset_5_circulant_typically_width_17_on_96_wires",
+        "elapsed_seconds": tight_elapsed + admitted_elapsed,
+        **QUALIFICATION,
+    }
+
+
 def bench_coefficient_extract_independent(*, mode_count: int = 96, max_width: int = 20) -> dict:
     """96-wire-style independent row factors: separator A_beta without 2**n expansion."""
     modes = [
@@ -370,18 +427,45 @@ CASES = {
         mode_count=96, max_width=args.elimination_max_width
     ),
     "mode_width_192": lambda args: bench_mode_width_metadata(
-        mode_count=args.interaction_wires,
+        mode_count=192,
         max_width=args.elimination_max_width,
     ),
     "coefficient_extract_96": lambda args: bench_coefficient_extract_independent(
         mode_count=96, max_width=args.elimination_max_width
     ),
+    "coefficient_extract_192": lambda args: bench_coefficient_extract_independent(
+        mode_count=192, max_width=args.elimination_max_width
+    ),
     "interaction_96_e2e": lambda args: bench_interaction_96_coefficient_e2e(
         max_width=args.elimination_max_width
+    ),
+    "wire_elimination_192": lambda args: bench_wire_elimination_192(
+        offset=5,
+        max_width=args.elimination_max_width,
+    ),
+    "elimination_budget_refusal": lambda args: bench_elimination_budget_refusal(
+        n=32,
+        offset=5,
+        tight_max_width=max(1, args.elimination_max_width - 4),
+        admit_max_width=args.elimination_max_width,
     ),
 }
 
 SMOKE_CASES = ("toy_packet", "mode_width_96", "coefficient_extract_96")
+
+DEFAULT_CASES = (
+    "toy_packet",
+    "multislot_jet",
+    "wire_elimination",
+    "mode_width_96",
+    "coefficient_extract_96",
+    "interaction_96_e2e",
+    "mode_width_192",
+    "coefficient_extract_192",
+    "elimination_budget_refusal",
+)
+
+FULL_CASES = DEFAULT_CASES + ("wire_elimination_192",)
 
 
 def main() -> int:
@@ -393,6 +477,11 @@ def main() -> int:
         help="Comma-separated subset of: " + ",".join(CASES),
     )
     parser.add_argument("--smoke", action="store_true", help="Run fast subset only")
+    parser.add_argument(
+        "--full",
+        action="store_true",
+        help="Run default suite plus slow wire_elimination_192 (~192 wires)",
+    )
     parser.add_argument(
         "--elimination-max-width", type=int, default=20, help="EliminationBudget cap"
     )
@@ -418,8 +507,10 @@ def main() -> int:
         names = list(SMOKE_CASES)
     elif args.cases:
         names = [part.strip() for part in args.cases.split(",") if part.strip()]
+    elif args.full:
+        names = list(FULL_CASES)
     else:
-        names = ["toy_packet", "multislot_jet", "wire_elimination", "mode_width_96"]
+        names = list(DEFAULT_CASES)
 
     results = []
     for name in names:

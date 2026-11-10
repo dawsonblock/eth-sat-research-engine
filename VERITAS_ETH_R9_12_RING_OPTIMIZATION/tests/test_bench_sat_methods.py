@@ -38,3 +38,20 @@ def test_bench_smoke_toy_packet_agrees():
     records = _run_bench("--smoke")
     toy = next(r for r in records if r["case"] == "toy_packet_resummation")
     assert toy["agree"] is True
+
+
+def test_bench_elimination_budget_refusal_case():
+    records = _run_bench("--cases", "elimination_budget_refusal")
+    record = records[0]
+    assert record["case"] == "elimination_budget_refusal"
+    assert record["tight_refused"] is True
+    assert record["admitted_status"] == "PASS_EXACT_BOUNDED_WIDTH_ELIMINATION"
+    assert record["planned_elimination_width"] == 17
+
+
+def test_bench_coefficient_extract_192():
+    records = _run_bench("--cases", "coefficient_extract_192")
+    record = records[0]
+    assert record["mode_count"] == 192
+    assert record["separator_join_count"] == 192
+    assert record["separator_max_monomial_table"] == 2
