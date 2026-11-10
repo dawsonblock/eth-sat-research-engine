@@ -58,6 +58,10 @@ from veritas.research.parent_child_r913.dependency_analyzer import (
     analyze_mode_certificate,
     report_to_dict,
 )
+from veritas.research.parent_child_r913.coefficient_extraction import (
+    estimate_extraction_state,
+    target_coefficient_by_separator_elimination_int,
+)
 from veritas.research.parent_child_r913.support_resummation import (
     compare_support_aware_resummation,
     support_condition_report,
@@ -260,6 +264,58 @@ def bench_mode_width_metadata(*, mode_count: int = 96, max_width: int = 20) -> d
     }
 
 
+def bench_coefficient_extract_independent(*, mode_count: int = 96, max_width: int = 20) -> dict:
+    """96-wire-style independent row factors: separator A_beta without 2**n expansion."""
+    modes = [
+        {
+            "packet": index,
+            "weight": 1,
+            "rows": [[index, None]],
+            "target_group": 0,
+            "source_group": 0,
+        }
+        for index in range(mode_count)
+    ]
+    certificate = {"nonconstant_row_ports": list(range(mode_count))}
+    target_beta = tuple(1 if index % 2 == 0 else 0 for index in range(mode_count))
+    modulus = 1009
+    constants = tuple(1 + (index % 5) for index in range(mode_count))
+    coefficients = tuple(
+        tuple(2 + (index % 3) if index == col else 0 for col in range(mode_count))
+        for index in range(mode_count)
+    )
+    t0 = time.perf_counter()
+    estimate = estimate_extraction_state(
+        modes,
+        target_beta,
+        row_certificate=certificate,
+        budget=EliminationBudget(max_width=max_width),
+    )
+    value, stats = target_coefficient_by_separator_elimination_int(
+        constants, coefficients, target_beta, modulus
+    )
+    elapsed = time.perf_counter() - t0
+    return {
+        "case": "coefficient_extract_independent",
+        "mode_count": mode_count,
+        "target_beta_ones": sum(target_beta),
+        "coefficient_modulus": modulus,
+        "coefficient_value_mod": value,
+        "separator_max_monomial_table": stats.max_monomial_table,
+        "separator_peak_monomial_table": stats.peak_monomial_table,
+        "separator_join_count": stats.join_count,
+        "separator_elimination_width": stats.elimination_width,
+        "mode_graph_elimination_width": estimate.elimination_width,
+        "effective_state_upper_bound": (
+            estimate.boolean_separator_states * estimate.exponent_tracking_multiplier
+        ),
+        "problem": "B_target_coefficient",
+        "note": "independent_rows_instance_not_interaction_child_packet",
+        "elapsed_seconds": elapsed,
+        **QUALIFICATION,
+    }
+
+
 CASES = {
     "toy_packet": lambda _args: bench_toy_packet_resummation(),
     "multislot_jet": lambda _args: bench_multislot_support_resummation(),
@@ -275,9 +331,12 @@ CASES = {
         mode_count=args.interaction_wires,
         max_width=args.elimination_max_width,
     ),
+    "coefficient_extract_96": lambda args: bench_coefficient_extract_independent(
+        mode_count=96, max_width=args.elimination_max_width
+    ),
 }
 
-SMOKE_CASES = ("toy_packet", "mode_width_96")
+SMOKE_CASES = ("toy_packet", "mode_width_96", "coefficient_extract_96")
 
 
 def main() -> int:

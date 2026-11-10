@@ -17,7 +17,7 @@ P(z) = ∏_r (c_r + Σ_j a_{rj} z_j)
 | Problem | Quantity | Typical use in VERITAS | R9.13 status |
 | ------- | -------- | ---------------------- | ------------ |
 | **A. Weighted truncated aggregate** | Σ_{β: Σ w_j β_j < P} A_β ∏_j s_j^{β_j} | Support-bounded sums, planning | **`truncated_weighted_resummation`** (proved row-wise DP on bounded fixtures) |
-| **B. Specified coefficient** | A_β for one exponent β (× source column powers) | **`evaluate_compiled`** packet path | Full expansion reference on small packets; **separator extraction not implemented** |
+| **B. Specified coefficient** | A_β for one exponent β (× source column powers) | **`evaluate_compiled`** packet path | **`target_coefficient_by_separator_elimination`** (+ sources) on bounded graphs; full expansion reference when ≤18 modes |
 
 **Do not** treat a fast answer to **A** as acceleration of **B**.
 
@@ -72,6 +72,11 @@ Implemented in `truncated_weighted_resummation.py`; validated vs explicit β-ora
 on bounded integers and jet ring on packet fixtures.
 
 ### Step 3 — Separator-based coefficient extraction (problem **B**) — **central**
+
+Implemented prototype: mode-graph variable elimination with β-pruned row
+polynomial joins (`coefficient_extraction.target_coefficient_by_separator_elimination`).
+Telemetry includes `max_monomial_table`, `join_count`, and elimination width from the
+same min-fill planner used for wire elimination (not a treewidth certificate).
 
 Track only exponent information required at separators when eliminating modes
 from the row factor graph. Compare to full expansion on small instances.
