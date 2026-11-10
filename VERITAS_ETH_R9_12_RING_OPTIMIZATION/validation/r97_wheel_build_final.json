@@ -1,0 +1,24 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "pip",
+    "wheel",
+    "--no-deps",
+    "--no-build-isolation",
+    "--no-index",
+    "-w",
+    "../VERITAS_ETH_R9_7_WHEEL",
+    "."
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 2.089079458033666,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 50151424,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_wheel_build_final.stdout.log",
+  "stderr_log": "r97_wheel_build_final.stderr.log",
+  "test_summary": ""
+}

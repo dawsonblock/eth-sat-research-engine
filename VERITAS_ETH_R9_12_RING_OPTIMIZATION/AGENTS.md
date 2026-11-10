@@ -1,3 +1,10 @@
+# R9.12 exact elimination route and factorized support
+- `parent_child_r912.elimination` is ordinary bounded-width variable elimination. Admit an order only through `verify_order` against an explicit `EliminationBudget`; never allocate a table first and never return a partial value.
+- `parent_child_r912.routes` classifies results as `EXACT_ELIMINATION` or `FINITE_TAPERED_RECURSION`. An elimination result is never evidence for the source recursion or any subexponential bound; keep every qualification flag false.
+- Do not raise `max_tuples` or work limits to make the recursive route finish. On the 96-wire interaction fixture the explicit support is the full 2^96 cube.
+- `parent_child_r99.support_circuit` is a representation of the existing support only. Keep its differential tests against `build_support` green; do not change support semantics through it.
+- See `docs/R912_EXACT_ELIMINATION_ROUTE.md`.
+
 # R9.12 numerical recursion and coefficient rings
 - Preserve the sealed R9.11 baseline. R9.12 source lives on `r9.12-paper-recursion`; development evidence is external.
 - The streaming path now carries 1..64 V coefficients and explicit finite schedules with 1 <= u <= a <= 3. These limits and schedules do not qualify manuscript-active recursion.

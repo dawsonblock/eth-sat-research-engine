@@ -101,6 +101,8 @@ networks. Its separate integer variable-elimination reference records an
 observed frontier, not a lower bound on treewidth. Small instances are checked
 against exhaustive enumeration. Resource-limited recursive runs remain
 inconclusive even when the independent oracle supplies an exact reference.
+The separately classified exact elimination route and the 2^96 support
+diagnosis are described in `R912_EXACT_ELIMINATION_ROUTE.md`.
 
 ## Outstanding manuscript obligations
 

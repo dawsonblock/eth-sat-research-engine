@@ -1,0 +1,41 @@
+{
+  "archive": "../VERITAS_ETH_R9_PACKING_STAGE_FULL_UPGRADED.zip",
+  "baseline_manifest_checks": [
+    {
+      "command": "python scripts/verify_manifest.py",
+      "exit_code": 0,
+      "hashes": 596,
+      "status": "PASS"
+    },
+    {
+      "command": "python -O scripts/verify_manifest.py",
+      "exit_code": 0,
+      "hashes": 596,
+      "status": "PASS"
+    }
+  ],
+  "baseline_suite": {
+    "command": "PYTHONPATH=src python -m pytest -q -o addopts=''",
+    "elapsed_pytest_seconds": 107.42,
+    "elapsed_real_seconds": 108.77,
+    "executed_tests": 1150,
+    "exit_code": 0,
+    "peak_rss_bytes": 272711680,
+    "platform": "macOS 26.2 arm64",
+    "python": "3.12.0",
+    "status": "PASS"
+  },
+  "ci_guard_archive_present": false,
+  "crc_error": null,
+  "duplicate_names": [],
+  "expected_r91_sha256": "0e4a06fc7f76a3e6d77be06a8cdf914aab3e32f5397bc9a91475eb766c24f1fd",
+  "expected_r91_sha256_match": false,
+  "manifest_error": null,
+  "manifest_member_count": 596,
+  "manifest_pass": true,
+  "matches_expected_r91_zip": false,
+  "members": 597,
+  "sha256": "5ab628eb3bd82e07b3119926ec41b9c0024b23893d4a3381f4862c719b042e92",
+  "symlinks": [],
+  "unsafe_paths": []
+}

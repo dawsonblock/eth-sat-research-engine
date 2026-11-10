@@ -9,7 +9,7 @@ import re
 import sys
 
 IGNORED_DIRS = {'.git', '.veritas', '.pytest_cache', '__pycache__', '.venv',
-                '.mypy_cache', '.ruff_cache', '.tox', '.eggs', 'build'}
+                '.mypy_cache', '.ruff_cache', '.tox', '.eggs', 'build', '.lake'}
 
 
 def payload_file(path):

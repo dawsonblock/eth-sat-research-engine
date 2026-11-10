@@ -1,0 +1,18 @@
+{
+  "command": [
+    "python",
+    "scripts/validate_r97_paper.py",
+    "--write",
+    "validation/r97_grid.json"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 13.33392816700507,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 55607296,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_grid_write.stdout.log",
+  "stderr_log": "r97_grid_write.stderr.log",
+  "test_summary": ""
+}

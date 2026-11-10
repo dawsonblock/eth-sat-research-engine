@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "seed": 20261029,
+  "generated_instances": 10000,
+  "reference_count_vs_exhaustive": 10000,
+  "reference_sat_vs_exhaustive": 10000,
+  "tensor_vs_exhaustive": 106,
+  "seconds": 1.75,
+  "python_version": "3.13.5",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "scope": "random CNF with n<=8, arbitrary clause lengths <=4; bounded reference algorithms only",
+  "limitation": "Finite differential tests do not constitute a formal proof or validate the ETH runtime theorem."
+}

@@ -28,3 +28,19 @@ def finite_layout(parent, a, u, budget):
     if not audit_layout(parent, result)['group_load_bound_met']:
         raise ValueError('general-coordinate layout violates actual port load')
     return result
+
+
+def derandomized_layout(parent, a, u, budget):
+    """The paper's packing: conditional-expectation labels, then padded packets.
+
+    No group-load or shrinkage repair is applied, so the engine refuses it
+    whenever the paper's packing conditions fail for the actual parent.
+    """
+    from veritas.research.eth_packing_v26.implicit import (
+        construct_implicit_packing, implicit_sparse_mode_source)
+    if type(a) is not int or type(u) is not int or not 1 <= u <= a <= 3:
+        raise ValueError('derandomized layout requires 1<=u<=a<=3')
+    budget.tick(parent.edge_count)
+    packing = construct_implicit_packing(parent.bipartite_edges(), r=64, a=a, max_work=None)
+    source = implicit_sparse_mode_source(packing, max_work=None)
+    return PacketLayout(parent.content_digest, a, u, canonical(source), 'canonical')

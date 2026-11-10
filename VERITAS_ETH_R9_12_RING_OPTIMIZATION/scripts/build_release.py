@@ -21,7 +21,7 @@ if Path(args.output_name).name != args.output_name or not args.output_name.endsw
 output=root.parent/args.output_name
 ignored={'.git','.veritas','.pytest_cache','__pycache__','.venv','build',
          '.mypy_cache','.ruff_cache','.tox','.eggs','.hypothesis','.nox',
-         '.cache','node_modules','dist'}
+         '.cache','node_modules','dist','.lake'}
 binary_suffixes={'.pyc','.pyo','.so','.dylib','.dll','.exe','.o','.a','.olean'}
 sensitive_names={'.env','.env.local','.env.production','id_rsa','id_ed25519',
                  'credentials.json'}

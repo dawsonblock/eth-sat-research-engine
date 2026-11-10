@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python",
+    "scripts/smoke.py"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 0.07881195901427418,
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "peak_rss_bytes_reported_by_time": 21528576,
+  "rss_scope": "macOS /usr/bin/time -l command report; no hard memory limit enforced",
+  "timeout_seconds": 1800,
+  "stdout_log": "r97_smoke.stdout.log",
+  "stderr_log": "r97_smoke.stderr.log",
+  "test_summary": ""
+}

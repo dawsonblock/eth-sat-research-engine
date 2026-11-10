@@ -1,0 +1,36 @@
+{
+  "release": "2.2.0",
+  "based_on": "2.1.0 full source archive",
+  "test_suite": "280 passed",
+  "randomized_new_tests": 1500,
+  "seeded_differential_instances": 2000,
+  "inherited_sat_count_regressions": 10000,
+  "cli_certificate_check": "VALID on examples/example.cnf",
+  "new_feature": "bounded count-preserving component-DAG counting with replay verifier",
+  "new_endpoint": "/v1/certify/count-dag",
+  "comparison_example": {
+    "name": "12_disjoint_or",
+    "variables": 26,
+    "clauses": 12,
+    "shannon_tree": {
+      "count": "2125764",
+      "nodes": 12286,
+      "serialized_bytes": 493161,
+      "generation_ms": 36.402,
+      "checker_nodes": 12286
+    },
+    "component_dag": {
+      "count": "2125764",
+      "nodes": 39,
+      "serialized_bytes": 2314,
+      "generation_ms": 0.742,
+      "checker_nodes": 39
+    }
+  },
+  "not_implemented": [
+    "manuscript D.3 packing",
+    "manuscript D.4.4 recursion",
+    "subexponential ETH runtime"
+  ],
+  "performance_caveat": "Example-specific; no universal speedup or worst-case change demonstrated"
+}

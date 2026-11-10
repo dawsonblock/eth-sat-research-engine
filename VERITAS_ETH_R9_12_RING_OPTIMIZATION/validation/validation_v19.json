@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "oracle_score_cases": 496,
+  "finite_lower_bound_optima_certified": 489,
+  "finite_bound_not_attained": 7,
+  "small_relabel_count_checks": 124,
+  "large_networks": [
+    {
+      "wires": 64,
+      "before": 32,
+      "after": 0,
+      "lower_bound": 0,
+      "certified_optimal": true,
+      "search_swaps": 1083
+    },
+    {
+      "wires": 72,
+      "before": 36,
+      "after": 0,
+      "lower_bound": 0,
+      "certified_optimal": true,
+      "search_swaps": 1432
+    },
+    {
+      "wires": 80,
+      "before": 40,
+      "after": 0,
+      "lower_bound": 0,
+      "certified_optimal": true,
+      "search_swaps": 1675
+    },
+    {
+      "wires": 88,
+      "before": 44,
+      "after": 1,
+      "lower_bound": 0,
+      "certified_optimal": false,
+      "search_swaps": 2000
+    },
+    {
+      "wires": 96,
+      "before": 48,
+      "after": 3,
+      "lower_bound": 0,
+      "certified_optimal": false,
+      "search_swaps": 2000
+    },
+    {
+      "wires": 104,
+      "before": 52,
+      "after": 7,
+      "lower_bound": 0,
+      "certified_optimal": false,
+      "search_swaps": 2000
+    },
+    {
+      "wires": 112,
+      "before": 56,
+      "after": 13,
+      "lower_bound": 0,
+      "certified_optimal": false,
+      "search_swaps": 2000
+    },
+    {
+      "wires": 120,
+      "before": 60,
+      "after": 15,
+      "lower_bound": 0,
+      "certified_optimal": false,
+      "search_swaps": 2000
+    }
+  ],
+  "disclaimer": "Finite surrogate packet objective; no manuscript D.3 packing theorem or subexponential algorithm."
+}

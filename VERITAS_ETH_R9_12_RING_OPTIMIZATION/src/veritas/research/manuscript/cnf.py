@@ -129,6 +129,8 @@ def count_fixed_density(formula,*,limits=Limits(),budget=None,event_sink=None):
             count=0 if formula.clauses else 1 << formula.n
             return dict(status='PASS_EXACT_COUNT',count=count,route='TRIVIAL_CNF',ledger=budget.report(),source_qualified=False)
         encoded=encode(formula,budget)
+        if type(encoded.precision) is not int or encoded.precision<formula.n+1:
+            raise ArithmeticError('count residue modulo 2^P requires P >= n+1 for unique recovery')
         if encoded.network.maximum_degree>Schedule(encoded.s).delta:
             count=direct_count(formula,budget);route='BOUNDED_DEGREE_EXCEPTION'
         else:

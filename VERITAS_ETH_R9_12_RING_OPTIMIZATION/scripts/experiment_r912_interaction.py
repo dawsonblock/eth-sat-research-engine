@@ -31,14 +31,20 @@ def graph(n=32,offset=5):
     return {'root_s':4*n,'edges':3*n,'precision':512,'extension_degree':10,'vertices':vertices}
 
 
-def integer_elimination(data,max_work=50_000_000,max_frontier=18):
-    """Exact Python integer sum-product; no tensor executor or modular arithmetic."""
+def integer_elimination(data,max_work=50_000_000,max_frontier=18,order=None):
+    """Exact Python integer sum-product; no tensor executor or modular arithmetic.
+
+    An explicit order changes only cost; every scope is recomputed here."""
     factors=[(tuple(v['ports']),list(v['table'])) for v in data['vertices']]
-    work=width=peak=0;started=monotonic()
+    work=width=peak=0;started=monotonic();pending=None if order is None else list(order)
     while any(scope for scope,_ in factors):
         all_vars={v for scope,_ in factors for v in scope}
         scope_for={v:set().union(*(set(s) for s,_ in factors if v in s)) for v in all_vars}
-        v=min(all_vars,key=lambda x:(len(scope_for[x]),x));joined=[(s,t) for s,t in factors if v in s]
+        if pending is None:v=min(all_vars,key=lambda x:(len(scope_for[x]),x))
+        else:
+            v=pending.pop(0)
+            if v not in all_vars:raise ValueError('explicit order repeats or omits a wire')
+        joined=[(s,t) for s,t in factors if v in s]
         remaining=tuple(sorted(scope_for[v]-{v}));width=max(width,len(remaining))
         if width>max_frontier:raise RuntimeError('independent integer frontier cap')
         output=[]
@@ -74,12 +80,38 @@ def separated_layout(parent,a,u,budget):
     return result
 
 
+def eliminate_and_compare(parent,ref,budget):
+    """Separately classified exact elimination; never a recursive or source result."""
+    from veritas.research.parent_child_r912.routes import Route,contract_routed
+    report=contract_routed(parent,route=Route.ELIMINATION,elimination_budget=budget)
+    if report['status']=='PASS_EXACT_BOUNDED_WIDTH_ELIMINATION':
+        report['matches_independent_integer_reference']=(report['result'][0][0]==ref['integer'] and
+            not any(report['result'][0][1:]) and not any(map(any,report['result'][1:])))
+    return report
+
+
 def main():
+    from veritas.research.parent_child_r912.elimination import EliminationBudget
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--output-dir',type=Path,required=True)
-    ap.add_argument('--max-work',type=int,default=3000000);args=ap.parse_args()
+    ap.add_argument('--max-work',type=int,default=3000000);ap.add_argument('--offset',type=int,default=5)
+    ap.add_argument('--elimination-max-width',type=int,default=20)
+    ap.add_argument('--reference-max-frontier',type=int,default=18)
+    ap.add_argument('--reference-max-work',type=int,default=50_000_000)
+    ap.add_argument('--reference-order',choices=('min_degree','planned_min_fill'),default='min_degree')
+    ap.add_argument('--skip-recursive',action='store_true');args=ap.parse_args()
     _check_output(args.output_dir);args.output_dir.mkdir(parents=True,exist_ok=False)
-    data=graph();source=args.output_dir/'input.json';source.write_bytes(canonical(data));parent=load_input(source,max_extension_degree=12)
-    ref=integer_elimination(data);(args.output_dir/'reference.json').write_bytes(canonical(ref))
+    data=graph(32,args.offset);source=args.output_dir/'input.json';source.write_bytes(canonical(data));parent=load_input(source,max_extension_degree=12)
+    order=None
+    if args.reference_order=='planned_min_fill':
+        from veritas.research.parent_child_r912.elimination import call_scopes,plan_order
+        order=plan_order(*call_scopes(parent))
+    ref=integer_elimination(data,max_work=args.reference_max_work,max_frontier=args.reference_max_frontier,order=order)
+    ref['order_source']=args.reference_order;(args.output_dir/'reference.json').write_bytes(canonical(ref))
+    routed=eliminate_and_compare(parent,ref,EliminationBudget(max_width=args.elimination_max_width))
+    (args.output_dir/'elimination.json').write_bytes(canonical(routed))
+    print(routed['status'],routed.get('elimination_width'),routed.get('matches_independent_integer_reference'))
+    if routed['status'].startswith('PASS'):assert routed['matches_independent_integer_reference']
+    if args.skip_recursive:return
     policy=replace(DEFAULT_SHRINKING_POLICY,max_work=args.max_work,max_seconds=600,max_certificate_bytes=100000000)
     oracle=OracleLimits(100000000,600)
     with (args.output_dir/'events.jsonl').open('xb') as stream:

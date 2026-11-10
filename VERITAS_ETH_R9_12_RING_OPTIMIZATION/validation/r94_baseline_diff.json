@@ -1,0 +1,41 @@
+{
+  "baseline_archive_sha256": "173bb476ccf87e1f0518f5a2c4e5275e8dd570de41a2e5a7fd0a056e993c543d",
+  "baseline_manifest_initially_passed": 682,
+  "baseline_lean_modules_freshly_checked": 30,
+  "pre_change_full_python_suite": "NOT_RERUN",
+  "source_changes": [
+    ".github/workflows/test.yml",
+    "scripts/validate_conditional_expectation_lean.py",
+    "scripts/validate_r91.py",
+    "tests/test_lean_proof_gate_fault_injection.py"
+  ],
+  "new_source_test_and_document_files": [
+    "docs/R94_REMAINING_OBLIGATIONS.md",
+    "docs/R94_SOURCE_FOUNDATION_AUDIT.md",
+    "proofs/D3CandidateOrder.lean",
+    "proofs/D3FinitePacketDomain.lean",
+    "proofs/D3KeyedRun.lean",
+    "proofs/D3R94Contracts.lean",
+    "scripts/validate_r94_foundation.py",
+    "src/veritas/research/tapered_v4/source_state.py",
+    "tests/test_r94_foundation_validation.py",
+    "tests/test_r94_source_state.py"
+  ],
+  "changed_existing_files": [
+    ".github/workflows/test.yml",
+    "AGENTS.md",
+    "README.md",
+    "scripts/validate_conditional_expectation_lean.py",
+    "scripts/validate_r91.py",
+    "tests/test_lean_proof_gate_fault_injection.py",
+    "validation/r91_benchmarks.json",
+    "validation/r91_python_model.json",
+    "validation/r9_1_differential.json",
+    "validation/r9_conditional_expectation_proof.json",
+    "validation/validation_v12.json",
+    "validation/validation_v15.json"
+  ],
+  "deleted_files": [],
+  "theorem_guard_file_unchanged": true,
+  "paper_unchanged": true
+}
