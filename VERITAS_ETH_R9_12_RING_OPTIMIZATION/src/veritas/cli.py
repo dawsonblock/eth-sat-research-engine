@@ -36,6 +36,8 @@ def main():
     run.add_argument("--project", nargs="*", type=int, help="Exact existential counting on listed variables")
     run.add_argument("--tensor", action="store_true")
     run.add_argument("--adaptive-contract", action="store_true", help="v1.7 exact contraction with optional globally optimal small-instance order")
+    run.add_argument("--structure-hybrid-count", action="store_true",
+                     help="Exact #SAT via disjoint component product with hybrid routing per component")
     run.add_argument("--optimal-order-report", action="store_true", help="v1.7 globally optimal small-instance elimination plan (no count)")
     run.add_argument("--optimal-objective", choices=('work','width'), default='work')
     run.add_argument("--adaptive-portfolio", choices=('auto','thorough','optimal_small'), default='auto')
@@ -177,6 +179,27 @@ def main():
                       'warning':'Optimizes a dense cost proxy, not actual runtime or ETH asymptotics.'},indent=2))
             except (ContractLimit,ValueError) as exc:
                 print(json.dumps({'status':'UNKNOWN','reason':str(exc),'count':None}))
+                raise SystemExit(2)
+            return
+        if args.structure_hybrid_count:
+            from veritas.research.contraction_planner import ContractLimit
+            from veritas.research.cnf_structure import structure_aware_count
+            try:
+                output = structure_aware_count(
+                    cnf,
+                    precision_bits=args.precision_bits,
+                    include_copy3=not args.adaptive_no_copy3,
+                    enable_separators=not args.adaptive_no_separators,
+                    max_slices=args.adaptive_max_slices,
+                    portfolio_mode=args.adaptive_portfolio,
+                    execution_mode=args.adaptive_execution,
+                    max_table_entries=args.adaptive_table_cap,
+                    max_work_assignments=args.max_work_assignments,
+                    timeout_s=args.timeout,
+                )
+                print(json.dumps(output, indent=2))
+            except (ContractLimit, ValueError) as exc:
+                print(json.dumps({'status': 'UNKNOWN', 'reason': str(exc)}, indent=2))
                 raise SystemExit(2)
             return
         if args.adaptive_contract:
