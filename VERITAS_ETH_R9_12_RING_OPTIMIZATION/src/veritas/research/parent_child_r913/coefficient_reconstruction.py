@@ -32,7 +32,7 @@ No ETH, subexponential, or source-qualification claim.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Callable, Dict, Optional, Tuple
+from typing import Any, Callable, Dict, Mapping, Optional, Sequence, Tuple
 
 from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
 from veritas.research.eth_arithmetic.jets import JetRing
@@ -106,26 +106,30 @@ def reconstruct_parent_coefficient_one_level(
     budget: Budget,
     child_contractor: Optional[ChildContractor] = None,
     require_shrink: bool = False,
+    children: Sequence[ChildGraph] | None = None,
+    verified: Mapping[str, Any] | None = None,
 ) -> ParentChildReconstructionResult:
     """Return ``∏_g C_child_g`` and check against the independent parent oracle."""
-    children = construct_children(
-        parent,
-        layout,
-        modes,
-        beta,
-        budget=budget,
-        _admitted=True,
-        require_shrink=require_shrink,
-    )
-    verified = verify_children(
-        parent,
-        layout,
-        modes,
-        beta,
-        children,
-        budget=budget,
-        _admitted=True,
-    )
+    if children is None:
+        children = construct_children(
+            parent,
+            layout,
+            modes,
+            beta,
+            budget=budget,
+            _admitted=True,
+            require_shrink=require_shrink,
+        )
+    if verified is None:
+        verified = verify_children(
+            parent,
+            layout,
+            modes,
+            beta,
+            children,
+            budget=budget,
+            _admitted=True,
+        )
     certificate = modes.certificate
     ring = _jet_ring(
         certificate["precision"],
@@ -169,6 +173,8 @@ def reconstruct_with_leaf_child_contractor(
     *,
     budget: Budget,
     require_shrink: bool = False,
+    children: Sequence[ChildGraph] | None = None,
+    verified: Mapping[str, Any] | None = None,
 ) -> ParentChildReconstructionResult:
     """Same as one level, but each ``C_child_g`` is obtained via ``leaf``."""
 
@@ -183,6 +189,8 @@ def reconstruct_with_leaf_child_contractor(
         budget=budget,
         child_contractor=contractor,
         require_shrink=require_shrink,
+        children=children,
+        verified=verified,
     )
 
 
@@ -397,6 +405,8 @@ def reconstruct_interaction_with_leaf_at_jet_point(
     point_index: int = 1,
     beta_values: Tuple[int, ...] | None = None,
     require_shrink: bool = True,
+    children: Sequence[ChildGraph] | None = None,
+    verified: Mapping[str, Any] | None = None,
 ) -> ParentChildReconstructionResult:
     modes, *_rest = modes_at_jet_point(parent, layout, budget=budget, point_index=point_index)
     mode_count = len(modes.certificate["modes"])
@@ -410,6 +420,8 @@ def reconstruct_interaction_with_leaf_at_jet_point(
         beta,
         budget=budget,
         require_shrink=require_shrink,
+        children=children,
+        verified=verified,
     )
     return ParentChildReconstructionResult(
         schema=base.schema,
@@ -573,19 +585,23 @@ def wire_elimination_vs_parent_coefficient(
     elimination_budget: EliminationBudget | None = None,
     point_index: int = 1,
     beta_values: Tuple[int, ...] | None = None,
+    reconstruction: ParentChildReconstructionResult | None = None,
 ) -> Dict[str, Any]:
     """Record whether full wire elimination agrees with jet C_parent(beta) — expected false here."""
     elimination_budget = elimination_budget or EliminationBudget(max_width=20)
     wire = contract_routed(
         parent, route=Route.ELIMINATION, elimination_budget=elimination_budget
     )
-    recon = reconstruct_interaction_parent_at_jet_point(
-        parent,
-        layout,
-        budget=budget,
-        point_index=point_index,
-        beta_values=beta_values,
-    )
+    if reconstruction is None:
+        recon = reconstruct_interaction_parent_at_jet_point(
+            parent,
+            layout,
+            budget=budget,
+            point_index=point_index,
+            beta_values=beta_values,
+        )
+    else:
+        recon = reconstruction
 
     def _low_word(jet):
         if type(jet) in (list, tuple) and jet:
