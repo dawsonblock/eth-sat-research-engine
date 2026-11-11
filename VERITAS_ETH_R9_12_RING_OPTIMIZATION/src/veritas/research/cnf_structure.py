@@ -77,8 +77,25 @@ def _project_component(cnf: CNF, variables: tuple[int, ...]) -> CNF:
     return CNF.from_lists(len(variables), [list(c) for c in clauses])
 
 
-def structure_aware_count(cnf: CNF, *, inner_count=None, **kwargs) -> dict:
+def structure_aware_count(
+    cnf: CNF,
+    *,
+    inner_count=None,
+    preprocess: bool = False,
+    xor_equations=None,
+    **kwargs,
+) -> dict:
     """Exact #SAT via independent components when variables are disconnected."""
+    if preprocess or xor_equations:
+        from veritas.research.gf2_xor_count import structure_with_optional_xor
+
+        return structure_with_optional_xor(
+            cnf,
+            xor_equations=xor_equations,
+            inner_count=inner_count,
+            preprocess=preprocess,
+            **kwargs,
+        )
     from veritas.research.hybrid_router import hybrid_count
 
     counter = hybrid_count if inner_count is None else inner_count

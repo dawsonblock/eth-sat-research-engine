@@ -26,6 +26,7 @@ def load_cnf(path: Path) -> CNF:
 def receipt(result: dict) -> dict:
     routing = result.get('routing') or {}
     structure = result.get('structure') or {}
+    pipeline = result.get('pipeline') or {}
     return {
         'schema': 'VERITAS_COST_RECEIPT_V1',
         'status': result.get('status'),
@@ -33,6 +34,7 @@ def receipt(result: dict) -> dict:
         'engine': result.get('engine'),
         'chosen_backend': routing.get('chosen_backend'),
         'decomposed': structure.get('decomposed'),
+        'pipeline_stages': [step.get('stage') for step in pipeline.get('steps', [])],
         'elapsed_seconds': result.get('elapsed_seconds'),
         'evaluated_assignments': (result.get('execution') or {}).get('evaluated_assignments'),
         'independent_count_checked': result.get('independent_count_checked'),

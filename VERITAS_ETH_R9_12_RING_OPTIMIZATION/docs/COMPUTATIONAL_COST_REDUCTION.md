@@ -14,6 +14,8 @@ subexponential construction or claim any new complexity theorem.
 | 2b | `veritas.research.cost_ledger_bridge` | `RecursiveVisitTracker` attached to R9.9 streaming and R9.10 numerical executors (`tree_ledger` field) |
 | 3 | `veritas.research.hybrid_router` | Chooses conventional boundary DP vs elimination using planner estimates |
 | 3b | `veritas.research.cnf_structure` | Count-preserving disjoint component product (`structure_aware_count`) |
+| 3c | `veritas.research.cnf_preprocess` | Unit propagation, tautology/duplicate removal (#SAT-preserving) |
+| 3d | `veritas.research.gf2_xor_count` | Pure GF(2) XOR systems via elimination (`2^{n-rank}`) |
 | 4 | `veritas.research.adaptive_contract` | Existing exact #SAT path (unchanged semantics) |
 | 5 | `veritas.research.boundary_dp` | Separator / component memoization (existing) |
 
@@ -33,6 +35,14 @@ python scripts/experiment_r913_signed_contraction.py
 python benchmarks/v28_cost_scaling.py
 python benchmarks/v29_structural_hybrid.py
 python scripts/profile_cost_receipt.py examples/example.cnf --structure
+python benchmarks/v30_xor_preprocess.py
+```
+
+Pure XOR (no CNF clauses), equations in JSON:
+
+```bash
+veritas-cli run --structure-hybrid-count --xor-equations xor.json /dev/null
+# xor.json: [{"variables":[1,2],"rhs":1},{"variables":[2,3],"rhs":0}]
 
 # Hybrid routing on a tiny CNF
 python -c "from veritas.core.cnf import CNF; from veritas.research.hybrid_router import hybrid_count; print(hybrid_count(CNF.from_lists(4,[[1,2],[3,4]]), timeout_s=5)['routing'])"

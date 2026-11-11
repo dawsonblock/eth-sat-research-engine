@@ -3,7 +3,8 @@
 - `cost_ledger` / `cost_ledger_bridge`: recursive work/cache receipts; streaming and R9.10 engines emit `tree_ledger`.
 - `anthropic_signed_contraction`: one-level rewrite economics proxy only.
 - `hybrid_router`: conventional boundary DP vs elimination routing only; run `scripts/validate_cost_reduction_gates.py`.
-- `cnf_structure` / `--structure-hybrid-count`: disjoint component #SAT product only.
+- `cnf_structure` / `--structure-hybrid-count`: disjoint component #SAT product; default preprocess on.
+- `gf2_xor_count`: pure XOR only when CNF has no clauses; mixed CNF+XOR is metadata-only today.
 - See `docs/COMPUTATIONAL_COST_REDUCTION.md`; never infer subexponential bounds from these modules.
 
 # R9.12 exact elimination route and factorized support

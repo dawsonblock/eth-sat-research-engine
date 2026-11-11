@@ -38,6 +38,10 @@ def main():
     run.add_argument("--adaptive-contract", action="store_true", help="v1.7 exact contraction with optional globally optimal small-instance order")
     run.add_argument("--structure-hybrid-count", action="store_true",
                      help="Exact #SAT via disjoint component product with hybrid routing per component")
+    run.add_argument("--structure-no-preprocess", action="store_true",
+                     help="Disable count-preserving unit propagation before structure routing")
+    run.add_argument("--xor-equations", type=Path, metavar="JSON",
+                     help="Optional GF(2) XOR equations [{'variables':[...],'rhs':0|1}, ...]")
     run.add_argument("--optimal-order-report", action="store_true", help="v1.7 globally optimal small-instance elimination plan (no count)")
     run.add_argument("--optimal-objective", choices=('work','width'), default='work')
     run.add_argument("--adaptive-portfolio", choices=('auto','thorough','optimal_small'), default='auto')
@@ -184,9 +188,15 @@ def main():
         if args.structure_hybrid_count:
             from veritas.research.contraction_planner import ContractLimit
             from veritas.research.cnf_structure import structure_aware_count
+            from veritas.research.gf2_xor_count import parse_xor_equations
+            xor_eqs = None
+            if args.xor_equations is not None:
+                xor_eqs = parse_xor_equations(json.loads(args.xor_equations.read_text()), n=cnf.n)
             try:
                 output = structure_aware_count(
                     cnf,
+                    preprocess=not args.structure_no_preprocess,
+                    xor_equations=xor_eqs,
                     precision_bits=args.precision_bits,
                     include_copy3=not args.adaptive_no_copy3,
                     enable_separators=not args.adaptive_no_separators,
