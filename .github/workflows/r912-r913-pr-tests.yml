@@ -42,6 +42,7 @@ jobs:
             tests/test_two_level_ancestor_mode_projection.py \
             tests/test_interaction_parent_child_reconstruction.py \
             tests/test_fast_universal_solver.py \
+            tests/test_work_accounting_toy.py \
             -m 'not slow'
       - name: Interaction 96-wire e2e (slow)
         env:

@@ -53,7 +53,10 @@ PIPELINE_OBLIGATIONS: Tuple[PreservationObligation, ...] = (
             "factors, precision rules, and interpolation points."
         ),
         proved_in_this_repo=False,
-        qualification="bounded_one_level_product_proved_see_coefficient_reconstruction",
+        qualification=(
+            "bounded_one_level_product_proved_see_coefficient_reconstruction; "
+            "not_universal_3sat_speedup"
+        ),
     ),
     PreservationObligation(
         schema="VERITAS_R913_OBLIGATION_PRECISION_V1",
@@ -67,7 +70,7 @@ PIPELINE_OBLIGATIONS: Tuple[PreservationObligation, ...] = (
         kind=PacketQuantityKind.TARGET_COEFFICIENT,
         description="Final SAT decision matches model count / modular test without false negatives.",
         proved_in_this_repo=False,
-        qualification="not_established",
+        qualification="see docs/UNIVERSAL_SAT_SPEEDUP_PLAN.md phases C–E; not_established",
     ),
 )
 
