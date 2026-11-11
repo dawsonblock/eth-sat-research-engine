@@ -40,6 +40,7 @@ from veritas.research.parent_child_r98.constructor import construct_children
 from veritas.research.parent_child_r98.engine import leaf
 from veritas.research.parent_child_r98.independent import (
     column_sourced_star_half_edge_grandchild_product,
+    layout_half_edge_occurrence_context,
     verify_children,
 )
 from veritas.research.parent_child_r98.modes import (
@@ -437,6 +438,9 @@ def _two_level_child_contractor(
     """Recompute each child by grandchild product when the child graph is small enough."""
 
     nested_count = {"n": 0, "half_edge": 0}
+    occurrence_context = layout_half_edge_occurrence_context(
+        ancestor, layout, ancestor_modes
+    )
 
     def contractor(child, expected):
         call = child.as_parent(ancestor)
@@ -454,6 +458,7 @@ def _two_level_child_contractor(
                         parent_beta,
                         child,
                         budget=budget,
+                        occurrence_context=occurrence_context,
                     )
                     if actual == expected:
                         nested_count["half_edge"] += 1

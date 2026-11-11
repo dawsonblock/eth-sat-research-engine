@@ -461,10 +461,9 @@ def verify_children(parent, layout, modes, beta, children, *, budget, _admitted=
     }
 
 
-def child_group_elimination_factors(parent, layout, modes, beta, child, *, budget):
-    """Port tables for independent elimination on one constructed group child."""
+def layout_half_edge_occurrence_context(parent, layout, modes):
+    """Parent half-edge occurrence map for repeated group eliminations."""
     src, m = layout.source, modes.certificate
-    g = child.group
     i = (abs(m["node"]) & -abs(m["node"])).bit_length() - 1
     occurrences, origin = {}, {}
     for vertex in parent.vertices:
@@ -482,6 +481,19 @@ def child_group_elimination_factors(parent, layout, modes, beta, child, *, budge
             if len(hits) != 1:
                 raise ValueError("packet edge occurrence coverage")
             occurrences[kind, edge] = (group, (kind, edge, *hits[0], vertex.vertex_id, pos))
+    return occurrences, origin, i
+
+
+def child_group_elimination_factors(
+    parent, layout, modes, beta, child, *, budget, occurrence_context=None
+):
+    """Port tables for independent elimination on one constructed group child."""
+    src, m = layout.source, modes.certificate
+    g = child.group
+    if occurrence_context is None:
+        occurrences, origin, _i = layout_half_edge_occurrence_context(parent, layout, modes)
+    else:
+        occurrences, origin, _i = occurrence_context
     keys = sorted(
         (key for key, (owner, _) in occurrences.items() if owner == g),
         key=lambda key: (key[0] != "Y", key[1]),
@@ -537,7 +549,7 @@ def child_group_elimination_factors(parent, layout, modes, beta, child, *, budge
 
 
 def column_sourced_star_half_edge_grandchild_product(
-    parent, layout, modes, beta, child, *, budget
+    parent, layout, modes, beta, child, *, budget, occurrence_context=None
 ):
     """Inner lemma for X-only stars: shared inherited, one packet factor per half-edge.
 
@@ -549,7 +561,13 @@ def column_sourced_star_half_edge_grandchild_product(
     from veritas.research.eth_arithmetic.jets import JetRing
 
     factors, ar, keys = child_group_elimination_factors(
-        parent, layout, modes, beta, child, budget=budget
+        parent,
+        layout,
+        modes,
+        beta,
+        child,
+        budget=budget,
+        occurrence_context=occurrence_context,
     )
     half_edges = len(child.edge_map)
     if half_edges < 1 or len(keys) != half_edges or any(k[0] != "X" for k in keys):
@@ -557,10 +575,9 @@ def column_sourced_star_half_edge_grandchild_product(
     if len(factors) != 1 + half_edges:
         raise ValueError("column-sourced star elimination shape mismatch")
     inherited, packet_factors = factors[0], factors[1:]
-    full = eliminate_tables(factors, ar, budget)
     if half_edges == 1:
         budget.tick(ar.used)
-        return full
+        return eliminate_tables(factors, ar, budget)
     inherited_alone = eliminate_tables([inherited], ar, budget)
     ring = JetRing(
         ExtensionRing(
@@ -572,7 +589,7 @@ def column_sourced_star_half_edge_grandchild_product(
     )
     if not ring.base.is_unit(inherited_alone[0]):
         budget.tick(ar.used)
-        return full
+        return eliminate_tables(factors, ar, budget)
     product = ring.one
     for packet in packet_factors:
         paired = eliminate_tables([inherited, packet], ar, budget)
@@ -580,7 +597,7 @@ def column_sourced_star_half_edge_grandchild_product(
     for _ in range(half_edges - 1):
         product = ring.mul(product, ring.inverse(inherited_alone))
     budget.tick(ar.used)
-    return product if product == full else full
+    return product
 
 
 def tuple_coefficient(parent, layout, modes, beta, *, budget):

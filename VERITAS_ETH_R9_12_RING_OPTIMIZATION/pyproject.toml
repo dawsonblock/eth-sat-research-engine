@@ -47,3 +47,6 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+markers = [
+    "slow: full 96-wire two-level grandchild proof (tens of seconds)",
+]
