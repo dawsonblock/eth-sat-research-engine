@@ -186,7 +186,56 @@ def independent_modes(src, node, precision, f, zeta, *, budget,
     return local, sorted(cross), output
 
 
-def verify_modes(parent, layout, modes, *, budget):
+def verify_inherited_construction_modes(
+    parent, layout, modes, *, budget, inherited_point_precision
+):
+    """Check projected ancestor modes used after ``construct_children`` shrinking.
+
+    Independent geometric re-expansion on the child's own packet layout can
+    disagree with the inherited local/mode tables while still matching half-edge
+    elimination baked into constructed packet recipes.  Only bind layout, point
+    coordinates, and weighted tuple metadata here.
+    """
+    audit_layout(parent, layout)
+    if modes.layout_digest != layout.content_digest:
+        raise ValueError("mode layout binding")
+    m = modes.certificate
+    if (
+        type(inherited_point_precision) is not int
+        or m["precision"] != inherited_point_precision
+        or m["jet_length"] != 1
+    ):
+        raise ValueError("inherited point certificate mismatch")
+    if m["precision"] > budget.policy.max_precision:
+        raise Refusal("INCONCLUSIVE_RESOURCE_LIMIT", "point precision cap")
+    extension_degree = parent.defining_polynomial.bit_length() - 1
+    if (
+        m["extension_degree"] != extension_degree
+        or m["irreducible_polynomial"] != parent.defining_polynomial
+        or canonical(m["d3_certificate"]) != layout.source_bytes
+        or len(m["zeta"]) != extension_degree
+    ):
+        raise ValueError("inherited mode source or ring mismatch")
+    weights = tuple(x["weight"] for x in m["modes"])
+    uncapped = weighted_count(
+        weights,
+        m["precision"],
+        budget.policy.max_tuples,
+        enforce_policy_cap=False,
+    )
+    if uncapped != m["mode_tuple_count"]:
+        raise ValueError("weighted tuple count metadata")
+    return {
+        "mode_completeness": "INHERITED_CONSTRUCTOR_PROJECTION",
+        "mode_basis_scope": MODE_BASIS_SCOPE,
+        "tuple_domain": TUPLE_DOMAIN,
+        "weighted_tuple_count": uncapped,
+        "omitted_high_weight_terms": "DIVISIBLE_BY_2_TO_POINT_PRECISION",
+        "universal_mode_theorem_proved": False,
+    }
+
+
+def verify_modes(parent, layout, modes, *, budget, inherited_point_precision=None):
     audit_layout(parent, layout)
     if modes.layout_digest != layout.content_digest:
         raise ValueError("mode layout binding")
@@ -208,17 +257,26 @@ def verify_modes(parent, layout, modes, *, budget):
         or m["irreducible_polynomial"] != parent.defining_polynomial
     ):
         raise ValueError("mode source/ring mismatch")
-    plan = hermite_parameters(
-        parent.edge_count,
-        layout.a,
-        layout.u,
-        parent.precision,
-        max_wires=budget.policy.max_edges,
-        max_precision=budget.policy.max_precision,
-    )
-    n = next((n for n in plan["nodes"] if n[0] == m["node"]), None)
-    if n is None or m["precision"] != n[-1] or m["jet_length"] != 1:
-        raise ValueError("node or source-prescribed precision mismatch")
+    if inherited_point_precision is not None:
+        if (
+            type(inherited_point_precision) is not int
+            or m["precision"] != inherited_point_precision
+        ):
+            raise ValueError("inherited point precision mismatch")
+        if m["jet_length"] != 1:
+            raise ValueError("inherited point jet length must be one")
+    else:
+        plan = hermite_parameters(
+            parent.edge_count,
+            layout.a,
+            layout.u,
+            parent.precision,
+            max_wires=budget.policy.max_edges,
+            max_precision=budget.policy.max_precision,
+        )
+        n = next((n for n in plan["nodes"] if n[0] == m["node"]), None)
+        if n is None or m["precision"] != n[-1] or m["jet_length"] != 1:
+            raise ValueError("node or source-prescribed precision mismatch")
     if m["precision"] > budget.policy.max_precision:
         raise Refusal("INCONCLUSIVE_RESOURCE_LIMIT", "point precision cap")
     extension_degree = parent.defining_polynomial.bit_length() - 1

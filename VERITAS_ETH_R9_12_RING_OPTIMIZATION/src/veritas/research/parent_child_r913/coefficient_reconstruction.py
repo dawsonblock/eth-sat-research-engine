@@ -13,6 +13,18 @@ graph semantics.  It is **not** the separator packet coefficient ``A_β`` on an
 isolated column packet unless the child is a leaf whose graph collapses to that
 packet evaluation.
 
+At **two levels** on the 96-wire circulant jet fixture (β = 0), when child modes
+are obtained by projecting the ancestor jet certificate onto each constructed
+child's half-edge renumbering, the inner lemma
+
+```text
+C_child_g = ∏_h C_grandchild_h
+```
+
+holds for group indices ``g = 0 … 31`` and fails for ``g ≥ 32`` (leaf fallback
+preserves the outer product). The outer equality ``C_parent = ∏_g C_child_g``
+remains valid in all cases via half-edge semantics.
+
 No ETH, subexponential, or source-qualification claim.
 """
 from __future__ import annotations
@@ -25,9 +37,13 @@ from veritas.research.eth_arithmetic.jets import JetRing
 from veritas.research.parent_child_r98.constructor import construct_children
 from veritas.research.parent_child_r98.engine import leaf
 from veritas.research.parent_child_r98.independent import verify_children
-from veritas.research.parent_child_r98.modes import build_modes
+from veritas.research.parent_child_r98.modes import (
+    verify_inherited_construction_modes,
+    weighted_count,
+)
 from veritas.research.parent_child_r98.model import (
     Budget,
+    ChildGraph,
     ExponentTuple,
     ModeSet,
     PacketLayout,
@@ -228,6 +244,87 @@ def reconstruct_interaction_parent_at_jet_point(
     )
 
 
+def project_ancestor_modes_onto_child(
+    child: ChildGraph,
+    ancestor_modes: ModeSet,
+    child_layout: PacketLayout,
+    call: ParentCall,
+    *,
+    budget: Budget,
+) -> ModeSet:
+    """Child modes for nesting: same packet deformation as ``construct_children``.
+
+    Rebuilt geometric modes on the child layout can disagree with the packet
+    recipes frozen at construction time.  Project the ancestor jet certificate
+    onto the child's half-edge indices before grandchild products.
+    """
+    parent_edges = {row[1]: index for index, row in enumerate(child.edge_map)}
+    ancestor = ancestor_modes.certificate
+    group = child.group
+    local = [
+        [parent_edges[row], parent_edges[col], jet]
+        for row, col, jet in ancestor["local"]
+        if row in parent_edges and col in parent_edges
+    ]
+    cross = sorted(
+        [parent_edges[row], parent_edges[col]]
+        for row, col in ancestor["cross_pairs"]
+        if row in parent_edges and col in parent_edges
+    )
+    projected_modes = []
+    for mode in ancestor["modes"]:
+        projected_modes.append(
+            {
+                **mode,
+                "rows": [
+                    [parent_edges[row], value]
+                    for row, value in mode["rows"]
+                    if row in parent_edges
+                ],
+                "column_terms": [
+                    [parent_edges[col], term]
+                    for col, term in mode["column_terms"]
+                    if col in parent_edges
+                ],
+            }
+        )
+    weights = tuple(mode["weight"] for mode in projected_modes)
+    tuple_count = weighted_count(
+        weights,
+        ancestor["precision"],
+        budget.policy.max_tuples,
+        enforce_policy_cap=False,
+    )
+    certificate = {
+        "d3_certificate": child_layout.source,
+        "node": ancestor["node"],
+        "precision": ancestor["precision"],
+        "jet_length": ancestor["jet_length"],
+        "extension_degree": ancestor["extension_degree"],
+        "irreducible_polynomial": ancestor["irreducible_polynomial"],
+        "zeta": list(ancestor["zeta"]),
+        "local": local,
+        "cross_pairs": cross,
+        "modes": projected_modes,
+        "mode_tuple_count": tuple_count,
+    }
+    if (
+        child.precision != ancestor["precision"]
+        or child.node != ancestor["node"]
+        or tuple(child.zeta) != tuple(ancestor["zeta"])
+    ):
+        raise ValueError("child point coordinates differ from ancestor jet certificate")
+    result = ModeSet(child_layout.content_digest, canonical(certificate))
+    verify_inherited_construction_modes(
+        call,
+        child_layout,
+        result,
+        budget=budget,
+        inherited_point_precision=ancestor["precision"],
+    )
+    return result
+
+
 def reconstruct_interaction_with_leaf_at_jet_point(
     parent: ParentCall,
     layout: PacketLayout,
@@ -269,8 +366,8 @@ def _two_level_child_contractor(
     ancestor: ParentCall,
     layout: PacketLayout,
     *,
-    node: int,
-    zeta: Tuple[int, ...],
+    ancestor_modes: ModeSet,
+    parent_beta: ExponentTuple,
     budget: Budget,
     max_child_edges_for_recursion: int = 8,
 ) -> ChildContractor:
@@ -289,12 +386,17 @@ def _two_level_child_contractor(
                 child_layout = construct_layout(
                     call, a=layout.a, u=layout.u, budget=budget
                 )
-                child_modes = build_modes(
-                    call, child_layout, node, zeta, budget=budget
+                child_modes = project_ancestor_modes_onto_child(
+                    child,
+                    ancestor_modes,
+                    child_layout,
+                    call,
+                    budget=budget,
                 )
+                if len(parent_beta.values) != len(child_modes.certificate["modes"]):
+                    raise ValueError("parent beta width must match ancestor mode count")
                 child_beta = ExponentTuple(
-                    child_modes.content_digest,
-                    tuple(0 for _ in child_modes.certificate["modes"]),
+                    child_modes.content_digest, parent_beta.values
                 )
                 nested = reconstruct_parent_coefficient_one_level(
                     call,
@@ -335,7 +437,7 @@ def reconstruct_interaction_two_level_at_jet_point(
         beta_values = tuple(0 for _ in range(mode_count))
     beta = ExponentTuple(modes.content_digest, beta_values)
     contractor = _two_level_child_contractor(
-        parent, layout, node=node, zeta=zeta, budget=budget
+        parent, layout, ancestor_modes=modes, parent_beta=beta, budget=budget
     )
     result = reconstruct_parent_coefficient_one_level(
         parent,
@@ -347,7 +449,12 @@ def reconstruct_interaction_two_level_at_jet_point(
         require_shrink=True,
     )
     nested_groups = int(contractor.nested_count["n"])  # type: ignore[attr-defined]
-    kind = "grandchild_product" if nested_groups else "leaf_recheck"
+    if nested_groups >= result.child_group_count:
+        kind = "grandchild_product"
+    elif nested_groups:
+        kind = "grandchild_product_partial"
+    else:
+        kind = "leaf_recheck"
     return ParentChildReconstructionResult(
         schema=result.schema,
         active_levels=2,
@@ -361,7 +468,9 @@ def reconstruct_interaction_two_level_at_jet_point(
         second_level_kind=kind,
         qualification=(
             f"second_level_{kind}; "
-            "grandchild_product_where_child_jet_modes_agree_with_half_edge_elimination; "
+            "nested_C_child_equals_grandchild_product_when_ancestor_modes_are_projected_"
+            "onto_constructed_child_half_edges; "
+            "circulant_jet_point_1_beta0_succeeds_for_groups_0_through_31_only; "
             + result.qualification
         ),
     )
