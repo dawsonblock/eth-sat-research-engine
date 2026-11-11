@@ -1,0 +1,39 @@
+{
+  "schema": "VERITAS_STRUCTURAL_HYBRID_V1",
+  "warning": "Planner estimates only; not competition-grade benchmarking.",
+  "results": [
+    {
+      "case": "two_clauses_disconnected",
+      "n": 4,
+      "exhaustive": 9,
+      "direct_count": "9",
+      "structured_count": "9",
+      "decomposed": true,
+      "direct_engine": "EXACT_VARIABLE_ELIMINATION",
+      "structured_engine": "STRUCTURE_AWARE_COMPONENT_PRODUCT",
+      "matches_exhaustive": true
+    },
+    {
+      "case": "path_connected",
+      "n": 4,
+      "exhaustive": 8,
+      "direct_count": "8",
+      "structured_count": "8",
+      "decomposed": false,
+      "direct_engine": "EXACT_VARIABLE_ELIMINATION",
+      "structured_engine": "EXACT_VARIABLE_ELIMINATION",
+      "matches_exhaustive": true
+    },
+    {
+      "case": "two_chains",
+      "n": 6,
+      "exhaustive": 25,
+      "direct_count": "25",
+      "structured_count": "25",
+      "decomposed": true,
+      "direct_engine": "EXACT_VARIABLE_ELIMINATION",
+      "structured_engine": "STRUCTURE_AWARE_COMPONENT_PRODUCT",
+      "matches_exhaustive": true
+    }
+  ]
+}
