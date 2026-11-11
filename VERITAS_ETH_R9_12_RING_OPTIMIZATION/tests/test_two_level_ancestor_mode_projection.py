@@ -10,8 +10,10 @@ from veritas.research.parent_child_r98.model import Budget, ExponentTuple, canon
 from veritas.research.parent_child_r98.shrinking_cli import load_input
 from veritas.research.parent_child_r98.constructor import construct_children
 from veritas.research.parent_child_r98.independent import verify_children
-from veritas.research.parent_child_r98.packing import construct_layout
-from veritas.research.parent_child_r912.interaction_layout import circulant_separated_layout
+from veritas.research.parent_child_r912.interaction_layout import (
+    child_layout_for_nesting,
+    circulant_separated_layout,
+)
 from veritas.research.parent_child_r98.shrinking_engine import DEFAULT_SHRINKING_POLICY
 from veritas.research.parent_child_r913.coefficient_reconstruction import (
     modes_at_jet_point,
@@ -56,7 +58,7 @@ def circulant_children():
 
 def _grandchild_product_matches_half_edge(child, ancestor, layout, modes, beta, verified, budget):
     call = child.as_parent(ancestor)
-    child_layout = construct_layout(call, a=layout.a, u=layout.u, budget=budget)
+    child_layout = child_layout_for_nesting(child, call, layout, budget=budget)
     child_modes = project_ancestor_modes_onto_child(
         child, modes, child_layout, call, budget=budget
     )
@@ -81,8 +83,9 @@ def test_two_level_lemma_holds_for_low_circulant_groups(circulant_children, grou
     )
 
 
-@pytest.mark.parametrize("group", [32, 63])
-def test_two_level_lemma_known_gap_for_high_circulant_groups(circulant_children, group):
+@pytest.mark.parametrize("group", [32, 47, 63])
+def test_two_level_lemma_blocked_for_column_sourced_star_children(circulant_children, group):
+    """Groups ≥32 are X-only stars: one row vertex, several parent row groups — no D3 layout."""
     parent, layout, modes, beta, children, verified, budget = circulant_children
     child = children[group]
     assert not _grandchild_product_matches_half_edge(

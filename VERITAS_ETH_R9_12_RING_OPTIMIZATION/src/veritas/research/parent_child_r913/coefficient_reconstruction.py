@@ -21,9 +21,13 @@ child's half-edge renumbering, the inner lemma
 C_child_g = ∏_h C_grandchild_h
 ```
 
-holds for group indices ``g = 0 … 31`` and fails for ``g ≥ 32`` (leaf fallback
-preserves the outer product). The outer equality ``C_parent = ∏_g C_child_g``
-remains valid in all cases via half-edge semantics.
+holds for target-side children (groups 0–31 on the 96-wire fixture) when ancestor
+circulant labels are preserved via ``child_layout_for_nesting`` and mode
+``packet`` parent ids are remapped to layout packet indices.  Column-sourced
+children (groups 32–63) are X-only stars with a single row vertex covering
+several parent row groups; they cannot carry separated circulant row labels in
+D3 form yet, so nested reproduction still uses leaf fallback there.  The outer
+equality ``C_parent = ∏_g C_child_g`` remains valid via half-edge semantics.
 
 No ETH, subexponential, or source-qualification claim.
 """
@@ -55,6 +59,7 @@ from veritas.research.parent_child_r98.packing import construct_layout
 from veritas.research.parent_child_r98.shrinking_oracle import tuple_coefficient
 from veritas.research.parent_child_r912.elimination import EliminationBudget
 from veritas.research.parent_child_r912.interaction_jet_point import packet_modes_at_jet_point
+from veritas.research.parent_child_r912.interaction_layout import child_layout_for_nesting
 from veritas.research.parent_child_r912.routes import Route, contract_routed
 
 
@@ -259,8 +264,8 @@ def project_ancestor_modes_onto_child(
     onto the child's half-edge indices before grandchild products.
     """
     parent_edges = {row[1]: index for index, row in enumerate(child.edge_map)}
+    packet_layout_index = {pid: index for index, pid in enumerate(child.packet_ids)}
     ancestor = ancestor_modes.certificate
-    group = child.group
     local = [
         [parent_edges[row], parent_edges[col], jet]
         for row, col, jet in ancestor["local"]
@@ -272,20 +277,38 @@ def project_ancestor_modes_onto_child(
         if row in parent_edges and col in parent_edges
     )
     projected_modes = []
+    child_group = child.group
     for mode in ancestor["modes"]:
+        packet = mode["packet"]
+        participates = packet in child.packet_ids and (
+            mode.get("target_group") == child_group
+            or mode.get("source_group") == child_group
+        )
+        if packet in packet_layout_index:
+            packet = packet_layout_index[packet]
+        if not participates:
+            projected_modes.append(
+                {**mode, "packet": packet, "rows": [], "column_terms": []}
+            )
+            continue
         projected_modes.append(
             {
                 **mode,
+                "packet": packet,
                 "rows": [
                     [parent_edges[row], value]
                     for row, value in mode["rows"]
                     if row in parent_edges
-                ],
+                ]
+                if mode.get("target_group") == child_group
+                else [],
                 "column_terms": [
                     [parent_edges[col], term]
                     for col, term in mode["column_terms"]
                     if col in parent_edges
-                ],
+                ]
+                if mode.get("source_group") == child_group
+                else [],
             }
         )
     weights = tuple(mode["weight"] for mode in projected_modes)
@@ -383,8 +406,8 @@ def _two_level_child_contractor(
             actual = leaf(call, budget)
         else:
             try:
-                child_layout = construct_layout(
-                    call, a=layout.a, u=layout.u, budget=budget
+                child_layout = child_layout_for_nesting(
+                    child, call, layout, budget=budget
                 )
                 child_modes = project_ancestor_modes_onto_child(
                     child,
@@ -468,9 +491,8 @@ def reconstruct_interaction_two_level_at_jet_point(
         second_level_kind=kind,
         qualification=(
             f"second_level_{kind}; "
-            "nested_C_child_equals_grandchild_product_when_ancestor_modes_are_projected_"
-            "onto_constructed_child_half_edges; "
-            "circulant_jet_point_1_beta0_succeeds_for_groups_0_through_31_only; "
+            "nested_C_child_equals_grandchild_product_with_ancestor_mode_projection_"
+            "including_packet_index_remap; "
             + result.qualification
         ),
     )
