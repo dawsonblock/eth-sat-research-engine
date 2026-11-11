@@ -48,5 +48,5 @@ where = ["src"]
 testpaths = ["tests"]
 addopts = "-q"
 markers = [
-    "slow: full 96-wire two-level grandchild proof (tens of seconds)",
+    "slow: interaction proofs needing leaf recheck, sparse beta, wire elimination, or two-level e2e",
 ]

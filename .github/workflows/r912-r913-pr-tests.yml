@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install 'setuptools>=68' wheel pytest
+      - run: python -m pip install 'setuptools>=68' wheel pytest pip-audit
       - name: R9.13 correctness slice
         env:
           PYTHONPATH: src
@@ -50,6 +50,8 @@ jobs:
             tests/test_interaction_96_coefficient_e2e.py \
             tests/test_interaction_parent_child_reconstruction.py \
             -m slow
+      - name: Dependency audit (devsecops fallback)
+        run: python -m pip_audit --desc on --progress-spinner off || true
       - name: Bench smoke
         env:
           PYTHONPATH: src

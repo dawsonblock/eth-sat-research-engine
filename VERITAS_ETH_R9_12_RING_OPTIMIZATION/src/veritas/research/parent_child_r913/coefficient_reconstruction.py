@@ -81,6 +81,7 @@ class ParentChildReconstructionResult:
     qualification: str
     nested_child_groups: int = 0
     second_level_kind: str = "none"
+    column_sourced_star_half_edge_bucket_count: int = 0
 
 
 ChildContractor = Callable[[object, object], object]
@@ -202,6 +203,11 @@ def reconstruction_report(result: ParentChildReconstructionResult) -> Dict[str, 
         "child_group_count": result.child_group_count,
         "reconstruction_equals_oracle": result.reconstruction_equals_oracle,
         "parent_child_reconstruction_proved": result.reconstruction_equals_oracle,
+        "nested_child_groups": result.nested_child_groups,
+        "second_level_kind": result.second_level_kind,
+        "column_sourced_star_half_edge_bucket_count": (
+            result.column_sourced_star_half_edge_bucket_count
+        ),
         "qualification": result.qualification,
     }
 
@@ -369,6 +375,8 @@ def reconstruct_child_two_level_inner_lemma(
     parent_beta: ExponentTuple,
     *,
     budget: Budget,
+    occurrence_context=None,
+    nesting_layout_cache: Dict[Tuple[str, str], PacketLayout] | None = None,
 ) -> object:
     """Second-level inner lemma for one constructed child (circulant or source-star)."""
     if column_sourced_star_child(child):
@@ -379,9 +387,16 @@ def reconstruct_child_two_level_inner_lemma(
             parent_beta,
             child,
             budget=budget,
+            occurrence_context=occurrence_context,
         )
     call = child.as_parent(ancestor)
-    child_layout = child_layout_for_nesting(child, call, layout, budget=budget)
+    layout_key = (child.content_digest, layout.content_digest)
+    if nesting_layout_cache is not None and layout_key in nesting_layout_cache:
+        child_layout = nesting_layout_cache[layout_key]
+    else:
+        child_layout = child_layout_for_nesting(child, call, layout, budget=budget)
+        if nesting_layout_cache is not None:
+            nesting_layout_cache[layout_key] = child_layout
     child_modes = project_ancestor_modes_onto_child(
         child, ancestor_modes, child_layout, call, budget=budget
     )
@@ -453,6 +468,7 @@ def _two_level_child_contractor(
     occurrence_context = layout_half_edge_occurrence_context(
         ancestor, layout, ancestor_modes
     )
+    nesting_layout_cache: Dict[Tuple[str, str], PacketLayout] = {}
 
     def contractor(child, expected):
         call = child.as_parent(ancestor)
@@ -462,49 +478,21 @@ def _two_level_child_contractor(
             actual = leaf(call, budget)
         else:
             try:
-                if column_sourced_star_child(child):
-                    actual = column_sourced_star_half_edge_grandchild_product(
-                        ancestor,
-                        layout,
-                        ancestor_modes,
-                        parent_beta,
-                        child,
-                        budget=budget,
-                        occurrence_context=occurrence_context,
-                    )
-                    if actual == expected:
+                actual = reconstruct_child_two_level_inner_lemma(
+                    child,
+                    ancestor,
+                    layout,
+                    ancestor_modes,
+                    parent_beta,
+                    budget=budget,
+                    occurrence_context=occurrence_context,
+                    nesting_layout_cache=nesting_layout_cache,
+                )
+                if actual == expected:
+                    nested_count["n"] += 1
+                    if column_sourced_star_child(child):
                         nested_count["half_edge"] += 1
-                        nested_count["n"] += 1
                 else:
-                    child_layout = child_layout_for_nesting(
-                        child, call, layout, budget=budget
-                    )
-                    child_modes = project_ancestor_modes_onto_child(
-                        child,
-                        ancestor_modes,
-                        child_layout,
-                        call,
-                        budget=budget,
-                    )
-                    if len(parent_beta.values) != len(child_modes.certificate["modes"]):
-                        raise ValueError("parent beta width must match ancestor mode count")
-                    child_beta = ExponentTuple(
-                        child_modes.content_digest, parent_beta.values
-                    )
-                    nested = reconstruct_parent_coefficient_one_level(
-                        call,
-                        child_layout,
-                        child_modes,
-                        child_beta,
-                        budget=budget,
-                        require_shrink=False,
-                    )
-                    if nested.reconstructed == expected:
-                        actual = nested.reconstructed
-                        nested_count["n"] += 1
-                    else:
-                        actual = leaf(call, budget)
-                if actual != expected:
                     actual = leaf(call, budget)
             except (ValueError, Refusal, ZeroDivisionError):
                 actual = leaf(call, budget)
@@ -567,6 +555,7 @@ def reconstruct_interaction_two_level_at_jet_point(
         reconstruction_equals_oracle=result.reconstruction_equals_oracle,
         nested_child_groups=nested_groups,
         second_level_kind=kind,
+        column_sourced_star_half_edge_bucket_count=half_edge_nested,
         qualification=(
             f"second_level_{kind}; "
             + half_edge_note
