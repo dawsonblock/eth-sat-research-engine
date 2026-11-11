@@ -11,11 +11,12 @@ from veritas.solvers.reference import exhaustive_count
 
 if __name__ == '__main__':
     eqs, n = xor_chain_example()
+    pure = structure_aware_count(CNF.from_lists(n, []), xor_equations=eqs, preprocess=False)
     rows = [
         {
             'case': 'pure_xor_chain',
-            'engine': structure_aware_count(CNF.from_lists(n, []), xor_equations=eqs, preprocess=False)['engine'],
-            'count': count := structure_aware_count(CNF.from_lists(n, []), xor_equations=eqs, preprocess=False)['count'],
+            'engine': pure['engine'],
+            'count': pure['count'],
         },
         {
             'case': 'preprocess_plus_components',
