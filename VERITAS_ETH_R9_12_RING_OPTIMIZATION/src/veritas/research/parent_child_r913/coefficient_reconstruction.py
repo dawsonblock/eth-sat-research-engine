@@ -21,12 +21,10 @@ child's half-edge renumbering, the inner lemma
 C_child_g = ∏_h C_grandchild_h
 ```
 
-holds for target-side children (groups 0–31 on the 96-wire fixture) when ancestor
-circulant labels are preserved via ``child_layout_for_nesting`` and mode
-``packet`` parent ids are remapped to layout packet indices.  Column-sourced
-children (groups 32–63) are X-only stars with a single row vertex covering
-several parent row groups; they cannot carry separated circulant row labels in
-D3 form yet, so nested reproduction still uses leaf fallback there.  The outer
+holds on the 96-wire fixture at β=0: target-side children (groups 0–31) via
+circulant ``child_layout_for_nesting`` and 64-way ``construct_children``;
+column-sourced stars (groups 32–63) via independent half-edge bucket products
+``(∏_h eliminate(inherited, packet_h)) / eliminate(inherited)^(n-1)``.  The outer
 equality ``C_parent = ∏_g C_child_g`` remains valid via half-edge semantics.
 
 No ETH, subexponential, or source-qualification claim.
@@ -40,7 +38,10 @@ from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
 from veritas.research.eth_arithmetic.jets import JetRing
 from veritas.research.parent_child_r98.constructor import construct_children
 from veritas.research.parent_child_r98.engine import leaf
-from veritas.research.parent_child_r98.independent import verify_children
+from veritas.research.parent_child_r98.independent import (
+    column_sourced_star_half_edge_grandchild_product,
+    verify_children,
+)
 from veritas.research.parent_child_r98.modes import (
     verify_inherited_construction_modes,
     weighted_count,
@@ -59,7 +60,10 @@ from veritas.research.parent_child_r98.packing import construct_layout
 from veritas.research.parent_child_r98.shrinking_oracle import tuple_coefficient
 from veritas.research.parent_child_r912.elimination import EliminationBudget
 from veritas.research.parent_child_r912.interaction_jet_point import packet_modes_at_jet_point
-from veritas.research.parent_child_r912.interaction_layout import child_layout_for_nesting
+from veritas.research.parent_child_r912.interaction_layout import (
+    child_layout_for_nesting,
+    column_sourced_star_child,
+)
 from veritas.research.parent_child_r912.routes import Route, contract_routed
 
 
@@ -348,6 +352,42 @@ def project_ancestor_modes_onto_child(
     return result
 
 
+def reconstruct_child_two_level_inner_lemma(
+    child: ChildGraph,
+    ancestor: ParentCall,
+    layout: PacketLayout,
+    ancestor_modes: ModeSet,
+    parent_beta: ExponentTuple,
+    *,
+    budget: Budget,
+) -> object:
+    """Second-level inner lemma for one constructed child (circulant or source-star)."""
+    if column_sourced_star_child(child):
+        return column_sourced_star_half_edge_grandchild_product(
+            ancestor,
+            layout,
+            ancestor_modes,
+            parent_beta,
+            child,
+            budget=budget,
+        )
+    call = child.as_parent(ancestor)
+    child_layout = child_layout_for_nesting(child, call, layout, budget=budget)
+    child_modes = project_ancestor_modes_onto_child(
+        child, ancestor_modes, child_layout, call, budget=budget
+    )
+    child_beta = ExponentTuple(child_modes.content_digest, parent_beta.values)
+    nested = reconstruct_parent_coefficient_one_level(
+        call,
+        child_layout,
+        child_modes,
+        child_beta,
+        budget=budget,
+        require_shrink=False,
+    )
+    return nested.reconstructed
+
+
 def reconstruct_interaction_with_leaf_at_jet_point(
     parent: ParentCall,
     layout: PacketLayout,
@@ -396,7 +436,7 @@ def _two_level_child_contractor(
 ) -> ChildContractor:
     """Recompute each child by grandchild product when the child graph is small enough."""
 
-    nested_count = {"n": 0}
+    nested_count = {"n": 0, "half_edge": 0}
 
     def contractor(child, expected):
         call = child.as_parent(ancestor)
@@ -406,35 +446,50 @@ def _two_level_child_contractor(
             actual = leaf(call, budget)
         else:
             try:
-                child_layout = child_layout_for_nesting(
-                    child, call, layout, budget=budget
-                )
-                child_modes = project_ancestor_modes_onto_child(
-                    child,
-                    ancestor_modes,
-                    child_layout,
-                    call,
-                    budget=budget,
-                )
-                if len(parent_beta.values) != len(child_modes.certificate["modes"]):
-                    raise ValueError("parent beta width must match ancestor mode count")
-                child_beta = ExponentTuple(
-                    child_modes.content_digest, parent_beta.values
-                )
-                nested = reconstruct_parent_coefficient_one_level(
-                    call,
-                    child_layout,
-                    child_modes,
-                    child_beta,
-                    budget=budget,
-                    require_shrink=False,
-                )
-                if nested.reconstructed == expected:
-                    actual = nested.reconstructed
-                    nested_count["n"] += 1
+                if column_sourced_star_child(child):
+                    actual = column_sourced_star_half_edge_grandchild_product(
+                        ancestor,
+                        layout,
+                        ancestor_modes,
+                        parent_beta,
+                        child,
+                        budget=budget,
+                    )
+                    if actual == expected:
+                        nested_count["half_edge"] += 1
+                        nested_count["n"] += 1
                 else:
+                    child_layout = child_layout_for_nesting(
+                        child, call, layout, budget=budget
+                    )
+                    child_modes = project_ancestor_modes_onto_child(
+                        child,
+                        ancestor_modes,
+                        child_layout,
+                        call,
+                        budget=budget,
+                    )
+                    if len(parent_beta.values) != len(child_modes.certificate["modes"]):
+                        raise ValueError("parent beta width must match ancestor mode count")
+                    child_beta = ExponentTuple(
+                        child_modes.content_digest, parent_beta.values
+                    )
+                    nested = reconstruct_parent_coefficient_one_level(
+                        call,
+                        child_layout,
+                        child_modes,
+                        child_beta,
+                        budget=budget,
+                        require_shrink=False,
+                    )
+                    if nested.reconstructed == expected:
+                        actual = nested.reconstructed
+                        nested_count["n"] += 1
+                    else:
+                        actual = leaf(call, budget)
+                if actual != expected:
                     actual = leaf(call, budget)
-            except (ValueError, Refusal):
+            except (ValueError, Refusal, ZeroDivisionError):
                 actual = leaf(call, budget)
         if actual != expected:
             raise ValueError("two-level child reconstruction disagrees with independent elimination")
@@ -472,12 +527,18 @@ def reconstruct_interaction_two_level_at_jet_point(
         require_shrink=True,
     )
     nested_groups = int(contractor.nested_count["n"])  # type: ignore[attr-defined]
+    half_edge_nested = int(contractor.nested_count["half_edge"])  # type: ignore[attr-defined]
     if nested_groups >= result.child_group_count:
         kind = "grandchild_product"
     elif nested_groups:
         kind = "grandchild_product_partial"
     else:
         kind = "leaf_recheck"
+    half_edge_note = ""
+    if half_edge_nested:
+        half_edge_note = (
+            f"column_sourced_star_half_edge_bucket_count={half_edge_nested}; "
+        )
     return ParentChildReconstructionResult(
         schema=result.schema,
         active_levels=2,
@@ -491,8 +552,9 @@ def reconstruct_interaction_two_level_at_jet_point(
         second_level_kind=kind,
         qualification=(
             f"second_level_{kind}; "
-            "nested_C_child_equals_grandchild_product_with_ancestor_mode_projection_"
-            "including_packet_index_remap; "
+            + half_edge_note
+            + "nested_C_child_equals_grandchild_product_with_ancestor_mode_projection_"
+            "or_column_sourced_star_half_edge_bucket_formula; "
             + result.qualification
         ),
     )

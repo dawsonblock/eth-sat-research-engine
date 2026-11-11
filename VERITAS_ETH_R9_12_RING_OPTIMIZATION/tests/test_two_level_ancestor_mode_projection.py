@@ -10,15 +10,11 @@ from veritas.research.parent_child_r98.model import Budget, ExponentTuple, canon
 from veritas.research.parent_child_r98.shrinking_cli import load_input
 from veritas.research.parent_child_r98.constructor import construct_children
 from veritas.research.parent_child_r98.independent import verify_children
-from veritas.research.parent_child_r912.interaction_layout import (
-    child_layout_for_nesting,
-    circulant_separated_layout,
-)
+from veritas.research.parent_child_r912.interaction_layout import circulant_separated_layout
 from veritas.research.parent_child_r98.shrinking_engine import DEFAULT_SHRINKING_POLICY
 from veritas.research.parent_child_r913.coefficient_reconstruction import (
     modes_at_jet_point,
-    project_ancestor_modes_onto_child,
-    reconstruct_parent_coefficient_one_level,
+    reconstruct_child_two_level_inner_lemma,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -57,21 +53,10 @@ def circulant_children():
 
 
 def _grandchild_product_matches_half_edge(child, ancestor, layout, modes, beta, verified, budget):
-    call = child.as_parent(ancestor)
-    child_layout = child_layout_for_nesting(child, call, layout, budget=budget)
-    child_modes = project_ancestor_modes_onto_child(
-        child, modes, child_layout, call, budget=budget
+    reconstructed = reconstruct_child_two_level_inner_lemma(
+        child, ancestor, layout, modes, beta, budget=budget
     )
-    child_beta = ExponentTuple(child_modes.content_digest, beta.values)
-    nested = reconstruct_parent_coefficient_one_level(
-        call,
-        child_layout,
-        child_modes,
-        child_beta,
-        budget=budget,
-        require_shrink=False,
-    )
-    return nested.reconstructed == verified["values"][child.group]
+    return reconstructed == verified["values"][child.group]
 
 
 @pytest.mark.parametrize("group", [0, 15, 31])
@@ -84,10 +69,10 @@ def test_two_level_lemma_holds_for_low_circulant_groups(circulant_children, grou
 
 
 @pytest.mark.parametrize("group", [32, 47, 63])
-def test_two_level_lemma_blocked_for_column_sourced_star_children(circulant_children, group):
-    """Groups ≥32 are X-only stars: one row vertex, several parent row groups — no D3 layout."""
+def test_two_level_lemma_holds_for_column_sourced_star_children(circulant_children, group):
+    """Groups ≥32 use shared-inherited half-edge bucket grandchild products."""
     parent, layout, modes, beta, children, verified, budget = circulant_children
     child = children[group]
-    assert not _grandchild_product_matches_half_edge(
+    assert _grandchild_product_matches_half_edge(
         child, parent, layout, modes, beta, verified, budget
     )
