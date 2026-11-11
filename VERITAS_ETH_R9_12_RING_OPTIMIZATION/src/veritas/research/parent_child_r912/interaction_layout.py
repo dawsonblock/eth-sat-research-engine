@@ -12,6 +12,13 @@ from veritas.research.parent_child_r98.packing import audit_layout, construct_la
 from veritas.research.parent_child_r98.shrinking_layout import construct_vertex_shrinking_layout
 
 
+def column_sourced_star_child(child: ChildGraph) -> bool:
+    """True when the child is an X-only star (source-side half-edges on one row)."""
+    if not child.edge_map or child.edge_map[0][0] != "X":
+        return False
+    return all(row[0] == "X" for row in child.edge_map)
+
+
 def _packet_for_parent_edge(source: dict, parent_edge: int) -> dict:
     for packet in source["packets"]:
         for _slot, edge in packet["occupied_slots"]:
