@@ -1,6 +1,7 @@
 # Computational cost reduction (engineering)
 - `anthropic_eight_square`: exhaustive finite checks of Anthropic Eq. (12)/(28); not a solver backend.
-- `cost_ledger`: recursive work/cache receipts; `max_tree_work` caps the whole tree.
+- `cost_ledger` / `cost_ledger_bridge`: recursive work/cache receipts; streaming and R9.10 engines emit `tree_ledger`.
+- `anthropic_signed_contraction`: one-level rewrite economics proxy only.
 - `hybrid_router`: conventional boundary DP vs elimination routing only; run `scripts/validate_cost_reduction_gates.py`.
 - See `docs/COMPUTATIONAL_COST_REDUCTION.md`; never infer subexponential bounds from these modules.
 

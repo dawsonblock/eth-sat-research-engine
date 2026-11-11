@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 
 from veritas.research.anthropic_eight_square import verify_crossing_identity_12, verify_identity_28
+from veritas.research.anthropic_signed_contraction import crossing_rewrite_economics
 
 
 def main() -> int:
@@ -18,6 +19,7 @@ def main() -> int:
         'schema': 'VERITAS_COST_REDUCTION_GATES_V1',
         'equation_12': verify_crossing_identity_12(),
         'equation_28': verify_identity_28(),
+        'signed_one_level': crossing_rewrite_economics(),
         'release_ready': {
             'eight_square_4096': None,
             'pair_identity_exhaustive': None,

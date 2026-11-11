@@ -20,5 +20,18 @@
     "pair_identity_exhaustive": true,
     "unsupported_worst_case_claim": false
   },
-  "schema": "VERITAS_COST_REDUCTION_GATES_V1"
+  "schema": "VERITAS_COST_REDUCTION_GATES_V1",
+  "signed_one_level": {
+    "active_crossings": 64,
+    "both_terms_cost_sum": 4608,
+    "claim": "BIT_ENUMERATION_PROXY_NOT_RUNTIME",
+    "direct_eval_cost_sum": 4096,
+    "expansion_overhead_vs_direct": 512,
+    "min_orientation_cost_sum": 512,
+    "min_orientation_savings_vs_direct": 3584,
+    "row_cheaper_count": 64,
+    "row_orientation_cost_sum": 512,
+    "schema": "ANTHROPIC_SIGNED_ONE_LEVEL_V1",
+    "subexponential_runtime_proven": false
+  }
 }

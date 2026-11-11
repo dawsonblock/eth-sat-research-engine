@@ -21,6 +21,7 @@ from veritas.research.parent_child_r99.resources import ExactCache, computation_
 from veritas.research.parent_child_r99.row_degree import certify_row_degree
 from veritas.research.parent_child_r912.jet_recovery import JetRecovery as Recovery
 from .accounting import AccountedBudget
+from veritas.research.cost_ledger_bridge import RecursiveVisitTracker
 from veritas.research.parent_child_r99.support import fold_source_forms, build_support
 from veritas.research.parent_child_r99.support_check import verify_support
 
@@ -30,6 +31,7 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
                        preflight_work=0, oracle_limits=None, coefficient_encoding=False, compressed_records=False,
                        conformance=None):
     budget = AccountedBudget(policy, oracle_limits)
+    tracker = RecursiveVisitTracker(policy)
     if conformance not in (None, 'report', 'strict'):
         raise ValueError("conformance must be None, 'report' or 'strict'")
     audit = None
@@ -72,6 +74,7 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
         def visit(call):
             nonlocal requests
             requests += 1
+            tracker.request()
             budget.tick()
             if (call.edge_count > policy.max_edges or call.precision > policy.max_precision or
                     call.depth > policy.max_depth):
@@ -80,11 +83,13 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
             remaining = schedule[depth:]
             key = computation_key(call, remaining)
             cached = cache.get(key)
+            tracker.cache_lookup(key, hit=cached is not None)
             if cached is not None:
                 emit({'kind': 'reuse', 'parent': call.content_digest, 'key': key})
                 return cached
             budget.call(call.depth)
             if call.edge_count <= 4:
+                tracker.note_leaf()
                 with budget.at('leaf_arithmetic'):
                     result = leaf(call, budget)
                 emit({'kind': 'leaf', 'parent': call.content_digest, 'key': key, 'result': result})
@@ -164,9 +169,11 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
                     dependencies = []
                     for child in children:
                         child_call = child.as_parent(call)
-                        with budget.at('control'):
-                            child_value = visit(child_call)
+                        with tracker.child_frame():
+                            with budget.at('control'):
+                                child_value = visit(child_call)
                         product = ring.mul(product, child_value)
+                        tracker.charge('jet_mul', ring.base.e**2 * call.jet_length**2)
                         dependencies.append({'child': child.content_digest, 'parent': child_call.content_digest,
                             'wires': child.edge_count, 'precision': child.precision, 'value': child_value})
                         budget.tick(ring.base.e**2 * call.jet_length**2)
@@ -200,7 +207,8 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
                 'point_predictions_reconcile': all(r['expected_local_points'] == r['actual_local_points'] for r in work_predictions),
                 'recovery_optimization': 'CERTIFIED_ZERO_TAIL_ORIGINAL_FUNCTIONAL',
                 'schedule': schedule, 'max_points': max_points, 'cache': cache.report(),
-                'requests': requests, 'ledger': budget.report(), 'evidence_chain': chain,
+                'requests': requests, 'ledger': budget.report(), 'tree_ledger': tracker.finalize(budget),
+                'evidence_chain': chain,
                 'evidence_bytes': evidence_bytes, 'evidence_stream_written': evidence_sink is not None,
                 'source_tapered_functional_used': bool(budget.points), 'original_weighted_stream_enumerated': False,
                 'source_qualified': False, 'theorem_mode_enabled': False}
@@ -208,5 +216,6 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
         extra = {} if audit is None else {'theorem_conformance': audit.report()}
         return {**extra, 'status': getattr(exc, 'status', 'INCONCLUSIVE_STREAMED_RECURSION'),
                 'reason': str(exc), 'resource_failure': getattr(exc, 'resource_failure', None),
-                'ledger': budget.report(), 'requests': requests,
+                'ledger': budget.report(), 'tree_ledger': tracker.finalize(budget),
+                'requests': requests,
                 'source_qualified': False, 'theorem_mode_enabled': False}
