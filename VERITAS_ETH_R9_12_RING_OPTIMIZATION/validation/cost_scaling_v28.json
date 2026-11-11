@@ -1,0 +1,25 @@
+{
+  "schema": "VERITAS_COST_SCALING_V1",
+  "warning": "Two-point ratios do not prove asymptotic complexity.",
+  "measurements": [
+    {
+      "wires": 8,
+      "dense_cauchy_ops": 77330,
+      "modes_retained": 9
+    },
+    {
+      "wires": 10,
+      "dense_cauchy_ops": 456726,
+      "modes_retained": 11,
+      "ops_ratio_vs_previous": 5.9062,
+      "log2_growth_per_wire": 1.0
+    },
+    {
+      "wires": 12,
+      "dense_cauchy_ops": 2531354,
+      "modes_retained": 13,
+      "ops_ratio_vs_previous": 5.5424,
+      "log2_growth_per_wire": 1.5
+    }
+  ]
+}

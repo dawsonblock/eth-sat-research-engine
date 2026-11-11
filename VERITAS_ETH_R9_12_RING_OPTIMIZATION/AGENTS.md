@@ -1,3 +1,9 @@
+# Computational cost reduction (engineering)
+- `anthropic_eight_square`: exhaustive finite checks of Anthropic Eq. (12)/(28); not a solver backend.
+- `cost_ledger`: recursive work/cache receipts; `max_tree_work` caps the whole tree.
+- `hybrid_router`: conventional boundary DP vs elimination routing only; run `scripts/validate_cost_reduction_gates.py`.
+- See `docs/COMPUTATIONAL_COST_REDUCTION.md`; never infer subexponential bounds from these modules.
+
 # R9.12 exact elimination route and factorized support
 - `parent_child_r912.elimination` is ordinary bounded-width variable elimination. Admit an order only through `verify_order` against an explicit `EliminationBudget`; never allocate a table first and never return a partial value.
 - `parent_child_r912.routes` classifies results as `EXACT_ELIMINATION` or `FINITE_TAPERED_RECURSION`. An elimination result is never evidence for the source recursion or any subexponential bound; keep every qualification flag false.
