@@ -1,0 +1,8 @@
+title = "eth-sat-research-engine gitleaks"
+
+# Content-addressed release manifests store SHA-256 digests (64 hex chars), not API keys.
+[allowlist]
+description = "Ignore hash inventory files"
+paths = [
+  '''(?:^|/)SHA256_MANIFEST\.json$''',
+]
