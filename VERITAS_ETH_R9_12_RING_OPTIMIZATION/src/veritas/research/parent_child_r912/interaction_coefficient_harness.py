@@ -98,20 +98,32 @@ def interaction_coefficient_end_to_end(
     elimination_budget: EliminationBudget | None = None,
     point_index: int = 1,
     target_beta: Tuple[int, ...] | None = None,
+    include_wire_elimination: bool = False,
 ) -> Dict[str, object]:
-    """Run wire elimination + separator child coefficient with explicit telemetry."""
+    """Run fast parent-child solve plus separator child coefficient; wire elimination optional."""
     elimination_budget = elimination_budget or EliminationBudget(max_width=20)
     shrink_budget = shrink_budget or Budget(
         replace(DEFAULT_SHRINKING_POLICY, max_work=8_000_000, max_edges=128, max_precision=16384)
     )
 
+    parent_report: Dict[str, object]
+    parent_elapsed: float
     t_parent = time.perf_counter()
-    parent_report = contract_routed(
-        parent,
-        route=Route.ELIMINATION,
-        elimination_budget=elimination_budget,
-    )
-    parent_elapsed = time.perf_counter() - t_parent
+    if include_wire_elimination:
+        parent_report = contract_routed(
+            parent,
+            route=Route.ELIMINATION,
+            elimination_budget=elimination_budget,
+        )
+        parent_elapsed = time.perf_counter() - t_parent
+    else:
+        parent_report = {
+            "status": "SKIPPED_FAST_UNIVERSAL_SOLVER",
+            "elimination_width": None,
+            "result": None,
+            "reason": "wire elimination omitted; use fast_universal_parent_jet_solve",
+        }
+        parent_elapsed = 0.0
 
     modes_certificate, row_certificate, jet_index, jet_node, zeta = packet_modes_at_jet_point(
         parent,
@@ -158,16 +170,23 @@ def interaction_coefficient_end_to_end(
     reference = independent_row_product_reference(factors, target_beta, ar)
     child_elapsed = time.perf_counter() - t_child
 
-    parent_ok = parent_report.get("status") == "PASS_EXACT_BOUNDED_WIDTH_ELIMINATION"
+    parent_ok = (
+        include_wire_elimination
+        and parent_report.get("status") == "PASS_EXACT_BOUNDED_WIDTH_ELIMINATION"
+    )
     matches_reference = extracted.value == reference
     rows_one_mode = all(len(v) == 1 for v in incidence.values())
 
     from veritas.research.parent_child_r913.coefficient_reconstruction import (
-        interaction_parent_child_reconstruction_report,
+        ParentChildReconstructionResult,
+        wire_elimination_vs_parent_coefficient,
+    )
+    from veritas.research.parent_child_r913.fast_universal_solver import (
+        fast_universal_parent_jet_solve,
     )
 
     t_reconstruct = time.perf_counter()
-    parent_child_block = interaction_parent_child_reconstruction_report(
+    universal = fast_universal_parent_jet_solve(
         parent,
         layout,
         budget=shrink_budget,
@@ -175,22 +194,57 @@ def interaction_coefficient_end_to_end(
         beta_values=tuple(0 for _ in range(mode_count)),
     )
     reconstruct_elapsed = time.perf_counter() - t_reconstruct
-    parent_child_block["elapsed_seconds"] = reconstruct_elapsed
+    parent_child_block = {
+        "schema": "VERITAS_R913_PARENT_CHILD_RECONSTRUCT_V1",
+        "active_levels": 1,
+        "beta": list(universal.beta),
+        "child_group_count": universal.child_group_count,
+        "reconstruction_equals_oracle": universal.reconstruction_equals_oracle,
+        "parent_child_reconstruction_proved": universal.reconstruction_equals_oracle,
+        "elapsed_seconds": reconstruct_elapsed,
+        "solver_method": universal.method.value,
+        "qualification": universal.qualification,
+    }
 
-    proved = parent_child_block["parent_child_reconstruction_proved"]
+    proved = universal.reconstruction_equals_oracle
 
-    from veritas.research.parent_child_r913.coefficient_reconstruction import (
-        wire_elimination_vs_parent_coefficient,
+    recon_for_wire = ParentChildReconstructionResult(
+        schema="VERITAS_R913_PARENT_CHILD_RECONSTRUCT_V1",
+        active_levels=1,
+        beta=universal.beta,
+        child_group_count=universal.child_group_count,
+        child_values=(),
+        reconstructed=universal.reconstructed,
+        parent_oracle=universal.parent_oracle,
+        reconstruction_equals_oracle=universal.reconstruction_equals_oracle,
+        qualification=universal.qualification,
     )
+    if include_wire_elimination:
+        wire_vs_coeff = wire_elimination_vs_parent_coefficient(
+            parent,
+            layout,
+            budget=shrink_budget,
+            elimination_budget=elimination_budget,
+            point_index=point_index,
+            beta_values=tuple(0 for _ in range(mode_count)),
+            reconstruction=recon_for_wire,
+        )
+    else:
+        wire_vs_coeff = {
+            "schema": "VERITAS_R913_WIRE_VS_DEFORMATION_COEFF_V1",
+            "wire_elimination_status": parent_report.get("status"),
+            "wire_elimination_equals_parent_coefficient": False,
+            "reconstruction_equals_oracle": universal.reconstruction_equals_oracle,
+            "qualification": "wire elimination skipped; fast universal parent-child product",
+        }
 
-    wire_vs_coeff = wire_elimination_vs_parent_coefficient(
-        parent,
-        layout,
-        budget=shrink_budget,
-        elimination_budget=elimination_budget,
-        point_index=point_index,
-        beta_values=tuple(0 for _ in range(mode_count)),
-    )
+    wire_result = parent_report.get("result")
+    wire_low = None
+    if wire_result is not None:
+        try:
+            wire_low = wire_result[0][0]
+        except (TypeError, IndexError, KeyError):
+            wire_low = None
 
     return {
         "schema": "VERITAS_R912_INTERACTION_PARALLEL_DIAG_V2",
@@ -204,8 +258,13 @@ def interaction_coefficient_end_to_end(
             "status": parent_report.get("status"),
             "elimination_width": parent_report.get("elimination_width"),
             "elapsed_seconds": parent_elapsed,
-            "result_low_word": parent_report.get("result", [[None]])[0][0],
+            "result_low_word": wire_low,
             "matches_budget": parent_ok,
+        },
+        "fast_universal_solver": {
+            "method": parent_child_block.get("solver_method"),
+            "elapsed_seconds": reconstruct_elapsed,
+            "reconstruction_equals_oracle": proved,
         },
         "child_target_coefficient": {
             "separator_agrees_with_independent_reference": matches_reference,

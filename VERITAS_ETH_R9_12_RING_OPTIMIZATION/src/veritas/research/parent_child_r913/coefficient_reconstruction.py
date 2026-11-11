@@ -377,6 +377,7 @@ def reconstruct_child_two_level_inner_lemma(
     budget: Budget,
     occurrence_context=None,
     nesting_layout_cache: Dict[Tuple[str, str], PacketLayout] | None = None,
+    projected_modes_cache: Dict[str, ModeSet] | None = None,
 ) -> object:
     """Second-level inner lemma for one constructed child (circulant or source-star)."""
     if column_sourced_star_child(child):
@@ -397,9 +398,15 @@ def reconstruct_child_two_level_inner_lemma(
         child_layout = child_layout_for_nesting(child, call, layout, budget=budget)
         if nesting_layout_cache is not None:
             nesting_layout_cache[layout_key] = child_layout
-    child_modes = project_ancestor_modes_onto_child(
-        child, ancestor_modes, child_layout, call, budget=budget
-    )
+    mode_cache_key = child.content_digest
+    if projected_modes_cache is not None and mode_cache_key in projected_modes_cache:
+        child_modes = projected_modes_cache[mode_cache_key]
+    else:
+        child_modes = project_ancestor_modes_onto_child(
+            child, ancestor_modes, child_layout, call, budget=budget
+        )
+        if projected_modes_cache is not None:
+            projected_modes_cache[mode_cache_key] = child_modes
     child_beta = ExponentTuple(child_modes.content_digest, parent_beta.values)
     nested = reconstruct_parent_coefficient_one_level(
         call,
@@ -469,6 +476,7 @@ def _two_level_child_contractor(
         ancestor, layout, ancestor_modes
     )
     nesting_layout_cache: Dict[Tuple[str, str], PacketLayout] = {}
+    projected_modes_cache: Dict[str, ModeSet] = {}
 
     def contractor(child, expected):
         call = child.as_parent(ancestor)
@@ -487,6 +495,7 @@ def _two_level_child_contractor(
                     budget=budget,
                     occurrence_context=occurrence_context,
                     nesting_layout_cache=nesting_layout_cache,
+                    projected_modes_cache=projected_modes_cache,
                 )
                 if actual == expected:
                     nested_count["n"] += 1

@@ -299,6 +299,7 @@ def bench_interaction_96_coefficient_e2e(*, max_width: int = 20) -> dict:
         shrink_budget=Budget(policy),
         elimination_budget=EliminationBudget(max_width=max_width),
         point_index=1,
+        include_wire_elimination=False,
     )
     elapsed = time.perf_counter() - t0
     report["case"] = "interaction_96_coefficient_e2e"

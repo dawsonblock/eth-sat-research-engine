@@ -47,6 +47,7 @@ def test_circulant_96_wire_child_coefficient_vs_elimination_baseline(interaction
         shrink_budget=Budget(POLICY),
         elimination_budget=budget,
         point_index=1,
+        include_wire_elimination=True,
     )
     parent_block = report["parent_wire_elimination"]
     child_block = report["child_target_coefficient"]
