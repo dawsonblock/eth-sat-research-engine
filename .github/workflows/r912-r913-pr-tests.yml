@@ -51,6 +51,7 @@ jobs:
           python -m pytest -q -o addopts='' \
             tests/test_interaction_96_coefficient_e2e.py \
             tests/test_interaction_parent_child_reconstruction.py \
+            tests/test_r910_decomposition_ledger.py \
             -m slow
       - name: Gitleaks (manifest allowlist)
         run: |

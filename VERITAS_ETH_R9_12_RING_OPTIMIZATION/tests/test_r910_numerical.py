@@ -89,6 +89,8 @@ def two_level():
     assert report['ledger']['stage_sum_reconciles']
     assert report['ledger']['maximum_depth'] == 2
     assert report['ledger']['bit_operations'] is None
+    assert report['decomposition_work']['schema'] == 'VERITAS_SAT_WORK_AGGREGATE_V1'
+    assert len(report['decomposition_work']['steps']) > 0
     return p, events, report
 
 

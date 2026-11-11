@@ -71,6 +71,15 @@ def toy_child_sum_exponent(*, s: int, rho: float, q: int) -> dict:
     }
 
 
+def exponential_width_proxy(edges: int, *, cap: int = 48) -> int:
+    """Saturating 2^edges proxy for comparing splits (not a theorem bound)."""
+    if edges <= 0:
+        return 1
+    if edges > cap:
+        return 2**cap
+    return 2**edges
+
+
 def aggregate_ledger(ledgers: Iterable[DecompositionWorkLedger]) -> dict:
     rows = [x.to_dict() for x in ledgers]
     return {

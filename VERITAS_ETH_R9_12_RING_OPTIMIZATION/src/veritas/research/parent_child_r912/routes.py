@@ -80,8 +80,11 @@ def contract_routed(parent, *, route=Route.AUTO, elimination_budget=None, prefli
         if report.get('source_qualified') is not False or report.get('theorem_mode_enabled') is not False:
             raise ValueError('finite recursive report must not carry qualification')
         classified = report['status'].startswith('PASS')
-        return {**NOT_EVIDENCE, **report, 'route_selection': selection,
-                'result_classification': Classification.RECURSIVE.value if classified else None}
+        payload = {**NOT_EVIDENCE, **report, 'route_selection': selection,
+                   'result_classification': Classification.RECURSIVE.value if classified else None}
+        if 'decomposition_work' in report:
+            payload['decomposition_work'] = report['decomposition_work']
+        return payload
     budget = EliminationBudget() if elimination_budget is None else elimination_budget
     try:
         result, ledger = eliminate(parent, selection['ordering'], budget)
