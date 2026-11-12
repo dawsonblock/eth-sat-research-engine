@@ -16,6 +16,8 @@ subexponential construction or claim any new complexity theorem.
 | 3b | `veritas.research.cnf_structure` | Count-preserving disjoint component product (`structure_aware_count`) |
 | 3c | `veritas.research.cnf_preprocess` | Unit propagation, tautology/duplicate removal (#SAT-preserving) |
 | 3d | `veritas.research.gf2_xor_count` | Pure GF(2) XOR systems via elimination (`2^{n-rank}`) |
+| 3e | `veritas.research.gf2_xor_mixed` | Mixed CNF+XOR via null-space conditioning (`max_xor_enum_bits` cap) |
+| 3f | `veritas.solvers.external_baselines` | Optional Ganak/CADICAL cross-check vs internal counts |
 | 4 | `veritas.research.adaptive_contract` | Existing exact #SAT path (unchanged semantics) |
 | 5 | `veritas.research.boundary_dp` | Separator / component memoization (existing) |
 
@@ -36,6 +38,7 @@ python benchmarks/v28_cost_scaling.py
 python benchmarks/v29_structural_hybrid.py
 python scripts/profile_cost_receipt.py examples/example.cnf --structure
 python benchmarks/v30_xor_preprocess.py
+python benchmarks/v31_external_baselines.py
 ```
 
 Pure XOR (no CNF clauses), equations in JSON:
@@ -57,7 +60,7 @@ supply an exact reconstruction rule. The hybrid router only affects which
 ## What remains open
 
 - Full two-active-level R9 numerical execution under source qualification
-- Competitive wall-clock benchmarks against CaDiCaL / external model counters
+- Ganak installed (`VERITAS_GANAK`) for full external model-count parity in `v31` benchmarks
 - Integrated XOR elimination backend for mixed CNF/XOR instances
 - Production bit-operation accounting across the entire R9 recursive tree
 

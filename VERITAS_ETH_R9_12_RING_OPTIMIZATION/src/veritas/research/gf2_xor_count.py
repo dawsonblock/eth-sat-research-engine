@@ -144,13 +144,32 @@ def structure_with_optional_xor(
                 'formula_sha256': original_digest,
                 'pipeline': {'steps': steps, 'complexity_claim': False},
             }
-        steps.append(
-            {
-                'stage': 'xor_gf2_partial',
-                'report': report.__dict__,
-                'warning': 'Mixed CNF+XOR not eliminated algebraically; xor metadata recorded only.',
+        from veritas.research.gf2_xor_mixed import count_mixed_xor_cnf
+
+        max_enum = int(kwargs.pop('max_xor_enum_bits', 18))
+        verify_direct = kwargs.pop('verify_direct', cnf.n <= 18)
+        mixed = count_mixed_xor_cnf(cnf, xor_equations, max_enum_bits=max_enum)
+        steps.append({'stage': 'xor_mixed_conditioning', 'report': mixed})
+        cross = None
+        if verify_direct:
+            direct = structure_aware_count(cnf, inner_count=inner_count, preprocess=False, **kwargs)
+            cross = {
+                'direct_count': direct.get('count'),
+                'matches_direct': str(mixed['count']) == str(direct.get('count')),
             }
-        )
+        return {
+            'status': 'EXACT_COUNT',
+            'count': str(mixed['count']),
+            'engine': mixed['engine'],
+            'formula_sha256': original_digest,
+            'pipeline': {'steps': steps, 'complexity_claim': False},
+            'structure': {
+                'decomposed': False,
+                'cross_check': cross,
+                'warning': 'Mixed count uses xor null-space enumeration, not algebraic CNF elimination.',
+            },
+            'independent_count_checked': cross['matches_direct'] if cross else False,
+        }
     out = structure_aware_count(cnf, inner_count=inner_count, preprocess=False, **kwargs)
     out['formula_sha256'] = original_digest
     out.setdefault('pipeline', {})['steps'] = steps + out.get('pipeline', {}).get('steps', [])
