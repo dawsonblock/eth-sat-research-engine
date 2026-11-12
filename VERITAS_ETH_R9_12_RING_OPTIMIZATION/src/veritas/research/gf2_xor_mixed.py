@@ -65,7 +65,7 @@ def assignment_from_free(free_values: dict[int, int], param: XorParametrization)
         raise ValueError('inconsistent xor system')
     values = {v: int(free_values.get(v, 0)) & 1 for v in param.free_variables}
     pivots = {param.pivot_leads[i]: (param.pivot_masks[i], param.pivot_rhs[i]) for i in range(len(param.pivot_leads))}
-    for lead in sorted(pivots, reverse=True):
+    for lead in sorted(pivots):
         mask, rhs = pivots[lead]
         var = lead + 1
         acc = rhs
@@ -76,6 +76,42 @@ def assignment_from_free(free_values: dict[int, int], param: XorParametrization)
                 acc ^= values.get(b + 1, 0)
         values[var] = acc
     return {v: bool(values.get(v, 0)) for v in range(1, param.n + 1)}
+
+
+def xor_assignment_satisfied(equations: tuple[XorEquation, ...], assignment: dict[int, bool]) -> bool:
+    for eq in equations:
+        acc = eq.rhs & 1
+        for v in eq.variables:
+            acc ^= int(assignment.get(v, False))
+        if acc & 1:
+            return False
+    return True
+
+
+def exhaustive_mixed_count(cnf: CNF, equations: tuple[XorEquation, ...], *, max_n: int = 18) -> int:
+    """Brute-force #SAT for CNF + XOR (intended for cross-checks, small n only)."""
+    if cnf.n > max_n:
+        raise ValueError('exhaustive mixed count requires n <= max_n')
+    total = 0
+    for mask in range(1 << cnf.n):
+        assignment = {v: bool((mask >> (v - 1)) & 1) for v in range(1, cnf.n + 1)}
+        if xor_assignment_satisfied(equations, assignment) and cnf.evaluate(assignment):
+            total += 1
+    return total
+
+
+def reference_mixed_count(
+    cnf: CNF,
+    equations: tuple[XorEquation, ...],
+    *,
+    max_enum_bits: int = 18,
+    exhaustive_max_n: int = 18,
+) -> tuple[int, str]:
+    """Independent reference count for verification."""
+    if cnf.n <= exhaustive_max_n:
+        return exhaustive_mixed_count(cnf, equations, max_n=exhaustive_max_n), 'EXHAUSTIVE_MIXED'
+    report = count_mixed_xor_cnf(cnf, equations, max_enum_bits=max_enum_bits)
+    return int(report['count']), 'MIXED_XOR_CONDITIONING'
 
 
 def count_mixed_xor_cnf(

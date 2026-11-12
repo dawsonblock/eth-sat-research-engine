@@ -145,33 +145,68 @@ def structure_with_optional_xor(
                 'pipeline': {'steps': steps, 'complexity_claim': False},
             }
         xor_strategy = kwargs.pop('xor_strategy', 'auto')
+        max_enum = int(kwargs.pop('max_xor_enum_bits', 18))
+        verify_direct = kwargs.pop('verify_direct', cnf.n <= 18)
+
+        def _mixed_reference():
+            from veritas.research.gf2_xor_mixed import reference_mixed_count
+
+            return reference_mixed_count(
+                cnf, xor_equations, max_enum_bits=max_enum, exhaustive_max_n=18
+            )
+
+        def _verify_count(claimed: str) -> tuple[bool, dict | None]:
+            if not verify_direct:
+                return False, None
+            try:
+                ref, engine = _mixed_reference()
+            except ValueError as exc:
+                return False, {'reference_unavailable': str(exc)}
+            return str(claimed) == str(ref), {
+                'reference_count': str(ref),
+                'reference_engine': engine,
+                'matches_reference': str(claimed) == str(ref),
+            }
+
         if xor_strategy in ('auto', 'substitute'):
             from veritas.research.gf2_xor_substitute import try_xor_algebraic_reduce
 
             algebraic = try_xor_algebraic_reduce(
-                cnf, xor_equations, inner_count=inner_count, **dict(kwargs)
+                cnf, xor_equations, inner_count=inner_count, max_xor_enum_bits=max_enum, **dict(kwargs)
             )
             if algebraic is not None and (
                 xor_strategy == 'substitute'
                 or algebraic.get('substitute_report', {}).get('changed')
             ):
-                steps.append({'stage': 'xor_substitute', 'report': algebraic.get('substitute_report')})
-                algebraic.setdefault('formula_sha256', original_digest)
-                algebraic.setdefault('pipeline', {'steps': steps, 'complexity_claim': False})
-                return algebraic
+                ok, cross = _verify_count(str(algebraic['count']))
+                if ok:
+                    steps.append({'stage': 'xor_substitute', 'report': algebraic.get('substitute_report')})
+                    algebraic.setdefault('formula_sha256', original_digest)
+                    algebraic.setdefault('pipeline', {'steps': steps, 'complexity_claim': False})
+                    algebraic['structure'] = {
+                        'decomposed': False,
+                        'cross_check': cross,
+                        'warning': None,
+                    }
+                    algebraic['independent_count_checked'] = True
+                    return algebraic
+                steps.append(
+                    {
+                        'stage': 'xor_substitute_rejected',
+                        'report': {
+                            'substitute_report': algebraic.get('substitute_report'),
+                            'cross_check': cross,
+                            'reason': 'COUNT_MISMATCH_WITH_XOR_REFERENCE',
+                        },
+                    }
+                )
+                if xor_strategy == 'substitute':
+                    raise ValueError('algebraic XOR substitute count failed independent verification')
         from veritas.research.gf2_xor_mixed import count_mixed_xor_cnf
 
-        max_enum = int(kwargs.pop('max_xor_enum_bits', 18))
-        verify_direct = kwargs.pop('verify_direct', cnf.n <= 18)
         mixed = count_mixed_xor_cnf(cnf, xor_equations, max_enum_bits=max_enum)
         steps.append({'stage': 'xor_mixed_conditioning', 'report': mixed})
-        cross = None
-        if verify_direct:
-            direct = structure_aware_count(cnf, inner_count=inner_count, preprocess=False, **kwargs)
-            cross = {
-                'direct_count': direct.get('count'),
-                'matches_direct': str(mixed['count']) == str(direct.get('count')),
-            }
+        ok, cross = _verify_count(str(mixed['count']))
         return {
             'status': 'EXACT_COUNT',
             'count': str(mixed['count']),
@@ -183,7 +218,7 @@ def structure_with_optional_xor(
                 'cross_check': cross,
                 'warning': 'Mixed count uses xor null-space enumeration, not algebraic CNF elimination.',
             },
-            'independent_count_checked': cross['matches_direct'] if cross else False,
+            'independent_count_checked': ok,
         }
     out = structure_aware_count(cnf, inner_count=inner_count, preprocess=False, **kwargs)
     out['formula_sha256'] = original_digest

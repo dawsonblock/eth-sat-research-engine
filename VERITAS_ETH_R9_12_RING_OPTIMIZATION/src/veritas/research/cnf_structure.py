@@ -99,6 +99,8 @@ def structure_aware_count(
     from veritas.research.hybrid_router import hybrid_count
 
     counter = hybrid_count if inner_count is None else inner_count
+    for _xor_key in ('xor_strategy', 'max_xor_enum_bits'):
+        kwargs.pop(_xor_key, None)
     verify_direct = kwargs.pop('verify_direct', cnf.n <= 18)
     report = analyze_cnf_structure(cnf)
     needs_split = report.component_count > 1 or any(c.clause_count == 0 for c in report.components)

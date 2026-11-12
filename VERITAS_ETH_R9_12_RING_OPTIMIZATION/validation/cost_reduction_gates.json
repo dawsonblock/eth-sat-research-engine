@@ -36,9 +36,9 @@
     "subexponential_runtime_proven": false
   },
   "xor_algebraic_substitute": {
-    "binary_substitute_changed": true,
+    "binary_substitute_changed": false,
     "matches_three": true,
     "pipeline_count": "3",
-    "reduced_n": 2
+    "reduced_n": 3
   }
 }

@@ -3,7 +3,7 @@ from veritas.research.gf2_xor_count import XorEquation, structure_with_optional_
 from veritas.research.gf2_xor_substitute import substitute_binary_xor, try_xor_algebraic_reduce
 
 def test_binary_substitute_reindexes():
-    cnf = CNF.from_lists(3, [[2, 3]])
+    cnf = CNF.from_lists(3, [[1, 3]])
     eqs = (XorEquation((1, 2), 1),)
     reduced, eqs2, sub = substitute_binary_xor(cnf, eqs)
     assert sub['changed'] and reduced.n == 2
@@ -19,7 +19,7 @@ def test_auto_pipeline_matches_exhaustive():
 
 
 def test_algebraic_reduce_explicit():
-    cnf = CNF.from_lists(3, [[2, 3]])
+    cnf = CNF.from_lists(3, [[1, 3]])
     out = try_xor_algebraic_reduce(cnf, (XorEquation((1, 2), 1),))
     assert out is not None
     assert int(out['count']) == 3

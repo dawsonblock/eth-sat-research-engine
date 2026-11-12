@@ -25,6 +25,14 @@ def test_enum_budget_exceeded():
         count_mixed_xor_cnf(cnf, eqs, max_enum_bits=18)
 
 
+def test_mixed_matches_exhaustive_on_xor_chain():
+    cnf = CNF.from_lists(3, [[3]])
+    eqs = (XorEquation((1, 2), 1), XorEquation((2, 3), 0))
+    from veritas.research.gf2_xor_mixed import exhaustive_mixed_count
+
+    assert count_mixed_xor_cnf(cnf, eqs)['count'] == exhaustive_mixed_count(cnf, eqs)
+
+
 def test_inconsistent_mixed_is_zero():
     eqs = (XorEquation((1,), 0), XorEquation((1,), 1))
     cnf = CNF.from_lists(2, [[1, 2]])
