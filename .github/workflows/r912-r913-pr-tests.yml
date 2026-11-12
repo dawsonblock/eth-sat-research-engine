@@ -36,6 +36,7 @@ jobs:
             tests/test_coefficient_separator.py \
             tests/test_sat_universal.py \
             tests/test_sat_phase_c.py \
+            tests/test_sat_phase_c_r94.py \
             tests/test_sat_baselines.py \
             tests/test_sat_cross_checks.py \
             tests/test_sat_micro_benchmark.py

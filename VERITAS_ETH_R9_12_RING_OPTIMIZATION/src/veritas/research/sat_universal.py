@@ -43,11 +43,11 @@ from veritas.research.sat_interaction_pins import (
     load_pinned_interaction_96_parent,
 )
 from veritas.research.sat_external_baselines import run_baseline_matrix
+from veritas.research.sat_phase_c_r94_lane import run_phase_c_outer_reduction
 from veritas.research.sat_phase_c_reduction import (
     DEFAULT_PHASE_C_BOUNDS,
     PhaseCBounds,
     phase_c_refusal_if_out_of_bounds,
-    plan_primal_component_split,
 )
 from veritas.research.source_cnf_check import check_source_cnf_network
 from veritas.solvers.reference import solve
@@ -379,7 +379,7 @@ def run_universal_sat(
         phase_c_summary = {**refusal, "schema": "VERITAS_PHASE_C_STAGE_V1"}
     elif encoded is not None and (reduction_summary.get("structural_check") or {}).get("valid"):
         try:
-            split_summary, split_ledger = plan_primal_component_split(
+            split_summary, split_ledger = run_phase_c_outer_reduction(
                 cnf,
                 encoded,
                 bounds=phase_c_bounds,

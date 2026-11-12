@@ -1,5 +1,6 @@
 """Phase C outer-reduction scaffold."""
 from veritas.core.cnf import CNF
+from veritas.research.sat_phase_c_r94_lane import primal_component_partition_certificate
 from veritas.research.sat_phase_c_reduction import (
     PhaseCBounds,
     phase_c_refusal_if_out_of_bounds,
@@ -42,8 +43,14 @@ def test_universal_run_includes_phase_c_split():
 def test_recombined_count_matches_exhaustive_on_disconnected():
     cnf = CNF.from_lists(4, [[1, 2], [3, -4]])
     encoded = source_cnf_network(cnf, max_clause_width=3, max_wires=10_000, max_factors=10_000)
+    cert = primal_component_partition_certificate(cnf)
     summary, _ = plan_primal_component_split(
-        cnf, encoded, bounds=PhaseCBounds(), w_old=16, task="count"
+        cnf,
+        encoded,
+        bounds=PhaseCBounds(),
+        w_old=16,
+        task="count",
+        partition_certificate=cert,
     )
     assert summary["q"] == 2
     expected = exhaustive_count(cnf)

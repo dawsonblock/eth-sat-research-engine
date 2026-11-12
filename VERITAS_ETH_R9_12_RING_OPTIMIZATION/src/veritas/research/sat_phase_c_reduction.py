@@ -7,7 +7,7 @@ not prove count preservation or uniform (q, ρ) for arbitrary density.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Literal, Optional
+from typing import Any, Literal, Optional
 
 from veritas.core.cnf import CNF
 from veritas.research.adaptive_contract import adaptive_count
@@ -160,6 +160,7 @@ def plan_primal_component_split(
     bounds: PhaseCBounds = DEFAULT_PHASE_C_BOUNDS,
     w_old: int,
     task: Literal["count", "decision"] = "count",
+    partition_certificate: Optional[dict[str, Any]] = None,
 ) -> tuple[dict, Optional[DecompositionWorkLedger]]:
     """Split disconnected CNF components; solve each child and log actual work."""
     admit_phase_c_class(cnf, bounds)
@@ -174,6 +175,10 @@ def plan_primal_component_split(
     comps = components(graph)
     if len(comps) > bounds.max_components:
         raise ValueError(f"component count {len(comps)} exceeds max_components")
+
+    if partition_certificate is None:
+        partition_certificate = {"valid": False, "reason": "certificate_not_supplied"}
+    partition_proved = bool(partition_certificate.get("valid"))
 
     child_works: list[int] = []
     child_specs = []
@@ -195,7 +200,12 @@ def plan_primal_component_split(
                 "w_child_proxy": w_proxy,
                 "w_child_actual": w_actual,
                 "child_solve": solved,
-                "count_preserving_reduction_proved": False,
+                "count_preserving_reduction_proved": partition_proved and task == "count",
+                "count_invariant": (
+                    "PRODUCT_OVER_PRIMAL_COMPONENTS"
+                    if partition_proved and task == "count"
+                    else None
+                ),
             }
         )
 
@@ -222,7 +232,10 @@ def plan_primal_component_split(
             "q": len(comps),
             "bounds": bounds.to_dict(),
             "children": child_specs,
-            "outer_reduction_r94": "NOT_IMPLEMENTED",
+            "outer_reduction_r94": (
+                "PARTIAL_PRIMAL_PRODUCT" if partition_proved else "NOT_IMPLEMENTED"
+            ),
+            "partition_certificate_valid": partition_proved,
             "task": task,
             "recombined_rule": recombined_rule,
             "qualification": "primal_split_with_component_exact_solves_scaffold",
@@ -243,6 +256,7 @@ def plan_primal_component_split(
         ),
         "bounds": bounds.to_dict(),
         "theorem_backed": False,
+        "partition_certificate_valid": partition_proved,
     }
     return summary, ledger
 

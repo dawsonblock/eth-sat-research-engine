@@ -43,7 +43,13 @@ def cross_check_phase_c_vs_direct(
                 "phase_c_count": phase_count,
                 "direct_count": direct_count,
                 "agreement": agreement,
-                "qualification": "scaffold_independent_components_only",
+                "qualification": phase_c_split.get("qualification")
+                or "scaffold_independent_components_only",
+                "count_invariant": phase_c_split.get("count_invariant"),
+                "partition_certificate_valid": phase_c_split.get(
+                    "partition_certificate_valid"
+                )
+                or (phase_c_split.get("partition_certificate") or {}).get("valid"),
             }
         )
     else:

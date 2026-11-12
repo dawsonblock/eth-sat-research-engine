@@ -185,8 +185,10 @@ satisfy the engineering requirement.
 2b. ~~E1 reduction-first CLI scaffold~~ **Done** — `run_universal_sat` + `scripts/sat_universal_cli.py`; see `tests/test_sat_universal.py`.
 3. Keep `fast_universal_parent_jet_solve` behind `finite_scaled_experiment` +
    layout certificates (E4).
-4. Open Lean/Python checklist items from `docs/R9_2_R9_4_PROOF_OBLIGATIONS.md` for
-   outer reduction (Phase C).
+4. ~~Partial Phase C outer reduction scaffold~~ **In progress** —
+   `sat_phase_c_r94_lane.py`: COPY3 encode metadata + primal partition certificate
+   (`PRODUCT_OVER_PRIMAL_COMPONENTS` within caps). Sparsification / arbitrary-density
+   theorem still open — see `docs/R9_2_R9_4_PROOF_OBLIGATIONS.md`.
 
 ---
 
