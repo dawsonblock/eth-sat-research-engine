@@ -157,7 +157,7 @@ Code hook: `veritas.research.sat_work_accounting.DecompositionWorkLedger`.
 | ID | Deliverable | Acceptance |
 |----|-------------|------------|
 | E1 | `sat_universal_cli` — single entry, mode=`decision|count`, emits ledger JSON | **Scaffold:** `sat_universal.py` + `scripts/sat_universal_cli.py`; no silent fallbacks |
-| E2 | Baseline matrix (pinned versions, seeds, timeouts) | **Scaffold:** `sat_external_baselines.py`, `scripts/sat_baseline_matrix.py`; external SKIPPED if absent |
+| E2 | Baseline matrix (pinned versions, seeds, timeouts) | **Scaffold + CI:** CaDiCaL `rel-2.1.2` job `e2-external-baseline`; Kissat still PATH-optional |
 | E3 | Extend `DecompositionWorkLedger` through R9.10 recursive `contract` | **Done (scaffold):** each support-term child product logs ledger + stream event |
 | E4 | Jet-point fast path **only** when certificate says `bounded_interaction` | Refuse otherwise |
 | E5 | Document refusal vs speedup in user-facing API | Matches R912 preflight semantics |
