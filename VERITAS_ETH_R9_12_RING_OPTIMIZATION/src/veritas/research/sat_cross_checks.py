@@ -71,3 +71,73 @@ def cross_check_phase_c_vs_direct(
         metadata={"phase": "cross_check", **detail},
     )
     return detail, ledger
+
+
+def cross_check_source_finite_vs_direct(
+    *,
+    source_finite: dict[str, Any],
+    direct_result: dict[str, Any],
+    w_old: int,
+) -> tuple[dict[str, Any], Optional[DecompositionWorkLedger]]:
+    """Compare optional source finite count lane to direct exact fallback."""
+    src_status = source_finite.get("status")
+    direct_count = direct_result.get("count")
+    agreement = False
+    detail: dict[str, Any] = {
+        "schema": "VERITAS_SOURCE_FINITE_CROSS_CHECK_V1",
+        "source_status": src_status,
+    }
+    if src_status in ("SKIPPED", "REFUSED") or direct_count is None:
+        detail.update(
+            {
+                "status": "SKIPPED",
+                "reason": "lane_not_applicable",
+                "agreement": None,
+            }
+        )
+        return detail, None
+    if src_status == "EXACT_COUNT_FINITE":
+        src_count = source_finite.get("count")
+        if src_count is not None:
+            agreement = int(src_count) == int(direct_count)
+        detail.update(
+            {
+                "status": "COUNT_COMPARE",
+                "source_count": src_count,
+                "direct_count": direct_count,
+                "agreement": agreement,
+                "qualification": "finite_tapered_lane_not_r94_theorem",
+            }
+        )
+    else:
+        detail.update(
+            {
+                "status": "INCONCLUSIVE",
+                "source_count": source_finite.get("count"),
+                "direct_count": direct_count,
+                "agreement": None,
+                "reason": source_finite.get("reason"),
+            }
+        )
+    w_check = 1 if agreement else 2
+    ledger = DecompositionWorkLedger(
+        name="source_finite_vs_direct_cross_check",
+        w_old=w_old,
+        w_transform=0,
+        child_works=(),
+        w_reconstruct=0,
+        w_check=w_check,
+        metadata={"phase": "cross_check", **detail},
+    )
+    return detail, ledger
+
+
+def combine_cross_check_agreement(*details: dict[str, Any]) -> bool | None:
+    flags = [
+        bool(d["agreement"])
+        for d in details
+        if isinstance(d.get("agreement"), bool)
+    ]
+    if not flags:
+        return None
+    return all(flags)

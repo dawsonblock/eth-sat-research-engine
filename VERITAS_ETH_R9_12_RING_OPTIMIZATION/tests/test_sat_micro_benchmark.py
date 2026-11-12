@@ -31,6 +31,9 @@ def test_count_run_exposes_ledger_totals_and_source_lane():
     assert report["ledger_totals"]["w_total_reported"] == report["decomposition_work"][
         "w_total_reported"
     ]
+    sf = report["cross_checks"]["source_finite_vs_direct"]
+    if sf.get("status") == "COUNT_COMPARE":
+        assert sf.get("agreement") in (True, False)
     src = report["reduction"]["source_finite_count"]
     assert src["status"] in (
         "EXACT_COUNT_FINITE",

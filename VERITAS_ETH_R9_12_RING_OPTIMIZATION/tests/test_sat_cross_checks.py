@@ -26,3 +26,15 @@ def test_cross_check_count_agreement():
     assert detail["agreement"] is True
     assert ledger is not None
     assert ledger.name == "phase_c_vs_direct_cross_check"
+
+
+def test_source_finite_cross_check_agreement():
+    from veritas.research.sat_cross_checks import cross_check_source_finite_vs_direct
+
+    detail, ledger = cross_check_source_finite_vs_direct(
+        source_finite={"status": "EXACT_COUNT_FINITE", "count": 6},
+        direct_result={"count": "6"},
+        w_old=16,
+    )
+    assert detail["agreement"] is True
+    assert ledger is not None

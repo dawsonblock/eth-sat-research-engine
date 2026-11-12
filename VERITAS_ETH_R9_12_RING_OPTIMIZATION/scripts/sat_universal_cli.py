@@ -63,7 +63,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--interaction-cert",
         metavar="ID",
-        help="Optional E4 certificate (e.g. interaction_96); diagnostic only today",
+        help="Optional E4 certificate (e.g. interaction_96); digest-gated jet diagnostic",
+    )
+    parser.add_argument(
+        "--jet-diagnostic-fixture",
+        action="store_true",
+        help="Run interaction-96 fast jet on pinned fixture when cert present (not input CNF)",
     )
     parser.add_argument(
         "--fail-on-reduction",
@@ -125,6 +130,7 @@ def main(argv: list[str] | None = None) -> int:
                 max_clauses=args.max_clauses,
             ),
             include_baseline_matrix=args.baseline_matrix,
+            jet_diagnostic_fixture=args.jet_diagnostic_fixture,
         )
     except (ValueError, OSError) as exc:
         print(json.dumps({"schema": "VERITAS_SAT_UNIVERSAL_RUN_V1", "status": "REFUSED", "reason": str(exc)}), file=sys.stderr)

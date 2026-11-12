@@ -32,7 +32,16 @@ from veritas.research.sat_cnf_parent_bridge import (
     ParentBridgeBounds,
     build_parent_call_from_encoded_cnf,
 )
-from veritas.research.sat_cross_checks import cross_check_phase_c_vs_direct
+from veritas.research.sat_cross_checks import (
+    combine_cross_check_agreement,
+    cross_check_phase_c_vs_direct,
+    cross_check_source_finite_vs_direct,
+)
+from veritas.research.sat_interaction_pins import (
+    INTERACTION_96_PARENT_DIGEST,
+    interaction_96_layout_and_budget,
+    load_pinned_interaction_96_parent,
+)
 from veritas.research.sat_external_baselines import run_baseline_matrix
 from veritas.research.sat_phase_c_reduction import (
     DEFAULT_PHASE_C_BOUNDS,
@@ -179,9 +188,13 @@ def structural_check_reduction(
 def attempt_jet_fast_path(
     *,
     interaction_cert: Optional[BoundedInteractionCertificate],
+    parent_bridge: dict[str, Any],
     w_old: int,
+    jet_diagnostic_fixture: bool = False,
 ) -> tuple[dict[str, Any], DecompositionWorkLedger]:
-    """E4: jet parent–child product only with explicit interaction certificate."""
+    """E4: jet parent–child product only with cert + digest gate (or fixture diagnostic)."""
+    bridge_digest = parent_bridge.get("content_digest")
+    digest_match = bridge_digest == INTERACTION_96_PARENT_DIGEST
     if interaction_cert is None:
         detail = {
             "status": "REFUSED",
@@ -195,15 +208,49 @@ def attempt_jet_fast_path(
             "reason": "unknown_interaction_fixture",
             "lane": "jet_parent_child_product",
         }
-    else:
+    elif not digest_match and not jet_diagnostic_fixture:
         detail = {
-            "status": "SKIPPED_DIAGNOSTIC_ONLY",
-            "reason": "certificate_present_but_cnf_parent_map_not_wired",
+            "status": "REFUSED",
+            "reason": "parent_digest_mismatch",
             "lane": "jet_parent_child_product",
-            "certificate": interaction_cert.to_dict(),
-            "qualification": interaction_cert.qualification,
-            "note": "Supply interaction parent JSON in a future flag; no CNF speedup yet.",
+            "bridge_digest": bridge_digest,
+            "pinned_digest": INTERACTION_96_PARENT_DIGEST,
+            "note": "Jet diagnostic allowed only when bridge matches pinned interaction parent.",
         }
+    else:
+        try:
+            import time
+            from veritas.research.parent_child_r913.fast_universal_solver import (
+                fast_universal_parent_jet_solve,
+            )
+
+            t0 = time.perf_counter()
+            parent = load_pinned_interaction_96_parent()
+            layout, budget = interaction_96_layout_and_budget(parent)
+            solved = fast_universal_parent_jet_solve(
+                parent, layout, budget=budget, point_index=1
+            )
+            elapsed = time.perf_counter() - t0
+            detail = {
+                "status": "DIAGNOSTIC_FAST_JET_RAN",
+                "lane": "jet_parent_child_product",
+                "certificate": interaction_cert.to_dict(),
+                "digest_gate": "match" if digest_match else "fixture_override",
+                "reconstruction_equals_oracle": solved.reconstruction_equals_oracle,
+                "child_group_count": solved.child_group_count,
+                "elapsed_seconds": elapsed,
+                "qualification": (
+                    "interaction_fixture_only; does_not_answer_input_cnf; "
+                    "not_universal_speedup"
+                ),
+            }
+        except (ValueError, TypeError, OSError, RuntimeError, ArithmeticError) as exc:
+            detail = {
+                "status": "REFUSED",
+                "reason": str(exc),
+                "lane": "jet_parent_child_product",
+                "digest_gate": "match" if digest_match else "fixture_override",
+            }
     ledger = DecompositionWorkLedger(
         name="jet_fast_parent_coefficient",
         w_old=w_old,
@@ -288,6 +335,7 @@ def run_universal_sat(
     parent_bridge_bounds: ParentBridgeBounds = DEFAULT_PARENT_BRIDGE_BOUNDS,
     include_baseline_matrix: bool = False,
     baseline_task: Literal["decision", "count"] | None = None,
+    jet_diagnostic_fixture: bool = False,
 ) -> dict[str, Any]:
     """Run reduction-first pipeline; always ends in an explicit exact fallback lane."""
     if isinstance(mode, str):
@@ -385,8 +433,12 @@ def run_universal_sat(
         }
         reduction_summary["source_finite_count"] = source_finite_detail
 
+    parent_bridge_snapshot = reduction_summary.get("parent_call_bridge") or {}
     jet_detail, jet_ledger = attempt_jet_fast_path(
-        interaction_cert=interaction_cert, w_old=w_old
+        interaction_cert=interaction_cert,
+        parent_bridge=parent_bridge_snapshot,
+        w_old=w_old,
+        jet_diagnostic_fixture=jet_diagnostic_fixture,
     )
     ledgers.append(jet_ledger)
 
@@ -409,6 +461,18 @@ def run_universal_sat(
     if cross_ledger is not None:
         ledgers.append(cross_ledger)
 
+    source_cross_detail, source_cross_ledger = cross_check_source_finite_vs_direct(
+        source_finite=source_finite_detail,
+        direct_result=solve_out,
+        w_old=w_old,
+    )
+    if source_cross_ledger is not None:
+        ledgers.append(source_cross_ledger)
+
+    combined_agreement = combine_cross_check_agreement(
+        cross_detail, source_cross_detail
+    )
+
     ledger_json = aggregate_ledger(ledgers)
     totals = ledger_totals_summary(ledger_json)
 
@@ -426,7 +490,12 @@ def run_universal_sat(
         "reduction": reduction_summary,
         "jet_fast_path": jet_detail,
         "result": solve_out,
-        "cross_checks": cross_detail,
+        "cross_checks": {
+            "schema": "VERITAS_SAT_CROSS_CHECKS_V1",
+            "phase_c_vs_direct": cross_detail,
+            "source_finite_vs_direct": source_cross_detail,
+            "agreement": combined_agreement,
+        },
         "decomposition_work": ledger_json,
         "ledger_totals": totals,
         "baseline_matrix": baseline_matrix,
