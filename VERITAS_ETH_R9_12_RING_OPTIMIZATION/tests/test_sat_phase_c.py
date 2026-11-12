@@ -6,6 +6,7 @@ from veritas.research.sat_phase_c_reduction import (
     plan_primal_component_split,
 )
 from veritas.research.sat_work_accounting import exponential_width_proxy
+from veritas.solvers.reference import exhaustive_count
 from veritas.research.sat_universal import run_universal_sat
 from veritas.research.source_cnf import source_cnf_network
 
@@ -36,3 +37,27 @@ def test_universal_run_includes_phase_c_split():
     assert split["q"] >= 1
     names = [s["name"] for s in report["decomposition_work"]["steps"]]
     assert "phase_c_primal_component_split" in names
+
+
+def test_recombined_count_matches_exhaustive_on_disconnected():
+    cnf = CNF.from_lists(4, [[1, 2], [3, -4]])
+    encoded = source_cnf_network(cnf, max_clause_width=3, max_wires=10_000, max_factors=10_000)
+    summary, _ = plan_primal_component_split(
+        cnf, encoded, bounds=PhaseCBounds(), w_old=16, task="count"
+    )
+    assert summary["q"] == 2
+    expected = exhaustive_count(cnf)
+    assert summary["recombined"]["count"] == expected
+    for child in summary["components"]:
+        assert child["child_solve"]["engine"] == "exhaustive_oracle"
+        assert child["w_child_actual"] > 0
+
+
+def test_recombined_decision_sat_when_both_components_sat():
+    cnf = CNF.from_lists(4, [[1], [3]])
+    encoded = source_cnf_network(cnf, max_clause_width=3, max_wires=10_000, max_factors=10_000)
+    summary, ledger = plan_primal_component_split(
+        cnf, encoded, bounds=PhaseCBounds(), w_old=16, task="decision"
+    )
+    assert summary["recombined"]["status"] == "SAT"
+    assert ledger.w_reconstruct == sum(ledger.child_works)

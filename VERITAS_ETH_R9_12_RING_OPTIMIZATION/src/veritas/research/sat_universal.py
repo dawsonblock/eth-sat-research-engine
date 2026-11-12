@@ -323,7 +323,11 @@ def run_universal_sat(
     elif encoded is not None and (reduction_summary.get("structural_check") or {}).get("valid"):
         try:
             split_summary, split_ledger = plan_primal_component_split(
-                cnf, encoded, bounds=phase_c_bounds, w_old=w_old
+                cnf,
+                encoded,
+                bounds=phase_c_bounds,
+                w_old=w_old,
+                task="count" if mode is UniversalSatMode.COUNT else "decision",
             )
             ledgers.append(split_ledger)
             phase_c_summary = split_summary

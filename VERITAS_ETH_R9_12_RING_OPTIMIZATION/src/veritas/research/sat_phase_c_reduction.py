@@ -7,12 +7,14 @@ not prove count preservation or uniform (q, ρ) for arbitrary density.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional, Tuple
+from typing import Literal, Optional
 
 from veritas.core.cnf import CNF
+from veritas.research.adaptive_contract import adaptive_count
 from veritas.research.graph_decomposition import components
 from veritas.research.sat_work_accounting import DecompositionWorkLedger, exponential_width_proxy
 from veritas.research.source_cnf import SourceCNFNetwork
+from veritas.solvers.reference import exhaustive_count, solve
 
 
 @dataclass(frozen=True)
@@ -24,6 +26,9 @@ class PhaseCBounds:
     max_encoded_edges: int = 50_000
     max_encoded_factors: int = 100_000
     max_components: int = 32
+    max_exhaustive_vars_per_component: int = 16
+    component_timeout_s: float = 4.0
+    component_max_nodes: int = 80_000
 
     def to_dict(self) -> dict:
         return {
@@ -32,6 +37,9 @@ class PhaseCBounds:
             "max_encoded_edges": self.max_encoded_edges,
             "max_encoded_factors": self.max_encoded_factors,
             "max_components": self.max_components,
+            "max_exhaustive_vars_per_component": self.max_exhaustive_vars_per_component,
+            "component_timeout_s": self.component_timeout_s,
+            "component_max_nodes": self.component_max_nodes,
         }
 
 
@@ -64,14 +72,96 @@ def _clauses_in_variable_set(cnf: CNF, variables: frozenset[int]) -> tuple[tuple
     return tuple(out)
 
 
+def _component_local_cnf(cnf: CNF, comp: tuple[int, ...]) -> CNF:
+    var_set = frozenset(comp)
+    sub_clauses = _clauses_in_variable_set(cnf, var_set)
+    if not comp:
+        return CNF(0, ())
+    order = tuple(sorted(comp))
+    remap = {v: i + 1 for i, v in enumerate(order)}
+    local = tuple(
+        tuple(remap[abs(lit)] if lit > 0 else -remap[abs(lit)] for lit in clause)
+        for clause in sub_clauses
+    )
+    return CNF(len(order), local)
+
+
+def _count_component(
+    sub: CNF,
+    bounds: PhaseCBounds,
+    *,
+    task: Literal["count", "decision"],
+) -> dict:
+    """Exact child solve on a local sub-CNF (scaffold; not R9.4)."""
+    if task == "decision":
+        result = solve(
+            sub,
+            count=False,
+            timeout_s=min(bounds.component_timeout_s, 30.0),
+            max_nodes=bounds.component_max_nodes,
+        )
+        w_actual = result.nodes
+        return {
+            "task": "decision",
+            "status": result.status,
+            "model": result.model,
+            "count": None,
+            "w_child_actual": w_actual,
+            "engine": "veritas_reference",
+        }
+    if sub.n <= bounds.max_exhaustive_vars_per_component:
+        count = exhaustive_count(sub)
+        w_actual = 1 << sub.n
+        return {
+            "task": "count",
+            "status": "EXACT_COUNT",
+            "count": count,
+            "w_child_actual": w_actual,
+            "engine": "exhaustive_oracle",
+        }
+    out = adaptive_count(sub, timeout_s=min(bounds.component_timeout_s, 60.0))
+    exec_stats = out.get("execution") or {}
+    w_actual = int(
+        exec_stats.get("work_assignments", 0) or exec_stats.get("nodes", 0) or 1
+    )
+    return {
+        "task": "count",
+        "status": out.get("status"),
+        "count": int(out["count"]) if out.get("count") is not None else None,
+        "w_child_actual": w_actual,
+        "engine": out.get("engine"),
+    }
+
+
+def _recombine_count(child_results: list[dict]) -> tuple[Optional[int], str]:
+    product = 1
+    for row in child_results:
+        if row.get("status") not in ("EXACT_COUNT", "COUNT_RESIDUE"):
+            return None, "incomplete_child_counts"
+        c = row.get("count")
+        if c is None:
+            return None, "missing_child_count"
+        product *= int(c)
+    return product, "product_of_independent_components_scaffold"
+
+
+def _recombine_decision(child_results: list[dict]) -> tuple[str, str]:
+    if any(row.get("status") == "UNSAT" for row in child_results):
+        return "UNSAT", "component_unsat"
+    if all(row.get("status") == "SAT" for row in child_results):
+        return "SAT", "all_components_sat"
+    return "UNKNOWN", "incomplete_child_decision"
+
+
 def plan_primal_component_split(
     cnf: CNF,
     encoded: Optional[SourceCNFNetwork],
     *,
     bounds: PhaseCBounds = DEFAULT_PHASE_C_BOUNDS,
     w_old: int,
+    task: Literal["count", "decision"] = "count",
 ) -> tuple[dict, Optional[DecompositionWorkLedger]]:
-    """Split disconnected CNF components; ledger child works are width proxies only."""
+    """Split disconnected CNF components; solve each child and log actual work."""
     admit_phase_c_class(cnf, bounds)
     if encoded is not None:
         net = encoded.network
@@ -87,23 +177,37 @@ def plan_primal_component_split(
 
     child_works: list[int] = []
     child_specs = []
+    child_results: list[dict] = []
     for comp in comps:
         var_set = frozenset(comp)
         sub_clauses = _clauses_in_variable_set(cnf, var_set)
-        # Work proxy: exponential in |comp|, capped like global ledger convention.
-        w_child = exponential_width_proxy(min(len(comp), 24))
-        child_works.append(w_child)
+        sub = _component_local_cnf(cnf, comp)
+        w_proxy = exponential_width_proxy(min(len(comp), 24))
+        solved = _count_component(sub, bounds, task=task)
+        w_actual = int(solved.get("w_child_actual") or w_proxy)
+        child_works.append(w_actual)
+        child_results.append(solved)
         child_specs.append(
             {
                 "variables": list(comp),
                 "clause_count": len(sub_clauses),
-                "w_child_proxy": w_child,
+                "local_n": sub.n,
+                "w_child_proxy": w_proxy,
+                "w_child_actual": w_actual,
+                "child_solve": solved,
                 "count_preserving_reduction_proved": False,
             }
         )
 
-    w_transform = len(comps)  # bookkeeping split overhead proxy
-    w_reconstruct = len(comps)  # recombine / multiply counts proxy (not implemented)
+    if task == "count":
+        recombined_value, recombined_rule = _recombine_count(child_results)
+    else:
+        status, recombined_rule = _recombine_decision(child_results)
+        recombined_value = None
+        recombined_status = status
+
+    w_transform = len(comps)
+    w_reconstruct = sum(child_works)
     w_check = len(comps)
 
     ledger = DecompositionWorkLedger(
@@ -119,16 +223,24 @@ def plan_primal_component_split(
             "bounds": bounds.to_dict(),
             "children": child_specs,
             "outer_reduction_r94": "NOT_IMPLEMENTED",
-            "qualification": "primal_split_work_proxy_only",
+            "task": task,
+            "recombined_rule": recombined_rule,
+            "qualification": "primal_split_with_component_exact_solves_scaffold",
         },
     )
     summary = {
         "schema": "VERITAS_PHASE_C_SPLIT_V1",
         "status": "SCAFFOLD_COMPONENT_SPLIT",
+        "task": task,
         "q": len(comps),
         "components": child_specs,
         "w_new_proxy": ledger.w_new,
         "speedup_ratio_proxy": ledger.speedup_ratio(),
+        "recombined": (
+            {"count": recombined_value, "rule": recombined_rule}
+            if task == "count"
+            else {"status": recombined_status, "rule": recombined_rule}
+        ),
         "bounds": bounds.to_dict(),
         "theorem_backed": False,
     }
