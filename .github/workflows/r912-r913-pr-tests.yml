@@ -34,7 +34,9 @@ jobs:
             tests/test_bench_sat_methods.py \
             tests/test_coefficient_extraction_spec.py \
             tests/test_coefficient_separator.py \
-            tests/test_sat_universal.py
+            tests/test_sat_universal.py \
+            tests/test_sat_phase_c.py \
+            tests/test_sat_baselines.py
       - name: Interaction parent-child proof (fast)
         env:
           PYTHONPATH: src

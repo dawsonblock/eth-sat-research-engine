@@ -25,6 +25,13 @@ from veritas.research.sat_work_accounting import (
     exponential_width_proxy,
 )
 from veritas.research.source_cnf import SourceCNFNetwork, source_cnf_network
+from veritas.research.sat_external_baselines import run_baseline_matrix
+from veritas.research.sat_phase_c_reduction import (
+    DEFAULT_PHASE_C_BOUNDS,
+    PhaseCBounds,
+    phase_c_refusal_if_out_of_bounds,
+    plan_primal_component_split,
+)
 from veritas.research.source_cnf_check import check_source_cnf_network
 from veritas.solvers.reference import solve
 
@@ -269,6 +276,9 @@ def run_universal_sat(
     adaptive_timeout_s: float = 15.0,
     max_nodes: int = 200_000,
     interaction_cert: Optional[BoundedInteractionCertificate] = None,
+    phase_c_bounds: PhaseCBounds = DEFAULT_PHASE_C_BOUNDS,
+    include_baseline_matrix: bool = False,
+    baseline_task: Literal["decision", "count"] | None = None,
 ) -> dict[str, Any]:
     """Run reduction-first pipeline; always ends in an explicit exact fallback lane."""
     if isinstance(mode, str):
@@ -303,6 +313,28 @@ def run_universal_sat(
         if not check.get("valid"):
             reduction_summary["encode"]["status"] = "STRUCTURE_CHECK_FAILED"
 
+    phase_c_summary: dict[str, Any] = {
+        "schema": "VERITAS_PHASE_C_STAGE_V1",
+        "status": "SKIPPED",
+    }
+    refusal = phase_c_refusal_if_out_of_bounds(cnf, phase_c_bounds)
+    if refusal:
+        phase_c_summary = {**refusal, "schema": "VERITAS_PHASE_C_STAGE_V1"}
+    elif encoded is not None and (reduction_summary.get("structural_check") or {}).get("valid"):
+        try:
+            split_summary, split_ledger = plan_primal_component_split(
+                cnf, encoded, bounds=phase_c_bounds, w_old=w_old
+            )
+            ledgers.append(split_ledger)
+            phase_c_summary = split_summary
+        except ValueError as exc:
+            phase_c_summary = {
+                "schema": "VERITAS_PHASE_C_STAGE_V1",
+                "status": "REFUSED",
+                "reason": str(exc),
+            }
+    reduction_summary["phase_c_split"] = phase_c_summary
+
     jet_detail, jet_ledger = attempt_jet_fast_path(
         interaction_cert=interaction_cert, w_old=w_old
     )
@@ -319,6 +351,12 @@ def run_universal_sat(
     ledgers.append(solve_ledger)
 
     ledger_json = aggregate_ledger(ledgers)
+
+    baseline_matrix = None
+    if include_baseline_matrix:
+        task = baseline_task or mode.value
+        baseline_matrix = run_baseline_matrix(cnf, task=task, include_external=True)
+
     return {
         "schema": "VERITAS_SAT_UNIVERSAL_RUN_V1",
         "mode": mode.value,
@@ -329,6 +367,7 @@ def run_universal_sat(
         "jet_fast_path": jet_detail,
         "result": solve_out,
         "decomposition_work": ledger_json,
+        "baseline_matrix": baseline_matrix,
         "source_qualified": False,
         "subexponential_bound_evidence": False,
         "theorem_backed": False,

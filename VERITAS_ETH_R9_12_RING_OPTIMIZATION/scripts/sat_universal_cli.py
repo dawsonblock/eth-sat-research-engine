@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 
 from veritas.core.cnf import CNF
+from veritas.research.sat_phase_c_reduction import PhaseCBounds
 from veritas.research.sat_universal import (
     INTERACTION_96_CERT,
     BoundedInteractionCertificate,
@@ -58,6 +59,23 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Exit 2 if fixed-density encode or structural check fails",
     )
+    parser.add_argument(
+        "--baseline-matrix",
+        action="store_true",
+        help="Attach E2 baseline matrix (reference + optional Kissat/CaDiCaL)",
+    )
+    parser.add_argument(
+        "--max-vars",
+        type=int,
+        default=64,
+        help="Phase C scaffold max variables",
+    )
+    parser.add_argument(
+        "--max-clauses",
+        type=int,
+        default=256,
+        help="Phase C scaffold max clauses",
+    )
     args = parser.parse_args(argv)
 
     try:
@@ -71,6 +89,11 @@ def main(argv: list[str] | None = None) -> int:
             timeout_s=args.timeout_s,
             adaptive_timeout_s=args.adaptive_timeout_s,
             interaction_cert=cert,
+            phase_c_bounds=PhaseCBounds(
+                max_vars=args.max_vars,
+                max_clauses=args.max_clauses,
+            ),
+            include_baseline_matrix=args.baseline_matrix,
         )
     except (ValueError, OSError) as exc:
         print(json.dumps({"schema": "VERITAS_SAT_UNIVERSAL_RUN_V1", "status": "REFUSED", "reason": str(exc)}), file=sys.stderr)
