@@ -25,6 +25,7 @@ from veritas.research.sat_work_accounting import (
     exponential_width_proxy,
 )
 from veritas.research.source_cnf import SourceCNFNetwork, source_cnf_network
+from veritas.research.sat_cross_checks import cross_check_phase_c_vs_direct
 from veritas.research.sat_external_baselines import run_baseline_matrix
 from veritas.research.sat_phase_c_reduction import (
     DEFAULT_PHASE_C_BOUNDS,
@@ -354,6 +355,15 @@ def run_universal_sat(
     )
     ledgers.append(solve_ledger)
 
+    cross_detail, cross_ledger = cross_check_phase_c_vs_direct(
+        mode=mode.value,
+        phase_c_split=phase_c_summary,
+        direct_result=solve_out,
+        w_old=w_old,
+    )
+    if cross_ledger is not None:
+        ledgers.append(cross_ledger)
+
     ledger_json = aggregate_ledger(ledgers)
 
     baseline_matrix = None
@@ -370,6 +380,7 @@ def run_universal_sat(
         "reduction": reduction_summary,
         "jet_fast_path": jet_detail,
         "result": solve_out,
+        "cross_checks": cross_detail,
         "decomposition_work": ledger_json,
         "baseline_matrix": baseline_matrix,
         "source_qualified": False,

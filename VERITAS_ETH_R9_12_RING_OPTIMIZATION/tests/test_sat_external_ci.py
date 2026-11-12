@@ -33,6 +33,23 @@ def test_cadical_agrees_with_veritas_reference():
     os.environ.get("CI") != "true" or shutil.which("cadical") is None,
     reason="records pinned cadical binary only in CI",
 )
+@pytest.mark.skipif(
+    shutil.which("kissat") is None,
+    reason="kissat not on PATH",
+)
+def test_kissat_agrees_with_veritas_reference():
+    cnf = CNF.from_lists(8, [[1, -2], [2, -3], [3, -4], [4, -1]])
+    report = run_baseline_matrix(cnf, task="decision", include_external=True)
+    ref = next(r for r in report["runs"] if r["baseline_id"] == "veritas_reference")
+    kiss = next(r for r in report["runs"] if r["baseline_id"] == "kissat")
+    assert ref["status"] in ("SAT", "UNSAT")
+    assert kiss["status"] == ref["status"]
+
+
+@pytest.mark.skipif(
+    os.environ.get("CI") != "true" or shutil.which("cadical") is None,
+    reason="records pinned cadical binary only in CI",
+)
 def test_ci_cadical_version_probe():
     report = run_baseline_matrix(
         CNF.from_lists(1, [[1]]),

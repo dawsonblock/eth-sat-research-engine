@@ -37,8 +37,8 @@ class PinnedBaselineSpec:
 
 # Document pins; version probe is best-effort at runtime.
 PINNED_DECISION_BASELINES: tuple[PinnedBaselineSpec, ...] = (
-    PinnedBaselineSpec("kissat", "kissat", "sc-2024 / 3.1.1 family", "decision"),
-    PinnedBaselineSpec("cadical", "cadical", "Rel-2.1.0 family", "decision"),
+    PinnedBaselineSpec("cadical", "cadical", "Rel-2.1.2", "decision"),
+    PinnedBaselineSpec("kissat", "kissat", "rel-3.1.1", "decision"),
 )
 
 

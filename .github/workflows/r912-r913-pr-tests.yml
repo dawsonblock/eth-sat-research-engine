@@ -36,7 +36,8 @@ jobs:
             tests/test_coefficient_separator.py \
             tests/test_sat_universal.py \
             tests/test_sat_phase_c.py \
-            tests/test_sat_baselines.py
+            tests/test_sat_baselines.py \
+            tests/test_sat_cross_checks.py
       - name: Interaction parent-child proof (fast)
         env:
           PYTHONPATH: src
@@ -78,14 +79,19 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -q 'setuptools>=68' wheel pytest
-      - name: Build CaDiCaL rel-2.1.2 (pinned E2)
+      - name: Build pinned E2 solvers (CaDiCaL rel-2.1.2, Kissat rel-3.1.1)
         run: |
           curl -sSfL https://github.com/arminbiere/cadical/archive/refs/tags/rel-2.1.2.tar.gz | tar -xz -C /tmp
           cd /tmp/cadical-rel-2.1.2
           ./configure
           make -j2 cadical
-          echo "${PWD}/build" >> "$GITHUB_PATH"
-      - name: E2 external baseline (CaDiCaL)
+          echo "/tmp/cadical-rel-2.1.2/build" >> "$GITHUB_PATH"
+          curl -sSfL https://github.com/arminbiere/kissat/archive/refs/tags/rel-3.1.1.tar.gz | tar -xz -C /tmp
+          cd /tmp/kissat-rel-3.1.1
+          ./configure
+          make -j2 kissat
+          echo "/tmp/kissat-rel-3.1.1/build" >> "$GITHUB_PATH"
+      - name: E2 external baselines
         env:
           PYTHONPATH: src
           CI: true

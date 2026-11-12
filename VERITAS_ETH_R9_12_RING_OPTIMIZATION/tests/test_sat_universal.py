@@ -18,6 +18,7 @@ def test_fixed_density_reduction_valid_on_tiny_3cnf():
     assert chk["valid"] is True
     assert report["jet_fast_path"]["status"] == "REFUSED"
     assert report["result"]["status"] == "SAT"
+    assert report["cross_checks"]["agreement"] is True
 
 
 def test_jet_refused_even_with_interaction_cert_until_parent_map():
@@ -35,6 +36,8 @@ def test_count_lane_matches_exhaustive_on_small_formula():
     report = run_universal_sat(cnf, "count", adaptive_timeout_s=10.0, timeout_s=4.0)
     assert report["result"]["status"] in ("EXACT_COUNT", "COUNT_RESIDUE")
     assert int(report["result"]["count"]) == exhaustive_count(cnf)
+    assert report["cross_checks"]["agreement"] is True
+    assert report["cross_checks"]["phase_c_count"] == exhaustive_count(cnf)
     led = report["decomposition_work"]
     assert led["schema"] == "VERITAS_SAT_WORK_AGGREGATE_V1"
     assert len(led["steps"]) >= 3
