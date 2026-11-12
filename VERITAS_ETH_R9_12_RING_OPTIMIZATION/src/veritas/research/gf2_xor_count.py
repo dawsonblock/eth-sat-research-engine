@@ -175,6 +175,42 @@ def structure_with_optional_xor(
                 'independent_verification': True,
             }
 
+        from veritas.research.gf2_xor_mixed import xor_parametrization
+
+        param_preview = xor_parametrization(xor_equations, cnf.n)
+        free_bits = len(param_preview.free_variables)
+        use_encode = xor_strategy == 'encode' or (
+            xor_strategy == 'auto' and free_bits > max_enum
+        )
+
+        def _finish_encode(encoded: dict) -> dict:
+            ok, cross = _verify_count(str(encoded['count']))
+            steps.append({'stage': 'xor_cnf_encode', 'report': encoded.get('xor_encode')})
+            encoded.update(
+                {
+                    'formula_sha256': original_digest,
+                    'pipeline': {'steps': steps, 'complexity_claim': False},
+                    'structure': {
+                        'decomposed': False,
+                        'cross_check': cross,
+                        'warning': 'Mixed instance reduced to CNF with Tseitin auxiliaries.',
+                    },
+                    'independent_count_checked': bool(
+                        cross and cross.get('independent_verification')
+                    ),
+                }
+            )
+            return encoded
+
+        if use_encode:
+            from veritas.research.gf2_xor_encode import count_via_xor_encoding
+
+            return _finish_encode(
+                count_via_xor_encoding(
+                    cnf, xor_equations, inner_count=inner_count, **dict(kwargs)
+                )
+            )
+
         if xor_strategy in ('auto', 'substitute'):
             from veritas.research.gf2_xor_substitute import try_xor_algebraic_reduce
 

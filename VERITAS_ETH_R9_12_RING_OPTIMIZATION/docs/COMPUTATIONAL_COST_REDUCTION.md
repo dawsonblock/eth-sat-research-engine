@@ -19,6 +19,7 @@ subexponential construction or claim any new complexity theorem.
 | 3e | `veritas.research.gf2_xor_mixed` | Mixed CNF+XOR via null-space conditioning (`max_xor_enum_bits` cap) |
 | 3f | `veritas.solvers.external_baselines` | Optional Ganak/CADICAL/CryptoMiniSat cross-check vs internal counts |
 | 3g | `veritas.research.gf2_xor_substitute` | Binary XOR substitution into CNF before mixed counting |
+| 3h | `veritas.research.gf2_xor_encode` | Tseitin XOR→CNF encode (`xor_strategy=encode`; `auto` when enum budget exceeded) |
 | 2c | `veritas.research.bit_operation_ledger` | Proxy bit-operation rollup on `tree_ledger` (work `ledger` unchanged) |
 | 4 | `veritas.research.adaptive_contract` | Existing exact #SAT path (unchanged semantics) |
 | 5 | `veritas.research.boundary_dp` | Separator / component memoization (existing) |

@@ -1406,7 +1406,7 @@ class XorEquationModel(BaseModel):
 
 class StructureHybridCountRequest(CNFRequest):
     xor_equations: list[XorEquationModel] = Field(default_factory=list, max_length=256)
-    xor_strategy: str = Field(default='auto', pattern='^(auto|substitute|condition)$')
+    xor_strategy: str = Field(default='auto', pattern='^(auto|substitute|condition|encode)$')
     max_xor_enum_bits: int = Field(default=18, ge=0, le=24)
     structure_preprocess: bool = True
     cross_check: bool = True

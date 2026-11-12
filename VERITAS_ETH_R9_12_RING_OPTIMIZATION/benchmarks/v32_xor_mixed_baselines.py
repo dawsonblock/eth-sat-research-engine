@@ -22,11 +22,34 @@ CASES = {
         CNF.from_lists(3, [[1, 3]]),
         (XorEquation((1, 2, 3), 1),),
     ),
+    'encode_path': (
+        CNF.from_lists(3, [[1, 3]]),
+        (XorEquation((1, 2), 1),),
+    ),
 }
+
+ENCODE_CASE = CASES['encode_path']
 
 if __name__ == '__main__':
     rows = []
+    cnf_e, eqs_e = ENCODE_CASE
+    rows.append(
+        {
+            **compare_count_baselines(
+                cnf_e,
+                structure_aware_count,
+                xor_equations=eqs_e,
+                preprocess=False,
+                xor_strategy='encode',
+                verify_direct=True,
+                timeout_s=10,
+            ),
+            'case': 'encode_path',
+        }
+    )
     for name, (cnf, eqs) in CASES.items():
+        if name == 'encode_path':
+            continue
         rows.append(
             compare_count_baselines(
                 cnf,
