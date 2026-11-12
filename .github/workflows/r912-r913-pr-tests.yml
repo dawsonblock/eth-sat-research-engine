@@ -33,7 +33,8 @@ jobs:
             tests/test_r912_preflight_integration.py \
             tests/test_bench_sat_methods.py \
             tests/test_coefficient_extraction_spec.py \
-            tests/test_coefficient_separator.py
+            tests/test_coefficient_separator.py \
+            tests/test_sat_universal.py
       - name: Interaction parent-child proof (fast)
         env:
           PYTHONPATH: src

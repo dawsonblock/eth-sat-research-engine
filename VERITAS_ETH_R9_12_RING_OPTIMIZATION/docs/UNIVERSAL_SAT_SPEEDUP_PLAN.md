@@ -156,7 +156,7 @@ Code hook: `veritas.research.sat_work_accounting.DecompositionWorkLedger`.
 
 | ID | Deliverable | Acceptance |
 |----|-------------|------------|
-| E1 | `sat_universal_cli` — single entry, mode=`decision|count`, emits ledger JSON | No silent fallbacks |
+| E1 | `sat_universal_cli` — single entry, mode=`decision|count`, emits ledger JSON | **Scaffold:** `sat_universal.py` + `scripts/sat_universal_cli.py`; no silent fallbacks |
 | E2 | Baseline matrix (pinned versions, seeds, timeouts) | CI job; no `theorem_backed` |
 | E3 | Extend `DecompositionWorkLedger` through R9.10 recursive `contract` | **Done (scaffold):** each support-term child product logs ledger + stream event |
 | E4 | Jet-point fast path **only** when certificate says `bounded_interaction` | Refuse otherwise |
@@ -181,7 +181,8 @@ satisfy the engineering requirement.
 ## 7. Immediate next steps (repo)
 
 1. ~~Land `sat_work_accounting.py` and use it in R9.10 decomposition logging (E3).~~ **Done** — see `tests/test_r910_decomposition_ledger.py`.
-2. Add `tests/test_work_accounting_toy.py` encoding the ρ=0.9, q table in §2.
+2. ~~Add `tests/test_work_accounting_toy.py` encoding the ρ=0.9, q table in §2.~~ **Done**.
+2b. ~~E1 reduction-first CLI scaffold~~ **Done** — `run_universal_sat` + `scripts/sat_universal_cli.py`; see `tests/test_sat_universal.py`.
 3. Keep `fast_universal_parent_jet_solve` behind `finite_scaled_experiment` +
    layout certificates (E4).
 4. Open Lean/Python checklist items from `docs/R9_2_R9_4_PROOF_OBLIGATIONS.md` for
