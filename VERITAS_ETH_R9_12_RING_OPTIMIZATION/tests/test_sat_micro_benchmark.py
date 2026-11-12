@@ -16,6 +16,30 @@ def test_micro_benchmark_all_cross_checks_agree():
     assert report["case_count"] >= 5
 
 
+def test_parent_bridge_refuses_out_of_tiny_class():
+    cnf = CNF.from_lists(20, [[1, -2, 3]])
+    encoded = source_cnf_network(cnf, max_clause_width=3, max_wires=50_000, max_factors=50_000)
+    bridge = build_parent_call_from_encoded_cnf(cnf, encoded)
+    assert bridge["status"] == "REFUSED"
+    assert "max_vars" in bridge["reason"] or "OUT_OF_CLASS" in str(bridge)
+
+
+def test_count_run_exposes_ledger_totals_and_source_lane():
+    cnf = CNF.from_lists(3, [[1, -2, 3]])
+    report = run_universal_sat(cnf, "count", adaptive_timeout_s=8.0)
+    assert report["ledger_totals"]["schema"] == "VERITAS_LEDGER_TOTALS_V1"
+    assert report["ledger_totals"]["w_total_reported"] == report["decomposition_work"][
+        "w_total_reported"
+    ]
+    src = report["reduction"]["source_finite_count"]
+    assert src["status"] in (
+        "EXACT_COUNT_FINITE",
+        "INCONCLUSIVE_RESOURCE_LIMIT",
+        "INCONCLUSIVE_INPUT_OR_CAP",
+        "INCONCLUSIVE_INVARIANT_FAILURE",
+    )
+
+
 def test_parent_call_bridge_on_tiny_cnf():
     cnf = CNF.from_lists(3, [[1, -2, 3]])
     encoded = source_cnf_network(cnf, max_clause_width=3, max_wires=5000, max_factors=5000)

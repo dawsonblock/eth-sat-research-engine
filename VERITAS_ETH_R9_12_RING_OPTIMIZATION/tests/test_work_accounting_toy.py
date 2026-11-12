@@ -1,5 +1,10 @@
 """Toy decomposition work table from UNIVERSAL_SAT_SPEEDUP_PLAN §2."""
-from veritas.research.sat_work_accounting import DecompositionWorkLedger, toy_child_sum_exponent
+from veritas.research.sat_work_accounting import (
+    DecompositionWorkLedger,
+    aggregate_ledger,
+    ledger_totals_summary,
+    toy_child_sum_exponent,
+)
 
 
 def test_toy_rho_09_s_80_q_128_doubles_speedup():
@@ -29,3 +34,15 @@ def test_ledger_includes_overhead():
     )
     assert led.w_new == led.w_transform + 128 * (2**72) + 2
     assert led.speedup_ratio() == 2**80 / led.w_new
+
+
+def test_ledger_totals_summary():
+    agg = aggregate_ledger(
+        [
+            DecompositionWorkLedger("a", w_old=10, w_transform=3),
+            DecompositionWorkLedger("b", w_old=10, w_transform=5),
+        ]
+    )
+    totals = ledger_totals_summary(agg)
+    assert totals["w_total_reported"] == 8
+    assert totals["w_by_step_name"]["a"] == 3

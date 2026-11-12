@@ -19,10 +19,12 @@ from typing import Any, Literal, Mapping, Optional
 
 from veritas.core.cnf import CNF
 from veritas.research.adaptive_contract import adaptive_count
+from veritas.research.sat_source_finite_lane import try_source_finite_count_lane
 from veritas.research.sat_work_accounting import (
     DecompositionWorkLedger,
     aggregate_ledger,
     exponential_width_proxy,
+    ledger_totals_summary,
 )
 from veritas.research.source_cnf import SourceCNFNetwork, source_cnf_network
 from veritas.research.sat_cnf_parent_bridge import (
@@ -346,16 +348,42 @@ def run_universal_sat(
             }
     reduction_summary["phase_c_split"] = phase_c_summary
 
+    source_finite_detail: dict[str, Any] = {
+        "schema": "VERITAS_SOURCE_FINITE_COUNT_LANE_V1",
+        "status": "SKIPPED",
+        "reason": "not_count_mode",
+    }
     if encoded is not None and (reduction_summary.get("structural_check") or {}).get("valid"):
-        reduction_summary["parent_call_bridge"] = build_parent_call_from_encoded_cnf(
+        bridge = build_parent_call_from_encoded_cnf(
             cnf, encoded, bounds=parent_bridge_bounds
         )
+        reduction_summary["parent_call_bridge"] = bridge
+        w_bridge = int(bridge.get("edge_count") or bridge.get("original_edges") or 1)
+        ledgers.append(
+            DecompositionWorkLedger(
+                name="parent_call_bridge",
+                w_old=w_old,
+                w_transform=w_bridge,
+                child_works=(),
+                w_reconstruct=0,
+                w_check=1,
+                metadata={"phase": "parent_bridge", "status": bridge.get("status")},
+            )
+        )
+        if mode is UniversalSatMode.COUNT:
+            source_finite_detail, src_ledger = try_source_finite_count_lane(
+                cnf, w_old=w_old
+            )
+            if src_ledger is not None:
+                ledgers.append(src_ledger)
+        reduction_summary["source_finite_count"] = source_finite_detail
     else:
         reduction_summary["parent_call_bridge"] = {
             "schema": "VERITAS_CNF_PARENT_BRIDGE_V1",
             "status": "SKIPPED",
             "reason": "encode_or_check_incomplete",
         }
+        reduction_summary["source_finite_count"] = source_finite_detail
 
     jet_detail, jet_ledger = attempt_jet_fast_path(
         interaction_cert=interaction_cert, w_old=w_old
@@ -382,6 +410,7 @@ def run_universal_sat(
         ledgers.append(cross_ledger)
 
     ledger_json = aggregate_ledger(ledgers)
+    totals = ledger_totals_summary(ledger_json)
 
     baseline_matrix = None
     if include_baseline_matrix:
@@ -399,6 +428,7 @@ def run_universal_sat(
         "result": solve_out,
         "cross_checks": cross_detail,
         "decomposition_work": ledger_json,
+        "ledger_totals": totals,
         "baseline_matrix": baseline_matrix,
         "source_qualified": False,
         "subexponential_bound_evidence": False,

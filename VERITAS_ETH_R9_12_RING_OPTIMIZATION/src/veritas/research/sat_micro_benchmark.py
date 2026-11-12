@@ -57,14 +57,20 @@ def run_micro_benchmark_suite(
                 "cross_check_agreement": cross.get("agreement"),
                 "w_total_reported": led.get("w_total_reported"),
                 "ledger_steps": len((led.get("steps") or [])),
+                "ledger_totals": report.get("ledger_totals"),
+                "source_finite_status": (report.get("reduction") or {})
+                .get("source_finite_count", {})
+                .get("status"),
             }
         )
+    suite_w_total = sum(c.get("w_total_reported") or 0 for c in cases)
     return {
         "schema": "VERITAS_SAT_MICRO_BENCHMARK_V1",
         "mode": "count",
         "case_count": len(cases),
         "cases": cases,
         "all_cross_checks_agree": all_agree,
+        "suite_w_total_reported": suite_w_total,
         "elapsed_seconds": time.perf_counter() - t0,
         "source_qualified": False,
         "subexponential_bound_evidence": False,

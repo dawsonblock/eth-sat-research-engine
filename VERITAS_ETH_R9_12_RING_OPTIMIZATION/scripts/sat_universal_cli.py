@@ -14,6 +14,7 @@ from pathlib import Path
 
 from veritas.core.cnf import CNF
 from veritas.research.sat_phase_c_reduction import PhaseCBounds
+from veritas.research.sat_micro_benchmark import run_micro_benchmark_suite
 from veritas.research.sat_universal import (
     INTERACTION_96_CERT,
     BoundedInteractionCertificate,
@@ -38,7 +39,17 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description="VERITAS universal SAT (reduction first, jet fast path last)"
     )
-    parser.add_argument("cnf", type=Path, help="DIMACS CNF path")
+    parser.add_argument(
+        "cnf",
+        type=Path,
+        nargs="?",
+        help="DIMACS CNF path (omit with --micro-suite)",
+    )
+    parser.add_argument(
+        "--micro-suite",
+        action="store_true",
+        help="Run pinned count-mode micro-benchmark suite (ledger_totals per case)",
+    )
     parser.add_argument(
         "--mode",
         choices=("decision", "count"),
@@ -77,6 +88,26 @@ def main(argv: list[str] | None = None) -> int:
         help="Phase C scaffold max clauses",
     )
     args = parser.parse_args(argv)
+
+    if args.micro_suite:
+        report = run_micro_benchmark_suite(
+            include_baseline_matrix=args.baseline_matrix,
+        )
+        print(json.dumps(report, indent=2, sort_keys=True))
+        return 0 if report.get("all_cross_checks_agree") else 2
+
+    if args.cnf is None:
+        print(
+            json.dumps(
+                {
+                    "schema": "VERITAS_SAT_UNIVERSAL_RUN_V1",
+                    "status": "REFUSED",
+                    "reason": "cnf path required unless --micro-suite",
+                }
+            ),
+            file=sys.stderr,
+        )
+        return 1
 
     try:
         cnf = _load_cnf(args.cnf)

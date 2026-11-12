@@ -90,3 +90,19 @@ def aggregate_ledger(ledgers: Iterable[DecompositionWorkLedger]) -> dict:
         "theorem_backed": False,
         "qualification": "ledger_scaffolding_only_not_universal_speedup",
     }
+
+
+def ledger_totals_summary(ledger_aggregate: Mapping[str, object]) -> dict:
+    """Compact totals for CLI / micro-benchmark artifacts."""
+    steps = ledger_aggregate.get("steps") or []
+    by_name: dict[str, int] = {}
+    for row in steps:
+        if isinstance(row, dict):
+            name = str(row.get("name", "unknown"))
+            by_name[name] = by_name.get(name, 0) + int(row.get("w_new", 0))
+    return {
+        "schema": "VERITAS_LEDGER_TOTALS_V1",
+        "step_count": len(steps),
+        "w_total_reported": ledger_aggregate.get("w_total_reported"),
+        "w_by_step_name": by_name,
+    }

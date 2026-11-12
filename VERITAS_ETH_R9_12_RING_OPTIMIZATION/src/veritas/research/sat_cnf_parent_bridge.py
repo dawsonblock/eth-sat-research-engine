@@ -39,13 +39,69 @@ class ParentBridgeBounds:
 DEFAULT_PARENT_BRIDGE_BOUNDS = ParentBridgeBounds()
 
 
+@dataclass(frozen=True)
+class TinyFixedCnfClass:
+    """Explicit CNF class for ParentCall bridge (fail closed outside)."""
+
+    max_vars: int = 16
+    max_clauses: int = 32
+    max_clause_width: int = 3
+
+    def to_dict(self) -> dict:
+        return {
+            "max_vars": self.max_vars,
+            "max_clauses": self.max_clauses,
+            "max_clause_width": self.max_clause_width,
+            "schema": "VERITAS_TINY_FIXED_CNF_CLASS_V1",
+        }
+
+
+DEFAULT_TINY_CNF_CLASS = TinyFixedCnfClass()
+
+
+def admit_tiny_fixed_cnf_class(
+    cnf: CNF, spec: TinyFixedCnfClass = DEFAULT_TINY_CNF_CLASS
+) -> dict | None:
+    """Return refusal dict if outside class; else None."""
+    if cnf.n > spec.max_vars:
+        return {
+            "status": "REFUSED_OUT_OF_CLASS",
+            "reason": f"n={cnf.n} > max_vars={spec.max_vars}",
+            "admitted_class": spec.to_dict(),
+        }
+    if len(cnf.clauses) > spec.max_clauses:
+        return {
+            "status": "REFUSED_OUT_OF_CLASS",
+            "reason": f"m={len(cnf.clauses)} > max_clauses={spec.max_clauses}",
+            "admitted_class": spec.to_dict(),
+        }
+    if not all(0 < len(c) <= spec.max_clause_width for c in cnf.clauses):
+        return {
+            "status": "REFUSED_OUT_OF_CLASS",
+            "reason": "not 3-CNF within max_clause_width",
+            "admitted_class": spec.to_dict(),
+        }
+    return None
+
+
 def build_parent_call_from_encoded_cnf(
     cnf: CNF,
     encoded: SourceCNFNetwork,
     *,
     bounds: ParentBridgeBounds = DEFAULT_PARENT_BRIDGE_BOUNDS,
+    cnf_class: TinyFixedCnfClass = DEFAULT_TINY_CNF_CLASS,
 ) -> dict:
     """Return ParentCall metadata or explicit refusal."""
+    class_refusal = admit_tiny_fixed_cnf_class(cnf, cnf_class)
+    if class_refusal:
+        return {
+            "schema": "VERITAS_CNF_PARENT_BRIDGE_V1",
+            "status": "REFUSED",
+            "reason": class_refusal["reason"],
+            "admitted_class": class_refusal["admitted_class"],
+            "bounds": bounds.to_dict(),
+            "jet_fast_path_eligible": False,
+        }
     if cnf.n > bounds.max_vars:
         return _refuse("n exceeds parent bridge cap", bounds)
     if len(cnf.clauses) > bounds.max_clauses:
