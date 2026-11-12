@@ -10,7 +10,10 @@ def test_mixed_xor_and_cnf_conditioning():
     assert count_mixed_xor_cnf(cnf, eqs)['count'] == 3
     out = structure_with_optional_xor(cnf, xor_equations=eqs, preprocess=False, verify_direct=False)
     assert out['count'] == '3'
-    assert out['engine'] == 'MIXED_XOR_CONDITIONING'
+    mixed = structure_with_optional_xor(
+        cnf, xor_equations=eqs, preprocess=False, verify_direct=False, xor_strategy='condition'
+    )
+    assert mixed['engine'] == 'MIXED_XOR_CONDITIONING'
 
 
 def test_enum_budget_exceeded():

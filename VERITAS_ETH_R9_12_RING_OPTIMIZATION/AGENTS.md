@@ -5,7 +5,9 @@
 - `hybrid_router`: conventional boundary DP vs elimination routing only; run `scripts/validate_cost_reduction_gates.py`.
 - `cnf_structure` / `--structure-hybrid-count`: disjoint component #SAT product; default preprocess on.
 - `gf2_xor_mixed`: mixed CNF+XOR via null-space conditioning up to `max_xor_enum_bits` (default 18).
-- `external_baselines`: Ganak/CADICAL optional; absence is not a zero count.
+- `gf2_xor_substitute`: binary XOR rewrites before mixed/structure routing (`xor_strategy=auto|substitute|condition`).
+- `bit_operation_ledger`: proxy bit costs on `tree_ledger`; `ledger.bit_operations` stays null on R9.10 work ledger.
+- `external_baselines`: Ganak/CADICAL/CryptoMiniSat optional; absence is not a zero count.
 - See `docs/COMPUTATIONAL_COST_REDUCTION.md`; never infer subexponential bounds from these modules.
 
 # R9.12 exact elimination route and factorized support

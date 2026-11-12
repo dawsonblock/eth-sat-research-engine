@@ -17,7 +17,9 @@ subexponential construction or claim any new complexity theorem.
 | 3c | `veritas.research.cnf_preprocess` | Unit propagation, tautology/duplicate removal (#SAT-preserving) |
 | 3d | `veritas.research.gf2_xor_count` | Pure GF(2) XOR systems via elimination (`2^{n-rank}`) |
 | 3e | `veritas.research.gf2_xor_mixed` | Mixed CNF+XOR via null-space conditioning (`max_xor_enum_bits` cap) |
-| 3f | `veritas.solvers.external_baselines` | Optional Ganak/CADICAL cross-check vs internal counts |
+| 3f | `veritas.solvers.external_baselines` | Optional Ganak/CADICAL/CryptoMiniSat cross-check vs internal counts |
+| 3g | `veritas.research.gf2_xor_substitute` | Binary XOR substitution into CNF before mixed counting |
+| 2c | `veritas.research.bit_operation_ledger` | Proxy bit-operation rollup on `tree_ledger` (work `ledger` unchanged) |
 | 4 | `veritas.research.adaptive_contract` | Existing exact #SAT path (unchanged semantics) |
 | 5 | `veritas.research.boundary_dp` | Separator / component memoization (existing) |
 
@@ -39,6 +41,7 @@ python benchmarks/v29_structural_hybrid.py
 python scripts/profile_cost_receipt.py examples/example.cnf --structure
 python benchmarks/v30_xor_preprocess.py
 python benchmarks/v31_external_baselines.py
+python scripts/validate_r9_execution_cost_gates.py
 ```
 
 Pure XOR (no CNF clauses), equations in JSON:
@@ -59,9 +62,8 @@ supply an exact reconstruction rule. The hybrid router only affects which
 
 ## What remains open
 
-- Full two-active-level R9 numerical execution under source qualification
-- Ganak installed (`VERITAS_GANAK`) for full external model-count parity in `v31` benchmarks
-- Integrated XOR elimination backend for mixed CNF/XOR instances
-- Production bit-operation accounting across the entire R9 recursive tree
+- Manuscript **source-qualified** two-level execution (finite runs keep `source_qualified: false`)
+- Cycle-accurate machine bit-operation measurement (current rollup is `PROXY_INSTRUMENTED_V1`)
+- Ganak / CryptoMiniSat on PATH for optional parity rows in `v31`
 
 Run `pytest tests/test_anthropic_eight_square.py tests/test_cost_ledger.py tests/test_hybrid_router.py` before treating these gates as green.

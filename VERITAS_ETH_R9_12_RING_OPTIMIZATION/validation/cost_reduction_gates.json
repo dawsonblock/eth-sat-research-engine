@@ -18,7 +18,8 @@
   "release_ready": {
     "eight_square_4096": true,
     "pair_identity_exhaustive": true,
-    "unsupported_worst_case_claim": false
+    "unsupported_worst_case_claim": false,
+    "xor_mixed_smoke": true
   },
   "schema": "VERITAS_COST_REDUCTION_GATES_V1",
   "signed_one_level": {
@@ -33,5 +34,11 @@
     "row_orientation_cost_sum": 512,
     "schema": "ANTHROPIC_SIGNED_ONE_LEVEL_V1",
     "subexponential_runtime_proven": false
+  },
+  "xor_algebraic_substitute": {
+    "binary_substitute_changed": true,
+    "matches_three": true,
+    "pipeline_count": "3",
+    "reduced_n": 2
   }
 }

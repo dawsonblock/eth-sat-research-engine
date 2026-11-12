@@ -16,3 +16,5 @@ def test_tracker_records_cache_and_children():
     assert report['unique_subproblems'] == 1
     assert report['child_count'] == 1
     assert report['observational_only'] is True
+    assert report['bit_operations'] > 0
+    assert report['bit_operation_detail']['measurement'] == 'PROXY_INSTRUMENTED_V1'

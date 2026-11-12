@@ -44,6 +44,8 @@ def main():
                      help="Optional GF(2) XOR equations [{'variables':[...],'rhs':0|1}, ...]")
     run.add_argument("--max-xor-enum-bits", type=int, default=18,
                      help="Cap on GF(2) free bits when conditioning mixed CNF+XOR (default 18)")
+    run.add_argument("--xor-strategy", choices=("auto", "substitute", "condition"), default="auto",
+                     help="Mixed XOR routing: algebraic substitution vs null-space conditioning")
     run.add_argument("--compare-count-baselines", action="store_true",
                      help="With --structure-hybrid-count, cross-check against exhaustive / optional Ganak")
     run.add_argument("--optimal-order-report", action="store_true", help="v1.7 globally optimal small-instance elimination plan (no count)")
@@ -202,6 +204,7 @@ def main():
                     preprocess=not args.structure_no_preprocess,
                     xor_equations=xor_eqs,
                     max_xor_enum_bits=args.max_xor_enum_bits,
+                    xor_strategy=args.xor_strategy,
                     precision_bits=args.precision_bits,
                     include_copy3=not args.adaptive_no_copy3,
                     enable_separators=not args.adaptive_no_separators,

@@ -144,6 +144,21 @@ def structure_with_optional_xor(
                 'formula_sha256': original_digest,
                 'pipeline': {'steps': steps, 'complexity_claim': False},
             }
+        xor_strategy = kwargs.pop('xor_strategy', 'auto')
+        if xor_strategy in ('auto', 'substitute'):
+            from veritas.research.gf2_xor_substitute import try_xor_algebraic_reduce
+
+            algebraic = try_xor_algebraic_reduce(
+                cnf, xor_equations, inner_count=inner_count, **dict(kwargs)
+            )
+            if algebraic is not None and (
+                xor_strategy == 'substitute'
+                or algebraic.get('substitute_report', {}).get('changed')
+            ):
+                steps.append({'stage': 'xor_substitute', 'report': algebraic.get('substitute_report')})
+                algebraic.setdefault('formula_sha256', original_digest)
+                algebraic.setdefault('pipeline', {'steps': steps, 'complexity_claim': False})
+                return algebraic
         from veritas.research.gf2_xor_mixed import count_mixed_xor_cnf
 
         max_enum = int(kwargs.pop('max_xor_enum_bits', 18))
