@@ -25,6 +25,11 @@ from veritas.research.sat_work_accounting import (
     exponential_width_proxy,
 )
 from veritas.research.source_cnf import SourceCNFNetwork, source_cnf_network
+from veritas.research.sat_cnf_parent_bridge import (
+    DEFAULT_PARENT_BRIDGE_BOUNDS,
+    ParentBridgeBounds,
+    build_parent_call_from_encoded_cnf,
+)
 from veritas.research.sat_cross_checks import cross_check_phase_c_vs_direct
 from veritas.research.sat_external_baselines import run_baseline_matrix
 from veritas.research.sat_phase_c_reduction import (
@@ -278,6 +283,7 @@ def run_universal_sat(
     max_nodes: int = 200_000,
     interaction_cert: Optional[BoundedInteractionCertificate] = None,
     phase_c_bounds: PhaseCBounds = DEFAULT_PHASE_C_BOUNDS,
+    parent_bridge_bounds: ParentBridgeBounds = DEFAULT_PARENT_BRIDGE_BOUNDS,
     include_baseline_matrix: bool = False,
     baseline_task: Literal["decision", "count"] | None = None,
 ) -> dict[str, Any]:
@@ -339,6 +345,17 @@ def run_universal_sat(
                 "reason": str(exc),
             }
     reduction_summary["phase_c_split"] = phase_c_summary
+
+    if encoded is not None and (reduction_summary.get("structural_check") or {}).get("valid"):
+        reduction_summary["parent_call_bridge"] = build_parent_call_from_encoded_cnf(
+            cnf, encoded, bounds=parent_bridge_bounds
+        )
+    else:
+        reduction_summary["parent_call_bridge"] = {
+            "schema": "VERITAS_CNF_PARENT_BRIDGE_V1",
+            "status": "SKIPPED",
+            "reason": "encode_or_check_incomplete",
+        }
 
     jet_detail, jet_ledger = attempt_jet_fast_path(
         interaction_cert=interaction_cert, w_old=w_old

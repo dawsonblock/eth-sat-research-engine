@@ -37,7 +37,8 @@ jobs:
             tests/test_sat_universal.py \
             tests/test_sat_phase_c.py \
             tests/test_sat_baselines.py \
-            tests/test_sat_cross_checks.py
+            tests/test_sat_cross_checks.py \
+            tests/test_sat_micro_benchmark.py
       - name: Interaction parent-child proof (fast)
         env:
           PYTHONPATH: src
@@ -67,6 +68,12 @@ jobs:
         env:
           PYTHONPATH: src
         run: python scripts/bench_sat_methods.py --smoke
+      - name: Universal SAT micro-benchmark artifact
+        env:
+          PYTHONPATH: src
+        run: |
+          python scripts/sat_micro_benchmark.py \
+            -o validation/sat_universal_micro_benchmark.json
 
   e2-external-baseline:
     runs-on: ubuntu-latest
