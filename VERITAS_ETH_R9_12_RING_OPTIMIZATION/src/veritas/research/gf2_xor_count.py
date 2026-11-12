@@ -159,13 +159,20 @@ def structure_with_optional_xor(
             if not verify_direct:
                 return False, None
             try:
-                ref, engine = _mixed_reference()
+                ref = _mixed_reference()
             except ValueError as exc:
-                return False, {'reference_unavailable': str(exc)}
-            return str(claimed) == str(ref), {
-                'reference_count': str(ref),
-                'reference_engine': engine,
-                'matches_reference': str(claimed) == str(ref),
+                return False, {'reference_unavailable': str(exc), 'independent_verification': False}
+            if not ref.independent or ref.count is None:
+                return False, {
+                    'reference_engine': ref.engine,
+                    'independent_verification': False,
+                    'reason': 'no independent mixed reference for this formula size',
+                }
+            return str(claimed) == str(ref.count), {
+                'reference_count': str(ref.count),
+                'reference_engine': ref.engine,
+                'matches_reference': str(claimed) == str(ref.count),
+                'independent_verification': True,
             }
 
         if xor_strategy in ('auto', 'substitute'):
@@ -188,7 +195,9 @@ def structure_with_optional_xor(
                         'cross_check': cross,
                         'warning': None,
                     }
-                    algebraic['independent_count_checked'] = True
+                    algebraic['independent_count_checked'] = bool(
+                        cross and cross.get('independent_verification')
+                    )
                     return algebraic
                 steps.append(
                     {
@@ -202,8 +211,28 @@ def structure_with_optional_xor(
                 )
                 if xor_strategy == 'substitute':
                     raise ValueError('algebraic XOR substitute count failed independent verification')
+        from veritas.research.gf2_xor_components import try_component_product_mixed_xor
         from veritas.research.gf2_xor_mixed import count_mixed_xor_cnf
 
+        component = try_component_product_mixed_xor(
+            cnf,
+            xor_equations,
+            inner_count=inner_count,
+            max_enum_bits=max_enum,
+            **dict(kwargs),
+        )
+        if component is not None:
+            ok, cross = _verify_count(str(component['count']))
+            steps.append({'stage': 'xor_component_product', 'report': component.get('structure')})
+            component.update(
+                {
+                    'formula_sha256': original_digest,
+                    'pipeline': {'steps': steps, 'complexity_claim': False},
+                    'structure': {**component.get('structure', {}), 'cross_check': cross},
+                    'independent_count_checked': ok and bool(cross and cross.get('independent_verification')),
+                }
+            )
+            return component
         mixed = count_mixed_xor_cnf(cnf, xor_equations, max_enum_bits=max_enum)
         steps.append({'stage': 'xor_mixed_conditioning', 'report': mixed})
         ok, cross = _verify_count(str(mixed['count']))
@@ -218,7 +247,7 @@ def structure_with_optional_xor(
                 'cross_check': cross,
                 'warning': 'Mixed count uses xor null-space enumeration, not algebraic CNF elimination.',
             },
-            'independent_count_checked': ok,
+            'independent_count_checked': ok and bool(cross and cross.get('independent_verification')),
         }
     out = structure_aware_count(cnf, inner_count=inner_count, preprocess=False, **kwargs)
     out['formula_sha256'] = original_digest

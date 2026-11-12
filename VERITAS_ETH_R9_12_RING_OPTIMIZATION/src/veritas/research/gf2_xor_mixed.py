@@ -100,18 +100,59 @@ def exhaustive_mixed_count(cnf: CNF, equations: tuple[XorEquation, ...], *, max_
     return total
 
 
+def _active_variables(cnf: CNF, equations: tuple[XorEquation, ...]) -> set[int]:
+    clause_vars = {abs(lit) for c in cnf.clauses for lit in c}
+    xor_vars = {v for eq in equations for v in eq.variables}
+    return clause_vars | xor_vars
+
+
+def exhaustive_mixed_on_active(
+    cnf: CNF,
+    equations: tuple[XorEquation, ...],
+    *,
+    max_active: int = 18,
+) -> int | None:
+    """Brute force only over active (clause ∪ xor) variables when |active| is small."""
+    active = sorted(_active_variables(cnf, equations))
+    if len(active) > max_active:
+        return None
+    total = 0
+    for mask in range(1 << len(active)):
+        assignment = {v: False for v in range(1, cnf.n + 1)}
+        for i, v in enumerate(active):
+            assignment[v] = bool((mask >> i) & 1)
+        if xor_assignment_satisfied(equations, assignment) and cnf.evaluate(assignment):
+            total += 1
+    return total
+
+
+@dataclass(frozen=True)
+class MixedReference:
+    count: int | None
+    engine: str
+    independent: bool
+
+
 def reference_mixed_count(
     cnf: CNF,
     equations: tuple[XorEquation, ...],
     *,
     max_enum_bits: int = 18,
     exhaustive_max_n: int = 18,
-) -> tuple[int, str]:
-    """Independent reference count for verification."""
+    exhaustive_max_active: int = 18,
+) -> MixedReference:
+    """Independent reference when brute force over n or active support is feasible."""
+    active_only = exhaustive_mixed_on_active(cnf, equations, max_active=exhaustive_max_active)
+    if active_only is not None:
+        return MixedReference(active_only, 'EXHAUSTIVE_ACTIVE_SUPPORT', True)
     if cnf.n <= exhaustive_max_n:
-        return exhaustive_mixed_count(cnf, equations, max_n=exhaustive_max_n), 'EXHAUSTIVE_MIXED'
-    report = count_mixed_xor_cnf(cnf, equations, max_enum_bits=max_enum_bits)
-    return int(report['count']), 'MIXED_XOR_CONDITIONING'
+        return MixedReference(
+            exhaustive_mixed_count(cnf, equations, max_n=exhaustive_max_n),
+            'EXHAUSTIVE_MIXED',
+            True,
+        )
+    del max_enum_bits  # no self-referential conditioning fallback
+    return MixedReference(None, 'NO_INDEPENDENT_REFERENCE_FOR_N', False)
 
 
 def count_mixed_xor_cnf(
@@ -127,6 +168,18 @@ def count_mixed_xor_cnf(
     free_bits = len(param.free_variables)
     if free_bits > max_enum_bits:
         raise ValueError('xor free dimension exceeds conditioning budget')
+    if free_bits == 0:
+        assignment = assignment_from_free({}, param)
+        total = 1 if cnf.evaluate(assignment) else 0
+        return {
+            'count': total,
+            'engine': 'MIXED_XOR_CONDITIONING',
+            'enumerated': 1,
+            'xor_rank': report.rank,
+            'free_xor_dimension': 0,
+            'contract': 'COUNT_PRESERVING_CONDITIONING',
+            'complexity_claim': False,
+        }
     total = 0
     for mask in range(1 << free_bits):
         free_vals = {param.free_variables[i]: (mask >> i) & 1 for i in range(free_bits)}

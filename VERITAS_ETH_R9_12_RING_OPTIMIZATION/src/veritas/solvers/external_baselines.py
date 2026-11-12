@@ -128,12 +128,15 @@ def compare_count_baselines(cnf: CNF, structure_fn, **kwargs) -> dict:
     start = perf_counter()
     internal = structure_fn(cnf, **kwargs)
     internal_seconds = perf_counter() - start
+    xor_equations = kwargs.get('xor_equations')
     row = {
         'formula_sha256': cnf.digest(),
         'n': cnf.n,
         'clauses': len(cnf.clauses),
+        'xor_equation_count': len(xor_equations) if xor_equations else 0,
         'internal_count': int(internal['count']),
         'internal_engine': internal.get('engine'),
+        'internal_independent_count_checked': internal.get('independent_count_checked'),
         'internal_seconds': round(internal_seconds, 6),
         'exhaustive_count': None,
         'ganak_count': None,
