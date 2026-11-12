@@ -42,6 +42,10 @@ def main():
                      help="Disable count-preserving unit propagation before structure routing")
     run.add_argument("--xor-equations", type=Path, metavar="JSON",
                      help="Optional GF(2) XOR equations [{'variables':[...],'rhs':0|1}, ...]")
+    run.add_argument("--max-xor-enum-bits", type=int, default=18,
+                     help="Cap on GF(2) free bits when conditioning mixed CNF+XOR (default 18)")
+    run.add_argument("--compare-count-baselines", action="store_true",
+                     help="With --structure-hybrid-count, cross-check against exhaustive / optional Ganak")
     run.add_argument("--optimal-order-report", action="store_true", help="v1.7 globally optimal small-instance elimination plan (no count)")
     run.add_argument("--optimal-objective", choices=('work','width'), default='work')
     run.add_argument("--adaptive-portfolio", choices=('auto','thorough','optimal_small'), default='auto')
@@ -197,6 +201,7 @@ def main():
                     cnf,
                     preprocess=not args.structure_no_preprocess,
                     xor_equations=xor_eqs,
+                    max_xor_enum_bits=args.max_xor_enum_bits,
                     precision_bits=args.precision_bits,
                     include_copy3=not args.adaptive_no_copy3,
                     enable_separators=not args.adaptive_no_separators,
@@ -207,6 +212,17 @@ def main():
                     max_work_assignments=args.max_work_assignments,
                     timeout_s=args.timeout,
                 )
+                if args.compare_count_baselines:
+                    from veritas.solvers.external_baselines import compare_count_baselines
+
+                    output["baseline_compare"] = compare_count_baselines(
+                        cnf,
+                        structure_aware_count,
+                        timeout_s=args.timeout,
+                        preprocess=not args.structure_no_preprocess,
+                        xor_equations=xor_eqs,
+                        max_xor_enum_bits=args.max_xor_enum_bits,
+                    )
                 print(json.dumps(output, indent=2))
             except (ContractLimit, ValueError) as exc:
                 print(json.dumps({'status': 'UNKNOWN', 'reason': str(exc)}, indent=2))

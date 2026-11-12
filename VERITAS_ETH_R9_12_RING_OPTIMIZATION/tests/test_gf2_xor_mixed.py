@@ -13,6 +13,15 @@ def test_mixed_xor_and_cnf_conditioning():
     assert out['engine'] == 'MIXED_XOR_CONDITIONING'
 
 
+def test_enum_budget_exceeded():
+    cnf = CNF.from_lists(25, [[1, 2]])
+    eqs = (XorEquation(tuple(range(1, 21)), 0),)
+    import pytest
+
+    with pytest.raises(ValueError, match="conditioning budget"):
+        count_mixed_xor_cnf(cnf, eqs, max_enum_bits=18)
+
+
 def test_inconsistent_mixed_is_zero():
     eqs = (XorEquation((1,), 0), XorEquation((1,), 1))
     cnf = CNF.from_lists(2, [[1, 2]])
