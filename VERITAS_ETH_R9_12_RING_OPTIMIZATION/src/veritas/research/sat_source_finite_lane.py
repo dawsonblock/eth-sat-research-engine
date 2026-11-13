@@ -4,53 +4,21 @@ from __future__ import annotations
 from typing import Any
 
 from veritas.core.cnf import CNF
-from veritas.research.sat_cnf_parent_bridge import (
-    DEFAULT_TINY_CNF_CLASS,
-    TinyFixedCnfClass,
-    admit_tiny_fixed_cnf_class,
-)
 from veritas.research.sat_work_accounting import DecompositionWorkLedger
-from veritas.research.tapered_v4.cnf_count import count_source_cnf_finite
-from veritas.research.tapered_v4.model import RecursionPolicy
+from veritas.research.sat_source_finite_admission import try_source_finite_tiered
 
 
 def try_source_finite_count_lane(
     cnf: CNF,
     *,
-    cnf_class: TinyFixedCnfClass = DEFAULT_TINY_CNF_CLASS,
-    max_wires: int = 64,
-    max_active_wires: int = 8,
     w_old: int,
+    **_kwargs: Any,
 ) -> tuple[dict[str, Any], DecompositionWorkLedger | None]:
-    """Run ``count_source_cnf_finite`` when bridge class admits; does not replace direct lane."""
-    refusal = admit_tiny_fixed_cnf_class(cnf, cnf_class)
-    if refusal:
-        detail = {
-            "schema": "VERITAS_SOURCE_FINITE_COUNT_LANE_V1",
-            "status": "REFUSED",
-            "reason": refusal["reason"],
-        }
-        return detail, None
-    # Conservative policy aligned with existing finite tests
-    policy = RecursionPolicy(
-        max_active_wires=max_active_wires,
-        max_precision_bits=min(1024, max(8, cnf.n + 1)),
-        max_work=500_000,
-        max_seconds=15.0,
-    )
-    encode_cap = min(max_wires, 64)
-    result = count_source_cnf_finite(
-        cnf,
-        policy,
-        max_wires=encode_cap,
-        max_factors=10_000,
-        max_clause_width=3,
-        verify_exhaustive=False,
-    )
-    status = result.get("status", "UNKNOWN")
-    w_work = int(result.get("ledger", {}).get("counters", {}).get("work", 0) or 0)
-    if w_work <= 0:
-        w_work = max(1, cnf.n * len(cnf.clauses))
+    """Tiered finite count lane; does not replace direct exact fallback."""
+    tiered = try_source_finite_tiered(cnf)
+    status = tiered.get("status", "UNKNOWN")
+    last_attempt = (tiered.get("tier_attempts") or [{}])[-1]
+    w_work = max(1, cnf.n * len(cnf.clauses))
     ledger = DecompositionWorkLedger(
         name="source_finite_count_lane",
         w_old=w_old,
@@ -61,18 +29,17 @@ def try_source_finite_count_lane(
         metadata={
             "phase": "source_finite",
             "status": status,
-            "count": result.get("count"),
-            "qualification": "tapered_v4_finite_scaffold_not_r94",
+            "count": tiered.get("count"),
+            "admission_tier": tiered.get("admission_tier"),
+            "qualification": "tapered_v4_tiered_finite_scaffold_not_r94",
         },
     )
     detail = {
-        "schema": "VERITAS_SOURCE_FINITE_COUNT_LANE_V1",
-        "status": status,
-        "count": result.get("count"),
-        "reason": result.get("reason"),
-        "network_edges": result.get("network_edges"),
-        "original_edges": result.get("original_edges"),
-        "theorem_backed": False,
-        "universal_speedup_claimed": False,
+        **tiered,
+        "network_edges": last_attempt.get("network_edges"),
+        "original_edges": last_attempt.get("original_edges"),
+        "reason": tiered.get("reason") or last_attempt.get("reason"),
     }
+    if status != "EXACT_COUNT_FINITE":
+        return detail, None
     return detail, ledger

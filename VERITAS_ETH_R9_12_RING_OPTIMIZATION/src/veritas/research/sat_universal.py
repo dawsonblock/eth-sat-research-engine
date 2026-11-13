@@ -27,6 +27,7 @@ from veritas.research.sat_work_accounting import (
     ledger_totals_summary,
 )
 from veritas.research.source_cnf import SourceCNFNetwork, source_cnf_network
+from veritas.research.sat_count_invariants import collect_count_invariants
 from veritas.research.sat_cnf_parent_bridge import (
     DEFAULT_PARENT_BRIDGE_BOUNDS,
     ParentBridgeBounds,
@@ -481,8 +482,11 @@ def run_universal_sat(
         task = baseline_task or mode.value
         baseline_matrix = run_baseline_matrix(cnf, task=task, include_external=True)
 
+    count_invariants = collect_count_invariants(reduction_summary)
+
     return {
         "schema": "VERITAS_SAT_UNIVERSAL_RUN_V1",
+        "count_invariants": count_invariants,
         "mode": mode.value,
         "formula_sha256": cnf.digest(),
         "n": cnf.n,

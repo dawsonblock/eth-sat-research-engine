@@ -103,6 +103,23 @@ def run_micro_benchmark_suite(
         for c in cases
         if (c.get("decomposition_metrics") or {}).get("any_count_dag_child")
     )
+    highlights: list[dict[str, Any]] = []
+    max_speedup: float | None = None
+    for c in cases:
+        m = c.get("decomposition_metrics") or {}
+        ratio = m.get("speedup_ratio_split_proxy")
+        beats = m.get("w_beats_direct_proxy")
+        if beats or (ratio is not None and float(ratio) > 1.0):
+            entry = {
+                "case": c["case"],
+                "w_beats_direct_proxy": bool(beats),
+                "speedup_ratio_split_proxy": ratio,
+                "phase_c_q": m.get("phase_c_q") or c.get("phase_c_q"),
+            }
+            highlights.append(entry)
+            if ratio is not None:
+                rf = float(ratio)
+                max_speedup = rf if max_speedup is None else max(max_speedup, rf)
     return {
         "schema": "VERITAS_SAT_MICRO_BENCHMARK_V2",
         "mode": "count",
@@ -117,4 +134,6 @@ def run_micro_benchmark_suite(
         "qualification": "pinned_tiny_3cnf_suite_only",
         "phase_c_split_beats_direct_proxy_count": beats_direct,
         "count_dag_child_case_count": used_count_dag,
+        "decomposition_highlight_cases": highlights,
+        "max_speedup_ratio_split_proxy": max_speedup,
     }

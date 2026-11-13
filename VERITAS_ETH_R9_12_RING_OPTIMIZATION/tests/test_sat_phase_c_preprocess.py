@@ -1,6 +1,7 @@
 """Phase C preprocessing and count_dag child integration."""
 from veritas.core.cnf import CNF
 from veritas.research.sat_phase_c_preprocess import apply_phase_c_preprocess
+from veritas.research.sat_preprocess_options import PreprocessOptions
 from veritas.research.sat_phase_c_reduction import PhaseCBounds, plan_primal_component_split
 from veritas.research.sat_phase_c_r94_lane import primal_component_partition_certificate
 from veritas.research.sat_universal import run_universal_sat
@@ -37,6 +38,20 @@ def test_count_dag_used_for_small_component():
     engines = {c["child_solve"]["engine"] for c in summary["components"]}
     assert "count_dag_certificate" in engines
     assert summary["recombined"]["count"] == exhaustive_count(cnf)
+
+
+def test_tautology_removal_preserves_count():
+    cnf = CNF.from_lists(2, [[1, -1, 2], [1, 2]])
+    reduced, detail, _ = apply_phase_c_preprocess(cnf, w_old=4)
+    assert detail["tautology_clauses_dropped"] == 1
+    assert exhaustive_count(cnf) == exhaustive_count(reduced)
+
+
+def test_safe_pure_literals_off_by_default():
+    cnf = CNF.from_lists(4, [[1, 2], [3, -4]])
+    _, detail, _ = apply_phase_c_preprocess(cnf, w_old=16)
+    assert detail["preprocess_options"]["enable_safe_pure_literals"] is False
+    assert detail["pure_literal_eliminations"] == 0
 
 
 def test_universal_includes_preprocess_ledger_step():

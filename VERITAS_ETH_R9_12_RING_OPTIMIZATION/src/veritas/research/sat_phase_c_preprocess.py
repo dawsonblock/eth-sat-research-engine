@@ -9,9 +9,11 @@ from __future__ import annotations
 from typing import Any
 
 from veritas.core.cnf import CNF
+from veritas.research.sat_count_invariants import CountInvariantKind
+from veritas.research.sat_preprocess_options import DEFAULT_PREPROCESS_OPTIONS, PreprocessOptions
 from veritas.research.sat_work_accounting import DecompositionWorkLedger
 
-COUNT_INVARIANT_BIJECTION = "BIJECTION_ON_DECLARED_VARIABLES"
+COUNT_INVARIANT_BIJECTION: CountInvariantKind = "BIJECTION_ON_DECLARED_VARIABLES"
 
 
 def _simplify_clause(clause: tuple[int, ...], assignment: dict[int, bool]) -> tuple[int, ...] | None:
@@ -76,12 +78,62 @@ def _unsat_detail(
     }
 
 
-def apply_phase_c_preprocess(cnf: CNF, *, w_old: int) -> tuple[CNF, dict[str, Any], DecompositionWorkLedger]:
-    """Unit propagation + pure literals; preserve ``cnf.n`` and #SAT when satisfiable."""
+def _remove_tautology_clauses(
+    clauses: tuple[tuple[int, ...], ...],
+) -> tuple[tuple[tuple[int, ...], ...], int]:
+    kept: list[tuple[int, ...]] = []
+    dropped = 0
+    for clause in clauses:
+        bits = set(clause)
+        if any(-lit in bits for lit in bits):
+            dropped += 1
+            continue
+        kept.append(clause)
+    return tuple(kept), dropped
+
+
+def _one_safe_pure_literal(
+    clauses: tuple[tuple[int, ...], ...],
+    n: int,
+    assignment: dict[int, bool],
+) -> tuple[int, bool] | None:
+    """Pure literal only when variable still appears in remaining clauses."""
+    occ_pos = {v: 0 for v in range(1, n + 1)}
+    occ_neg = {v: 0 for v in range(1, n + 1)}
+    for clause in clauses:
+        for lit in clause:
+            v = abs(lit)
+            if lit > 0:
+                occ_pos[v] += 1
+            else:
+                occ_neg[v] += 1
+    for v in range(1, n + 1):
+        if v in assignment:
+            continue
+        active = occ_pos[v] + occ_neg[v]
+        if active == 0:
+            continue
+        if occ_pos[v] > 0 and occ_neg[v] == 0:
+            return v, True
+        if occ_neg[v] > 0 and occ_pos[v] == 0:
+            return v, False
+    return None
+
+
+def apply_phase_c_preprocess(
+    cnf: CNF,
+    *,
+    w_old: int,
+    options: PreprocessOptions = DEFAULT_PREPROCESS_OPTIONS,
+) -> tuple[CNF, dict[str, Any], DecompositionWorkLedger]:
+    """Bounded preprocessing; preserve ``cnf.n`` and #SAT when stages are count-safe."""
     assignment: dict[int, bool] = {}
     clauses = cnf.clauses
     unit_steps = 0
     pure_steps = 0
+    tautology_dropped = 0
+    if options.remove_tautology_clauses:
+        clauses, tautology_dropped = _remove_tautology_clauses(clauses)
 
     changed = True
     while changed:
@@ -100,7 +152,10 @@ def apply_phase_c_preprocess(cnf: CNF, *, w_old: int) -> tuple[CNF, dict[str, An
             )
             return CNF(cnf.n, ()), detail, ledger
 
-        units = [c[0] for c in clauses if len(c) == 1]
+        if options.enable_unit_propagation:
+            units = [c[0] for c in clauses if len(c) == 1]
+        else:
+            units = []
         conflict = False
         for lit in sorted(units, key=lambda x: (abs(x), x)):
             v = abs(lit)
@@ -127,6 +182,17 @@ def apply_phase_c_preprocess(cnf: CNF, *, w_old: int) -> tuple[CNF, dict[str, An
             return CNF(cnf.n, ()), detail, ledger
         if changed:
             continue
+        if (
+            options.enable_safe_pure_literals
+            and pure_steps < options.max_pure_literal_steps
+        ):
+            pick = _one_safe_pure_literal(clauses, cnf.n, assignment)
+            if pick is not None:
+                v, val = pick
+                assignment[v] = val
+                pure_steps += 1
+                changed = True
+                continue
         break
 
     clauses, ok = _clauses_after_assignment(clauses, assignment)
@@ -141,12 +207,14 @@ def apply_phase_c_preprocess(cnf: CNF, *, w_old: int) -> tuple[CNF, dict[str, An
         merged = clauses + unit_clauses
         dedup = tuple(sorted(set(merged), key=lambda c: (len(c), c)))
         out = CNF(cnf.n, dedup)
-        status = "REDUCED" if (unit_steps or pure_steps) else "UNCHANGED"
+        status = "REDUCED" if (unit_steps or pure_steps or tautology_dropped) else "UNCHANGED"
 
     detail = {
         "schema": "VERITAS_PHASE_C_PREPROCESS_V1",
         "status": status,
         "count_invariant": COUNT_INVARIANT_BIJECTION,
+        "preprocess_options": options.to_dict(),
+        "tautology_clauses_dropped": tautology_dropped,
         "unit_propagation_rounds": unit_steps,
         "pure_literal_eliminations": pure_steps,
         "clauses_before": len(cnf.clauses),

@@ -147,6 +147,8 @@ def cross_check_source_finite_vs_direct(
                 "direct_count": direct_count,
                 "agreement": None,
                 "reason": source_finite.get("reason"),
+                "next_admission_step": source_finite.get("next_admission_step"),
+                "admission_tier": source_finite.get("admission_tier"),
             }
         )
     w_check = 1 if agreement else 2
