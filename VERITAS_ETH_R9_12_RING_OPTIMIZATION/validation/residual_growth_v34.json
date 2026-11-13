@@ -1,0 +1,49 @@
+{
+  "schema": "VERITAS_RESIDUAL_GROWTH_V34",
+  "cases": [
+    "block_xy_z",
+    "path_4",
+    "two_components"
+  ],
+  "rows": [
+    {
+      "n": 3,
+      "clauses": 2,
+      "count": 5,
+      "exhaustive_check": 5,
+      "brute_assignments": 8,
+      "distinct_residual_states": 4,
+      "cache_hits": 1,
+      "recursive_calls": 5,
+      "compression_ratio_states_vs_brute": 2.0,
+      "memo_reuse_ratio": 0.2,
+      "complexity_claim": false
+    },
+    {
+      "n": 4,
+      "clauses": 3,
+      "count": 8,
+      "exhaustive_check": 8,
+      "brute_assignments": 16,
+      "distinct_residual_states": 5,
+      "cache_hits": 2,
+      "recursive_calls": 7,
+      "compression_ratio_states_vs_brute": 3.2,
+      "memo_reuse_ratio": 0.2857142857142857,
+      "complexity_claim": false
+    },
+    {
+      "n": 4,
+      "clauses": 2,
+      "count": 9,
+      "exhaustive_check": 9,
+      "brute_assignments": 16,
+      "distinct_residual_states": 6,
+      "cache_hits": 1,
+      "recursive_calls": 7,
+      "compression_ratio_states_vs_brute": 2.6667,
+      "memo_reuse_ratio": 0.14285714285714285,
+      "complexity_claim": false
+    }
+  ]
+}

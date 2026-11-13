@@ -23,6 +23,7 @@ subexponential construction or claim any new complexity theorem.
 | 2c | `veritas.research.bit_operation_ledger` | Proxy bit-operation rollup on `tree_ledger` (work `ledger` unchanged) |
 | 4 | `veritas.research.adaptive_contract` | Existing exact #SAT path (unchanged semantics) |
 | 5 | `veritas.research.boundary_dp` | Separator / component memoization (existing) |
+| R† | `veritas.research.residual_equivalence` | Research prototype: residual \(R(a)\) fingerprint memo + multiplicity buckets (`docs/RESIDUAL_EQUIVALENCE_RESEARCH.md`) |
 
 Anthropic and OpenAI manuscript recursion remain experimental backends only.
 
