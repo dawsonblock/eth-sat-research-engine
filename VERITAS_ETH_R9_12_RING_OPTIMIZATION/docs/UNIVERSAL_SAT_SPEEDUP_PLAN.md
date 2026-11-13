@@ -178,6 +178,14 @@ satisfy the engineering requirement.
 
 ---
 
+## 7a. Residual equivalence research lane (hypothesis under test)
+
+Compress **distinct residual problems** `R(a)`, not bitstrings: see
+`docs/RESIDUAL_STATE_COMPRESSION_RESEARCH.md` and
+`sat_residual_equivalence.py`. Connect to R9.13 coefficient extraction and
+count_dag verification; measure `distinct_residual_classes` vs `2^n` — no
+theorem until proved on a named class.
+
 ## 7. Immediate next steps (repo)
 
 1. ~~Land `sat_work_accounting.py` and use it in R9.10 decomposition logging (E3).~~ **Done** — see `tests/test_r910_decomposition_ledger.py`.
