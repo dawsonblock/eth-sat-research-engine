@@ -56,7 +56,10 @@ def test_recombined_count_matches_exhaustive_on_disconnected():
     expected = exhaustive_count(cnf)
     assert summary["recombined"]["count"] == expected
     for child in summary["components"]:
-        assert child["child_solve"]["engine"] == "exhaustive_oracle"
+        assert child["child_solve"]["engine"] in (
+            "exhaustive_oracle",
+            "count_dag_certificate",
+        )
         assert child["w_child_actual"] > 0
 
 

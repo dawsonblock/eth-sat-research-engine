@@ -8,6 +8,33 @@ from veritas.core.cnf import CNF
 from veritas.research.sat_universal import run_universal_sat
 
 
+def decomposition_metrics_from_report(report: dict[str, Any]) -> dict[str, Any]:
+    """Extract Phase C proxy ledger fields for benchmarks (not a theorem)."""
+    phase_c = (report.get("reduction") or {}).get("phase_c_split") or {}
+    metrics = dict(phase_c.get("decomposition_metrics") or {})
+    steps = (report.get("decomposition_work") or {}).get("steps") or []
+    direct_nodes = None
+    for step in steps:
+        if step.get("name") == "direct_exact_fallback":
+            direct_nodes = step.get("w_new") or step.get("w_transform")
+            break
+    if metrics and direct_nodes is not None:
+        split_new = metrics.get("w_new_proxy_split")
+        metrics["w_direct_proxy"] = direct_nodes
+        metrics["split_beats_direct_nodes"] = (
+            split_new is not None and direct_nodes is not None and split_new < direct_nodes
+        )
+    preprocess = phase_c.get("preprocess") or {}
+    metrics.setdefault("preprocess_status", preprocess.get("status"))
+    child_engines = [
+        (c.get("child_solve") or {}).get("engine")
+        for c in (phase_c.get("components") or [])
+    ]
+    metrics["child_engines"] = child_engines
+    metrics["any_count_dag_child"] = any(e == "count_dag_certificate" for e in child_engines)
+    return metrics
+
+
 def _suite() -> tuple[tuple[str, CNF], ...]:
     return (
         ("unit_sat", CNF.from_lists(1, [[1]])),
@@ -41,6 +68,7 @@ def run_micro_benchmark_suite(
         if cross.get("agreement") is False:
             all_agree = False
         led = report.get("decomposition_work") or {}
+        decomp = decomposition_metrics_from_report(report)
         cases.append(
             {
                 "case": name,
@@ -61,11 +89,22 @@ def run_micro_benchmark_suite(
                 "source_finite_status": (report.get("reduction") or {})
                 .get("source_finite_count", {})
                 .get("status"),
+                "decomposition_metrics": decomp,
             }
         )
     suite_w_total = sum(c.get("w_total_reported") or 0 for c in cases)
+    beats_direct = sum(
+        1
+        for c in cases
+        if (c.get("decomposition_metrics") or {}).get("w_beats_direct_proxy")
+    )
+    used_count_dag = sum(
+        1
+        for c in cases
+        if (c.get("decomposition_metrics") or {}).get("any_count_dag_child")
+    )
     return {
-        "schema": "VERITAS_SAT_MICRO_BENCHMARK_V1",
+        "schema": "VERITAS_SAT_MICRO_BENCHMARK_V2",
         "mode": "count",
         "case_count": len(cases),
         "cases": cases,
@@ -76,4 +115,6 @@ def run_micro_benchmark_suite(
         "subexponential_bound_evidence": False,
         "theorem_backed": False,
         "qualification": "pinned_tiny_3cnf_suite_only",
+        "phase_c_split_beats_direct_proxy_count": beats_direct,
+        "count_dag_child_case_count": used_count_dag,
     }

@@ -22,6 +22,30 @@ def cross_check_phase_c_vs_direct(
         "phase_c_status": status,
         "mode": mode,
     }
+    if status == "REFUSED_UNSAT_AFTER_PREPROCESS":
+        direct_count = direct_result.get("count")
+        agreement = direct_count is not None and int(direct_count) == 0
+        detail.update(
+            {
+                "status": "COUNT_COMPARE",
+                "phase_c_count": 0,
+                "direct_count": direct_count,
+                "agreement": agreement,
+                "reason": "preprocess_detected_unsat",
+            }
+        )
+        w_check = 1 if agreement else 2
+        ledger = DecompositionWorkLedger(
+            name="phase_c_vs_direct_cross_check",
+            w_old=w_old,
+            w_transform=0,
+            child_works=(),
+            w_reconstruct=0,
+            w_check=w_check,
+            metadata={"phase": "cross_check", **detail},
+        )
+        return detail, ledger
+
     if status != "SCAFFOLD_COMPONENT_SPLIT":
         detail.update(
             {

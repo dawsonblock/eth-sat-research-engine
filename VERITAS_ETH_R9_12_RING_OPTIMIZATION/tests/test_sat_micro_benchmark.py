@@ -11,7 +11,9 @@ from veritas.solvers.reference import exhaustive_count
 
 def test_micro_benchmark_all_cross_checks_agree():
     report = run_micro_benchmark_suite()
-    assert report["schema"] == "VERITAS_SAT_MICRO_BENCHMARK_V1"
+    assert report["schema"] == "VERITAS_SAT_MICRO_BENCHMARK_V2"
+    assert "phase_c_split_beats_direct_proxy_count" in report
+    assert "decomposition_metrics" in report["cases"][0]
     assert report["all_cross_checks_agree"] is True
     assert report["case_count"] >= 5
 

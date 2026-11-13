@@ -14,6 +14,7 @@ from typing import Any, Literal, Optional
 
 from veritas.core.cnf import CNF
 from veritas.research.bounded_degree import describe_network
+from veritas.research.sat_phase_c_preprocess import apply_phase_c_preprocess
 from veritas.research.sat_phase_c_reduction import (
     DEFAULT_PHASE_C_BOUNDS,
     PhaseCBounds,
@@ -154,12 +155,27 @@ def run_phase_c_outer_reduction(
     bounds: PhaseCBounds = DEFAULT_PHASE_C_BOUNDS,
     w_old: int,
     task: Literal["count", "decision"] = "count",
-) -> tuple[dict[str, Any], Optional[DecompositionWorkLedger]]:
-    """Encode metadata + primal split with count-invariant certificate when valid."""
+) -> tuple[dict[str, Any], tuple[DecompositionWorkLedger, ...]]:
+    """Preprocess + encode metadata + primal split with count-invariant certificate."""
+    ledgers: list[DecompositionWorkLedger] = []
+    _work_cnf, preprocess_detail, preprocess_ledger = apply_phase_c_preprocess(
+        cnf, w_old=w_old
+    )
+    ledgers.append(preprocess_ledger)
+    if preprocess_detail.get("status") == "UNSAT":
+        detail = {
+            **preprocess_detail,
+            "schema": "VERITAS_PHASE_C_OUTER_REDUCTION_V1",
+            "status": "REFUSED_UNSAT_AFTER_PREPROCESS",
+            "recombined": {"count": 0, "rule": "preprocess_unsat"},
+            "task": task,
+            "theorem_backed": False,
+        }
+        return detail, tuple(ledgers)
     partition_cert = primal_component_partition_certificate(cnf)
     encode_stage = describe_copy3_encode_stage(cnf, encoded, bounds=bounds)
 
-    split_summary, ledger = plan_primal_component_split(
+    split_summary, split_ledger = plan_primal_component_split(
         cnf,
         encoded,
         bounds=bounds,
@@ -167,6 +183,9 @@ def run_phase_c_outer_reduction(
         task=task,
         partition_certificate=partition_cert,
     )
+    if split_ledger is not None:
+        ledgers.append(split_ledger)
+    ledger = split_ledger
 
     count_invariant: dict[str, Any] | None = None
     if partition_cert.get("valid") and task == "count":
@@ -180,7 +199,9 @@ def run_phase_c_outer_reduction(
     summary: dict[str, Any] = {
         **split_summary,
         "schema": "VERITAS_PHASE_C_OUTER_REDUCTION_V1",
+        "preprocess": preprocess_detail,
         "stages": [
+            preprocess_detail,
             encode_stage,
             {
                 "schema": "VERITAS_PHASE_C_SPLIT_STAGE_V1",
@@ -201,4 +222,18 @@ def run_phase_c_outer_reduction(
     if ledger is not None:
         ledger.metadata["outer_reduction_r94"] = summary["outer_reduction_r94"]
         ledger.metadata["partition_certificate_valid"] = partition_cert.get("valid")
-    return summary, ledger
+        ledger.metadata["preprocess_status"] = preprocess_detail.get("status")
+    split_w_new = split_summary.get("w_new_proxy")
+    split_speedup = split_summary.get("speedup_ratio_proxy")
+    summary["decomposition_metrics"] = {
+        "schema": "VERITAS_PHASE_C_DECOMP_METRICS_V1",
+        "w_old_proxy": w_old,
+        "w_new_proxy_split": split_w_new,
+        "speedup_ratio_split_proxy": split_speedup,
+        "phase_c_q": split_summary.get("q"),
+        "w_beats_direct_proxy": (
+            split_speedup is not None and split_speedup > 1.0
+        ),
+        "qualification": "proxy_only_not_theorem",
+    }
+    return summary, tuple(ledgers)

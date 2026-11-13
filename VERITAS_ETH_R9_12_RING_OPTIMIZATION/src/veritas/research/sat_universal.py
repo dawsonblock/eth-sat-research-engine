@@ -379,14 +379,14 @@ def run_universal_sat(
         phase_c_summary = {**refusal, "schema": "VERITAS_PHASE_C_STAGE_V1"}
     elif encoded is not None and (reduction_summary.get("structural_check") or {}).get("valid"):
         try:
-            split_summary, split_ledger = run_phase_c_outer_reduction(
+            split_summary, phase_c_ledgers = run_phase_c_outer_reduction(
                 cnf,
                 encoded,
                 bounds=phase_c_bounds,
                 w_old=w_old,
                 task="count" if mode is UniversalSatMode.COUNT else "decision",
             )
-            ledgers.append(split_ledger)
+            ledgers.extend(phase_c_ledgers)
             phase_c_summary = split_summary
         except ValueError as exc:
             phase_c_summary = {

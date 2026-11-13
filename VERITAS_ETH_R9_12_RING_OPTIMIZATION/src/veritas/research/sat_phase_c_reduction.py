@@ -14,6 +14,7 @@ from veritas.research.adaptive_contract import adaptive_count
 from veritas.research.graph_decomposition import components
 from veritas.research.sat_work_accounting import DecompositionWorkLedger, exponential_width_proxy
 from veritas.research.source_cnf import SourceCNFNetwork
+from veritas.solvers.count_dag import check_dag_count_certificate, make_dag_count_certificate
 from veritas.solvers.reference import exhaustive_count, solve
 
 
@@ -29,6 +30,9 @@ class PhaseCBounds:
     max_exhaustive_vars_per_component: int = 16
     component_timeout_s: float = 4.0
     component_max_nodes: int = 80_000
+    prefer_count_dag: bool = True
+    max_count_dag_vars: int = 24
+    count_dag_timeout_s: float = 3.0
 
     def to_dict(self) -> dict:
         return {
@@ -40,6 +44,9 @@ class PhaseCBounds:
             "max_exhaustive_vars_per_component": self.max_exhaustive_vars_per_component,
             "component_timeout_s": self.component_timeout_s,
             "component_max_nodes": self.component_max_nodes,
+            "prefer_count_dag": self.prefer_count_dag,
+            "max_count_dag_vars": self.max_count_dag_vars,
+            "count_dag_timeout_s": self.count_dag_timeout_s,
         }
 
 
@@ -109,6 +116,26 @@ def _count_component(
             "w_child_actual": w_actual,
             "engine": "veritas_reference",
         }
+    if (
+        bounds.prefer_count_dag
+        and sub.n <= bounds.max_count_dag_vars
+    ):
+        dag = make_dag_count_certificate(
+            sub,
+            timeout_s=min(bounds.count_dag_timeout_s, bounds.component_timeout_s),
+        )
+        if dag.status == "COUNT" and dag.certificate is not None and dag.count is not None:
+            ok, _msg, verified, _n = check_dag_count_certificate(sub, dag.certificate)
+            if ok and verified == dag.count:
+                return {
+                    "task": "count",
+                    "status": "EXACT_COUNT",
+                    "count": dag.count,
+                    "w_child_actual": max(dag.nodes, 1),
+                    "engine": "count_dag_certificate",
+                    "dag_nodes": dag.nodes,
+                    "dag_cache_hits": dag.cache_hits,
+                }
     if sub.n <= bounds.max_exhaustive_vars_per_component:
         count = exhaustive_count(sub)
         w_actual = 1 << sub.n
