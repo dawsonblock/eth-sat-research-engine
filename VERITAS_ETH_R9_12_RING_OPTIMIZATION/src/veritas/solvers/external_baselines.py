@@ -8,6 +8,7 @@ import tempfile
 from time import perf_counter
 
 from veritas.core.cnf import CNF
+from veritas.research.gf2_xor_count import XorEquation
 from veritas.solvers.ganak import CounterUnavailable, exact_count as ganak_count
 from veritas.solvers.reference import exhaustive_count
 
@@ -128,7 +129,7 @@ def compare_count_baselines(cnf: CNF, structure_fn, **kwargs) -> dict:
     start = perf_counter()
     internal = structure_fn(cnf, **kwargs)
     internal_seconds = perf_counter() - start
-    xor_equations = kwargs.get('xor_equations')
+    xor_equations: tuple[XorEquation, ...] | None = kwargs.get('xor_equations')
     row = {
         'formula_sha256': cnf.digest(),
         'n': cnf.n,
@@ -139,13 +140,50 @@ def compare_count_baselines(cnf: CNF, structure_fn, **kwargs) -> dict:
         'internal_independent_count_checked': internal.get('independent_count_checked'),
         'internal_seconds': round(internal_seconds, 6),
         'exhaustive_count': None,
+        'exhaustive_mixed_count': None,
+        'encoded_n': None,
+        'exhaustive_encoded_count': None,
         'ganak_count': None,
+        'ganak_encoded_count': None,
         'cadical_sat': None,
         'cadical_enum_count': None,
         'cryptominisat_count': None,
+        'cryptominisat_encoded_count': None,
         'all_match': False,
+        'parity_basis': None,
         'complexity_claim': False,
     }
+    if xor_equations:
+        from veritas.research.gf2_xor_encode import encode_xor_equations
+        from veritas.research.gf2_xor_mixed import reference_mixed_count
+
+        encoded, enc_report = encode_xor_equations(cnf, xor_equations)
+        row['encoded_n'] = encoded.n
+        row['encode_report'] = enc_report
+        ref = reference_mixed_count(cnf, xor_equations)
+        if ref.independent and ref.count is not None:
+            row['exhaustive_mixed_count'] = ref.count
+        if encoded.n <= 18:
+            row['exhaustive_encoded_count'] = exhaustive_count(encoded)
+        try:
+            if encoded.n <= 22:
+                row['ganak_encoded_count'] = ganak_count(encoded)
+        except CounterUnavailable as exc:
+            row['ganak_encoded_count'] = {'unavailable': str(exc)}
+        row['cryptominisat_encoded_count'] = cryptominisat_count(encoded)
+        row['parity_basis'] = 'mixed_xor'
+        matches = [row['internal_count']]
+        if row['exhaustive_mixed_count'] is not None:
+            matches.append(row['exhaustive_mixed_count'])
+        if row['exhaustive_encoded_count'] is not None:
+            matches.append(row['exhaustive_encoded_count'])
+        if type(row['ganak_encoded_count']) is int:
+            matches.append(row['ganak_encoded_count'])
+        if type(row['cryptominisat_encoded_count']) is int:
+            matches.append(row['cryptominisat_encoded_count'])
+        row['all_match'] = len(set(matches)) == 1
+        return row
+    row['parity_basis'] = 'pure_cnf'
     if cnf.n <= 18:
         row['exhaustive_count'] = exhaustive_count(cnf)
     try:

@@ -49,6 +49,7 @@ jobs:
           python scripts/validate_cost_reduction_gates.py
           python scripts/validate_r9_execution_cost_gates.py
           python benchmarks/v32_xor_mixed_baselines.py
+          python benchmarks/v33_xor_encoded_externals.py
       - run: python -m pytest -q tests/test_xor_verify.py tests/test_xor_reference.py tests/test_gf2_xor_components.py tests/test_gf2_xor_encode.py
       - run: python -m pytest -q -o addopts='' tests/test_r91_cpp_backend.py
       - name: Collect regenerated evidence and recheck sealed input

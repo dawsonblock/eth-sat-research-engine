@@ -43,6 +43,7 @@ python scripts/profile_cost_receipt.py examples/example.cnf --structure
 python benchmarks/v30_xor_preprocess.py
 python benchmarks/v31_external_baselines.py
 python benchmarks/v32_xor_mixed_baselines.py
+python benchmarks/v33_xor_encoded_externals.py
 python scripts/validate_r9_execution_cost_gates.py
 ```
 
@@ -68,7 +69,7 @@ supply an exact reconstruction rule. The hybrid router only affects which
 
 - Manuscript **source-qualified** two-level execution (finite runs keep `source_qualified: false`)
 - Cycle-accurate machine bit-operation measurement (current rollup is `PROXY_INSTRUMENTED_V1`)
-- Ganak / CryptoMiniSat on PATH for optional parity rows in `v31` (pure CNF only; mixed XOR in `v32`)
+- Ganak / CryptoMiniSat on PATH for optional parity rows in `v31` (pure CNF) and `v33` (`ganak_encoded_count` on Tseitin CNF)
 - `independent_count_checked` requires an independent reference (`n≤18` or active support ≤18); larger formulas return exact counts without a self-check
 
 Run `pytest tests/test_anthropic_eight_square.py tests/test_cost_ledger.py tests/test_hybrid_router.py` before treating these gates as green.
