@@ -16,7 +16,8 @@ def test_micro_benchmark_all_cross_checks_agree():
     assert "decomposition_highlight_cases" in report
     assert "decomposition_metrics" in report["cases"][0]
     assert report["all_cross_checks_agree"] is True
-    assert report["case_count"] >= 5
+    assert report["case_count"] >= 6
+    assert "max_residual_compression_ratio" in report
 
 
 def test_parent_bridge_refuses_out_of_tiny_class():

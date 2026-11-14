@@ -28,6 +28,7 @@ from veritas.research.sat_work_accounting import (
 )
 from veritas.research.source_cnf import SourceCNFNetwork, source_cnf_network
 from veritas.research.sat_count_invariants import collect_count_invariants
+from veritas.research.sat_residual_equivalence import probe_residual_compression
 from veritas.research.sat_cnf_parent_bridge import (
     DEFAULT_PARENT_BRIDGE_BOUNDS,
     ParentBridgeBounds,
@@ -396,6 +397,39 @@ def run_universal_sat(
                 "reason": str(exc),
             }
     reduction_summary["phase_c_split"] = phase_c_summary
+
+    if mode is UniversalSatMode.COUNT:
+        compression_probe = probe_residual_compression(
+            cnf,
+            max_vars=phase_c_bounds.max_residual_equivalence_vars,
+            max_clauses=phase_c_bounds.max_residual_equivalence_clauses,
+        )
+        reduction_summary["residual_compression"] = compression_probe
+        if compression_probe.get("status") == "EXACT_COUNT":
+            ledgers.append(
+                DecompositionWorkLedger(
+                    name="residual_compression_probe",
+                    w_old=w_old,
+                    w_transform=int(
+                        compression_probe.get("distinct_residual_classes") or 1
+                    ),
+                    child_works=(),
+                    w_reconstruct=0,
+                    w_check=1,
+                    metadata={
+                        "phase": "residual_compression",
+                        "compression_ratio": compression_probe.get(
+                            "compression_ratio_branches_over_classes"
+                        ),
+                    },
+                )
+            )
+    else:
+        reduction_summary["residual_compression"] = {
+            "schema": "VERITAS_RESIDUAL_COMPRESSION_PROBE_V1",
+            "status": "SKIPPED",
+            "reason": "decision_mode",
+        }
 
     source_finite_detail: dict[str, Any] = {
         "schema": "VERITAS_SOURCE_FINITE_COUNT_LANE_V1",

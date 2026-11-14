@@ -67,6 +67,17 @@ Adversarial goal: families where `|{R}|` stays ~`2^Ω(n)` despite canonicalizati
 count `3·#SAT(z fragment) + 1·#SAT(true)` without eight leaf enumerations.
 See `tests/test_sat_residual_equivalence.py`.
 
+## Universal pipeline integration (PR #6)
+
+| Hook | Behavior |
+| ---- | -------- |
+| Count mode | `reduction.residual_compression` probe on every run (`probe_residual_compression`) |
+| Phase C child | After `count_dag`, optional `residual_equivalence` engine (fail-closed if no oracle agreement) |
+| Ledger | Step `residual_compression_probe` with class count as `w_transform` proxy |
+| Micro-bench | `xyz_residual_coupled` fixture; suite fields `max_residual_compression_ratio` |
+
+No change to `universal_speedup_claimed` (remains **false**).
+
 ## References
 
 - `docs/R913_COEFFICIENT_EXTRACTION_RESEARCH.md`

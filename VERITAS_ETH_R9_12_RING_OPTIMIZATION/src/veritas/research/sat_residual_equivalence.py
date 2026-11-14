@@ -79,6 +79,111 @@ def count_residual_state(state: State, *, memo: dict[tuple[Any, ...], int] | Non
     return memo[key]
 
 
+def compression_metrics_from_report(report: dict[str, Any]) -> dict[str, Any]:
+    """Subset of fields for universal JSON and micro-benchmarks."""
+    return {
+        "schema": "VERITAS_RESIDUAL_COMPRESSION_METRICS_V1",
+        "status": report.get("status"),
+        "distinct_residual_classes": report.get("distinct_residual_classes"),
+        "full_assignment_branches": report.get("full_assignment_branches"),
+        "compression_ratio_branches_over_classes": report.get(
+            "compression_ratio_branches_over_classes"
+        ),
+        "agreement_with_exhaustive": report.get("agreement"),
+        "reason": report.get("reason"),
+    }
+
+
+def admit_residual_equivalence_count(
+    cnf: CNF,
+    *,
+    max_vars: int = 16,
+    max_clauses: int = 128,
+) -> dict[str, Any] | None:
+    """Return refusal dict when unsafe to run; else None."""
+    if cnf.n > max_vars:
+        return {
+            "status": "REFUSED_UNSAFE",
+            "reason": f"n={cnf.n} exceeds max_vars={max_vars}",
+        }
+    if len(cnf.clauses) > max_clauses:
+        return {
+            "status": "REFUSED_UNSAFE",
+            "reason": f"m={len(cnf.clauses)} exceeds max_clauses={max_clauses}",
+        }
+    return None
+
+
+def try_residual_equivalence_exact_count(
+    cnf: CNF,
+    *,
+    max_vars: int = 16,
+    max_clauses: int = 128,
+) -> dict[str, Any] | None:
+    """Fail-closed: return child-style solve dict only when oracle agrees."""
+    refusal = admit_residual_equivalence_count(
+        cnf, max_vars=max_vars, max_clauses=max_clauses
+    )
+    if refusal:
+        return None
+    report = count_by_residual_equivalence(cnf)
+    if report.get("status") != "EXACT_COUNT" or not report.get("agreement"):
+        return None
+    classes = int(report.get("distinct_residual_classes") or 1)
+    branches = int(report.get("full_assignment_branches") or (1 << cnf.n))
+    return {
+        "task": "count",
+        "status": "EXACT_COUNT",
+        "count": report["count"],
+        "w_child_actual": max(classes, 1),
+        "engine": "residual_equivalence",
+        "residual_compression": compression_metrics_from_report(report),
+        "w_proxy_branches_skipped": branches,
+    }
+
+
+def probe_residual_compression(
+    cnf: CNF,
+    *,
+    max_vars: int = 16,
+    max_clauses: int = 128,
+) -> dict[str, Any]:
+    """Universal count-mode probe; never claims speedup."""
+    refusal = admit_residual_equivalence_count(
+        cnf, max_vars=max_vars, max_clauses=max_clauses
+    )
+    if refusal:
+        return {
+            "schema": "VERITAS_RESIDUAL_COMPRESSION_PROBE_V1",
+            "status": "REFUSED",
+            "reason": refusal.get("reason"),
+            "distinct_residual_classes": None,
+            "full_assignment_branches": None,
+            "compression_ratio_branches_over_classes": None,
+            "agreement_with_exhaustive": None,
+            "universal_speedup_claimed": False,
+            "theorem_backed": False,
+            "qualification": "research_probe_not_primary_solver",
+        }
+    report = count_by_residual_equivalence(cnf)
+    metrics = compression_metrics_from_report(report)
+    return {
+        "schema": "VERITAS_RESIDUAL_COMPRESSION_PROBE_V1",
+        "status": report.get("status", "UNKNOWN"),
+        "count": report.get("count"),
+        "oracle_exhaustive_count": report.get("oracle_exhaustive_count"),
+        "distinct_residual_classes": metrics.get("distinct_residual_classes"),
+        "full_assignment_branches": metrics.get("full_assignment_branches"),
+        "compression_ratio_branches_over_classes": metrics.get(
+            "compression_ratio_branches_over_classes"
+        ),
+        "agreement_with_exhaustive": metrics.get("agreement_with_exhaustive"),
+        "universal_speedup_claimed": False,
+        "theorem_backed": False,
+        "qualification": "research_probe_not_primary_solver",
+    }
+
+
 def count_by_residual_equivalence(
     cnf: CNF,
     *,

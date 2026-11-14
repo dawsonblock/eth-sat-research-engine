@@ -32,6 +32,14 @@ def decomposition_metrics_from_report(report: dict[str, Any]) -> dict[str, Any]:
     ]
     metrics["child_engines"] = child_engines
     metrics["any_count_dag_child"] = any(e == "count_dag_certificate" for e in child_engines)
+    metrics["any_residual_equivalence_child"] = any(
+        e == "residual_equivalence" for e in child_engines
+    )
+    rc = (report.get("reduction") or {}).get("residual_compression") or {}
+    metrics["residual_distinct_classes"] = rc.get("distinct_residual_classes")
+    metrics["residual_compression_ratio"] = rc.get(
+        "compression_ratio_branches_over_classes"
+    )
     return metrics
 
 
@@ -43,6 +51,7 @@ def _suite() -> tuple[tuple[str, CNF], ...]:
         ("two_var_unsat", CNF.from_lists(2, [[1], [-1]])),
         ("disjoint_4", CNF.from_lists(4, [[1, 2], [3, -4]])),
         ("triangle_3cnf", CNF.from_lists(3, [[1, 2, -3], [1, -2, 3], [-1, 2, 3]])),
+        ("xyz_residual_coupled", CNF.from_lists(3, [[1, 3], [2, 3]])),
     )
 
 
@@ -105,6 +114,8 @@ def run_micro_benchmark_suite(
     )
     highlights: list[dict[str, Any]] = []
     max_speedup: float | None = None
+    max_residual_compression: float | None = None
+    residual_ratio_cases = 0
     for c in cases:
         m = c.get("decomposition_metrics") or {}
         ratio = m.get("speedup_ratio_split_proxy")
@@ -120,6 +131,13 @@ def run_micro_benchmark_suite(
             if ratio is not None:
                 rf = float(ratio)
                 max_speedup = rf if max_speedup is None else max(max_speedup, rf)
+        rc_ratio = (c.get("decomposition_metrics") or {}).get("residual_compression_ratio")
+        if rc_ratio is not None and float(rc_ratio) > 1.0:
+            residual_ratio_cases += 1
+            mrf = float(rc_ratio)
+            max_residual_compression = (
+                mrf if max_residual_compression is None else max(max_residual_compression, mrf)
+            )
     return {
         "schema": "VERITAS_SAT_MICRO_BENCHMARK_V2",
         "mode": "count",
@@ -136,4 +154,6 @@ def run_micro_benchmark_suite(
         "count_dag_child_case_count": used_count_dag,
         "decomposition_highlight_cases": highlights,
         "max_speedup_ratio_split_proxy": max_speedup,
+        "residual_compression_ratio_gt_one_count": residual_ratio_cases,
+        "max_residual_compression_ratio": max_residual_compression,
     }

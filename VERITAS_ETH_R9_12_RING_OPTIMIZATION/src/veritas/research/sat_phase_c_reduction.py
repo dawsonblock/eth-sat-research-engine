@@ -11,6 +11,7 @@ from typing import Any, Literal, Optional
 
 from veritas.core.cnf import CNF
 from veritas.research.adaptive_contract import adaptive_count
+from veritas.research.sat_residual_equivalence import try_residual_equivalence_exact_count
 from veritas.research.graph_decomposition import components
 from veritas.research.sat_work_accounting import DecompositionWorkLedger, exponential_width_proxy
 from veritas.research.source_cnf import SourceCNFNetwork
@@ -33,6 +34,9 @@ class PhaseCBounds:
     prefer_count_dag: bool = True
     max_count_dag_vars: int = 24
     count_dag_timeout_s: float = 3.0
+    prefer_residual_equivalence: bool = True
+    max_residual_equivalence_vars: int = 16
+    max_residual_equivalence_clauses: int = 128
 
     def to_dict(self) -> dict:
         return {
@@ -47,6 +51,9 @@ class PhaseCBounds:
             "prefer_count_dag": self.prefer_count_dag,
             "max_count_dag_vars": self.max_count_dag_vars,
             "count_dag_timeout_s": self.count_dag_timeout_s,
+            "prefer_residual_equivalence": self.prefer_residual_equivalence,
+            "max_residual_equivalence_vars": self.max_residual_equivalence_vars,
+            "max_residual_equivalence_clauses": self.max_residual_equivalence_clauses,
         }
 
 
@@ -136,6 +143,14 @@ def _count_component(
                     "dag_nodes": dag.nodes,
                     "dag_cache_hits": dag.cache_hits,
                 }
+    if bounds.prefer_residual_equivalence:
+        residual = try_residual_equivalence_exact_count(
+            sub,
+            max_vars=bounds.max_residual_equivalence_vars,
+            max_clauses=bounds.max_residual_equivalence_clauses,
+        )
+        if residual is not None:
+            return residual
     if sub.n <= bounds.max_exhaustive_vars_per_component:
         count = exhaustive_count(sub)
         w_actual = 1 << sub.n

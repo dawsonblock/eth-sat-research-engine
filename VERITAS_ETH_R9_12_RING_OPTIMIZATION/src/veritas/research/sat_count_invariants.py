@@ -7,6 +7,7 @@ CountInvariantKind = Literal[
     "BIJECTION_ON_DECLARED_VARIABLES",
     "PRODUCT_OVER_PRIMAL_COMPONENTS",
     "STRUCTURAL_BIJECTION_COPY3",
+    "RESIDUAL_EQUIVALENCE_MERGE",
     "UNKNOWN",
     "NOT_APPLICABLE",
 ]
@@ -67,6 +68,18 @@ def collect_count_invariants(reduction: dict[str, Any] | None) -> dict[str, Any]
                 stage="phase_c_outer_reduction",
                 proved_in_repo=bool(ci.get("proved_in_repo")),
                 note=ci.get("note"),
+            )
+        )
+
+    residual = reduction.get("residual_compression") or {}
+    if residual.get("schema"):
+        agreed = residual.get("agreement_with_exhaustive")
+        entries.append(
+            invariant_entry(
+                kind="RESIDUAL_EQUIVALENCE_MERGE",
+                stage="residual_compression_probe",
+                proved_in_repo=agreed is True,
+                note=residual.get("qualification"),
             )
         )
 
