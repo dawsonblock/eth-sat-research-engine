@@ -1,0 +1,110 @@
+name: r912-r913-pr-tests
+on:
+  pull_request:
+    paths:
+      - 'VERITAS_ETH_R9_12_RING_OPTIMIZATION/**'
+      - '.github/workflows/r912-r913-pr-tests.yml'
+  push:
+    branches:
+      - 'cursor/**'
+    paths:
+      - 'VERITAS_ETH_R9_12_RING_OPTIMIZATION/**'
+jobs:
+  r913-regression:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: VERITAS_ETH_R9_12_RING_OPTIMIZATION
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'setuptools>=68' wheel pytest pip-audit
+      - name: R9.13 correctness slice
+        env:
+          PYTHONPATH: src
+        run: |
+          python -m pytest -q -o addopts='' \
+            tests/test_r913_correctness_regressions.py \
+            tests/test_algebraic_resummation.py \
+            tests/test_support_resummation.py \
+            tests/test_dependency_analyzer.py \
+            tests/test_r912_preflight_integration.py \
+            tests/test_bench_sat_methods.py \
+            tests/test_coefficient_extraction_spec.py \
+            tests/test_coefficient_separator.py \
+            tests/test_sat_universal.py \
+            tests/test_sat_phase_c.py \
+            tests/test_sat_phase_c_r94.py \
+            tests/test_sat_phase_c_preprocess.py \
+            tests/test_sat_source_finite_admission.py \
+            tests/test_sat_residual_equivalence.py \
+            tests/test_sat_math_audit.py \
+            tests/test_sat_baselines.py \
+            tests/test_sat_cross_checks.py \
+            tests/test_sat_micro_benchmark.py
+      - name: Interaction parent-child proof (fast)
+        env:
+          PYTHONPATH: src
+        run: |
+          python -m pytest -q -o addopts='' \
+            tests/test_two_level_ancestor_mode_projection.py \
+            tests/test_interaction_parent_child_reconstruction.py \
+            tests/test_fast_universal_solver.py \
+            tests/test_work_accounting_toy.py \
+            -m 'not slow'
+      - name: Interaction 96-wire e2e (slow)
+        env:
+          PYTHONPATH: src
+        run: |
+          python -m pytest -q -o addopts='' \
+            tests/test_interaction_96_coefficient_e2e.py \
+            tests/test_interaction_parent_child_reconstruction.py \
+            tests/test_r910_decomposition_ledger.py \
+            -m slow
+      - name: Gitleaks (manifest allowlist)
+        run: |
+          curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.22.1/gitleaks_8.22.1_linux_x64.tar.gz | tar -xz -C /tmp gitleaks
+          /tmp/gitleaks detect --source . --config .gitleaks.toml --no-git -v
+      - name: Dependency audit (devsecops fallback)
+        run: python -m pip_audit --desc on --progress-spinner off || true
+      - name: Bench smoke
+        env:
+          PYTHONPATH: src
+        run: python scripts/bench_sat_methods.py --smoke
+      - name: Universal SAT micro-benchmark artifact
+        env:
+          PYTHONPATH: src
+        run: |
+          python scripts/sat_micro_benchmark.py \
+            -o validation/sat_universal_micro_benchmark.json
+
+  e2-external-baseline:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: VERITAS_ETH_R9_12_RING_OPTIMIZATION
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q 'setuptools>=68' wheel pytest
+      - name: Build pinned E2 solvers (CaDiCaL rel-2.1.2, Kissat rel-3.1.1)
+        run: |
+          curl -sSfL https://github.com/arminbiere/cadical/archive/refs/tags/rel-2.1.2.tar.gz | tar -xz -C /tmp
+          cd /tmp/cadical-rel-2.1.2
+          ./configure
+          make -j2 cadical
+          echo "/tmp/cadical-rel-2.1.2/build" >> "$GITHUB_PATH"
+          curl -sSfL https://github.com/arminbiere/kissat/archive/refs/tags/rel-3.1.1.tar.gz | tar -xz -C /tmp
+          cd /tmp/kissat-rel-3.1.1
+          ./configure
+          make -j2 kissat
+          echo "/tmp/kissat-rel-3.1.1/build" >> "$GITHUB_PATH"
+      - name: E2 external baselines
+        env:
+          PYTHONPATH: src
+          CI: true
+        run: python -m pytest -q -o addopts='' tests/test_sat_external_ci.py

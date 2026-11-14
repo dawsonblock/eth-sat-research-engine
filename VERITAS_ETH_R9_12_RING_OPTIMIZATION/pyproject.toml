@@ -47,3 +47,6 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+markers = [
+    "slow: interaction proofs needing leaf recheck, sparse beta, wire elimination, or two-level e2e",
+]

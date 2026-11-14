@@ -7,3 +7,4 @@ __pycache__/
 benchmark*.jsonl
 build/
 .ruff_cache/
+.bench_sat_wire_*.json
