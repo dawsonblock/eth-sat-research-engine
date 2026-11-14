@@ -23,11 +23,13 @@ from .row_degree import certify_row_degree
 from .stream_recovery import StreamRecovery
 from .support import fold_source_forms, build_support
 from .support_check import verify_support
+from veritas.research.cost_ledger_bridge import RecursiveVisitTracker
 
 
 def contract_streaming(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
                        max_points=256, cache_bytes=1_000_000, evidence_sink=None, layout_factory=None, preflight_work=0):
     budget = Budget(policy)
+    tracker = RecursiveVisitTracker(policy)
     binding = source_binding()['digest']
     chain, evidence_bytes, requests = '0'*64, 0, 0
     try:
@@ -55,6 +57,7 @@ def contract_streaming(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_P
         def visit(call):
             nonlocal requests
             requests += 1
+            tracker.request()
             budget.tick()
             if (call.edge_count > policy.max_edges or call.precision > policy.max_precision or
                     call.depth > policy.max_depth):
@@ -63,11 +66,13 @@ def contract_streaming(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_P
             remaining = schedule[depth:]
             key = computation_key(call, remaining)
             cached = cache.get(key)
+            tracker.cache_lookup(key, hit=cached is not None)
             if cached is not None:
                 emit({'kind': 'reuse', 'parent': call.content_digest, 'key': key})
                 return cached
             budget.call(call.depth)
             if call.edge_count <= 4:
+                tracker.note_leaf()
                 result = leaf(call, budget)
                 emit({'kind': 'leaf', 'parent': call.content_digest, 'key': key, 'result': result})
                 cache.put(key, result)
@@ -107,7 +112,10 @@ def contract_streaming(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_P
                     _topology(call, layout, folded, beta, children, budget, True)
                     product = ring.one
                     for child in children:
-                        product = ring.mul(product, visit(child.as_parent(call)))
+                        with tracker.child_frame():
+                            child_value = visit(child.as_parent(call))
+                        product = ring.mul(product, child_value)
+                        tracker.charge('jet_mul', ring.base.e**2)
                         budget.tick(ring.base.e**2)
                         budget.transitions += 1
                     total = ring.add(total, product)
@@ -125,11 +133,13 @@ def contract_streaming(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_P
         return {'status': 'PASS_FINITE_STREAMED_TAPERED_RECURSION', 'result': result,
                 'parent_digest': parent.content_digest, 'implementation_source_sha256': binding,
                 'schedule': schedule, 'max_points': max_points, 'cache': cache.report(),
-                'requests': requests, 'ledger': budget.report(), 'evidence_chain': chain,
+                'requests': requests, 'ledger': budget.report(), 'tree_ledger': tracker.finalize(budget),
+                'evidence_chain': chain,
                 'evidence_bytes': evidence_bytes, 'evidence_stream_written': evidence_sink is not None,
                 'source_tapered_functional_used': bool(budget.points), 'original_weighted_stream_enumerated': False,
                 'source_qualified': False, 'theorem_mode_enabled': False}
     except (ValueError, TypeError, KeyError, IndexError, ArithmeticError, RuntimeError, MemoryError, OSError) as exc:
         return {'status': getattr(exc, 'status', 'INCONCLUSIVE_STREAMED_RECURSION'),
-                'reason': str(exc), 'ledger': budget.report(), 'requests': requests,
+                'reason': str(exc), 'ledger': budget.report(), 'tree_ledger': tracker.finalize(budget),
+                'requests': requests,
                 'source_qualified': False, 'theorem_mode_enabled': False}

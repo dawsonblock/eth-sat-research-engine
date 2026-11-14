@@ -109,6 +109,8 @@ def run_stream():
     assert result['cache']['hits'] > 0
     assert result['ledger']['actual_calls'] < result['requests'] == 8577
     assert result['ledger']['point_evaluations'] == 134
+    assert result['tree_ledger']['recursive_requests'] == result['requests']
+    assert result['tree_ledger']['budget_work_units'] == result['ledger']['work_units']
     # Each independent matching edge contracts to 2*5 + 3*7 = 31.
     data = decode(parent.vertices[-1].tensor.description)['data']
     c0, c1 = data[0][0][0], data[1][0][0]

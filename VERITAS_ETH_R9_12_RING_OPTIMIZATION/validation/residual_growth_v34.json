@@ -1,0 +1,325 @@
+{
+  "schema": "VERITAS_RESIDUAL_GROWTH_V34",
+  "families": [
+    "structured",
+    "independent",
+    "coupled",
+    "adversarial",
+    "archive"
+  ],
+  "cases": [
+    "block_xy_z",
+    "chain_8",
+    "independent_pairs_6",
+    "star_coupled_8",
+    "layered_bridge_4x3",
+    "network_block_motif_4",
+    "pigeon_one_hot_5",
+    "random_3sat_n10_m35_s42",
+    "tight_primed_pairs_5",
+    "dimacs_contradiction",
+    "dimacs_example",
+    "dimacs_query_v23"
+  ],
+  "rows": [
+    {
+      "name": "block_xy_z",
+      "n": 3,
+      "clauses": 2,
+      "count": 5,
+      "exhaustive_check": 5,
+      "brute_assignments": 8,
+      "distinct_residual_states": 4,
+      "cache_hits": 1,
+      "recursive_calls": 5,
+      "compression_ratio_states_vs_brute": 2.0,
+      "memo_reuse_ratio": 0.2,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 5,
+        "smallest_bucket": 3,
+        "sorted_multiplicities": [
+          5,
+          3
+        ]
+      },
+      "family": "structured",
+      "complexity_claim": false
+    },
+    {
+      "name": "chain_8",
+      "n": 8,
+      "clauses": 7,
+      "count": 55,
+      "exhaustive_check": 55,
+      "brute_assignments": 256,
+      "distinct_residual_states": 9,
+      "cache_hits": 6,
+      "recursive_calls": 15,
+      "compression_ratio_states_vs_brute": 28.444444,
+      "memo_reuse_ratio": 0.4,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 201,
+        "smallest_bucket": 55,
+        "sorted_multiplicities": [
+          201,
+          55
+        ]
+      },
+      "family": "structured",
+      "complexity_claim": false
+    },
+    {
+      "name": "independent_pairs_6",
+      "n": 12,
+      "clauses": 6,
+      "count": 729,
+      "exhaustive_check": 729,
+      "brute_assignments": 4096,
+      "distinct_residual_states": 28,
+      "cache_hits": 15,
+      "recursive_calls": 43,
+      "compression_ratio_states_vs_brute": 146.285714,
+      "memo_reuse_ratio": 0.3488372093023256,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 3367,
+        "smallest_bucket": 729,
+        "sorted_multiplicities": [
+          3367,
+          729
+        ]
+      },
+      "family": "independent",
+      "complexity_claim": false
+    },
+    {
+      "name": "star_coupled_8",
+      "n": 9,
+      "clauses": 8,
+      "count": 257,
+      "exhaustive_check": 257,
+      "brute_assignments": 512,
+      "distinct_residual_states": 3,
+      "cache_hits": 0,
+      "recursive_calls": 3,
+      "compression_ratio_states_vs_brute": 170.666667,
+      "memo_reuse_ratio": 0.0,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 257,
+        "smallest_bucket": 255,
+        "sorted_multiplicities": [
+          257,
+          255
+        ]
+      },
+      "family": "coupled",
+      "complexity_claim": false
+    },
+    {
+      "name": "layered_bridge_4x3",
+      "n": 12,
+      "clauses": 17,
+      "count": 227,
+      "exhaustive_check": 227,
+      "brute_assignments": 4096,
+      "distinct_residual_states": 30,
+      "cache_hits": 25,
+      "recursive_calls": 55,
+      "compression_ratio_states_vs_brute": 136.533333,
+      "memo_reuse_ratio": 0.45454545454545453,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 3869,
+        "smallest_bucket": 227,
+        "sorted_multiplicities": [
+          3869,
+          227
+        ]
+      },
+      "family": "coupled",
+      "complexity_claim": false
+    },
+    {
+      "name": "network_block_motif_4",
+      "n": 9,
+      "clauses": 8,
+      "count": 257,
+      "exhaustive_check": 257,
+      "brute_assignments": 512,
+      "distinct_residual_states": 16,
+      "cache_hits": 1,
+      "recursive_calls": 17,
+      "compression_ratio_states_vs_brute": 32.0,
+      "memo_reuse_ratio": 0.058823529411764705,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 257,
+        "smallest_bucket": 255,
+        "sorted_multiplicities": [
+          257,
+          255
+        ]
+      },
+      "family": "coupled",
+      "complexity_claim": false
+    },
+    {
+      "name": "pigeon_one_hot_5",
+      "n": 5,
+      "clauses": 11,
+      "count": 5,
+      "exhaustive_check": 5,
+      "brute_assignments": 32,
+      "distinct_residual_states": 5,
+      "cache_hits": 4,
+      "recursive_calls": 9,
+      "compression_ratio_states_vs_brute": 6.4,
+      "memo_reuse_ratio": 0.4444444444444444,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 27,
+        "smallest_bucket": 5,
+        "sorted_multiplicities": [
+          27,
+          5
+        ]
+      },
+      "family": "adversarial",
+      "complexity_claim": false
+    },
+    {
+      "name": "random_3sat_n10_m35_s42",
+      "n": 10,
+      "clauses": 35,
+      "count": 14,
+      "exhaustive_check": 14,
+      "brute_assignments": 1024,
+      "distinct_residual_states": 12,
+      "cache_hits": 6,
+      "recursive_calls": 18,
+      "compression_ratio_states_vs_brute": 85.333333,
+      "memo_reuse_ratio": 0.3333333333333333,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 1010,
+        "smallest_bucket": 14,
+        "sorted_multiplicities": [
+          1010,
+          14
+        ]
+      },
+      "family": "adversarial",
+      "complexity_claim": false
+    },
+    {
+      "name": "tight_primed_pairs_5",
+      "n": 10,
+      "clauses": 10,
+      "count": 32,
+      "exhaustive_check": 32,
+      "brute_assignments": 1024,
+      "distinct_residual_states": 6,
+      "cache_hits": 0,
+      "recursive_calls": 6,
+      "compression_ratio_states_vs_brute": 170.666667,
+      "memo_reuse_ratio": 0.0,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 992,
+        "smallest_bucket": 32,
+        "sorted_multiplicities": [
+          992,
+          32
+        ]
+      },
+      "family": "adversarial",
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_contradiction",
+      "n": 1,
+      "clauses": 2,
+      "count": 0,
+      "exhaustive_check": 0,
+      "brute_assignments": 2,
+      "distinct_residual_states": 0,
+      "cache_hits": 0,
+      "recursive_calls": 1,
+      "compression_ratio_states_vs_brute": 2.0,
+      "memo_reuse_ratio": null,
+      "prefix_equivalence_buckets": 1,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 1,
+        "largest_bucket": 2,
+        "smallest_bucket": 2,
+        "sorted_multiplicities": [
+          2
+        ]
+      },
+      "family": "archive",
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_example",
+      "n": 3,
+      "clauses": 2,
+      "count": 4,
+      "exhaustive_check": 4,
+      "brute_assignments": 8,
+      "distinct_residual_states": 2,
+      "cache_hits": 1,
+      "recursive_calls": 3,
+      "compression_ratio_states_vs_brute": 4.0,
+      "memo_reuse_ratio": 0.3333333333333333,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 4,
+        "smallest_bucket": 4,
+        "sorted_multiplicities": [
+          4,
+          4
+        ]
+      },
+      "family": "archive",
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_query_v23",
+      "n": 3,
+      "clauses": 1,
+      "count": 4,
+      "exhaustive_check": 4,
+      "brute_assignments": 8,
+      "distinct_residual_states": 1,
+      "cache_hits": 0,
+      "recursive_calls": 1,
+      "compression_ratio_states_vs_brute": 8.0,
+      "memo_reuse_ratio": 0.0,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 4,
+        "smallest_bucket": 4,
+        "sorted_multiplicities": [
+          4,
+          4
+        ]
+      },
+      "family": "archive",
+      "complexity_claim": false
+    }
+  ]
+}

@@ -1399,6 +1399,58 @@ def optimal_order_report(request: OptimalOrderRequest):
     return record('optimal_order_report',request.model_dump(),result)
 
 
+class XorEquationModel(BaseModel):
+    variables: list[int] = Field(min_length=1, max_length=64)
+    rhs: int = Field(ge=0, le=1)
+
+
+class StructureHybridCountRequest(CNFRequest):
+    xor_equations: list[XorEquationModel] = Field(default_factory=list, max_length=256)
+    xor_strategy: str = Field(default='auto', pattern='^(auto|substitute|condition|encode)$')
+    max_xor_enum_bits: int = Field(default=18, ge=0, le=24)
+    structure_preprocess: bool = True
+    cross_check: bool = True
+    include_residual_metrics: bool = False
+    residual_metrics_max_n: int = Field(default=22, ge=1, le=32)
+    residual_prefix_depth: int = Field(default=12, ge=0, le=20)
+
+
+@app.post('/v1/research/structure-hybrid-count')
+def structure_hybrid_count(request: StructureHybridCountRequest):
+    from veritas.research.cnf_structure import structure_aware_count
+    from veritas.research.gf2_xor_count import XorEquation
+
+    cnf = checked_cnf(request)
+    xor_eqs = tuple(
+        XorEquation(tuple(sorted(set(eq.variables))), eq.rhs) for eq in request.xor_equations
+    )
+    try:
+        result = structure_aware_count(
+            cnf,
+            xor_equations=xor_eqs or None,
+            preprocess=request.structure_preprocess,
+            xor_strategy=request.xor_strategy,
+            max_xor_enum_bits=request.max_xor_enum_bits,
+            verify_direct=request.cross_check,
+            timeout_s=request.timeout_s,
+            include_residual_metrics=request.include_residual_metrics,
+            residual_metrics_max_n=request.residual_metrics_max_n,
+            residual_prefix_depth=request.residual_prefix_depth,
+        )
+    except ValueError as exc:
+        return record(
+            'structure_hybrid_count',
+            request.model_dump(),
+            {'status': 'UNKNOWN', 'reason': str(exc), 'evidence_level': 'NONE'},
+        )
+    result['evidence_level'] = (
+        'REFERENCE_CROSS_CHECKED'
+        if result.get('independent_count_checked')
+        else 'EXACT_ALGORITHM_NOT_INDEPENDENTLY_CHECKED'
+    )
+    return record('structure_hybrid_count', request.model_dump(), result)
+
+
 class AdaptiveContractRequest(CNFRequest):
     portfolio_mode: str = Field(default='auto', pattern='^(auto|thorough|optimal_small)$')
     execution_mode: str = Field(default='indexed', pattern='^(indexed|legacy|sparse)$')

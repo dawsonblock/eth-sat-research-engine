@@ -1,3 +1,16 @@
+# Computational cost reduction (engineering)
+- `anthropic_eight_square`: exhaustive finite checks of Anthropic Eq. (12)/(28); not a solver backend.
+- `cost_ledger` / `cost_ledger_bridge`: recursive work/cache receipts; streaming and R9.10 engines emit `tree_ledger`.
+- `anthropic_signed_contraction`: one-level rewrite economics proxy only.
+- `hybrid_router`: conventional boundary DP vs elimination routing only; run `scripts/validate_cost_reduction_gates.py`.
+- `cnf_structure` / `--structure-hybrid-count`: disjoint component #SAT product; default preprocess on.
+- `gf2_xor_mixed`: mixed CNF+XOR via null-space conditioning up to `max_xor_enum_bits` (default 18).
+- `gf2_xor_substitute`: binary XOR rewrites before mixed/structure routing (`xor_strategy=auto|substitute|condition|encode`).
+- `gf2_xor_encode`: Tseitin chain to pure CNF; `auto` uses encode when `free_xor_dimension > max_xor_enum_bits`.
+- `bit_operation_ledger`: proxy bit costs on `tree_ledger`; `ledger.bit_operations` stays null on R9.10 work ledger.
+- `external_baselines`: Ganak/CADICAL/CryptoMiniSat optional; absence is not a zero count.
+- See `docs/COMPUTATIONAL_COST_REDUCTION.md`; never infer subexponential bounds from these modules.
+
 # R9.12 exact elimination route and factorized support
 - `parent_child_r912.elimination` is ordinary bounded-width variable elimination. Admit an order only through `verify_order` against an explicit `EliminationBudget`; never allocate a table first and never return a partial value.
 - `parent_child_r912.routes` classifies results as `EXACT_ELIMINATION` or `FINITE_TAPERED_RECURSION`. An elimination result is never evidence for the source recursion or any subexponential bound; keep every qualification flag false.
