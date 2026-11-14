@@ -44,8 +44,11 @@ def collect_count_invariants(reduction: dict[str, Any] | None) -> dict[str, Any]
             invariant_entry(
                 kind=preprocess.get("count_invariant", "UNKNOWN"),
                 stage="phase_c_preprocess",
-                proved_in_repo=preprocess.get("status") in ("REDUCED", "UNCHANGED", "UNSAT"),
-                note=preprocess.get("qualification"),
+                proved_in_repo=False,
+                note=(
+                    f"{preprocess.get('qualification') or ''}; "
+                    f"status={preprocess.get('status')}"
+                ),
             )
         )
 
@@ -66,8 +69,11 @@ def collect_count_invariants(reduction: dict[str, Any] | None) -> dict[str, Any]
             invariant_entry(
                 kind=ci["type"],
                 stage="phase_c_outer_reduction",
-                proved_in_repo=bool(ci.get("proved_in_repo")),
-                note=ci.get("note"),
+                proved_in_repo=False,
+                note=(
+                    f"{ci.get('note') or ''}; "
+                    f"partition_certificate_valid={ci.get('partition_certificate_valid')}"
+                ),
             )
         )
 
@@ -78,8 +84,11 @@ def collect_count_invariants(reduction: dict[str, Any] | None) -> dict[str, Any]
             invariant_entry(
                 kind="RESIDUAL_EQUIVALENCE_MERGE",
                 stage="residual_compression_probe",
-                proved_in_repo=agreed is True,
-                note=residual.get("qualification"),
+                proved_in_repo=False,
+                note=(
+                    f"{residual.get('qualification') or ''}; "
+                    f"agreement_with_exhaustive={agreed}"
+                ),
             )
         )
 

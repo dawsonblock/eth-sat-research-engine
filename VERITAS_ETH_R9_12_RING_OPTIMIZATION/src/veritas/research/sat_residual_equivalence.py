@@ -201,8 +201,12 @@ def count_by_residual_equivalence(
             "reason": "n > 16 cap for research scaffold",
         }
     root = _root_state(cnf)
-    order = branch_order or tuple(range(1, cnf.n + 1))
-    full = 1 << len(order)
+    order = (
+        tuple(range(1, cnf.n + 1))
+        if branch_order is None
+        else tuple(branch_order)
+    )
+    full = 1 << len(order) if order else 1
 
     # Leaf bucket after fixing all variables in order (may have extra free vars)
     classes: dict[tuple[Any, ...], int] = defaultdict(int)
@@ -242,12 +246,14 @@ def count_by_residual_equivalence(
         )
 
     oracle = exhaustive_count(cnf, max_vars=cnf.n)
+    agreement = total == oracle
     return {
         "schema": "VERITAS_RESIDUAL_EQUIVALENCE_COUNT_V1",
-        "status": "EXACT_COUNT",
-        "count": total,
+        "status": "EXACT_COUNT" if agreement else "INCONCLUSIVE_INVARIANT_FAILURE",
+        "count": total if agreement else None,
+        "count_computed": total,
         "oracle_exhaustive_count": oracle,
-        "agreement": total == oracle,
+        "agreement": agreement,
         "branch_order": list(order),
         "distinct_residual_classes": len(classes),
         "full_assignment_branches": full,

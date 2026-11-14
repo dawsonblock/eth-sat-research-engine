@@ -242,7 +242,8 @@ def plan_primal_component_split(
                 "w_child_proxy": w_proxy,
                 "w_child_actual": w_actual,
                 "child_solve": solved,
-                "count_preserving_reduction_proved": partition_proved and task == "count",
+                "count_preserving_reduction_proved": False,
+                "partition_certificate_valid": partition_proved,
                 "count_invariant": (
                     "PRODUCT_OVER_PRIMAL_COMPONENTS"
                     if partition_proved and task == "count"

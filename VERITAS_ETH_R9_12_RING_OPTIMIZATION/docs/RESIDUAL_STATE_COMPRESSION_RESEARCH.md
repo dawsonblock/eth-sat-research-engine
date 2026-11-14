@@ -78,6 +78,14 @@ See `tests/test_sat_residual_equivalence.py`.
 
 No change to `universal_speedup_claimed` (remains **false**).
 
+### Correctness gates (code)
+
+- `count_by_residual_equivalence` returns `EXACT_COUNT` only when
+  `count_computed == exhaustive_count(cnf)`; otherwise `INCONCLUSIVE_INVARIANT_FAILURE`
+  and `count=None` (fail-closed child engine).
+- `proved_in_repo` on count invariants is **always false** in universal JSON; partition
+  validity is reported separately (`partition_certificate_valid`).
+
 ## References
 
 - `docs/R913_COEFFICIENT_EXTRACTION_RESEARCH.md`

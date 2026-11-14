@@ -33,13 +33,15 @@ def test_outer_reduction_count_invariant_and_r94_snapshot():
     )
     ledger = ledgers[-1] if ledgers else None
     assert summary["schema"] == "VERITAS_PHASE_C_OUTER_REDUCTION_V1"
-    assert summary["count_invariant"]["proved_in_repo"] is True
+    assert summary["count_invariant"]["partition_certificate_valid"] is True
+    assert summary["count_invariant"]["proved_in_repo"] is False
     assert summary["r94_obligations"]["outer_reduction"].startswith("PARTIAL")
     assert summary["recombined"]["count"] == exhaustive_count(cnf)
     assert ledger is not None
     assert ledger.metadata.get("partition_certificate_valid") is True
     for child in summary["components"]:
-        assert child["count_preserving_reduction_proved"] is True
+        assert child["count_preserving_reduction_proved"] is False
+        assert child["partition_certificate_valid"] is True
 
 
 def test_universal_count_mode_exposes_phase_c_r94_fields():

@@ -191,9 +191,13 @@ def run_phase_c_outer_reduction(
     if partition_cert.get("valid") and task == "count":
         count_invariant = {
             "type": COUNT_INVARIANT_PRODUCT,
-            "proved_in_repo": True,
+            "proved_in_repo": False,
+            "partition_certificate_valid": True,
             "certificate": partition_cert,
-            "note": "Component product; not R9.4 arbitrary-density outer reduction.",
+            "note": (
+                "Primal component product rule when certificate valid; "
+                "not R9.4 theorem or arbitrary-density outer reduction."
+            ),
         }
 
     summary: dict[str, Any] = {
