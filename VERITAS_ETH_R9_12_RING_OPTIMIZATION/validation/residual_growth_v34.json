@@ -4,7 +4,8 @@
     "structured",
     "independent",
     "coupled",
-    "adversarial"
+    "adversarial",
+    "archive"
   ],
   "cases": [
     "block_xy_z",
@@ -12,9 +13,13 @@
     "independent_pairs_6",
     "star_coupled_8",
     "layered_bridge_4x3",
+    "network_block_motif_4",
     "pigeon_one_hot_5",
     "random_3sat_n10_m35_s42",
-    "tight_primed_pairs_5"
+    "tight_primed_pairs_5",
+    "dimacs_contradiction",
+    "dimacs_example",
+    "dimacs_query_v23"
   ],
   "rows": [
     {
@@ -143,6 +148,31 @@
       "complexity_claim": false
     },
     {
+      "name": "network_block_motif_4",
+      "n": 9,
+      "clauses": 8,
+      "count": 257,
+      "exhaustive_check": 257,
+      "brute_assignments": 512,
+      "distinct_residual_states": 16,
+      "cache_hits": 1,
+      "recursive_calls": 17,
+      "compression_ratio_states_vs_brute": 32.0,
+      "memo_reuse_ratio": 0.058823529411764705,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 257,
+        "smallest_bucket": 255,
+        "sorted_multiplicities": [
+          257,
+          255
+        ]
+      },
+      "family": "coupled",
+      "complexity_claim": false
+    },
+    {
       "name": "pigeon_one_hot_5",
       "n": 5,
       "clauses": 11,
@@ -215,6 +245,80 @@
         ]
       },
       "family": "adversarial",
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_contradiction",
+      "n": 1,
+      "clauses": 2,
+      "count": 0,
+      "exhaustive_check": 0,
+      "brute_assignments": 2,
+      "distinct_residual_states": 0,
+      "cache_hits": 0,
+      "recursive_calls": 1,
+      "compression_ratio_states_vs_brute": 2.0,
+      "memo_reuse_ratio": null,
+      "prefix_equivalence_buckets": 1,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 1,
+        "largest_bucket": 2,
+        "smallest_bucket": 2,
+        "sorted_multiplicities": [
+          2
+        ]
+      },
+      "family": "archive",
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_example",
+      "n": 3,
+      "clauses": 2,
+      "count": 4,
+      "exhaustive_check": 4,
+      "brute_assignments": 8,
+      "distinct_residual_states": 2,
+      "cache_hits": 1,
+      "recursive_calls": 3,
+      "compression_ratio_states_vs_brute": 4.0,
+      "memo_reuse_ratio": 0.3333333333333333,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 4,
+        "smallest_bucket": 4,
+        "sorted_multiplicities": [
+          4,
+          4
+        ]
+      },
+      "family": "archive",
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_query_v23",
+      "n": 3,
+      "clauses": 1,
+      "count": 4,
+      "exhaustive_check": 4,
+      "brute_assignments": 8,
+      "distinct_residual_states": 1,
+      "cache_hits": 0,
+      "recursive_calls": 1,
+      "compression_ratio_states_vs_brute": 8.0,
+      "memo_reuse_ratio": 0.0,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 4,
+        "smallest_bucket": 4,
+        "sorted_multiplicities": [
+          4,
+          4
+        ]
+      },
+      "family": "archive",
       "complexity_claim": false
     }
   ]

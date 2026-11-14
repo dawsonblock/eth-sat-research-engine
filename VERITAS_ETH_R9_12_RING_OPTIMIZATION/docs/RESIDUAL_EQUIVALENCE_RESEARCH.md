@@ -44,7 +44,11 @@ fingerprints (three share forced-\(z\), one leaves \(z\) free) →
 
 ```bash
 pytest tests/test_residual_equivalence.py -q
+python scripts/validate_residual_gates.py
+python benchmarks/v34_residual_growth.py
 ```
+
+Drop additional DIMACS instances under `examples/` or `fixtures/dimacs/` (n≤22); v34 picks them up as `dimacs_*` rows.
 
 ## Connection to existing R9 / archive stack
 

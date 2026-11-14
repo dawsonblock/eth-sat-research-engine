@@ -9,7 +9,7 @@ from pathlib import Path as _Path
 import sys as _sys
 
 _sys.path.insert(0, str(_Path(__file__).resolve().parent))
-from residual_benchmark_cnfs import FAMILY_BUILDERS
+from residual_benchmark_cnfs import all_family_builders
 from veritas.core.cnf import CNF
 from veritas.research.residual_equivalence import residual_research_metrics
 from veritas.solvers.reference import exhaustive_count
@@ -43,17 +43,20 @@ def _family_tag(name: str) -> str:
         return 'adversarial'
     if 'independent' in name or 'two_' in name:
         return 'independent'
-    if 'star' in name or 'layered' in name or 'coupled' in name:
+    if 'dimacs' in name:
+        return 'archive'
+    if 'network' in name or 'star' in name or 'layered' in name or 'coupled' in name:
         return 'coupled'
     return 'structured'
 
 
 if __name__ == '__main__':
+    builders = all_family_builders()
     report = {
         'schema': 'VERITAS_RESIDUAL_GROWTH_V34',
-        'families': ['structured', 'independent', 'coupled', 'adversarial'],
-        'cases': list(FAMILY_BUILDERS),
-        'rows': [row(name, builder()) for name, builder in FAMILY_BUILDERS.items()],
+        'families': ['structured', 'independent', 'coupled', 'adversarial', 'archive'],
+        'cases': list(builders),
+        'rows': [row(name, builder()) for name, builder in builders.items()],
     }
     path = Path(__file__).resolve().parents[1] / 'validation' / 'residual_growth_v34.json'
     path.write_text(json.dumps(report, indent=2) + '\n')

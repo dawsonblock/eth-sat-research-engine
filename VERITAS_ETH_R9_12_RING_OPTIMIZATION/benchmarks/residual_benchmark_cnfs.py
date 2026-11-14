@@ -2,8 +2,15 @@
 from __future__ import annotations
 
 import random
+from pathlib import Path
 
 from veritas.core.cnf import CNF
+
+PACKAGE_ROOT = Path(__file__).resolve().parents[1]
+DIMACS_FIXTURE_DIRS = (
+    PACKAGE_ROOT / 'examples',
+    PACKAGE_ROOT / 'fixtures' / 'dimacs',
+)
 
 
 def cnf_block_xy_z() -> CNF:
@@ -68,6 +75,41 @@ def cnf_random_3sat(*, n: int, m: int, seed: int) -> CNF:
     return CNF.from_lists(n, clauses)
 
 
+def cnf_network_block_motif(repeats: int) -> CNF:
+    """Repeat (x∨z)∧(y∨z) motifs with one shared bridge literal z (coupled network)."""
+    if repeats < 1:
+        raise ValueError('repeats must be >= 1')
+    z_var = 2 * repeats + 1
+    clauses: list[list[int]] = []
+    for i in range(repeats):
+        x, y = 2 * i + 1, 2 * i + 2
+        clauses.append([x, z_var])
+        clauses.append([y, z_var])
+    return CNF.from_lists(z_var, clauses)
+
+
+def load_dimacs(path: Path) -> CNF:
+    return CNF.from_dimacs(path.read_text(encoding='utf-8'))
+
+
+def discover_dimacs_fixtures() -> dict[str, CNF]:
+    out: dict[str, CNF] = {}
+    for root in DIMACS_FIXTURE_DIRS:
+        if not root.is_dir():
+            continue
+        for path in sorted(root.glob('*.cnf')):
+            name = f'dimacs_{path.stem}'
+            if name in out:
+                continue
+            try:
+                cnf = load_dimacs(path)
+            except ValueError:
+                continue
+            if cnf.n <= 22:
+                out[name] = cnf
+    return out
+
+
 def cnf_tight_primed_pairs(pair_count: int) -> CNF:
     """Each pair (a,b) with unit-like imbalance: defeats naive prefix symmetry."""
     clauses: list[list[int]] = []
@@ -84,7 +126,15 @@ FAMILY_BUILDERS = {
     'independent_pairs_6': lambda: cnf_independent_pairs(6),
     'star_coupled_8': lambda: cnf_star_coupled(8),
     'layered_bridge_4x3': lambda: cnf_layered_bridge(4, 3),
+    'network_block_motif_4': lambda: cnf_network_block_motif(4),
     'pigeon_one_hot_5': lambda: cnf_pigeon_one_hot(5),
     'random_3sat_n10_m35_s42': lambda: cnf_random_3sat(n=10, m=35, seed=42),
     'tight_primed_pairs_5': lambda: cnf_tight_primed_pairs(5),
 }
+
+
+def all_family_builders() -> dict[str, CNF]:
+    builders = dict(FAMILY_BUILDERS)
+    for name, cnf in discover_dimacs_fixtures().items():
+        builders.setdefault(name, lambda c=cnf: c)
+    return builders
