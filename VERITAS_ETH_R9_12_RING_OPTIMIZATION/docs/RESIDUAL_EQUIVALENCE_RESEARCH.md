@@ -64,7 +64,9 @@ and compare growth curves on independent → coupled → adversarial families.
 ## Three parallel experiments (next)
 
 1. **Residual-function equivalence classes** — `benchmarks/v34_residual_growth.py`
-   (distinct residuals vs \(n\), clauses) on structured + random small CNFs.
+   with `benchmarks/residual_benchmark_cnfs.py` (independent / coupled / adversarial
+   families). API: `include_residual_metrics` on structure-hybrid-count returns
+   `residual_research` with `distinct_residual_states` and `prefix_multiplicity_histogram`.
 2. **Algebraic compression** — extend R9.13 coefficient extraction with sparse
    merges when child jets share identical support (`manuscript/sparse_query.py`).
 3. **Recursive merge + verify** — plug residual memo keys into boundary DP

@@ -4,40 +4,56 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from pathlib import Path as _Path
+
+import sys as _sys
+
+_sys.path.insert(0, str(_Path(__file__).resolve().parent))
+from residual_benchmark_cnfs import FAMILY_BUILDERS
 from veritas.core.cnf import CNF
-from veritas.research.residual_equivalence import count_with_residual_memo
+from veritas.research.residual_equivalence import residual_research_metrics
 from veritas.solvers.reference import exhaustive_count
 
-CASES = {
-    'block_xy_z': CNF.from_lists(3, [[1, 3], [2, 3]]),
-    'path_4': CNF.from_lists(4, [[1, 2], [2, 3], [3, 4]]),
-    'two_components': CNF.from_lists(4, [[1, 2], [3, 4]]),
-}
 
-
-def row(cnf: CNF) -> dict:
-    count, stats, report = count_with_residual_memo(cnf, preprocess=True)
-    brute = 2**cnf.n
+def row(name: str, cnf: CNF) -> dict:
+    metrics = residual_research_metrics(cnf, preprocess=True, max_n=22, prefix_depth=min(12, cnf.n))
+    if metrics.get('skipped'):
+        return {'name': name, **metrics}
     return {
+        'name': name,
         'n': cnf.n,
         'clauses': len(cnf.clauses),
-        'count': count,
+        'count': metrics['count'],
         'exhaustive_check': exhaustive_count(cnf) if cnf.n <= 18 else None,
-        'brute_assignments': brute,
-        'distinct_residual_states': stats.distinct_residual_states,
-        'cache_hits': stats.cache_hits,
-        'recursive_calls': stats.recursive_calls,
-        'compression_ratio_states_vs_brute': round(brute / max(1, stats.distinct_residual_states), 4),
-        'memo_reuse_ratio': report.get('memo_reuse_ratio'),
+        'brute_assignments': metrics['brute_assignments'],
+        'distinct_residual_states': metrics['distinct_residual_states'],
+        'cache_hits': metrics['cache_hits'],
+        'recursive_calls': metrics['recursive_calls'],
+        'compression_ratio_states_vs_brute': metrics['compression_ratio_states_vs_brute'],
+        'memo_reuse_ratio': metrics.get('memo_reuse_ratio'),
+        'prefix_equivalence_buckets': metrics['prefix_equivalence_buckets'],
+        'prefix_multiplicity_histogram': metrics['prefix_multiplicity_histogram'],
+        'family': _family_tag(name),
         'complexity_claim': False,
     }
+
+
+def _family_tag(name: str) -> str:
+    if 'random' in name or 'pigeon' in name or 'tight_primed' in name:
+        return 'adversarial'
+    if 'independent' in name or 'two_' in name:
+        return 'independent'
+    if 'star' in name or 'layered' in name or 'coupled' in name:
+        return 'coupled'
+    return 'structured'
 
 
 if __name__ == '__main__':
     report = {
         'schema': 'VERITAS_RESIDUAL_GROWTH_V34',
-        'cases': list(CASES),
-        'rows': [row(cnf) for cnf in CASES.values()],
+        'families': ['structured', 'independent', 'coupled', 'adversarial'],
+        'cases': list(FAMILY_BUILDERS),
+        'rows': [row(name, builder()) for name, builder in FAMILY_BUILDERS.items()],
     }
     path = Path(__file__).resolve().parents[1] / 'validation' / 'residual_growth_v34.json'
     path.write_text(json.dumps(report, indent=2) + '\n')

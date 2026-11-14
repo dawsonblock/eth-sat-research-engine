@@ -86,15 +86,35 @@ def structure_aware_count(
     **kwargs,
 ) -> dict:
     """Exact #SAT via independent components when variables are disconnected."""
+    include_residual_metrics = kwargs.pop('include_residual_metrics', False)
+    residual_metrics_max_n = kwargs.pop('residual_metrics_max_n', 22)
+    residual_prefix_depth = kwargs.pop('residual_prefix_depth', 12)
+
+    def _attach(out: dict) -> dict:
+        if not include_residual_metrics:
+            return out
+        from veritas.research.residual_equivalence import attach_residual_research_metrics
+
+        return attach_residual_research_metrics(
+            out,
+            cnf,
+            enabled=True,
+            preprocess=preprocess,
+            max_n=residual_metrics_max_n,
+            prefix_depth=residual_prefix_depth,
+        )
+
     if preprocess or xor_equations:
         from veritas.research.gf2_xor_count import structure_with_optional_xor
 
-        return structure_with_optional_xor(
-            cnf,
-            xor_equations=xor_equations,
-            inner_count=inner_count,
-            preprocess=preprocess,
-            **kwargs,
+        return _attach(
+            structure_with_optional_xor(
+                cnf,
+                xor_equations=xor_equations,
+                inner_count=inner_count,
+                preprocess=preprocess,
+                **kwargs,
+            )
         )
     from veritas.research.hybrid_router import hybrid_count
 
@@ -111,7 +131,7 @@ def structure_aware_count(
             'report': report.__dict__,
             'warning': 'No disjoint component split applied.',
         }
-        return out
+        return _attach(out)
 
     product = 1
     parts: list[dict] = []
@@ -139,30 +159,32 @@ def structure_aware_count(
             )
         product *= factor
     merged = counter(cnf, **kwargs) if verify_direct else None
-    return {
-        'status': 'EXACT_COUNT',
-        'count': str(product),
-        'engine': 'STRUCTURE_AWARE_COMPONENT_PRODUCT',
-        'formula_sha256': cnf.digest(),
-        'structure': {
-            'decomposed': True,
-            'report': {
-                'component_count': report.component_count,
-                'global_unconstrained': report.global_unconstrained,
-                'components': [c.__dict__ for c in report.components],
-                'contract': report.contract,
+    return _attach(
+        {
+            'status': 'EXACT_COUNT',
+            'count': str(product),
+            'engine': 'STRUCTURE_AWARE_COMPONENT_PRODUCT',
+            'formula_sha256': cnf.digest(),
+            'structure': {
+                'decomposed': True,
+                'report': {
+                    'component_count': report.component_count,
+                    'global_unconstrained': report.global_unconstrained,
+                    'components': [c.__dict__ for c in report.components],
+                    'contract': report.contract,
+                },
+                'parts': parts,
+                'cross_check': (
+                    {
+                        'direct_count': merged.get('count'),
+                        'matches_direct': str(product) == str(merged.get('count')),
+                    }
+                    if merged is not None
+                    else {'skipped': True, 'reason': 'verify_direct disabled'}
+                ),
+                'warning': 'Component product is exact for disjoint CNF components; not an ETH result.',
             },
-            'parts': parts,
-            'cross_check': (
-                {
-                    'direct_count': merged.get('count'),
-                    'matches_direct': str(product) == str(merged.get('count')),
-                }
-                if merged is not None
-                else {'skipped': True, 'reason': 'verify_direct disabled'}
-            ),
-            'warning': 'Component product is exact for disjoint CNF components; not an ETH result.',
-        },
-        'independent_count_checked': merged is not None and str(merged.get('count')) == str(product),
-        'elapsed_seconds': merged.get('elapsed_seconds') if merged is not None else None,
-    }
+            'independent_count_checked': merged is not None and str(merged.get('count')) == str(product),
+            'elapsed_seconds': merged.get('elapsed_seconds') if merged is not None else None,
+        }
+    )

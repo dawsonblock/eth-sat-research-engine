@@ -48,6 +48,12 @@ def main():
                      help="Mixed XOR routing: substitute, conditioning, or CNF encode (auto uses encode when enum budget exceeded)")
     run.add_argument("--compare-count-baselines", action="store_true",
                      help="With --structure-hybrid-count, cross-check against exhaustive / optional Ganak")
+    run.add_argument("--residual-metrics", action="store_true",
+                     help="With --structure-hybrid-count, attach residual-state research metrics")
+    run.add_argument("--residual-metrics-max-n", type=int, default=22,
+                     help="Skip residual metrics when n exceeds this cap (default 22)")
+    run.add_argument("--residual-prefix-depth", type=int, default=12,
+                     help="Prefix variables for residual multiplicity histogram (default 12)")
     run.add_argument("--optimal-order-report", action="store_true", help="v1.7 globally optimal small-instance elimination plan (no count)")
     run.add_argument("--optimal-objective", choices=('work','width'), default='work')
     run.add_argument("--adaptive-portfolio", choices=('auto','thorough','optimal_small'), default='auto')
@@ -214,6 +220,9 @@ def main():
                     max_table_entries=args.adaptive_table_cap,
                     max_work_assignments=args.max_work_assignments,
                     timeout_s=args.timeout,
+                    include_residual_metrics=args.residual_metrics,
+                    residual_metrics_max_n=args.residual_metrics_max_n,
+                    residual_prefix_depth=args.residual_prefix_depth,
                 )
                 if args.compare_count_baselines:
                     from veritas.solvers.external_baselines import compare_count_baselines

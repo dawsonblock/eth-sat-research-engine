@@ -125,10 +125,13 @@ def count_with_residual_memo(
         recursive_calls=calls,
         max_depth=max_depth,
     )
+    visit_hist = sorted(classifiers.values(), reverse=True)
     report = {
         'preprocess': prep.__dict__ if prep else None,
         'distinct_fingerprints': len(memo),
         'memo_reuse_ratio': cache_hits / calls if calls else 0.0,
+        'recursive_visit_histogram': visit_hist[:64],
+        'recursive_visit_bucket_count': len(visit_hist),
         'contract': 'EXACT_RESIDUAL_MEMO_SHANNON',
         'complexity_claim': False,
     }
@@ -164,3 +167,98 @@ def prefix_residual_table(
         )
         row['multiplicity'] += 1
     return list(buckets.values())
+
+
+def _histogram_stats(multiplicities: list[int]) -> dict:
+    if not multiplicities:
+        return {'bucket_count': 0, 'largest_bucket': 0, 'smallest_bucket': 0}
+    return {
+        'bucket_count': len(multiplicities),
+        'largest_bucket': max(multiplicities),
+        'smallest_bucket': min(multiplicities),
+        'sorted_multiplicities': sorted(multiplicities, reverse=True)[:32],
+    }
+
+
+def residual_research_metrics(
+    cnf: CNF,
+    *,
+    preprocess: bool = True,
+    max_n: int = 22,
+    prefix_depth: int = 12,
+) -> dict:
+    """Distinct residual states, memo stats, and prefix multiplicity histogram."""
+    brute = 2**cnf.n
+    if cnf.n > max_n:
+        return {
+            'skipped': True,
+            'reason': f'n={cnf.n} exceeds residual_metrics_max_n={max_n}',
+            'brute_assignments': brute,
+            'complexity_claim': False,
+        }
+    effective_prefix = min(cnf.n, prefix_depth)
+    if effective_prefix > 20:
+        return {
+            'skipped': True,
+            'reason': f'prefix_depth={effective_prefix} exceeds safe cap 20',
+            'complexity_claim': False,
+        }
+    count, stats, memo_report = count_with_residual_memo(cnf, preprocess=preprocess)
+    prefix_vars = tuple(range(1, effective_prefix + 1))
+    buckets = prefix_residual_table(cnf, prefix_vars) if effective_prefix > 0 else []
+    prefix_mults = [b['multiplicity'] for b in buckets]
+    return {
+        'skipped': False,
+        'count': count,
+        'brute_assignments': brute,
+        'distinct_residual_states': stats.distinct_residual_states,
+        'cache_hits': stats.cache_hits,
+        'recursive_calls': stats.recursive_calls,
+        'max_depth': stats.max_depth,
+        'compression_ratio_states_vs_brute': round(
+            brute / max(1, stats.distinct_residual_states), 6
+        ),
+        'memo_reuse_ratio': memo_report.get('memo_reuse_ratio'),
+        'recursive_visit_histogram': memo_report.get('recursive_visit_histogram', []),
+        'prefix_depth': effective_prefix,
+        'prefix_equivalence_buckets': len(buckets),
+        'prefix_multiplicity_histogram': _histogram_stats(prefix_mults),
+        'prefix_buckets_preview': [
+            {
+                'multiplicity': b['multiplicity'],
+                'residual_n': b['residual_n'],
+                'residual_clauses': b['residual_clauses'],
+            }
+            for b in sorted(buckets, key=lambda r: -r['multiplicity'])[:16]
+        ],
+        'contract': 'EXACT_RESIDUAL_RESEARCH_METRICS',
+        'complexity_claim': False,
+    }
+
+
+def attach_residual_research_metrics(
+    result: dict,
+    cnf: CNF,
+    *,
+    enabled: bool,
+    preprocess: bool = True,
+    max_n: int = 22,
+    prefix_depth: int = 12,
+) -> dict:
+    if not enabled:
+        return result
+    result['residual_research'] = residual_research_metrics(
+        cnf,
+        preprocess=preprocess,
+        max_n=max_n,
+        prefix_depth=prefix_depth,
+    )
+    metrics = result['residual_research']
+    if (
+        not metrics.get('skipped')
+        and result.get('count') is not None
+        and str(result.get('count')) != str(metrics.get('count'))
+    ):
+        metrics['count_mismatch_with_pipeline'] = True
+        metrics['pipeline_count'] = result.get('count')
+    return result

@@ -1410,6 +1410,9 @@ class StructureHybridCountRequest(CNFRequest):
     max_xor_enum_bits: int = Field(default=18, ge=0, le=24)
     structure_preprocess: bool = True
     cross_check: bool = True
+    include_residual_metrics: bool = False
+    residual_metrics_max_n: int = Field(default=22, ge=1, le=32)
+    residual_prefix_depth: int = Field(default=12, ge=0, le=20)
 
 
 @app.post('/v1/research/structure-hybrid-count')
@@ -1430,6 +1433,9 @@ def structure_hybrid_count(request: StructureHybridCountRequest):
             max_xor_enum_bits=request.max_xor_enum_bits,
             verify_direct=request.cross_check,
             timeout_s=request.timeout_s,
+            include_residual_metrics=request.include_residual_metrics,
+            residual_metrics_max_n=request.residual_metrics_max_n,
+            residual_prefix_depth=request.residual_prefix_depth,
         )
     except ValueError as exc:
         return record(

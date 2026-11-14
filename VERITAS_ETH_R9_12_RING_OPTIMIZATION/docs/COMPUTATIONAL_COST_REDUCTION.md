@@ -48,7 +48,8 @@ python benchmarks/v33_xor_encoded_externals.py
 python scripts/validate_r9_execution_cost_gates.py
 ```
 
-HTTP: `POST /v1/research/structure-hybrid-count` with optional `xor_equations`, `xor_strategy`, `max_xor_enum_bits`.
+HTTP: `POST /v1/research/structure-hybrid-count` with optional `xor_equations`, `xor_strategy`, `max_xor_enum_bits`,
+`include_residual_metrics`, `residual_metrics_max_n`, `residual_prefix_depth`.
 
 Pure XOR (no CNF clauses), equations in JSON:
 
