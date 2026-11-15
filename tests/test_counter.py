@@ -155,6 +155,13 @@ class EngineTests(unittest.TestCase):
             self.assertGreater(total, n)
             self.assertEqual(count_bitset(Problem(total, tuple(clauses))), count_bitset(problem))
 
+    def test_xor_encoding_keeps_an_empty_contradiction(self) -> None:
+        clauses, total = encode_xors(Problem(0, (), (((), 1),)))
+        self.assertEqual((clauses, total), ([()], 0))
+        self.assertEqual(count_bitset(Problem(total, tuple(clauses))), 0)
+        clauses, total = encode_xors(Problem(2, ((1, 2),), (((), 0),)))
+        self.assertEqual((clauses, total), ([(1, 2)], 2))
+
     def test_bitset_refuses_large_inputs(self) -> None:
         with self.assertRaises(counter.EngineSkipped):
             count_bitset(Problem(counter.BITSET_MAX_VARIABLES + 1, ()))
@@ -267,6 +274,13 @@ class CliTests(unittest.TestCase):
         code, out, _ = self.run_cli("p cnf 15000 0\n", "--engines", "dpll", "--json")
         self.assertEqual(code, 0)
         self.assertIn(counter.to_decimal(2**15000), out)
+
+    def test_reports_when_no_engine_applies(self) -> None:
+        text = "c p show 1 2 0\np cnf 30 1\n1 2 0\n"
+        with mock.patch.dict(counter._REQUIRED_MODULES, {"ganak": "json.no_such_module"}):
+            code, out, err = self.run_cli(text)
+        self.assertEqual((code, out), (counter.EXIT_NO_RESULT, ""))
+        self.assertIn("no engine applies", err)
 
     def test_json_record(self) -> None:
         code, out, _ = self.run_cli("p cnf 2 1\nx1 2 0\n", "--engines", "bitset", "--json")

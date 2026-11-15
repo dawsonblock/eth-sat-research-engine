@@ -226,8 +226,8 @@ def encode_xors(problem: Problem) -> tuple[list[tuple[int, ...]], int]:
             total += 1
             emit([chain[0], chain[1], total], 0)
             chain = [total] + chain[2:]
-        if chain:
-            emit(chain, rhs)
+        # An empty equation with rhs 1 is a contradiction: emit yields the empty clause.
+        emit(chain, rhs)
     return clauses, total
 
 
@@ -574,6 +574,11 @@ def _summary(result: CountResult) -> str:
     elif result.status == "DISAGREE":
         head = "ENGINES DISAGREE, no count published: " + ", ".join(
             f"{run.engine}={run.count}" for run in result.runs if run.status == "ok"
+        )
+    elif not result.runs:
+        return (
+            "no engine applies to this problem: projected counting above "
+            f"{BITSET_MAX_VARIABLES} variables needs pyganak (pip install pyganak)"
         )
     else:
         head = "no engine finished"
