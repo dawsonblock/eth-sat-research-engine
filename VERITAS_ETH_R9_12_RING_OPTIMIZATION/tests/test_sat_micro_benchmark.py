@@ -11,13 +11,15 @@ from veritas.solvers.reference import exhaustive_count
 
 def test_micro_benchmark_all_cross_checks_agree():
     report = run_micro_benchmark_suite()
-    assert report["schema"] == "VERITAS_SAT_MICRO_BENCHMARK_V2"
+    assert report["schema"] == "VERITAS_SAT_MICRO_BENCHMARK_V3"
     assert "phase_c_split_beats_direct_proxy_count" in report
     assert "decomposition_highlight_cases" in report
     assert "decomposition_metrics" in report["cases"][0]
     assert report["all_cross_checks_agree"] is True
-    assert report["case_count"] >= 6
+    assert report["case_count"] >= 12
     assert "max_residual_compression_ratio" in report
+    assert "coupled_family_highlights" in report
+    assert "adversarial_family_highlights" in report
 
 
 def test_parent_bridge_refuses_out_of_tiny_class():

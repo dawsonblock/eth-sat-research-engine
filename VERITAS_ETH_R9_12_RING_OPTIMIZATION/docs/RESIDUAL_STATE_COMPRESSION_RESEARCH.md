@@ -78,6 +78,28 @@ See `tests/test_sat_residual_equivalence.py`.
 
 No change to `universal_speedup_claimed` (remains **false**).
 
+### Micro-suite generators (CI, seeded)
+
+`sat_micro_generators.py` adds **coupled** (path/triangle chains) and **adversarial**
+(dense random, tight triangle cliques) families with `n ≤ 10`. Each universal
+count run and micro-benchmark case records:
+
+- `distinct_residual_classes`
+- `compression_ratio_branches_over_classes` (branch-order dependent)
+- `compression_vs_2n` ≈ `2^n / distinct_residual_classes` when `n ≤ 20`
+
+Benchmark-only `probe_branch_orders_benchmark` tries three fixed orders (default,
+odd-first, reversed) and reports `best_compression_ratio_branches_over_classes`
+in micro-benchmark JSON **without** changing production default order.
+
+Phase C count children try **`residual_equivalence` before `count_dag`** when oracle
+agreement holds; `child_engine_telemetry` logs wins vs adaptive/exhaustive fallback.
+
+Component-local **pure literal** elimination (`enable_component_safe_pure_literals`)
+defaults off globally. When enabled, a variable is forced only if every incident
+clause is a **unit clause** on that variable within a single primal component
+(naive multi-literal pure literals break #SAT — e.g. `(x ∨ y)` with x only positive).
+
 ### Correctness gates (code)
 
 - `count_by_residual_equivalence` returns `EXACT_COUNT` only when

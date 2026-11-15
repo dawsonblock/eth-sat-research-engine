@@ -23,20 +23,21 @@ def test_preprocess_detects_unsat_unit_conflict():
     assert len(reduced.clauses) == 0
 
 
-def test_count_dag_used_for_small_component():
+def test_residual_preferred_when_agreement_holds():
     cnf = CNF.from_lists(4, [[1, 2], [3, -4]])
     encoded = source_cnf_network(cnf, max_clause_width=3, max_wires=10_000, max_factors=10_000)
     cert = primal_component_partition_certificate(cnf)
     summary, _ = plan_primal_component_split(
         cnf,
         encoded,
-        bounds=PhaseCBounds(prefer_count_dag=True, max_count_dag_vars=24),
+        bounds=PhaseCBounds(prefer_residual_equivalence=True, prefer_count_dag=True),
         w_old=16,
         task="count",
         partition_certificate=cert,
     )
     engines = {c["child_solve"]["engine"] for c in summary["components"]}
-    assert "count_dag_certificate" in engines
+    assert "residual_equivalence" in engines
+    assert summary["child_engine_telemetry"]["residual_equivalence_wins"] >= 1
     assert summary["recombined"]["count"] == exhaustive_count(cnf)
 
 

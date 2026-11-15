@@ -107,6 +107,13 @@ def _count_component(
     task: Literal["count", "decision"],
 ) -> dict:
     """Exact child solve on a local sub-CNF (scaffold; not R9.4)."""
+    attempts: list[dict[str, Any]] = []
+
+    def _finish(row: dict) -> dict:
+        row = {**row, "child_engine_used": row.get("engine")}
+        row["engine_attempts"] = attempts
+        return row
+
     if task == "decision":
         result = solve(
             sub,
@@ -115,26 +122,53 @@ def _count_component(
             max_nodes=bounds.component_max_nodes,
         )
         w_actual = result.nodes
-        return {
-            "task": "decision",
-            "status": result.status,
-            "model": result.model,
-            "count": None,
-            "w_child_actual": w_actual,
-            "engine": "veritas_reference",
-        }
-    if (
-        bounds.prefer_count_dag
-        and sub.n <= bounds.max_count_dag_vars
-    ):
+        return _finish(
+            {
+                "task": "decision",
+                "status": result.status,
+                "model": result.model,
+                "count": None,
+                "w_child_actual": w_actual,
+                "engine": "veritas_reference",
+            }
+        )
+    if bounds.prefer_residual_equivalence:
+        residual = try_residual_equivalence_exact_count(
+            sub,
+            max_vars=bounds.max_residual_equivalence_vars,
+            max_clauses=bounds.max_residual_equivalence_clauses,
+        )
+        attempts.append(
+            {
+                "engine": "residual_equivalence",
+                "accepted": residual is not None,
+            }
+        )
+        if residual is not None:
+            return _finish(residual)
+    if bounds.prefer_count_dag and sub.n <= bounds.max_count_dag_vars:
         dag = make_dag_count_certificate(
             sub,
             timeout_s=min(bounds.count_dag_timeout_s, bounds.component_timeout_s),
         )
-        if dag.status == "COUNT" and dag.certificate is not None and dag.count is not None:
+        accepted = (
+            dag.status == "COUNT"
+            and dag.certificate is not None
+            and dag.count is not None
+        )
+        verified_ok = False
+        if accepted:
             ok, _msg, verified, _n = check_dag_count_certificate(sub, dag.certificate)
-            if ok and verified == dag.count:
-                return {
+            verified_ok = bool(ok and verified == dag.count)
+        attempts.append(
+            {
+                "engine": "count_dag_certificate",
+                "accepted": verified_ok,
+            }
+        )
+        if verified_ok:
+            return _finish(
+                {
                     "task": "count",
                     "status": "EXACT_COUNT",
                     "count": dag.count,
@@ -143,36 +177,36 @@ def _count_component(
                     "dag_nodes": dag.nodes,
                     "dag_cache_hits": dag.cache_hits,
                 }
-    if bounds.prefer_residual_equivalence:
-        residual = try_residual_equivalence_exact_count(
-            sub,
-            max_vars=bounds.max_residual_equivalence_vars,
-            max_clauses=bounds.max_residual_equivalence_clauses,
-        )
-        if residual is not None:
-            return residual
+            )
     if sub.n <= bounds.max_exhaustive_vars_per_component:
         count = exhaustive_count(sub)
         w_actual = 1 << sub.n
-        return {
-            "task": "count",
-            "status": "EXACT_COUNT",
-            "count": count,
-            "w_child_actual": w_actual,
-            "engine": "exhaustive_oracle",
-        }
+        attempts.append({"engine": "exhaustive_oracle", "accepted": True})
+        return _finish(
+            {
+                "task": "count",
+                "status": "EXACT_COUNT",
+                "count": count,
+                "w_child_actual": w_actual,
+                "engine": "exhaustive_oracle",
+            }
+        )
+    attempts.append({"engine": "adaptive_count", "accepted": None})
     out = adaptive_count(sub, timeout_s=min(bounds.component_timeout_s, 60.0))
     exec_stats = out.get("execution") or {}
     w_actual = int(
         exec_stats.get("work_assignments", 0) or exec_stats.get("nodes", 0) or 1
     )
-    return {
-        "task": "count",
-        "status": out.get("status"),
-        "count": int(out["count"]) if out.get("count") is not None else None,
-        "w_child_actual": w_actual,
-        "engine": out.get("engine"),
-    }
+    return _finish(
+        {
+            "task": "count",
+            "status": out.get("status"),
+            "count": int(out["count"]) if out.get("count") is not None else None,
+            "w_child_actual": w_actual,
+            "engine": out.get("engine") or "adaptive_count",
+            "authoritative_direct_lane_fallback": True,
+        }
+    )
 
 
 def _recombine_count(child_results: list[dict]) -> tuple[Optional[int], str]:
@@ -300,6 +334,24 @@ def plan_primal_component_split(
         "bounds": bounds.to_dict(),
         "theorem_backed": False,
         "partition_certificate_valid": partition_proved,
+        "child_engine_telemetry": {
+            "schema": "VERITAS_PHASE_C_CHILD_ENGINE_TELEMETRY_V1",
+            "engines_used": [
+                (c.get("child_solve") or {}).get("child_engine_used")
+                for c in child_specs
+            ],
+            "residual_equivalence_wins": sum(
+                1
+                for c in child_specs
+                if (c.get("child_solve") or {}).get("child_engine_used")
+                == "residual_equivalence"
+            ),
+            "direct_lane_fallback_children": sum(
+                1
+                for c in child_specs
+                if (c.get("child_solve") or {}).get("authoritative_direct_lane_fallback")
+            ),
+        },
     }
     return summary, ledger
 

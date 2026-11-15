@@ -59,6 +59,7 @@ def test_recombined_count_matches_exhaustive_on_disconnected():
         assert child["child_solve"]["engine"] in (
             "exhaustive_oracle",
             "count_dag_certificate",
+            "residual_equivalence",
         )
         assert child["w_child_actual"] > 0
 

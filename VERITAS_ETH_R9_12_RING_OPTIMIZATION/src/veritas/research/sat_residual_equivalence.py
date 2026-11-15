@@ -79,6 +79,56 @@ def count_residual_state(state: State, *, memo: dict[tuple[Any, ...], int] | Non
     return memo[key]
 
 
+def probe_branch_orders_benchmark(
+    cnf: CNF,
+    *,
+    max_vars: int = 10,
+) -> dict[str, Any]:
+    """Benchmark-only: compare a few fixed branch orders; does not change production default."""
+    if cnf.n > max_vars:
+        return {
+            "schema": "VERITAS_RESIDUAL_BRANCH_ORDER_PROBE_V1",
+            "status": "REFUSED",
+            "reason": f"n={cnf.n} > cap {max_vars}",
+        }
+    n = cnf.n
+    candidate_orders: list[tuple[int, ...] | None] = [
+        None,
+        tuple(range(1, n + 1, 2)),
+        tuple(reversed(range(1, n + 1))),
+    ]
+    probes: list[dict[str, Any]] = []
+    best_ratio: float | None = None
+    best_order: list[int] | None = None
+    for order in candidate_orders:
+        rep = count_by_residual_equivalence(cnf, branch_order=order)
+        ratio = rep.get("compression_ratio_branches_over_classes")
+        classes = rep.get("distinct_residual_classes")
+        probe = {
+            "branch_order": list(order) if order is not None else "default_full",
+            "agreement": rep.get("agreement"),
+            "compression_ratio_branches_over_classes": ratio,
+            "distinct_residual_classes": classes,
+        }
+        if cnf.n <= 20 and classes:
+            probe["compression_vs_2n"] = (1 << cnf.n) / classes
+        probes.append(probe)
+        if rep.get("agreement") and ratio is not None:
+            rf = float(ratio)
+            if best_ratio is None or rf > best_ratio:
+                best_ratio = rf
+                best_order = list(order) if order is not None else list(range(1, n + 1))
+    return {
+        "schema": "VERITAS_RESIDUAL_BRANCH_ORDER_PROBE_V1",
+        "status": "PROBE_COMPLETE",
+        "probes": probes,
+        "best_branch_order": best_order,
+        "best_compression_ratio_branches_over_classes": best_ratio,
+        "theorem_backed": False,
+        "universal_speedup_claimed": False,
+    }
+
+
 def compression_metrics_from_report(report: dict[str, Any]) -> dict[str, Any]:
     """Subset of fields for universal JSON and micro-benchmarks."""
     return {
@@ -91,6 +141,7 @@ def compression_metrics_from_report(report: dict[str, Any]) -> dict[str, Any]:
         ),
         "agreement_with_exhaustive": report.get("agreement"),
         "reason": report.get("reason"),
+        "compression_vs_2n": report.get("compression_vs_2n"),
     }
 
 
@@ -178,6 +229,7 @@ def probe_residual_compression(
             "compression_ratio_branches_over_classes"
         ),
         "agreement_with_exhaustive": metrics.get("agreement_with_exhaustive"),
+        "compression_vs_2n": metrics.get("compression_vs_2n"),
         "universal_speedup_claimed": False,
         "theorem_backed": False,
         "qualification": "research_probe_not_primary_solver",
@@ -247,6 +299,10 @@ def count_by_residual_equivalence(
 
     oracle = exhaustive_count(cnf, max_vars=cnf.n)
     agreement = total == oracle
+    classes_n = len(classes)
+    compression_vs_2n = (
+        (1 << cnf.n) / classes_n if classes_n and cnf.n <= 20 else None
+    )
     return {
         "schema": "VERITAS_RESIDUAL_EQUIVALENCE_COUNT_V1",
         "status": "EXACT_COUNT" if agreement else "INCONCLUSIVE_INVARIANT_FAILURE",
@@ -260,6 +316,7 @@ def count_by_residual_equivalence(
         "compression_ratio_branches_over_classes": (
             full / len(classes) if classes else None
         ),
+        "compression_vs_2n": compression_vs_2n,
         "classes": class_rows,
         "theorem_backed": False,
         "universal_speedup_claimed": False,

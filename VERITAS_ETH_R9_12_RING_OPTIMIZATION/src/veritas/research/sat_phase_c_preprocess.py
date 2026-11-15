@@ -10,6 +10,8 @@ from typing import Any
 
 from veritas.core.cnf import CNF
 from veritas.research.sat_count_invariants import CountInvariantKind
+from veritas.research.graph_decomposition import components
+from veritas.research.sat_phase_c_reduction import _cnf_primal_graph
 from veritas.research.sat_preprocess_options import DEFAULT_PREPROCESS_OPTIONS, PreprocessOptions
 from veritas.research.sat_work_accounting import DecompositionWorkLedger
 
@@ -90,6 +92,52 @@ def _remove_tautology_clauses(
             continue
         kept.append(clause)
     return tuple(kept), dropped
+
+
+def _clause_in_component(clause: tuple[int, ...], comp: frozenset[int]) -> bool:
+    return {abs(lit) for lit in clause} <= comp
+
+
+def _component_for_variable(
+    comp_list: tuple[tuple[int, ...], ...],
+) -> dict[int, frozenset[int]]:
+    out: dict[int, frozenset[int]] = {}
+    for comp in comp_list:
+        fs = frozenset(comp)
+        for v in comp:
+            out[v] = fs
+    return out
+
+
+def _one_component_safe_pure_literal(
+    clauses: tuple[tuple[int, ...], ...],
+    n: int,
+    assignment: dict[int, bool],
+) -> tuple[int, bool] | None:
+    """#SAT-safe pure literal: v appears only in unit clauses, inside one component.
+
+    Naive pure-literal forcing breaks #SAT when v is only positive but appears in
+    multi-literal clauses (e.g. (x ∨ y) with x only positive).
+    """
+    graph = _cnf_primal_graph(CNF(n, clauses))
+    comps = components(graph)
+    comp_by_var = _component_for_variable(comps)
+    for v in range(1, n + 1):
+        if v in assignment or v not in comp_by_var:
+            continue
+        comp = comp_by_var[v]
+        touched = [c for c in clauses if v in {abs(lit) for lit in c}]
+        if not touched:
+            continue
+        if not all(_clause_in_component(c, comp) for c in touched):
+            continue
+        if not all(len(c) == 1 and abs(c[0]) == v for c in touched):
+            continue
+        if all(c[0] > 0 for c in touched):
+            return v, True
+        if all(c[0] < 0 for c in touched):
+            return v, False
+    return None
 
 
 def _one_safe_pure_literal(
@@ -193,6 +241,17 @@ def apply_phase_c_preprocess(
                 pure_steps += 1
                 changed = True
                 continue
+        if (
+            options.enable_component_safe_pure_literals
+            and pure_steps < options.max_pure_literal_steps
+        ):
+            pick = _one_component_safe_pure_literal(clauses, cnf.n, assignment)
+            if pick is not None:
+                v, val = pick
+                assignment[v] = val
+                pure_steps += 1
+                changed = True
+                continue
         break
 
     clauses, ok = _clauses_after_assignment(clauses, assignment)
@@ -223,7 +282,15 @@ def apply_phase_c_preprocess(
         "formula_digest_after": out.digest(),
         "assignment_size": len(assignment),
         "theorem_backed": False,
-        "qualification": "engineering_count_preserving_on_declared_n",
+        "qualification": (
+            "engineering_count_preserving_on_declared_n"
+            + (
+                "; component_safe_pure_literals_checked_in_tests"
+                if options.enable_component_safe_pure_literals
+                else ""
+            )
+        ),
+        "component_safe_pure_literals": options.enable_component_safe_pure_literals,
     }
     w_transform = max(1, unit_steps + pure_steps)
     ledger = DecompositionWorkLedger(
