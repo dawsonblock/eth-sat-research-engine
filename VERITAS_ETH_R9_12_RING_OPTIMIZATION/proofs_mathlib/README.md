@@ -47,16 +47,34 @@ every loop is charged too, and each emitted tuple costs one unit.
 | `CallTree.size_le` | a call tree with `≤ b_j` children per depth-`j` call and `b_n = 0` has `≤ ∑_{d ≤ n} ∏_{j<d} b_j` calls | "multiplying these bounds over the depths" |
 | `depth_exponent` | `M_j·8^j ≤ Cs`, `u_j ≥ 1` ⇒ `M_j/√u_j ≤ 2^10 Cs/√λ · (√2/8)^j` | per-depth exponent |
 | `total_calls` | if `b_j ≤ Q·exp(κ M_j/√u_j)` at every active depth: at most `(n+1)·Q^n·exp(2^11 κ C s/√λ)` calls | `subsec:tensor-cost`, call count |
+| `lamZero`, `schedule_bound_explicit` | `λ₀(C) = 2^34·C²·(polyU(scheduleB C)+1)²`; every active depth of every `λ ≥ lamZero C` has `u_d ≥ 1` and `need C λ ≤ 2^{u_d}` | constructive `schedule_bound` |
+| `callFactor_le` | `2L·(M·(2L−1)+1)·r ≤ 128·(2C+1)·s³` when `L^1000 ≤ s`, `M ≤ C·s`, `r ≤ 64`, `s ≥ 1` | per-call node/value/group count |
+| `depth_is_logarithmic` | `C ≤ λ`, `λ ≥ 64` and `(2^j)^6 ≤ C²λ` ⇒ `j ≤ 8·⌊log₂(λ+1)⌋+8` | `n = O(log λ)` |
+| `contraction_calls_bound` | the `total_calls` hypotheses, plus `Q ≤ 2^{8λ}`, `n ≤ 8·⌊log₂(λ+1)⌋+8`, `λ ≥ 64` and `2^{λ−1} ≤ s`: calls `≤ exp((2^11·κ·C+1)·s/√λ)` | absorption of `(n+1)·Q^n` |
+| `direct_leaf_le` | `λ ≥ 4`, `s ≥ 2`, `⌊√λ⌋ ≤ s` ⇒ `2^{s/⌊√λ⌋+1} ≤ exp(3s/√λ)` | leaf `2^H` |
+| `entry_exponent_le` | `L^1000 ≤ s ≤ 2^λ`, `λ ≥ 64`, `s ≥ 1` ⇒ the entry exponent `L·(⌊log₂(s+1)⌋+1)` is `≤ 2^{λ−2}/(λ+1)` | entry `exp(O(L log s))` |
+| `contraction_time_bound` | calls times `(s+1)^8` times the leaf and entry powers is `≤ exp((2^11·κ·C+6)·s/√λ)` on `2^{λ−1} ≤ s ≤ 2^λ` | `subsec:tensor-cost` |
+| `subexponential_bound` | for every `K ≥ 0` and `ε > 0`, eventually `exp(K·s/√⌊log₂ s⌋) ≤ 2^{ε s}` | `2^{o(s)}` |
 
 With `κ = 2π√34` from `active_node_bounds`, `total_calls` is the paper's
 call count `exp(O_C(s/√λ))·Q^n`. No gap was found in the assembly: the
 per-depth exponents form a geometric series with ratio `√2/8`, so their sum
-is `O_C(s/√λ)` independent of the depth.
+is `O_C(s/√λ)` independent of the depth. `contraction_calls_bound` absorbs
+the `(n+1)·Q^n` prefactor once `λ ≥ 64` and `2^{λ−1} ≤ s`.
+`contraction_time_bound` does the same for a polynomial per-call factor, the
+leaf and the entry exponent. `subexponential_bound` turns
+`exp(K s/√⌊log₂ s⌋)` into `2^{o(s)}`. For the precision constant `C = 34`,
+`lamZero 34 = 1469316970615668736` (61 bits). The ceiling window begins at
+`s₀ = 2^{lamZero 34 − 1}`, a number with `1469316970615668736` bits.
+`scripts/report_subexponential_threshold.py` prints that threshold and does
+not print `s₀`. Every input the engine can run sits far below it, so the
+bound says nothing about those runs and nothing about ETH.
 
 ## Taken as hypotheses, not proved here
 
-- `λ₀(C)` in `schedule_bound` and `size_conditions` is shown to exist but is
-  not computed. With `λ = ⌈log₂ s⌉` it corresponds to astronomically large `s`.
+- `schedule_bound` and `size_conditions` still state `λ₀` only as an
+  existential. The explicit term is `lamZero`, and `schedule_bound_explicit`
+  uses it. For `C = 34` it is `1469316970615668736`.
 - The tapered-Hermite inputs `h·u ≤ 4M` (true for `h = ⌈3M/u⌉` when `u ≤ M`)
   and `D_t·2^i = L`.
 - Only existence of a good labeling is proved; the deterministic
@@ -75,12 +93,15 @@ is `O_C(s/√λ)` independent of the depth.
   jet coefficient, and finds the loss bound `6Dh + 4M(a+1)` with margin. Its
   negative control (precision one bit below the actual loss) fails, as it
   should.
-- The polynomial factor `Q` in `total_calls`: that interpolation nodes,
-  values and groups per call are polynomially many in `s`. The `(n+1)·Q^n`
-  factor with `Q = s^{O(1)}` and `n = O(log λ)` is `exp(O(λ log λ))`; its
-  absorption into `exp(O(s/√λ))` is not formalised.
-- The leaf cost `2^H` times entry evaluation `exp(O(L log s))`, and the
-  per-call work being polynomial apart from those.
+- That a concrete call tree meets `b_j ≤ Q·exp(κ M_j/√u_j)`. `callFactor_le`
+  bounds `2L·(M·(2L−1)+1)·r` by `128·(2C+1)·s³` when `L^1000 ≤ s`,
+  `M ≤ C·s` and `r ≤ 64`, and `callFactor_small` puts that under `2^{8λ}`
+  for `s, C ≤ 2^λ` and `λ ≥ 8`. The absorption of `(n+1)·Q^n`, the leaf
+  `2^{s/⌊√λ⌋+1}` and the entry exponent into `exp(O(s/√λ))` is proved in
+  `contraction_calls_bound`, `direct_leaf_le`, `entry_exponent_le` and
+  `contraction_time_bound`. Those theorems take the branching hypothesis and
+  the per-call shape `(s+1)^8 · 2^{s/⌊√λ⌋+1} · 2^{L(⌊log₂(s+1)⌋+1)}` as
+  assumptions. They do not prove that the algorithm's work has that shape.
 
 ## Runtime checks
 
@@ -108,8 +129,9 @@ source qualification or evidence for the recursion bound.
 ## Not covered
 
 - Child construction and contraction as tensor algebra, Hermite recovery,
-  entry evaluation, and the running time of each call; the recursion is
-  costed by counting calls only.
+  and the running time of each call. The cost closure assumes a call tree
+  whose branching, leaf sum and entry routine have the shapes named above;
+  it does not derive those shapes from the tensor algebra.
 - Any statement about the Python or C++ implementation.
 
 ## Reading the bound

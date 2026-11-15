@@ -37,5 +37,13 @@ import ModeCount
 #print axioms ModeCount.depth_exponent
 #print axioms ModeCount.path_edges
 #print axioms ModeCount.total_calls
+#print axioms ModeCount.schedule_bound_explicit
+#print axioms ModeCount.callFactor_le
+#print axioms ModeCount.depth_is_logarithmic
+#print axioms ModeCount.contraction_calls_bound
+#print axioms ModeCount.direct_leaf_le
+#print axioms ModeCount.entry_exponent_le
+#print axioms ModeCount.contraction_time_bound
+#print axioms ModeCount.subexponential_bound
 
 example : ModeCount.enum [1, 2] 4 = [[0, 0], [0, 1], [1, 0], [1, 1], [2, 0], [3, 0]] := by decide
