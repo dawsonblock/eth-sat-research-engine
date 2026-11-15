@@ -24,6 +24,7 @@ subexponential construction or claim any new complexity theorem.
 | 4 | `veritas.research.adaptive_contract` | Existing exact #SAT path (unchanged semantics) |
 | 5 | `veritas.research.boundary_dp` | Separator / component memoization (existing) |
 | R† | `veritas.research.residual_equivalence` | Research prototype: residual \(R(a)\) fingerprint memo + multiplicity buckets (`docs/RESIDUAL_EQUIVALENCE_RESEARCH.md`) |
+| R‡ | `veritas.research.residual_count_backend` | `count_backend=residual_research\|dual` on structure-hybrid-count; `validation/backend_compare_v36.json` |
 
 Anthropic and OpenAI manuscript recursion remain experimental backends only.
 
