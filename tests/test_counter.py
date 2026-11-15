@@ -6,7 +6,6 @@ engine, so an error common to the engines cannot hide behind their agreement.
 
 from __future__ import annotations
 
-import importlib.util
 import io
 import random
 import tempfile
@@ -29,8 +28,8 @@ from eth_sat.counter import (
     plan_engines,
 )
 
-HAVE_GANAK = importlib.util.find_spec("pyganak") is not None
-HAVE_VERITAS = importlib.util.find_spec("veritas") is not None
+HAVE_GANAK = counter.engine_availability()["ganak"] is None
+HAVE_VERITAS = counter.engine_availability()["veritas"] is None
 
 
 def oracle(problem: Problem) -> int:
@@ -171,6 +170,15 @@ class OrchestrationTests(unittest.TestCase):
         self.assertEqual(plan_engines(self.chain, "bitset, dpll,bitset"), ["bitset", "dpll"])
         with self.assertRaises(ValueError):
             plan_engines(self.chain, "nope")
+
+    def test_discovery_requires_the_module_an_engine_uses(self) -> None:
+        with mock.patch.dict(counter._REQUIRED_MODULES, {"veritas": "json.no_such_module"}):
+            self.assertIsNotNone(counter.engine_availability()["veritas"])
+            self.assertNotIn("veritas", plan_engines(self.chain))
+        with mock.patch.dict(counter._REQUIRED_MODULES, {"veritas": "no_such_package.sub"}):
+            self.assertIsNotNone(counter.engine_availability()["veritas"])
+        with mock.patch.dict(counter._REQUIRED_MODULES, {"veritas": "json.decoder"}):
+            self.assertIsNone(counter.engine_availability()["veritas"])
 
     def test_isolated_engines_agree(self) -> None:
         result = count_models(self.chain, engines="dpll,bitset", timeout=30, verify_timeout=30)

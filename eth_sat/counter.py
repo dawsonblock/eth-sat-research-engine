@@ -328,16 +328,25 @@ ENGINES = {
     "bitset": count_bitset,
     "veritas": count_veritas,
 }
-_PACKAGES = {"ganak": "pyganak", "veritas": "veritas"}
+# The module each optional engine needs. For veritas this is the R9.12 counting
+# module: older releases of the package, such as v3.8.2, do not have it.
+_REQUIRED_MODULES = {"ganak": "pyganak", "veritas": "veritas.research.gf2_xor_count"}
+
+
+def _module_present(module: str) -> bool:
+    try:
+        return importlib.util.find_spec(module) is not None
+    except Exception:  # a missing or broken parent package
+        return False
 
 
 def engine_availability() -> dict[str, str | None]:
     """Engine name to ``None`` when usable, otherwise the reason it is not."""
     status: dict[str, str | None] = {}
     for name in ENGINES:
-        package = _PACKAGES.get(name)
-        missing = package is not None and importlib.util.find_spec(package) is None
-        status[name] = f"{package} is not installed" if missing else None
+        module = _REQUIRED_MODULES.get(name)
+        missing = module is not None and not _module_present(module)
+        status[name] = f"{module} is not importable" if missing else None
     return status
 
 

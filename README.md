@@ -93,7 +93,7 @@ exact, cross-checked by 3 engines [ganak 0.086s; bitset 0.067s; dpll 0.071s]
 | `ganak` | [Ganak](https://github.com/meelgroup/ganak) through `pyganak` | installed; the primary engine |
 | `dpll` | this repository's pure-Python DPLL counter | no projection set |
 | `bitset` | truth-table counting, sharing no code with the others | at most 24 variables |
-| `veritas` | the R9.12 structure-aware counter | the `veritas` package is importable |
+| `veritas` | the R9.12 structure-aware counter | the R9.12 `veritas` package is importable (v3.8.2 lacks the module) |
 
 Input is DIMACS CNF. XOR lines in CryptoMiniSat form (`x1 -2 3 0`) and
 projection sets (`c p show 1 2 0` or `c ind 1 2 0`) are supported. Weighted
