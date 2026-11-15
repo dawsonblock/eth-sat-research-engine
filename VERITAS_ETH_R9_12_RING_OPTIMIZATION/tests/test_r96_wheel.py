@@ -1,7 +1,37 @@
 """Exercise the actual installed wheel with cwd and import path outside the project."""
+from hashlib import sha256
+import json
 from pathlib import Path
 import subprocess
 import sys
+
+
+def test_recorded_source_pin_matches_packaged_bytes():
+    """The wheel pin is the digest of the bytes setuptools actually installs.
+
+    Checkout transcripts hash the same virtual paths. A seal that is not rerun
+    after a package edit leaves installed wheels raising SourceBindingError.
+    """
+    repo = Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(repo / "src"))
+    from veritas.research.tapered_v4.provenance import _digest
+
+    package = repo / "src" / "veritas"
+    paths = {}
+    for path in package.rglob("*"):
+        assert not path.is_symlink()
+        if path.is_file() and path.suffix == ".py":
+            paths["src/veritas/" + path.relative_to(package).as_posix()] = path
+    for path in (package / "paper").rglob("*"):
+        assert not path.is_symlink()
+        if path.is_file():
+            paths[path.relative_to(package).as_posix()] = path
+    paths["pyproject.toml"] = package / "binding/pyproject.toml"
+    paths["docs/OPENAI_PAPER_CONFORMANCE.md"] = package / "binding/OPENAI_PAPER_CONFORMANCE.md"
+    entries = [{"path": name, "sha256": sha256(path.read_bytes()).hexdigest()}
+               for name, path in sorted(paths.items())]
+    pin = json.loads((package / "binding/source.json").read_text(encoding="utf-8"))
+    assert pin == {"schema": "VERITAS_INSTALLED_SOURCE_V1", "sha256": _digest(entries)}
 
 
 def test_installed_source_leaf_and_manuscript_pin(tmp_path):
