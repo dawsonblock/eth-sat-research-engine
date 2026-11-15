@@ -164,6 +164,21 @@ def test_empty_xor_equation_zero_equals_one_is_unsatisfiable():
     assert int(count_via_xor_encoding(cnf, (XorEquation((), 0),))['count']) == 3
 
 
+def test_zero_equals_one_near_clause_cap_does_not_overflow():
+    # A valid CNF at 19,999 clauses plus ``0 = 1`` used to raise ``too many clauses``
+    # because the contradiction was appended to the input instead of replacing it.
+    cnf = CNF.from_lists(1, [[1]] * 19999)
+    eqs = (XorEquation((), 1),)
+    encoded, report = encode_xor_equations(cnf, eqs)
+    assert encoded.n >= cnf.n and len(encoded.clauses) == 2
+    assert brute_cnf(encoded) == 0
+    assert report['inconsistent_equation'] is True
+    assert int(count_via_xor_encoding(cnf, eqs)['count']) == 0
+    # Earlier equations in the same system do not change the outcome.
+    mixed = (XorEquation((1,), 1), XorEquation((), 1))
+    assert int(count_via_xor_encoding(cnf, mixed)['count']) == 0
+
+
 # --------------------------------------------------------------- substitution routes
 def test_substitution_and_unary_folding_preserve_mixed_count():
     rng = random.Random(20260105)
