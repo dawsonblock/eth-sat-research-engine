@@ -136,7 +136,7 @@ Taylor limit.
 
 ```console
 python -m pip install -e ".[test]"
-python -m pytest -q
+python -m pytest -q tests
 python -m compileall -q eth_sat tests
 python -m eth_sat --example simple --engine compare
 python -m eth_sat --example simple --engine subexponential
