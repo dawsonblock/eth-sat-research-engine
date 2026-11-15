@@ -72,9 +72,9 @@ On Windows, run `run_windows.bat` for the bundled cross-engine example.
 
 ## Count models: `sat-count`
 
-A practical exact model counter. It runs a fast engine, re-counts with
-independent engines where they can finish, and prints a count only when every
-engine that finished agrees.
+A practical exact model counter. It runs a fast engine side by side with
+independent engines, each in its own process, and prints a count only when
+every engine that finished agrees.
 
 ```console
 python -m pip install -e ".[count]"     # adds Ganak through pyganak
@@ -85,28 +85,35 @@ The count goes to standard output and one status line to standard error:
 
 ```text
 4
-exact, cross-checked by 3 engines [ganak 0.086s; bitset 0.067s; dpll 0.071s]
+exact, cross-checked by 4 engines [ganak 0.215s; bitset 0.207s; elimination 0.208s; dpll 0.209s]
 ```
 
 | Engine | What it is | Used when |
 | --- | --- | --- |
-| `ganak` | [Ganak](https://github.com/meelgroup/ganak) through `pyganak` | installed; the primary engine |
-| `dpll` | this repository's pure-Python DPLL counter | no projection set |
+| `ganak` | [Ganak](https://github.com/meelgroup/ganak) through `pyganak` | installed |
 | `bitset` | truth-table counting, sharing no code with the others | at most 24 variables |
+| `elimination` | variable elimination over clause tables | always tried; it stops if a step needs a table over more than 18 variables |
 | `veritas` | the R9.12 structure-aware counter | the R9.12 `veritas` package is importable (v3.8.2 lacks the module) |
+| `dpll` | this repository's pure-Python DPLL counter | no projection set |
+
+`elimination` is what cross-checks long chains, grids and other narrow
+formulas, where `dpll` is too slow and `bitset` does not apply.
 
 Input is DIMACS CNF. XOR lines in CryptoMiniSat form (`x1 -2 3 0`) and
-projection sets (`c p show 1 2 0` or `c ind 1 2 0`) are supported. Weighted
-counting is refused.
+projection sets (`c p show 1 2 0` or `c ind 1 2 0`) are supported. Files ending
+in `.gz`, `.bz2` or `.xz` are decompressed. Weighted counting is refused.
 
 Useful options:
 
-- `--json` prints the full record: every engine, its status, time and count.
-- `--timeout` and `--verify-timeout` bound the primary engine and each
-  cross-check. Every engine runs in its own process and is killed at its limit.
+- `--json` prints the full record: every engine, its status, time and count,
+  and the size of the count in digits and bits.
+- `--timeout` is the limit for each engine. Once one engine has a count, the
+  others get `--verify-timeout` more seconds. Every engine runs in its own
+  process and is killed at its limit.
+- `--jobs` sets how many engines run at once (default: one per processor).
 - `--require-cross-check` fails unless two engines finished and agree.
-- `--engines ganak,bitset` picks engines; the first is the primary.
-- `--no-verify` runs the primary engine only.
+- `--engines ganak,bitset` picks engines.
+- `--no-verify` runs the first engine only.
 
 Exit codes: `0` exact count, `2` no engine finished, `3` engines disagree (no
 count is printed), `4` not cross-checked when required, `64` bad input.
@@ -120,13 +127,12 @@ print(result.status, result.count, result.agreeing_engines)
 
 Without `pyganak` the tool still works, within limits:
 
-- At most 24 variables: `bitset` counts. `dpll` re-counts only when there is no
-  projection set, so a projected formula has `bitset` alone.
-- More than 24 variables and no projection set: `dpll`, and `veritas` as well
-  when it is importable. `dpll` is slow beyond small or highly structured
-  inputs.
-- More than 24 variables with a projection set: no engine applies and no result
-  is returned.
+- At most 24 variables: `bitset` counts them.
+- Narrow formulas of any size: `elimination` counts them, with or without a
+  projection set.
+- Everything else falls to `dpll`, which is slow beyond small or highly
+  structured inputs and does not handle projection sets. A wide projected
+  formula with more than 24 variables then has no result.
 
 Install the `count` extra to lift these limits. With or without it, any engine
 can hit its time limit. A cross-check that times out is reported as such and
