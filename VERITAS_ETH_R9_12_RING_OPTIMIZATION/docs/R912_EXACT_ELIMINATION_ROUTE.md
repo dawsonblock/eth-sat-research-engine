@@ -48,9 +48,18 @@ verified width. The width is that of the heuristic order. It is not a
 treewidth lower bound. Table budgets count ring elements, not bytes, and
 no OS memory limit is enforced.
 
+## Read-only preflight (`parent_child_r912.preflight`)
+
+Before any factor table is allocated, `elimination_preflight` replays the wire
+ordering certificate and, when `preflight_layout` is supplied to
+`select_route` / `contract_routed`, attaches a mode-dependency sketch from
+`parent_child_r913.dependency_analyzer` at one jet point. This does not contract
+children or qualify source recursion.
+
 ## Route selection (`parent_child_r912.routes`)
 
-`contract_routed(parent, route=Route.AUTO|ELIMINATION|RECURSIVE, elimination_budget=..., **recursive)`:
+`contract_routed(parent, route=Route.AUTO|ELIMINATION|RECURSIVE, elimination_budget=...,
+preflight_layout=None, shrink_budget=None, **recursive)`:
 
 - `RECURSIVE` calls the unchanged `parent_child_r910.engine.contract`.
 - `ELIMINATION` runs only if the verified order fits the budget. Otherwise it

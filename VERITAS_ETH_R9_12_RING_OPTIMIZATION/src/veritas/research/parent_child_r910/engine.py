@@ -21,6 +21,11 @@ from veritas.research.parent_child_r99.resources import ExactCache, computation_
 from veritas.research.parent_child_r99.row_degree import certify_row_degree
 from veritas.research.parent_child_r912.jet_recovery import JetRecovery as Recovery
 from .accounting import AccountedBudget
+from veritas.research.sat_work_accounting import (
+    DecompositionWorkLedger,
+    aggregate_ledger,
+    exponential_width_proxy,
+)
 from veritas.research.parent_child_r99.support import fold_source_forms, build_support
 from veritas.research.parent_child_r99.support_check import verify_support
 
@@ -40,6 +45,7 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
     chain, evidence_bytes, requests = '0'*64, 0, 0
     active, sizes, degrees = {}, {}, {}
     work_predictions = []
+    decomposition_ledgers: list[DecompositionWorkLedger] = []
     try:
         if type(preflight_work) is not int or preflight_work < 0:
             raise ValueError('nonnegative preflight work required')
@@ -155,22 +161,50 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
                                max_precision_bits=policy.max_precision), call.jet_length)
                 total = ring.zero
                 for values in support.record['tuples']:
+                    term_start_work = budget.work
                     beta = ExponentTuple(folded.content_digest, tuple(values))
                     with budget.at('child_construction'):
                         children = construct_children(call, layout, folded, beta, budget=budget,
                                                   _admitted=True, require_shrink=True)
                         _topology(call, layout, folded, beta, children, budget, True)
+                    pre_child_visits_work = budget.work
+                    w_transform = pre_child_visits_work - term_start_work
                     product = ring.one
                     dependencies = []
+                    child_works: list[int] = []
                     for child in children:
                         child_call = child.as_parent(call)
+                        child_visit_start = budget.work
                         with budget.at('control'):
                             child_value = visit(child_call)
+                        child_works.append(budget.work - child_visit_start)
                         product = ring.mul(product, child_value)
                         dependencies.append({'child': child.content_digest, 'parent': child_call.content_digest,
                             'wires': child.edge_count, 'precision': child.precision, 'value': child_value})
                         budget.tick(ring.base.e**2 * call.jet_length**2)
                         budget.transitions += 1
+                    post_child_work = budget.work
+                    w_reconstruct = post_child_work - pre_child_visits_work - sum(child_works)
+                    ledger_row = DecompositionWorkLedger(
+                        name="r910_support_children_product",
+                        w_old=exponential_width_proxy(call.edge_count),
+                        w_transform=w_transform,
+                        child_works=tuple(child_works),
+                        w_reconstruct=max(0, w_reconstruct),
+                        w_check=0,
+                        metadata={
+                            "parent_digest": call.content_digest,
+                            "depth": depth,
+                            "schedule_a": a,
+                            "schedule_u": u,
+                            "q": len(children),
+                            "child_wires": [c.edge_count for c in children],
+                            "jet_node": t,
+                            "beta_sum": int(sum(values)),
+                        },
+                    )
+                    decomposition_ledgers.append(ledger_row)
+                    emit({'kind': 'decomposition_work', 'ledger': ledger_row.to_dict()})
                     emit({'kind': 'term', 'parent': call.content_digest, 'beta': values,
                           'children': dependencies, 'product': product})
                     total = ring.add(total, product)
@@ -190,6 +224,7 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
             raise ValueError('source changed during streaming run')
         budget.tick(0)
         extra = {} if audit is None else {'theorem_conformance': audit.report()}
+        decomposition_work = aggregate_ledger(decomposition_ledgers)
         return {**extra, 'schema': 'VERITAS_R912_NUMERICAL_V1' if coefficient_encoding or compressed_records else 'VERITAS_R910_NUMERICAL_V1',
                 'status': 'PASS_FINITE_TWO_LEVEL_CAPABLE_RECURSION', 'result': result,
                 'parent_digest': parent.content_digest, 'implementation_source_sha256': binding,
@@ -200,13 +235,17 @@ def contract(parent, *, schedule=((1, 1),), policy=DEFAULT_SHRINKING_POLICY,
                 'point_predictions_reconcile': all(r['expected_local_points'] == r['actual_local_points'] for r in work_predictions),
                 'recovery_optimization': 'CERTIFIED_ZERO_TAIL_ORIGINAL_FUNCTIONAL',
                 'schedule': schedule, 'max_points': max_points, 'cache': cache.report(),
-                'requests': requests, 'ledger': budget.report(), 'evidence_chain': chain,
+                'requests': requests, 'ledger': budget.report(), 'decomposition_work': decomposition_work,
+                'evidence_chain': chain,
                 'evidence_bytes': evidence_bytes, 'evidence_stream_written': evidence_sink is not None,
                 'source_tapered_functional_used': bool(budget.points), 'original_weighted_stream_enumerated': False,
-                'source_qualified': False, 'theorem_mode_enabled': False}
+                'source_qualified': False, 'theorem_mode_enabled': False,
+                'subexponential_bound_evidence': False}
     except (ValueError, TypeError, KeyError, IndexError, ArithmeticError, RuntimeError, MemoryError, OSError) as exc:
         extra = {} if audit is None else {'theorem_conformance': audit.report()}
+        partial_work = aggregate_ledger(decomposition_ledgers) if decomposition_ledgers else None
         return {**extra, 'status': getattr(exc, 'status', 'INCONCLUSIVE_STREAMED_RECURSION'),
                 'reason': str(exc), 'resource_failure': getattr(exc, 'resource_failure', None),
-                'ledger': budget.report(), 'requests': requests,
-                'source_qualified': False, 'theorem_mode_enabled': False}
+                'ledger': budget.report(), 'decomposition_work': partial_work, 'requests': requests,
+                'source_qualified': False, 'theorem_mode_enabled': False,
+                'subexponential_bound_evidence': False}

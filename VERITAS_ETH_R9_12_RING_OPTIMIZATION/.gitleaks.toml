@@ -1,0 +1,7 @@
+title = "VERITAS R9.12 gitleaks"
+
+[allowlist]
+description = "SHA256_MANIFEST.json lists file digests, not credentials"
+paths = [
+  '''SHA256_MANIFEST\.json$''',
+]
