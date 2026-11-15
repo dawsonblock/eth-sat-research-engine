@@ -33,6 +33,8 @@ import ModeCount
 #print axioms ModeCount.scheduled_precision_bound
 #print axioms ModeCount.child_edges
 #print axioms ModeCount.child_edges_le_eighth
+#print axioms ModeCount.child_edges_of_packing
+#print axioms ModeCount.child_edges_le_eighth_of_packing
 #print axioms ModeCount.CallTree.size_le
 #print axioms ModeCount.depth_exponent
 #print axioms ModeCount.path_edges

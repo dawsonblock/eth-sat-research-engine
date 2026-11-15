@@ -43,6 +43,7 @@ every loop is charged too, and each emitted tuple costs one unit.
 | `size_conditions` | for all `λ ≥ λ₀(C)`: `A·u ≤ M·2^u` and `8(a+1)u ≤ 2^{a_{d-1}+u}` on the schedule, with `A` the envelope of `path_precision` (`envelope_le`) | the two size conditions |
 | `scheduled_precision_bound` | `precision_bound` on the schedule with both size conditions discharged | `eq:tensor-precision-bound` |
 | `child_edges`, `child_edges_le_eighth` | with loads `≤ H_pad` and `P·L = H_pad·D_arr ≤ 3M`, a symbol of one coordinate of `[r]^a` owns `≤ 3M/r` real ports per side, so a group's child has `≤ 6M/r` edges, `≤ M/8` for `r = 64` | `lem:tensor-packets`, item 3; `subsec:tensor-children` |
+| `child_edges_of_packing`, `child_edges_le_eighth_of_packing` | the two steps above composed: from the packing conditions `2·D_arr²·Δ ≤ M` and `L·D_arr ≤ M` alone (no separate load or padding hypotheses), some labeling gives every group a child with `≤ 6M/r` edges, and `≤ M/8` for `r = 64` | `lem:tensor-packets`, item 3 |
 | `path_edges` | children with `≤ M/8` edges ⇒ `M_j·8^j ≤ M_0` | `M ≤ Cs·8^{-d}` |
 | `CallTree.size_le` | a call tree with `≤ b_j` children per depth-`j` call and `b_n = 0` has `≤ ∑_{d ≤ n} ∏_{j<d} b_j` calls | "multiplying these bounds over the depths" |
 | `depth_exponent` | `M_j·8^j ≤ Cs`, `u_j ≥ 1` ⇒ `M_j/√u_j ≤ 2^10 Cs/√λ · (√2/8)^j` | per-depth exponent |
