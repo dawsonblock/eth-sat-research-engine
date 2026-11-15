@@ -40,15 +40,17 @@ def normalize_clause_family(
         return ((),)
 
     kept: list[frozenset[int]] = []
+    kept_set: set[frozenset[int]] = set()  # membership was an O(len(kept)) list scan
     for clause in sorted(normalized, key=lambda item: (len(item), tuple(sorted(item)))):
         redundant = False
         ordered = tuple(sorted(clause))
         for size in range(len(ordered)):
-            if any(frozenset(subset) in kept for subset in combinations(ordered, size)):
+            if any(frozenset(subset) in kept_set for subset in combinations(ordered, size)):
                 redundant = True
                 break
         if not redundant:
             kept.append(clause)
+            kept_set.add(clause)
     return tuple(tuple(sorted(clause)) for clause in kept)
 
 

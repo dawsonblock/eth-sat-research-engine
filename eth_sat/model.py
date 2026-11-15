@@ -56,6 +56,11 @@ class CNF:
                 is_file = candidate.is_file()
             except OSError:
                 is_file = False
+            if not is_file and not source.lstrip().startswith("p"):
+                raise ValueError(
+                    f"{source!r} is neither an existing file nor DIMACS text "
+                    "(DIMACS text must start with a 'p cnf' problem line)"
+                )
             text = candidate.read_text(encoding="utf-8") if is_file else source
         else:
             text = source

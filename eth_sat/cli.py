@@ -120,6 +120,7 @@ def main(argv: list[str] | None = None) -> int:
             else (args.engine,)
         )
         values: list[tuple[str, int]] = []
+        notes: dict[str, str] = {}
         for engine in selected:
             if engine == "algebraic":
                 value = algebraic_count(formula, args.interpolation_nodes).count
@@ -140,19 +141,23 @@ def main(argv: list[str] | None = None) -> int:
                     max_substitution_pairs=args.max_taylor_pairs,
                 ).count
             elif engine == "subexponential":
-                value = count_subexponential(
+                result = count_subexponential(
                     formula,
                     max_fallback_variables=fallback_cap,
                     max_construction_candidates=construction_cap,
                     max_parity_candidates=parity_cap,
                     max_auxiliary_dimension=subexponential_dimension_cap,
-                ).count
+                )
+                value = result.count
+                if result.used_finite_size_fallback:
+                    # Below the activation threshold this engine is a plain truth table;
+                    # say so instead of labelling the number as the sparsification pipeline.
+                    notes["subexponential"] = "Truth table (finite-size fallback)"
             else:
                 value = dpll_count(formula)
             values.append((engine, value))
 
         print(f"Variables: {formula.num_variables}; clauses: {len(formula.clauses)}")
-        print(f"{'Engine':<30} Exact solution count")
         names = {
             "algebraic": "Algebraic interpolation",
             "shared": "Shared measurements",
@@ -161,8 +166,11 @@ def main(argv: list[str] | None = None) -> int:
             "dpll": "Independent DPLL",
             "subexponential": "Sparsification + sparse parity engine",
         }
+        names.update(notes)
+        width = max([len("Engine")] + [len(names[engine]) for engine, _ in values]) + 2
+        print(f"{'Engine':<{width}}Exact solution count")
         for engine, value in values:
-            print(f"{names[engine]:<30} {value}")
+            print(f"{names[engine]:<{width}}{value}")
         if args.engine == "compare" and len({value for _, value in values}) != 1:
             print("ERROR: engines disagree", file=sys.stderr)
             return 2
