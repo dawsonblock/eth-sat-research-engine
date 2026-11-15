@@ -1,0 +1,77 @@
+{
+  "schema": "VERITAS_XOR_ENCODED_EXTERNALS_V33",
+  "rows": [
+    {
+      "formula_sha256": "cbda3a05c251f58e6d857f89a8374985ca5c3d27820ba1466ab6831d81373f27",
+      "n": 3,
+      "clauses": 1,
+      "xor_equation_count": 1,
+      "internal_count": 3,
+      "internal_engine": "XOR_CNF_ENCODE_EXHAUSTIVE",
+      "internal_independent_count_checked": true,
+      "internal_seconds": 0.002114,
+      "exhaustive_count": null,
+      "exhaustive_mixed_count": 3,
+      "encoded_n": 3,
+      "exhaustive_encoded_count": 3,
+      "ganak_count": null,
+      "ganak_encoded_count": {
+        "unavailable": "Ganak binary not found; install separately and configure VERITAS_GANAK"
+      },
+      "cadical_sat": null,
+      "cadical_enum_count": null,
+      "cryptominisat_count": null,
+      "cryptominisat_encoded_count": {
+        "unavailable": "cryptominisat5 not on PATH"
+      },
+      "all_match": true,
+      "parity_basis": "mixed_xor",
+      "complexity_claim": false,
+      "encode_report": {
+        "aux_variables_added": 0,
+        "xor_cnf_clauses_added": 2,
+        "encoded_n": 3,
+        "contract": "GF2_XOR_TSEITIN_CHAIN",
+        "complexity_claim": false
+      },
+      "case": "encode_small"
+    },
+    {
+      "formula_sha256": "cbda3a05c251f58e6d857f89a8374985ca5c3d27820ba1466ab6831d81373f27",
+      "n": 3,
+      "clauses": 1,
+      "xor_equation_count": 1,
+      "internal_count": 3,
+      "internal_engine": "MIXED_XOR_CONDITIONING",
+      "internal_independent_count_checked": true,
+      "internal_seconds": 0.000261,
+      "exhaustive_count": null,
+      "exhaustive_mixed_count": 3,
+      "encoded_n": 3,
+      "exhaustive_encoded_count": 3,
+      "ganak_count": null,
+      "ganak_encoded_count": {
+        "unavailable": "Ganak binary not found; install separately and configure VERITAS_GANAK"
+      },
+      "cadical_sat": null,
+      "cadical_enum_count": null,
+      "cryptominisat_count": null,
+      "cryptominisat_encoded_count": {
+        "unavailable": "cryptominisat5 not on PATH"
+      },
+      "all_match": true,
+      "parity_basis": "mixed_xor",
+      "complexity_claim": false,
+      "encode_report": {
+        "aux_variables_added": 0,
+        "xor_cnf_clauses_added": 2,
+        "encoded_n": 3,
+        "contract": "GF2_XOR_TSEITIN_CHAIN",
+        "complexity_claim": false
+      },
+      "case": "condition_small"
+    }
+  ],
+  "note": "ganak_encoded_count requires Ganak on PATH; unavailable is not failure",
+  "complexity_claim": false
+}

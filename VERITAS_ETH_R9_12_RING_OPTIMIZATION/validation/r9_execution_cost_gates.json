@@ -1,0 +1,51 @@
+{
+  "bit_ledger_smoke": {
+    "bit_operation_detail": {
+      "child_frames": 1,
+      "complexity_claim": false,
+      "local_bits": 4688,
+      "local_by_category": {
+        "cache_lookup": 336,
+        "leaf": 4096,
+        "recursive_request": 256
+      },
+      "max_depth": 1,
+      "measurement": "PROXY_INSTRUMENTED_V1",
+      "schema": "VERITAS_BIT_OP_LEDGER_V1",
+      "total_bits": 5200
+    },
+    "bit_operations": 5200,
+    "budget_work_units": 5,
+    "cache_hit_rate": 0.5,
+    "cache_hits": 1,
+    "cache_misses": 1,
+    "child_count": 1,
+    "complexity_claim": false,
+    "elapsed_seconds": 4.6e-05,
+    "leaf_evaluations": 1,
+    "local_by_category": {
+      "cache_lookup": 2,
+      "leaf": 1,
+      "recursive_request": 1
+    },
+    "local_work": 4,
+    "max_tree_work": 100000000,
+    "observational_only": true,
+    "recursion_depth": 1,
+    "recursive_requests": 2,
+    "schema": "VERITAS_COST_LEDGER_V1",
+    "total_work": 9,
+    "unique_subproblems": 1
+  },
+  "release_ready": {
+    "complexity_claim": false,
+    "tree_ledger_bit_ops_positive": true
+  },
+  "schema": "VERITAS_R9_EXECUTION_COST_GATES_V1",
+  "two_level_policy": {
+    "bit_operations_on_tree_ledger_not_work_ledger": true,
+    "note": "Full manuscript two-level gate remains validate_v39_two_level_audit.py",
+    "source_qualified_required_false": true,
+    "theorem_mode_required_false": true
+  }
+}

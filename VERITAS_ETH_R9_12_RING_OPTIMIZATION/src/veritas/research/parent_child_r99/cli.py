@@ -17,6 +17,11 @@ from .degree_engine import contract_supported_recursion
 from .degree_verify import verify_recursive_events
 
 
+# Elapsed-time metadata is the only place floats are accepted in an execution report:
+# the work ledger and the observational tree ledger each carry one wall-clock field.
+_ELAPSED_PATHS = {('ledger', 'elapsed_seconds'), ('tree_ledger', 'elapsed_seconds')}
+
+
 def load_execution_report(path, *, max_bytes):
     """Read a report whose only noninteger number is elapsed-time metadata.
 
@@ -42,7 +47,7 @@ def load_execution_report(path, *, max_bytes):
     report = json.loads(raw, object_pairs_hook=pairs, parse_int=integer, parse_constant=invalid)
     def check(value, path=()):
         if type(value) is float:
-            if path != ('ledger', 'elapsed_seconds') or not math.isfinite(value) or value < 0:
+            if path not in _ELAPSED_PATHS or not math.isfinite(value) or value < 0:
                 raise ValueError('floating point is allowed only for elapsed-time metadata')
         elif type(value) is dict:
             for key, item in value.items():

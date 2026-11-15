@@ -1,0 +1,108 @@
+{
+  "schema": "VERITAS_XOR_MIXED_BASELINES_V32",
+  "cases": [
+    "binary_fast_path",
+    "component_product",
+    "mixed_condition",
+    "encode_path"
+  ],
+  "rows": [
+    {
+      "formula_sha256": "cbda3a05c251f58e6d857f89a8374985ca5c3d27820ba1466ab6831d81373f27",
+      "n": 3,
+      "clauses": 1,
+      "xor_equation_count": 1,
+      "internal_count": 3,
+      "internal_engine": "XOR_CNF_ENCODE_EXHAUSTIVE",
+      "internal_independent_count_checked": true,
+      "internal_seconds": 0.002044,
+      "exhaustive_count": 6,
+      "ganak_count": {
+        "unavailable": "Ganak binary not found; install separately and configure VERITAS_GANAK"
+      },
+      "cadical_sat": null,
+      "cadical_enum_count": {
+        "unavailable": "cadical not on PATH"
+      },
+      "cryptominisat_count": {
+        "unavailable": "cryptominisat5 not on PATH"
+      },
+      "all_match": false,
+      "complexity_claim": false,
+      "case": "encode_path"
+    },
+    {
+      "formula_sha256": "cbda3a05c251f58e6d857f89a8374985ca5c3d27820ba1466ab6831d81373f27",
+      "n": 3,
+      "clauses": 1,
+      "xor_equation_count": 1,
+      "internal_count": 3,
+      "internal_engine": "XOR_BINARY_SUBSTITUTE_EXACT_VARIABLE_ELIMINATION",
+      "internal_independent_count_checked": true,
+      "internal_seconds": 0.006559,
+      "exhaustive_count": 6,
+      "ganak_count": {
+        "unavailable": "Ganak binary not found; install separately and configure VERITAS_GANAK"
+      },
+      "cadical_sat": null,
+      "cadical_enum_count": {
+        "unavailable": "cadical not on PATH"
+      },
+      "cryptominisat_count": {
+        "unavailable": "cryptominisat5 not on PATH"
+      },
+      "all_match": false,
+      "complexity_claim": false,
+      "case": "binary_fast_path"
+    },
+    {
+      "formula_sha256": "b89646d5784f0e4965fdbdbf7c7fcde2f77f5141df84aad4d806d4479eff89fe",
+      "n": 4,
+      "clauses": 2,
+      "xor_equation_count": 1,
+      "internal_count": 3,
+      "internal_engine": "XOR_BINARY_SUBSTITUTE_STRUCTURE_AWARE_COMPONENT_PRODUCT",
+      "internal_independent_count_checked": true,
+      "internal_seconds": 0.000458,
+      "exhaustive_count": 9,
+      "ganak_count": {
+        "unavailable": "Ganak binary not found; install separately and configure VERITAS_GANAK"
+      },
+      "cadical_sat": null,
+      "cadical_enum_count": {
+        "unavailable": "cadical not on PATH"
+      },
+      "cryptominisat_count": {
+        "unavailable": "cryptominisat5 not on PATH"
+      },
+      "all_match": false,
+      "complexity_claim": false,
+      "case": "component_product"
+    },
+    {
+      "formula_sha256": "cbda3a05c251f58e6d857f89a8374985ca5c3d27820ba1466ab6831d81373f27",
+      "n": 3,
+      "clauses": 1,
+      "xor_equation_count": 1,
+      "internal_count": 3,
+      "internal_engine": "MIXED_XOR_CONDITIONING",
+      "internal_independent_count_checked": true,
+      "internal_seconds": 0.000242,
+      "exhaustive_count": 6,
+      "ganak_count": {
+        "unavailable": "Ganak binary not found; install separately and configure VERITAS_GANAK"
+      },
+      "cadical_sat": null,
+      "cadical_enum_count": {
+        "unavailable": "cadical not on PATH"
+      },
+      "cryptominisat_count": {
+        "unavailable": "cryptominisat5 not on PATH"
+      },
+      "all_match": false,
+      "complexity_claim": false,
+      "case": "mixed_condition"
+    }
+  ],
+  "complexity_claim": false
+}

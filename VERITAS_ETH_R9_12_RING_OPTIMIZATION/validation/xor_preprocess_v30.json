@@ -1,0 +1,16 @@
+{
+  "schema": "VERITAS_XOR_PREPROCESS_V30",
+  "rows": [
+    {
+      "case": "pure_xor_chain",
+      "engine": "GF2_XOR_ELIMINATION",
+      "count": "2"
+    },
+    {
+      "case": "preprocess_plus_components",
+      "count": "6",
+      "exhaustive": 6
+    }
+  ],
+  "complexity_claim": false
+}

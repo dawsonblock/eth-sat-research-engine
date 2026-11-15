@@ -82,4 +82,34 @@ theorem child_edges_le_eighth (E : Finset (α × β)) {a : ℕ} (f : α → Fin 
   have := child_edges E f g hload hPL h3 c σ
   omega
 
+/-- End to end: the packing conditions alone give a labeling in which every group has a child with at
+most `6M/r` edges (`packet_count` feeds `child_edges`). -/
+theorem child_edges_of_packing [Fintype α] [Fintype β] [DecidableEq α] [DecidableEq β]
+    {a r L Δ : ℕ} (hL : 0 < L) (hr : 0 < r) (E : Finset (α × β))
+    (hrow : ∀ x, (E.filter fun e => e.1 = x).card ≤ Δ)
+    (hcol : ∀ y, (E.filter fun e => e.2 = y).card ≤ Δ)
+    (hM1 : 2 * (Fintype.card (Fin a → Fin r) ^ 2) ^ 2 * Δ ≤ E.card)
+    (hM2 : L * Fintype.card (Fin a → Fin r) ^ 2 ≤ E.card) :
+    ∃ (f : α → Fin a → Fin r) (g : β → Fin a → Fin r), ∀ (c : Fin a) (σ : Fin r),
+      ((E.filter fun e => f e.1 c = σ).card + (E.filter fun e => g e.2 c = σ).card) * r
+        ≤ 6 * E.card := by
+  haveI : Nonempty (Fin r) := ⟨⟨0, hr⟩⟩
+  obtain ⟨f, g, Hpad, P, -, hload, hP, hP3⟩ :=
+    packet_count (K := Fin a → Fin r) E hL hrow hcol hM1 hM2
+  exact ⟨f, g, fun c σ => child_edges E f g hload hP hP3 c σ⟩
+
+/-- End to end for `r = 64`: under the packing conditions every group's child has at most `M/8`
+edges. -/
+theorem child_edges_le_eighth_of_packing [Fintype α] [Fintype β] [DecidableEq α] [DecidableEq β]
+    {a L Δ : ℕ} (hL : 0 < L) (E : Finset (α × β))
+    (hrow : ∀ x, (E.filter fun e => e.1 = x).card ≤ Δ)
+    (hcol : ∀ y, (E.filter fun e => e.2 = y).card ≤ Δ)
+    (hM1 : 2 * (Fintype.card (Fin a → Fin 64) ^ 2) ^ 2 * Δ ≤ E.card)
+    (hM2 : L * Fintype.card (Fin a → Fin 64) ^ 2 ≤ E.card) :
+    ∃ (f : α → Fin a → Fin 64) (g : β → Fin a → Fin 64), ∀ (c : Fin a) (σ : Fin 64),
+      ((E.filter fun e => f e.1 c = σ).card + (E.filter fun e => g e.2 c = σ).card) * 8
+        ≤ E.card := by
+  obtain ⟨f, g, h⟩ := child_edges_of_packing (r := 64) hL (by norm_num) E hrow hcol hM1 hM2
+  exact ⟨f, g, fun c σ => by have := h c σ; omega⟩
+
 end ModeCount

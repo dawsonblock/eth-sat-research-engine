@@ -1,0 +1,41 @@
+{
+  "schema": "VERITAS_EXTERNAL_BASELINES_V31",
+  "cases": [
+    "two_disconnected",
+    "path_4"
+  ],
+  "rows": [
+    {
+      "formula_sha256": "b89646d5784f0e4965fdbdbf7c7fcde2f77f5141df84aad4d806d4479eff89fe",
+      "n": 4,
+      "clauses": 2,
+      "internal_count": 9,
+      "internal_engine": "STRUCTURE_AWARE_COMPONENT_PRODUCT",
+      "internal_seconds": 0.008671,
+      "exhaustive_count": 9,
+      "ganak_count": {
+        "unavailable": "Ganak binary not found; install separately and configure VERITAS_GANAK"
+      },
+      "cadical_sat": null,
+      "all_match": true,
+      "complexity_claim": false
+    },
+    {
+      "formula_sha256": "bccccb95130b31b3ce9f0670027272e9723c729a23e4a70b08ada8b092ba02b8",
+      "n": 4,
+      "clauses": 3,
+      "internal_count": 8,
+      "internal_engine": "EXACT_VARIABLE_ELIMINATION",
+      "internal_seconds": 0.000424,
+      "exhaustive_count": 8,
+      "ganak_count": {
+        "unavailable": "Ganak binary not found; install separately and configure VERITAS_GANAK"
+      },
+      "cadical_sat": null,
+      "all_match": true,
+      "complexity_claim": false
+    }
+  ],
+  "ganak_required_for_full_gate": false,
+  "complexity_claim": false
+}

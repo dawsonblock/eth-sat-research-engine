@@ -1,0 +1,44 @@
+{
+  "equation_12": {
+    "claim": "FINITE_EXHAUSTIVE_IDENTITY_CHECK_ONLY",
+    "equation": "12",
+    "failures": 0,
+    "schema": "ANTHROPIC_EIGHT_SQUARE_CROSSING_V1",
+    "settings_checked": 4096,
+    "subexponential_runtime_proven": false
+  },
+  "equation_28": {
+    "claim": "FINITE_EXHAUSTIVE_IDENTITY_CHECK_ONLY",
+    "equation": "28",
+    "failures": 0,
+    "schema": "ANTHROPIC_EIGHT_SQUARE_PAIR_V1",
+    "settings_checked": 4096,
+    "subexponential_runtime_proven": false
+  },
+  "release_ready": {
+    "eight_square_4096": true,
+    "pair_identity_exhaustive": true,
+    "unsupported_worst_case_claim": false,
+    "xor_mixed_smoke": true
+  },
+  "schema": "VERITAS_COST_REDUCTION_GATES_V1",
+  "signed_one_level": {
+    "active_crossings": 64,
+    "both_terms_cost_sum": 4608,
+    "claim": "BIT_ENUMERATION_PROXY_NOT_RUNTIME",
+    "direct_eval_cost_sum": 4096,
+    "expansion_overhead_vs_direct": 512,
+    "min_orientation_cost_sum": 512,
+    "min_orientation_savings_vs_direct": 3584,
+    "row_cheaper_count": 64,
+    "row_orientation_cost_sum": 512,
+    "schema": "ANTHROPIC_SIGNED_ONE_LEVEL_V1",
+    "subexponential_runtime_proven": false
+  },
+  "xor_algebraic_substitute": {
+    "binary_substitute_changed": false,
+    "matches_three": true,
+    "pipeline_count": "3",
+    "reduced_n": 3
+  }
+}
