@@ -118,11 +118,21 @@ result = count_models(parse_dimacs(open("examples/simple.cnf").read()))
 print(result.status, result.count, result.agreeing_engines)
 ```
 
-Without `pyganak` the tool still works, within limits. Formulas with at most 24
-variables are counted by `bitset` and re-counted by `dpll`. Larger formulas have
-`dpll` alone, which is slow beyond small or highly structured inputs. A formula
-with a projection set and more than 24 variables has no engine at all and
-returns no result. Install the `count` extra to lift all three limits. This is
+Without `pyganak` the tool still works, within limits:
+
+- At most 24 variables: `bitset` counts. `dpll` re-counts only when there is no
+  projection set, so a projected formula has `bitset` alone.
+- More than 24 variables and no projection set: `dpll`, and `veritas` as well
+  when it is importable. `dpll` is slow beyond small or highly structured
+  inputs.
+- More than 24 variables with a projection set: no engine applies and no result
+  is returned.
+
+Install the `count` extra to lift these limits. With or without it, any engine
+can hit its time limit. A cross-check that times out is reported as such and
+does not count as agreement, and if every engine times out there is no result.
+
+This is
 ordinary exponential-worst-case model counting; it does not use the research
 pipeline below and is no evidence for any subexponential bound.
 
