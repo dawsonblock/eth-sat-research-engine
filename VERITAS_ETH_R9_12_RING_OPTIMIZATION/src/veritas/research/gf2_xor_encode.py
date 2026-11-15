@@ -27,6 +27,19 @@ def encode_xor_equations(
     equations: tuple[XorEquation, ...],
 ) -> tuple[CNF, dict]:
     """Append XOR equations as CNF; introduce fresh variables as needed."""
+    if any(not eq.variables and eq.rhs & 1 for eq in equations):
+        # ``0 = 1`` makes the whole system unsatisfiable (count 0). Return a minimal
+        # contradictory CNF over the original variable space rather than extending the
+        # input, which could exceed ``CNF``'s clause cap when the input is near capacity.
+        out = CNF.from_lists(max(cnf.n, 1), [[1], [-1]])
+        return out, {
+            'aux_variables_added': 0,
+            'xor_cnf_clauses_added': 2,
+            'encoded_n': out.n,
+            'contract': 'GF2_XOR_TSEITIN_CHAIN',
+            'inconsistent_equation': True,
+            'complexity_claim': False,
+        }
     clauses: list[list[int]] = [list(c) for c in cnf.clauses]
     next_var = cnf.n
     aux_added = 0
@@ -35,9 +48,7 @@ def encode_xor_equations(
         rhs = eq.rhs & 1
         variables = list(eq.variables)
         if not variables:
-            if rhs:
-                clauses.append([1, -1])
-                xor_clauses += 1
+            # ``0 = 0`` is vacuous; ``0 = 1`` was handled by the early return above.
             continue
         if len(variables) == 1:
             v = variables[0]
