@@ -12,6 +12,10 @@ license = { text = "MIT" }
 authors = [{ name = "ETH-SAT Research Engine contributors" }]
 dependencies = []
 
+[project.optional-dependencies]
+fast = ["numpy"]
+test = ["pytest", "numpy"]
+
 [project.scripts]
 eth-sat = "eth_sat.cli:main"
 
