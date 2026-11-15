@@ -36,6 +36,10 @@ with multiplicity \(m(r)\) of prefix assignments landing in residual class \(r\)
 Code: `veritas.research.residual_equivalence` — `count_with_residual_memo`,
 `prefix_residual_table`.
 
+**Production-shaped backend:** `veritas.research.residual_count_backend.residual_research_count`
+via `structure_aware_count(..., count_backend='residual_research')` (n capped).
+Use `count_backend='dual'` for hybrid count plus `ledger_comparison` vs residual states.
+
 ### Block example
 
 \(F=(x\lor z)\land(y\lor z)\), prefix \((x,y)\): four assignments, **two** residual

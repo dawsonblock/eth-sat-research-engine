@@ -1413,6 +1413,8 @@ class StructureHybridCountRequest(CNFRequest):
     include_residual_metrics: bool = False
     residual_metrics_max_n: int = Field(default=22, ge=1, le=32)
     residual_prefix_depth: int = Field(default=12, ge=0, le=20)
+    count_backend: str = Field(default='hybrid', pattern='^(hybrid|residual_research|dual)$')
+    residual_research_max_n: int = Field(default=22, ge=1, le=32)
 
 
 @app.post('/v1/research/structure-hybrid-count')
@@ -1436,6 +1438,8 @@ def structure_hybrid_count(request: StructureHybridCountRequest):
             include_residual_metrics=request.include_residual_metrics,
             residual_metrics_max_n=request.residual_metrics_max_n,
             residual_prefix_depth=request.residual_prefix_depth,
+            count_backend=request.count_backend,
+            residual_research_max_n=request.residual_research_max_n,
         )
     except ValueError as exc:
         return record(

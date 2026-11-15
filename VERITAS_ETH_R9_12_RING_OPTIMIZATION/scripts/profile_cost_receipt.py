@@ -27,6 +27,7 @@ def receipt(result: dict) -> dict:
     routing = result.get('routing') or {}
     structure = result.get('structure') or {}
     pipeline = result.get('pipeline') or {}
+    residual = result.get('residual_research') or {}
     return {
         'schema': 'VERITAS_COST_RECEIPT_V1',
         'status': result.get('status'),
@@ -37,6 +38,8 @@ def receipt(result: dict) -> dict:
         'pipeline_stages': [step.get('stage') for step in pipeline.get('steps', [])],
         'elapsed_seconds': result.get('elapsed_seconds'),
         'evaluated_assignments': (result.get('execution') or {}).get('evaluated_assignments'),
+        'distinct_residual_states': residual.get('distinct_residual_states'),
+        'ledger_comparison': result.get('ledger_comparison'),
         'independent_count_checked': result.get('independent_count_checked'),
         'complexity_claim': False,
     }
@@ -46,11 +49,18 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument('cnf', type=Path)
     parser.add_argument('--structure', action='store_true', help='use structure_aware_count')
+    parser.add_argument('--count-backend', choices=('hybrid', 'residual_research', 'dual'), default='hybrid')
+    parser.add_argument('--residual-metrics', action='store_true')
     parser.add_argument('--timeout', type=float, default=15)
     args = parser.parse_args()
     cnf = load_cnf(args.cnf)
     result = (
-        structure_aware_count(cnf, timeout_s=args.timeout)
+        structure_aware_count(
+            cnf,
+            timeout_s=args.timeout,
+            count_backend=args.count_backend,
+            include_residual_metrics=args.residual_metrics,
+        )
         if args.structure
         else hybrid_count(cnf, timeout_s=args.timeout)
     )

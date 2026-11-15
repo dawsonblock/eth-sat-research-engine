@@ -54,6 +54,10 @@ def main():
                      help="Skip residual metrics when n exceeds this cap (default 22)")
     run.add_argument("--residual-prefix-depth", type=int, default=12,
                      help="Prefix variables for residual multiplicity histogram (default 12)")
+    run.add_argument("--count-backend", choices=("hybrid", "residual_research", "dual"), default="hybrid",
+                     help="Exact count engine: hybrid router, residual memo research, or dual compare")
+    run.add_argument("--residual-research-max-n", type=int, default=22,
+                     help="Max n for residual_research primary backend (default 22)")
     run.add_argument("--optimal-order-report", action="store_true", help="v1.7 globally optimal small-instance elimination plan (no count)")
     run.add_argument("--optimal-objective", choices=('work','width'), default='work')
     run.add_argument("--adaptive-portfolio", choices=('auto','thorough','optimal_small'), default='auto')
@@ -223,6 +227,8 @@ def main():
                     include_residual_metrics=args.residual_metrics,
                     residual_metrics_max_n=args.residual_metrics_max_n,
                     residual_prefix_depth=args.residual_prefix_depth,
+                    count_backend=args.count_backend,
+                    residual_research_max_n=args.residual_research_max_n,
                 )
                 if args.compare_count_baselines:
                     from veritas.solvers.external_baselines import compare_count_baselines

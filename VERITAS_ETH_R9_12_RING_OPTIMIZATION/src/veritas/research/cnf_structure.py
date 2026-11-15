@@ -89,20 +89,33 @@ def structure_aware_count(
     include_residual_metrics = kwargs.pop('include_residual_metrics', False)
     residual_metrics_max_n = kwargs.pop('residual_metrics_max_n', 22)
     residual_prefix_depth = kwargs.pop('residual_prefix_depth', 12)
+    count_backend = kwargs.pop('count_backend', 'hybrid')
+    residual_research_max_n = kwargs.pop('residual_research_max_n', 22)
+    if count_backend not in ('hybrid', 'residual_research', 'dual'):
+        raise ValueError('count_backend must be hybrid, residual_research, or dual')
+    if count_backend in ('residual_research', 'dual') and xor_equations:
+        raise ValueError('residual_research and dual backends do not support xor_equations yet')
+    if count_backend == 'residual_research' and cnf.n > residual_research_max_n:
+        raise ValueError(f'n={cnf.n} exceeds residual_research_max_n={residual_research_max_n}')
+    if count_backend == 'dual':
+        include_residual_metrics = True
 
     def _attach(out: dict) -> dict:
-        if not include_residual_metrics:
-            return out
         from veritas.research.residual_equivalence import attach_residual_research_metrics
+        from veritas.research.residual_count_backend import ledger_comparison
 
-        return attach_residual_research_metrics(
-            out,
-            cnf,
-            enabled=True,
-            preprocess=preprocess,
-            max_n=residual_metrics_max_n,
-            prefix_depth=residual_prefix_depth,
-        )
+        if include_residual_metrics or count_backend == 'dual':
+            out = attach_residual_research_metrics(
+                out,
+                cnf,
+                enabled=True,
+                preprocess=preprocess,
+                max_n=residual_metrics_max_n,
+                prefix_depth=residual_prefix_depth,
+            )
+        if count_backend == 'dual' and out.get('residual_research'):
+            out['ledger_comparison'] = ledger_comparison(out, out['residual_research'])
+        return out
 
     if preprocess or xor_equations:
         from veritas.research.gf2_xor_count import structure_with_optional_xor
@@ -117,15 +130,27 @@ def structure_aware_count(
             )
         )
     from veritas.research.hybrid_router import hybrid_count
+    from veritas.research.residual_count_backend import residual_research_count
 
-    counter = hybrid_count if inner_count is None else inner_count
+    if count_backend == 'residual_research' and inner_count is None:
+        counter = residual_research_count
+    else:
+        counter = hybrid_count if inner_count is None else inner_count
     for _xor_key in ('xor_strategy', 'max_xor_enum_bits'):
         kwargs.pop(_xor_key, None)
     verify_direct = kwargs.pop('verify_direct', cnf.n <= 18)
+
+    def _call_counter(counter, state: CNF, **extra):
+        call_kw = {**kwargs, **extra}
+        if counter is residual_research_count:
+            call_kw['preprocess'] = preprocess
+        else:
+            call_kw.pop('preprocess', None)
+        return counter(state, **call_kw)
     report = analyze_cnf_structure(cnf)
     needs_split = report.component_count > 1 or any(c.clause_count == 0 for c in report.components)
     if not needs_split:
-        out = counter(cnf, **kwargs)
+        out = _call_counter(counter, cnf)
         out['structure'] = {
             'decomposed': False,
             'report': report.__dict__,
@@ -147,7 +172,7 @@ def structure_aware_count(
             )
         else:
             sub = _project_component(cnf, comp.variables)
-            sub_result = counter(sub, **kwargs)
+            sub_result = _call_counter(counter, sub)
             factor = int(sub_result['count'])
             parts.append(
                 {
@@ -158,7 +183,7 @@ def structure_aware_count(
                 }
             )
         product *= factor
-    merged = counter(cnf, **kwargs) if verify_direct else None
+    merged = _call_counter(counter, cnf) if verify_direct else None
     return _attach(
         {
             'status': 'EXACT_COUNT',
