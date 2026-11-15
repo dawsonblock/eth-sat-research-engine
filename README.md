@@ -20,6 +20,7 @@ algorithm and does not implement OpenAI's Appendix D deformation.
 - [Research basis](#research-basis)
 - [Algorithm pipeline](#algorithm-pipeline)
 - [Install](#install)
+- [Count models: `sat-count`](#count-models-sat-count)
 - [Use](#use)
 - [Resource guards](#resource-guards)
 - [Engines](#engines)
@@ -68,6 +69,59 @@ python -m pip install -e .
 ```
 
 On Windows, run `run_windows.bat` for the bundled cross-engine example.
+
+## Count models: `sat-count`
+
+A practical exact model counter. It runs a fast engine, re-counts with
+independent engines where they can finish, and prints a count only when every
+engine that finished agrees.
+
+```console
+python -m pip install -e ".[count]"     # adds Ganak through pyganak
+sat-count examples/simple.cnf
+```
+
+The count goes to standard output and one status line to standard error:
+
+```text
+4
+exact, cross-checked by 3 engines [ganak 0.086s; bitset 0.067s; dpll 0.071s]
+```
+
+| Engine | What it is | Used when |
+| --- | --- | --- |
+| `ganak` | [Ganak](https://github.com/meelgroup/ganak) through `pyganak` | installed; the primary engine |
+| `dpll` | this repository's pure-Python DPLL counter | no projection set |
+| `bitset` | truth-table counting, sharing no code with the others | at most 24 variables |
+| `veritas` | the R9.12 structure-aware counter | the `veritas` package is importable |
+
+Input is DIMACS CNF. XOR lines in CryptoMiniSat form (`x1 -2 3 0`) and
+projection sets (`c p show 1 2 0` or `c ind 1 2 0`) are supported. Weighted
+counting is refused.
+
+Useful options:
+
+- `--json` prints the full record: every engine, its status, time and count.
+- `--timeout` and `--verify-timeout` bound the primary engine and each
+  cross-check. Every engine runs in its own process and is killed at its limit.
+- `--require-cross-check` fails unless two engines finished and agree.
+- `--engines ganak,bitset` picks engines; the first is the primary.
+- `--no-verify` runs the primary engine only.
+
+Exit codes: `0` exact count, `2` no engine finished, `3` engines disagree (no
+count is printed), `4` not cross-checked when required, `64` bad input.
+
+```python
+from eth_sat.counter import count_models, parse_dimacs
+
+result = count_models(parse_dimacs(open("examples/simple.cnf").read()))
+print(result.status, result.count, result.agreeing_engines)
+```
+
+Without `pyganak` the tool still works, with `dpll` as the primary engine. That
+is enough for small or highly structured formulas and slow beyond them. This is
+ordinary exponential-worst-case model counting; it does not use the research
+pipeline below and is no evidence for any subexponential bound.
 
 ## Use
 
@@ -157,6 +211,7 @@ not evidence of the asymptotic runtime or a formal verification of the paper.
 - `eth_sat/sparse.py`, `eth_sat/common_zeros.py` — sparse F2 systems and exact common-zero counting.
 - `eth_sat/parameters.py`, `layout.py`, `spectral.py`, `schedules.py` — exact design and incidence construction.
 - `eth_sat/taylor.py`, `measurements.py`, `polynomial.py` — Taylor jets, shared sums, and interpolation.
+- `eth_sat/counter.py` — the `sat-count` tool: DIMACS parsing, engines, cross-checking.
 - `tests/` — unit and differential tests.
 - `docs/ROADMAP.md` — implementation status and remaining qualification work.
 
