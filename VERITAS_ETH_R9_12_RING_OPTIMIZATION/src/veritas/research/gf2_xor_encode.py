@@ -36,8 +36,13 @@ def encode_xor_equations(
         variables = list(eq.variables)
         if not variables:
             if rhs:
-                clauses.append([1, -1])
-                xor_clauses += 1
+                # ``0 = 1`` is unsatisfiable. (The previous ``[1, -1]`` was a tautology,
+                # which silently turned an inconsistent system into a satisfiable one.)
+                if next_var < 1:
+                    next_var = 1
+                clauses.append([1])
+                clauses.append([-1])
+                xor_clauses += 2
             continue
         if len(variables) == 1:
             v = variables[0]

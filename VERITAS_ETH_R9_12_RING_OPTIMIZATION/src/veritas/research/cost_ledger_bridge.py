@@ -21,7 +21,11 @@ class RecursiveVisitTracker:
     def __init__(self, policy: Policy):
         if type(policy) is not Policy:
             raise TypeError('Policy required')
-        self.ledger = CostLedger(max_tree_work=policy.max_work)
+        # Observational only: the executor's Budget is the single enforcer.  A second cap here
+        # (the tracker also ticks requests, lookups and leaves) tripped first and raised a
+        # status-less RuntimeError, so budget exhaustion was misreported as
+        # INCONCLUSIVE_STREAMED_RECURSION instead of INCONCLUSIVE_RESOURCE_LIMIT.
+        self.ledger = CostLedger(max_tree_work=None)
         self.bit_ops = BitOperationLedger()
         self._stack: list[CostLedger] = [self.ledger]
         self._bit_stack: list[BitOperationLedger] = [self.bit_ops]

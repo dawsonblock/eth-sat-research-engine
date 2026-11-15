@@ -80,7 +80,9 @@ class CostLedger:
             'child_count': len(self.children),
             'cache_hits': hits,
             'cache_misses': misses,
-            'cache_hit_rate': hits / (hits + misses) if hits + misses else None,
+            # Integer parts-per-million: execution reports must stay float-free except for
+            # elapsed-time metadata, so a float hit rate would break canonical replay.
+            'cache_hit_rate_ppm': (hits * 1_000_000) // (hits + misses) if hits + misses else None,
             'unique_subproblems': self.unique_subproblems,
             'recursion_depth': self.recursion_depth,
             'elapsed_seconds': round(self.elapsed_seconds, 6),

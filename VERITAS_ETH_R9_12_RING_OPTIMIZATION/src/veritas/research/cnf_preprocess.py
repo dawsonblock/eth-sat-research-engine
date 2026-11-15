@@ -49,11 +49,12 @@ def _reindex(clauses: list[list[int]], fixed: dict[int, bool], n: int) -> tuple[
     for clause in clauses:
         new: list[int] = []
         seen: set[int] = set()
+        satisfied = False
         for lit in clause:
             v = abs(lit)
             if v in fixed:
                 if (lit > 0) == fixed[v]:
-                    new = []
+                    satisfied = True
                     break
                 continue
             nv = mapping[v]
@@ -62,9 +63,27 @@ def _reindex(clauses: list[list[int]], fixed: dict[int, bool], n: int) -> tuple[
                 continue
             seen.add(signed)
             new.append(signed)
-        if new:
-            projected.append(new)
+        if satisfied:
+            continue
+        # An empty ``new`` here is a falsified clause, not a satisfied one: keep it
+        # so the count stays 0 instead of silently dropping the constraint.
+        projected.append(new)
     return CNF.from_lists(len(remaining), projected), tuple(remaining)
+
+
+def _unsat_result(cnf: CNF, units: int, taut: int, dup: int, fixed: dict[int, bool]):
+    return (
+        cnf,
+        PreprocessReport(
+            units,
+            taut,
+            dup,
+            True,
+            tuple(fixed.items()),
+            (),
+            'COUNT_PRESERVING_UNSAT',
+        ),
+    )
 
 
 def count_preserving_preprocess(cnf: CNF) -> tuple[CNF, PreprocessReport]:
@@ -91,6 +110,9 @@ def count_preserving_preprocess(cnf: CNF) -> tuple[CNF, PreprocessReport]:
             keys.add(ordered)
             unique.append(list(ordered))
         clauses = unique
+        if any(len(c) == 0 for c in clauses):
+            # An explicit empty clause makes the formula unsatisfiable (count 0).
+            return _unsat_result(cnf, units, taut, dup, fixed)
         while True:
             unit = next((c[0] for c in clauses if len(c) == 1), None)
             if unit is None:
@@ -99,18 +121,7 @@ def count_preserving_preprocess(cnf: CNF) -> tuple[CNF, PreprocessReport]:
             value = unit > 0
             clauses = _apply_assignment(clauses, var, value)
             if clauses is None:
-                return (
-                    cnf,
-                    PreprocessReport(
-                        units,
-                        taut,
-                        dup,
-                        True,
-                        tuple(fixed.items()),
-                        (),
-                        'COUNT_PRESERVING_UNSAT',
-                    ),
-                )
+                return _unsat_result(cnf, units, taut, dup, fixed)
             fixed[var] = value
             units += 1
             changed = True

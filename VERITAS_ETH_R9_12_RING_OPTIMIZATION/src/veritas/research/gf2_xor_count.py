@@ -105,6 +105,36 @@ def xor_chain_example() -> tuple[tuple[XorEquation, ...], int]:
     return eqs, 3
 
 
+def remap_xor_after_preprocess(
+    equations: tuple[XorEquation, ...], prep, n_original: int
+) -> tuple[tuple[XorEquation, ...], bool]:
+    """Re-express XOR equations in the numbering of a preprocessed CNF.
+
+    ``count_preserving_preprocess`` fixes some variables and renumbers the rest, but the
+    XOR equations still use the original ids.  Fixed variables are substituted by their
+    value; surviving ones are renamed.  Returns ``(equations, inconsistent)``.
+    """
+    mapping = {v: i + 1 for i, v in enumerate(prep.remaining_variables)}
+    fixed = dict(prep.fixed_assignments)
+    out: list[XorEquation] = []
+    for eq in equations:
+        rhs = eq.rhs & 1
+        vars2: list[int] = []
+        for v in eq.variables:
+            if v > n_original:
+                raise ValueError('variable exceeds n')
+            if v in fixed:
+                rhs ^= int(fixed[v])
+            else:
+                vars2.append(mapping[v])
+        if not vars2:
+            if rhs:
+                return (), True
+            continue
+        out.append(XorEquation(tuple(sorted(vars2)), rhs))
+    return tuple(out), False
+
+
 def structure_with_optional_xor(
     cnf: CNF,
     *,
@@ -120,7 +150,18 @@ def structure_with_optional_xor(
     steps: list[dict] = []
     from veritas.research.cnf_preprocess import count_preserving_preprocess
 
+    if any(len(c) == 0 for c in cnf.clauses):
+        # An explicit empty clause is unsatisfiable whatever the XOR system says.
+        return {
+            'status': 'EXACT_COUNT',
+            'count': '0',
+            'engine': 'EMPTY_CLAUSE_UNSAT',
+            'formula_sha256': original_digest,
+            'pipeline': {'steps': steps, 'complexity_claim': False},
+        }
+
     if preprocess:
+        n_original = cnf.n
         cnf, prep = count_preserving_preprocess(cnf)
         steps.append({'stage': 'preprocess', 'report': prep.__dict__})
         if prep.empty_clause:
@@ -131,6 +172,20 @@ def structure_with_optional_xor(
                 'formula_sha256': original_digest,
                 'pipeline': {'steps': steps, 'complexity_claim': False},
             }
+        if xor_equations:
+            # Preprocessing renumbers variables; the XOR equations must follow.
+            xor_equations, xor_inconsistent = remap_xor_after_preprocess(
+                tuple(xor_equations), prep, n_original
+            )
+            steps.append({'stage': 'xor_remap', 'inconsistent': xor_inconsistent})
+            if xor_inconsistent:
+                return {
+                    'status': 'EXACT_COUNT',
+                    'count': '0',
+                    'engine': 'PREPROCESS_XOR_INCONSISTENT',
+                    'formula_sha256': original_digest,
+                    'pipeline': {'steps': steps, 'complexity_claim': False},
+                }
     if xor_equations:
         report = solve_xor_system(xor_equations, cnf.n)
         xor_vars = {v for eq in xor_equations for v in eq.variables}
