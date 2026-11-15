@@ -11,6 +11,7 @@ from enum import Enum
 from veritas.research.parent_child_r98.model import Refusal, Semantics
 from veritas.research.tapered_v4.provenance import source_binding
 from .elimination import EliminationBudget, eliminate, plan
+from .preflight import elimination_preflight, preflight_to_dict
 
 
 class Route(str, Enum):
@@ -28,33 +29,45 @@ NOT_EVIDENCE = {'source_qualified': False, 'theorem_mode_enabled': False, 'theor
                 'source_recursive_bound_evidence': False, 'subexponential_bound_evidence': False}
 
 
-def select_route(parent, route=Route.AUTO, elimination_budget=None):
+def select_route(parent, route=Route.AUTO, elimination_budget=None, *, preflight_layout=None, shrink_budget=None):
     """Return the chosen route and the symbolic ordering check; allocates no table."""
     if type(route) is not Route:
         raise TypeError('typed Route required')
     if route is Route.RECURSIVE:
         return {'route': Route.RECURSIVE.value, 'requested': route.value, 'ordering': None,
-                'reason': 'explicit recursive request'}
+                'reason': 'explicit recursive request', 'preflight': None}
     if parent.semantics is not Semantics.FINITE_SCALED_EXPERIMENT:
         raise Refusal('INCONCLUSIVE_SOURCE_REFINEMENT', 'elimination routing is finite only')
     budget = EliminationBudget() if elimination_budget is None else elimination_budget
     if type(budget) is not EliminationBudget:
         raise TypeError('EliminationBudget required')
     ordering = plan(parent, budget)
+    preflight = preflight_to_dict(
+        elimination_preflight(parent, budget, layout=preflight_layout, shrink_budget=shrink_budget)
+    )
     if ordering['fits']:
         return {'route': Route.ELIMINATION.value, 'requested': route.value, 'ordering': ordering,
-                'reason': 'verified ordering fits the explicit elimination budget'}
+                'reason': 'verified ordering fits the explicit elimination budget',
+                'preflight': preflight}
     if route is Route.ELIMINATION:
-        return {'route': None, 'requested': route.value, 'ordering': ordering, 'reason': ordering['reason']}
+        return {'route': None, 'requested': route.value, 'ordering': ordering, 'reason': ordering['reason'],
+                'preflight': preflight}
     return {'route': Route.RECURSIVE.value, 'requested': route.value, 'ordering': ordering,
-            'reason': 'elimination refused before allocation: ' + ordering['reason']}
+            'reason': 'elimination refused before allocation: ' + ordering['reason'],
+            'preflight': preflight}
 
 
-def contract_routed(parent, *, route=Route.AUTO, elimination_budget=None, **recursive):
+def contract_routed(parent, *, route=Route.AUTO, elimination_budget=None, preflight_layout=None, shrink_budget=None, **recursive):
     """Dispatch one call. Refusals carry no result; partial values are never returned."""
     binding = source_binding()['digest']
     try:
-        selection = select_route(parent, route, elimination_budget)
+        selection = select_route(
+            parent,
+            route,
+            elimination_budget,
+            preflight_layout=preflight_layout,
+            shrink_budget=shrink_budget,
+        )
     except (ValueError, TypeError, KeyError, RuntimeError, MemoryError) as exc:
         return {'status': getattr(exc, 'status', 'INCONCLUSIVE_ROUTE_SELECTION'), 'reason': str(exc),
                 'result_classification': None, **NOT_EVIDENCE}
@@ -67,8 +80,11 @@ def contract_routed(parent, *, route=Route.AUTO, elimination_budget=None, **recu
         if report.get('source_qualified') is not False or report.get('theorem_mode_enabled') is not False:
             raise ValueError('finite recursive report must not carry qualification')
         classified = report['status'].startswith('PASS')
-        return {**NOT_EVIDENCE, **report, 'route_selection': selection,
-                'result_classification': Classification.RECURSIVE.value if classified else None}
+        payload = {**NOT_EVIDENCE, **report, 'route_selection': selection,
+                   'result_classification': Classification.RECURSIVE.value if classified else None}
+        if 'decomposition_work' in report:
+            payload['decomposition_work'] = report['decomposition_work']
+        return payload
     budget = EliminationBudget() if elimination_budget is None else elimination_budget
     try:
         result, ledger = eliminate(parent, selection['ordering'], budget)

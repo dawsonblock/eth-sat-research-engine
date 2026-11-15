@@ -10,7 +10,7 @@ from dataclasses import dataclass
 from hashlib import sha256
 from pathlib import Path
 from math import isqrt
-from importlib.resources import files
+from importlib.resources import files  # nosemgrep: python.lang.compatibility.python37.python37-compatibility-importlib2
 
 from veritas.research.appendix_d_schedule import schedule_preflight
 from veritas.research.eth_arithmetic.gf2 import is_irreducible

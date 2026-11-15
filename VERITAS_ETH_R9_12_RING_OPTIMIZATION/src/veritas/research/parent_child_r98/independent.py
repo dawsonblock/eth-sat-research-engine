@@ -319,24 +319,8 @@ def verify_children(parent, layout, modes, beta, children, *, budget, _admitted=
         >= m["precision"]
     ):
         raise ValueError("invalid retained beta")
-    i = (abs(m["node"]) & -abs(m["node"])).bit_length() - 1
-    # Each item originates in a parent vertex occurrence, preserving port index.
-    occurrences, origin = {}, {}
-    for v in parent.vertices:
-        labels = src["row_labels"] if v.side == "row" else src["column_labels"]
-        g = labels.get(str(v.vertex_id), [0] * layout.a)[i]
-        origin[v.side, v.vertex_id] = g
-        for pos, edge in enumerate(v.ports):
-            kind = "Y" if v.side == "row" else "X"
-            hits = [
-                (pid, slot)
-                for pid, p in enumerate(src["packets"])
-                for slot, e in p["occupied_slots"]
-                if e == edge
-            ]
-            if len(hits) != 1:
-                raise ValueError("packet edge occurrence coverage")
-            occurrences[kind, edge] = (g, (kind, edge, *hits[0], v.vertex_id, pos))
+    occurrence_context = layout_half_edge_occurrence_context(parent, layout, modes)
+    occurrences, origin, _i = occurrence_context
     schedule = canonical(schedule_record(parent, layout))
     values, reports = [], []
     total_edges = 0
@@ -391,47 +375,17 @@ def verify_children(parent, layout, modes, beta, children, *, budget, _admitted=
             packets
         ):
             raise ValueError("packet vertex inventory differs")
-        ar = ReferenceArithmetic(
-            m["precision"],
-            parent.defining_polynomial,
-            parent.jet_length,
-            budget.policy.max_work - budget.work,
-            max_precision_bits=budget.policy.max_precision,
+        factors, ar, keys_built = child_group_elimination_factors(
+            parent,
+            layout,
+            modes,
+            beta,
+            child,
+            budget=budget,
+            occurrence_context=occurrence_context,
         )
-        factors = []
-        for v, old in zip(child.vertices, inherited):
-            ports = tuple(
-                keys.index(("Y" if old.side == "row" else "X", e)) for e in old.ports
-            )
-            if v.side != "row" or v.ports != ports or v.tensor != old.tensor:
-                raise ValueError("inherited ports or original creation recipe changed")
-            factors.append(
-                (
-                    ports,
-                    {
-                        bits: _entry(old.tensor, bits, ar)
-                        for bits in product((0, 1), repeat=len(ports))
-                    },
-                )
-            )
-        for v, pid in zip(child.vertices[len(inherited) :], packets):
-            positions, expected_ref = expected_packet_reference(
-                src, m, g, pid, beta.values, parent.defining_polynomial
-            )
-            ports = tuple(keys.index(key) for key in positions)
-            if v.side != "column" or v.ports != ports or v.tensor != expected_ref:
-                raise ValueError(
-                    "packet assignment, bit order, coefficient or creation metadata changed"
-                )
-            if len(ports) > budget.policy.max_factor_bits:
-                raise Refusal(
-                    "INCONCLUSIVE_RESOURCE_LIMIT", "independent packet entry cap"
-                )
-            table = {}
-            for bits in product((0, 1), repeat=len(ports)):
-                # Coefficient extraction uses the reference polynomial evaluator.
-                table[bits] = _entry(expected_ref, bits, ar)
-            factors.append((ports, table))
+        if tuple(keys_built) != tuple(keys):
+            raise ValueError("child half-edge key order differs from occurrence map")
         values.append(eliminate_tables(factors, ar, budget))
         budget.tick(ar.used)
         M = len(keys)
@@ -459,6 +413,145 @@ def verify_children(parent, layout, modes, beta, children, *, budget, _admitted=
         "all_source_shrink": all(x["source_shrink"] for x in reports),
         "all_group_shrink": all(x["group_shrink"] for x in reports),
     }
+
+
+def layout_half_edge_occurrence_context(parent, layout, modes):
+    """Parent half-edge occurrence map for repeated group eliminations."""
+    src, m = layout.source, modes.certificate
+    i = (abs(m["node"]) & -abs(m["node"])).bit_length() - 1
+    occurrences, origin = {}, {}
+    for vertex in parent.vertices:
+        labels = src["row_labels"] if vertex.side == "row" else src["column_labels"]
+        group = labels.get(str(vertex.vertex_id), [0] * layout.a)[i]
+        origin[vertex.side, vertex.vertex_id] = group
+        for pos, edge in enumerate(vertex.ports):
+            kind = "Y" if vertex.side == "row" else "X"
+            hits = [
+                (pid, slot)
+                for pid, packet in enumerate(src["packets"])
+                for slot, e in packet["occupied_slots"]
+                if e == edge
+            ]
+            if len(hits) != 1:
+                raise ValueError("packet edge occurrence coverage")
+            occurrences[kind, edge] = (group, (kind, edge, *hits[0], vertex.vertex_id, pos))
+    return occurrences, origin, i
+
+
+def child_group_elimination_factors(
+    parent, layout, modes, beta, child, *, budget, occurrence_context=None
+):
+    """Port tables for independent elimination on one constructed group child."""
+    src, m = layout.source, modes.certificate
+    g = child.group
+    if occurrence_context is None:
+        occurrences, origin, _i = layout_half_edge_occurrence_context(parent, layout, modes)
+    else:
+        occurrences, origin, _i = occurrence_context
+    keys = sorted(
+        (key for key, (owner, _) in occurrences.items() if owner == g),
+        key=lambda key: (key[0] != "Y", key[1]),
+    )
+    inherited = [v for v in parent.vertices if origin[v.side, v.vertex_id] == g]
+    packets = tuple(
+        pid
+        for pid, packet in enumerate(src["packets"])
+        if any(
+            (kind, e) in keys for _, e in packet["occupied_slots"] for kind in ("Y", "X")
+        )
+    )
+    ar = ReferenceArithmetic(
+        m["precision"],
+        parent.defining_polynomial,
+        parent.jet_length,
+        budget.policy.max_work - budget.work,
+        max_precision_bits=budget.policy.max_precision,
+    )
+    factors = []
+    for vertex, old in zip(child.vertices, inherited):
+        ports = tuple(
+            keys.index(("Y" if old.side == "row" else "X", e)) for e in old.ports
+        )
+        if vertex.side != "row" or vertex.ports != ports or vertex.tensor != old.tensor:
+            raise ValueError("inherited ports or original creation recipe changed")
+        factors.append(
+            (
+                ports,
+                {
+                    bits: _entry(old.tensor, bits, ar)
+                    for bits in product((0, 1), repeat=len(ports))
+                },
+            )
+        )
+    for vertex, pid in zip(child.vertices[len(inherited) :], packets):
+        positions, expected_ref = expected_packet_reference(
+            src, m, g, pid, beta.values, parent.defining_polynomial
+        )
+        ports = tuple(keys.index(key) for key in positions)
+        if vertex.side != "column" or vertex.ports != ports or vertex.tensor != expected_ref:
+            raise ValueError(
+                "packet assignment, bit order, coefficient or creation metadata changed"
+            )
+        if len(ports) > budget.policy.max_factor_bits:
+            raise Refusal("INCONCLUSIVE_RESOURCE_LIMIT", "independent packet entry cap")
+        table = {
+            bits: _entry(expected_ref, bits, ar)
+            for bits in product((0, 1), repeat=len(ports))
+        }
+        factors.append((ports, table))
+    return factors, ar, keys
+
+
+def column_sourced_star_half_edge_grandchild_product(
+    parent, layout, modes, beta, child, *, budget, occurrence_context=None
+):
+    """Inner lemma for X-only stars: shared inherited, one packet factor per half-edge.
+
+    With ``n`` column half-edges, independent elimination satisfies
+    ``C_child = (∏_h eliminate(inherited, packet_h)) / eliminate(inherited)^(n-1)``
+    in the jet ring at the child creation point.
+    """
+    from veritas.research.eth_arithmetic.extension_ring import ExtensionRing
+    from veritas.research.eth_arithmetic.jets import JetRing
+
+    factors, ar, keys = child_group_elimination_factors(
+        parent,
+        layout,
+        modes,
+        beta,
+        child,
+        budget=budget,
+        occurrence_context=occurrence_context,
+    )
+    half_edges = len(child.edge_map)
+    if half_edges < 1 or len(keys) != half_edges or any(k[0] != "X" for k in keys):
+        raise ValueError("column-sourced star half-edge inventory required")
+    if len(factors) != 1 + half_edges:
+        raise ValueError("column-sourced star elimination shape mismatch")
+    inherited, packet_factors = factors[0], factors[1:]
+    if half_edges == 1:
+        budget.tick(ar.used)
+        return eliminate_tables(factors, ar, budget)
+    inherited_alone = eliminate_tables([inherited], ar, budget)
+    ring = JetRing(
+        ExtensionRing(
+            modes.certificate["precision"],
+            parent.defining_polynomial,
+            max_precision_bits=budget.policy.max_precision,
+        ),
+        parent.jet_length,
+    )
+    if not ring.base.is_unit(inherited_alone[0]):
+        budget.tick(ar.used)
+        return eliminate_tables(factors, ar, budget)
+    product = ring.one
+    for packet in packet_factors:
+        paired = eliminate_tables([inherited, packet], ar, budget)
+        product = ring.mul(product, paired)
+    for _ in range(half_edges - 1):
+        product = ring.mul(product, ring.inverse(inherited_alone))
+    budget.tick(ar.used)
+    return product
 
 
 def tuple_coefficient(parent, layout, modes, beta, *, budget):
