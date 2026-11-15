@@ -11,8 +11,9 @@ from time import monotonic
 
 from veritas.core.cnf import CNF
 from veritas.research.adaptive_contract import adaptive_count
-from veritas.research.contraction_planner import choose_plan
+from veritas.research.contraction_planner import ContractLimit, choose_plan
 from veritas.research.graph_decomposition import components, primal_graph, small_separator
+from veritas.research.optimal_order import MAX_OPTIMAL_VERTICES
 
 
 @dataclass(frozen=True)
@@ -31,6 +32,7 @@ def estimate_backends(
     max_work_assignments: int = 2_000_000,
     max_separator: int = 2,
     enable_separators: bool = True,
+    deadline: float | None = None,
 ) -> list[BackendEstimate]:
     model, plan, _ = choose_plan(
         cnf,
@@ -38,10 +40,13 @@ def estimate_backends(
         max_work_assignments=max_work_assignments,
         include_copy3=True,
         allow_infeasible=True,
+        deadline=deadline,
     )
     graph = primal_graph(model.variables, model.factors)
     groups = components(graph)
-    separator = small_separator(graph, max_size=max_separator) if enable_separators else None
+    # max_separator=0 means "no separator search", as in adaptive_count.
+    separator = (small_separator(graph, max_size=max_separator)
+                 if enable_separators and max_separator else None)
     estimates: list[BackendEstimate] = []
     elim_feasible = (
         plan.peak_table_entries <= max_table_entries
@@ -94,14 +99,22 @@ def hybrid_count(cnf: CNF, **kwargs) -> dict:
     max_separator = kwargs.get('max_separator', 2)
     max_table_entries = kwargs.get('max_table_entries', 65536)
     max_work_assignments = kwargs.get('max_work_assignments', 2_000_000)
+    # One time budget covers routing and execution. An invalid timeout_s is left for
+    # adaptive_count to reject.
+    timeout_s = kwargs.get('timeout_s', 15)
+    start = monotonic()
+    deadline = (start + timeout_s
+                if type(timeout_s) in (int, float) and 0 < timeout_s <= 60 else None)
     estimates = estimate_backends(
         cnf,
         max_table_entries=max_table_entries,
         max_work_assignments=max_work_assignments,
         max_separator=max_separator,
         enable_separators=enable_separators,
+        deadline=deadline,
     )
     chosen = choose_backend(estimates)
+    routing_seconds = monotonic() - start
     prefer_dp = chosen.name == 'EXACT_BOUNDARY_DP' and chosen.feasible
     if prefer_dp:
         kwargs = dict(kwargs)
@@ -109,13 +122,21 @@ def hybrid_count(cnf: CNF, **kwargs) -> dict:
     elif chosen.name == 'EXACT_VARIABLE_ELIMINATION':
         kwargs = dict(kwargs)
         kwargs['enable_separators'] = False
-        kwargs.setdefault('portfolio_mode', 'optimal_small')
-    start = monotonic()
+        # The certified order search refuses more than MAX_OPTIMAL_VERTICES wires;
+        # larger inputs keep adaptive_count's heuristic planner.
+        if cnf.n <= MAX_OPTIMAL_VERTICES:
+            kwargs.setdefault('portfolio_mode', 'optimal_small')
+    if deadline is not None:
+        remaining = deadline - monotonic()
+        if remaining <= 0:
+            raise ContractLimit('routing estimates exhausted the time budget')
+        kwargs = dict(kwargs)
+        kwargs['timeout_s'] = remaining
     result = adaptive_count(cnf, **kwargs)
     result['routing'] = {
         'chosen_backend': chosen.name,
         'estimates': [asdict(e) for e in estimates],
-        'routing_seconds': round(monotonic() - start, 6),
+        'routing_seconds': round(routing_seconds, 6),
         'warning': 'Heuristic treewidth-dependent routing only; not Anthropic/OpenAI subexponential algorithms.',
     }
     return result

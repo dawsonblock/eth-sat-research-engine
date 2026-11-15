@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from math import log2
 from pathlib import Path
 from random import Random
 
@@ -21,11 +22,7 @@ def main() -> None:
         prev, cur = rows[i - 1], rows[i]
         ratio = cur['dense_cauchy_ops'] / max(prev['dense_cauchy_ops'], 1)
         cur['ops_ratio_vs_previous'] = round(ratio, 4)
-        cur['log2_growth_per_wire'] = round(
-            (cur['dense_cauchy_ops'].bit_length() - prev['dense_cauchy_ops'].bit_length())
-            / (cur['wires'] - prev['wires']),
-            4,
-        )
+        cur['log2_growth_per_wire'] = round(log2(ratio) / (cur['wires'] - prev['wires']), 4)
     report = {
         'schema': 'VERITAS_COST_SCALING_V1',
         'warning': 'Two-point ratios do not prove asymptotic complexity.',
