@@ -43,6 +43,10 @@ every loop is charged too, and each emitted tuple costs one unit.
 | `size_conditions` | for all `λ ≥ λ₀(C)`: `A·u ≤ M·2^u` and `8(a+1)u ≤ 2^{a_{d-1}+u}` on the schedule, with `A` the envelope of `path_precision` (`envelope_le`) | the two size conditions |
 | `scheduled_precision_bound` | `precision_bound` on the schedule with both size conditions discharged | `eq:tensor-precision-bound` |
 | `child_edges`, `child_edges_le_eighth` | with loads `≤ H_pad` and `P·L = H_pad·D_arr ≤ 3M`, a symbol of one coordinate of `[r]^a` owns `≤ 3M/r` real ports per side, so a group's child has `≤ 6M/r` edges, `≤ M/8` for `r = 64` | `lem:tensor-packets`, item 3; `subsec:tensor-children` |
+| `child_edges_of_packing`, `child_edges_le_eighth_of_packing` | the two steps above composed: from the packing conditions `2·D_arr²·Δ ≤ M` and `L·D_arr ≤ M` alone (no separate load or padding hypotheses), some labeling gives every group a child with `≤ 6M/r` edges, and `≤ M/8` for `r = 64` | `lem:tensor-packets`, item 3 |
+| `aSched_mul_le`, `aSched_eq_zero` | `32768·a_d ≤ λ` (the paper's `a ≤ 4ελ`); and `a_d = 0` whenever `λ < 131072`, so below `s ≈ 2^131071` the label space `[r]^a` is a single point | `eq:tensor-parameters`, `eq:tensor-parameter-bounds` |
+| `pow_ten_le_two_pow`, `packing_of_schedule` | for every `λ ≥ 144`, with `2^λ ≤ 2s`, an active call `s ≤ M·λ`, and `Δ = ⌈s^{9/10}⌉` (as `s⁹ ≤ Δ¹⁰`, `(Δ-1)¹⁰ < s⁹`): `M ≥ 2·D_arr²·Δ`, `M ≥ L·D_arr`, `2L ≤ Δ` on the schedule, `r = 64` | `eq:tensor-packing-conditions` |
+| `scheduled_child_edges_le_eighth` | hence, with no packing hypothesis left: labels in `[64]^{a_d}` exist for which every group's child has `≤ M/8` edges, and a new packet vertex (`2L` ports) stays within `Δ` | `subsec:tensor-children`, inductive invariant |
 | `path_edges` | children with `≤ M/8` edges ⇒ `M_j·8^j ≤ M_0` | `M ≤ Cs·8^{-d}` |
 | `CallTree.size_le` | a call tree with `≤ b_j` children per depth-`j` call and `b_n = 0` has `≤ ∑_{d ≤ n} ∏_{j<d} b_j` calls | "multiplying these bounds over the depths" |
 | `depth_exponent` | `M_j·8^j ≤ Cs`, `u_j ≥ 1` ⇒ `M_j/√u_j ≤ 2^10 Cs/√λ · (√2/8)^j` | per-depth exponent |
@@ -57,6 +61,10 @@ is `O_C(s/√λ)` independent of the depth.
 
 - `λ₀(C)` in `schedule_bound` and `size_conditions` is shown to exist but is
   not computed. With `λ = ⌈log₂ s⌉` it corresponds to astronomically large `s`.
+  The packing half has an explicit threshold instead: `packing_of_schedule`
+  holds from `λ ≥ 144`. It is vacuous in the label coordinates until
+  `λ ≥ 131072` (`aSched_eq_zero`), and it assumes the size invariants it is
+  meant to propagate: the call is active and every degree is at most `Δ`.
 - The tapered-Hermite inputs `h·u ≤ 4M` (true for `h = ⌈3M/u⌉` when `u ≤ M`)
   and `D_t·2^i = L`.
 - Only existence of a good labeling is proved; the deterministic
@@ -83,6 +91,12 @@ is `O_C(s/√λ)` independent of the depth.
   per-call work being polynomial apart from those.
 
 ## Runtime checks
+
+`scripts/audit_materialized_child_shrink.py` materializes one unstructured
+random graph at the smallest size `child_edges_of_packing` permits (`a = 1`,
+`r = 48` or `64`) and checks its hypotheses and conclusion by direct counting.
+See `docs/MATERIALIZED_CHILD_SHRINK_INSTANCE.md`. It is off the schedule and
+builds no network.
 
 `veritas.research.parent_child_r912.conformance` evaluates these hypotheses
 on the engine's actual objects. Pass `conformance='report'` to
