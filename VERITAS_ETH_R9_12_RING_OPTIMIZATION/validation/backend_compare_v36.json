@@ -227,6 +227,56 @@
       "complexity_claim": false
     },
     {
+      "name": "dimacs_block_xy_z",
+      "n": 3,
+      "count": "5",
+      "hybrid_engine": "EXACT_VARIABLE_ELIMINATION",
+      "ledger_comparison": {
+        "skipped": false,
+        "counts_match": true,
+        "hybrid_engine": "EXACT_VARIABLE_ELIMINATION",
+        "hybrid_chosen_backend": "EXACT_VARIABLE_ELIMINATION",
+        "hybrid_evaluated_assignments": 10,
+        "hybrid_cache_entries": 4,
+        "hybrid_cache_hits": null,
+        "tree_ledger_unique_subproblems": null,
+        "tree_ledger_cache_hits": null,
+        "residual_distinct_states": 4,
+        "residual_recursive_calls": 5,
+        "residual_memo_reuse_ratio": 0.2,
+        "brute_assignments": 8,
+        "residual_compression_vs_brute": 2.0,
+        "complexity_claim": false
+      },
+      "residual_distinct_states": 4,
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_network_block_motif_4",
+      "n": 9,
+      "count": "257",
+      "hybrid_engine": "EXACT_VARIABLE_ELIMINATION",
+      "ledger_comparison": {
+        "skipped": false,
+        "counts_match": true,
+        "hybrid_engine": "EXACT_VARIABLE_ELIMINATION",
+        "hybrid_chosen_backend": "EXACT_VARIABLE_ELIMINATION",
+        "hybrid_evaluated_assignments": 34,
+        "hybrid_cache_entries": 4,
+        "hybrid_cache_hits": null,
+        "tree_ledger_unique_subproblems": null,
+        "tree_ledger_cache_hits": null,
+        "residual_distinct_states": 16,
+        "residual_recursive_calls": 17,
+        "residual_memo_reuse_ratio": 0.058823529411764705,
+        "brute_assignments": 512,
+        "residual_compression_vs_brute": 32.0,
+        "complexity_claim": false
+      },
+      "residual_distinct_states": 16,
+      "complexity_claim": false
+    },
+    {
       "name": "dimacs_contradiction",
       "n": 1,
       "count": "0",

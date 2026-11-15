@@ -30,6 +30,52 @@ def _block_gate() -> dict:
     }
 
 
+def _dual_backend_gate() -> dict:
+    from v36_backend_comparison import row
+
+    mismatches: list[str] = []
+    rows: list[dict] = []
+    for name, builder in all_family_builders().items():
+        cnf = builder()
+        if cnf.n > 22:
+            continue
+        entry = row(name, cnf)
+        rows.append(entry)
+        cmp = entry.get('ledger_comparison') or {}
+        if cmp.get('skipped'):
+            continue
+        if not cmp.get('counts_match'):
+            mismatches.append(name)
+    return {
+        'cases_checked': len(rows),
+        'mismatches': mismatches,
+        'ok': not mismatches,
+    }
+
+
+def _compression_floor_gate() -> dict:
+    from residual_compression_floors import COMPRESSION_RATIO_FLOORS
+    from v36_backend_comparison import row
+
+    failures: list[str] = []
+    for name, floor in COMPRESSION_RATIO_FLOORS.items():
+        builders = all_family_builders()
+        if name not in builders:
+            failures.append(f'{name}: missing from benchmark suite')
+            continue
+        cmp = (row(name, builders[name]()).get('ledger_comparison')) or {}
+        ratio = cmp.get('residual_compression_vs_brute')
+        if ratio is None:
+            failures.append(f'{name}: no compression ratio')
+        elif ratio < floor:
+            failures.append(f'{name}: ratio {ratio} < floor {floor}')
+    return {
+        'floors': COMPRESSION_RATIO_FLOORS,
+        'failures': failures,
+        'ok': not failures,
+    }
+
+
 def _v34_smoke() -> dict:
     failures: list[str] = []
     from v34_residual_growth import row
@@ -54,12 +100,16 @@ def main() -> int:
         'schema': 'VERITAS_RESIDUAL_GATES_V1',
         'block_example': _block_gate(),
         'v34_exhaustive_smoke': _v34_smoke(),
+        'dual_backend_counts': _dual_backend_gate(),
+        'compression_floors': _compression_floor_gate(),
         'complexity_claim': False,
         'release_ready': {},
     }
     report['release_ready'] = {
         'block_example': report['block_example']['ok'],
         'v34_exhaustive_smoke': report['v34_exhaustive_smoke']['ok'],
+        'dual_backend_counts': report['dual_backend_counts']['ok'],
+        'compression_floors': report['compression_floors']['ok'],
     }
     out.write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report, indent=2))

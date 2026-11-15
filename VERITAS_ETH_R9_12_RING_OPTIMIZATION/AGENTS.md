@@ -4,6 +4,7 @@
 - `anthropic_signed_contraction`: one-level rewrite economics proxy only.
 - `hybrid_router`: conventional boundary DP vs elimination routing only; run `scripts/validate_cost_reduction_gates.py`.
 - `cnf_structure` / `--structure-hybrid-count`: disjoint component #SAT product; default preprocess on.
+- `residual_equivalence` / `--count-backend dual`: residual R(a) memo research; DIMACS under `fixtures/dimacs/`; `scripts/validate_residual_gates.py`.
 - `gf2_xor_mixed`: mixed CNF+XOR via null-space conditioning up to `max_xor_enum_bits` (default 18).
 - `gf2_xor_substitute`: binary XOR rewrites before mixed/structure routing (`xor_strategy=auto|substitute|condition|encode`).
 - `gf2_xor_encode`: Tseitin chain to pure CNF; `auto` uses encode when `free_xor_dimension > max_xor_enum_bits`.

@@ -8,8 +8,8 @@ from veritas.core.cnf import CNF
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 DIMACS_FIXTURE_DIRS = (
-    PACKAGE_ROOT / 'examples',
     PACKAGE_ROOT / 'fixtures' / 'dimacs',
+    PACKAGE_ROOT / 'examples',
 )
 
 

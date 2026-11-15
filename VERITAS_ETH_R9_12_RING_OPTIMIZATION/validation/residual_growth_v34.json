@@ -17,6 +17,8 @@
     "pigeon_one_hot_5",
     "random_3sat_n10_m35_s42",
     "tight_primed_pairs_5",
+    "dimacs_block_xy_z",
+    "dimacs_network_block_motif_4",
     "dimacs_contradiction",
     "dimacs_example",
     "dimacs_query_v23"
@@ -245,6 +247,56 @@
         ]
       },
       "family": "adversarial",
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_block_xy_z",
+      "n": 3,
+      "clauses": 2,
+      "count": 5,
+      "exhaustive_check": 5,
+      "brute_assignments": 8,
+      "distinct_residual_states": 4,
+      "cache_hits": 1,
+      "recursive_calls": 5,
+      "compression_ratio_states_vs_brute": 2.0,
+      "memo_reuse_ratio": 0.2,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 5,
+        "smallest_bucket": 3,
+        "sorted_multiplicities": [
+          5,
+          3
+        ]
+      },
+      "family": "archive",
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_network_block_motif_4",
+      "n": 9,
+      "clauses": 8,
+      "count": 257,
+      "exhaustive_check": 257,
+      "brute_assignments": 512,
+      "distinct_residual_states": 16,
+      "cache_hits": 1,
+      "recursive_calls": 17,
+      "compression_ratio_states_vs_brute": 32.0,
+      "memo_reuse_ratio": 0.058823529411764705,
+      "prefix_equivalence_buckets": 2,
+      "prefix_multiplicity_histogram": {
+        "bucket_count": 2,
+        "largest_bucket": 257,
+        "smallest_bucket": 255,
+        "sorted_multiplicities": [
+          257,
+          255
+        ]
+      },
+      "family": "archive",
       "complexity_claim": false
     },
     {

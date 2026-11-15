@@ -11,13 +11,32 @@
     "ok": true
   },
   "v34_exhaustive_smoke": {
-    "cases_checked": 12,
+    "cases_checked": 14,
+    "failures": [],
+    "ok": true
+  },
+  "dual_backend_counts": {
+    "cases_checked": 14,
+    "mismatches": [],
+    "ok": true
+  },
+  "compression_floors": {
+    "floors": {
+      "independent_pairs_6": 100.0,
+      "network_block_motif_4": 30.0,
+      "dimacs_network_block_motif_4": 30.0,
+      "star_coupled_8": 100.0,
+      "layered_bridge_4x3": 80.0,
+      "chain_8": 20.0
+    },
     "failures": [],
     "ok": true
   },
   "complexity_claim": false,
   "release_ready": {
     "block_example": true,
-    "v34_exhaustive_smoke": true
+    "v34_exhaustive_smoke": true,
+    "dual_backend_counts": true,
+    "compression_floors": true
   }
 }

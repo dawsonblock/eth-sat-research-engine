@@ -52,7 +52,9 @@ python scripts/validate_residual_gates.py
 python benchmarks/v34_residual_growth.py
 ```
 
-Drop additional DIMACS instances under `examples/` or `fixtures/dimacs/` (n≤22); v34 picks them up as `dimacs_*` rows.
+Drop additional DIMACS instances under `fixtures/dimacs/` (preferred) or `examples/` (n≤22); v34 picks them up as `dimacs_*` rows.
+
+CI gates (`validate_residual_gates.py`): block example, exhaustive v34 smoke, **dual hybrid=residual counts**, and **compression ratio floors** on selected coupled/independent cases (`benchmarks/residual_compression_floors.py`).
 
 ## Connection to existing R9 / archive stack
 

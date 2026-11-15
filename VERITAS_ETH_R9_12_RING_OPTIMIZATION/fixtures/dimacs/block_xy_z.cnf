@@ -1,0 +1,4 @@
+c Block example: (x OR z) AND (y OR z); x=1 y=2 z=3
+p cnf 3 2
+1 3 0
+2 3 0
