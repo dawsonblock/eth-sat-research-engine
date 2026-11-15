@@ -128,11 +128,14 @@ print(result.status, result.count, result.agreeing_engines)
 Without `pyganak` the tool still works, within limits:
 
 - At most 24 variables: `bitset` counts them.
-- Narrow formulas of any size: `elimination` counts them, with or without a
-  projection set.
-- Everything else falls to `dpll`, which is slow beyond small or highly
-  structured inputs and does not handle projection sets. A wide projected
-  formula with more than 24 variables then has no result.
+- Formulas of any size with a narrow elimination order: `elimination` counts
+  them. With a projection set the hidden variables must be eliminated first,
+  which can force a wide table on a formula that is otherwise narrow: one
+  hidden variable joined to 19 projected ones already exceeds the limit.
+- Formulas without a projection set also have `dpll`, which is slow beyond
+  small or highly structured inputs, and `veritas` when it is importable.
+- A projected formula with more than 24 variables that `elimination` refuses
+  has no result.
 
 Install the `count` extra to lift these limits. With or without it, any engine
 can hit its time limit. A cross-check that times out is reported as such and
