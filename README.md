@@ -20,6 +20,7 @@ algorithm and does not implement OpenAI's Appendix D deformation.
 - [Research basis](#research-basis)
 - [Algorithm pipeline](#algorithm-pipeline)
 - [Install](#install)
+- [Count models: `sat-count`](#count-models-sat-count)
 - [Use](#use)
 - [Resource guards](#resource-guards)
 - [Engines](#engines)
@@ -68,6 +69,81 @@ python -m pip install -e .
 ```
 
 On Windows, run `run_windows.bat` for the bundled cross-engine example.
+
+## Count models: `sat-count`
+
+A practical exact model counter. It runs a fast engine side by side with
+independent engines, each in its own process, and prints a count only when
+every engine that finished agrees.
+
+```console
+python -m pip install -e ".[count]"     # adds Ganak through pyganak
+sat-count examples/simple.cnf
+```
+
+The count goes to standard output and one status line to standard error:
+
+```text
+4
+exact, cross-checked by 4 engines [ganak 0.215s; bitset 0.207s; elimination 0.208s; dpll 0.209s]
+```
+
+| Engine | What it is | Used when |
+| --- | --- | --- |
+| `ganak` | [Ganak](https://github.com/meelgroup/ganak) through `pyganak` | installed |
+| `bitset` | truth-table counting, sharing no code with the others | at most 24 variables |
+| `elimination` | variable elimination over clause tables | always tried; it stops if a step needs a table over more than 18 variables |
+| `veritas` | the R9.12 structure-aware counter | the R9.12 `veritas` package is importable (v3.8.2 lacks the module) |
+| `dpll` | this repository's pure-Python DPLL counter | no projection set |
+
+`elimination` is what cross-checks long chains, grids and other narrow
+formulas, where `dpll` is too slow and `bitset` does not apply.
+
+Input is DIMACS CNF. XOR lines in CryptoMiniSat form (`x1 -2 3 0`) and
+projection sets (`c p show 1 2 0` or `c ind 1 2 0`) are supported. Files ending
+in `.gz`, `.bz2` or `.xz` are decompressed. Weighted counting is refused.
+
+Useful options:
+
+- `--json` prints the full record: every engine, its status, time and count,
+  and the size of the count in digits and bits.
+- `--timeout` is the limit for each engine. Once one engine has a count, the
+  others get `--verify-timeout` more seconds. Every engine runs in its own
+  process and is killed at its limit.
+- `--jobs` sets how many engines run at once (default: one per processor).
+- `--require-cross-check` fails unless two engines finished and agree.
+- `--engines ganak,bitset` picks engines.
+- `--no-verify` runs the first engine only.
+
+Exit codes: `0` exact count, `2` no engine finished, `3` engines disagree (no
+count is printed), `4` not cross-checked when required, `64` bad input.
+
+```python
+from eth_sat.counter import count_models, parse_dimacs
+
+result = count_models(parse_dimacs(open("examples/simple.cnf").read()))
+print(result.status, result.count, result.agreeing_engines)
+```
+
+Without `pyganak` the tool still works, within limits:
+
+- At most 24 variables: `bitset` counts them.
+- Formulas of any size with a narrow elimination order: `elimination` counts
+  them. With a projection set the hidden variables must be eliminated first,
+  which can force a wide table on a formula that is otherwise narrow: one
+  hidden variable joined to 19 projected ones already exceeds the limit.
+- Formulas without a projection set also have `dpll`, which is slow beyond
+  small or highly structured inputs, and `veritas` when it is importable.
+- A projected formula with more than 24 variables that `elimination` refuses
+  has no result.
+
+Install the `count` extra to lift these limits. With or without it, any engine
+can hit its time limit. A cross-check that times out is reported as such and
+does not count as agreement, and if every engine times out there is no result.
+
+This is
+ordinary exponential-worst-case model counting; it does not use the research
+pipeline below and is no evidence for any subexponential bound.
 
 ## Use
 
@@ -157,6 +233,7 @@ not evidence of the asymptotic runtime or a formal verification of the paper.
 - `eth_sat/sparse.py`, `eth_sat/common_zeros.py` — sparse F2 systems and exact common-zero counting.
 - `eth_sat/parameters.py`, `layout.py`, `spectral.py`, `schedules.py` — exact design and incidence construction.
 - `eth_sat/taylor.py`, `measurements.py`, `polynomial.py` — Taylor jets, shared sums, and interpolation.
+- `eth_sat/counter.py` — the `sat-count` tool: DIMACS parsing, engines, cross-checking.
 - `tests/` — unit and differential tests.
 - `docs/ROADMAP.md` — implementation status and remaining qualification work.
 

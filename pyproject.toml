@@ -14,10 +14,12 @@ dependencies = []
 
 [project.optional-dependencies]
 fast = ["numpy"]
+count = ["pyganak>=2.6"]
 test = ["pytest", "numpy"]
 
 [project.scripts]
 eth-sat = "eth_sat.cli:main"
+sat-count = "eth_sat.counter:main"
 
 [tool.setuptools.packages.find]
 include = ["eth_sat*", "research_anthropic*"]
