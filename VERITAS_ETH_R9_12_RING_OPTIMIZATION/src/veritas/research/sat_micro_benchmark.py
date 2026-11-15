@@ -6,8 +6,14 @@ from typing import Any
 
 from veritas.core.cnf import CNF
 from veritas.research.sat_external_baselines import run_baseline_matrix
-from veritas.research.sat_micro_generators import micro_generator_suite
-from veritas.research.sat_residual_equivalence import probe_branch_orders_benchmark
+from veritas.research.sat_micro_generators import (
+    adversarial_grid_cases,
+    micro_generator_suite,
+)
+from veritas.research.sat_residual_equivalence import (
+    count_by_residual_equivalence,
+    probe_branch_orders_benchmark,
+)
 from veritas.research.sat_universal import run_universal_sat
 
 
@@ -67,6 +73,66 @@ def decomposition_metrics_from_report(
     if cnf is not None:
         metrics.update(residual_compression_row(report, cnf=cnf))
     return metrics
+
+
+def _percentile(sorted_vals: list[float], p: float) -> float | None:
+    if not sorted_vals:
+        return None
+    if len(sorted_vals) == 1:
+        return sorted_vals[0]
+    idx = (len(sorted_vals) - 1) * p
+    lo = int(idx)
+    hi = min(lo + 1, len(sorted_vals) - 1)
+    frac = idx - lo
+    return sorted_vals[lo] * (1 - frac) + sorted_vals[hi] * frac
+
+
+def adversarial_grid_compression_summary(
+    *,
+    n_min: int = 6,
+    n_max: int = 10,
+    seeds: tuple[int, ...] = (0, 1, 2),
+) -> dict[str, Any]:
+    """Benchmark-only grid: ``compression_vs_2n`` percentiles (no speedup claim)."""
+    rows: list[dict[str, Any]] = []
+    vs_2n_values: list[float] = []
+    agree = 0
+    for name, cnf, family in adversarial_grid_cases(n_min=n_min, n_max=n_max, seeds=seeds):
+        rep = count_by_residual_equivalence(cnf)
+        vs = rep.get("compression_vs_2n")
+        if rep.get("agreement"):
+            agree += 1
+        row = {
+            "case": name,
+            "family": family,
+            "n": cnf.n,
+            "distinct_residual_classes": rep.get("distinct_residual_classes"),
+            "compression_vs_2n": vs,
+            "agreement": rep.get("agreement"),
+        }
+        rows.append(row)
+        if vs is not None and rep.get("agreement"):
+            vs_2n_values.append(float(vs))
+    vs_2n_values.sort()
+    return {
+        "schema": "VERITAS_SAT_ADVERSARIAL_GRID_COMPRESSION_V1",
+        "n_min": n_min,
+        "n_max": n_max,
+        "seeds": list(seeds),
+        "case_count": len(rows),
+        "agreement_count": agree,
+        "cases": rows,
+        "compression_vs_2n_percentiles": {
+            "p25": _percentile(vs_2n_values, 0.25),
+            "p50": _percentile(vs_2n_values, 0.50),
+            "p75": _percentile(vs_2n_values, 0.75),
+            "max": vs_2n_values[-1] if vs_2n_values else None,
+            "min": vs_2n_values[0] if vs_2n_values else None,
+        },
+        "theorem_backed": False,
+        "universal_speedup_claimed": False,
+        "qualification": "branch_order_default_prefix_research_only",
+    }
 
 
 def e2_generator_baseline_summary(
@@ -142,6 +208,7 @@ def run_micro_benchmark_suite(
     include_external_e2: bool = True,
     include_generator_cases: bool = True,
     include_branch_order_probe: bool = True,
+    include_adversarial_grid: bool = False,
 ) -> dict[str, Any]:
     """Run universal count mode on pinned tiny 3-CNFs; aggregate ledger work."""
     t0 = time.perf_counter()
@@ -264,6 +331,10 @@ def run_micro_benchmark_suite(
                 bf if max_best_probe_ratio is None else max(max_best_probe_ratio, bf)
             )
 
+    adversarial_grid = None
+    if include_adversarial_grid:
+        adversarial_grid = adversarial_grid_compression_summary()
+
     e2_summary = None
     if include_e2_generator_baselines and include_generator_cases:
         e2_summary = e2_generator_baseline_summary(
@@ -277,6 +348,7 @@ def run_micro_benchmark_suite(
         "case_count": len(cases),
         "cases": cases,
         "e2_generator_baseline_summary": e2_summary,
+        "adversarial_grid_compression": adversarial_grid,
         "all_cross_checks_agree": all_agree,
         "suite_w_total_reported": suite_w_total,
         "elapsed_seconds": time.perf_counter() - t0,

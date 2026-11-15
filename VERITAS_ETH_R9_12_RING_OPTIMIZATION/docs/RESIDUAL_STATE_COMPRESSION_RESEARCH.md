@@ -95,6 +95,19 @@ in micro-benchmark JSON **without** changing production default order.
 Phase C count children try **`residual_equivalence` before `count_dag`** when oracle
 agreement holds; `child_engine_telemetry` logs wins vs adaptive/exhaustive fallback.
 
+**Adversarial grid (benchmark-only, default branch order).** `adversarial_grid_cases`
+with `n ∈ [6,10]`, seeds `(0,1,2)` — helper `adversarial_grid_compression_summary`
+in `sat_micro_benchmark.py` (not CI-pinned). Illustrative snapshot (15 cases, all
+oracle-agreed; **not** a hardness or speedup claim):
+
+| Stat | `compression_vs_2n` |
+| ---- | ------------------- |
+| min  | 32                  |
+| p25  | 64                  |
+| p50  | 128                 |
+| p75  | 256                 |
+| max  | 512                 |
+
 Component-local **pure literal** elimination (`enable_component_safe_pure_literals`)
 defaults off globally. When enabled, a variable is forced only if every incident
 clause is a **unit clause** on that variable within a single primal component

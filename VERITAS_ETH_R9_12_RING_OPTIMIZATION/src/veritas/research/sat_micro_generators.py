@@ -60,6 +60,23 @@ def adversarial_tight_triangle(n: int, seed: int) -> tuple[str, CNF]:
     return name, CNF.from_lists(n, clauses[: min(len(clauses), 28)])
 
 
+def adversarial_grid_cases(
+    *,
+    n_min: int = 6,
+    n_max: int = 10,
+    seeds: tuple[int, ...] = (0, 1, 2),
+) -> tuple[tuple[str, CNF, FamilyKind], ...]:
+    """Research grid (not CI-pinned): random adversarial 3-CNFs, seeds per n."""
+    if not 3 <= n_min <= n_max <= 10:
+        raise ValueError("adversarial_grid_cases requires 3 <= n_min <= n_max <= 10")
+    out: list[tuple[str, CNF, FamilyKind]] = []
+    for n in range(n_min, n_max + 1):
+        for seed in seeds:
+            name, cnf = adversarial_random_3cnf(n, seed)
+            out.append((name, cnf, "adversarial"))
+    return tuple(out)
+
+
 def micro_generator_suite() -> tuple[tuple[str, CNF, FamilyKind], ...]:
     """Pinned MICRO tier cases for CI (small n)."""
     out: list[tuple[str, CNF, FamilyKind]] = []
