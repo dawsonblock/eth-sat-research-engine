@@ -5,6 +5,7 @@ import time
 from typing import Any
 
 from veritas.core.cnf import CNF
+from veritas.research.sat_external_baselines import run_baseline_matrix
 from veritas.research.sat_micro_generators import micro_generator_suite
 from veritas.research.sat_residual_equivalence import probe_branch_orders_benchmark
 from veritas.research.sat_universal import run_universal_sat
@@ -68,6 +69,57 @@ def decomposition_metrics_from_report(
     return metrics
 
 
+def e2_generator_baseline_summary(
+    *,
+    external_timeout_s: float = 8.0,
+    include_external: bool = True,
+) -> dict[str, Any]:
+    """E2 decision baseline matrix on pinned MICRO generator families."""
+    case_rows: list[dict[str, Any]] = []
+    external_agree = 0
+    external_ran = 0
+    for name, cnf, family in micro_generator_suite():
+        matrix = run_baseline_matrix(
+            cnf,
+            task="decision",
+            include_external=include_external,
+            external_timeout_s=external_timeout_s,
+        )
+        veritas = next(
+            r for r in matrix["runs"] if r["baseline_id"] == "veritas_reference"
+        )
+        externals = [
+            r
+            for r in matrix["runs"]
+            if r["baseline_id"] not in ("veritas_reference",)
+        ]
+        for row in externals:
+            if row.get("status") in ("SAT", "UNSAT"):
+                external_ran += 1
+                if row["status"] == veritas.get("status"):
+                    external_agree += 1
+        case_rows.append(
+            {
+                "case": name,
+                "family": family,
+                "formula_sha256": matrix["formula_sha256"],
+                "veritas_reference_status": veritas.get("status"),
+                "agreements": matrix.get("agreements") or [],
+                "runs": matrix["runs"],
+            }
+        )
+    return {
+        "schema": "VERITAS_SAT_E2_GENERATOR_BASELINE_SUMMARY_V1",
+        "case_count": len(case_rows),
+        "cases": case_rows,
+        "external_decision_agree_count": external_agree,
+        "external_decision_ran_count": external_ran,
+        "theorem_backed": False,
+        "universal_speedup_claimed": False,
+        "qualification": "generator_micro_tier_decision_crosscheck_not_count",
+    }
+
+
 def _suite() -> tuple[tuple[str, CNF], ...]:
     return (
         ("unit_sat", CNF.from_lists(1, [[1]])),
@@ -85,6 +137,9 @@ def run_micro_benchmark_suite(
     adaptive_timeout_s: float = 12.0,
     timeout_s: float = 4.0,
     include_baseline_matrix: bool = False,
+    include_e2_generator_baselines: bool = False,
+    e2_external_timeout_s: float = 8.0,
+    include_external_e2: bool = True,
     include_generator_cases: bool = True,
     include_branch_order_probe: bool = True,
 ) -> dict[str, Any]:
@@ -209,11 +264,19 @@ def run_micro_benchmark_suite(
                 bf if max_best_probe_ratio is None else max(max_best_probe_ratio, bf)
             )
 
+    e2_summary = None
+    if include_e2_generator_baselines and include_generator_cases:
+        e2_summary = e2_generator_baseline_summary(
+            external_timeout_s=e2_external_timeout_s,
+            include_external=include_external_e2,
+        )
+
     return {
         "schema": "VERITAS_SAT_MICRO_BENCHMARK_V3",
         "mode": "count",
         "case_count": len(cases),
         "cases": cases,
+        "e2_generator_baseline_summary": e2_summary,
         "all_cross_checks_agree": all_agree,
         "suite_w_total_reported": suite_w_total,
         "elapsed_seconds": time.perf_counter() - t0,

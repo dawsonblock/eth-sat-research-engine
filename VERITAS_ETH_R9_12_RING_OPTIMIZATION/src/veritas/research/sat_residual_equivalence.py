@@ -37,8 +37,41 @@ def state_to_local_cnf(state: State) -> CNF:
     return CNF(len(order), local)
 
 
+def canonicalize_residual_state(state: State, *, max_unit_steps: int = 512) -> State:
+    """Deterministic unit propagation to fixpoint within a residual scope.
+
+    Buckets syntactically different but UP-equivalent residuals under the same
+    key. Does not claim completeness of residual equivalence (no theorem).
+    """
+    scope, clauses = state
+    steps = 0
+    while steps < max_unit_steps:
+        if any(not c for c in clauses):
+            # Keep conflict distinct from satisfied empty CNF (``_norm(())``).
+            return (scope, ((),))
+        if not clauses:
+            return (scope, clauses)
+        units = sorted(
+            (c[0] for c in clauses if len(c) == 1),
+            key=lambda lit: (abs(lit), lit),
+        )
+        if not units:
+            break
+        lit = units[0]
+        state = _restrict(state, abs(lit), lit > 0)
+        scope, clauses = state
+        steps += 1
+    return (scope, _norm(clauses))
+
+
 def residual_state_key(state: State) -> tuple[Any, ...]:
-    """Canonical key for ``R(partial assignment)``."""
+    """Canonical key for ``R(partial assignment)`` after in-residual UP."""
+    scope, clauses = canonicalize_residual_state(state)
+    return (scope, clauses)
+
+
+def residual_state_key_without_unit_propagation(state: State) -> tuple[Any, ...]:
+    """Legacy key (clause normalize only); benchmark tests compare bucket sizes."""
     scope, clauses = state
     return (scope, _norm(clauses))
 
@@ -310,6 +343,7 @@ def count_by_residual_equivalence(
         "count_computed": total,
         "oracle_exhaustive_count": oracle,
         "agreement": agreement,
+        "residual_key_normalization": "unit_propagation_fixpoint_v1",
         "branch_order": list(order),
         "distinct_residual_classes": len(classes),
         "full_assignment_branches": full,

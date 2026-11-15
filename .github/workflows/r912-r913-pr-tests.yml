@@ -40,6 +40,7 @@ jobs:
             tests/test_sat_phase_c_preprocess.py \
             tests/test_sat_source_finite_admission.py \
             tests/test_sat_residual_equivalence.py \
+            tests/test_sat_residual_canonical_key.py \
             tests/test_sat_math_audit.py \
             tests/test_sat_micro_generators.py \
             tests/test_sat_baselines.py \
@@ -74,12 +75,13 @@ jobs:
         env:
           PYTHONPATH: src
         run: python scripts/bench_sat_methods.py --smoke
-      - name: Universal SAT micro-benchmark artifact
+      - name: Universal SAT micro-benchmark artifact (V3)
         env:
           PYTHONPATH: src
         run: |
           python scripts/sat_micro_benchmark.py \
             -o validation/sat_universal_micro_benchmark.json
+          python -c "import json; d=json.load(open('validation/sat_universal_micro_benchmark.json')); assert d['schema']=='VERITAS_SAT_MICRO_BENCHMARK_V3', d.get('schema')"
 
   e2-external-baseline:
     runs-on: ubuntu-latest
@@ -109,3 +111,11 @@ jobs:
           PYTHONPATH: src
           CI: true
         run: python -m pytest -q -o addopts='' tests/test_sat_external_ci.py
+      - name: Micro-benchmark V3 + E2 generator baseline summary
+        env:
+          PYTHONPATH: src
+        run: |
+          python scripts/sat_micro_benchmark.py \
+            --e2-generator-baselines \
+            -o validation/sat_universal_micro_benchmark_e2.json
+          python -c "import json; d=json.load(open('validation/sat_universal_micro_benchmark_e2.json')); assert d['schema']=='VERITAS_SAT_MICRO_BENCHMARK_V3'; s=d.get('e2_generator_baseline_summary') or {}; assert s.get('schema')=='VERITAS_SAT_E2_GENERATOR_BASELINE_SUMMARY_V1'"

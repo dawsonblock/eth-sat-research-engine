@@ -23,8 +23,22 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Include E2 baseline matrix per case (slower)",
     )
+    parser.add_argument(
+        "--e2-generator-baselines",
+        action="store_true",
+        help="Attach E2 decision baseline summary for generator MICRO cases",
+    )
+    parser.add_argument(
+        "--no-external-e2",
+        action="store_true",
+        help="VERITAS reference only in E2 generator summary",
+    )
     args = parser.parse_args(argv)
-    report = run_micro_benchmark_suite(include_baseline_matrix=args.baseline_matrix)
+    report = run_micro_benchmark_suite(
+        include_baseline_matrix=args.baseline_matrix,
+        include_e2_generator_baselines=args.e2_generator_baselines,
+        include_external_e2=not args.no_external_e2,
+    )
     text = json.dumps(report, indent=2, sort_keys=True)
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
