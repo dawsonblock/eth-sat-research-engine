@@ -54,11 +54,12 @@ def _dual_backend_gate() -> dict:
 
 
 def _compression_floor_gate() -> dict:
-    from residual_compression_floors import COMPRESSION_RATIO_FLOORS
+    from residual_compression_floors import load_compression_floors
     from v36_backend_comparison import row
 
     failures: list[str] = []
-    for name, floor in COMPRESSION_RATIO_FLOORS.items():
+    floors = load_compression_floors()
+    for name, floor in floors.items():
         builders = all_family_builders()
         if name not in builders:
             failures.append(f'{name}: missing from benchmark suite')
@@ -70,7 +71,7 @@ def _compression_floor_gate() -> dict:
         elif ratio < floor:
             failures.append(f'{name}: ratio {ratio} < floor {floor}')
     return {
-        'floors': COMPRESSION_RATIO_FLOORS,
+        'floors': floors,
         'failures': failures,
         'ok': not failures,
     }

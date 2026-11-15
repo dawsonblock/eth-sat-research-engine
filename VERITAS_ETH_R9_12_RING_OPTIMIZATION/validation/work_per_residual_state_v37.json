@@ -1,0 +1,151 @@
+{
+  "schema": "VERITAS_WORK_PER_RESIDUAL_STATE_V37",
+  "rows": [
+    {
+      "name": "block_xy_z",
+      "n": 3,
+      "hybrid_evaluated_assignments": 10,
+      "residual_distinct_states": 4,
+      "hybrid_work_per_residual_state": 2.5,
+      "residual_compression_vs_brute": 2.0,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "chain_8",
+      "n": 8,
+      "hybrid_evaluated_assignments": 30,
+      "residual_distinct_states": 9,
+      "hybrid_work_per_residual_state": 3.3333,
+      "residual_compression_vs_brute": 28.444444,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "independent_pairs_6",
+      "n": 12,
+      "hybrid_evaluated_assignments": null,
+      "residual_distinct_states": 28,
+      "hybrid_work_per_residual_state": null,
+      "residual_compression_vs_brute": 146.285714,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "star_coupled_8",
+      "n": 9,
+      "hybrid_evaluated_assignments": 34,
+      "residual_distinct_states": 3,
+      "hybrid_work_per_residual_state": 11.3333,
+      "residual_compression_vs_brute": 170.666667,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "layered_bridge_4x3",
+      "n": 12,
+      "hybrid_evaluated_assignments": 126,
+      "residual_distinct_states": 30,
+      "hybrid_work_per_residual_state": 4.2,
+      "residual_compression_vs_brute": 136.533333,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "network_block_motif_4",
+      "n": 9,
+      "hybrid_evaluated_assignments": 34,
+      "residual_distinct_states": 16,
+      "hybrid_work_per_residual_state": 2.125,
+      "residual_compression_vs_brute": 32.0,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "pigeon_one_hot_5",
+      "n": 5,
+      "hybrid_evaluated_assignments": 62,
+      "residual_distinct_states": 5,
+      "hybrid_work_per_residual_state": 12.4,
+      "residual_compression_vs_brute": 6.4,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "random_3sat_n10_m35_s42",
+      "n": 10,
+      "hybrid_evaluated_assignments": 894,
+      "residual_distinct_states": 12,
+      "hybrid_work_per_residual_state": 74.5,
+      "residual_compression_vs_brute": 85.333333,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "tight_primed_pairs_5",
+      "n": 10,
+      "hybrid_evaluated_assignments": null,
+      "residual_distinct_states": 6,
+      "hybrid_work_per_residual_state": null,
+      "residual_compression_vs_brute": 170.666667,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_block_xy_z",
+      "n": 3,
+      "hybrid_evaluated_assignments": 10,
+      "residual_distinct_states": 4,
+      "hybrid_work_per_residual_state": 2.5,
+      "residual_compression_vs_brute": 2.0,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_network_block_motif_4",
+      "n": 9,
+      "hybrid_evaluated_assignments": 34,
+      "residual_distinct_states": 16,
+      "hybrid_work_per_residual_state": 2.125,
+      "residual_compression_vs_brute": 32.0,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_contradiction",
+      "n": 1,
+      "hybrid_evaluated_assignments": null,
+      "residual_distinct_states": 0,
+      "hybrid_work_per_residual_state": null,
+      "residual_compression_vs_brute": 2.0,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_example",
+      "n": 3,
+      "hybrid_evaluated_assignments": 10,
+      "residual_distinct_states": 2,
+      "hybrid_work_per_residual_state": 5.0,
+      "residual_compression_vs_brute": 4.0,
+      "counts_match": true,
+      "complexity_claim": false
+    },
+    {
+      "name": "dimacs_query_v23",
+      "n": 3,
+      "hybrid_evaluated_assignments": null,
+      "residual_distinct_states": 1,
+      "hybrid_work_per_residual_state": null,
+      "residual_compression_vs_brute": 8.0,
+      "counts_match": true,
+      "complexity_claim": false
+    }
+  ],
+  "summary": {
+    "cases": 14,
+    "max_hybrid_work_per_state": 74.5,
+    "min_hybrid_work_per_state": 2.125
+  },
+  "complexity_claim": false
+}

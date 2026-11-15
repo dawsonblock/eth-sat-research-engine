@@ -81,12 +81,18 @@ def count_with_residual_memo(
     cnf: CNF,
     *,
     preprocess: bool = True,
+    track_ledger: bool = False,
 ) -> tuple[int, ResidualStats, dict]:
     """Exact #SAT via Shannon extension with residual CNF memoization."""
     if preprocess:
         cnf, prep = count_preserving_preprocess(cnf)
         if prep.empty_clause:
-            return 0, ResidualStats(0, 0, 1, 0), {}
+            empty_report = {'contract': 'EXACT_RESIDUAL_MEMO_SHANNON', 'complexity_claim': False}
+            if track_ledger:
+                from veritas.research.cost_ledger import CostLedger
+
+                empty_report['tree_ledger'] = CostLedger().report()
+            return 0, ResidualStats(0, 0, 1, 0), empty_report
     else:
         prep = None
     memo: dict[str, int] = {}
@@ -94,18 +100,33 @@ def count_with_residual_memo(
     cache_hits = 0
     calls = 0
     max_depth = 0
+    ledger = None
+    if track_ledger:
+        from veritas.research.cost_ledger import CostLedger
+
+        ledger = CostLedger()
 
     def count(state: CNF, depth: int) -> int:
         nonlocal cache_hits, calls, max_depth
         calls += 1
         max_depth = max(max_depth, depth)
+        if ledger is not None:
+            ledger.tick('recursive_call', 1)
         fp = state.digest()
         classifiers[fp] = classifiers.get(fp, 0) + 1
         if fp in memo:
             cache_hits += 1
+            if ledger is not None:
+                ledger.record_cache(hit=True)
+                ledger.tick('cache_lookup', 1)
             return memo[fp]
+        if ledger is not None:
+            ledger.record_cache(hit=False)
+            ledger.note_unique_subproblem()
         if not state.clauses:
             out = 1 << state.n
+            if ledger is not None:
+                ledger.tick('leaf', 1)
         else:
             v = _choose_var(state)
             total = 0
@@ -135,6 +156,11 @@ def count_with_residual_memo(
         'contract': 'EXACT_RESIDUAL_MEMO_SHANNON',
         'complexity_claim': False,
     }
+    if ledger is not None:
+        tree = ledger.report()
+        tree['observational_only'] = True
+        tree['engine'] = 'EXACT_RESIDUAL_MEMO_SHANNON'
+        report['tree_ledger'] = tree
     return total, stats, report
 
 
@@ -203,7 +229,9 @@ def residual_research_metrics(
             'reason': f'prefix_depth={effective_prefix} exceeds safe cap 20',
             'complexity_claim': False,
         }
-    count, stats, memo_report = count_with_residual_memo(cnf, preprocess=preprocess)
+    count, stats, memo_report = count_with_residual_memo(
+        cnf, preprocess=preprocess, track_ledger=True
+    )
     prefix_vars = tuple(range(1, effective_prefix + 1))
     buckets = prefix_residual_table(cnf, prefix_vars) if effective_prefix > 0 else []
     prefix_mults = [b['multiplicity'] for b in buckets]
@@ -231,6 +259,7 @@ def residual_research_metrics(
             }
             for b in sorted(buckets, key=lambda r: -r['multiplicity'])[:16]
         ],
+        'tree_ledger': memo_report.get('tree_ledger'),
         'contract': 'EXACT_RESIDUAL_RESEARCH_METRICS',
         'complexity_claim': False,
     }

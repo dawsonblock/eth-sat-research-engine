@@ -27,7 +27,8 @@
       "dimacs_network_block_motif_4": 30.0,
       "star_coupled_8": 100.0,
       "layered_bridge_4x3": 80.0,
-      "chain_8": 20.0
+      "chain_8": 20.0,
+      "dimacs_block_xy_z": 1.5
     },
     "failures": [],
     "ok": true

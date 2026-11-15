@@ -10,6 +10,8 @@ def test_residual_research_backend_count():
     assert out['engine'] == 'EXACT_RESIDUAL_MEMO_SHANNON'
     assert out['count'] == '5'
     assert out['execution']['distinct_residual_states'] >= 2
+    tree = out.get('tree_ledger') or {}
+    assert tree.get('unique_subproblems') == out['execution']['distinct_residual_states']
 
 
 def test_structure_hybrid_residual_primary_backend():
@@ -49,3 +51,5 @@ def test_dual_backend_matches_and_comparison():
     assert not cmp['skipped']
     assert cmp['counts_match'] is True
     assert cmp['residual_distinct_states'] is not None
+    assert cmp.get('hybrid_work_per_residual_state') is not None
+    assert cmp.get('residual_tree_unique_subproblems') is not None

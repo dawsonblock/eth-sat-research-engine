@@ -21,3 +21,6 @@ python benchmarks/v34_residual_growth.py
 python benchmarks/v36_backend_comparison.py
 python scripts/validate_residual_gates.py
 ```
+
+Optional per-case compression floors without code changes: edit
+`validation/residual_compression_floors.json` (merged over Python defaults).

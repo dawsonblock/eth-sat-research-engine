@@ -27,7 +27,9 @@ def residual_research_count(cnf: CNF, **kwargs) -> dict:
     """Research exact counter using Shannon + residual fingerprint memo."""
     start = monotonic()
     preprocess, ignored = _strip_hybrid_kwargs(dict(kwargs))
-    count, stats, report = count_with_residual_memo(cnf, preprocess=preprocess)
+    count, stats, report = count_with_residual_memo(
+        cnf, preprocess=preprocess, track_ledger=True
+    )
     elapsed = monotonic() - start
     residual = {
         **report,
@@ -48,6 +50,7 @@ def residual_research_count(cnf: CNF, **kwargs) -> dict:
             'method': 'EXACT_RESIDUAL_MEMO_SHANNON',
         },
         'residual_research': residual,
+        'tree_ledger': report.get('tree_ledger'),
         'ignored_hybrid_routing_kwargs': ignored,
         'independent_count_checked': False,
         'elapsed_seconds': round(elapsed, 6),
@@ -68,6 +71,19 @@ def ledger_comparison(hybrid_result: dict, residual_metrics: dict) -> dict:
     if hybrid_entries is None:
         hybrid_entries = execution.get('peak_table_entries')
     tree = hybrid_result.get('tree_ledger') or {}
+    residual_tree = residual_metrics.get('tree_ledger') or {}
+    if not residual_tree and residual_metrics.get('distinct_residual_states') is not None:
+        residual_tree = {
+            'unique_subproblems': residual_metrics.get('distinct_residual_states'),
+            'cache_hits': residual_metrics.get('cache_hits'),
+        }
+    hybrid_work = execution.get('evaluated_assignments')
+    residual_states = residual_metrics.get('distinct_residual_states')
+    work_per_state = (
+        round(hybrid_work / residual_states, 4)
+        if hybrid_work is not None and residual_states
+        else None
+    )
     return {
         'skipped': False,
         'counts_match': str(hybrid_result.get('count')) == str(residual_metrics.get('count')),
@@ -78,6 +94,9 @@ def ledger_comparison(hybrid_result: dict, residual_metrics: dict) -> dict:
         'hybrid_cache_hits': execution.get('cache_hits'),
         'tree_ledger_unique_subproblems': tree.get('unique_subproblems'),
         'tree_ledger_cache_hits': tree.get('cache_hits'),
+        'residual_tree_unique_subproblems': residual_tree.get('unique_subproblems'),
+        'residual_tree_cache_hits': residual_tree.get('cache_hits'),
+        'hybrid_work_per_residual_state': work_per_state,
         'residual_distinct_states': residual_metrics.get('distinct_residual_states'),
         'residual_recursive_calls': residual_metrics.get('recursive_calls'),
         'residual_memo_reuse_ratio': residual_metrics.get('memo_reuse_ratio'),

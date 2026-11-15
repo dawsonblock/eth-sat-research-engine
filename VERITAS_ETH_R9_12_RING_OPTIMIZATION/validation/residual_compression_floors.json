@@ -1,0 +1,9 @@
+{
+  "schema": "VERITAS_RESIDUAL_COMPRESSION_FLOORS_V1",
+  "comment": "Optional per-case floors merged over benchmarks/residual_compression_floors.py defaults. Add dimacs_* keys for archive CNFs.",
+  "floors": {
+    "independent_pairs_6": 100.0,
+    "dimacs_block_xy_z": 1.5
+  },
+  "complexity_claim": false
+}

@@ -53,6 +53,7 @@ jobs:
           python benchmarks/v34_residual_growth.py
           python scripts/validate_residual_gates.py
           python benchmarks/v36_backend_comparison.py
+          python benchmarks/v37_work_per_residual_state.py
       - run: python -m pytest -q tests/test_xor_verify.py tests/test_xor_reference.py tests/test_gf2_xor_components.py tests/test_gf2_xor_encode.py tests/test_residual_equivalence.py tests/test_residual_metrics_api.py tests/test_residual_dimacs_fixtures.py tests/test_residual_count_backend.py
       - run: python -m pytest -q -o addopts='' tests/test_r91_cpp_backend.py
       - name: Collect regenerated evidence and recheck sealed input
