@@ -173,6 +173,30 @@ def parse_dimacs(text: str) -> Problem:
     )
 
 
+# ---------------------------------------------------------------- big integers
+def _without_digit_limit(convert, value):
+    """Apply ``str`` or ``int`` without Python's 4300-digit conversion limit.
+
+    Model counts routinely exceed it: 15000 unconstrained variables already do.
+    """
+    if not hasattr(sys, "set_int_max_str_digits"):
+        return convert(value)
+    previous = sys.get_int_max_str_digits()
+    sys.set_int_max_str_digits(0)
+    try:
+        return convert(value)
+    finally:
+        sys.set_int_max_str_digits(previous)
+
+
+def to_decimal(value: int) -> str:
+    return _without_digit_limit(str, value)
+
+
+def from_decimal(text: str) -> int:
+    return _without_digit_limit(int, text)
+
+
 # --------------------------------------------------------------------- engines
 def _trivially_unsatisfiable(problem: Problem) -> bool:
     return any(not clause for clause in problem.clauses) or any(
@@ -295,7 +319,7 @@ def count_veritas(problem: Problem) -> int:
     )
     if result.get("status") != "EXACT_COUNT":
         raise RuntimeError(f"no exact count: {result.get('status')}")
-    return int(result["count"])
+    return from_decimal(result["count"])
 
 
 ENGINES = {
@@ -380,7 +404,9 @@ class CountResult:
 
 def _execute(name: str, problem: Problem) -> tuple[str, str]:
     try:
-        return "ok", str(ENGINES[name](problem))
+        # The limit is lifted around the engine too: pyganak builds its result from a
+        # decimal string, so a large count would otherwise fail inside the engine.
+        return "ok", _without_digit_limit(lambda p: str(ENGINES[name](p)), problem)
     except EngineSkipped as exc:
         return "skipped", str(exc)
     except EngineUnavailable as exc:

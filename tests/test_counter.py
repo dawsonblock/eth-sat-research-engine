@@ -202,6 +202,23 @@ class OrchestrationTests(unittest.TestCase):
         self.assertEqual((result.status, result.count), ("EXACT", "2"))
         self.assertFalse(result.cross_checked)
 
+    def test_counts_beyond_the_integer_string_limit(self) -> None:
+        # 2**15000 has 4516 decimal digits, above Python's default conversion limit.
+        expected = counter.to_decimal(2**15000)
+        self.assertGreater(len(expected), 4300)
+        problem = Problem(15000, ())
+        for isolate in (False, True):
+            result = count_models(problem, engines="dpll", isolate=isolate)
+            self.assertEqual((result.status, result.count), ("EXACT", expected))
+        self.assertEqual(counter.from_decimal(expected), 2**15000)
+
+    @unittest.skipUnless(HAVE_GANAK, "pyganak not installed")
+    def test_ganak_counts_beyond_the_integer_string_limit(self) -> None:
+        problem = Problem(15000, ((1, 2),))
+        result = count_models(problem, engines="ganak,dpll", isolate=False)
+        self.assertEqual(result.agreeing_engines, ("ganak", "dpll"))
+        self.assertEqual(result.count, counter.to_decimal(3 * 2**14998))
+
     def test_engine_error_is_reported_not_counted(self) -> None:
         with mock.patch.dict(counter.ENGINES, {"bitset": lambda problem: 1 / 0}):
             result = count_models(self.chain, engines="bitset", isolate=False)
@@ -235,6 +252,13 @@ class CliTests(unittest.TestCase):
             code, out, err = self.run_cli(text, "--engines", "dpll,bitset")
         self.assertEqual((code, out), (counter.EXIT_DISAGREE, ""))
         self.assertIn("DISAGREE", err)
+
+    def test_prints_a_count_beyond_the_integer_string_limit(self) -> None:
+        code, out, _ = self.run_cli("p cnf 15000 0\n", "--engines", "dpll")
+        self.assertEqual((code, out.strip()), (0, counter.to_decimal(2**15000)))
+        code, out, _ = self.run_cli("p cnf 15000 0\n", "--engines", "dpll", "--json")
+        self.assertEqual(code, 0)
+        self.assertIn(counter.to_decimal(2**15000), out)
 
     def test_json_record(self) -> None:
         code, out, _ = self.run_cli("p cnf 2 1\nx1 2 0\n", "--engines", "bitset", "--json")
